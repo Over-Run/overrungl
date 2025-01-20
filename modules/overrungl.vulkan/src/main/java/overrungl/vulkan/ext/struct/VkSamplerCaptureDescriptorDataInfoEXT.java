@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### sampler
-/// [VarHandle][#VH_sampler] - [Getter][#sampler()] - [Setter][#sampler(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_sampler] - [Getter][#sampler()] - [Setter][#sampler(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkSamplerCaptureDescriptorDataInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `sampler` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `sampler` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sampler = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampler"));
 
     /// Creates `VkSamplerCaptureDescriptorDataInfoEXT` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkSamplerCaptureDescriptorDataInfoEXT extends Struct {
     /// Allocates a `VkSamplerCaptureDescriptorDataInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
-    public static VkSamplerCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSampler") java.lang.foreign.MemorySegment sampler) { return alloc(allocator).sType(sType).pNext(pNext).sampler(sampler); }
+    public static VkSamplerCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSampler") MemorySegment sampler) { return alloc(allocator).sType(sType).pNext(pNext).sampler(sampler); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkSamplerCaptureDescriptorDataInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerCaptureDescriptorDataInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSamplerCaptureDescriptorDataInfoEXT pNext(@CType("const void *") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `sampler` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSampler") java.lang.foreign.MemorySegment get_sampler(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_sampler.get(segment, 0L, index); }
+    public static @CType("VkSampler") MemorySegment get_sampler(MemorySegment segment, long index) { return (MemorySegment) VH_sampler.get(segment, 0L, index); }
     /// {@return `sampler`}
     /// @param segment the segment of the struct
-    public static @CType("VkSampler") java.lang.foreign.MemorySegment get_sampler(MemorySegment segment) { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(segment, 0L); }
+    public static @CType("VkSampler") MemorySegment get_sampler(MemorySegment segment) { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(segment, 0L); }
     /// {@return `sampler`}
-    public @CType("VkSampler") java.lang.foreign.MemorySegment sampler() { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(this.segment()); }
+    public @CType("VkSampler") MemorySegment sampler() { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(this.segment()); }
     /// Sets `sampler` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_sampler(MemorySegment segment, long index, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VH_sampler.set(segment, 0L, index, value); }
+    public static void set_sampler(MemorySegment segment, long index, @CType("VkSampler") MemorySegment value) { VH_sampler.set(segment, 0L, index, value); }
     /// Sets `sampler` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_sampler(MemorySegment segment, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(segment, 0L, value); }
+    public static void set_sampler(MemorySegment segment, @CType("VkSampler") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(segment, 0L, value); }
     /// Sets `sampler` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerCaptureDescriptorDataInfoEXT sampler(@CType("VkSampler") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(this.segment(), value); return this; }
+    public VkSamplerCaptureDescriptorDataInfoEXT sampler(@CType("VkSampler") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(this.segment(), value); return this; }
 
     /// A buffer of [VkSamplerCaptureDescriptorDataInfoEXT].
     public static final class Buffer extends VkSamplerCaptureDescriptorDataInfoEXT {
@@ -210,21 +210,21 @@ public sealed class VkSamplerCaptureDescriptorDataInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSamplerCaptureDescriptorDataInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `sampler` at the given index}
         /// @param index the index
-        public @CType("VkSampler") java.lang.foreign.MemorySegment samplerAt(long index) { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(this.segment(), index); }
+        public @CType("VkSampler") MemorySegment samplerAt(long index) { return VkSamplerCaptureDescriptorDataInfoEXT.get_sampler(this.segment(), index); }
         /// Sets `sampler` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer samplerAt(long index, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(this.segment(), index, value); return this; }
+        public Buffer samplerAt(long index, @CType("VkSampler") MemorySegment value) { VkSamplerCaptureDescriptorDataInfoEXT.set_sampler(this.segment(), index, value); return this; }
 
     }
 }

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVCooperativeMatrix2 {
     public static final int VK_NV_COOPERATIVE_MATRIX_2_SPEC_VERSION = 1;
     public static final String VK_NV_COOPERATIVE_MATRIX_2_EXTENSION_NAME = "VK_NV_cooperative_matrix2";
@@ -30,15 +29,8 @@ public class VKNVCooperativeMatrix2 {
     public static final int VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV = 1000593001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV = 1000593002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV);
+        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");

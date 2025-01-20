@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTSampleLocations {
     public static final int VK_EXT_SAMPLE_LOCATIONS_SPEC_VERSION = 1;
     public static final String VK_EXT_SAMPLE_LOCATIONS_EXTENSION_NAME = "VK_EXT_sample_locations";
@@ -34,18 +33,9 @@ public class VKEXTSampleLocations {
     public static final int VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT = 1000143004;
     public static final int VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT = 1000143000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetSampleLocationsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceMultisamplePropertiesEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetSampleLocationsEXT,
-            FD_vkGetPhysicalDeviceMultisamplePropertiesEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetSampleLocationsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetSampleLocationsEXT);
-        public static final MethodHandle MH_vkGetPhysicalDeviceMultisamplePropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceMultisamplePropertiesEXT);
+        public static final MethodHandle MH_vkCmdSetSampleLocationsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceMultisamplePropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetSampleLocationsEXT;
         public final MemorySegment PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,30 +27,13 @@ public final class GLNVTextureMultisample {
     public static final int GL_TEXTURE_COVERAGE_SAMPLES_NV = 0x9045;
     public static final int GL_TEXTURE_COLOR_SAMPLES_NV = 0x9046;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexImage2DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTexImage3DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTextureImage2DMultisampleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTextureImage3DMultisampleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTextureImage2DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTextureImage3DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexImage2DMultisampleCoverageNV,
-            FD_glTexImage3DMultisampleCoverageNV,
-            FD_glTextureImage2DMultisampleNV,
-            FD_glTextureImage3DMultisampleNV,
-            FD_glTextureImage2DMultisampleCoverageNV,
-            FD_glTextureImage3DMultisampleCoverageNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexImage2DMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glTexImage2DMultisampleCoverageNV);
-        public static final MethodHandle MH_glTexImage3DMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glTexImage3DMultisampleCoverageNV);
-        public static final MethodHandle MH_glTextureImage2DMultisampleNV = RuntimeHelper.downcall(Descriptors.FD_glTextureImage2DMultisampleNV);
-        public static final MethodHandle MH_glTextureImage3DMultisampleNV = RuntimeHelper.downcall(Descriptors.FD_glTextureImage3DMultisampleNV);
-        public static final MethodHandle MH_glTextureImage2DMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glTextureImage2DMultisampleCoverageNV);
-        public static final MethodHandle MH_glTextureImage3DMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glTextureImage3DMultisampleCoverageNV);
+        public static final MethodHandle MH_glTexImage2DMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTexImage3DMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTextureImage2DMultisampleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTextureImage3DMultisampleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTextureImage2DMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTextureImage3DMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glTexImage2DMultisampleCoverageNV;
         public final MemorySegment PFN_glTexImage3DMultisampleCoverageNV;
         public final MemorySegment PFN_glTextureImage2DMultisampleNV;

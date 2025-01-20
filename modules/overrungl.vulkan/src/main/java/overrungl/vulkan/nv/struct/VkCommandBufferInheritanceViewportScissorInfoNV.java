@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### viewportScissor2D
 /// [VarHandle][#VH_viewportScissor2D] - [Getter][#viewportScissor2D()] - [Setter][#viewportScissor2D(int)]
 /// ### viewportDepthCount
 /// [VarHandle][#VH_viewportDepthCount] - [Getter][#viewportDepthCount()] - [Setter][#viewportDepthCount(int)]
 /// ### pViewportDepths
-/// [VarHandle][#VH_pViewportDepths] - [Getter][#pViewportDepths()] - [Setter][#pViewportDepths(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pViewportDepths] - [Getter][#pViewportDepths()] - [Setter][#pViewportDepths(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `viewportScissor2D` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_viewportScissor2D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportScissor2D"));
     /// The [VarHandle] of `viewportDepthCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_viewportDepthCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportDepthCount"));
-    /// The [VarHandle] of `pViewportDepths` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pViewportDepths` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewportDepths = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportDepths"));
 
     /// Creates `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
     /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
-    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int viewportScissor2D, @CType("uint32_t") int viewportDepthCount, @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewportDepths) { return alloc(allocator).sType(sType).pNext(pNext).viewportScissor2D(viewportScissor2D).viewportDepthCount(viewportDepthCount).pViewportDepths(pViewportDepths); }
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkBool32") int viewportScissor2D, @CType("uint32_t") int viewportDepthCount, @CType("const VkViewport *") MemorySegment pViewportDepths) { return alloc(allocator).sType(sType).pNext(pNext).viewportScissor2D(viewportScissor2D).viewportDepthCount(viewportDepthCount).pViewportDepths(pViewportDepths); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(@CType("const void *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `viewportScissor2D` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
     /// {@return `pViewportDepths` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkViewport *") java.lang.foreign.MemorySegment get_pViewportDepths(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pViewportDepths.get(segment, 0L, index); }
+    public static @CType("const VkViewport *") MemorySegment get_pViewportDepths(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportDepths.get(segment, 0L, index); }
     /// {@return `pViewportDepths`}
     /// @param segment the segment of the struct
-    public static @CType("const VkViewport *") java.lang.foreign.MemorySegment get_pViewportDepths(MemorySegment segment) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(segment, 0L); }
+    public static @CType("const VkViewport *") MemorySegment get_pViewportDepths(MemorySegment segment) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(segment, 0L); }
     /// {@return `pViewportDepths`}
-    public @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewportDepths() { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(this.segment()); }
+    public @CType("const VkViewport *") MemorySegment pViewportDepths() { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(this.segment()); }
     /// Sets `pViewportDepths` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pViewportDepths(MemorySegment segment, long index, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VH_pViewportDepths.set(segment, 0L, index, value); }
+    public static void set_pViewportDepths(MemorySegment segment, long index, @CType("const VkViewport *") MemorySegment value) { VH_pViewportDepths.set(segment, 0L, index, value); }
     /// Sets `pViewportDepths` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pViewportDepths(MemorySegment segment, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(segment, 0L, value); }
+    public static void set_pViewportDepths(MemorySegment segment, @CType("const VkViewport *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(segment, 0L, value); }
     /// Sets `pViewportDepths` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepths(@CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepths(@CType("const VkViewport *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(this.segment(), value); return this; }
 
     /// A buffer of [VkCommandBufferInheritanceViewportScissorInfoNV].
     public static final class Buffer extends VkCommandBufferInheritanceViewportScissorInfoNV {
@@ -268,12 +268,12 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `viewportScissor2D` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Stru
 
         /// {@return `pViewportDepths` at the given index}
         /// @param index the index
-        public @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewportDepthsAt(long index) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(this.segment(), index); }
+        public @CType("const VkViewport *") MemorySegment pViewportDepthsAt(long index) { return VkCommandBufferInheritanceViewportScissorInfoNV.get_pViewportDepths(this.segment(), index); }
         /// Sets `pViewportDepths` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pViewportDepthsAt(long index, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(this.segment(), index, value); return this; }
+        public Buffer pViewportDepthsAt(long index, @CType("const VkViewport *") MemorySegment value) { VkCommandBufferInheritanceViewportScissorInfoNV.set_pViewportDepths(this.segment(), index, value); return this; }
 
     }
 }

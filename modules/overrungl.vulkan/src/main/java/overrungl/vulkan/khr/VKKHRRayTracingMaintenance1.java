@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRRayTracingMaintenance1 {
     public static final int VK_KHR_RAY_TRACING_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_KHR_RAY_TRACING_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_ray_tracing_maintenance1";
@@ -33,15 +32,8 @@ public class VKKHRRayTracingMaintenance1 {
     public static final long VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR = 0x10000000000L;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT = 1000386004;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdTraceRaysIndirect2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdTraceRaysIndirect2KHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdTraceRaysIndirect2KHR);
+        public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCmdTraceRaysIndirect2KHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdTraceRaysIndirect2KHR = func.invoke(device, "vkCmdTraceRaysIndirect2KHR");

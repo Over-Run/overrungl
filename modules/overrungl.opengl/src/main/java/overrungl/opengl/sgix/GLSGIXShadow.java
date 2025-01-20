@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXShadow {
     public static final int GL_TEXTURE_COMPARE_SGIX = 0x819A;
     public static final int GL_TEXTURE_COMPARE_OPERATOR_SGIX = 0x819B;

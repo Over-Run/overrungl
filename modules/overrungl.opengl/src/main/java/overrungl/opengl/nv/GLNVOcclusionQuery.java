@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,33 +29,14 @@ public final class GLNVOcclusionQuery {
     public static final int GL_PIXEL_COUNT_NV = 0x8866;
     public static final int GL_PIXEL_COUNT_AVAILABLE_NV = 0x8867;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenOcclusionQueriesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteOcclusionQueriesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsOcclusionQueryNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginOcclusionQueryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndOcclusionQueryNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glGetOcclusionQueryivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetOcclusionQueryuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenOcclusionQueriesNV,
-            FD_glDeleteOcclusionQueriesNV,
-            FD_glIsOcclusionQueryNV,
-            FD_glBeginOcclusionQueryNV,
-            FD_glEndOcclusionQueryNV,
-            FD_glGetOcclusionQueryivNV,
-            FD_glGetOcclusionQueryuivNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenOcclusionQueriesNV = RuntimeHelper.downcall(Descriptors.FD_glGenOcclusionQueriesNV);
-        public static final MethodHandle MH_glDeleteOcclusionQueriesNV = RuntimeHelper.downcall(Descriptors.FD_glDeleteOcclusionQueriesNV);
-        public static final MethodHandle MH_glIsOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glIsOcclusionQueryNV);
-        public static final MethodHandle MH_glBeginOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glBeginOcclusionQueryNV);
-        public static final MethodHandle MH_glEndOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glEndOcclusionQueryNV);
-        public static final MethodHandle MH_glGetOcclusionQueryivNV = RuntimeHelper.downcall(Descriptors.FD_glGetOcclusionQueryivNV);
-        public static final MethodHandle MH_glGetOcclusionQueryuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetOcclusionQueryuivNV);
+        public static final MethodHandle MH_glGenOcclusionQueriesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteOcclusionQueriesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glGetOcclusionQueryivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetOcclusionQueryuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGenOcclusionQueriesNV;
         public final MemorySegment PFN_glDeleteOcclusionQueriesNV;
         public final MemorySegment PFN_glIsOcclusionQueryNV;
@@ -79,13 +59,13 @@ public final class GLNVOcclusionQuery {
         this.handles = new Handles(func);
     }
 
-    public void GenOcclusionQueriesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void GenOcclusionQueriesNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glGenOcclusionQueriesNV");
         try { Handles.MH_glGenOcclusionQueriesNV.invokeExact(handles.PFN_glGenOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glGenOcclusionQueriesNV", e); }
     }
 
-    public void DeleteOcclusionQueriesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void DeleteOcclusionQueriesNV(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteOcclusionQueriesNV");
         try { Handles.MH_glDeleteOcclusionQueriesNV.invokeExact(handles.PFN_glDeleteOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteOcclusionQueriesNV", e); }
@@ -109,13 +89,13 @@ public final class GLNVOcclusionQuery {
         catch (Throwable e) { throw new RuntimeException("error in glEndOcclusionQueryNV", e); }
     }
 
-    public void GetOcclusionQueryivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetOcclusionQueryivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetOcclusionQueryivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryivNV");
         try { Handles.MH_glGetOcclusionQueryivNV.invokeExact(handles.PFN_glGetOcclusionQueryivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetOcclusionQueryivNV", e); }
     }
 
-    public void GetOcclusionQueryuivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void GetOcclusionQueryuivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetOcclusionQueryuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryuivNV");
         try { Handles.MH_glGetOcclusionQueryuivNV.invokeExact(handles.PFN_glGetOcclusionQueryuivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetOcclusionQueryuivNV", e); }

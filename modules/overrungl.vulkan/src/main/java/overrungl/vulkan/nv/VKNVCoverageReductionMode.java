@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVCoverageReductionMode {
     public static final int VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0;
     public static final int VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1;
@@ -32,15 +31,8 @@ public class VKNVCoverageReductionMode {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV = 1000250001;
     public static final int VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV = 1000250002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
+        public static final MethodHandle MH_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = func.invoke(device, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");

@@ -30,11 +30,11 @@ import overrungl.util.*;
 /// ### first_unicode_codepoint_in_range
 /// [VarHandle][#VH_first_unicode_codepoint_in_range] - [Getter][#first_unicode_codepoint_in_range()] - [Setter][#first_unicode_codepoint_in_range(int)]
 /// ### array_of_unicode_codepoints
-/// [VarHandle][#VH_array_of_unicode_codepoints] - [Getter][#array_of_unicode_codepoints()] - [Setter][#array_of_unicode_codepoints(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_array_of_unicode_codepoints] - [Getter][#array_of_unicode_codepoints()] - [Setter][#array_of_unicode_codepoints(MemorySegment)]
 /// ### num_chars
 /// [VarHandle][#VH_num_chars] - [Getter][#num_chars()] - [Setter][#num_chars(int)]
 /// ### chardata_for_range
-/// [VarHandle][#VH_chardata_for_range] - [Getter][#chardata_for_range()] - [Setter][#chardata_for_range(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_chardata_for_range] - [Getter][#chardata_for_range()] - [Setter][#chardata_for_range(MemorySegment)]
 /// ### h_oversample
 /// [VarHandle][#VH_h_oversample] - [Getter][#h_oversample()] - [Setter][#h_oversample(byte)]
 /// ### v_oversample
@@ -67,11 +67,11 @@ public sealed class STBTTPackRange extends Struct {
     public static final VarHandle VH_font_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("font_size"));
     /// The [VarHandle] of `first_unicode_codepoint_in_range` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_first_unicode_codepoint_in_range = LAYOUT.arrayElementVarHandle(PathElement.groupElement("first_unicode_codepoint_in_range"));
-    /// The [VarHandle] of `array_of_unicode_codepoints` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `array_of_unicode_codepoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_array_of_unicode_codepoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("array_of_unicode_codepoints"));
     /// The [VarHandle] of `num_chars` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_num_chars = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_chars"));
-    /// The [VarHandle] of `chardata_for_range` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `chardata_for_range` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_chardata_for_range = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chardata_for_range"));
     /// The [VarHandle] of `h_oversample` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_h_oversample = LAYOUT.arrayElementVarHandle(PathElement.groupElement("h_oversample"));
@@ -121,7 +121,7 @@ public sealed class STBTTPackRange extends Struct {
     /// Allocates a `STBTTPackRange` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTPackRange`
-    public static STBTTPackRange allocInit(SegmentAllocator allocator, @CType("float") float font_size, @CType("int") int first_unicode_codepoint_in_range, @CType("int*") java.lang.foreign.MemorySegment array_of_unicode_codepoints, @CType("int") int num_chars, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment chardata_for_range, @CType("unsigned char") byte h_oversample, @CType("unsigned char") byte v_oversample) { return alloc(allocator).font_size(font_size).first_unicode_codepoint_in_range(first_unicode_codepoint_in_range).array_of_unicode_codepoints(array_of_unicode_codepoints).num_chars(num_chars).chardata_for_range(chardata_for_range).h_oversample(h_oversample).v_oversample(v_oversample); }
+    public static STBTTPackRange allocInit(SegmentAllocator allocator, @CType("float") float font_size, @CType("int") int first_unicode_codepoint_in_range, @CType("int*") MemorySegment array_of_unicode_codepoints, @CType("int") int num_chars, @CType("stbtt_packedchar *") MemorySegment chardata_for_range, @CType("unsigned char") byte h_oversample, @CType("unsigned char") byte v_oversample) { return alloc(allocator).font_size(font_size).first_unicode_codepoint_in_range(first_unicode_codepoint_in_range).array_of_unicode_codepoints(array_of_unicode_codepoints).num_chars(num_chars).chardata_for_range(chardata_for_range).h_oversample(h_oversample).v_oversample(v_oversample); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -181,25 +181,25 @@ public sealed class STBTTPackRange extends Struct {
     /// {@return `array_of_unicode_codepoints` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("int*") java.lang.foreign.MemorySegment get_array_of_unicode_codepoints(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_array_of_unicode_codepoints.get(segment, 0L, index); }
+    public static @CType("int*") MemorySegment get_array_of_unicode_codepoints(MemorySegment segment, long index) { return (MemorySegment) VH_array_of_unicode_codepoints.get(segment, 0L, index); }
     /// {@return `array_of_unicode_codepoints`}
     /// @param segment the segment of the struct
-    public static @CType("int*") java.lang.foreign.MemorySegment get_array_of_unicode_codepoints(MemorySegment segment) { return STBTTPackRange.get_array_of_unicode_codepoints(segment, 0L); }
+    public static @CType("int*") MemorySegment get_array_of_unicode_codepoints(MemorySegment segment) { return STBTTPackRange.get_array_of_unicode_codepoints(segment, 0L); }
     /// {@return `array_of_unicode_codepoints`}
-    public @CType("int*") java.lang.foreign.MemorySegment array_of_unicode_codepoints() { return STBTTPackRange.get_array_of_unicode_codepoints(this.segment()); }
+    public @CType("int*") MemorySegment array_of_unicode_codepoints() { return STBTTPackRange.get_array_of_unicode_codepoints(this.segment()); }
     /// Sets `array_of_unicode_codepoints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_array_of_unicode_codepoints(MemorySegment segment, long index, @CType("int*") java.lang.foreign.MemorySegment value) { VH_array_of_unicode_codepoints.set(segment, 0L, index, value); }
+    public static void set_array_of_unicode_codepoints(MemorySegment segment, long index, @CType("int*") MemorySegment value) { VH_array_of_unicode_codepoints.set(segment, 0L, index, value); }
     /// Sets `array_of_unicode_codepoints` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_array_of_unicode_codepoints(MemorySegment segment, @CType("int*") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(segment, 0L, value); }
+    public static void set_array_of_unicode_codepoints(MemorySegment segment, @CType("int*") MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(segment, 0L, value); }
     /// Sets `array_of_unicode_codepoints` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackRange array_of_unicode_codepoints(@CType("int*") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(this.segment(), value); return this; }
+    public STBTTPackRange array_of_unicode_codepoints(@CType("int*") MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(this.segment(), value); return this; }
 
     /// {@return `num_chars` at the given index}
     /// @param segment the segment of the struct
@@ -227,25 +227,25 @@ public sealed class STBTTPackRange extends Struct {
     /// {@return `chardata_for_range` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment get_chardata_for_range(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_chardata_for_range.get(segment, 0L, index); }
+    public static @CType("stbtt_packedchar *") MemorySegment get_chardata_for_range(MemorySegment segment, long index) { return (MemorySegment) VH_chardata_for_range.get(segment, 0L, index); }
     /// {@return `chardata_for_range`}
     /// @param segment the segment of the struct
-    public static @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment get_chardata_for_range(MemorySegment segment) { return STBTTPackRange.get_chardata_for_range(segment, 0L); }
+    public static @CType("stbtt_packedchar *") MemorySegment get_chardata_for_range(MemorySegment segment) { return STBTTPackRange.get_chardata_for_range(segment, 0L); }
     /// {@return `chardata_for_range`}
-    public @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment chardata_for_range() { return STBTTPackRange.get_chardata_for_range(this.segment()); }
+    public @CType("stbtt_packedchar *") MemorySegment chardata_for_range() { return STBTTPackRange.get_chardata_for_range(this.segment()); }
     /// Sets `chardata_for_range` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_chardata_for_range(MemorySegment segment, long index, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment value) { VH_chardata_for_range.set(segment, 0L, index, value); }
+    public static void set_chardata_for_range(MemorySegment segment, long index, @CType("stbtt_packedchar *") MemorySegment value) { VH_chardata_for_range.set(segment, 0L, index, value); }
     /// Sets `chardata_for_range` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_chardata_for_range(MemorySegment segment, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_chardata_for_range(segment, 0L, value); }
+    public static void set_chardata_for_range(MemorySegment segment, @CType("stbtt_packedchar *") MemorySegment value) { STBTTPackRange.set_chardata_for_range(segment, 0L, value); }
     /// Sets `chardata_for_range` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackRange chardata_for_range(@CType("stbtt_packedchar *") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_chardata_for_range(this.segment(), value); return this; }
+    public STBTTPackRange chardata_for_range(@CType("stbtt_packedchar *") MemorySegment value) { STBTTPackRange.set_chardata_for_range(this.segment(), value); return this; }
 
     /// {@return `h_oversample` at the given index}
     /// @param segment the segment of the struct
@@ -335,12 +335,12 @@ public sealed class STBTTPackRange extends Struct {
 
         /// {@return `array_of_unicode_codepoints` at the given index}
         /// @param index the index
-        public @CType("int*") java.lang.foreign.MemorySegment array_of_unicode_codepointsAt(long index) { return STBTTPackRange.get_array_of_unicode_codepoints(this.segment(), index); }
+        public @CType("int*") MemorySegment array_of_unicode_codepointsAt(long index) { return STBTTPackRange.get_array_of_unicode_codepoints(this.segment(), index); }
         /// Sets `array_of_unicode_codepoints` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer array_of_unicode_codepointsAt(long index, @CType("int*") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(this.segment(), index, value); return this; }
+        public Buffer array_of_unicode_codepointsAt(long index, @CType("int*") MemorySegment value) { STBTTPackRange.set_array_of_unicode_codepoints(this.segment(), index, value); return this; }
 
         /// {@return `num_chars` at the given index}
         /// @param index the index
@@ -353,12 +353,12 @@ public sealed class STBTTPackRange extends Struct {
 
         /// {@return `chardata_for_range` at the given index}
         /// @param index the index
-        public @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment chardata_for_rangeAt(long index) { return STBTTPackRange.get_chardata_for_range(this.segment(), index); }
+        public @CType("stbtt_packedchar *") MemorySegment chardata_for_rangeAt(long index) { return STBTTPackRange.get_chardata_for_range(this.segment(), index); }
         /// Sets `chardata_for_range` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer chardata_for_rangeAt(long index, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment value) { STBTTPackRange.set_chardata_for_range(this.segment(), index, value); return this; }
+        public Buffer chardata_for_rangeAt(long index, @CType("stbtt_packedchar *") MemorySegment value) { STBTTPackRange.set_chardata_for_range(this.segment(), index, value); return this; }
 
         /// {@return `h_oversample` at the given index}
         /// @param index the index

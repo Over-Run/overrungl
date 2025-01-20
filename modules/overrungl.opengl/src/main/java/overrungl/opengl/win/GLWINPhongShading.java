@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.win;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLWINPhongShading {
     public static final int GL_PHONG_WIN = 0x80EA;
     public static final int GL_PHONG_HINT_WIN = 0x80EB;

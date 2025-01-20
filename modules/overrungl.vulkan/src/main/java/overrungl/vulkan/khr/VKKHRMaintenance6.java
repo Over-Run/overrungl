@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRMaintenance6 {
     public static final int VK_KHR_MAINTENANCE_6_SPEC_VERSION = 1;
@@ -37,30 +36,13 @@ public class VKKHRMaintenance6 {
     public static final int VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO_KHR = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO;
     public static final int VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBindDescriptorSets2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushConstants2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSet2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplate2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetDescriptorBufferOffsets2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindDescriptorSets2KHR,
-            FD_vkCmdPushConstants2KHR,
-            FD_vkCmdPushDescriptorSet2KHR,
-            FD_vkCmdPushDescriptorSetWithTemplate2KHR,
-            FD_vkCmdSetDescriptorBufferOffsets2EXT,
-            FD_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindDescriptorSets2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindDescriptorSets2KHR);
-        public static final MethodHandle MH_vkCmdPushConstants2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushConstants2KHR);
-        public static final MethodHandle MH_vkCmdPushDescriptorSet2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSet2KHR);
-        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSetWithTemplate2KHR);
-        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsets2EXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDescriptorBufferOffsets2EXT);
-        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT);
+        public static final MethodHandle MH_vkCmdBindDescriptorSets2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushConstants2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSet2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsets2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBindDescriptorSets2KHR;
         public final MemorySegment PFN_vkCmdPushConstants2KHR;
         public final MemorySegment PFN_vkCmdPushDescriptorSet2KHR;

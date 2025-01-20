@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTSwapchainMaintenance1 {
     public static final int VK_EXT_SWAPCHAIN_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_EXT_SWAPCHAIN_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_swapchain_maintenance1";
@@ -34,15 +33,8 @@ public class VKEXTSwapchainMaintenance1 {
     public static final int VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_EXT = 1000275005;
     public static final int VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT = 0x00000008;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkReleaseSwapchainImagesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkReleaseSwapchainImagesEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkReleaseSwapchainImagesEXT = RuntimeHelper.downcall(Descriptors.FD_vkReleaseSwapchainImagesEXT);
+        public static final MethodHandle MH_vkReleaseSwapchainImagesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkReleaseSwapchainImagesEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkReleaseSwapchainImagesEXT = func.invoke(device, "vkReleaseSwapchainImagesEXT");

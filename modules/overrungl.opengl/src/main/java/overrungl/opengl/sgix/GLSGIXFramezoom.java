@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,15 +28,8 @@ public final class GLSGIXFramezoom {
     public static final int GL_FRAMEZOOM_FACTOR_SGIX = 0x818C;
     public static final int GL_MAX_FRAMEZOOM_FACTOR_SGIX = 0x818D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFrameZoomSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFrameZoomSGIX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFrameZoomSGIX = RuntimeHelper.downcall(Descriptors.FD_glFrameZoomSGIX);
+        public static final MethodHandle MH_glFrameZoomSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFrameZoomSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFrameZoomSGIX = func.invoke("glFrameZoomSGIX");

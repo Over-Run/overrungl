@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,21 +33,10 @@ public final class GLNVSampleLocations {
     public static final int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV = 0x9342;
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV = 0x9343;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNamedFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glResolveDepthValuesNV = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferSampleLocationsfvNV,
-            FD_glNamedFramebufferSampleLocationsfvNV,
-            FD_glResolveDepthValuesNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSampleLocationsfvNV);
-        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferSampleLocationsfvNV);
-        public static final MethodHandle MH_glResolveDepthValuesNV = RuntimeHelper.downcall(Descriptors.FD_glResolveDepthValuesNV);
+        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glResolveDepthValuesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glResolveDepthValuesNV;
@@ -63,13 +51,13 @@ public final class GLNVSampleLocations {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferSampleLocationsfvNV(@CType("GLenum") int target, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void FramebufferSampleLocationsfvNV(@CType("GLenum") int target, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
         try { Handles.MH_glFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glFramebufferSampleLocationsfvNV, target, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvNV", e); }
     }
 
-    public void NamedFramebufferSampleLocationsfvNV(@CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void NamedFramebufferSampleLocationsfvNV(@CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
         try { Handles.MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvNV", e); }

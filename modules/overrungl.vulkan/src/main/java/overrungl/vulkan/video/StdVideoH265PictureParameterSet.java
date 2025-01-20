@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### pps_pic_parameter_set_id
 /// [VarHandle][#VH_pps_pic_parameter_set_id] - [Getter][#pps_pic_parameter_set_id()] - [Setter][#pps_pic_parameter_set_id(byte)]
 /// ### pps_seq_parameter_set_id
@@ -94,9 +94,9 @@ import overrungl.util.*;
 /// ### reserved3
 /// [VarHandle][#VH_reserved3] - [Getter][#reserved3()] - [Setter][#reserved3(int)]
 /// ### pScalingLists
-/// [VarHandle][#VH_pScalingLists] - [Getter][#pScalingLists()] - [Setter][#pScalingLists(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pScalingLists] - [Getter][#pScalingLists()] - [Setter][#pScalingLists(MemorySegment)]
 /// ### pPredictorPaletteEntries
-/// [VarHandle][#VH_pPredictorPaletteEntries] - [Getter][#pPredictorPaletteEntries()] - [Setter][#pPredictorPaletteEntries(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPredictorPaletteEntries] - [Getter][#pPredictorPaletteEntries()] - [Setter][#pPredictorPaletteEntries(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -179,7 +179,7 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
         ValueLayout.ADDRESS.withName("pScalingLists"),
         ValueLayout.ADDRESS.withName("pPredictorPaletteEntries")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `pps_pic_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_pps_pic_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pps_pic_parameter_set_id"));
@@ -247,9 +247,9 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
     public static final VarHandle VH_row_height_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("row_height_minus1"));
     /// The [VarHandle] of `reserved3` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_reserved3 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved3"));
-    /// The [VarHandle] of `pScalingLists` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pScalingLists` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pScalingLists = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pScalingLists"));
-    /// The [VarHandle] of `pPredictorPaletteEntries` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPredictorPaletteEntries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPredictorPaletteEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPredictorPaletteEntries"));
 
     /// Creates `StdVideoH265PictureParameterSet` with the given segment.
@@ -295,7 +295,7 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
     /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265PictureParameterSet`
-    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte pps_pic_parameter_set_id, @CType("uint8_t") byte pps_seq_parameter_set_id, @CType("uint8_t") byte sps_video_parameter_set_id, @CType("uint8_t") byte num_extra_slice_header_bits, @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1, @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1, @CType("int8_t") byte init_qp_minus26, @CType("uint8_t") byte diff_cu_qp_delta_depth, @CType("int8_t") byte pps_cb_qp_offset, @CType("int8_t") byte pps_cr_qp_offset, @CType("int8_t") byte pps_beta_offset_div2, @CType("int8_t") byte pps_tc_offset_div2, @CType("uint8_t") byte log2_parallel_merge_level_minus2, @CType("uint8_t") byte log2_max_transform_skip_block_size_minus2, @CType("uint8_t") byte diff_cu_chroma_qp_offset_depth, @CType("uint8_t") byte chroma_qp_offset_list_len_minus1, @CType("int8_t [ ]") byte cb_qp_offset_list, @CType("int8_t [ ]") byte cr_qp_offset_list, @CType("uint8_t") byte log2_sao_offset_scale_luma, @CType("uint8_t") byte log2_sao_offset_scale_chroma, @CType("int8_t") byte pps_act_y_qp_offset_plus5, @CType("int8_t") byte pps_act_cb_qp_offset_plus5, @CType("int8_t") byte pps_act_cr_qp_offset_plus3, @CType("uint8_t") byte pps_num_palette_predictor_initializers, @CType("uint8_t") byte luma_bit_depth_entry_minus8, @CType("uint8_t") byte chroma_bit_depth_entry_minus8, @CType("uint8_t") byte num_tile_columns_minus1, @CType("uint8_t") byte num_tile_rows_minus1, @CType("uint8_t") byte reserved1, @CType("uint8_t") byte reserved2, @CType("uint16_t [ ]") short column_width_minus1, @CType("uint16_t [ ]") short row_height_minus1, @CType("uint32_t") int reserved3, @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment pScalingLists, @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment pPredictorPaletteEntries) { return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1).reserved3(reserved3).pScalingLists(pScalingLists).pPredictorPaletteEntries(pPredictorPaletteEntries); }
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, @CType("StdVideoH265PpsFlags") MemorySegment flags, @CType("uint8_t") byte pps_pic_parameter_set_id, @CType("uint8_t") byte pps_seq_parameter_set_id, @CType("uint8_t") byte sps_video_parameter_set_id, @CType("uint8_t") byte num_extra_slice_header_bits, @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1, @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1, @CType("int8_t") byte init_qp_minus26, @CType("uint8_t") byte diff_cu_qp_delta_depth, @CType("int8_t") byte pps_cb_qp_offset, @CType("int8_t") byte pps_cr_qp_offset, @CType("int8_t") byte pps_beta_offset_div2, @CType("int8_t") byte pps_tc_offset_div2, @CType("uint8_t") byte log2_parallel_merge_level_minus2, @CType("uint8_t") byte log2_max_transform_skip_block_size_minus2, @CType("uint8_t") byte diff_cu_chroma_qp_offset_depth, @CType("uint8_t") byte chroma_qp_offset_list_len_minus1, @CType("int8_t [ ]") byte cb_qp_offset_list, @CType("int8_t [ ]") byte cr_qp_offset_list, @CType("uint8_t") byte log2_sao_offset_scale_luma, @CType("uint8_t") byte log2_sao_offset_scale_chroma, @CType("int8_t") byte pps_act_y_qp_offset_plus5, @CType("int8_t") byte pps_act_cb_qp_offset_plus5, @CType("int8_t") byte pps_act_cr_qp_offset_plus3, @CType("uint8_t") byte pps_num_palette_predictor_initializers, @CType("uint8_t") byte luma_bit_depth_entry_minus8, @CType("uint8_t") byte chroma_bit_depth_entry_minus8, @CType("uint8_t") byte num_tile_columns_minus1, @CType("uint8_t") byte num_tile_rows_minus1, @CType("uint8_t") byte reserved1, @CType("uint8_t") byte reserved2, @CType("uint16_t [ ]") short column_width_minus1, @CType("uint16_t [ ]") short row_height_minus1, @CType("uint32_t") int reserved3, @CType("const StdVideoH265ScalingLists *") MemorySegment pScalingLists, @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment pPredictorPaletteEntries) { return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1).reserved3(reserved3).pScalingLists(pScalingLists).pPredictorPaletteEntries(pPredictorPaletteEntries); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -309,25 +309,25 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoH265PpsFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_flags(segment, 0L); }
+    public static @CType("StdVideoH265PpsFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH265PictureParameterSet.get_flags(this.segment()); }
+    public @CType("StdVideoH265PpsFlags") MemorySegment flags() { return StdVideoH265PictureParameterSet.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265PpsFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoH265PpsFlags") MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265PictureParameterSet flags(@CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(this.segment(), value); return this; }
+    public StdVideoH265PictureParameterSet flags(@CType("StdVideoH265PpsFlags") MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(this.segment(), value); return this; }
 
     /// {@return `pps_pic_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
@@ -1091,48 +1091,48 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
     /// {@return `pScalingLists` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment get_pScalingLists(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pScalingLists.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265ScalingLists *") MemorySegment get_pScalingLists(MemorySegment segment, long index) { return (MemorySegment) VH_pScalingLists.get(segment, 0L, index); }
     /// {@return `pScalingLists`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment get_pScalingLists(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_pScalingLists(segment, 0L); }
+    public static @CType("const StdVideoH265ScalingLists *") MemorySegment get_pScalingLists(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_pScalingLists(segment, 0L); }
     /// {@return `pScalingLists`}
-    public @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment pScalingLists() { return StdVideoH265PictureParameterSet.get_pScalingLists(this.segment()); }
+    public @CType("const StdVideoH265ScalingLists *") MemorySegment pScalingLists() { return StdVideoH265PictureParameterSet.get_pScalingLists(this.segment()); }
     /// Sets `pScalingLists` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pScalingLists(MemorySegment segment, long index, @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment value) { VH_pScalingLists.set(segment, 0L, index, value); }
+    public static void set_pScalingLists(MemorySegment segment, long index, @CType("const StdVideoH265ScalingLists *") MemorySegment value) { VH_pScalingLists.set(segment, 0L, index, value); }
     /// Sets `pScalingLists` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pScalingLists(MemorySegment segment, @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(segment, 0L, value); }
+    public static void set_pScalingLists(MemorySegment segment, @CType("const StdVideoH265ScalingLists *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(segment, 0L, value); }
     /// Sets `pScalingLists` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265PictureParameterSet pScalingLists(@CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(this.segment(), value); return this; }
+    public StdVideoH265PictureParameterSet pScalingLists(@CType("const StdVideoH265ScalingLists *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(this.segment(), value); return this; }
 
     /// {@return `pPredictorPaletteEntries` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment get_pPredictorPaletteEntries(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPredictorPaletteEntries.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment get_pPredictorPaletteEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pPredictorPaletteEntries.get(segment, 0L, index); }
     /// {@return `pPredictorPaletteEntries`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment get_pPredictorPaletteEntries(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(segment, 0L); }
+    public static @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment get_pPredictorPaletteEntries(MemorySegment segment) { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(segment, 0L); }
     /// {@return `pPredictorPaletteEntries`}
-    public @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment pPredictorPaletteEntries() { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(this.segment()); }
+    public @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment pPredictorPaletteEntries() { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(this.segment()); }
     /// Sets `pPredictorPaletteEntries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPredictorPaletteEntries(MemorySegment segment, long index, @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment value) { VH_pPredictorPaletteEntries.set(segment, 0L, index, value); }
+    public static void set_pPredictorPaletteEntries(MemorySegment segment, long index, @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment value) { VH_pPredictorPaletteEntries.set(segment, 0L, index, value); }
     /// Sets `pPredictorPaletteEntries` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPredictorPaletteEntries(MemorySegment segment, @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(segment, 0L, value); }
+    public static void set_pPredictorPaletteEntries(MemorySegment segment, @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(segment, 0L, value); }
     /// Sets `pPredictorPaletteEntries` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265PictureParameterSet pPredictorPaletteEntries(@CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(this.segment(), value); return this; }
+    public StdVideoH265PictureParameterSet pPredictorPaletteEntries(@CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoH265PictureParameterSet].
     public static final class Buffer extends StdVideoH265PictureParameterSet {
@@ -1158,12 +1158,12 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265PictureParameterSet.get_flags(this.segment(), index); }
+        public @CType("StdVideoH265PpsFlags") MemorySegment flagsAt(long index) { return StdVideoH265PictureParameterSet.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoH265PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoH265PpsFlags") MemorySegment value) { StdVideoH265PictureParameterSet.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `pps_pic_parameter_set_id` at the given index}
         /// @param index the index
@@ -1464,21 +1464,21 @@ public sealed class StdVideoH265PictureParameterSet extends Struct {
 
         /// {@return `pScalingLists` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment pScalingListsAt(long index) { return StdVideoH265PictureParameterSet.get_pScalingLists(this.segment(), index); }
+        public @CType("const StdVideoH265ScalingLists *") MemorySegment pScalingListsAt(long index) { return StdVideoH265PictureParameterSet.get_pScalingLists(this.segment(), index); }
         /// Sets `pScalingLists` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pScalingListsAt(long index, @CType("const StdVideoH265ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(this.segment(), index, value); return this; }
+        public Buffer pScalingListsAt(long index, @CType("const StdVideoH265ScalingLists *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pScalingLists(this.segment(), index, value); return this; }
 
         /// {@return `pPredictorPaletteEntries` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment pPredictorPaletteEntriesAt(long index) { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(this.segment(), index); }
+        public @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment pPredictorPaletteEntriesAt(long index) { return StdVideoH265PictureParameterSet.get_pPredictorPaletteEntries(this.segment(), index); }
         /// Sets `pPredictorPaletteEntries` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPredictorPaletteEntriesAt(long index, @CType("const StdVideoH265PredictorPaletteEntries *") java.lang.foreign.MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(this.segment(), index, value); return this; }
+        public Buffer pPredictorPaletteEntriesAt(long index, @CType("const StdVideoH265PredictorPaletteEntries *") MemorySegment value) { StdVideoH265PictureParameterSet.set_pPredictorPaletteEntries(this.segment(), index, value); return this; }
 
     }
 }

@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pKeysAndDataInfo
-/// [VarHandle][#VH_pKeysAndDataInfo] - [Getter][#pKeysAndDataInfo()] - [Setter][#pKeysAndDataInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pKeysAndDataInfo] - [Getter][#pKeysAndDataInfo()] - [Setter][#pKeysAndDataInfo(MemorySegment)]
 /// ### pipeline
-/// [VarHandle][#VH_pipeline] - [Getter][#pipeline()] - [Setter][#pipeline(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pipeline] - [Getter][#pipeline()] - [Setter][#pipeline(MemorySegment)]
 /// ### pPipelineCreateInfo
-/// [VarHandle][#VH_pPipelineCreateInfo] - [Getter][#pPipelineCreateInfo()] - [Setter][#pPipelineCreateInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPipelineCreateInfo] - [Getter][#pPipelineCreateInfo()] - [Setter][#pPipelineCreateInfo(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkPipelineBinaryCreateInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pKeysAndDataInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pKeysAndDataInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pKeysAndDataInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pKeysAndDataInfo"));
-    /// The [VarHandle] of `pipeline` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pipeline` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline"));
-    /// The [VarHandle] of `pPipelineCreateInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPipelineCreateInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelineCreateInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreateInfo"));
 
     /// Creates `VkPipelineBinaryCreateInfoKHR` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkPipelineBinaryCreateInfoKHR extends Struct {
     /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment pKeysAndDataInfo, @CType("VkPipeline") java.lang.foreign.MemorySegment pipeline, @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment pPipelineCreateInfo) { return alloc(allocator).sType(sType).pNext(pNext).pKeysAndDataInfo(pKeysAndDataInfo).pipeline(pipeline).pPipelineCreateInfo(pPipelineCreateInfo); }
+    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment pKeysAndDataInfo, @CType("VkPipeline") MemorySegment pipeline, @CType("const VkPipelineCreateInfoKHR *") MemorySegment pPipelineCreateInfo) { return alloc(allocator).sType(sType).pNext(pNext).pKeysAndDataInfo(pKeysAndDataInfo).pipeline(pipeline).pPipelineCreateInfo(pPipelineCreateInfo); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,94 +146,94 @@ public sealed class VkPipelineBinaryCreateInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineBinaryCreateInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineBinaryCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkPipelineBinaryCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pKeysAndDataInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment get_pKeysAndDataInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pKeysAndDataInfo.get(segment, 0L, index); }
+    public static @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment get_pKeysAndDataInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pKeysAndDataInfo.get(segment, 0L, index); }
     /// {@return `pKeysAndDataInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment get_pKeysAndDataInfo(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(segment, 0L); }
+    public static @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment get_pKeysAndDataInfo(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(segment, 0L); }
     /// {@return `pKeysAndDataInfo`}
-    public @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment pKeysAndDataInfo() { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(this.segment()); }
+    public @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment pKeysAndDataInfo() { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(this.segment()); }
     /// Sets `pKeysAndDataInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pKeysAndDataInfo(MemorySegment segment, long index, @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment value) { VH_pKeysAndDataInfo.set(segment, 0L, index, value); }
+    public static void set_pKeysAndDataInfo(MemorySegment segment, long index, @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment value) { VH_pKeysAndDataInfo.set(segment, 0L, index, value); }
     /// Sets `pKeysAndDataInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pKeysAndDataInfo(MemorySegment segment, @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(segment, 0L, value); }
+    public static void set_pKeysAndDataInfo(MemorySegment segment, @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(segment, 0L, value); }
     /// Sets `pKeysAndDataInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryCreateInfoKHR pKeysAndDataInfo(@CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(this.segment(), value); return this; }
+    public VkPipelineBinaryCreateInfoKHR pKeysAndDataInfo(@CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(this.segment(), value); return this; }
 
     /// {@return `pipeline` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_pipeline(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pipeline.get(segment, 0L, index); }
+    public static @CType("VkPipeline") MemorySegment get_pipeline(MemorySegment segment, long index) { return (MemorySegment) VH_pipeline.get(segment, 0L, index); }
     /// {@return `pipeline`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_pipeline(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pipeline(segment, 0L); }
+    public static @CType("VkPipeline") MemorySegment get_pipeline(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pipeline(segment, 0L); }
     /// {@return `pipeline`}
-    public @CType("VkPipeline") java.lang.foreign.MemorySegment pipeline() { return VkPipelineBinaryCreateInfoKHR.get_pipeline(this.segment()); }
+    public @CType("VkPipeline") MemorySegment pipeline() { return VkPipelineBinaryCreateInfoKHR.get_pipeline(this.segment()); }
     /// Sets `pipeline` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pipeline(MemorySegment segment, long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VH_pipeline.set(segment, 0L, index, value); }
+    public static void set_pipeline(MemorySegment segment, long index, @CType("VkPipeline") MemorySegment value) { VH_pipeline.set(segment, 0L, index, value); }
     /// Sets `pipeline` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pipeline(MemorySegment segment, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(segment, 0L, value); }
+    public static void set_pipeline(MemorySegment segment, @CType("VkPipeline") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(segment, 0L, value); }
     /// Sets `pipeline` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryCreateInfoKHR pipeline(@CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(this.segment(), value); return this; }
+    public VkPipelineBinaryCreateInfoKHR pipeline(@CType("VkPipeline") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(this.segment(), value); return this; }
 
     /// {@return `pPipelineCreateInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment get_pPipelineCreateInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelineCreateInfo.get(segment, 0L, index); }
+    public static @CType("const VkPipelineCreateInfoKHR *") MemorySegment get_pPipelineCreateInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreateInfo.get(segment, 0L, index); }
     /// {@return `pPipelineCreateInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment get_pPipelineCreateInfo(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(segment, 0L); }
+    public static @CType("const VkPipelineCreateInfoKHR *") MemorySegment get_pPipelineCreateInfo(MemorySegment segment) { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(segment, 0L); }
     /// {@return `pPipelineCreateInfo`}
-    public @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment pPipelineCreateInfo() { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(this.segment()); }
+    public @CType("const VkPipelineCreateInfoKHR *") MemorySegment pPipelineCreateInfo() { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(this.segment()); }
     /// Sets `pPipelineCreateInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPipelineCreateInfo(MemorySegment segment, long index, @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VH_pPipelineCreateInfo.set(segment, 0L, index, value); }
+    public static void set_pPipelineCreateInfo(MemorySegment segment, long index, @CType("const VkPipelineCreateInfoKHR *") MemorySegment value) { VH_pPipelineCreateInfo.set(segment, 0L, index, value); }
     /// Sets `pPipelineCreateInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPipelineCreateInfo(MemorySegment segment, @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(segment, 0L, value); }
+    public static void set_pPipelineCreateInfo(MemorySegment segment, @CType("const VkPipelineCreateInfoKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(segment, 0L, value); }
     /// Sets `pPipelineCreateInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryCreateInfoKHR pPipelineCreateInfo(@CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(this.segment(), value); return this; }
+    public VkPipelineBinaryCreateInfoKHR pPipelineCreateInfo(@CType("const VkPipelineCreateInfoKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineBinaryCreateInfoKHR].
     public static final class Buffer extends VkPipelineBinaryCreateInfoKHR {
@@ -268,39 +268,39 @@ public sealed class VkPipelineBinaryCreateInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pKeysAndDataInfo` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment pKeysAndDataInfoAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(this.segment(), index); }
+        public @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment pKeysAndDataInfoAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pKeysAndDataInfo(this.segment(), index); }
         /// Sets `pKeysAndDataInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pKeysAndDataInfoAt(long index, @CType("const VkPipelineBinaryKeysAndDataKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(this.segment(), index, value); return this; }
+        public Buffer pKeysAndDataInfoAt(long index, @CType("const VkPipelineBinaryKeysAndDataKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pKeysAndDataInfo(this.segment(), index, value); return this; }
 
         /// {@return `pipeline` at the given index}
         /// @param index the index
-        public @CType("VkPipeline") java.lang.foreign.MemorySegment pipelineAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pipeline(this.segment(), index); }
+        public @CType("VkPipeline") MemorySegment pipelineAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pipeline(this.segment(), index); }
         /// Sets `pipeline` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(this.segment(), index, value); return this; }
+        public Buffer pipelineAt(long index, @CType("VkPipeline") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pipeline(this.segment(), index, value); return this; }
 
         /// {@return `pPipelineCreateInfo` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment pPipelineCreateInfoAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(this.segment(), index); }
+        public @CType("const VkPipelineCreateInfoKHR *") MemorySegment pPipelineCreateInfoAt(long index) { return VkPipelineBinaryCreateInfoKHR.get_pPipelineCreateInfo(this.segment(), index); }
         /// Sets `pPipelineCreateInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelineCreateInfoAt(long index, @CType("const VkPipelineCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(this.segment(), index, value); return this; }
+        public Buffer pPipelineCreateInfoAt(long index, @CType("const VkPipelineCreateInfoKHR *") MemorySegment value) { VkPipelineBinaryCreateInfoKHR.set_pPipelineCreateInfo(this.segment(), index, value); return this; }
 
     }
 }

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.mesa;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLMESAProgramBinaryFormats {
     public static final int GL_PROGRAM_BINARY_FORMAT_MESA = 0x875F;
 

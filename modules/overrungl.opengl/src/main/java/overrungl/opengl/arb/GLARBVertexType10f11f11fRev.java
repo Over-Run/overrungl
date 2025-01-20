@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBVertexType10f11f11fRev {
     public static final int GL_UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B;
 

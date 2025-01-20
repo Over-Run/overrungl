@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### memoryBindIndex
 /// [VarHandle][#VH_memoryBindIndex] - [Getter][#memoryBindIndex()] - [Setter][#memoryBindIndex(int)]
 /// ### memory
-/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(MemorySegment)]
 /// ### memoryOffset
 /// [VarHandle][#VH_memoryOffset] - [Getter][#memoryOffset()] - [Setter][#memoryOffset(long)]
 /// ### memorySize
@@ -61,11 +61,11 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `memoryBindIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_memoryBindIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryBindIndex"));
-    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory"));
     /// The [VarHandle] of `memoryOffset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_memoryOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryOffset"));
@@ -115,7 +115,7 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
     /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int memoryBindIndex, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory, @CType("VkDeviceSize") long memoryOffset, @CType("VkDeviceSize") long memorySize) { return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memory(memory).memoryOffset(memoryOffset).memorySize(memorySize); }
+    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int memoryBindIndex, @CType("VkDeviceMemory") MemorySegment memory, @CType("VkDeviceSize") long memoryOffset, @CType("VkDeviceSize") long memorySize) { return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memory(memory).memoryOffset(memoryOffset).memorySize(memorySize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -152,25 +152,25 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBindVideoSessionMemoryInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBindVideoSessionMemoryInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBindVideoSessionMemoryInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkBindVideoSessionMemoryInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindVideoSessionMemoryInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkBindVideoSessionMemoryInfoKHR pNext(@CType("const void *") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `memoryBindIndex` at the given index}
     /// @param segment the segment of the struct
@@ -198,25 +198,25 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
     /// {@return `memory` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_memory.get(segment, 0L, index); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment, long index) { return (MemorySegment) VH_memory.get(segment, 0L, index); }
     /// {@return `memory`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment) { return VkBindVideoSessionMemoryInfoKHR.get_memory(segment, 0L); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment) { return VkBindVideoSessionMemoryInfoKHR.get_memory(segment, 0L); }
     /// {@return `memory`}
-    public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory() { return VkBindVideoSessionMemoryInfoKHR.get_memory(this.segment()); }
+    public @CType("VkDeviceMemory") MemorySegment memory() { return VkBindVideoSessionMemoryInfoKHR.get_memory(this.segment()); }
     /// Sets `memory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
+    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
     /// Sets `memory` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(segment, 0L, value); }
+    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(segment, 0L, value); }
     /// Sets `memory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindVideoSessionMemoryInfoKHR memory(@CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(this.segment(), value); return this; }
+    public VkBindVideoSessionMemoryInfoKHR memory(@CType("VkDeviceMemory") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(this.segment(), value); return this; }
 
     /// {@return `memoryOffset` at the given index}
     /// @param segment the segment of the struct
@@ -297,12 +297,12 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindVideoSessionMemoryInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBindVideoSessionMemoryInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `memoryBindIndex` at the given index}
         /// @param index the index
@@ -315,12 +315,12 @@ public sealed class VkBindVideoSessionMemoryInfoKHR extends Struct {
 
         /// {@return `memory` at the given index}
         /// @param index the index
-        public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memoryAt(long index) { return VkBindVideoSessionMemoryInfoKHR.get_memory(this.segment(), index); }
+        public @CType("VkDeviceMemory") MemorySegment memoryAt(long index) { return VkBindVideoSessionMemoryInfoKHR.get_memory(this.segment(), index); }
         /// Sets `memory` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer memoryAt(long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(this.segment(), index, value); return this; }
+        public Buffer memoryAt(long index, @CType("VkDeviceMemory") MemorySegment value) { VkBindVideoSessionMemoryInfoKHR.set_memory(this.segment(), index, value); return this; }
 
         /// {@return `memoryOffset` at the given index}
         /// @param index the index

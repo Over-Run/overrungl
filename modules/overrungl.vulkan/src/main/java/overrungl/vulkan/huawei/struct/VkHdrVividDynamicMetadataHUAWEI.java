@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### dynamicMetadataSize
 /// [VarHandle][#VH_dynamicMetadataSize] - [Getter][#dynamicMetadataSize()] - [Setter][#dynamicMetadataSize(long)]
 /// ### pDynamicMetadata
-/// [VarHandle][#VH_pDynamicMetadata] - [Getter][#pDynamicMetadata()] - [Setter][#pDynamicMetadata(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDynamicMetadata] - [Getter][#pDynamicMetadata()] - [Setter][#pDynamicMetadata(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `dynamicMetadataSize` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_dynamicMetadataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicMetadataSize"));
-    /// The [VarHandle] of `pDynamicMetadata` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDynamicMetadata` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDynamicMetadata = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicMetadata"));
 
     /// Creates `VkHdrVividDynamicMetadataHUAWEI` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
     /// Allocates a `VkHdrVividDynamicMetadataHUAWEI` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
-    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("size_t") long dynamicMetadataSize, @CType("const void *") java.lang.foreign.MemorySegment pDynamicMetadata) { return alloc(allocator).sType(sType).pNext(pNext).dynamicMetadataSize(dynamicMetadataSize).pDynamicMetadata(pDynamicMetadata); }
+    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("size_t") long dynamicMetadataSize, @CType("const void *") MemorySegment pDynamicMetadata) { return alloc(allocator).sType(sType).pNext(pNext).dynamicMetadataSize(dynamicMetadataSize).pDynamicMetadata(pDynamicMetadata); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrVividDynamicMetadataHUAWEI pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(this.segment(), value); return this; }
+    public VkHdrVividDynamicMetadataHUAWEI pNext(@CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(this.segment(), value); return this; }
 
     /// {@return `dynamicMetadataSize` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
     /// {@return `pDynamicMetadata` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pDynamicMetadata(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDynamicMetadata.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pDynamicMetadata(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicMetadata.get(segment, 0L, index); }
     /// {@return `pDynamicMetadata`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pDynamicMetadata(MemorySegment segment) { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pDynamicMetadata(MemorySegment segment) { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(segment, 0L); }
     /// {@return `pDynamicMetadata`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pDynamicMetadata() { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(this.segment()); }
+    public @CType("const void *") MemorySegment pDynamicMetadata() { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(this.segment()); }
     /// Sets `pDynamicMetadata` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDynamicMetadata(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pDynamicMetadata.set(segment, 0L, index, value); }
+    public static void set_pDynamicMetadata(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pDynamicMetadata.set(segment, 0L, index, value); }
     /// Sets `pDynamicMetadata` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDynamicMetadata(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(segment, 0L, value); }
+    public static void set_pDynamicMetadata(MemorySegment segment, @CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(segment, 0L, value); }
     /// Sets `pDynamicMetadata` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrVividDynamicMetadataHUAWEI pDynamicMetadata(@CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(this.segment(), value); return this; }
+    public VkHdrVividDynamicMetadataHUAWEI pDynamicMetadata(@CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(this.segment(), value); return this; }
 
     /// A buffer of [VkHdrVividDynamicMetadataHUAWEI].
     public static final class Buffer extends VkHdrVividDynamicMetadataHUAWEI {
@@ -239,12 +239,12 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkHdrVividDynamicMetadataHUAWEI.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `dynamicMetadataSize` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkHdrVividDynamicMetadataHUAWEI extends Struct {
 
         /// {@return `pDynamicMetadata` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pDynamicMetadataAt(long index) { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(this.segment(), index); }
+        public @CType("const void *") MemorySegment pDynamicMetadataAt(long index) { return VkHdrVividDynamicMetadataHUAWEI.get_pDynamicMetadata(this.segment(), index); }
         /// Sets `pDynamicMetadata` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDynamicMetadataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(this.segment(), index, value); return this; }
+        public Buffer pDynamicMetadataAt(long index, @CType("const void *") MemorySegment value) { VkHdrVividDynamicMetadataHUAWEI.set_pDynamicMetadata(this.segment(), index, value); return this; }
 
     }
 }

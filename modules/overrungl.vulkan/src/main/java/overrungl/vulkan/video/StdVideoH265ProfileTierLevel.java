@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### general_profile_idc
 /// [VarHandle][#VH_general_profile_idc] - [Getter][#general_profile_idc()] - [Setter][#general_profile_idc(int)]
 /// ### general_level_idc
@@ -47,7 +47,7 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
         ValueLayout.JAVA_INT.withName("general_profile_idc"),
         ValueLayout.JAVA_INT.withName("general_level_idc")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `general_profile_idc` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_general_profile_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_profile_idc"));
@@ -97,7 +97,7 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
     /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265ProfileTierLevel`
-    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoH265ProfileIdc") int general_profile_idc, @CType("StdVideoH265LevelIdc") int general_level_idc) { return alloc(allocator).flags(flags).general_profile_idc(general_profile_idc).general_level_idc(general_level_idc); }
+    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flags, @CType("StdVideoH265ProfileIdc") int general_profile_idc, @CType("StdVideoH265LevelIdc") int general_level_idc) { return alloc(allocator).flags(flags).general_profile_idc(general_profile_idc).general_level_idc(general_level_idc); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -111,25 +111,25 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH265ProfileTierLevel.get_flags(segment, 0L); }
+    public static @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoH265ProfileTierLevel.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH265ProfileTierLevel.get_flags(this.segment()); }
+    public @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flags() { return StdVideoH265ProfileTierLevel.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265ProfileTierLevel flags(@CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), value); return this; }
+    public StdVideoH265ProfileTierLevel flags(@CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), value); return this; }
 
     /// {@return `general_profile_idc` at the given index}
     /// @param segment the segment of the struct
@@ -201,12 +201,12 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265ProfileTierLevel.get_flags(this.segment(), index); }
+        public @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flagsAt(long index) { return StdVideoH265ProfileTierLevel.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoH265ProfileTierLevelFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `general_profile_idc` at the given index}
         /// @param index the index

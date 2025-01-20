@@ -30,13 +30,13 @@ import static overrungl.vulkan.VK10.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### stages
 /// [VarHandle][#VH_stages] - [Getter][#stages()] - [Setter][#stages(int)]
 /// ### name
-/// [Byte offset][#OFFSET_name] - [Memory layout][#ML_name] - [Getter][#name()] - [Setter][#name(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_name] - [Memory layout][#ML_name] - [Getter][#name()] - [Setter][#name(MemorySegment)]
 /// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(MemorySegment)]
 /// ### subgroupSize
 /// [VarHandle][#VH_subgroupSize] - [Getter][#subgroupSize()] - [Setter][#subgroupSize(int)]
 /// ## Layout
@@ -63,7 +63,7 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `stages` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stages"));
@@ -121,7 +121,7 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineExecutablePropertiesKHR`
-    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderStageFlags") int stages, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment name, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description, @CType("uint32_t") int subgroupSize) { return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name).description(description).subgroupSize(subgroupSize); }
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkShaderStageFlags") int stages, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment name, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description, @CType("uint32_t") int subgroupSize) { return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name).description(description).subgroupSize(subgroupSize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,25 +158,25 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `stages` at the given index}
     /// @param segment the segment of the struct
@@ -204,48 +204,48 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), ML_name); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), ML_name); }
     /// {@return `name`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_name(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_name(segment, 0L); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_name(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_name(segment, 0L); }
     /// {@return `name`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment name() { return VkPipelineExecutablePropertiesKHR.get_name(this.segment()); }
+    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment name() { return VkPipelineExecutablePropertiesKHR.get_name(this.segment()); }
     /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_name(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), ML_name.byteSize()); }
+    public static void set_name(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), ML_name.byteSize()); }
     /// Sets `name` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_name(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(segment, 0L, value); }
+    public static void set_name(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(segment, 0L, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR name(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR name(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), value); return this; }
 
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
     /// {@return `description`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_description(segment, 0L); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_description(segment, 0L); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkPipelineExecutablePropertiesKHR.get_description(this.segment()); }
+    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description() { return VkPipelineExecutablePropertiesKHR.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
+    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
     /// Sets `description` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(segment, 0L, value); }
+    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(segment, 0L, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), value); return this; }
 
     /// {@return `subgroupSize` at the given index}
     /// @param segment the segment of the struct
@@ -303,12 +303,12 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `stages` at the given index}
         /// @param index the index
@@ -321,21 +321,21 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
 
         /// {@return `name` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment nameAt(long index) { return VkPipelineExecutablePropertiesKHR.get_name(this.segment(), index); }
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment nameAt(long index) { return VkPipelineExecutablePropertiesKHR.get_name(this.segment(), index); }
         /// Sets `name` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer nameAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), index, value); return this; }
+        public Buffer nameAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), index, value); return this; }
 
         /// {@return `description` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkPipelineExecutablePropertiesKHR.get_description(this.segment(), index); }
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment descriptionAt(long index) { return VkPipelineExecutablePropertiesKHR.get_description(this.segment(), index); }
         /// Sets `description` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), index, value); return this; }
 
         /// {@return `subgroupSize` at the given index}
         /// @param index the index

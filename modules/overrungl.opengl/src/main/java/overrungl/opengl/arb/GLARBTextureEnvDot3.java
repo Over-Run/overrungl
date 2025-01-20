@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBTextureEnvDot3 {
     public static final int GL_DOT3_RGB_ARB = 0x86AE;
     public static final int GL_DOT3_RGBA_ARB = 0x86AF;

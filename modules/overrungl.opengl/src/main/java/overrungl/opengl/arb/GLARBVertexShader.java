@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,150 +51,53 @@ public final class GLARBVertexShader {
     public static final int GL_FLOAT_MAT3_ARB = 0x8B5B;
     public static final int GL_FLOAT_MAT4_ARB = 0x8B5C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexAttrib1fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glVertexAttrib1sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glVertexAttrib1dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glVertexAttrib2fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glVertexAttrib2sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glVertexAttrib2dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glVertexAttrib3fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glVertexAttrib3sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glVertexAttrib3dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glVertexAttrib4fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glVertexAttrib4sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glVertexAttrib4dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glVertexAttrib4NubARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glVertexAttrib1fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib1svARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib1dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib2fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib2svARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib2dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib3fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib3svARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib3dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4svARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4bvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4ubvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4usvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4uivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NbvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NsvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NubvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NusvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttrib4NuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttribPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEnableVertexAttribArrayARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDisableVertexAttribArrayARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindAttribLocationARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetActiveAttribARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetAttribLocationARB = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVertexAttribdvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVertexAttribfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVertexAttribivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVertexAttribPointervARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttrib1fARB,
-            FD_glVertexAttrib1sARB,
-            FD_glVertexAttrib1dARB,
-            FD_glVertexAttrib2fARB,
-            FD_glVertexAttrib2sARB,
-            FD_glVertexAttrib2dARB,
-            FD_glVertexAttrib3fARB,
-            FD_glVertexAttrib3sARB,
-            FD_glVertexAttrib3dARB,
-            FD_glVertexAttrib4fARB,
-            FD_glVertexAttrib4sARB,
-            FD_glVertexAttrib4dARB,
-            FD_glVertexAttrib4NubARB,
-            FD_glVertexAttrib1fvARB,
-            FD_glVertexAttrib1svARB,
-            FD_glVertexAttrib1dvARB,
-            FD_glVertexAttrib2fvARB,
-            FD_glVertexAttrib2svARB,
-            FD_glVertexAttrib2dvARB,
-            FD_glVertexAttrib3fvARB,
-            FD_glVertexAttrib3svARB,
-            FD_glVertexAttrib3dvARB,
-            FD_glVertexAttrib4fvARB,
-            FD_glVertexAttrib4svARB,
-            FD_glVertexAttrib4dvARB,
-            FD_glVertexAttrib4ivARB,
-            FD_glVertexAttrib4bvARB,
-            FD_glVertexAttrib4ubvARB,
-            FD_glVertexAttrib4usvARB,
-            FD_glVertexAttrib4uivARB,
-            FD_glVertexAttrib4NbvARB,
-            FD_glVertexAttrib4NsvARB,
-            FD_glVertexAttrib4NivARB,
-            FD_glVertexAttrib4NubvARB,
-            FD_glVertexAttrib4NusvARB,
-            FD_glVertexAttrib4NuivARB,
-            FD_glVertexAttribPointerARB,
-            FD_glEnableVertexAttribArrayARB,
-            FD_glDisableVertexAttribArrayARB,
-            FD_glBindAttribLocationARB,
-            FD_glGetActiveAttribARB,
-            FD_glGetAttribLocationARB,
-            FD_glGetVertexAttribdvARB,
-            FD_glGetVertexAttribfvARB,
-            FD_glGetVertexAttribivARB,
-            FD_glGetVertexAttribPointervARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttrib1fARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1fARB);
-        public static final MethodHandle MH_glVertexAttrib1sARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1sARB);
-        public static final MethodHandle MH_glVertexAttrib1dARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1dARB);
-        public static final MethodHandle MH_glVertexAttrib2fARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2fARB);
-        public static final MethodHandle MH_glVertexAttrib2sARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2sARB);
-        public static final MethodHandle MH_glVertexAttrib2dARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2dARB);
-        public static final MethodHandle MH_glVertexAttrib3fARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3fARB);
-        public static final MethodHandle MH_glVertexAttrib3sARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3sARB);
-        public static final MethodHandle MH_glVertexAttrib3dARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3dARB);
-        public static final MethodHandle MH_glVertexAttrib4fARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4fARB);
-        public static final MethodHandle MH_glVertexAttrib4sARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4sARB);
-        public static final MethodHandle MH_glVertexAttrib4dARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4dARB);
-        public static final MethodHandle MH_glVertexAttrib4NubARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NubARB);
-        public static final MethodHandle MH_glVertexAttrib1fvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1fvARB);
-        public static final MethodHandle MH_glVertexAttrib1svARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1svARB);
-        public static final MethodHandle MH_glVertexAttrib1dvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1dvARB);
-        public static final MethodHandle MH_glVertexAttrib2fvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2fvARB);
-        public static final MethodHandle MH_glVertexAttrib2svARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2svARB);
-        public static final MethodHandle MH_glVertexAttrib2dvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib2dvARB);
-        public static final MethodHandle MH_glVertexAttrib3fvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3fvARB);
-        public static final MethodHandle MH_glVertexAttrib3svARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3svARB);
-        public static final MethodHandle MH_glVertexAttrib3dvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib3dvARB);
-        public static final MethodHandle MH_glVertexAttrib4fvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4fvARB);
-        public static final MethodHandle MH_glVertexAttrib4svARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4svARB);
-        public static final MethodHandle MH_glVertexAttrib4dvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4dvARB);
-        public static final MethodHandle MH_glVertexAttrib4ivARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4ivARB);
-        public static final MethodHandle MH_glVertexAttrib4bvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4bvARB);
-        public static final MethodHandle MH_glVertexAttrib4ubvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4ubvARB);
-        public static final MethodHandle MH_glVertexAttrib4usvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4usvARB);
-        public static final MethodHandle MH_glVertexAttrib4uivARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4uivARB);
-        public static final MethodHandle MH_glVertexAttrib4NbvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NbvARB);
-        public static final MethodHandle MH_glVertexAttrib4NsvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NsvARB);
-        public static final MethodHandle MH_glVertexAttrib4NivARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NivARB);
-        public static final MethodHandle MH_glVertexAttrib4NubvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NubvARB);
-        public static final MethodHandle MH_glVertexAttrib4NusvARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NusvARB);
-        public static final MethodHandle MH_glVertexAttrib4NuivARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib4NuivARB);
-        public static final MethodHandle MH_glVertexAttribPointerARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribPointerARB);
-        public static final MethodHandle MH_glEnableVertexAttribArrayARB = RuntimeHelper.downcall(Descriptors.FD_glEnableVertexAttribArrayARB);
-        public static final MethodHandle MH_glDisableVertexAttribArrayARB = RuntimeHelper.downcall(Descriptors.FD_glDisableVertexAttribArrayARB);
-        public static final MethodHandle MH_glBindAttribLocationARB = RuntimeHelper.downcall(Descriptors.FD_glBindAttribLocationARB);
-        public static final MethodHandle MH_glGetActiveAttribARB = RuntimeHelper.downcall(Descriptors.FD_glGetActiveAttribARB);
-        public static final MethodHandle MH_glGetAttribLocationARB = RuntimeHelper.downcall(Descriptors.FD_glGetAttribLocationARB);
-        public static final MethodHandle MH_glGetVertexAttribdvARB = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribdvARB);
-        public static final MethodHandle MH_glGetVertexAttribfvARB = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribfvARB);
-        public static final MethodHandle MH_glGetVertexAttribivARB = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribivARB);
-        public static final MethodHandle MH_glGetVertexAttribPointervARB = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribPointervARB);
+        public static final MethodHandle MH_glVertexAttrib1fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib1sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib1dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib2sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib2dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib3sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib3dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib4sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib4NubARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glVertexAttrib1fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib1svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib1dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4bvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4ubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4usvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4uivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NbvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NsvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NusvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribPointerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEnableVertexAttribArrayARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDisableVertexAttribArrayARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindAttribLocationARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetActiveAttribARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetAttribLocationARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribPointervARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVertexAttrib1fARB;
         public final MemorySegment PFN_glVertexAttrib1sARB;
         public final MemorySegment PFN_glVertexAttrib1dARB;
@@ -374,145 +276,145 @@ public final class GLARBVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NubARB", e); }
     }
 
-    public void VertexAttrib1fvARB(@CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib1fvARB(@CType("GLuint") int index, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib1fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1fvARB");
         try { Handles.MH_glVertexAttrib1fvARB.invokeExact(handles.PFN_glVertexAttrib1fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib1fvARB", e); }
     }
 
-    public void VertexAttrib1svARB(@CType("GLuint") int index, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib1svARB(@CType("GLuint") int index, @CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib1svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1svARB");
         try { Handles.MH_glVertexAttrib1svARB.invokeExact(handles.PFN_glVertexAttrib1svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib1svARB", e); }
     }
 
-    public void VertexAttrib1dvARB(@CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib1dvARB(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib1dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1dvARB");
         try { Handles.MH_glVertexAttrib1dvARB.invokeExact(handles.PFN_glVertexAttrib1dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib1dvARB", e); }
     }
 
-    public void VertexAttrib2fvARB(@CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib2fvARB(@CType("GLuint") int index, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib2fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2fvARB");
         try { Handles.MH_glVertexAttrib2fvARB.invokeExact(handles.PFN_glVertexAttrib2fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib2fvARB", e); }
     }
 
-    public void VertexAttrib2svARB(@CType("GLuint") int index, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib2svARB(@CType("GLuint") int index, @CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib2svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2svARB");
         try { Handles.MH_glVertexAttrib2svARB.invokeExact(handles.PFN_glVertexAttrib2svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib2svARB", e); }
     }
 
-    public void VertexAttrib2dvARB(@CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib2dvARB(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib2dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2dvARB");
         try { Handles.MH_glVertexAttrib2dvARB.invokeExact(handles.PFN_glVertexAttrib2dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib2dvARB", e); }
     }
 
-    public void VertexAttrib3fvARB(@CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib3fvARB(@CType("GLuint") int index, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib3fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3fvARB");
         try { Handles.MH_glVertexAttrib3fvARB.invokeExact(handles.PFN_glVertexAttrib3fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib3fvARB", e); }
     }
 
-    public void VertexAttrib3svARB(@CType("GLuint") int index, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib3svARB(@CType("GLuint") int index, @CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib3svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3svARB");
         try { Handles.MH_glVertexAttrib3svARB.invokeExact(handles.PFN_glVertexAttrib3svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib3svARB", e); }
     }
 
-    public void VertexAttrib3dvARB(@CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib3dvARB(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib3dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3dvARB");
         try { Handles.MH_glVertexAttrib3dvARB.invokeExact(handles.PFN_glVertexAttrib3dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib3dvARB", e); }
     }
 
-    public void VertexAttrib4fvARB(@CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4fvARB(@CType("GLuint") int index, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4fvARB");
         try { Handles.MH_glVertexAttrib4fvARB.invokeExact(handles.PFN_glVertexAttrib4fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4fvARB", e); }
     }
 
-    public void VertexAttrib4svARB(@CType("GLuint") int index, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4svARB(@CType("GLuint") int index, @CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4svARB");
         try { Handles.MH_glVertexAttrib4svARB.invokeExact(handles.PFN_glVertexAttrib4svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4svARB", e); }
     }
 
-    public void VertexAttrib4dvARB(@CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4dvARB(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4dvARB");
         try { Handles.MH_glVertexAttrib4dvARB.invokeExact(handles.PFN_glVertexAttrib4dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4dvARB", e); }
     }
 
-    public void VertexAttrib4ivARB(@CType("GLuint") int index, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4ivARB(@CType("GLuint") int index, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4ivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4ivARB");
         try { Handles.MH_glVertexAttrib4ivARB.invokeExact(handles.PFN_glVertexAttrib4ivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4ivARB", e); }
     }
 
-    public void VertexAttrib4bvARB(@CType("GLuint") int index, @CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4bvARB(@CType("GLuint") int index, @CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4bvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4bvARB");
         try { Handles.MH_glVertexAttrib4bvARB.invokeExact(handles.PFN_glVertexAttrib4bvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4bvARB", e); }
     }
 
-    public void VertexAttrib4ubvARB(@CType("GLuint") int index, @CType("const GLubyte *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4ubvARB(@CType("GLuint") int index, @CType("const GLubyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4ubvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4ubvARB");
         try { Handles.MH_glVertexAttrib4ubvARB.invokeExact(handles.PFN_glVertexAttrib4ubvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4ubvARB", e); }
     }
 
-    public void VertexAttrib4usvARB(@CType("GLuint") int index, @CType("const GLushort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4usvARB(@CType("GLuint") int index, @CType("const GLushort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4usvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4usvARB");
         try { Handles.MH_glVertexAttrib4usvARB.invokeExact(handles.PFN_glVertexAttrib4usvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4usvARB", e); }
     }
 
-    public void VertexAttrib4uivARB(@CType("GLuint") int index, @CType("const GLuint *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4uivARB(@CType("GLuint") int index, @CType("const GLuint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4uivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4uivARB");
         try { Handles.MH_glVertexAttrib4uivARB.invokeExact(handles.PFN_glVertexAttrib4uivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4uivARB", e); }
     }
 
-    public void VertexAttrib4NbvARB(@CType("GLuint") int index, @CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NbvARB(@CType("GLuint") int index, @CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NbvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NbvARB");
         try { Handles.MH_glVertexAttrib4NbvARB.invokeExact(handles.PFN_glVertexAttrib4NbvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NbvARB", e); }
     }
 
-    public void VertexAttrib4NsvARB(@CType("GLuint") int index, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NsvARB(@CType("GLuint") int index, @CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NsvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NsvARB");
         try { Handles.MH_glVertexAttrib4NsvARB.invokeExact(handles.PFN_glVertexAttrib4NsvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NsvARB", e); }
     }
 
-    public void VertexAttrib4NivARB(@CType("GLuint") int index, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NivARB(@CType("GLuint") int index, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NivARB");
         try { Handles.MH_glVertexAttrib4NivARB.invokeExact(handles.PFN_glVertexAttrib4NivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NivARB", e); }
     }
 
-    public void VertexAttrib4NubvARB(@CType("GLuint") int index, @CType("const GLubyte *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NubvARB(@CType("GLuint") int index, @CType("const GLubyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NubvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NubvARB");
         try { Handles.MH_glVertexAttrib4NubvARB.invokeExact(handles.PFN_glVertexAttrib4NubvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NubvARB", e); }
     }
 
-    public void VertexAttrib4NusvARB(@CType("GLuint") int index, @CType("const GLushort *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NusvARB(@CType("GLuint") int index, @CType("const GLushort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NusvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NusvARB");
         try { Handles.MH_glVertexAttrib4NusvARB.invokeExact(handles.PFN_glVertexAttrib4NusvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NusvARB", e); }
     }
 
-    public void VertexAttrib4NuivARB(@CType("GLuint") int index, @CType("const GLuint *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttrib4NuivARB(@CType("GLuint") int index, @CType("const GLuint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttrib4NuivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NuivARB");
         try { Handles.MH_glVertexAttrib4NuivARB.invokeExact(handles.PFN_glVertexAttrib4NuivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttrib4NuivARB", e); }
     }
 
-    public void VertexAttribPointerARB(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void VertexAttribPointerARB(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribPointerARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribPointerARB");
         try { Handles.MH_glVertexAttribPointerARB.invokeExact(handles.PFN_glVertexAttribPointerARB, index, size, type, normalized, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribPointerARB", e); }
@@ -530,43 +432,43 @@ public final class GLARBVertexShader {
         catch (Throwable e) { throw new RuntimeException("error in glDisableVertexAttribArrayARB", e); }
     }
 
-    public void BindAttribLocationARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("const GLcharARB *") java.lang.foreign.MemorySegment name) {
+    public void BindAttribLocationARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("const GLcharARB *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glBindAttribLocationARB)) throw new SymbolNotFoundError("Symbol not found: glBindAttribLocationARB");
         try { Handles.MH_glBindAttribLocationARB.invokeExact(handles.PFN_glBindAttribLocationARB, programObj, index, name); }
         catch (Throwable e) { throw new RuntimeException("error in glBindAttribLocationARB", e); }
     }
 
-    public void GetActiveAttribARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment size, @CType("GLenum *") java.lang.foreign.MemorySegment type, @CType("GLcharARB *") java.lang.foreign.MemorySegment name) {
+    public void GetActiveAttribARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("GLsizei") int maxLength, @CType("GLsizei *") MemorySegment length, @CType("GLint *") MemorySegment size, @CType("GLenum *") MemorySegment type, @CType("GLcharARB *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetActiveAttribARB)) throw new SymbolNotFoundError("Symbol not found: glGetActiveAttribARB");
         try { Handles.MH_glGetActiveAttribARB.invokeExact(handles.PFN_glGetActiveAttribARB, programObj, index, maxLength, length, size, type, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetActiveAttribARB", e); }
     }
 
-    public @CType("GLint") int GetAttribLocationARB(@CType("GLhandleARB") int programObj, @CType("const GLcharARB *") java.lang.foreign.MemorySegment name) {
+    public @CType("GLint") int GetAttribLocationARB(@CType("GLhandleARB") int programObj, @CType("const GLcharARB *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetAttribLocationARB)) throw new SymbolNotFoundError("Symbol not found: glGetAttribLocationARB");
         try { return (int) Handles.MH_glGetAttribLocationARB.invokeExact(handles.PFN_glGetAttribLocationARB, programObj, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetAttribLocationARB", e); }
     }
 
-    public void GetVertexAttribdvARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribdvARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribdvARB");
         try { Handles.MH_glGetVertexAttribdvARB.invokeExact(handles.PFN_glGetVertexAttribdvARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribdvARB", e); }
     }
 
-    public void GetVertexAttribfvARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribfvARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribfvARB");
         try { Handles.MH_glGetVertexAttribfvARB.invokeExact(handles.PFN_glGetVertexAttribfvARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribfvARB", e); }
     }
 
-    public void GetVertexAttribivARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribivARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribivARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribivARB");
         try { Handles.MH_glGetVertexAttribivARB.invokeExact(handles.PFN_glGetVertexAttribivARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribivARB", e); }
     }
 
-    public void GetVertexAttribPointervARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment pointer) {
+    public void GetVertexAttribPointervARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("void **") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribPointervARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribPointervARB");
         try { Handles.MH_glGetVertexAttribPointervARB.invokeExact(handles.PFN_glGetVertexAttribPointervARB, index, pname, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribPointervARB", e); }

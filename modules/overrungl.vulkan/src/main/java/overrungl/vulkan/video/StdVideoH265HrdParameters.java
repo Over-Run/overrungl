@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### tick_divisor_minus2
 /// [VarHandle][#VH_tick_divisor_minus2] - [Getter][#tick_divisor_minus2()] - [Setter][#tick_divisor_minus2(byte)]
 /// ### du_cpb_removal_delay_increment_length_minus1
@@ -52,9 +52,9 @@ import overrungl.util.*;
 /// ### reserved
 /// [VarHandle][#VH_reserved] - [Getter][#reserved()] - [Setter][#reserved(short)]
 /// ### pSubLayerHrdParametersNal
-/// [VarHandle][#VH_pSubLayerHrdParametersNal] - [Getter][#pSubLayerHrdParametersNal()] - [Setter][#pSubLayerHrdParametersNal(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSubLayerHrdParametersNal] - [Getter][#pSubLayerHrdParametersNal()] - [Setter][#pSubLayerHrdParametersNal(MemorySegment)]
 /// ### pSubLayerHrdParametersVcl
-/// [VarHandle][#VH_pSubLayerHrdParametersVcl] - [Getter][#pSubLayerHrdParametersVcl()] - [Setter][#pSubLayerHrdParametersVcl(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSubLayerHrdParametersVcl] - [Getter][#pSubLayerHrdParametersVcl()] - [Setter][#pSubLayerHrdParametersVcl(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -95,7 +95,7 @@ public sealed class StdVideoH265HrdParameters extends Struct {
         ValueLayout.ADDRESS.withName("pSubLayerHrdParametersNal"),
         ValueLayout.ADDRESS.withName("pSubLayerHrdParametersVcl")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `tick_divisor_minus2` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_tick_divisor_minus2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tick_divisor_minus2"));
@@ -121,9 +121,9 @@ public sealed class StdVideoH265HrdParameters extends Struct {
     public static final VarHandle VH_elemental_duration_in_tc_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("elemental_duration_in_tc_minus1"));
     /// The [VarHandle] of `reserved` of type `(MemorySegment base, long baseOffset, long index)short`.
     public static final VarHandle VH_reserved = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved"));
-    /// The [VarHandle] of `pSubLayerHrdParametersNal` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSubLayerHrdParametersNal` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSubLayerHrdParametersNal = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubLayerHrdParametersNal"));
-    /// The [VarHandle] of `pSubLayerHrdParametersVcl` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSubLayerHrdParametersVcl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSubLayerHrdParametersVcl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubLayerHrdParametersVcl"));
 
     /// Creates `StdVideoH265HrdParameters` with the given segment.
@@ -169,7 +169,7 @@ public sealed class StdVideoH265HrdParameters extends Struct {
     /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265HrdParameters`
-    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte tick_divisor_minus2, @CType("uint8_t") byte du_cpb_removal_delay_increment_length_minus1, @CType("uint8_t") byte dpb_output_delay_du_length_minus1, @CType("uint8_t") byte bit_rate_scale, @CType("uint8_t") byte cpb_size_scale, @CType("uint8_t") byte cpb_size_du_scale, @CType("uint8_t") byte initial_cpb_removal_delay_length_minus1, @CType("uint8_t") byte au_cpb_removal_delay_length_minus1, @CType("uint8_t") byte dpb_output_delay_length_minus1, @CType("uint8_t [ ]") byte cpb_cnt_minus1, @CType("uint16_t [ ]") short elemental_duration_in_tc_minus1, @CType("uint16_t [3]") short reserved, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersNal, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersVcl) { return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1).reserved(reserved).pSubLayerHrdParametersNal(pSubLayerHrdParametersNal).pSubLayerHrdParametersVcl(pSubLayerHrdParametersVcl); }
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, @CType("StdVideoH265HrdFlags") MemorySegment flags, @CType("uint8_t") byte tick_divisor_minus2, @CType("uint8_t") byte du_cpb_removal_delay_increment_length_minus1, @CType("uint8_t") byte dpb_output_delay_du_length_minus1, @CType("uint8_t") byte bit_rate_scale, @CType("uint8_t") byte cpb_size_scale, @CType("uint8_t") byte cpb_size_du_scale, @CType("uint8_t") byte initial_cpb_removal_delay_length_minus1, @CType("uint8_t") byte au_cpb_removal_delay_length_minus1, @CType("uint8_t") byte dpb_output_delay_length_minus1, @CType("uint8_t [ ]") byte cpb_cnt_minus1, @CType("uint16_t [ ]") short elemental_duration_in_tc_minus1, @CType("uint16_t [3]") short reserved, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersNal, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersVcl) { return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1).reserved(reserved).pSubLayerHrdParametersNal(pSubLayerHrdParametersNal).pSubLayerHrdParametersVcl(pSubLayerHrdParametersVcl); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -183,25 +183,25 @@ public sealed class StdVideoH265HrdParameters extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoH265HrdFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH265HrdParameters.get_flags(segment, 0L); }
+    public static @CType("StdVideoH265HrdFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoH265HrdParameters.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH265HrdParameters.get_flags(this.segment()); }
+    public @CType("StdVideoH265HrdFlags") MemorySegment flags() { return StdVideoH265HrdParameters.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265HrdFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoH265HrdFlags") MemorySegment value) { StdVideoH265HrdParameters.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265HrdParameters flags(@CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_flags(this.segment(), value); return this; }
+    public StdVideoH265HrdParameters flags(@CType("StdVideoH265HrdFlags") MemorySegment value) { StdVideoH265HrdParameters.set_flags(this.segment(), value); return this; }
 
     /// {@return `tick_divisor_minus2` at the given index}
     /// @param segment the segment of the struct
@@ -482,48 +482,48 @@ public sealed class StdVideoH265HrdParameters extends Struct {
     /// {@return `pSubLayerHrdParametersNal` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment get_pSubLayerHrdParametersNal(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSubLayerHrdParametersNal.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment get_pSubLayerHrdParametersNal(MemorySegment segment, long index) { return (MemorySegment) VH_pSubLayerHrdParametersNal.get(segment, 0L, index); }
     /// {@return `pSubLayerHrdParametersNal`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment get_pSubLayerHrdParametersNal(MemorySegment segment) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(segment, 0L); }
+    public static @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment get_pSubLayerHrdParametersNal(MemorySegment segment) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(segment, 0L); }
     /// {@return `pSubLayerHrdParametersNal`}
-    public @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersNal() { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(this.segment()); }
+    public @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersNal() { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(this.segment()); }
     /// Sets `pSubLayerHrdParametersNal` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSubLayerHrdParametersNal(MemorySegment segment, long index, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { VH_pSubLayerHrdParametersNal.set(segment, 0L, index, value); }
+    public static void set_pSubLayerHrdParametersNal(MemorySegment segment, long index, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { VH_pSubLayerHrdParametersNal.set(segment, 0L, index, value); }
     /// Sets `pSubLayerHrdParametersNal` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSubLayerHrdParametersNal(MemorySegment segment, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(segment, 0L, value); }
+    public static void set_pSubLayerHrdParametersNal(MemorySegment segment, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(segment, 0L, value); }
     /// Sets `pSubLayerHrdParametersNal` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265HrdParameters pSubLayerHrdParametersNal(@CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(this.segment(), value); return this; }
+    public StdVideoH265HrdParameters pSubLayerHrdParametersNal(@CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(this.segment(), value); return this; }
 
     /// {@return `pSubLayerHrdParametersVcl` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment get_pSubLayerHrdParametersVcl(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSubLayerHrdParametersVcl.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment get_pSubLayerHrdParametersVcl(MemorySegment segment, long index) { return (MemorySegment) VH_pSubLayerHrdParametersVcl.get(segment, 0L, index); }
     /// {@return `pSubLayerHrdParametersVcl`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment get_pSubLayerHrdParametersVcl(MemorySegment segment) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(segment, 0L); }
+    public static @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment get_pSubLayerHrdParametersVcl(MemorySegment segment) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(segment, 0L); }
     /// {@return `pSubLayerHrdParametersVcl`}
-    public @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersVcl() { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(this.segment()); }
+    public @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersVcl() { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(this.segment()); }
     /// Sets `pSubLayerHrdParametersVcl` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSubLayerHrdParametersVcl(MemorySegment segment, long index, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { VH_pSubLayerHrdParametersVcl.set(segment, 0L, index, value); }
+    public static void set_pSubLayerHrdParametersVcl(MemorySegment segment, long index, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { VH_pSubLayerHrdParametersVcl.set(segment, 0L, index, value); }
     /// Sets `pSubLayerHrdParametersVcl` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSubLayerHrdParametersVcl(MemorySegment segment, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(segment, 0L, value); }
+    public static void set_pSubLayerHrdParametersVcl(MemorySegment segment, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(segment, 0L, value); }
     /// Sets `pSubLayerHrdParametersVcl` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265HrdParameters pSubLayerHrdParametersVcl(@CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(this.segment(), value); return this; }
+    public StdVideoH265HrdParameters pSubLayerHrdParametersVcl(@CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoH265HrdParameters].
     public static final class Buffer extends StdVideoH265HrdParameters {
@@ -549,12 +549,12 @@ public sealed class StdVideoH265HrdParameters extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265HrdParameters.get_flags(this.segment(), index); }
+        public @CType("StdVideoH265HrdFlags") MemorySegment flagsAt(long index) { return StdVideoH265HrdParameters.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoH265HrdFlags") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoH265HrdFlags") MemorySegment value) { StdVideoH265HrdParameters.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `tick_divisor_minus2` at the given index}
         /// @param index the index
@@ -666,21 +666,21 @@ public sealed class StdVideoH265HrdParameters extends Struct {
 
         /// {@return `pSubLayerHrdParametersNal` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersNalAt(long index) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(this.segment(), index); }
+        public @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersNalAt(long index) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersNal(this.segment(), index); }
         /// Sets `pSubLayerHrdParametersNal` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSubLayerHrdParametersNalAt(long index, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(this.segment(), index, value); return this; }
+        public Buffer pSubLayerHrdParametersNalAt(long index, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersNal(this.segment(), index, value); return this; }
 
         /// {@return `pSubLayerHrdParametersVcl` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment pSubLayerHrdParametersVclAt(long index) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(this.segment(), index); }
+        public @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment pSubLayerHrdParametersVclAt(long index) { return StdVideoH265HrdParameters.get_pSubLayerHrdParametersVcl(this.segment(), index); }
         /// Sets `pSubLayerHrdParametersVcl` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSubLayerHrdParametersVclAt(long index, @CType("const StdVideoH265SubLayerHrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(this.segment(), index, value); return this; }
+        public Buffer pSubLayerHrdParametersVclAt(long index, @CType("const StdVideoH265SubLayerHrdParameters *") MemorySegment value) { StdVideoH265HrdParameters.set_pSubLayerHrdParametersVcl(this.segment(), index, value); return this; }
 
     }
 }

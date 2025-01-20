@@ -19,7 +19,6 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,30 +26,13 @@ import overrungl.util.*;
 public final class GLNVXGpuMulticast2 {
     public static final int GL_UPLOAD_GPU_MASK_NVX = 0x954A;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glUploadGpuMaskNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMulticastViewportArrayvNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastViewportPositionWScaleNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glMulticastScissorArrayvNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glAsyncCopyBufferSubDataNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glAsyncCopyImageSubDataNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUploadGpuMaskNVX,
-            FD_glMulticastViewportArrayvNVX,
-            FD_glMulticastViewportPositionWScaleNVX,
-            FD_glMulticastScissorArrayvNVX,
-            FD_glAsyncCopyBufferSubDataNVX,
-            FD_glAsyncCopyImageSubDataNVX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glUploadGpuMaskNVX = RuntimeHelper.downcall(Descriptors.FD_glUploadGpuMaskNVX);
-        public static final MethodHandle MH_glMulticastViewportArrayvNVX = RuntimeHelper.downcall(Descriptors.FD_glMulticastViewportArrayvNVX);
-        public static final MethodHandle MH_glMulticastViewportPositionWScaleNVX = RuntimeHelper.downcall(Descriptors.FD_glMulticastViewportPositionWScaleNVX);
-        public static final MethodHandle MH_glMulticastScissorArrayvNVX = RuntimeHelper.downcall(Descriptors.FD_glMulticastScissorArrayvNVX);
-        public static final MethodHandle MH_glAsyncCopyBufferSubDataNVX = RuntimeHelper.downcall(Descriptors.FD_glAsyncCopyBufferSubDataNVX);
-        public static final MethodHandle MH_glAsyncCopyImageSubDataNVX = RuntimeHelper.downcall(Descriptors.FD_glAsyncCopyImageSubDataNVX);
+        public static final MethodHandle MH_glUploadGpuMaskNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastViewportArrayvNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastViewportPositionWScaleNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glMulticastScissorArrayvNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glAsyncCopyBufferSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glAsyncCopyImageSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glUploadGpuMaskNVX;
         public final MemorySegment PFN_glMulticastViewportArrayvNVX;
         public final MemorySegment PFN_glMulticastViewportPositionWScaleNVX;
@@ -77,7 +59,7 @@ public final class GLNVXGpuMulticast2 {
         catch (Throwable e) { throw new RuntimeException("error in glUploadGpuMaskNVX", e); }
     }
 
-    public void MulticastViewportArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void MulticastViewportArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastViewportArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportArrayvNVX");
         try { Handles.MH_glMulticastViewportArrayvNVX.invokeExact(handles.PFN_glMulticastViewportArrayvNVX, gpu, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastViewportArrayvNVX", e); }
@@ -89,19 +71,19 @@ public final class GLNVXGpuMulticast2 {
         catch (Throwable e) { throw new RuntimeException("error in glMulticastViewportPositionWScaleNVX", e); }
     }
 
-    public void MulticastScissorArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void MulticastScissorArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastScissorArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastScissorArrayvNVX");
         try { Handles.MH_glMulticastScissorArrayvNVX.invokeExact(handles.PFN_glMulticastScissorArrayvNVX, gpu, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastScissorArrayvNVX", e); }
     }
 
-    public @CType("GLuint") int AsyncCopyBufferSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") java.lang.foreign.MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment fenceValueArray, @CType("GLuint") int readGpu, @CType("GLbitfield") int writeGpuMask, @CType("GLuint") int readBuffer, @CType("GLuint") int writeBuffer, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") java.lang.foreign.MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment signalValueArray) {
+    public @CType("GLuint") int AsyncCopyBufferSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") MemorySegment fenceValueArray, @CType("GLuint") int readGpu, @CType("GLbitfield") int writeGpuMask, @CType("GLuint") int readBuffer, @CType("GLuint") int writeBuffer, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") MemorySegment signalValueArray) {
         if (Unmarshal.isNullPointer(handles.PFN_glAsyncCopyBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyBufferSubDataNVX");
         try { return (int) Handles.MH_glAsyncCopyBufferSubDataNVX.invokeExact(handles.PFN_glAsyncCopyBufferSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, fenceValueArray, readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in glAsyncCopyBufferSubDataNVX", e); }
     }
 
-    public @CType("GLuint") int AsyncCopyImageSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") java.lang.foreign.MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment waitValueArray, @CType("GLuint") int srcGpu, @CType("GLbitfield") int dstGpuMask, @CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srcY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int srcWidth, @CType("GLsizei") int srcHeight, @CType("GLsizei") int srcDepth, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") java.lang.foreign.MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment signalValueArray) {
+    public @CType("GLuint") int AsyncCopyImageSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") MemorySegment waitValueArray, @CType("GLuint") int srcGpu, @CType("GLbitfield") int dstGpuMask, @CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srcY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int srcWidth, @CType("GLsizei") int srcHeight, @CType("GLsizei") int srcDepth, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") MemorySegment signalValueArray) {
         if (Unmarshal.isNullPointer(handles.PFN_glAsyncCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyImageSubDataNVX");
         try { return (int) Handles.MH_glAsyncCopyImageSubDataNVX.invokeExact(handles.PFN_glAsyncCopyImageSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, waitValueArray, srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in glAsyncCopyImageSubDataNVX", e); }

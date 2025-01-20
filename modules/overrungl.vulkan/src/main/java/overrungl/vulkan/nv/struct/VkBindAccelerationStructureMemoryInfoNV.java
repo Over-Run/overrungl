@@ -28,17 +28,17 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### accelerationStructure
-/// [VarHandle][#VH_accelerationStructure] - [Getter][#accelerationStructure()] - [Setter][#accelerationStructure(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_accelerationStructure] - [Getter][#accelerationStructure()] - [Setter][#accelerationStructure(MemorySegment)]
 /// ### memory
-/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(MemorySegment)]
 /// ### memoryOffset
 /// [VarHandle][#VH_memoryOffset] - [Getter][#memoryOffset()] - [Setter][#memoryOffset(long)]
 /// ### deviceIndexCount
 /// [VarHandle][#VH_deviceIndexCount] - [Getter][#deviceIndexCount()] - [Setter][#deviceIndexCount(int)]
 /// ### pDeviceIndices
-/// [VarHandle][#VH_pDeviceIndices] - [Getter][#pDeviceIndices()] - [Setter][#pDeviceIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDeviceIndices] - [Getter][#pDeviceIndices()] - [Setter][#pDeviceIndices(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,17 +65,17 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
-    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory"));
     /// The [VarHandle] of `memoryOffset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_memoryOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryOffset"));
     /// The [VarHandle] of `deviceIndexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_deviceIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceIndexCount"));
-    /// The [VarHandle] of `pDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceIndices"));
 
     /// Creates `VkBindAccelerationStructureMemoryInfoNV` with the given segment.
@@ -121,7 +121,7 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
     /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
-    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructure, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory, @CType("VkDeviceSize") long memoryOffset, @CType("uint32_t") int deviceIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pDeviceIndices) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory).memoryOffset(memoryOffset).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices); }
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkAccelerationStructureNV") MemorySegment accelerationStructure, @CType("VkDeviceMemory") MemorySegment memory, @CType("VkDeviceSize") long memoryOffset, @CType("uint32_t") int deviceIndexCount, @CType("const uint32_t *") MemorySegment pDeviceIndices) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory).memoryOffset(memoryOffset).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,71 +158,71 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindAccelerationStructureMemoryInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkBindAccelerationStructureMemoryInfoNV pNext(@CType("const void *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `accelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment get_accelerationStructure(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_accelerationStructure.get(segment, 0L, index); }
+    public static @CType("VkAccelerationStructureNV") MemorySegment get_accelerationStructure(MemorySegment segment, long index) { return (MemorySegment) VH_accelerationStructure.get(segment, 0L, index); }
     /// {@return `accelerationStructure`}
     /// @param segment the segment of the struct
-    public static @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment get_accelerationStructure(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(segment, 0L); }
+    public static @CType("VkAccelerationStructureNV") MemorySegment get_accelerationStructure(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(segment, 0L); }
     /// {@return `accelerationStructure`}
-    public @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructure() { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(this.segment()); }
+    public @CType("VkAccelerationStructureNV") MemorySegment accelerationStructure() { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(this.segment()); }
     /// Sets `accelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_accelerationStructure(MemorySegment segment, long index, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VH_accelerationStructure.set(segment, 0L, index, value); }
+    public static void set_accelerationStructure(MemorySegment segment, long index, @CType("VkAccelerationStructureNV") MemorySegment value) { VH_accelerationStructure.set(segment, 0L, index, value); }
     /// Sets `accelerationStructure` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_accelerationStructure(MemorySegment segment, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(segment, 0L, value); }
+    public static void set_accelerationStructure(MemorySegment segment, @CType("VkAccelerationStructureNV") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(segment, 0L, value); }
     /// Sets `accelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindAccelerationStructureMemoryInfoNV accelerationStructure(@CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(this.segment(), value); return this; }
+    public VkBindAccelerationStructureMemoryInfoNV accelerationStructure(@CType("VkAccelerationStructureNV") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(this.segment(), value); return this; }
 
     /// {@return `memory` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_memory.get(segment, 0L, index); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment, long index) { return (MemorySegment) VH_memory.get(segment, 0L, index); }
     /// {@return `memory`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_memory(segment, 0L); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_memory(segment, 0L); }
     /// {@return `memory`}
-    public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory() { return VkBindAccelerationStructureMemoryInfoNV.get_memory(this.segment()); }
+    public @CType("VkDeviceMemory") MemorySegment memory() { return VkBindAccelerationStructureMemoryInfoNV.get_memory(this.segment()); }
     /// Sets `memory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
+    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
     /// Sets `memory` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(segment, 0L, value); }
+    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(segment, 0L, value); }
     /// Sets `memory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindAccelerationStructureMemoryInfoNV memory(@CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(this.segment(), value); return this; }
+    public VkBindAccelerationStructureMemoryInfoNV memory(@CType("VkDeviceMemory") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(this.segment(), value); return this; }
 
     /// {@return `memoryOffset` at the given index}
     /// @param segment the segment of the struct
@@ -273,25 +273,25 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
     /// {@return `pDeviceIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pDeviceIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDeviceIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceIndices.get(segment, 0L, index); }
     /// {@return `pDeviceIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pDeviceIndices(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pDeviceIndices(MemorySegment segment) { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(segment, 0L); }
     /// {@return `pDeviceIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pDeviceIndices() { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pDeviceIndices() { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(this.segment()); }
     /// Sets `pDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pDeviceIndices.set(segment, 0L, index, value); }
+    public static void set_pDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pDeviceIndices.set(segment, 0L, index, value); }
     /// Sets `pDeviceIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDeviceIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(segment, 0L, value); }
+    public static void set_pDeviceIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(segment, 0L, value); }
     /// Sets `pDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindAccelerationStructureMemoryInfoNV pDeviceIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(this.segment(), value); return this; }
+    public VkBindAccelerationStructureMemoryInfoNV pDeviceIndices(@CType("const uint32_t *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(this.segment(), value); return this; }
 
     /// A buffer of [VkBindAccelerationStructureMemoryInfoNV].
     public static final class Buffer extends VkBindAccelerationStructureMemoryInfoNV {
@@ -326,30 +326,30 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `accelerationStructure` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructureAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(this.segment(), index); }
+        public @CType("VkAccelerationStructureNV") MemorySegment accelerationStructureAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_accelerationStructure(this.segment(), index); }
         /// Sets `accelerationStructure` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer accelerationStructureAt(long index, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(this.segment(), index, value); return this; }
+        public Buffer accelerationStructureAt(long index, @CType("VkAccelerationStructureNV") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_accelerationStructure(this.segment(), index, value); return this; }
 
         /// {@return `memory` at the given index}
         /// @param index the index
-        public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memoryAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_memory(this.segment(), index); }
+        public @CType("VkDeviceMemory") MemorySegment memoryAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_memory(this.segment(), index); }
         /// Sets `memory` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer memoryAt(long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(this.segment(), index, value); return this; }
+        public Buffer memoryAt(long index, @CType("VkDeviceMemory") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_memory(this.segment(), index, value); return this; }
 
         /// {@return `memoryOffset` at the given index}
         /// @param index the index
@@ -371,12 +371,12 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends Struct {
 
         /// {@return `pDeviceIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pDeviceIndicesAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pDeviceIndicesAt(long index) { return VkBindAccelerationStructureMemoryInfoNV.get_pDeviceIndices(this.segment(), index); }
         /// Sets `pDeviceIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDeviceIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(this.segment(), index, value); return this; }
+        public Buffer pDeviceIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkBindAccelerationStructureMemoryInfoNV.set_pDeviceIndices(this.segment(), index, value); return this; }
 
     }
 }

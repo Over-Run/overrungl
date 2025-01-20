@@ -19,22 +19,14 @@ package overrungl.opengl.threedfx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GL3DFXTbuffer {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTbufferMask3DFX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTbufferMask3DFX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTbufferMask3DFX = RuntimeHelper.downcall(Descriptors.FD_glTbufferMask3DFX);
+        public static final MethodHandle MH_glTbufferMask3DFX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTbufferMask3DFX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTbufferMask3DFX = func.invoke("glTbufferMask3DFX");

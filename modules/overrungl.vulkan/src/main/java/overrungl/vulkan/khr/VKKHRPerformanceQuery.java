@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRPerformanceQuery {
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = 0x00000002;
@@ -63,24 +62,11 @@ public class VKKHRPerformanceQuery {
     public static final int VK_QUERY_SCOPE_RENDER_PASS_KHR = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR;
     public static final int VK_QUERY_SCOPE_COMMAND_KHR = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkAcquireProfilingLockKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkReleaseProfilingLockKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR,
-            FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR,
-            FD_vkAcquireProfilingLockKHR,
-            FD_vkReleaseProfilingLockKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = RuntimeHelper.downcall(Descriptors.FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
-        public static final MethodHandle MH_vkAcquireProfilingLockKHR = RuntimeHelper.downcall(Descriptors.FD_vkAcquireProfilingLockKHR);
-        public static final MethodHandle MH_vkReleaseProfilingLockKHR = RuntimeHelper.downcall(Descriptors.FD_vkReleaseProfilingLockKHR);
+        public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireProfilingLockKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleaseProfilingLockKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
         public final MemorySegment PFN_vkAcquireProfilingLockKHR;

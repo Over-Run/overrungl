@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDebugMarker {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = 0;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = 1;
@@ -64,27 +63,12 @@ public class VKEXTDebugMarker {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkDebugMarkerSetObjectTagEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDebugMarkerSetObjectNameEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdDebugMarkerBeginEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdDebugMarkerEndEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdDebugMarkerInsertEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkDebugMarkerSetObjectTagEXT,
-            FD_vkDebugMarkerSetObjectNameEXT,
-            FD_vkCmdDebugMarkerBeginEXT,
-            FD_vkCmdDebugMarkerEndEXT,
-            FD_vkCmdDebugMarkerInsertEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkDebugMarkerSetObjectTagEXT = RuntimeHelper.downcall(Descriptors.FD_vkDebugMarkerSetObjectTagEXT);
-        public static final MethodHandle MH_vkDebugMarkerSetObjectNameEXT = RuntimeHelper.downcall(Descriptors.FD_vkDebugMarkerSetObjectNameEXT);
-        public static final MethodHandle MH_vkCmdDebugMarkerBeginEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDebugMarkerBeginEXT);
-        public static final MethodHandle MH_vkCmdDebugMarkerEndEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDebugMarkerEndEXT);
-        public static final MethodHandle MH_vkCmdDebugMarkerInsertEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDebugMarkerInsertEXT);
+        public static final MethodHandle MH_vkDebugMarkerSetObjectTagEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDebugMarkerSetObjectNameEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDebugMarkerBeginEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDebugMarkerEndEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDebugMarkerInsertEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkDebugMarkerSetObjectTagEXT;
         public final MemorySegment PFN_vkDebugMarkerSetObjectNameEXT;
         public final MemorySegment PFN_vkCmdDebugMarkerBeginEXT;

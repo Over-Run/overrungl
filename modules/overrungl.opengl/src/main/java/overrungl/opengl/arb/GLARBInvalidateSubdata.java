@@ -19,37 +19,19 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBInvalidateSubdata {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glInvalidateTexSubImage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glInvalidateTexImage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glInvalidateBufferSubData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glInvalidateBufferData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glInvalidateFramebuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glInvalidateSubFramebuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glInvalidateTexSubImage,
-            FD_glInvalidateTexImage,
-            FD_glInvalidateBufferSubData,
-            FD_glInvalidateBufferData,
-            FD_glInvalidateFramebuffer,
-            FD_glInvalidateSubFramebuffer
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glInvalidateTexSubImage = RuntimeHelper.downcall(Descriptors.FD_glInvalidateTexSubImage);
-        public static final MethodHandle MH_glInvalidateTexImage = RuntimeHelper.downcall(Descriptors.FD_glInvalidateTexImage);
-        public static final MethodHandle MH_glInvalidateBufferSubData = RuntimeHelper.downcall(Descriptors.FD_glInvalidateBufferSubData);
-        public static final MethodHandle MH_glInvalidateBufferData = RuntimeHelper.downcall(Descriptors.FD_glInvalidateBufferData);
-        public static final MethodHandle MH_glInvalidateFramebuffer = RuntimeHelper.downcall(Descriptors.FD_glInvalidateFramebuffer);
-        public static final MethodHandle MH_glInvalidateSubFramebuffer = RuntimeHelper.downcall(Descriptors.FD_glInvalidateSubFramebuffer);
+        public static final MethodHandle MH_glInvalidateTexSubImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glInvalidateTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glInvalidateBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glInvalidateBufferData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glInvalidateFramebuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glInvalidateSubFramebuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glInvalidateTexSubImage;
         public final MemorySegment PFN_glInvalidateTexImage;
         public final MemorySegment PFN_glInvalidateBufferSubData;
@@ -94,13 +76,13 @@ public final class GLARBInvalidateSubdata {
         catch (Throwable e) { throw new RuntimeException("error in glInvalidateBufferData", e); }
     }
 
-    public void InvalidateFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") java.lang.foreign.MemorySegment attachments) {
+    public void InvalidateFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") MemorySegment attachments) {
         if (Unmarshal.isNullPointer(handles.PFN_glInvalidateFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateFramebuffer");
         try { Handles.MH_glInvalidateFramebuffer.invokeExact(handles.PFN_glInvalidateFramebuffer, target, numAttachments, attachments); }
         catch (Throwable e) { throw new RuntimeException("error in glInvalidateFramebuffer", e); }
     }
 
-    public void InvalidateSubFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") java.lang.foreign.MemorySegment attachments, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
+    public void InvalidateSubFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") MemorySegment attachments, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
         if (Unmarshal.isNullPointer(handles.PFN_glInvalidateSubFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer");
         try { Handles.MH_glInvalidateSubFramebuffer.invokeExact(handles.PFN_glInvalidateSubFramebuffer, target, numAttachments, attachments, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in glInvalidateSubFramebuffer", e); }

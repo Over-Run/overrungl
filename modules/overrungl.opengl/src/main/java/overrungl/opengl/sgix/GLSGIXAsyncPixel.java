@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXAsyncPixel {
     public static final int GL_ASYNC_TEX_IMAGE_SGIX = 0x835C;
     public static final int GL_ASYNC_DRAW_PIXELS_SGIX = 0x835D;

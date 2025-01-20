@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pVersionData
-/// [VarHandle][#VH_pVersionData] - [Getter][#pVersionData()] - [Setter][#pVersionData(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVersionData] - [Getter][#pVersionData()] - [Setter][#pVersionData(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkAccelerationStructureVersionInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pVersionData` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVersionData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVersionData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVersionData"));
 
     /// Creates `VkAccelerationStructureVersionInfoKHR` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkAccelerationStructureVersionInfoKHR extends Struct {
     /// Allocates a `VkAccelerationStructureVersionInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureVersionInfoKHR`
-    public static VkAccelerationStructureVersionInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const uint8_t *") java.lang.foreign.MemorySegment pVersionData) { return alloc(allocator).sType(sType).pNext(pNext).pVersionData(pVersionData); }
+    public static VkAccelerationStructureVersionInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const uint8_t *") MemorySegment pVersionData) { return alloc(allocator).sType(sType).pNext(pNext).pVersionData(pVersionData); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkAccelerationStructureVersionInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureVersionInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureVersionInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureVersionInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkAccelerationStructureVersionInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureVersionInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureVersionInfoKHR pNext(@CType("const void *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pVersionData` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint8_t *") java.lang.foreign.MemorySegment get_pVersionData(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVersionData.get(segment, 0L, index); }
+    public static @CType("const uint8_t *") MemorySegment get_pVersionData(MemorySegment segment, long index) { return (MemorySegment) VH_pVersionData.get(segment, 0L, index); }
     /// {@return `pVersionData`}
     /// @param segment the segment of the struct
-    public static @CType("const uint8_t *") java.lang.foreign.MemorySegment get_pVersionData(MemorySegment segment) { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(segment, 0L); }
+    public static @CType("const uint8_t *") MemorySegment get_pVersionData(MemorySegment segment) { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(segment, 0L); }
     /// {@return `pVersionData`}
-    public @CType("const uint8_t *") java.lang.foreign.MemorySegment pVersionData() { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(this.segment()); }
+    public @CType("const uint8_t *") MemorySegment pVersionData() { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(this.segment()); }
     /// Sets `pVersionData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVersionData(MemorySegment segment, long index, @CType("const uint8_t *") java.lang.foreign.MemorySegment value) { VH_pVersionData.set(segment, 0L, index, value); }
+    public static void set_pVersionData(MemorySegment segment, long index, @CType("const uint8_t *") MemorySegment value) { VH_pVersionData.set(segment, 0L, index, value); }
     /// Sets `pVersionData` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVersionData(MemorySegment segment, @CType("const uint8_t *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(segment, 0L, value); }
+    public static void set_pVersionData(MemorySegment segment, @CType("const uint8_t *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(segment, 0L, value); }
     /// Sets `pVersionData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureVersionInfoKHR pVersionData(@CType("const uint8_t *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(this.segment(), value); return this; }
+    public VkAccelerationStructureVersionInfoKHR pVersionData(@CType("const uint8_t *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(this.segment(), value); return this; }
 
     /// A buffer of [VkAccelerationStructureVersionInfoKHR].
     public static final class Buffer extends VkAccelerationStructureVersionInfoKHR {
@@ -210,21 +210,21 @@ public sealed class VkAccelerationStructureVersionInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureVersionInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkAccelerationStructureVersionInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pVersionData` at the given index}
         /// @param index the index
-        public @CType("const uint8_t *") java.lang.foreign.MemorySegment pVersionDataAt(long index) { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(this.segment(), index); }
+        public @CType("const uint8_t *") MemorySegment pVersionDataAt(long index) { return VkAccelerationStructureVersionInfoKHR.get_pVersionData(this.segment(), index); }
         /// Sets `pVersionData` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVersionDataAt(long index, @CType("const uint8_t *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(this.segment(), index, value); return this; }
+        public Buffer pVersionDataAt(long index, @CType("const uint8_t *") MemorySegment value) { VkAccelerationStructureVersionInfoKHR.set_pVersionData(this.segment(), index, value); return this; }
 
     }
 }

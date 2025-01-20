@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.ext.VKEXTDebugReport.*;
 public class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001;
@@ -73,21 +72,10 @@ public class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
     public static final int VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateDebugReportCallbackEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyDebugReportCallbackEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDebugReportMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDebugReportCallbackEXT,
-            FD_vkDestroyDebugReportCallbackEXT,
-            FD_vkDebugReportMessageEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateDebugReportCallbackEXT);
-        public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDebugReportCallbackEXT);
-        public static final MethodHandle MH_vkDebugReportMessageEXT = RuntimeHelper.downcall(Descriptors.FD_vkDebugReportMessageEXT);
+        public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDebugReportMessageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateDebugReportCallbackEXT;
         public final MemorySegment PFN_vkDestroyDebugReportCallbackEXT;
         public final MemorySegment PFN_vkDebugReportMessageEXT;

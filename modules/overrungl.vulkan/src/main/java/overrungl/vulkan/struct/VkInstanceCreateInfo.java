@@ -28,19 +28,19 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### pApplicationInfo
-/// [VarHandle][#VH_pApplicationInfo] - [Getter][#pApplicationInfo()] - [Setter][#pApplicationInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pApplicationInfo] - [Getter][#pApplicationInfo()] - [Setter][#pApplicationInfo(MemorySegment)]
 /// ### enabledLayerCount
 /// [VarHandle][#VH_enabledLayerCount] - [Getter][#enabledLayerCount()] - [Setter][#enabledLayerCount(int)]
 /// ### ppEnabledLayerNames
-/// [VarHandle][#VH_ppEnabledLayerNames] - [Getter][#ppEnabledLayerNames()] - [Setter][#ppEnabledLayerNames(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_ppEnabledLayerNames] - [Getter][#ppEnabledLayerNames()] - [Setter][#ppEnabledLayerNames(MemorySegment)]
 /// ### enabledExtensionCount
 /// [VarHandle][#VH_enabledExtensionCount] - [Getter][#enabledExtensionCount()] - [Setter][#enabledExtensionCount(int)]
 /// ### ppEnabledExtensionNames
-/// [VarHandle][#VH_ppEnabledExtensionNames] - [Getter][#ppEnabledExtensionNames()] - [Setter][#ppEnabledExtensionNames(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_ppEnabledExtensionNames] - [Getter][#ppEnabledExtensionNames()] - [Setter][#ppEnabledExtensionNames(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,19 +69,19 @@ public sealed class VkInstanceCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `pApplicationInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pApplicationInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pApplicationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pApplicationInfo"));
     /// The [VarHandle] of `enabledLayerCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_enabledLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledLayerCount"));
-    /// The [VarHandle] of `ppEnabledLayerNames` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `ppEnabledLayerNames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_ppEnabledLayerNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledLayerNames"));
     /// The [VarHandle] of `enabledExtensionCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_enabledExtensionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enabledExtensionCount"));
-    /// The [VarHandle] of `ppEnabledExtensionNames` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `ppEnabledExtensionNames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_ppEnabledExtensionNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledExtensionNames"));
 
     /// Creates `VkInstanceCreateInfo` with the given segment.
@@ -127,7 +127,7 @@ public sealed class VkInstanceCreateInfo extends Struct {
     /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkInstanceCreateInfo`
-    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkInstanceCreateFlags") int flags, @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment pApplicationInfo, @CType("uint32_t") int enabledLayerCount, @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledLayerNames, @CType("uint32_t") int enabledExtensionCount, @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledExtensionNames) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount).ppEnabledExtensionNames(ppEnabledExtensionNames); }
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkInstanceCreateFlags") int flags, @CType("const VkApplicationInfo *") MemorySegment pApplicationInfo, @CType("uint32_t") int enabledLayerCount, @CType("const char * const*") MemorySegment ppEnabledLayerNames, @CType("uint32_t") int enabledExtensionCount, @CType("const char * const*") MemorySegment ppEnabledExtensionNames) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount).ppEnabledExtensionNames(ppEnabledExtensionNames); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkInstanceCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkInstanceCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkInstanceCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkInstanceCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkInstanceCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkInstanceCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkInstanceCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkInstanceCreateInfo pNext(@CType("const void *") MemorySegment value) { VkInstanceCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -210,25 +210,25 @@ public sealed class VkInstanceCreateInfo extends Struct {
     /// {@return `pApplicationInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment get_pApplicationInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pApplicationInfo.get(segment, 0L, index); }
+    public static @CType("const VkApplicationInfo *") MemorySegment get_pApplicationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pApplicationInfo.get(segment, 0L, index); }
     /// {@return `pApplicationInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment get_pApplicationInfo(MemorySegment segment) { return VkInstanceCreateInfo.get_pApplicationInfo(segment, 0L); }
+    public static @CType("const VkApplicationInfo *") MemorySegment get_pApplicationInfo(MemorySegment segment) { return VkInstanceCreateInfo.get_pApplicationInfo(segment, 0L); }
     /// {@return `pApplicationInfo`}
-    public @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment pApplicationInfo() { return VkInstanceCreateInfo.get_pApplicationInfo(this.segment()); }
+    public @CType("const VkApplicationInfo *") MemorySegment pApplicationInfo() { return VkInstanceCreateInfo.get_pApplicationInfo(this.segment()); }
     /// Sets `pApplicationInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pApplicationInfo(MemorySegment segment, long index, @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment value) { VH_pApplicationInfo.set(segment, 0L, index, value); }
+    public static void set_pApplicationInfo(MemorySegment segment, long index, @CType("const VkApplicationInfo *") MemorySegment value) { VH_pApplicationInfo.set(segment, 0L, index, value); }
     /// Sets `pApplicationInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pApplicationInfo(MemorySegment segment, @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(segment, 0L, value); }
+    public static void set_pApplicationInfo(MemorySegment segment, @CType("const VkApplicationInfo *") MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(segment, 0L, value); }
     /// Sets `pApplicationInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkInstanceCreateInfo pApplicationInfo(@CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(this.segment(), value); return this; }
+    public VkInstanceCreateInfo pApplicationInfo(@CType("const VkApplicationInfo *") MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(this.segment(), value); return this; }
 
     /// {@return `enabledLayerCount` at the given index}
     /// @param segment the segment of the struct
@@ -256,25 +256,25 @@ public sealed class VkInstanceCreateInfo extends Struct {
     /// {@return `ppEnabledLayerNames` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char * const*") java.lang.foreign.MemorySegment get_ppEnabledLayerNames(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_ppEnabledLayerNames.get(segment, 0L, index); }
+    public static @CType("const char * const*") MemorySegment get_ppEnabledLayerNames(MemorySegment segment, long index) { return (MemorySegment) VH_ppEnabledLayerNames.get(segment, 0L, index); }
     /// {@return `ppEnabledLayerNames`}
     /// @param segment the segment of the struct
-    public static @CType("const char * const*") java.lang.foreign.MemorySegment get_ppEnabledLayerNames(MemorySegment segment) { return VkInstanceCreateInfo.get_ppEnabledLayerNames(segment, 0L); }
+    public static @CType("const char * const*") MemorySegment get_ppEnabledLayerNames(MemorySegment segment) { return VkInstanceCreateInfo.get_ppEnabledLayerNames(segment, 0L); }
     /// {@return `ppEnabledLayerNames`}
-    public @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledLayerNames() { return VkInstanceCreateInfo.get_ppEnabledLayerNames(this.segment()); }
+    public @CType("const char * const*") MemorySegment ppEnabledLayerNames() { return VkInstanceCreateInfo.get_ppEnabledLayerNames(this.segment()); }
     /// Sets `ppEnabledLayerNames` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_ppEnabledLayerNames(MemorySegment segment, long index, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VH_ppEnabledLayerNames.set(segment, 0L, index, value); }
+    public static void set_ppEnabledLayerNames(MemorySegment segment, long index, @CType("const char * const*") MemorySegment value) { VH_ppEnabledLayerNames.set(segment, 0L, index, value); }
     /// Sets `ppEnabledLayerNames` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_ppEnabledLayerNames(MemorySegment segment, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(segment, 0L, value); }
+    public static void set_ppEnabledLayerNames(MemorySegment segment, @CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(segment, 0L, value); }
     /// Sets `ppEnabledLayerNames` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkInstanceCreateInfo ppEnabledLayerNames(@CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(this.segment(), value); return this; }
+    public VkInstanceCreateInfo ppEnabledLayerNames(@CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(this.segment(), value); return this; }
 
     /// {@return `enabledExtensionCount` at the given index}
     /// @param segment the segment of the struct
@@ -302,25 +302,25 @@ public sealed class VkInstanceCreateInfo extends Struct {
     /// {@return `ppEnabledExtensionNames` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char * const*") java.lang.foreign.MemorySegment get_ppEnabledExtensionNames(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_ppEnabledExtensionNames.get(segment, 0L, index); }
+    public static @CType("const char * const*") MemorySegment get_ppEnabledExtensionNames(MemorySegment segment, long index) { return (MemorySegment) VH_ppEnabledExtensionNames.get(segment, 0L, index); }
     /// {@return `ppEnabledExtensionNames`}
     /// @param segment the segment of the struct
-    public static @CType("const char * const*") java.lang.foreign.MemorySegment get_ppEnabledExtensionNames(MemorySegment segment) { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(segment, 0L); }
+    public static @CType("const char * const*") MemorySegment get_ppEnabledExtensionNames(MemorySegment segment) { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(segment, 0L); }
     /// {@return `ppEnabledExtensionNames`}
-    public @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledExtensionNames() { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(this.segment()); }
+    public @CType("const char * const*") MemorySegment ppEnabledExtensionNames() { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(this.segment()); }
     /// Sets `ppEnabledExtensionNames` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_ppEnabledExtensionNames(MemorySegment segment, long index, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VH_ppEnabledExtensionNames.set(segment, 0L, index, value); }
+    public static void set_ppEnabledExtensionNames(MemorySegment segment, long index, @CType("const char * const*") MemorySegment value) { VH_ppEnabledExtensionNames.set(segment, 0L, index, value); }
     /// Sets `ppEnabledExtensionNames` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_ppEnabledExtensionNames(MemorySegment segment, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(segment, 0L, value); }
+    public static void set_ppEnabledExtensionNames(MemorySegment segment, @CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(segment, 0L, value); }
     /// Sets `ppEnabledExtensionNames` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkInstanceCreateInfo ppEnabledExtensionNames(@CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(this.segment(), value); return this; }
+    public VkInstanceCreateInfo ppEnabledExtensionNames(@CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(this.segment(), value); return this; }
 
     /// A buffer of [VkInstanceCreateInfo].
     public static final class Buffer extends VkInstanceCreateInfo {
@@ -355,12 +355,12 @@ public sealed class VkInstanceCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkInstanceCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkInstanceCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkInstanceCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -373,12 +373,12 @@ public sealed class VkInstanceCreateInfo extends Struct {
 
         /// {@return `pApplicationInfo` at the given index}
         /// @param index the index
-        public @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment pApplicationInfoAt(long index) { return VkInstanceCreateInfo.get_pApplicationInfo(this.segment(), index); }
+        public @CType("const VkApplicationInfo *") MemorySegment pApplicationInfoAt(long index) { return VkInstanceCreateInfo.get_pApplicationInfo(this.segment(), index); }
         /// Sets `pApplicationInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pApplicationInfoAt(long index, @CType("const VkApplicationInfo *") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(this.segment(), index, value); return this; }
+        public Buffer pApplicationInfoAt(long index, @CType("const VkApplicationInfo *") MemorySegment value) { VkInstanceCreateInfo.set_pApplicationInfo(this.segment(), index, value); return this; }
 
         /// {@return `enabledLayerCount` at the given index}
         /// @param index the index
@@ -391,12 +391,12 @@ public sealed class VkInstanceCreateInfo extends Struct {
 
         /// {@return `ppEnabledLayerNames` at the given index}
         /// @param index the index
-        public @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledLayerNamesAt(long index) { return VkInstanceCreateInfo.get_ppEnabledLayerNames(this.segment(), index); }
+        public @CType("const char * const*") MemorySegment ppEnabledLayerNamesAt(long index) { return VkInstanceCreateInfo.get_ppEnabledLayerNames(this.segment(), index); }
         /// Sets `ppEnabledLayerNames` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer ppEnabledLayerNamesAt(long index, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(this.segment(), index, value); return this; }
+        public Buffer ppEnabledLayerNamesAt(long index, @CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledLayerNames(this.segment(), index, value); return this; }
 
         /// {@return `enabledExtensionCount` at the given index}
         /// @param index the index
@@ -409,12 +409,12 @@ public sealed class VkInstanceCreateInfo extends Struct {
 
         /// {@return `ppEnabledExtensionNames` at the given index}
         /// @param index the index
-        public @CType("const char * const*") java.lang.foreign.MemorySegment ppEnabledExtensionNamesAt(long index) { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(this.segment(), index); }
+        public @CType("const char * const*") MemorySegment ppEnabledExtensionNamesAt(long index) { return VkInstanceCreateInfo.get_ppEnabledExtensionNames(this.segment(), index); }
         /// Sets `ppEnabledExtensionNames` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer ppEnabledExtensionNamesAt(long index, @CType("const char * const*") java.lang.foreign.MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(this.segment(), index, value); return this; }
+        public Buffer ppEnabledExtensionNamesAt(long index, @CType("const char * const*") MemorySegment value) { VkInstanceCreateInfo.set_ppEnabledExtensionNames(this.segment(), index, value); return this; }
 
     }
 }

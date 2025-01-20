@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,15 +28,8 @@ public final class GLEXTFramebufferMultisample {
     public static final int GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_EXT = 0x8D56;
     public static final int GL_MAX_SAMPLES_EXT = 0x8D57;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRenderbufferStorageMultisampleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glRenderbufferStorageMultisampleEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleEXT = RuntimeHelper.downcall(Descriptors.FD_glRenderbufferStorageMultisampleEXT);
+        public static final MethodHandle MH_glRenderbufferStorageMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleEXT = func.invoke("glRenderbufferStorageMultisampleEXT", "glRenderbufferStorageMultisample");

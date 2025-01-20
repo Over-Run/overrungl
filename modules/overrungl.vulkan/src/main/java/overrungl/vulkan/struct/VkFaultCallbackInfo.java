@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### faultCount
 /// [VarHandle][#VH_faultCount] - [Getter][#faultCount()] - [Setter][#faultCount(int)]
 /// ### pFaults
-/// [VarHandle][#VH_pFaults] - [Getter][#pFaults()] - [Setter][#pFaults(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pFaults] - [Getter][#pFaults()] - [Setter][#pFaults(MemorySegment)]
 /// ### pfnFaultCallback
-/// [VarHandle][#VH_pfnFaultCallback] - [Getter][#pfnFaultCallback()] - [Setter][#pfnFaultCallback(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pfnFaultCallback] - [Getter][#pfnFaultCallback()] - [Setter][#pfnFaultCallback(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkFaultCallbackInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `faultCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_faultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("faultCount"));
-    /// The [VarHandle] of `pFaults` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pFaults` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pFaults = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFaults"));
-    /// The [VarHandle] of `pfnFaultCallback` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pfnFaultCallback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pfnFaultCallback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnFaultCallback"));
 
     /// Creates `VkFaultCallbackInfo` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkFaultCallbackInfo extends Struct {
     /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int faultCount, @CType("VkFaultData *") java.lang.foreign.MemorySegment pFaults, @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment pfnFaultCallback) { return alloc(allocator).sType(sType).pNext(pNext).faultCount(faultCount).pFaults(pFaults).pfnFaultCallback(pfnFaultCallback); }
+    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int faultCount, @CType("VkFaultData *") MemorySegment pFaults, @CType("PFN_vkFaultCallbackFunction") MemorySegment pfnFaultCallback) { return alloc(allocator).sType(sType).pNext(pNext).faultCount(faultCount).pFaults(pFaults).pfnFaultCallback(pfnFaultCallback); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkFaultCallbackInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkFaultCallbackInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkFaultCallbackInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkFaultCallbackInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkFaultCallbackInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkFaultCallbackInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFaultCallbackInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pNext(this.segment(), value); return this; }
+    public VkFaultCallbackInfo pNext(@CType("const void *") MemorySegment value) { VkFaultCallbackInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `faultCount` at the given index}
     /// @param segment the segment of the struct
@@ -192,48 +192,48 @@ public sealed class VkFaultCallbackInfo extends Struct {
     /// {@return `pFaults` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkFaultData *") java.lang.foreign.MemorySegment get_pFaults(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pFaults.get(segment, 0L, index); }
+    public static @CType("VkFaultData *") MemorySegment get_pFaults(MemorySegment segment, long index) { return (MemorySegment) VH_pFaults.get(segment, 0L, index); }
     /// {@return `pFaults`}
     /// @param segment the segment of the struct
-    public static @CType("VkFaultData *") java.lang.foreign.MemorySegment get_pFaults(MemorySegment segment) { return VkFaultCallbackInfo.get_pFaults(segment, 0L); }
+    public static @CType("VkFaultData *") MemorySegment get_pFaults(MemorySegment segment) { return VkFaultCallbackInfo.get_pFaults(segment, 0L); }
     /// {@return `pFaults`}
-    public @CType("VkFaultData *") java.lang.foreign.MemorySegment pFaults() { return VkFaultCallbackInfo.get_pFaults(this.segment()); }
+    public @CType("VkFaultData *") MemorySegment pFaults() { return VkFaultCallbackInfo.get_pFaults(this.segment()); }
     /// Sets `pFaults` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pFaults(MemorySegment segment, long index, @CType("VkFaultData *") java.lang.foreign.MemorySegment value) { VH_pFaults.set(segment, 0L, index, value); }
+    public static void set_pFaults(MemorySegment segment, long index, @CType("VkFaultData *") MemorySegment value) { VH_pFaults.set(segment, 0L, index, value); }
     /// Sets `pFaults` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pFaults(MemorySegment segment, @CType("VkFaultData *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pFaults(segment, 0L, value); }
+    public static void set_pFaults(MemorySegment segment, @CType("VkFaultData *") MemorySegment value) { VkFaultCallbackInfo.set_pFaults(segment, 0L, value); }
     /// Sets `pFaults` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFaultCallbackInfo pFaults(@CType("VkFaultData *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pFaults(this.segment(), value); return this; }
+    public VkFaultCallbackInfo pFaults(@CType("VkFaultData *") MemorySegment value) { VkFaultCallbackInfo.set_pFaults(this.segment(), value); return this; }
 
     /// {@return `pfnFaultCallback` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment get_pfnFaultCallback(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pfnFaultCallback.get(segment, 0L, index); }
+    public static @CType("PFN_vkFaultCallbackFunction") MemorySegment get_pfnFaultCallback(MemorySegment segment, long index) { return (MemorySegment) VH_pfnFaultCallback.get(segment, 0L, index); }
     /// {@return `pfnFaultCallback`}
     /// @param segment the segment of the struct
-    public static @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment get_pfnFaultCallback(MemorySegment segment) { return VkFaultCallbackInfo.get_pfnFaultCallback(segment, 0L); }
+    public static @CType("PFN_vkFaultCallbackFunction") MemorySegment get_pfnFaultCallback(MemorySegment segment) { return VkFaultCallbackInfo.get_pfnFaultCallback(segment, 0L); }
     /// {@return `pfnFaultCallback`}
-    public @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment pfnFaultCallback() { return VkFaultCallbackInfo.get_pfnFaultCallback(this.segment()); }
+    public @CType("PFN_vkFaultCallbackFunction") MemorySegment pfnFaultCallback() { return VkFaultCallbackInfo.get_pfnFaultCallback(this.segment()); }
     /// Sets `pfnFaultCallback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pfnFaultCallback(MemorySegment segment, long index, @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment value) { VH_pfnFaultCallback.set(segment, 0L, index, value); }
+    public static void set_pfnFaultCallback(MemorySegment segment, long index, @CType("PFN_vkFaultCallbackFunction") MemorySegment value) { VH_pfnFaultCallback.set(segment, 0L, index, value); }
     /// Sets `pfnFaultCallback` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pfnFaultCallback(MemorySegment segment, @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(segment, 0L, value); }
+    public static void set_pfnFaultCallback(MemorySegment segment, @CType("PFN_vkFaultCallbackFunction") MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(segment, 0L, value); }
     /// Sets `pfnFaultCallback` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFaultCallbackInfo pfnFaultCallback(@CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(this.segment(), value); return this; }
+    public VkFaultCallbackInfo pfnFaultCallback(@CType("PFN_vkFaultCallbackFunction") MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(this.segment(), value); return this; }
 
     /// A buffer of [VkFaultCallbackInfo].
     public static final class Buffer extends VkFaultCallbackInfo {
@@ -268,12 +268,12 @@ public sealed class VkFaultCallbackInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkFaultCallbackInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkFaultCallbackInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkFaultCallbackInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `faultCount` at the given index}
         /// @param index the index
@@ -286,21 +286,21 @@ public sealed class VkFaultCallbackInfo extends Struct {
 
         /// {@return `pFaults` at the given index}
         /// @param index the index
-        public @CType("VkFaultData *") java.lang.foreign.MemorySegment pFaultsAt(long index) { return VkFaultCallbackInfo.get_pFaults(this.segment(), index); }
+        public @CType("VkFaultData *") MemorySegment pFaultsAt(long index) { return VkFaultCallbackInfo.get_pFaults(this.segment(), index); }
         /// Sets `pFaults` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pFaultsAt(long index, @CType("VkFaultData *") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pFaults(this.segment(), index, value); return this; }
+        public Buffer pFaultsAt(long index, @CType("VkFaultData *") MemorySegment value) { VkFaultCallbackInfo.set_pFaults(this.segment(), index, value); return this; }
 
         /// {@return `pfnFaultCallback` at the given index}
         /// @param index the index
-        public @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment pfnFaultCallbackAt(long index) { return VkFaultCallbackInfo.get_pfnFaultCallback(this.segment(), index); }
+        public @CType("PFN_vkFaultCallbackFunction") MemorySegment pfnFaultCallbackAt(long index) { return VkFaultCallbackInfo.get_pfnFaultCallback(this.segment(), index); }
         /// Sets `pfnFaultCallback` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pfnFaultCallbackAt(long index, @CType("PFN_vkFaultCallbackFunction") java.lang.foreign.MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(this.segment(), index, value); return this; }
+        public Buffer pfnFaultCallbackAt(long index, @CType("PFN_vkFaultCallbackFunction") MemorySegment value) { VkFaultCallbackInfo.set_pfnFaultCallback(this.segment(), index, value); return this; }
 
     }
 }

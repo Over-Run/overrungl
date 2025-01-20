@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,126 +27,45 @@ public final class GLARBVertexType2101010Rev {
     public static final int GL_UNSIGNED_INT_2_10_10_10_REV = 0x8368;
     public static final int GL_INT_2_10_10_10_REV = 0x8D9F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexAttribP1ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribP1uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttribP2ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribP2uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttribP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexAttribP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexP2ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexP2uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoordP1ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordP1uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoordP2ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordP2uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoordP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoordP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoordP1ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoordP1uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoordP2ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoordP2uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoordP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoordP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoordP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoordP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNormalP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNormalP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColorP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColorP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSecondaryColorP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSecondaryColorP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribP1ui,
-            FD_glVertexAttribP1uiv,
-            FD_glVertexAttribP2ui,
-            FD_glVertexAttribP2uiv,
-            FD_glVertexAttribP3ui,
-            FD_glVertexAttribP3uiv,
-            FD_glVertexAttribP4ui,
-            FD_glVertexAttribP4uiv,
-            FD_glVertexP2ui,
-            FD_glVertexP2uiv,
-            FD_glVertexP3ui,
-            FD_glVertexP3uiv,
-            FD_glVertexP4ui,
-            FD_glVertexP4uiv,
-            FD_glTexCoordP1ui,
-            FD_glTexCoordP1uiv,
-            FD_glTexCoordP2ui,
-            FD_glTexCoordP2uiv,
-            FD_glTexCoordP3ui,
-            FD_glTexCoordP3uiv,
-            FD_glTexCoordP4ui,
-            FD_glTexCoordP4uiv,
-            FD_glMultiTexCoordP1ui,
-            FD_glMultiTexCoordP1uiv,
-            FD_glMultiTexCoordP2ui,
-            FD_glMultiTexCoordP2uiv,
-            FD_glMultiTexCoordP3ui,
-            FD_glMultiTexCoordP3uiv,
-            FD_glMultiTexCoordP4ui,
-            FD_glMultiTexCoordP4uiv,
-            FD_glNormalP3ui,
-            FD_glNormalP3uiv,
-            FD_glColorP3ui,
-            FD_glColorP3uiv,
-            FD_glColorP4ui,
-            FD_glColorP4uiv,
-            FD_glSecondaryColorP3ui,
-            FD_glSecondaryColorP3uiv
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP1ui);
-        public static final MethodHandle MH_glVertexAttribP1uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP1uiv);
-        public static final MethodHandle MH_glVertexAttribP2ui = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP2ui);
-        public static final MethodHandle MH_glVertexAttribP2uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP2uiv);
-        public static final MethodHandle MH_glVertexAttribP3ui = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP3ui);
-        public static final MethodHandle MH_glVertexAttribP3uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP3uiv);
-        public static final MethodHandle MH_glVertexAttribP4ui = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP4ui);
-        public static final MethodHandle MH_glVertexAttribP4uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP4uiv);
-        public static final MethodHandle MH_glVertexP2ui = RuntimeHelper.downcall(Descriptors.FD_glVertexP2ui);
-        public static final MethodHandle MH_glVertexP2uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexP2uiv);
-        public static final MethodHandle MH_glVertexP3ui = RuntimeHelper.downcall(Descriptors.FD_glVertexP3ui);
-        public static final MethodHandle MH_glVertexP3uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexP3uiv);
-        public static final MethodHandle MH_glVertexP4ui = RuntimeHelper.downcall(Descriptors.FD_glVertexP4ui);
-        public static final MethodHandle MH_glVertexP4uiv = RuntimeHelper.downcall(Descriptors.FD_glVertexP4uiv);
-        public static final MethodHandle MH_glTexCoordP1ui = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP1ui);
-        public static final MethodHandle MH_glTexCoordP1uiv = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP1uiv);
-        public static final MethodHandle MH_glTexCoordP2ui = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP2ui);
-        public static final MethodHandle MH_glTexCoordP2uiv = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP2uiv);
-        public static final MethodHandle MH_glTexCoordP3ui = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP3ui);
-        public static final MethodHandle MH_glTexCoordP3uiv = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP3uiv);
-        public static final MethodHandle MH_glTexCoordP4ui = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP4ui);
-        public static final MethodHandle MH_glTexCoordP4uiv = RuntimeHelper.downcall(Descriptors.FD_glTexCoordP4uiv);
-        public static final MethodHandle MH_glMultiTexCoordP1ui = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP1ui);
-        public static final MethodHandle MH_glMultiTexCoordP1uiv = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP1uiv);
-        public static final MethodHandle MH_glMultiTexCoordP2ui = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP2ui);
-        public static final MethodHandle MH_glMultiTexCoordP2uiv = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP2uiv);
-        public static final MethodHandle MH_glMultiTexCoordP3ui = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP3ui);
-        public static final MethodHandle MH_glMultiTexCoordP3uiv = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP3uiv);
-        public static final MethodHandle MH_glMultiTexCoordP4ui = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP4ui);
-        public static final MethodHandle MH_glMultiTexCoordP4uiv = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoordP4uiv);
-        public static final MethodHandle MH_glNormalP3ui = RuntimeHelper.downcall(Descriptors.FD_glNormalP3ui);
-        public static final MethodHandle MH_glNormalP3uiv = RuntimeHelper.downcall(Descriptors.FD_glNormalP3uiv);
-        public static final MethodHandle MH_glColorP3ui = RuntimeHelper.downcall(Descriptors.FD_glColorP3ui);
-        public static final MethodHandle MH_glColorP3uiv = RuntimeHelper.downcall(Descriptors.FD_glColorP3uiv);
-        public static final MethodHandle MH_glColorP4ui = RuntimeHelper.downcall(Descriptors.FD_glColorP4ui);
-        public static final MethodHandle MH_glColorP4uiv = RuntimeHelper.downcall(Descriptors.FD_glColorP4uiv);
-        public static final MethodHandle MH_glSecondaryColorP3ui = RuntimeHelper.downcall(Descriptors.FD_glSecondaryColorP3ui);
-        public static final MethodHandle MH_glSecondaryColorP3uiv = RuntimeHelper.downcall(Descriptors.FD_glSecondaryColorP3uiv);
+        public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormalP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSecondaryColorP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSecondaryColorP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVertexAttribP1ui;
         public final MemorySegment PFN_glVertexAttribP1uiv;
         public final MemorySegment PFN_glVertexAttribP2ui;
@@ -237,7 +155,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1ui", e); }
     }
 
-    public void VertexAttribP1uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP1uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
         try { Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1uiv", e); }
@@ -249,7 +167,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2ui", e); }
     }
 
-    public void VertexAttribP2uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP2uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
         try { Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2uiv", e); }
@@ -261,7 +179,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3ui", e); }
     }
 
-    public void VertexAttribP3uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP3uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
         try { Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3uiv", e); }
@@ -273,7 +191,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4ui", e); }
     }
 
-    public void VertexAttribP4uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP4uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
         try { Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4uiv", e); }
@@ -285,7 +203,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP2ui", e); }
     }
 
-    public void VertexP2uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP2uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP2uiv");
         try { Handles.MH_glVertexP2uiv.invokeExact(handles.PFN_glVertexP2uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP2uiv", e); }
@@ -297,7 +215,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP3ui", e); }
     }
 
-    public void VertexP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP3uiv");
         try { Handles.MH_glVertexP3uiv.invokeExact(handles.PFN_glVertexP3uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP3uiv", e); }
@@ -309,7 +227,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP4ui", e); }
     }
 
-    public void VertexP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP4uiv");
         try { Handles.MH_glVertexP4uiv.invokeExact(handles.PFN_glVertexP4uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP4uiv", e); }
@@ -321,7 +239,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP1ui", e); }
     }
 
-    public void TexCoordP1uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP1uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP1uiv");
         try { Handles.MH_glTexCoordP1uiv.invokeExact(handles.PFN_glTexCoordP1uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP1uiv", e); }
@@ -333,7 +251,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP2ui", e); }
     }
 
-    public void TexCoordP2uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP2uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP2uiv");
         try { Handles.MH_glTexCoordP2uiv.invokeExact(handles.PFN_glTexCoordP2uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP2uiv", e); }
@@ -345,7 +263,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP3ui", e); }
     }
 
-    public void TexCoordP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP3uiv");
         try { Handles.MH_glTexCoordP3uiv.invokeExact(handles.PFN_glTexCoordP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP3uiv", e); }
@@ -357,7 +275,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP4ui", e); }
     }
 
-    public void TexCoordP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP4uiv");
         try { Handles.MH_glTexCoordP4uiv.invokeExact(handles.PFN_glTexCoordP4uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP4uiv", e); }
@@ -369,7 +287,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP1ui", e); }
     }
 
-    public void MultiTexCoordP1uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP1uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP1uiv");
         try { Handles.MH_glMultiTexCoordP1uiv.invokeExact(handles.PFN_glMultiTexCoordP1uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP1uiv", e); }
@@ -381,7 +299,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP2ui", e); }
     }
 
-    public void MultiTexCoordP2uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP2uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP2uiv");
         try { Handles.MH_glMultiTexCoordP2uiv.invokeExact(handles.PFN_glMultiTexCoordP2uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP2uiv", e); }
@@ -393,7 +311,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP3ui", e); }
     }
 
-    public void MultiTexCoordP3uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP3uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP3uiv");
         try { Handles.MH_glMultiTexCoordP3uiv.invokeExact(handles.PFN_glMultiTexCoordP3uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP3uiv", e); }
@@ -405,7 +323,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP4ui", e); }
     }
 
-    public void MultiTexCoordP4uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP4uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP4uiv");
         try { Handles.MH_glMultiTexCoordP4uiv.invokeExact(handles.PFN_glMultiTexCoordP4uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP4uiv", e); }
@@ -417,7 +335,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glNormalP3ui", e); }
     }
 
-    public void NormalP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void NormalP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalP3uiv)) throw new SymbolNotFoundError("Symbol not found: glNormalP3uiv");
         try { Handles.MH_glNormalP3uiv.invokeExact(handles.PFN_glNormalP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalP3uiv", e); }
@@ -429,7 +347,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glColorP3ui", e); }
     }
 
-    public void ColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void ColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP3uiv");
         try { Handles.MH_glColorP3uiv.invokeExact(handles.PFN_glColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glColorP3uiv", e); }
@@ -441,7 +359,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glColorP4ui", e); }
     }
 
-    public void ColorP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void ColorP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorP4uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP4uiv");
         try { Handles.MH_glColorP4uiv.invokeExact(handles.PFN_glColorP4uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glColorP4uiv", e); }
@@ -453,7 +371,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorP3ui", e); }
     }
 
-    public void SecondaryColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void SecondaryColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glSecondaryColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorP3uiv");
         try { Handles.MH_glSecondaryColorP3uiv.invokeExact(handles.PFN_glSecondaryColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorP3uiv", e); }

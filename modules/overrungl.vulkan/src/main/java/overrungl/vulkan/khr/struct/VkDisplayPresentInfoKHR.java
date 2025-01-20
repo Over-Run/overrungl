@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### srcRect
-/// [Byte offset][#OFFSET_srcRect] - [Memory layout][#ML_srcRect] - [Getter][#srcRect()] - [Setter][#srcRect(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_srcRect] - [Memory layout][#ML_srcRect] - [Getter][#srcRect()] - [Setter][#srcRect(MemorySegment)]
 /// ### dstRect
-/// [Byte offset][#OFFSET_dstRect] - [Memory layout][#ML_dstRect] - [Getter][#dstRect()] - [Setter][#dstRect(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_dstRect] - [Memory layout][#ML_dstRect] - [Getter][#dstRect()] - [Setter][#dstRect(MemorySegment)]
 /// ### persistent
 /// [VarHandle][#VH_persistent] - [Getter][#persistent()] - [Setter][#persistent(int)]
 /// ## Layout
@@ -57,7 +57,7 @@ public sealed class VkDisplayPresentInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `srcRect`.
     public static final long OFFSET_srcRect = LAYOUT.byteOffset(PathElement.groupElement("srcRect"));
@@ -113,7 +113,7 @@ public sealed class VkDisplayPresentInfoKHR extends Struct {
     /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRect2D") java.lang.foreign.MemorySegment srcRect, @CType("VkRect2D") java.lang.foreign.MemorySegment dstRect, @CType("VkBool32") int persistent) { return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect).dstRect(dstRect).persistent(persistent); }
+    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkRect2D") MemorySegment srcRect, @CType("VkRect2D") MemorySegment dstRect, @CType("VkBool32") int persistent) { return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect).dstRect(dstRect).persistent(persistent); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -150,71 +150,71 @@ public sealed class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDisplayPresentInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDisplayPresentInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPresentInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkDisplayPresentInfoKHR pNext(@CType("const void *") MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `srcRect` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_srcRect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcRect, index), ML_srcRect); }
+    public static @CType("VkRect2D") MemorySegment get_srcRect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcRect, index), ML_srcRect); }
     /// {@return `srcRect`}
     /// @param segment the segment of the struct
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_srcRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_srcRect(segment, 0L); }
+    public static @CType("VkRect2D") MemorySegment get_srcRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_srcRect(segment, 0L); }
     /// {@return `srcRect`}
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment srcRect() { return VkDisplayPresentInfoKHR.get_srcRect(this.segment()); }
+    public @CType("VkRect2D") MemorySegment srcRect() { return VkDisplayPresentInfoKHR.get_srcRect(this.segment()); }
     /// Sets `srcRect` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_srcRect(MemorySegment segment, long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcRect, index), ML_srcRect.byteSize()); }
+    public static void set_srcRect(MemorySegment segment, long index, @CType("VkRect2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcRect, index), ML_srcRect.byteSize()); }
     /// Sets `srcRect` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_srcRect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(segment, 0L, value); }
+    public static void set_srcRect(MemorySegment segment, @CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(segment, 0L, value); }
     /// Sets `srcRect` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPresentInfoKHR srcRect(@CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), value); return this; }
+    public VkDisplayPresentInfoKHR srcRect(@CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), value); return this; }
 
     /// {@return `dstRect` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_dstRect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstRect, index), ML_dstRect); }
+    public static @CType("VkRect2D") MemorySegment get_dstRect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstRect, index), ML_dstRect); }
     /// {@return `dstRect`}
     /// @param segment the segment of the struct
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_dstRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_dstRect(segment, 0L); }
+    public static @CType("VkRect2D") MemorySegment get_dstRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_dstRect(segment, 0L); }
     /// {@return `dstRect`}
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment dstRect() { return VkDisplayPresentInfoKHR.get_dstRect(this.segment()); }
+    public @CType("VkRect2D") MemorySegment dstRect() { return VkDisplayPresentInfoKHR.get_dstRect(this.segment()); }
     /// Sets `dstRect` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_dstRect(MemorySegment segment, long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstRect, index), ML_dstRect.byteSize()); }
+    public static void set_dstRect(MemorySegment segment, long index, @CType("VkRect2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstRect, index), ML_dstRect.byteSize()); }
     /// Sets `dstRect` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_dstRect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(segment, 0L, value); }
+    public static void set_dstRect(MemorySegment segment, @CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(segment, 0L, value); }
     /// Sets `dstRect` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPresentInfoKHR dstRect(@CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), value); return this; }
+    public VkDisplayPresentInfoKHR dstRect(@CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), value); return this; }
 
     /// {@return `persistent` at the given index}
     /// @param segment the segment of the struct
@@ -272,30 +272,30 @@ public sealed class VkDisplayPresentInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDisplayPresentInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDisplayPresentInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `srcRect` at the given index}
         /// @param index the index
-        public @CType("VkRect2D") java.lang.foreign.MemorySegment srcRectAt(long index) { return VkDisplayPresentInfoKHR.get_srcRect(this.segment(), index); }
+        public @CType("VkRect2D") MemorySegment srcRectAt(long index) { return VkDisplayPresentInfoKHR.get_srcRect(this.segment(), index); }
         /// Sets `srcRect` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer srcRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), index, value); return this; }
+        public Buffer srcRectAt(long index, @CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), index, value); return this; }
 
         /// {@return `dstRect` at the given index}
         /// @param index the index
-        public @CType("VkRect2D") java.lang.foreign.MemorySegment dstRectAt(long index) { return VkDisplayPresentInfoKHR.get_dstRect(this.segment(), index); }
+        public @CType("VkRect2D") MemorySegment dstRectAt(long index) { return VkDisplayPresentInfoKHR.get_dstRect(this.segment(), index); }
         /// Sets `dstRect` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer dstRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), index, value); return this; }
+        public Buffer dstRectAt(long index, @CType("VkRect2D") MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), index, value); return this; }
 
         /// {@return `persistent` at the given index}
         /// @param index the index

@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,30 +27,13 @@ public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
     public static final int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInstrumentsSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glInstrumentsBufferSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPollInstrumentsSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glReadInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glStartInstrumentsSGIX = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glStopInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetInstrumentsSGIX,
-            FD_glInstrumentsBufferSGIX,
-            FD_glPollInstrumentsSGIX,
-            FD_glReadInstrumentsSGIX,
-            FD_glStartInstrumentsSGIX,
-            FD_glStopInstrumentsSGIX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetInstrumentsSGIX);
-        public static final MethodHandle MH_glInstrumentsBufferSGIX = RuntimeHelper.downcall(Descriptors.FD_glInstrumentsBufferSGIX);
-        public static final MethodHandle MH_glPollInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glPollInstrumentsSGIX);
-        public static final MethodHandle MH_glReadInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glReadInstrumentsSGIX);
-        public static final MethodHandle MH_glStartInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glStartInstrumentsSGIX);
-        public static final MethodHandle MH_glStopInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glStopInstrumentsSGIX);
+        public static final MethodHandle MH_glGetInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glInstrumentsBufferSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPollInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReadInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStartInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glStopInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGetInstrumentsSGIX;
         public final MemorySegment PFN_glInstrumentsBufferSGIX;
         public final MemorySegment PFN_glPollInstrumentsSGIX;
@@ -78,13 +60,13 @@ public final class GLSGIXInstruments {
         catch (Throwable e) { throw new RuntimeException("error in glGetInstrumentsSGIX", e); }
     }
 
-    public void InstrumentsBufferSGIX(@CType("GLsizei") int size, @CType("GLint *") java.lang.foreign.MemorySegment buffer) {
+    public void InstrumentsBufferSGIX(@CType("GLsizei") int size, @CType("GLint *") MemorySegment buffer) {
         if (Unmarshal.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
         try { Handles.MH_glInstrumentsBufferSGIX.invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glInstrumentsBufferSGIX", e); }
     }
 
-    public @CType("GLint") int PollInstrumentsSGIX(@CType("GLint *") java.lang.foreign.MemorySegment marker_p) {
+    public @CType("GLint") int PollInstrumentsSGIX(@CType("GLint *") MemorySegment marker_p) {
         if (Unmarshal.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
         try { return (int) Handles.MH_glPollInstrumentsSGIX.invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
         catch (Throwable e) { throw new RuntimeException("error in glPollInstrumentsSGIX", e); }

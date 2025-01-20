@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### shaderBufferFloat32Atomics
 /// [VarHandle][#VH_shaderBufferFloat32Atomics] - [Getter][#shaderBufferFloat32Atomics()] - [Setter][#shaderBufferFloat32Atomics(int)]
 /// ### shaderBufferFloat32AtomicAdd
@@ -93,7 +93,7 @@ public sealed class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends Struct 
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `shaderBufferFloat32Atomics` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_shaderBufferFloat32Atomics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBufferFloat32Atomics"));
@@ -163,7 +163,7 @@ public sealed class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends Struct 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
-    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderBufferFloat32Atomics, @CType("VkBool32") int shaderBufferFloat32AtomicAdd, @CType("VkBool32") int shaderBufferFloat64Atomics, @CType("VkBool32") int shaderBufferFloat64AtomicAdd, @CType("VkBool32") int shaderSharedFloat32Atomics, @CType("VkBool32") int shaderSharedFloat32AtomicAdd, @CType("VkBool32") int shaderSharedFloat64Atomics, @CType("VkBool32") int shaderSharedFloat64AtomicAdd, @CType("VkBool32") int shaderImageFloat32Atomics, @CType("VkBool32") int shaderImageFloat32AtomicAdd, @CType("VkBool32") int sparseImageFloat32Atomics, @CType("VkBool32") int sparseImageFloat32AtomicAdd) { return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics).shaderImageFloat32AtomicAdd(shaderImageFloat32AtomicAdd).sparseImageFloat32Atomics(sparseImageFloat32Atomics).sparseImageFloat32AtomicAdd(sparseImageFloat32AtomicAdd); }
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int shaderBufferFloat32Atomics, @CType("VkBool32") int shaderBufferFloat32AtomicAdd, @CType("VkBool32") int shaderBufferFloat64Atomics, @CType("VkBool32") int shaderBufferFloat64AtomicAdd, @CType("VkBool32") int shaderSharedFloat32Atomics, @CType("VkBool32") int shaderSharedFloat32AtomicAdd, @CType("VkBool32") int shaderSharedFloat64Atomics, @CType("VkBool32") int shaderSharedFloat64AtomicAdd, @CType("VkBool32") int shaderImageFloat32Atomics, @CType("VkBool32") int shaderImageFloat32AtomicAdd, @CType("VkBool32") int sparseImageFloat32Atomics, @CType("VkBool32") int sparseImageFloat32AtomicAdd) { return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics).shaderImageFloat32AtomicAdd(shaderImageFloat32AtomicAdd).sparseImageFloat32Atomics(sparseImageFloat32Atomics).sparseImageFloat32AtomicAdd(sparseImageFloat32AtomicAdd); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -200,25 +200,25 @@ public sealed class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends Struct 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `shaderBufferFloat32Atomics` at the given index}
     /// @param segment the segment of the struct
@@ -529,12 +529,12 @@ public sealed class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends Struct 
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderBufferFloat32Atomics` at the given index}
         /// @param index the index

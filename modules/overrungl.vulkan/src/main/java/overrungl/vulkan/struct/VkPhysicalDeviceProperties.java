@@ -38,13 +38,13 @@ import static overrungl.vulkan.VK10.*;
 /// ### deviceType
 /// [VarHandle][#VH_deviceType] - [Getter][#deviceType()] - [Setter][#deviceType(int)]
 /// ### deviceName
-/// [Byte offset][#OFFSET_deviceName] - [Memory layout][#ML_deviceName] - [Getter][#deviceName()] - [Setter][#deviceName(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_deviceName] - [Memory layout][#ML_deviceName] - [Getter][#deviceName()] - [Setter][#deviceName(MemorySegment)]
 /// ### pipelineCacheUUID
-/// [Byte offset][#OFFSET_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID()] - [Setter][#pipelineCacheUUID(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID()] - [Setter][#pipelineCacheUUID(MemorySegment)]
 /// ### limits
-/// [Byte offset][#OFFSET_limits] - [Memory layout][#ML_limits] - [Getter][#limits()] - [Setter][#limits(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_limits] - [Memory layout][#ML_limits] - [Getter][#limits()] - [Setter][#limits(MemorySegment)]
 /// ### sparseProperties
-/// [Byte offset][#OFFSET_sparseProperties] - [Memory layout][#ML_sparseProperties] - [Getter][#sparseProperties()] - [Setter][#sparseProperties(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_sparseProperties] - [Memory layout][#ML_sparseProperties] - [Getter][#sparseProperties()] - [Setter][#sparseProperties(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -143,7 +143,7 @@ public sealed class VkPhysicalDeviceProperties extends Struct {
     /// Allocates a `VkPhysicalDeviceProperties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceProperties`
-    public static VkPhysicalDeviceProperties allocInit(SegmentAllocator allocator, @CType("uint32_t") int apiVersion, @CType("uint32_t") int driverVersion, @CType("uint32_t") int vendorID, @CType("uint32_t") int deviceID, @CType("VkPhysicalDeviceType") int deviceType, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceName, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID, @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment limits, @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment sparseProperties) { return alloc(allocator).apiVersion(apiVersion).driverVersion(driverVersion).vendorID(vendorID).deviceID(deviceID).deviceType(deviceType).deviceName(deviceName).pipelineCacheUUID(pipelineCacheUUID).limits(limits).sparseProperties(sparseProperties); }
+    public static VkPhysicalDeviceProperties allocInit(SegmentAllocator allocator, @CType("uint32_t") int apiVersion, @CType("uint32_t") int driverVersion, @CType("uint32_t") int vendorID, @CType("uint32_t") int deviceID, @CType("VkPhysicalDeviceType") int deviceType, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceName, @CType("uint8_t[VK_UUID_SIZE]") MemorySegment pipelineCacheUUID, @CType("VkPhysicalDeviceLimits") MemorySegment limits, @CType("VkPhysicalDeviceSparseProperties") MemorySegment sparseProperties) { return alloc(allocator).apiVersion(apiVersion).driverVersion(driverVersion).vendorID(vendorID).deviceID(deviceID).deviceType(deviceType).deviceName(deviceName).pipelineCacheUUID(pipelineCacheUUID).limits(limits).sparseProperties(sparseProperties); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -272,94 +272,94 @@ public sealed class VkPhysicalDeviceProperties extends Struct {
     /// {@return `deviceName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName); }
+    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment get_deviceName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName); }
     /// {@return `deviceName`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment) { return VkPhysicalDeviceProperties.get_deviceName(segment, 0L); }
+    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment get_deviceName(MemorySegment segment) { return VkPhysicalDeviceProperties.get_deviceName(segment, 0L); }
     /// {@return `deviceName`}
-    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceName() { return VkPhysicalDeviceProperties.get_deviceName(this.segment()); }
+    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceName() { return VkPhysicalDeviceProperties.get_deviceName(this.segment()); }
     /// Sets `deviceName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_deviceName(MemorySegment segment, long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName.byteSize()); }
+    public static void set_deviceName(MemorySegment segment, long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName.byteSize()); }
     /// Sets `deviceName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_deviceName(MemorySegment segment, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(segment, 0L, value); }
+    public static void set_deviceName(MemorySegment segment, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(segment, 0L, value); }
     /// Sets `deviceName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties deviceName(@CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), value); return this; }
+    public VkPhysicalDeviceProperties deviceName(@CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), value); return this; }
 
     /// {@return `pipelineCacheUUID` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID); }
+    public static @CType("uint8_t[VK_UUID_SIZE]") MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID); }
     /// {@return `pipelineCacheUUID`}
     /// @param segment the segment of the struct
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(segment, 0L); }
+    public static @CType("uint8_t[VK_UUID_SIZE]") MemorySegment get_pipelineCacheUUID(MemorySegment segment) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(segment, 0L); }
     /// {@return `pipelineCacheUUID`}
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID() { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment()); }
+    public @CType("uint8_t[VK_UUID_SIZE]") MemorySegment pipelineCacheUUID() { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment()); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID.byteSize()); }
+    public static void set_pipelineCacheUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID.byteSize()); }
     /// Sets `pipelineCacheUUID` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(segment, 0L, value); }
+    public static void set_pipelineCacheUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(segment, 0L, value); }
     /// Sets `pipelineCacheUUID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties pipelineCacheUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), value); return this; }
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@CType("uint8_t[VK_UUID_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), value); return this; }
 
     /// {@return `limits` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment get_limits(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_limits, index), ML_limits); }
+    public static @CType("VkPhysicalDeviceLimits") MemorySegment get_limits(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_limits, index), ML_limits); }
     /// {@return `limits`}
     /// @param segment the segment of the struct
-    public static @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment get_limits(MemorySegment segment) { return VkPhysicalDeviceProperties.get_limits(segment, 0L); }
+    public static @CType("VkPhysicalDeviceLimits") MemorySegment get_limits(MemorySegment segment) { return VkPhysicalDeviceProperties.get_limits(segment, 0L); }
     /// {@return `limits`}
-    public @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment limits() { return VkPhysicalDeviceProperties.get_limits(this.segment()); }
+    public @CType("VkPhysicalDeviceLimits") MemorySegment limits() { return VkPhysicalDeviceProperties.get_limits(this.segment()); }
     /// Sets `limits` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_limits(MemorySegment segment, long index, @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_limits, index), ML_limits.byteSize()); }
+    public static void set_limits(MemorySegment segment, long index, @CType("VkPhysicalDeviceLimits") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_limits, index), ML_limits.byteSize()); }
     /// Sets `limits` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_limits(MemorySegment segment, @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_limits(segment, 0L, value); }
+    public static void set_limits(MemorySegment segment, @CType("VkPhysicalDeviceLimits") MemorySegment value) { VkPhysicalDeviceProperties.set_limits(segment, 0L, value); }
     /// Sets `limits` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties limits(@CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_limits(this.segment(), value); return this; }
+    public VkPhysicalDeviceProperties limits(@CType("VkPhysicalDeviceLimits") MemorySegment value) { VkPhysicalDeviceProperties.set_limits(this.segment(), value); return this; }
 
     /// {@return `sparseProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment get_sparseProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sparseProperties, index), ML_sparseProperties); }
+    public static @CType("VkPhysicalDeviceSparseProperties") MemorySegment get_sparseProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sparseProperties, index), ML_sparseProperties); }
     /// {@return `sparseProperties`}
     /// @param segment the segment of the struct
-    public static @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment get_sparseProperties(MemorySegment segment) { return VkPhysicalDeviceProperties.get_sparseProperties(segment, 0L); }
+    public static @CType("VkPhysicalDeviceSparseProperties") MemorySegment get_sparseProperties(MemorySegment segment) { return VkPhysicalDeviceProperties.get_sparseProperties(segment, 0L); }
     /// {@return `sparseProperties`}
-    public @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment sparseProperties() { return VkPhysicalDeviceProperties.get_sparseProperties(this.segment()); }
+    public @CType("VkPhysicalDeviceSparseProperties") MemorySegment sparseProperties() { return VkPhysicalDeviceProperties.get_sparseProperties(this.segment()); }
     /// Sets `sparseProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_sparseProperties(MemorySegment segment, long index, @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sparseProperties, index), ML_sparseProperties.byteSize()); }
+    public static void set_sparseProperties(MemorySegment segment, long index, @CType("VkPhysicalDeviceSparseProperties") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sparseProperties, index), ML_sparseProperties.byteSize()); }
     /// Sets `sparseProperties` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_sparseProperties(MemorySegment segment, @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(segment, 0L, value); }
+    public static void set_sparseProperties(MemorySegment segment, @CType("VkPhysicalDeviceSparseProperties") MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(segment, 0L, value); }
     /// Sets `sparseProperties` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties sparseProperties(@CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(this.segment(), value); return this; }
+    public VkPhysicalDeviceProperties sparseProperties(@CType("VkPhysicalDeviceSparseProperties") MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(this.segment(), value); return this; }
 
     /// A buffer of [VkPhysicalDeviceProperties].
     public static final class Buffer extends VkPhysicalDeviceProperties {
@@ -430,39 +430,39 @@ public sealed class VkPhysicalDeviceProperties extends Struct {
 
         /// {@return `deviceName` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceNameAt(long index) { return VkPhysicalDeviceProperties.get_deviceName(this.segment(), index); }
+        public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceNameAt(long index) { return VkPhysicalDeviceProperties.get_deviceName(this.segment(), index); }
         /// Sets `deviceName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer deviceNameAt(long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), index, value); return this; }
+        public Buffer deviceNameAt(long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCacheUUID` at the given index}
         /// @param index the index
-        public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment(), index); }
+        public @CType("uint8_t[VK_UUID_SIZE]") MemorySegment pipelineCacheUUIDAt(long index) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment(), index); }
         /// Sets `pipelineCacheUUID` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineCacheUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), index, value); return this; }
+        public Buffer pipelineCacheUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), index, value); return this; }
 
         /// {@return `limits` at the given index}
         /// @param index the index
-        public @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment limitsAt(long index) { return VkPhysicalDeviceProperties.get_limits(this.segment(), index); }
+        public @CType("VkPhysicalDeviceLimits") MemorySegment limitsAt(long index) { return VkPhysicalDeviceProperties.get_limits(this.segment(), index); }
         /// Sets `limits` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer limitsAt(long index, @CType("VkPhysicalDeviceLimits") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_limits(this.segment(), index, value); return this; }
+        public Buffer limitsAt(long index, @CType("VkPhysicalDeviceLimits") MemorySegment value) { VkPhysicalDeviceProperties.set_limits(this.segment(), index, value); return this; }
 
         /// {@return `sparseProperties` at the given index}
         /// @param index the index
-        public @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment sparsePropertiesAt(long index) { return VkPhysicalDeviceProperties.get_sparseProperties(this.segment(), index); }
+        public @CType("VkPhysicalDeviceSparseProperties") MemorySegment sparsePropertiesAt(long index) { return VkPhysicalDeviceProperties.get_sparseProperties(this.segment(), index); }
         /// Sets `sparseProperties` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer sparsePropertiesAt(long index, @CType("VkPhysicalDeviceSparseProperties") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(this.segment(), index, value); return this; }
+        public Buffer sparsePropertiesAt(long index, @CType("VkPhysicalDeviceSparseProperties") MemorySegment value) { VkPhysicalDeviceProperties.set_sparseProperties(this.segment(), index, value); return this; }
 
     }
 }

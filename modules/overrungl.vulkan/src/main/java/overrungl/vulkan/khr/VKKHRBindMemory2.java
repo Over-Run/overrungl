@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRBindMemory2 {
     public static final int VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1;
@@ -31,18 +30,9 @@ public class VKKHRBindMemory2 {
     public static final int VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO_KHR = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO;
     public static final int VK_IMAGE_CREATE_ALIAS_BIT_KHR = VK_IMAGE_CREATE_ALIAS_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkBindBufferMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkBindImageMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkBindBufferMemory2KHR,
-            FD_vkBindImageMemory2KHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkBindBufferMemory2KHR = RuntimeHelper.downcall(Descriptors.FD_vkBindBufferMemory2KHR);
-        public static final MethodHandle MH_vkBindImageMemory2KHR = RuntimeHelper.downcall(Descriptors.FD_vkBindImageMemory2KHR);
+        public static final MethodHandle MH_vkBindBufferMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBindImageMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkBindBufferMemory2KHR;
         public final MemorySegment PFN_vkBindImageMemory2KHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### supportedPresentScaling
 /// [VarHandle][#VH_supportedPresentScaling] - [Getter][#supportedPresentScaling()] - [Setter][#supportedPresentScaling(int)]
 /// ### supportedPresentGravityX
@@ -36,9 +36,9 @@ import overrungl.util.*;
 /// ### supportedPresentGravityY
 /// [VarHandle][#VH_supportedPresentGravityY] - [Getter][#supportedPresentGravityY()] - [Setter][#supportedPresentGravityY(int)]
 /// ### minScaledImageExtent
-/// [Byte offset][#OFFSET_minScaledImageExtent] - [Memory layout][#ML_minScaledImageExtent] - [Getter][#minScaledImageExtent()] - [Setter][#minScaledImageExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_minScaledImageExtent] - [Memory layout][#ML_minScaledImageExtent] - [Getter][#minScaledImageExtent()] - [Setter][#minScaledImageExtent(MemorySegment)]
 /// ### maxScaledImageExtent
-/// [Byte offset][#OFFSET_maxScaledImageExtent] - [Memory layout][#ML_maxScaledImageExtent] - [Getter][#maxScaledImageExtent()] - [Setter][#maxScaledImageExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxScaledImageExtent] - [Memory layout][#ML_maxScaledImageExtent] - [Getter][#maxScaledImageExtent()] - [Setter][#maxScaledImageExtent(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,7 +65,7 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `supportedPresentScaling` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_supportedPresentScaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentScaling"));
@@ -125,7 +125,7 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
-    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPresentScalingFlagsEXT") int supportedPresentScaling, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityX, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityY, @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtent) { return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY).minScaledImageExtent(minScaledImageExtent).maxScaledImageExtent(maxScaledImageExtent); }
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkPresentScalingFlagsEXT") int supportedPresentScaling, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityX, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityY, @CType("VkExtent2D") MemorySegment minScaledImageExtent, @CType("VkExtent2D") MemorySegment maxScaledImageExtent) { return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY).minScaledImageExtent(minScaledImageExtent).maxScaledImageExtent(maxScaledImageExtent); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -162,25 +162,25 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT pNext(@CType("void *") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `supportedPresentScaling` at the given index}
     /// @param segment the segment of the struct
@@ -254,48 +254,48 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// {@return `minScaledImageExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent); }
+    public static @CType("VkExtent2D") MemorySegment get_minScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent); }
     /// {@return `minScaledImageExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_minScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(segment, 0L); }
     /// {@return `minScaledImageExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment minScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment()); }
     /// Sets `minScaledImageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_minScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent.byteSize()); }
+    public static void set_minScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent.byteSize()); }
     /// Sets `minScaledImageExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_minScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(segment, 0L, value); }
+    public static void set_minScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(segment, 0L, value); }
     /// Sets `minScaledImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(@CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), value); return this; }
 
     /// {@return `maxScaledImageExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent); }
+    public static @CType("VkExtent2D") MemorySegment get_maxScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent); }
     /// {@return `maxScaledImageExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(segment, 0L); }
     /// {@return `maxScaledImageExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment()); }
     /// Sets `maxScaledImageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent.byteSize()); }
+    public static void set_maxScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent.byteSize()); }
     /// Sets `maxScaledImageExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(segment, 0L, value); }
+    public static void set_maxScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(segment, 0L, value); }
     /// Sets `maxScaledImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(@CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), value); return this; }
 
     /// A buffer of [VkSurfacePresentScalingCapabilitiesEXT].
     public static final class Buffer extends VkSurfacePresentScalingCapabilitiesEXT {
@@ -330,12 +330,12 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `supportedPresentScaling` at the given index}
         /// @param index the index
@@ -366,21 +366,21 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
 
         /// {@return `minScaledImageExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment minScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment(), index); }
         /// Sets `minScaledImageExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer minScaledImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), index, value); return this; }
+        public Buffer minScaledImageExtentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), index, value); return this; }
 
         /// {@return `maxScaledImageExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment(), index); }
         /// Sets `maxScaledImageExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxScaledImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), index, value); return this; }
+        public Buffer maxScaledImageExtentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), index, value); return this; }
 
     }
 }

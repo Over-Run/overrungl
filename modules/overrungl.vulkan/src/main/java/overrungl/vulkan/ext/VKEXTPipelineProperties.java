@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRPipelineExecutableProperties.*;
 public class VKEXTPipelineProperties {
     public static final int VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
@@ -31,15 +30,8 @@ public class VKEXTPipelineProperties {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT = VK_STRUCTURE_TYPE_PIPELINE_INFO_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPipelinePropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPipelinePropertiesEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPipelinePropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelinePropertiesEXT);
+        public static final MethodHandle MH_vkGetPipelinePropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPipelinePropertiesEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPipelinePropertiesEXT = func.invoke(device, "vkGetPipelinePropertiesEXT");

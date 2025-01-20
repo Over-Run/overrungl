@@ -31,10 +31,10 @@ public interface GLFWErrorFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWErrorFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("int") int error_code, @CType("const char*") java.lang.String description);
+    void invoke(@CType("int") int error_code, @CType("const char*") String description);
 
     /// The target method of the upcall.
-    default void invoke(@CType("int") int error_code, @CType("const char*") java.lang.foreign.MemorySegment description) {
+    default void invoke(@CType("int") int error_code, @CType("const char*") MemorySegment description) {
         invoke(error_code, Unmarshal.unmarshalAsString(description));
     }
 
@@ -43,7 +43,7 @@ public interface GLFWErrorFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("int") int error_code, @CType("const char*") java.lang.foreign.MemorySegment description) {
+    static void invoke(MemorySegment stub, @CType("int") int error_code, @CType("const char*") MemorySegment description) {
         try { HANDLE.invokeExact(stub, error_code, description); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWErrorFun::invoke (static invoker)", e); }
     }

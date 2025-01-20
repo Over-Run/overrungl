@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,18 +33,9 @@ public final class GLNVGpuProgram5 {
     public static final int GL_MAX_PROGRAM_SUBROUTINE_PARAMETERS_NV = 0x8F44;
     public static final int GL_MAX_PROGRAM_SUBROUTINE_NUM_NV = 0x8F45;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramSubroutineParametersuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramSubroutineParameteruivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramSubroutineParametersuivNV,
-            FD_glGetProgramSubroutineParameteruivNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramSubroutineParametersuivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramSubroutineParametersuivNV);
-        public static final MethodHandle MH_glGetProgramSubroutineParameteruivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramSubroutineParameteruivNV);
+        public static final MethodHandle MH_glProgramSubroutineParametersuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramSubroutineParameteruivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramSubroutineParametersuivNV;
         public final MemorySegment PFN_glGetProgramSubroutineParameteruivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -58,13 +48,13 @@ public final class GLNVGpuProgram5 {
         this.handles = new Handles(func);
     }
 
-    public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
+    public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
         try { Handles.MH_glProgramSubroutineParametersuivNV.invokeExact(handles.PFN_glProgramSubroutineParametersuivNV, target, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramSubroutineParametersuivNV", e); }
     }
 
-    public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") java.lang.foreign.MemorySegment param) {
+    public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
         try { Handles.MH_glGetProgramSubroutineParameteruivNV.invokeExact(handles.PFN_glGetProgramSubroutineParameteruivNV, target, index, param); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramSubroutineParameteruivNV", e); }

@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### PicOrderCntVal
 /// [VarHandle][#VH_PicOrderCntVal] - [Getter][#PicOrderCntVal()] - [Setter][#PicOrderCntVal(int)]
 /// ## Layout
@@ -43,7 +43,7 @@ public sealed class StdVideoDecodeH265ReferenceInfo extends Struct {
         StdVideoDecodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("PicOrderCntVal")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `PicOrderCntVal` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_PicOrderCntVal = LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCntVal"));
@@ -91,7 +91,7 @@ public sealed class StdVideoDecodeH265ReferenceInfo extends Struct {
     /// Allocates a `StdVideoDecodeH265ReferenceInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoDecodeH265ReferenceInfo`
-    public static StdVideoDecodeH265ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment flags, @CType("int32_t") int PicOrderCntVal) { return alloc(allocator).flags(flags).PicOrderCntVal(PicOrderCntVal); }
+    public static StdVideoDecodeH265ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment flags, @CType("int32_t") int PicOrderCntVal) { return alloc(allocator).flags(flags).PicOrderCntVal(PicOrderCntVal); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -105,25 +105,25 @@ public sealed class StdVideoDecodeH265ReferenceInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoDecodeH265ReferenceInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoDecodeH265ReferenceInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoDecodeH265ReferenceInfo.get_flags(this.segment()); }
+    public @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment flags() { return StdVideoDecodeH265ReferenceInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoDecodeH265ReferenceInfo flags(@CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoDecodeH265ReferenceInfo flags(@CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `PicOrderCntVal` at the given index}
     /// @param segment the segment of the struct
@@ -172,12 +172,12 @@ public sealed class StdVideoDecodeH265ReferenceInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoDecodeH265ReferenceInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment flagsAt(long index) { return StdVideoDecodeH265ReferenceInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoDecodeH265ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoDecodeH265ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeH265ReferenceInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `PicOrderCntVal` at the given index}
         /// @param index the index

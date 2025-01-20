@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### accelerationStructure
-/// [VarHandle][#VH_accelerationStructure] - [Getter][#accelerationStructure()] - [Setter][#accelerationStructure(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_accelerationStructure] - [Getter][#accelerationStructure()] - [Setter][#accelerationStructure(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkAccelerationStructureDeviceAddressInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
 
     /// Creates `VkAccelerationStructureDeviceAddressInfoKHR` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkAccelerationStructureDeviceAddressInfoKHR extends Struct {
     /// Allocates a `VkAccelerationStructureDeviceAddressInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureDeviceAddressInfoKHR`
-    public static VkAccelerationStructureDeviceAddressInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment accelerationStructure) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure); }
+    public static VkAccelerationStructureDeviceAddressInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkAccelerationStructureKHR") MemorySegment accelerationStructure) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkAccelerationStructureDeviceAddressInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureDeviceAddressInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureDeviceAddressInfoKHR pNext(@CType("const void *") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `accelerationStructure` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment get_accelerationStructure(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_accelerationStructure.get(segment, 0L, index); }
+    public static @CType("VkAccelerationStructureKHR") MemorySegment get_accelerationStructure(MemorySegment segment, long index) { return (MemorySegment) VH_accelerationStructure.get(segment, 0L, index); }
     /// {@return `accelerationStructure`}
     /// @param segment the segment of the struct
-    public static @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment get_accelerationStructure(MemorySegment segment) { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(segment, 0L); }
+    public static @CType("VkAccelerationStructureKHR") MemorySegment get_accelerationStructure(MemorySegment segment) { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(segment, 0L); }
     /// {@return `accelerationStructure`}
-    public @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment accelerationStructure() { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(this.segment()); }
+    public @CType("VkAccelerationStructureKHR") MemorySegment accelerationStructure() { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(this.segment()); }
     /// Sets `accelerationStructure` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_accelerationStructure(MemorySegment segment, long index, @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment value) { VH_accelerationStructure.set(segment, 0L, index, value); }
+    public static void set_accelerationStructure(MemorySegment segment, long index, @CType("VkAccelerationStructureKHR") MemorySegment value) { VH_accelerationStructure.set(segment, 0L, index, value); }
     /// Sets `accelerationStructure` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_accelerationStructure(MemorySegment segment, @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(segment, 0L, value); }
+    public static void set_accelerationStructure(MemorySegment segment, @CType("VkAccelerationStructureKHR") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(segment, 0L, value); }
     /// Sets `accelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureDeviceAddressInfoKHR accelerationStructure(@CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(this.segment(), value); return this; }
+    public VkAccelerationStructureDeviceAddressInfoKHR accelerationStructure(@CType("VkAccelerationStructureKHR") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(this.segment(), value); return this; }
 
     /// A buffer of [VkAccelerationStructureDeviceAddressInfoKHR].
     public static final class Buffer extends VkAccelerationStructureDeviceAddressInfoKHR {
@@ -210,21 +210,21 @@ public sealed class VkAccelerationStructureDeviceAddressInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkAccelerationStructureDeviceAddressInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `accelerationStructure` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment accelerationStructureAt(long index) { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(this.segment(), index); }
+        public @CType("VkAccelerationStructureKHR") MemorySegment accelerationStructureAt(long index) { return VkAccelerationStructureDeviceAddressInfoKHR.get_accelerationStructure(this.segment(), index); }
         /// Sets `accelerationStructure` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer accelerationStructureAt(long index, @CType("VkAccelerationStructureKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(this.segment(), index, value); return this; }
+        public Buffer accelerationStructureAt(long index, @CType("VkAccelerationStructureKHR") MemorySegment value) { VkAccelerationStructureDeviceAddressInfoKHR.set_accelerationStructure(this.segment(), index, value); return this; }
 
     }
 }

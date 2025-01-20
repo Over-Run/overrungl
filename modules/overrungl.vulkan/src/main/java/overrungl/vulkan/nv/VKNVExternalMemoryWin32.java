@@ -22,22 +22,14 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVExternalMemoryWin32 {
     public static final int VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME = "VK_NV_external_memory_win32";
     public static final int VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV = 1000057000;
     public static final int VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV = 1000057001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetMemoryWin32HandleNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryWin32HandleNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryWin32HandleNV = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryWin32HandleNV);
+        public static final MethodHandle MH_vkGetMemoryWin32HandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryWin32HandleNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryWin32HandleNV = func.invoke(device, "vkGetMemoryWin32HandleNV");

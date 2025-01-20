@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTMetalObjects {
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = 0x00000001;
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = 0x00000002;
@@ -45,15 +44,8 @@ public class VKEXTMetalObjects {
     public static final int VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311010;
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311011;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkExportMetalObjectsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkExportMetalObjectsEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(Descriptors.FD_vkExportMetalObjectsEXT);
+        public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkExportMetalObjectsEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");

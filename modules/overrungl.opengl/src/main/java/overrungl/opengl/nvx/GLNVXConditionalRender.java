@@ -19,25 +19,15 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVXConditionalRender {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginConditionalRenderNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndConditionalRenderNVX = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginConditionalRenderNVX,
-            FD_glEndConditionalRenderNVX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginConditionalRenderNVX = RuntimeHelper.downcall(Descriptors.FD_glBeginConditionalRenderNVX);
-        public static final MethodHandle MH_glEndConditionalRenderNVX = RuntimeHelper.downcall(Descriptors.FD_glEndConditionalRenderNVX);
+        public static final MethodHandle MH_glBeginConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBeginConditionalRenderNVX;
         public final MemorySegment PFN_glEndConditionalRenderNVX;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -31,7 +31,6 @@ class VkDowncall(
     val extends = mutableListOf<String>()
     val fields = mutableListOf<VkDowncallField>()
     val aliasFields = mutableListOf<VkDowncallField>()
-    val descriptorFields = mutableListOf<VkDowncallField>()
     val handleFields = mutableListOf<VkDowncallField>()
     val pfnFields = mutableListOf<VkDowncallField>()
     val addedField = mutableSetOf<String>()
@@ -140,32 +139,27 @@ class VkDowncall(
             val cmd = commandMap[reqCommand]
                 ?: commandMap[(commandAliasMap[reqCommand] ?: error(reqCommand)).find(commandMap::containsKey)]
                 ?: error(reqCommand)
-            descriptorFields.add(
-                VkDowncallField(
-                    "FunctionDescriptor",
-                    "FD_$reqCommand",
-                    buildString {
-                        append("FunctionDescriptor.of")
-                        if (cmd.type.javaName == "void") {
-                            append("Void")
-                        }
-                        append("(")
-                        if (cmd.type.javaName != "void") {
-                            append(cmd.type.layout)
-                            if (cmd.params.isNotEmpty()) {
-                                append(", ")
-                            }
-                        }
-                        append(cmd.params.joinToString(", ") { it.type.layout.toString() })
-                        append(")")
+            val descriptor = buildString {
+                append("FunctionDescriptor.of")
+                if (cmd.type.javaName == "void") {
+                    append("Void")
+                }
+                append("(")
+                if (cmd.type.javaName != "void") {
+                    append(cmd.type.layout)
+                    if (cmd.params.isNotEmpty()) {
+                        append(", ")
                     }
-                )
-            )
+                }
+                append(cmd.params.joinToString(", ") { it.type.layout.toString() })
+                append(")")
+            }
+            downcallDescriptors.add(descriptor)
             handleFields.add(
                 VkDowncallField(
                     "MethodHandle",
                     "MH_${reqCommand}",
-                    "RuntimeHelper.downcall(Descriptors.FD_$reqCommand)"
+                    "RuntimeHelper.downcall($descriptor)"
                 )
             )
             pfnFields.add(
@@ -201,7 +195,6 @@ class VkDowncall(
             """.trimIndent()
         )
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
-        if (descriptorFields.isNotEmpty()) sb.appendLine("import java.util.*;")
         imports.sorted().forEach { sb.appendLine("import $it;") }
         sb.append("public ")
         if (modifier != null) {
@@ -229,21 +222,6 @@ class VkDowncall(
         writeFields(aliasFields, 4)
         if (handleFields.isNotEmpty()) {
             sb.appendLine("    private final Handles handles;")
-            sb.appendLine("    public static final class Descriptors {")
-            writeFields(descriptorFields, 8)
-            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
-            descriptorFields.forEachIndexed { index, it ->
-                sb.append("            ${it.name}")
-                if (index + 1 == descriptorFields.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
-            sb.appendLine("        private Descriptors() {}")
-            sb.appendLine("    }")
-
             sb.appendLine("    public static final class Handles {")
             writeFields(handleFields, 8)
             writeFields(pfnFields, 8)

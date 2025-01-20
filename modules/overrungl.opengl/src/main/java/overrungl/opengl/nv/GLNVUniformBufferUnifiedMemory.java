@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVUniformBufferUnifiedMemory {
     public static final int GL_UNIFORM_BUFFER_UNIFIED_NV = 0x936E;
     public static final int GL_UNIFORM_BUFFER_ADDRESS_NV = 0x936F;

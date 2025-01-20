@@ -22,25 +22,15 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalSemaphoreFd {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME = "VK_KHR_external_semaphore_fd";
     public static final int VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR = 1000079000;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR = 1000079001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkImportSemaphoreFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetSemaphoreFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkImportSemaphoreFdKHR,
-            FD_vkGetSemaphoreFdKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkImportSemaphoreFdKHR = RuntimeHelper.downcall(Descriptors.FD_vkImportSemaphoreFdKHR);
-        public static final MethodHandle MH_vkGetSemaphoreFdKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreFdKHR);
+        public static final MethodHandle MH_vkImportSemaphoreFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSemaphoreFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportSemaphoreFdKHR;
         public final MemorySegment PFN_vkGetSemaphoreFdKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

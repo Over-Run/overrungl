@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### dstSet
-/// [VarHandle][#VH_dstSet] - [Getter][#dstSet()] - [Setter][#dstSet(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_dstSet] - [Getter][#dstSet()] - [Setter][#dstSet(MemorySegment)]
 /// ### dstBinding
 /// [VarHandle][#VH_dstBinding] - [Getter][#dstBinding()] - [Setter][#dstBinding(int)]
 /// ### dstArrayElement
@@ -40,11 +40,11 @@ import overrungl.util.*;
 /// ### descriptorType
 /// [VarHandle][#VH_descriptorType] - [Getter][#descriptorType()] - [Setter][#descriptorType(int)]
 /// ### pImageInfo
-/// [VarHandle][#VH_pImageInfo] - [Getter][#pImageInfo()] - [Setter][#pImageInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pImageInfo] - [Getter][#pImageInfo()] - [Setter][#pImageInfo(MemorySegment)]
 /// ### pBufferInfo
-/// [VarHandle][#VH_pBufferInfo] - [Getter][#pBufferInfo()] - [Setter][#pBufferInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pBufferInfo] - [Getter][#pBufferInfo()] - [Setter][#pBufferInfo(MemorySegment)]
 /// ### pTexelBufferView
-/// [VarHandle][#VH_pTexelBufferView] - [Getter][#pTexelBufferView()] - [Setter][#pTexelBufferView(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pTexelBufferView] - [Getter][#pTexelBufferView()] - [Setter][#pTexelBufferView(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -77,9 +77,9 @@ public sealed class VkWriteDescriptorSet extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `dstSet` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `dstSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSet"));
     /// The [VarHandle] of `dstBinding` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_dstBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstBinding"));
@@ -89,11 +89,11 @@ public sealed class VkWriteDescriptorSet extends Struct {
     public static final VarHandle VH_descriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorCount"));
     /// The [VarHandle] of `descriptorType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_descriptorType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorType"));
-    /// The [VarHandle] of `pImageInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pImageInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pImageInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageInfo"));
-    /// The [VarHandle] of `pBufferInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pBufferInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pBufferInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBufferInfo"));
-    /// The [VarHandle] of `pTexelBufferView` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pTexelBufferView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTexelBufferView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTexelBufferView"));
 
     /// Creates `VkWriteDescriptorSet` with the given segment.
@@ -139,7 +139,7 @@ public sealed class VkWriteDescriptorSet extends Struct {
     /// Allocates a `VkWriteDescriptorSet` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkWriteDescriptorSet`
-    public static VkWriteDescriptorSet allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSet, @CType("uint32_t") int dstBinding, @CType("uint32_t") int dstArrayElement, @CType("uint32_t") int descriptorCount, @CType("VkDescriptorType") int descriptorType, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pImageInfo, @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment pBufferInfo, @CType("const VkBufferView *") java.lang.foreign.MemorySegment pTexelBufferView) { return alloc(allocator).sType(sType).pNext(pNext).dstSet(dstSet).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType).pImageInfo(pImageInfo).pBufferInfo(pBufferInfo).pTexelBufferView(pTexelBufferView); }
+    public static VkWriteDescriptorSet allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDescriptorSet") MemorySegment dstSet, @CType("uint32_t") int dstBinding, @CType("uint32_t") int dstArrayElement, @CType("uint32_t") int descriptorCount, @CType("VkDescriptorType") int descriptorType, @CType("const VkDescriptorImageInfo *") MemorySegment pImageInfo, @CType("const VkDescriptorBufferInfo *") MemorySegment pBufferInfo, @CType("const VkBufferView *") MemorySegment pTexelBufferView) { return alloc(allocator).sType(sType).pNext(pNext).dstSet(dstSet).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType).pImageInfo(pImageInfo).pBufferInfo(pBufferInfo).pTexelBufferView(pTexelBufferView); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -176,48 +176,48 @@ public sealed class VkWriteDescriptorSet extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkWriteDescriptorSet.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkWriteDescriptorSet.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkWriteDescriptorSet.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkWriteDescriptorSet.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkWriteDescriptorSet.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSet pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pNext(this.segment(), value); return this; }
+    public VkWriteDescriptorSet pNext(@CType("const void *") MemorySegment value) { VkWriteDescriptorSet.set_pNext(this.segment(), value); return this; }
 
     /// {@return `dstSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_dstSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_dstSet.get(segment, 0L, index); }
+    public static @CType("VkDescriptorSet") MemorySegment get_dstSet(MemorySegment segment, long index) { return (MemorySegment) VH_dstSet.get(segment, 0L, index); }
     /// {@return `dstSet`}
     /// @param segment the segment of the struct
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_dstSet(MemorySegment segment) { return VkWriteDescriptorSet.get_dstSet(segment, 0L); }
+    public static @CType("VkDescriptorSet") MemorySegment get_dstSet(MemorySegment segment) { return VkWriteDescriptorSet.get_dstSet(segment, 0L); }
     /// {@return `dstSet`}
-    public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSet() { return VkWriteDescriptorSet.get_dstSet(this.segment()); }
+    public @CType("VkDescriptorSet") MemorySegment dstSet() { return VkWriteDescriptorSet.get_dstSet(this.segment()); }
     /// Sets `dstSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_dstSet(MemorySegment segment, long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VH_dstSet.set(segment, 0L, index, value); }
+    public static void set_dstSet(MemorySegment segment, long index, @CType("VkDescriptorSet") MemorySegment value) { VH_dstSet.set(segment, 0L, index, value); }
     /// Sets `dstSet` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_dstSet(MemorySegment segment, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_dstSet(segment, 0L, value); }
+    public static void set_dstSet(MemorySegment segment, @CType("VkDescriptorSet") MemorySegment value) { VkWriteDescriptorSet.set_dstSet(segment, 0L, value); }
     /// Sets `dstSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSet dstSet(@CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_dstSet(this.segment(), value); return this; }
+    public VkWriteDescriptorSet dstSet(@CType("VkDescriptorSet") MemorySegment value) { VkWriteDescriptorSet.set_dstSet(this.segment(), value); return this; }
 
     /// {@return `dstBinding` at the given index}
     /// @param segment the segment of the struct
@@ -314,71 +314,71 @@ public sealed class VkWriteDescriptorSet extends Struct {
     /// {@return `pImageInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pImageInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pImageInfo.get(segment, 0L, index); }
+    public static @CType("const VkDescriptorImageInfo *") MemorySegment get_pImageInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pImageInfo.get(segment, 0L, index); }
     /// {@return `pImageInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pImageInfo(MemorySegment segment) { return VkWriteDescriptorSet.get_pImageInfo(segment, 0L); }
+    public static @CType("const VkDescriptorImageInfo *") MemorySegment get_pImageInfo(MemorySegment segment) { return VkWriteDescriptorSet.get_pImageInfo(segment, 0L); }
     /// {@return `pImageInfo`}
-    public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pImageInfo() { return VkWriteDescriptorSet.get_pImageInfo(this.segment()); }
+    public @CType("const VkDescriptorImageInfo *") MemorySegment pImageInfo() { return VkWriteDescriptorSet.get_pImageInfo(this.segment()); }
     /// Sets `pImageInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pImageInfo(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VH_pImageInfo.set(segment, 0L, index, value); }
+    public static void set_pImageInfo(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") MemorySegment value) { VH_pImageInfo.set(segment, 0L, index, value); }
     /// Sets `pImageInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pImageInfo(MemorySegment segment, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(segment, 0L, value); }
+    public static void set_pImageInfo(MemorySegment segment, @CType("const VkDescriptorImageInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(segment, 0L, value); }
     /// Sets `pImageInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSet pImageInfo(@CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(this.segment(), value); return this; }
+    public VkWriteDescriptorSet pImageInfo(@CType("const VkDescriptorImageInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(this.segment(), value); return this; }
 
     /// {@return `pBufferInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment get_pBufferInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pBufferInfo.get(segment, 0L, index); }
+    public static @CType("const VkDescriptorBufferInfo *") MemorySegment get_pBufferInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pBufferInfo.get(segment, 0L, index); }
     /// {@return `pBufferInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment get_pBufferInfo(MemorySegment segment) { return VkWriteDescriptorSet.get_pBufferInfo(segment, 0L); }
+    public static @CType("const VkDescriptorBufferInfo *") MemorySegment get_pBufferInfo(MemorySegment segment) { return VkWriteDescriptorSet.get_pBufferInfo(segment, 0L); }
     /// {@return `pBufferInfo`}
-    public @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment pBufferInfo() { return VkWriteDescriptorSet.get_pBufferInfo(this.segment()); }
+    public @CType("const VkDescriptorBufferInfo *") MemorySegment pBufferInfo() { return VkWriteDescriptorSet.get_pBufferInfo(this.segment()); }
     /// Sets `pBufferInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pBufferInfo(MemorySegment segment, long index, @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment value) { VH_pBufferInfo.set(segment, 0L, index, value); }
+    public static void set_pBufferInfo(MemorySegment segment, long index, @CType("const VkDescriptorBufferInfo *") MemorySegment value) { VH_pBufferInfo.set(segment, 0L, index, value); }
     /// Sets `pBufferInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pBufferInfo(MemorySegment segment, @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(segment, 0L, value); }
+    public static void set_pBufferInfo(MemorySegment segment, @CType("const VkDescriptorBufferInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(segment, 0L, value); }
     /// Sets `pBufferInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSet pBufferInfo(@CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(this.segment(), value); return this; }
+    public VkWriteDescriptorSet pBufferInfo(@CType("const VkDescriptorBufferInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(this.segment(), value); return this; }
 
     /// {@return `pTexelBufferView` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkBufferView *") java.lang.foreign.MemorySegment get_pTexelBufferView(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTexelBufferView.get(segment, 0L, index); }
+    public static @CType("const VkBufferView *") MemorySegment get_pTexelBufferView(MemorySegment segment, long index) { return (MemorySegment) VH_pTexelBufferView.get(segment, 0L, index); }
     /// {@return `pTexelBufferView`}
     /// @param segment the segment of the struct
-    public static @CType("const VkBufferView *") java.lang.foreign.MemorySegment get_pTexelBufferView(MemorySegment segment) { return VkWriteDescriptorSet.get_pTexelBufferView(segment, 0L); }
+    public static @CType("const VkBufferView *") MemorySegment get_pTexelBufferView(MemorySegment segment) { return VkWriteDescriptorSet.get_pTexelBufferView(segment, 0L); }
     /// {@return `pTexelBufferView`}
-    public @CType("const VkBufferView *") java.lang.foreign.MemorySegment pTexelBufferView() { return VkWriteDescriptorSet.get_pTexelBufferView(this.segment()); }
+    public @CType("const VkBufferView *") MemorySegment pTexelBufferView() { return VkWriteDescriptorSet.get_pTexelBufferView(this.segment()); }
     /// Sets `pTexelBufferView` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pTexelBufferView(MemorySegment segment, long index, @CType("const VkBufferView *") java.lang.foreign.MemorySegment value) { VH_pTexelBufferView.set(segment, 0L, index, value); }
+    public static void set_pTexelBufferView(MemorySegment segment, long index, @CType("const VkBufferView *") MemorySegment value) { VH_pTexelBufferView.set(segment, 0L, index, value); }
     /// Sets `pTexelBufferView` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pTexelBufferView(MemorySegment segment, @CType("const VkBufferView *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(segment, 0L, value); }
+    public static void set_pTexelBufferView(MemorySegment segment, @CType("const VkBufferView *") MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(segment, 0L, value); }
     /// Sets `pTexelBufferView` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSet pTexelBufferView(@CType("const VkBufferView *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(this.segment(), value); return this; }
+    public VkWriteDescriptorSet pTexelBufferView(@CType("const VkBufferView *") MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(this.segment(), value); return this; }
 
     /// A buffer of [VkWriteDescriptorSet].
     public static final class Buffer extends VkWriteDescriptorSet {
@@ -413,21 +413,21 @@ public sealed class VkWriteDescriptorSet extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkWriteDescriptorSet.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkWriteDescriptorSet.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkWriteDescriptorSet.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `dstSet` at the given index}
         /// @param index the index
-        public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSetAt(long index) { return VkWriteDescriptorSet.get_dstSet(this.segment(), index); }
+        public @CType("VkDescriptorSet") MemorySegment dstSetAt(long index) { return VkWriteDescriptorSet.get_dstSet(this.segment(), index); }
         /// Sets `dstSet` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer dstSetAt(long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_dstSet(this.segment(), index, value); return this; }
+        public Buffer dstSetAt(long index, @CType("VkDescriptorSet") MemorySegment value) { VkWriteDescriptorSet.set_dstSet(this.segment(), index, value); return this; }
 
         /// {@return `dstBinding` at the given index}
         /// @param index the index
@@ -467,30 +467,30 @@ public sealed class VkWriteDescriptorSet extends Struct {
 
         /// {@return `pImageInfo` at the given index}
         /// @param index the index
-        public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pImageInfoAt(long index) { return VkWriteDescriptorSet.get_pImageInfo(this.segment(), index); }
+        public @CType("const VkDescriptorImageInfo *") MemorySegment pImageInfoAt(long index) { return VkWriteDescriptorSet.get_pImageInfo(this.segment(), index); }
         /// Sets `pImageInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pImageInfoAt(long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(this.segment(), index, value); return this; }
+        public Buffer pImageInfoAt(long index, @CType("const VkDescriptorImageInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pImageInfo(this.segment(), index, value); return this; }
 
         /// {@return `pBufferInfo` at the given index}
         /// @param index the index
-        public @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment pBufferInfoAt(long index) { return VkWriteDescriptorSet.get_pBufferInfo(this.segment(), index); }
+        public @CType("const VkDescriptorBufferInfo *") MemorySegment pBufferInfoAt(long index) { return VkWriteDescriptorSet.get_pBufferInfo(this.segment(), index); }
         /// Sets `pBufferInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pBufferInfoAt(long index, @CType("const VkDescriptorBufferInfo *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(this.segment(), index, value); return this; }
+        public Buffer pBufferInfoAt(long index, @CType("const VkDescriptorBufferInfo *") MemorySegment value) { VkWriteDescriptorSet.set_pBufferInfo(this.segment(), index, value); return this; }
 
         /// {@return `pTexelBufferView` at the given index}
         /// @param index the index
-        public @CType("const VkBufferView *") java.lang.foreign.MemorySegment pTexelBufferViewAt(long index) { return VkWriteDescriptorSet.get_pTexelBufferView(this.segment(), index); }
+        public @CType("const VkBufferView *") MemorySegment pTexelBufferViewAt(long index) { return VkWriteDescriptorSet.get_pTexelBufferView(this.segment(), index); }
         /// Sets `pTexelBufferView` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pTexelBufferViewAt(long index, @CType("const VkBufferView *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(this.segment(), index, value); return this; }
+        public Buffer pTexelBufferViewAt(long index, @CType("const VkBufferView *") MemorySegment value) { VkWriteDescriptorSet.set_pTexelBufferView(this.segment(), index, value); return this; }
 
     }
 }

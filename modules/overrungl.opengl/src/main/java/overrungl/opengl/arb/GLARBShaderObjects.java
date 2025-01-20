@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -60,129 +59,46 @@ public final class GLARBShaderObjects {
     public static final int GL_OBJECT_ACTIVE_UNIFORM_MAX_LENGTH_ARB = 0x8B87;
     public static final int GL_OBJECT_SHADER_SOURCE_LENGTH_ARB = 0x8B88;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDeleteObjectARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetHandleARB = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDetachObjectARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreateShaderObjectARB = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glShaderSourceARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCompileShaderARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreateProgramObjectARB = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glAttachObjectARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLinkProgramARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUseProgramObjectARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glValidateProgramARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUniform1fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glUniform2fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glUniform3fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glUniform4fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glUniform1iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUniform2iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUniform3iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUniform4iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUniform1fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform2fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform3fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform4fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform1ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform2ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform3ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniform4ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix2fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix3fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix4fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetObjectParameterfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetObjectParameterivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetInfoLogARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetAttachedObjectsARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUniformLocationARB = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetActiveUniformARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUniformfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUniformivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetShaderSourceARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDeleteObjectARB,
-            FD_glGetHandleARB,
-            FD_glDetachObjectARB,
-            FD_glCreateShaderObjectARB,
-            FD_glShaderSourceARB,
-            FD_glCompileShaderARB,
-            FD_glCreateProgramObjectARB,
-            FD_glAttachObjectARB,
-            FD_glLinkProgramARB,
-            FD_glUseProgramObjectARB,
-            FD_glValidateProgramARB,
-            FD_glUniform1fARB,
-            FD_glUniform2fARB,
-            FD_glUniform3fARB,
-            FD_glUniform4fARB,
-            FD_glUniform1iARB,
-            FD_glUniform2iARB,
-            FD_glUniform3iARB,
-            FD_glUniform4iARB,
-            FD_glUniform1fvARB,
-            FD_glUniform2fvARB,
-            FD_glUniform3fvARB,
-            FD_glUniform4fvARB,
-            FD_glUniform1ivARB,
-            FD_glUniform2ivARB,
-            FD_glUniform3ivARB,
-            FD_glUniform4ivARB,
-            FD_glUniformMatrix2fvARB,
-            FD_glUniformMatrix3fvARB,
-            FD_glUniformMatrix4fvARB,
-            FD_glGetObjectParameterfvARB,
-            FD_glGetObjectParameterivARB,
-            FD_glGetInfoLogARB,
-            FD_glGetAttachedObjectsARB,
-            FD_glGetUniformLocationARB,
-            FD_glGetActiveUniformARB,
-            FD_glGetUniformfvARB,
-            FD_glGetUniformivARB,
-            FD_glGetShaderSourceARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDeleteObjectARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteObjectARB);
-        public static final MethodHandle MH_glGetHandleARB = RuntimeHelper.downcall(Descriptors.FD_glGetHandleARB);
-        public static final MethodHandle MH_glDetachObjectARB = RuntimeHelper.downcall(Descriptors.FD_glDetachObjectARB);
-        public static final MethodHandle MH_glCreateShaderObjectARB = RuntimeHelper.downcall(Descriptors.FD_glCreateShaderObjectARB);
-        public static final MethodHandle MH_glShaderSourceARB = RuntimeHelper.downcall(Descriptors.FD_glShaderSourceARB);
-        public static final MethodHandle MH_glCompileShaderARB = RuntimeHelper.downcall(Descriptors.FD_glCompileShaderARB);
-        public static final MethodHandle MH_glCreateProgramObjectARB = RuntimeHelper.downcall(Descriptors.FD_glCreateProgramObjectARB);
-        public static final MethodHandle MH_glAttachObjectARB = RuntimeHelper.downcall(Descriptors.FD_glAttachObjectARB);
-        public static final MethodHandle MH_glLinkProgramARB = RuntimeHelper.downcall(Descriptors.FD_glLinkProgramARB);
-        public static final MethodHandle MH_glUseProgramObjectARB = RuntimeHelper.downcall(Descriptors.FD_glUseProgramObjectARB);
-        public static final MethodHandle MH_glValidateProgramARB = RuntimeHelper.downcall(Descriptors.FD_glValidateProgramARB);
-        public static final MethodHandle MH_glUniform1fARB = RuntimeHelper.downcall(Descriptors.FD_glUniform1fARB);
-        public static final MethodHandle MH_glUniform2fARB = RuntimeHelper.downcall(Descriptors.FD_glUniform2fARB);
-        public static final MethodHandle MH_glUniform3fARB = RuntimeHelper.downcall(Descriptors.FD_glUniform3fARB);
-        public static final MethodHandle MH_glUniform4fARB = RuntimeHelper.downcall(Descriptors.FD_glUniform4fARB);
-        public static final MethodHandle MH_glUniform1iARB = RuntimeHelper.downcall(Descriptors.FD_glUniform1iARB);
-        public static final MethodHandle MH_glUniform2iARB = RuntimeHelper.downcall(Descriptors.FD_glUniform2iARB);
-        public static final MethodHandle MH_glUniform3iARB = RuntimeHelper.downcall(Descriptors.FD_glUniform3iARB);
-        public static final MethodHandle MH_glUniform4iARB = RuntimeHelper.downcall(Descriptors.FD_glUniform4iARB);
-        public static final MethodHandle MH_glUniform1fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniform1fvARB);
-        public static final MethodHandle MH_glUniform2fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniform2fvARB);
-        public static final MethodHandle MH_glUniform3fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniform3fvARB);
-        public static final MethodHandle MH_glUniform4fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniform4fvARB);
-        public static final MethodHandle MH_glUniform1ivARB = RuntimeHelper.downcall(Descriptors.FD_glUniform1ivARB);
-        public static final MethodHandle MH_glUniform2ivARB = RuntimeHelper.downcall(Descriptors.FD_glUniform2ivARB);
-        public static final MethodHandle MH_glUniform3ivARB = RuntimeHelper.downcall(Descriptors.FD_glUniform3ivARB);
-        public static final MethodHandle MH_glUniform4ivARB = RuntimeHelper.downcall(Descriptors.FD_glUniform4ivARB);
-        public static final MethodHandle MH_glUniformMatrix2fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2fvARB);
-        public static final MethodHandle MH_glUniformMatrix3fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix3fvARB);
-        public static final MethodHandle MH_glUniformMatrix4fvARB = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix4fvARB);
-        public static final MethodHandle MH_glGetObjectParameterfvARB = RuntimeHelper.downcall(Descriptors.FD_glGetObjectParameterfvARB);
-        public static final MethodHandle MH_glGetObjectParameterivARB = RuntimeHelper.downcall(Descriptors.FD_glGetObjectParameterivARB);
-        public static final MethodHandle MH_glGetInfoLogARB = RuntimeHelper.downcall(Descriptors.FD_glGetInfoLogARB);
-        public static final MethodHandle MH_glGetAttachedObjectsARB = RuntimeHelper.downcall(Descriptors.FD_glGetAttachedObjectsARB);
-        public static final MethodHandle MH_glGetUniformLocationARB = RuntimeHelper.downcall(Descriptors.FD_glGetUniformLocationARB);
-        public static final MethodHandle MH_glGetActiveUniformARB = RuntimeHelper.downcall(Descriptors.FD_glGetActiveUniformARB);
-        public static final MethodHandle MH_glGetUniformfvARB = RuntimeHelper.downcall(Descriptors.FD_glGetUniformfvARB);
-        public static final MethodHandle MH_glGetUniformivARB = RuntimeHelper.downcall(Descriptors.FD_glGetUniformivARB);
-        public static final MethodHandle MH_glGetShaderSourceARB = RuntimeHelper.downcall(Descriptors.FD_glGetShaderSourceARB);
+        public static final MethodHandle MH_glDeleteObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDetachObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateShaderObjectARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glShaderSourceARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCompileShaderARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateProgramObjectARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glAttachObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLinkProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUseProgramObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glValidateProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform1fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform1iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform2iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform3iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform4iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform1fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform1ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform2ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform3ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform4ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetObjectParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetObjectParameterivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetInfoLogARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetAttachedObjectsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformLocationARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetActiveUniformARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetShaderSourceARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDeleteObjectARB;
         public final MemorySegment PFN_glGetHandleARB;
         public final MemorySegment PFN_glDetachObjectARB;
@@ -293,7 +209,7 @@ public final class GLARBShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glCreateShaderObjectARB", e); }
     }
 
-    public void ShaderSourceARB(@CType("GLhandleARB") int shaderObj, @CType("GLsizei") int count, @CType("const GLcharARB **") java.lang.foreign.MemorySegment string, @CType("const GLint *") java.lang.foreign.MemorySegment length) {
+    public void ShaderSourceARB(@CType("GLhandleARB") int shaderObj, @CType("GLsizei") int count, @CType("const GLcharARB **") MemorySegment string, @CType("const GLint *") MemorySegment length) {
         if (Unmarshal.isNullPointer(handles.PFN_glShaderSourceARB)) throw new SymbolNotFoundError("Symbol not found: glShaderSourceARB");
         try { Handles.MH_glShaderSourceARB.invokeExact(handles.PFN_glShaderSourceARB, shaderObj, count, string, length); }
         catch (Throwable e) { throw new RuntimeException("error in glShaderSourceARB", e); }
@@ -383,121 +299,121 @@ public final class GLARBShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glUniform4iARB", e); }
     }
 
-    public void Uniform1fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void Uniform1fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform1fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1fvARB");
         try { Handles.MH_glUniform1fvARB.invokeExact(handles.PFN_glUniform1fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform1fvARB", e); }
     }
 
-    public void Uniform2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void Uniform2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform2fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2fvARB");
         try { Handles.MH_glUniform2fvARB.invokeExact(handles.PFN_glUniform2fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform2fvARB", e); }
     }
 
-    public void Uniform3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void Uniform3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform3fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3fvARB");
         try { Handles.MH_glUniform3fvARB.invokeExact(handles.PFN_glUniform3fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform3fvARB", e); }
     }
 
-    public void Uniform4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void Uniform4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform4fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4fvARB");
         try { Handles.MH_glUniform4fvARB.invokeExact(handles.PFN_glUniform4fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform4fvARB", e); }
     }
 
-    public void Uniform1ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void Uniform1ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform1ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1ivARB");
         try { Handles.MH_glUniform1ivARB.invokeExact(handles.PFN_glUniform1ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform1ivARB", e); }
     }
 
-    public void Uniform2ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void Uniform2ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform2ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2ivARB");
         try { Handles.MH_glUniform2ivARB.invokeExact(handles.PFN_glUniform2ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform2ivARB", e); }
     }
 
-    public void Uniform3ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void Uniform3ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform3ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3ivARB");
         try { Handles.MH_glUniform3ivARB.invokeExact(handles.PFN_glUniform3ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform3ivARB", e); }
     }
 
-    public void Uniform4ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void Uniform4ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniform4ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4ivARB");
         try { Handles.MH_glUniform4ivARB.invokeExact(handles.PFN_glUniform4ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniform4ivARB", e); }
     }
 
-    public void UniformMatrix2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix2fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2fvARB");
         try { Handles.MH_glUniformMatrix2fvARB.invokeExact(handles.PFN_glUniformMatrix2fvARB, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2fvARB", e); }
     }
 
-    public void UniformMatrix3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix3fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3fvARB");
         try { Handles.MH_glUniformMatrix3fvARB.invokeExact(handles.PFN_glUniformMatrix3fvARB, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3fvARB", e); }
     }
 
-    public void UniformMatrix4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix4fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4fvARB");
         try { Handles.MH_glUniformMatrix4fvARB.invokeExact(handles.PFN_glUniformMatrix4fvARB, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4fvARB", e); }
     }
 
-    public void GetObjectParameterfvARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetObjectParameterfvARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetObjectParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterfvARB");
         try { Handles.MH_glGetObjectParameterfvARB.invokeExact(handles.PFN_glGetObjectParameterfvARB, obj, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterfvARB", e); }
     }
 
-    public void GetObjectParameterivARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetObjectParameterivARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetObjectParameterivARB)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivARB");
         try { Handles.MH_glGetObjectParameterivARB.invokeExact(handles.PFN_glGetObjectParameterivARB, obj, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivARB", e); }
     }
 
-    public void GetInfoLogARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLcharARB *") java.lang.foreign.MemorySegment infoLog) {
+    public void GetInfoLogARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") MemorySegment length, @CType("GLcharARB *") MemorySegment infoLog) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetInfoLogARB)) throw new SymbolNotFoundError("Symbol not found: glGetInfoLogARB");
         try { Handles.MH_glGetInfoLogARB.invokeExact(handles.PFN_glGetInfoLogARB, obj, maxLength, length, infoLog); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInfoLogARB", e); }
     }
 
-    public void GetAttachedObjectsARB(@CType("GLhandleARB") int containerObj, @CType("GLsizei") int maxCount, @CType("GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLhandleARB *") java.lang.foreign.MemorySegment obj) {
+    public void GetAttachedObjectsARB(@CType("GLhandleARB") int containerObj, @CType("GLsizei") int maxCount, @CType("GLsizei *") MemorySegment count, @CType("GLhandleARB *") MemorySegment obj) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetAttachedObjectsARB)) throw new SymbolNotFoundError("Symbol not found: glGetAttachedObjectsARB");
         try { Handles.MH_glGetAttachedObjectsARB.invokeExact(handles.PFN_glGetAttachedObjectsARB, containerObj, maxCount, count, obj); }
         catch (Throwable e) { throw new RuntimeException("error in glGetAttachedObjectsARB", e); }
     }
 
-    public @CType("GLint") int GetUniformLocationARB(@CType("GLhandleARB") int programObj, @CType("const GLcharARB *") java.lang.foreign.MemorySegment name) {
+    public @CType("GLint") int GetUniformLocationARB(@CType("GLhandleARB") int programObj, @CType("const GLcharARB *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUniformLocationARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformLocationARB");
         try { return (int) Handles.MH_glGetUniformLocationARB.invokeExact(handles.PFN_glGetUniformLocationARB, programObj, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUniformLocationARB", e); }
     }
 
-    public void GetActiveUniformARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment size, @CType("GLenum *") java.lang.foreign.MemorySegment type, @CType("GLcharARB *") java.lang.foreign.MemorySegment name) {
+    public void GetActiveUniformARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("GLsizei") int maxLength, @CType("GLsizei *") MemorySegment length, @CType("GLint *") MemorySegment size, @CType("GLenum *") MemorySegment type, @CType("GLcharARB *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetActiveUniformARB)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformARB");
         try { Handles.MH_glGetActiveUniformARB.invokeExact(handles.PFN_glGetActiveUniformARB, programObj, index, maxLength, length, size, type, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetActiveUniformARB", e); }
     }
 
-    public void GetUniformfvARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetUniformfvARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUniformfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformfvARB");
         try { Handles.MH_glGetUniformfvARB.invokeExact(handles.PFN_glGetUniformfvARB, programObj, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUniformfvARB", e); }
     }
 
-    public void GetUniformivARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetUniformivARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUniformivARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformivARB");
         try { Handles.MH_glGetUniformivARB.invokeExact(handles.PFN_glGetUniformivARB, programObj, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUniformivARB", e); }
     }
 
-    public void GetShaderSourceARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLcharARB *") java.lang.foreign.MemorySegment source) {
+    public void GetShaderSourceARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") MemorySegment length, @CType("GLcharARB *") MemorySegment source) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetShaderSourceARB)) throw new SymbolNotFoundError("Symbol not found: glGetShaderSourceARB");
         try { Handles.MH_glGetShaderSourceARB.invokeExact(handles.PFN_glGetShaderSourceARB, obj, maxLength, length, source); }
         catch (Throwable e) { throw new RuntimeException("error in glGetShaderSourceARB", e); }

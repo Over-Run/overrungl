@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### transform
-/// [Byte offset][#OFFSET_transform] - [Memory layout][#ML_transform] - [Getter][#transform()] - [Setter][#transform(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_transform] - [Memory layout][#ML_transform] - [Getter][#transform()] - [Setter][#transform(MemorySegment)]
 /// ### instanceCustomIndex
 /// [VarHandle][#VH_instanceCustomIndex] - [Getter][#instanceCustomIndex()] - [Setter][#instanceCustomIndex(int)]
 /// ### mask
@@ -117,7 +117,7 @@ public sealed class VkAccelerationStructureInstanceKHR extends Struct {
     /// Allocates a `VkAccelerationStructureInstanceKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureInstanceKHR`
-    public static VkAccelerationStructureInstanceKHR allocInit(SegmentAllocator allocator, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transform, @CType("uint32_t") int instanceCustomIndex, @CType("uint32_t") int mask, @CType("uint32_t") int instanceShaderBindingTableRecordOffset, @CType("VkGeometryInstanceFlagsKHR") int flags, @CType("uint64_t") long accelerationStructureReference) { return alloc(allocator).transform(transform).instanceCustomIndex(instanceCustomIndex).mask(mask).instanceShaderBindingTableRecordOffset(instanceShaderBindingTableRecordOffset).flags(flags).accelerationStructureReference(accelerationStructureReference); }
+    public static VkAccelerationStructureInstanceKHR allocInit(SegmentAllocator allocator, @CType("VkTransformMatrixKHR") MemorySegment transform, @CType("uint32_t") int instanceCustomIndex, @CType("uint32_t") int mask, @CType("uint32_t") int instanceShaderBindingTableRecordOffset, @CType("VkGeometryInstanceFlagsKHR") int flags, @CType("uint64_t") long accelerationStructureReference) { return alloc(allocator).transform(transform).instanceCustomIndex(instanceCustomIndex).mask(mask).instanceShaderBindingTableRecordOffset(instanceShaderBindingTableRecordOffset).flags(flags).accelerationStructureReference(accelerationStructureReference); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -131,25 +131,25 @@ public sealed class VkAccelerationStructureInstanceKHR extends Struct {
     /// {@return `transform` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment get_transform(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_transform, index), ML_transform); }
+    public static @CType("VkTransformMatrixKHR") MemorySegment get_transform(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_transform, index), ML_transform); }
     /// {@return `transform`}
     /// @param segment the segment of the struct
-    public static @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment get_transform(MemorySegment segment) { return VkAccelerationStructureInstanceKHR.get_transform(segment, 0L); }
+    public static @CType("VkTransformMatrixKHR") MemorySegment get_transform(MemorySegment segment) { return VkAccelerationStructureInstanceKHR.get_transform(segment, 0L); }
     /// {@return `transform`}
-    public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transform() { return VkAccelerationStructureInstanceKHR.get_transform(this.segment()); }
+    public @CType("VkTransformMatrixKHR") MemorySegment transform() { return VkAccelerationStructureInstanceKHR.get_transform(this.segment()); }
     /// Sets `transform` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_transform(MemorySegment segment, long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_transform, index), ML_transform.byteSize()); }
+    public static void set_transform(MemorySegment segment, long index, @CType("VkTransformMatrixKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_transform, index), ML_transform.byteSize()); }
     /// Sets `transform` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_transform(MemorySegment segment, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(segment, 0L, value); }
+    public static void set_transform(MemorySegment segment, @CType("VkTransformMatrixKHR") MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(segment, 0L, value); }
     /// Sets `transform` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInstanceKHR transform(@CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(this.segment(), value); return this; }
+    public VkAccelerationStructureInstanceKHR transform(@CType("VkTransformMatrixKHR") MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(this.segment(), value); return this; }
 
     /// {@return `instanceCustomIndex` at the given index}
     /// @param segment the segment of the struct
@@ -290,12 +290,12 @@ public sealed class VkAccelerationStructureInstanceKHR extends Struct {
 
         /// {@return `transform` at the given index}
         /// @param index the index
-        public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformAt(long index) { return VkAccelerationStructureInstanceKHR.get_transform(this.segment(), index); }
+        public @CType("VkTransformMatrixKHR") MemorySegment transformAt(long index) { return VkAccelerationStructureInstanceKHR.get_transform(this.segment(), index); }
         /// Sets `transform` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer transformAt(long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(this.segment(), index, value); return this; }
+        public Buffer transformAt(long index, @CType("VkTransformMatrixKHR") MemorySegment value) { VkAccelerationStructureInstanceKHR.set_transform(this.segment(), index, value); return this; }
 
         /// {@return `instanceCustomIndex` at the given index}
         /// @param index the index

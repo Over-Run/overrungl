@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRGetMemoryRequirements2 {
     public static final int VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION = 1;
@@ -33,21 +32,10 @@ public class VKKHRGetMemoryRequirements2 {
     public static final int VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2_KHR = VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2;
     public static final int VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR = VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetImageMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetBufferMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageSparseMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetImageMemoryRequirements2KHR,
-            FD_vkGetBufferMemoryRequirements2KHR,
-            FD_vkGetImageSparseMemoryRequirements2KHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageMemoryRequirements2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetImageMemoryRequirements2KHR);
-        public static final MethodHandle MH_vkGetBufferMemoryRequirements2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferMemoryRequirements2KHR);
-        public static final MethodHandle MH_vkGetImageSparseMemoryRequirements2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetImageSparseMemoryRequirements2KHR);
+        public static final MethodHandle MH_vkGetImageMemoryRequirements2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferMemoryRequirements2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSparseMemoryRequirements2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetImageMemoryRequirements2KHR;
         public final MemorySegment PFN_vkGetBufferMemoryRequirements2KHR;
         public final MemorySegment PFN_vkGetImageSparseMemoryRequirements2KHR;

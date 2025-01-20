@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVBlendMinmaxFactor {
     public static final int GL_FACTOR_MIN_AMD = 0x901C;
     public static final int GL_FACTOR_MAX_AMD = 0x901D;

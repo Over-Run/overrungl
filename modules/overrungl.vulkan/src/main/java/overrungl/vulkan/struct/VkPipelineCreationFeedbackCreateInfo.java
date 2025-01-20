@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pPipelineCreationFeedback
-/// [VarHandle][#VH_pPipelineCreationFeedback] - [Getter][#pPipelineCreationFeedback()] - [Setter][#pPipelineCreationFeedback(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPipelineCreationFeedback] - [Getter][#pPipelineCreationFeedback()] - [Setter][#pPipelineCreationFeedback(MemorySegment)]
 /// ### pipelineStageCreationFeedbackCount
 /// [VarHandle][#VH_pipelineStageCreationFeedbackCount] - [Getter][#pipelineStageCreationFeedbackCount()] - [Setter][#pipelineStageCreationFeedbackCount(int)]
 /// ### pPipelineStageCreationFeedbacks
-/// [VarHandle][#VH_pPipelineStageCreationFeedbacks] - [Getter][#pPipelineStageCreationFeedbacks()] - [Setter][#pPipelineStageCreationFeedbacks(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPipelineStageCreationFeedbacks] - [Getter][#pPipelineStageCreationFeedbacks()] - [Setter][#pPipelineStageCreationFeedbacks(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pPipelineCreationFeedback` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPipelineCreationFeedback` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelineCreationFeedback = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCreationFeedback"));
     /// The [VarHandle] of `pipelineStageCreationFeedbackCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_pipelineStageCreationFeedbackCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineStageCreationFeedbackCount"));
-    /// The [VarHandle] of `pPipelineStageCreationFeedbacks` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPipelineStageCreationFeedbacks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelineStageCreationFeedbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineStageCreationFeedbacks"));
 
     /// Creates `VkPipelineCreationFeedbackCreateInfo` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
     /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineCreationFeedback, @CType("uint32_t") int pipelineStageCreationFeedbackCount, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineStageCreationFeedbacks) { return alloc(allocator).sType(sType).pNext(pNext).pPipelineCreationFeedback(pPipelineCreationFeedback).pipelineStageCreationFeedbackCount(pipelineStageCreationFeedbackCount).pPipelineStageCreationFeedbacks(pPipelineStageCreationFeedbacks); }
+    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineCreationFeedback, @CType("uint32_t") int pipelineStageCreationFeedbackCount, @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineStageCreationFeedbacks) { return alloc(allocator).sType(sType).pNext(pNext).pPipelineCreationFeedback(pPipelineCreationFeedback).pipelineStageCreationFeedbackCount(pipelineStageCreationFeedbackCount).pPipelineStageCreationFeedbacks(pPipelineStageCreationFeedbacks); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,48 +146,48 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineCreationFeedbackCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineCreationFeedbackCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCreationFeedbackCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineCreationFeedbackCreateInfo pNext(@CType("const void *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pPipelineCreationFeedback` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment get_pPipelineCreationFeedback(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelineCreationFeedback.get(segment, 0L, index); }
+    public static @CType("VkPipelineCreationFeedback *") MemorySegment get_pPipelineCreationFeedback(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCreationFeedback.get(segment, 0L, index); }
     /// {@return `pPipelineCreationFeedback`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment get_pPipelineCreationFeedback(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(segment, 0L); }
+    public static @CType("VkPipelineCreationFeedback *") MemorySegment get_pPipelineCreationFeedback(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(segment, 0L); }
     /// {@return `pPipelineCreationFeedback`}
-    public @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineCreationFeedback() { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(this.segment()); }
+    public @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineCreationFeedback() { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(this.segment()); }
     /// Sets `pPipelineCreationFeedback` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPipelineCreationFeedback(MemorySegment segment, long index, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VH_pPipelineCreationFeedback.set(segment, 0L, index, value); }
+    public static void set_pPipelineCreationFeedback(MemorySegment segment, long index, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VH_pPipelineCreationFeedback.set(segment, 0L, index, value); }
     /// Sets `pPipelineCreationFeedback` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPipelineCreationFeedback(MemorySegment segment, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(segment, 0L, value); }
+    public static void set_pPipelineCreationFeedback(MemorySegment segment, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(segment, 0L, value); }
     /// Sets `pPipelineCreationFeedback` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCreationFeedbackCreateInfo pPipelineCreationFeedback(@CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(this.segment(), value); return this; }
+    public VkPipelineCreationFeedbackCreateInfo pPipelineCreationFeedback(@CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(this.segment(), value); return this; }
 
     /// {@return `pipelineStageCreationFeedbackCount` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
     /// {@return `pPipelineStageCreationFeedbacks` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment get_pPipelineStageCreationFeedbacks(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelineStageCreationFeedbacks.get(segment, 0L, index); }
+    public static @CType("VkPipelineCreationFeedback *") MemorySegment get_pPipelineStageCreationFeedbacks(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineStageCreationFeedbacks.get(segment, 0L, index); }
     /// {@return `pPipelineStageCreationFeedbacks`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment get_pPipelineStageCreationFeedbacks(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(segment, 0L); }
+    public static @CType("VkPipelineCreationFeedback *") MemorySegment get_pPipelineStageCreationFeedbacks(MemorySegment segment) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(segment, 0L); }
     /// {@return `pPipelineStageCreationFeedbacks`}
-    public @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineStageCreationFeedbacks() { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(this.segment()); }
+    public @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineStageCreationFeedbacks() { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(this.segment()); }
     /// Sets `pPipelineStageCreationFeedbacks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPipelineStageCreationFeedbacks(MemorySegment segment, long index, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VH_pPipelineStageCreationFeedbacks.set(segment, 0L, index, value); }
+    public static void set_pPipelineStageCreationFeedbacks(MemorySegment segment, long index, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VH_pPipelineStageCreationFeedbacks.set(segment, 0L, index, value); }
     /// Sets `pPipelineStageCreationFeedbacks` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPipelineStageCreationFeedbacks(MemorySegment segment, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(segment, 0L, value); }
+    public static void set_pPipelineStageCreationFeedbacks(MemorySegment segment, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(segment, 0L, value); }
     /// Sets `pPipelineStageCreationFeedbacks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCreationFeedbackCreateInfo pPipelineStageCreationFeedbacks(@CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(this.segment(), value); return this; }
+    public VkPipelineCreationFeedbackCreateInfo pPipelineStageCreationFeedbacks(@CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineCreationFeedbackCreateInfo].
     public static final class Buffer extends VkPipelineCreationFeedbackCreateInfo {
@@ -268,21 +268,21 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pPipelineCreationFeedback` at the given index}
         /// @param index the index
-        public @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineCreationFeedbackAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(this.segment(), index); }
+        public @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineCreationFeedbackAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineCreationFeedback(this.segment(), index); }
         /// Sets `pPipelineCreationFeedback` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelineCreationFeedbackAt(long index, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(this.segment(), index, value); return this; }
+        public Buffer pPipelineCreationFeedbackAt(long index, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineCreationFeedback(this.segment(), index, value); return this; }
 
         /// {@return `pipelineStageCreationFeedbackCount` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends Struct {
 
         /// {@return `pPipelineStageCreationFeedbacks` at the given index}
         /// @param index the index
-        public @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment pPipelineStageCreationFeedbacksAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(this.segment(), index); }
+        public @CType("VkPipelineCreationFeedback *") MemorySegment pPipelineStageCreationFeedbacksAt(long index) { return VkPipelineCreationFeedbackCreateInfo.get_pPipelineStageCreationFeedbacks(this.segment(), index); }
         /// Sets `pPipelineStageCreationFeedbacks` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelineStageCreationFeedbacksAt(long index, @CType("VkPipelineCreationFeedback *") java.lang.foreign.MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(this.segment(), index, value); return this; }
+        public Buffer pPipelineStageCreationFeedbacksAt(long index, @CType("VkPipelineCreationFeedback *") MemorySegment value) { VkPipelineCreationFeedbackCreateInfo.set_pPipelineStageCreationFeedbacks(this.segment(), index, value); return this; }
 
     }
 }

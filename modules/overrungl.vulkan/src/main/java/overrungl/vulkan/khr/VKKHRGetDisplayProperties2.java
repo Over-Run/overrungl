@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRGetDisplayProperties2 {
     public static final int VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION = 1;
     public static final String VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2";
@@ -32,24 +31,11 @@ public class VKKHRGetDisplayProperties2 {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR = 1000121003;
     public static final int VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR = 1000121004;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceDisplayProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceDisplayPlaneProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDisplayModeProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDisplayPlaneCapabilities2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceDisplayProperties2KHR,
-            FD_vkGetPhysicalDeviceDisplayPlaneProperties2KHR,
-            FD_vkGetDisplayModeProperties2KHR,
-            FD_vkGetDisplayPlaneCapabilities2KHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceDisplayProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceDisplayProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceDisplayPlaneProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
-        public static final MethodHandle MH_vkGetDisplayModeProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDisplayModeProperties2KHR);
-        public static final MethodHandle MH_vkGetDisplayPlaneCapabilities2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDisplayPlaneCapabilities2KHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceDisplayProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceDisplayPlaneProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDisplayModeProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDisplayPlaneCapabilities2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceDisplayProperties2KHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR;
         public final MemorySegment PFN_vkGetDisplayModeProperties2KHR;

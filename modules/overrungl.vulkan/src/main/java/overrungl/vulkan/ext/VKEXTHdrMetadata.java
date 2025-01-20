@@ -22,21 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTHdrMetadata {
     public static final int VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
     public static final String VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
     public static final int VK_STRUCTURE_TYPE_HDR_METADATA_EXT = 1000105000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetHdrMetadataEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetHdrMetadataEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetHdrMetadataEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetHdrMetadataEXT);
+        public static final MethodHandle MH_vkSetHdrMetadataEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkSetHdrMetadataEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkSetHdrMetadataEXT = func.invoke(device, "vkSetHdrMetadataEXT");

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,60 +26,23 @@ import overrungl.util.*;
 public final class GLARBBindlessTexture {
     public static final int GL_UNSIGNED_INT64_ARB = 0x140F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetTextureHandleARB = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetTextureSamplerHandleARB = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeTextureHandleResidentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glMakeTextureHandleNonResidentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glGetImageHandleARB = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeImageHandleResidentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeImageHandleNonResidentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glUniformHandleui64ARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glUniformHandleui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformHandleui64ARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glProgramUniformHandleui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsTextureHandleResidentARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glIsImageHandleResidentARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glVertexAttribL1ui64ARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glVertexAttribL1ui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVertexAttribLui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetTextureHandleARB,
-            FD_glGetTextureSamplerHandleARB,
-            FD_glMakeTextureHandleResidentARB,
-            FD_glMakeTextureHandleNonResidentARB,
-            FD_glGetImageHandleARB,
-            FD_glMakeImageHandleResidentARB,
-            FD_glMakeImageHandleNonResidentARB,
-            FD_glUniformHandleui64ARB,
-            FD_glUniformHandleui64vARB,
-            FD_glProgramUniformHandleui64ARB,
-            FD_glProgramUniformHandleui64vARB,
-            FD_glIsTextureHandleResidentARB,
-            FD_glIsImageHandleResidentARB,
-            FD_glVertexAttribL1ui64ARB,
-            FD_glVertexAttribL1ui64vARB,
-            FD_glGetVertexAttribLui64vARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetTextureHandleARB = RuntimeHelper.downcall(Descriptors.FD_glGetTextureHandleARB);
-        public static final MethodHandle MH_glGetTextureSamplerHandleARB = RuntimeHelper.downcall(Descriptors.FD_glGetTextureSamplerHandleARB);
-        public static final MethodHandle MH_glMakeTextureHandleResidentARB = RuntimeHelper.downcall(Descriptors.FD_glMakeTextureHandleResidentARB);
-        public static final MethodHandle MH_glMakeTextureHandleNonResidentARB = RuntimeHelper.downcall(Descriptors.FD_glMakeTextureHandleNonResidentARB);
-        public static final MethodHandle MH_glGetImageHandleARB = RuntimeHelper.downcall(Descriptors.FD_glGetImageHandleARB);
-        public static final MethodHandle MH_glMakeImageHandleResidentARB = RuntimeHelper.downcall(Descriptors.FD_glMakeImageHandleResidentARB);
-        public static final MethodHandle MH_glMakeImageHandleNonResidentARB = RuntimeHelper.downcall(Descriptors.FD_glMakeImageHandleNonResidentARB);
-        public static final MethodHandle MH_glUniformHandleui64ARB = RuntimeHelper.downcall(Descriptors.FD_glUniformHandleui64ARB);
-        public static final MethodHandle MH_glUniformHandleui64vARB = RuntimeHelper.downcall(Descriptors.FD_glUniformHandleui64vARB);
-        public static final MethodHandle MH_glProgramUniformHandleui64ARB = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformHandleui64ARB);
-        public static final MethodHandle MH_glProgramUniformHandleui64vARB = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformHandleui64vARB);
-        public static final MethodHandle MH_glIsTextureHandleResidentARB = RuntimeHelper.downcall(Descriptors.FD_glIsTextureHandleResidentARB);
-        public static final MethodHandle MH_glIsImageHandleResidentARB = RuntimeHelper.downcall(Descriptors.FD_glIsImageHandleResidentARB);
-        public static final MethodHandle MH_glVertexAttribL1ui64ARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribL1ui64ARB);
-        public static final MethodHandle MH_glVertexAttribL1ui64vARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribL1ui64vARB);
-        public static final MethodHandle MH_glGetVertexAttribLui64vARB = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribLui64vARB);
+        public static final MethodHandle MH_glGetTextureHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTextureSamplerHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeTextureHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glMakeTextureHandleNonResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glGetImageHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeImageHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeImageHandleNonResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformHandleui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformHandleui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformHandleui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glProgramUniformHandleui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsTextureHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glIsImageHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL1ui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL1ui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribLui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetTextureHandleARB;
         public final MemorySegment PFN_glGetTextureSamplerHandleARB;
         public final MemorySegment PFN_glMakeTextureHandleResidentARB;
@@ -169,7 +131,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64ARB", e); }
     }
 
-    public void UniformHandleui64vARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment value) {
+    public void UniformHandleui64vARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vARB");
         try { Handles.MH_glUniformHandleui64vARB.invokeExact(handles.PFN_glUniformHandleui64vARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64vARB", e); }
@@ -181,7 +143,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64ARB", e); }
     }
 
-    public void ProgramUniformHandleui64vARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment values) {
+    public void ProgramUniformHandleui64vARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB");
         try { Handles.MH_glProgramUniformHandleui64vARB.invokeExact(handles.PFN_glProgramUniformHandleui64vARB, program, location, count, values); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64vARB", e); }
@@ -205,13 +167,13 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64ARB", e); }
     }
 
-    public void VertexAttribL1ui64vARB(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL1ui64vARB(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB");
         try { Handles.MH_glVertexAttribL1ui64vARB.invokeExact(handles.PFN_glVertexAttribL1ui64vARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64vARB", e); }
     }
 
-    public void GetVertexAttribLui64vARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribLui64vARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribLui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB");
         try { Handles.MH_glGetVertexAttribLui64vARB.invokeExact(handles.PFN_glGetVertexAttribLui64vARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLui64vARB", e); }

@@ -19,31 +19,17 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLAMDDrawBuffersBlend {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendFuncIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendFuncSeparateIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendEquationIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendEquationSeparateIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendFuncIndexedAMD,
-            FD_glBlendFuncSeparateIndexedAMD,
-            FD_glBlendEquationIndexedAMD,
-            FD_glBlendEquationSeparateIndexedAMD
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncIndexedAMD = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncIndexedAMD);
-        public static final MethodHandle MH_glBlendFuncSeparateIndexedAMD = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparateIndexedAMD);
-        public static final MethodHandle MH_glBlendEquationIndexedAMD = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationIndexedAMD);
-        public static final MethodHandle MH_glBlendEquationSeparateIndexedAMD = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationSeparateIndexedAMD);
+        public static final MethodHandle MH_glBlendFuncIndexedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendFuncSeparateIndexedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendEquationIndexedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendEquationSeparateIndexedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncIndexedAMD;
         public final MemorySegment PFN_glBlendFuncSeparateIndexedAMD;
         public final MemorySegment PFN_glBlendEquationIndexedAMD;

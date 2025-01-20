@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,48 +30,19 @@ public final class GLNVGpuMulticast {
     public static final int GL_PER_GPU_STORAGE_NV = 0x9548;
     public static final int GL_MULTICAST_PROGRAMMABLE_SAMPLE_LOCATION_NV = 0x9549;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRenderGpuMaskNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMulticastBufferSubDataNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastCopyBufferSubDataNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glMulticastCopyImageSubDataNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMulticastBlitFramebufferNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMulticastFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastBarrierNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glMulticastWaitSyncNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMulticastGetQueryObjectivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastGetQueryObjectuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastGetQueryObjecti64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMulticastGetQueryObjectui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glRenderGpuMaskNV,
-            FD_glMulticastBufferSubDataNV,
-            FD_glMulticastCopyBufferSubDataNV,
-            FD_glMulticastCopyImageSubDataNV,
-            FD_glMulticastBlitFramebufferNV,
-            FD_glMulticastFramebufferSampleLocationsfvNV,
-            FD_glMulticastBarrierNV,
-            FD_glMulticastWaitSyncNV,
-            FD_glMulticastGetQueryObjectivNV,
-            FD_glMulticastGetQueryObjectuivNV,
-            FD_glMulticastGetQueryObjecti64vNV,
-            FD_glMulticastGetQueryObjectui64vNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRenderGpuMaskNV = RuntimeHelper.downcall(Descriptors.FD_glRenderGpuMaskNV);
-        public static final MethodHandle MH_glMulticastBufferSubDataNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastBufferSubDataNV);
-        public static final MethodHandle MH_glMulticastCopyBufferSubDataNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastCopyBufferSubDataNV);
-        public static final MethodHandle MH_glMulticastCopyImageSubDataNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastCopyImageSubDataNV);
-        public static final MethodHandle MH_glMulticastBlitFramebufferNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastBlitFramebufferNV);
-        public static final MethodHandle MH_glMulticastFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastFramebufferSampleLocationsfvNV);
-        public static final MethodHandle MH_glMulticastBarrierNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastBarrierNV);
-        public static final MethodHandle MH_glMulticastWaitSyncNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastWaitSyncNV);
-        public static final MethodHandle MH_glMulticastGetQueryObjectivNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastGetQueryObjectivNV);
-        public static final MethodHandle MH_glMulticastGetQueryObjectuivNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastGetQueryObjectuivNV);
-        public static final MethodHandle MH_glMulticastGetQueryObjecti64vNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastGetQueryObjecti64vNV);
-        public static final MethodHandle MH_glMulticastGetQueryObjectui64vNV = RuntimeHelper.downcall(Descriptors.FD_glMulticastGetQueryObjectui64vNV);
+        public static final MethodHandle MH_glRenderGpuMaskNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastBufferSubDataNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastCopyBufferSubDataNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glMulticastCopyImageSubDataNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastBlitFramebufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glMulticastWaitSyncNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastGetQueryObjectivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastGetQueryObjectuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastGetQueryObjecti64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastGetQueryObjectui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glRenderGpuMaskNV;
         public final MemorySegment PFN_glMulticastBufferSubDataNV;
         public final MemorySegment PFN_glMulticastCopyBufferSubDataNV;
@@ -111,7 +81,7 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glRenderGpuMaskNV", e); }
     }
 
-    public void MulticastBufferSubDataNV(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void MulticastBufferSubDataNV(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastBufferSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastBufferSubDataNV");
         try { Handles.MH_glMulticastBufferSubDataNV.invokeExact(handles.PFN_glMulticastBufferSubDataNV, gpuMask, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastBufferSubDataNV", e); }
@@ -135,7 +105,7 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glMulticastBlitFramebufferNV", e); }
     }
 
-    public void MulticastFramebufferSampleLocationsfvNV(@CType("GLuint") int gpu, @CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void MulticastFramebufferSampleLocationsfvNV(@CType("GLuint") int gpu, @CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastFramebufferSampleLocationsfvNV");
         try { Handles.MH_glMulticastFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glMulticastFramebufferSampleLocationsfvNV, gpu, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastFramebufferSampleLocationsfvNV", e); }
@@ -153,25 +123,25 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glMulticastWaitSyncNV", e); }
     }
 
-    public void MulticastGetQueryObjectivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectivNV");
         try { Handles.MH_glMulticastGetQueryObjectivNV.invokeExact(handles.PFN_glMulticastGetQueryObjectivNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectivNV", e); }
     }
 
-    public void MulticastGetQueryObjectuivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectuivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectuivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectuivNV");
         try { Handles.MH_glMulticastGetQueryObjectuivNV.invokeExact(handles.PFN_glMulticastGetQueryObjectuivNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectuivNV", e); }
     }
 
-    public void MulticastGetQueryObjecti64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjecti64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjecti64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjecti64vNV");
         try { Handles.MH_glMulticastGetQueryObjecti64vNV.invokeExact(handles.PFN_glMulticastGetQueryObjecti64vNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjecti64vNV", e); }
     }
 
-    public void MulticastGetQueryObjectui64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectui64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectui64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectui64vNV");
         try { Handles.MH_glMulticastGetQueryObjectui64vNV.invokeExact(handles.PFN_glMulticastGetQueryObjectui64vNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectui64vNV", e); }

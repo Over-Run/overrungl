@@ -34,7 +34,7 @@ import overrungl.util.*;
 /// ### stageFlags
 /// [VarHandle][#VH_stageFlags] - [Getter][#stageFlags()] - [Setter][#stageFlags(int)]
 /// ### pImmutableSamplers
-/// [VarHandle][#VH_pImmutableSamplers] - [Getter][#pImmutableSamplers()] - [Setter][#pImmutableSamplers(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pImmutableSamplers] - [Getter][#pImmutableSamplers()] - [Setter][#pImmutableSamplers(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -63,7 +63,7 @@ public sealed class VkDescriptorSetLayoutBinding extends Struct {
     public static final VarHandle VH_descriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorCount"));
     /// The [VarHandle] of `stageFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageFlags"));
-    /// The [VarHandle] of `pImmutableSamplers` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pImmutableSamplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pImmutableSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImmutableSamplers"));
 
     /// Creates `VkDescriptorSetLayoutBinding` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkDescriptorSetLayoutBinding extends Struct {
     /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, @CType("uint32_t") int binding, @CType("VkDescriptorType") int descriptorType, @CType("uint32_t") int descriptorCount, @CType("VkShaderStageFlags") int stageFlags, @CType("const VkSampler *") java.lang.foreign.MemorySegment pImmutableSamplers) { return alloc(allocator).binding(binding).descriptorType(descriptorType).descriptorCount(descriptorCount).stageFlags(stageFlags).pImmutableSamplers(pImmutableSamplers); }
+    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, @CType("uint32_t") int binding, @CType("VkDescriptorType") int descriptorType, @CType("uint32_t") int descriptorCount, @CType("VkShaderStageFlags") int stageFlags, @CType("const VkSampler *") MemorySegment pImmutableSamplers) { return alloc(allocator).binding(binding).descriptorType(descriptorType).descriptorCount(descriptorCount).stageFlags(stageFlags).pImmutableSamplers(pImmutableSamplers); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -215,25 +215,25 @@ public sealed class VkDescriptorSetLayoutBinding extends Struct {
     /// {@return `pImmutableSamplers` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkSampler *") java.lang.foreign.MemorySegment get_pImmutableSamplers(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pImmutableSamplers.get(segment, 0L, index); }
+    public static @CType("const VkSampler *") MemorySegment get_pImmutableSamplers(MemorySegment segment, long index) { return (MemorySegment) VH_pImmutableSamplers.get(segment, 0L, index); }
     /// {@return `pImmutableSamplers`}
     /// @param segment the segment of the struct
-    public static @CType("const VkSampler *") java.lang.foreign.MemorySegment get_pImmutableSamplers(MemorySegment segment) { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(segment, 0L); }
+    public static @CType("const VkSampler *") MemorySegment get_pImmutableSamplers(MemorySegment segment) { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(segment, 0L); }
     /// {@return `pImmutableSamplers`}
-    public @CType("const VkSampler *") java.lang.foreign.MemorySegment pImmutableSamplers() { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(this.segment()); }
+    public @CType("const VkSampler *") MemorySegment pImmutableSamplers() { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(this.segment()); }
     /// Sets `pImmutableSamplers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pImmutableSamplers(MemorySegment segment, long index, @CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VH_pImmutableSamplers.set(segment, 0L, index, value); }
+    public static void set_pImmutableSamplers(MemorySegment segment, long index, @CType("const VkSampler *") MemorySegment value) { VH_pImmutableSamplers.set(segment, 0L, index, value); }
     /// Sets `pImmutableSamplers` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pImmutableSamplers(MemorySegment segment, @CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(segment, 0L, value); }
+    public static void set_pImmutableSamplers(MemorySegment segment, @CType("const VkSampler *") MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(segment, 0L, value); }
     /// Sets `pImmutableSamplers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorSetLayoutBinding pImmutableSamplers(@CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(this.segment(), value); return this; }
+    public VkDescriptorSetLayoutBinding pImmutableSamplers(@CType("const VkSampler *") MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(this.segment(), value); return this; }
 
     /// A buffer of [VkDescriptorSetLayoutBinding].
     public static final class Buffer extends VkDescriptorSetLayoutBinding {
@@ -295,12 +295,12 @@ public sealed class VkDescriptorSetLayoutBinding extends Struct {
 
         /// {@return `pImmutableSamplers` at the given index}
         /// @param index the index
-        public @CType("const VkSampler *") java.lang.foreign.MemorySegment pImmutableSamplersAt(long index) { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(this.segment(), index); }
+        public @CType("const VkSampler *") MemorySegment pImmutableSamplersAt(long index) { return VkDescriptorSetLayoutBinding.get_pImmutableSamplers(this.segment(), index); }
         /// Sets `pImmutableSamplers` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pImmutableSamplersAt(long index, @CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(this.segment(), index, value); return this; }
+        public Buffer pImmutableSamplersAt(long index, @CType("const VkSampler *") MemorySegment value) { VkDescriptorSetLayoutBinding.set_pImmutableSamplers(this.segment(), index, value); return this; }
 
     }
 }

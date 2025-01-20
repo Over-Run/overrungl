@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalSemaphoreWin32 {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME = "VK_KHR_external_semaphore_win32";
@@ -31,18 +30,9 @@ public class VKKHRExternalSemaphoreWin32 {
     public static final int VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR = 1000078002;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR = 1000078003;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkImportSemaphoreWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetSemaphoreWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkImportSemaphoreWin32HandleKHR,
-            FD_vkGetSemaphoreWin32HandleKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkImportSemaphoreWin32HandleKHR = RuntimeHelper.downcall(Descriptors.FD_vkImportSemaphoreWin32HandleKHR);
-        public static final MethodHandle MH_vkGetSemaphoreWin32HandleKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreWin32HandleKHR);
+        public static final MethodHandle MH_vkImportSemaphoreWin32HandleKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSemaphoreWin32HandleKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportSemaphoreWin32HandleKHR;
         public final MemorySegment PFN_vkGetSemaphoreWin32HandleKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

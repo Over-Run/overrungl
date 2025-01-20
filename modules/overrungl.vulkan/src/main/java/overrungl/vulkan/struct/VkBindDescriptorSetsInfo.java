@@ -28,21 +28,21 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### stageFlags
 /// [VarHandle][#VH_stageFlags] - [Getter][#stageFlags()] - [Setter][#stageFlags(int)]
 /// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
 /// ### firstSet
 /// [VarHandle][#VH_firstSet] - [Getter][#firstSet()] - [Setter][#firstSet(int)]
 /// ### descriptorSetCount
 /// [VarHandle][#VH_descriptorSetCount] - [Getter][#descriptorSetCount()] - [Setter][#descriptorSetCount(int)]
 /// ### pDescriptorSets
-/// [VarHandle][#VH_pDescriptorSets] - [Getter][#pDescriptorSets()] - [Setter][#pDescriptorSets(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDescriptorSets] - [Getter][#pDescriptorSets()] - [Setter][#pDescriptorSets(MemorySegment)]
 /// ### dynamicOffsetCount
 /// [VarHandle][#VH_dynamicOffsetCount] - [Getter][#dynamicOffsetCount()] - [Setter][#dynamicOffsetCount(int)]
 /// ### pDynamicOffsets
-/// [VarHandle][#VH_pDynamicOffsets] - [Getter][#pDynamicOffsets()] - [Setter][#pDynamicOffsets(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDynamicOffsets] - [Getter][#pDynamicOffsets()] - [Setter][#pDynamicOffsets(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -73,21 +73,21 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `stageFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageFlags"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
     /// The [VarHandle] of `firstSet` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_firstSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstSet"));
     /// The [VarHandle] of `descriptorSetCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_descriptorSetCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetCount"));
-    /// The [VarHandle] of `pDescriptorSets` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDescriptorSets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDescriptorSets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorSets"));
     /// The [VarHandle] of `dynamicOffsetCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_dynamicOffsetCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicOffsetCount"));
-    /// The [VarHandle] of `pDynamicOffsets` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDynamicOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDynamicOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicOffsets"));
 
     /// Creates `VkBindDescriptorSetsInfo` with the given segment.
@@ -133,7 +133,7 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindDescriptorSetsInfo`
-    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("uint32_t") int firstSet, @CType("uint32_t") int descriptorSetCount, @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorSets, @CType("uint32_t") int dynamicOffsetCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pDynamicOffsets) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount).pDescriptorSets(pDescriptorSets).dynamicOffsetCount(dynamicOffsetCount).pDynamicOffsets(pDynamicOffsets); }
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") MemorySegment layout, @CType("uint32_t") int firstSet, @CType("uint32_t") int descriptorSetCount, @CType("const VkDescriptorSet *") MemorySegment pDescriptorSets, @CType("uint32_t") int dynamicOffsetCount, @CType("const uint32_t *") MemorySegment pDynamicOffsets) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount).pDescriptorSets(pDescriptorSets).dynamicOffsetCount(dynamicOffsetCount).pDynamicOffsets(pDynamicOffsets); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -170,25 +170,25 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBindDescriptorSetsInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkBindDescriptorSetsInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindDescriptorSetsInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(this.segment(), value); return this; }
+    public VkBindDescriptorSetsInfo pNext(@CType("const void *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -216,25 +216,25 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_layout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_layout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_layout(segment, 0L); }
     /// {@return `layout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkBindDescriptorSetsInfo.get_layout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment layout() { return VkBindDescriptorSetsInfo.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
+    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(segment, 0L, value); }
+    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(segment, 0L, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindDescriptorSetsInfo layout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(this.segment(), value); return this; }
+    public VkBindDescriptorSetsInfo layout(@CType("VkPipelineLayout") MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(this.segment(), value); return this; }
 
     /// {@return `firstSet` at the given index}
     /// @param segment the segment of the struct
@@ -285,25 +285,25 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     /// {@return `pDescriptorSets` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment get_pDescriptorSets(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDescriptorSets.get(segment, 0L, index); }
+    public static @CType("const VkDescriptorSet *") MemorySegment get_pDescriptorSets(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorSets.get(segment, 0L, index); }
     /// {@return `pDescriptorSets`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment get_pDescriptorSets(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pDescriptorSets(segment, 0L); }
+    public static @CType("const VkDescriptorSet *") MemorySegment get_pDescriptorSets(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pDescriptorSets(segment, 0L); }
     /// {@return `pDescriptorSets`}
-    public @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorSets() { return VkBindDescriptorSetsInfo.get_pDescriptorSets(this.segment()); }
+    public @CType("const VkDescriptorSet *") MemorySegment pDescriptorSets() { return VkBindDescriptorSetsInfo.get_pDescriptorSets(this.segment()); }
     /// Sets `pDescriptorSets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDescriptorSets(MemorySegment segment, long index, @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment value) { VH_pDescriptorSets.set(segment, 0L, index, value); }
+    public static void set_pDescriptorSets(MemorySegment segment, long index, @CType("const VkDescriptorSet *") MemorySegment value) { VH_pDescriptorSets.set(segment, 0L, index, value); }
     /// Sets `pDescriptorSets` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDescriptorSets(MemorySegment segment, @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(segment, 0L, value); }
+    public static void set_pDescriptorSets(MemorySegment segment, @CType("const VkDescriptorSet *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(segment, 0L, value); }
     /// Sets `pDescriptorSets` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindDescriptorSetsInfo pDescriptorSets(@CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(this.segment(), value); return this; }
+    public VkBindDescriptorSetsInfo pDescriptorSets(@CType("const VkDescriptorSet *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(this.segment(), value); return this; }
 
     /// {@return `dynamicOffsetCount` at the given index}
     /// @param segment the segment of the struct
@@ -331,25 +331,25 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
     /// {@return `pDynamicOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pDynamicOffsets(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDynamicOffsets.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pDynamicOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicOffsets.get(segment, 0L, index); }
     /// {@return `pDynamicOffsets`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pDynamicOffsets(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pDynamicOffsets(MemorySegment segment) { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(segment, 0L); }
     /// {@return `pDynamicOffsets`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pDynamicOffsets() { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pDynamicOffsets() { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(this.segment()); }
     /// Sets `pDynamicOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDynamicOffsets(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pDynamicOffsets.set(segment, 0L, index, value); }
+    public static void set_pDynamicOffsets(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pDynamicOffsets.set(segment, 0L, index, value); }
     /// Sets `pDynamicOffsets` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDynamicOffsets(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(segment, 0L, value); }
+    public static void set_pDynamicOffsets(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(segment, 0L, value); }
     /// Sets `pDynamicOffsets` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindDescriptorSetsInfo pDynamicOffsets(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(this.segment(), value); return this; }
+    public VkBindDescriptorSetsInfo pDynamicOffsets(@CType("const uint32_t *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(this.segment(), value); return this; }
 
     /// A buffer of [VkBindDescriptorSetsInfo].
     public static final class Buffer extends VkBindDescriptorSetsInfo {
@@ -384,12 +384,12 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindDescriptorSetsInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBindDescriptorSetsInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `stageFlags` at the given index}
         /// @param index the index
@@ -402,12 +402,12 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
 
         /// {@return `layout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkBindDescriptorSetsInfo.get_layout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkBindDescriptorSetsInfo.get_layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkBindDescriptorSetsInfo.set_layout(this.segment(), index, value); return this; }
 
         /// {@return `firstSet` at the given index}
         /// @param index the index
@@ -429,12 +429,12 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
 
         /// {@return `pDescriptorSets` at the given index}
         /// @param index the index
-        public @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorSetsAt(long index) { return VkBindDescriptorSetsInfo.get_pDescriptorSets(this.segment(), index); }
+        public @CType("const VkDescriptorSet *") MemorySegment pDescriptorSetsAt(long index) { return VkBindDescriptorSetsInfo.get_pDescriptorSets(this.segment(), index); }
         /// Sets `pDescriptorSets` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDescriptorSetsAt(long index, @CType("const VkDescriptorSet *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(this.segment(), index, value); return this; }
+        public Buffer pDescriptorSetsAt(long index, @CType("const VkDescriptorSet *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDescriptorSets(this.segment(), index, value); return this; }
 
         /// {@return `dynamicOffsetCount` at the given index}
         /// @param index the index
@@ -447,12 +447,12 @@ public sealed class VkBindDescriptorSetsInfo extends Struct {
 
         /// {@return `pDynamicOffsets` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pDynamicOffsetsAt(long index) { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pDynamicOffsetsAt(long index) { return VkBindDescriptorSetsInfo.get_pDynamicOffsets(this.segment(), index); }
         /// Sets `pDynamicOffsets` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDynamicOffsetsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(this.segment(), index, value); return this; }
+        public Buffer pDynamicOffsetsAt(long index, @CType("const uint32_t *") MemorySegment value) { VkBindDescriptorSetsInfo.set_pDynamicOffsets(this.segment(), index, value); return this; }
 
     }
 }

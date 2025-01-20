@@ -22,24 +22,14 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRWaylandSurface {
     public static final int VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME = "VK_KHR_wayland_surface";
     public static final int VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR = 1000006000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateWaylandSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceWaylandPresentationSupportKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateWaylandSurfaceKHR,
-            FD_vkGetPhysicalDeviceWaylandPresentationSupportKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateWaylandSurfaceKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateWaylandSurfaceKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceWaylandPresentationSupportKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceWaylandPresentationSupportKHR);
+        public static final MethodHandle MH_vkCreateWaylandSurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceWaylandPresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateWaylandSurfaceKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

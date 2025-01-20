@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRCooperativeMatrix.*;
 public class VKNVCooperativeMatrix {
     public static final int VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1;
@@ -46,15 +45,8 @@ public class VKNVCooperativeMatrix {
     public static final int VK_COMPONENT_TYPE_UINT32_NV = VK_COMPONENT_TYPE_UINT32_KHR;
     public static final int VK_COMPONENT_TYPE_UINT64_NV = VK_COMPONENT_TYPE_UINT64_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
+        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");

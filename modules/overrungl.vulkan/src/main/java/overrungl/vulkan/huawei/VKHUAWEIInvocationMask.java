@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKHUAWEIInvocationMask {
     public static final int VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1;
     public static final String VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
@@ -31,15 +30,8 @@ public class VKHUAWEIInvocationMask {
     public static final int VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = 0x00040000;
     public static final long VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000L;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBindInvocationMaskHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindInvocationMaskHUAWEI
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindInvocationMaskHUAWEI);
+        public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdBindInvocationMaskHUAWEI;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdBindInvocationMaskHUAWEI = func.invoke(device, "vkCmdBindInvocationMaskHUAWEI");

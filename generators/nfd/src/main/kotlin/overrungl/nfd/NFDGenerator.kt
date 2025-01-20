@@ -279,4 +279,6 @@ fun main() {
         "NFD_PathSet_Free"(void, const_nfdpathset_t_ptr("pathSet"), entrypoint = "NFD_PathSet_Free")
         //endregion
     }
+
+    writeNativeImageRegistration(nfdPackage)
 }

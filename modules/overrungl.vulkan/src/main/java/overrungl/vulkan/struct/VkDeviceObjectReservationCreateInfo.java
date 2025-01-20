@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pipelineCacheCreateInfoCount
 /// [VarHandle][#VH_pipelineCacheCreateInfoCount] - [Getter][#pipelineCacheCreateInfoCount()] - [Setter][#pipelineCacheCreateInfoCount(int)]
 /// ### pPipelineCacheCreateInfos
-/// [VarHandle][#VH_pPipelineCacheCreateInfos] - [Getter][#pPipelineCacheCreateInfos()] - [Setter][#pPipelineCacheCreateInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPipelineCacheCreateInfos] - [Getter][#pPipelineCacheCreateInfos()] - [Setter][#pPipelineCacheCreateInfos(MemorySegment)]
 /// ### pipelinePoolSizeCount
 /// [VarHandle][#VH_pipelinePoolSizeCount] - [Getter][#pipelinePoolSizeCount()] - [Setter][#pipelinePoolSizeCount(int)]
 /// ### pPipelinePoolSizes
-/// [VarHandle][#VH_pPipelinePoolSizes] - [Getter][#pPipelinePoolSizes()] - [Setter][#pPipelinePoolSizes(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPipelinePoolSizes] - [Getter][#pPipelinePoolSizes()] - [Setter][#pPipelinePoolSizes(MemorySegment)]
 /// ### semaphoreRequestCount
 /// [VarHandle][#VH_semaphoreRequestCount] - [Getter][#semaphoreRequestCount()] - [Setter][#semaphoreRequestCount(int)]
 /// ### commandBufferRequestCount
@@ -209,15 +209,15 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pipelineCacheCreateInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_pipelineCacheCreateInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheCreateInfoCount"));
-    /// The [VarHandle] of `pPipelineCacheCreateInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPipelineCacheCreateInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelineCacheCreateInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCacheCreateInfos"));
     /// The [VarHandle] of `pipelinePoolSizeCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_pipelinePoolSizeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelinePoolSizeCount"));
-    /// The [VarHandle] of `pPipelinePoolSizes` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPipelinePoolSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelinePoolSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelinePoolSizes"));
     /// The [VarHandle] of `semaphoreRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_semaphoreRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreRequestCount"));
@@ -337,7 +337,7 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceObjectReservationCreateInfo`
-    public static VkDeviceObjectReservationCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int pipelineCacheCreateInfoCount, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfos, @CType("uint32_t") int pipelinePoolSizeCount, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizes, @CType("uint32_t") int semaphoreRequestCount, @CType("uint32_t") int commandBufferRequestCount, @CType("uint32_t") int fenceRequestCount, @CType("uint32_t") int deviceMemoryRequestCount, @CType("uint32_t") int bufferRequestCount, @CType("uint32_t") int imageRequestCount, @CType("uint32_t") int eventRequestCount, @CType("uint32_t") int queryPoolRequestCount, @CType("uint32_t") int bufferViewRequestCount, @CType("uint32_t") int imageViewRequestCount, @CType("uint32_t") int layeredImageViewRequestCount, @CType("uint32_t") int pipelineCacheRequestCount, @CType("uint32_t") int pipelineLayoutRequestCount, @CType("uint32_t") int renderPassRequestCount, @CType("uint32_t") int graphicsPipelineRequestCount, @CType("uint32_t") int computePipelineRequestCount, @CType("uint32_t") int descriptorSetLayoutRequestCount, @CType("uint32_t") int samplerRequestCount, @CType("uint32_t") int descriptorPoolRequestCount, @CType("uint32_t") int descriptorSetRequestCount, @CType("uint32_t") int framebufferRequestCount, @CType("uint32_t") int commandPoolRequestCount, @CType("uint32_t") int samplerYcbcrConversionRequestCount, @CType("uint32_t") int surfaceRequestCount, @CType("uint32_t") int swapchainRequestCount, @CType("uint32_t") int displayModeRequestCount, @CType("uint32_t") int subpassDescriptionRequestCount, @CType("uint32_t") int attachmentDescriptionRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingLimit, @CType("uint32_t") int maxImageViewMipLevels, @CType("uint32_t") int maxImageViewArrayLayers, @CType("uint32_t") int maxLayeredImageViewMipLevels, @CType("uint32_t") int maxOcclusionQueriesPerPool, @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool, @CType("uint32_t") int maxTimestampQueriesPerPool, @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout) { return alloc(allocator).sType(sType).pNext(pNext).pipelineCacheCreateInfoCount(pipelineCacheCreateInfoCount).pPipelineCacheCreateInfos(pPipelineCacheCreateInfos).pipelinePoolSizeCount(pipelinePoolSizeCount).pPipelinePoolSizes(pPipelinePoolSizes).semaphoreRequestCount(semaphoreRequestCount).commandBufferRequestCount(commandBufferRequestCount).fenceRequestCount(fenceRequestCount).deviceMemoryRequestCount(deviceMemoryRequestCount).bufferRequestCount(bufferRequestCount).imageRequestCount(imageRequestCount).eventRequestCount(eventRequestCount).queryPoolRequestCount(queryPoolRequestCount).bufferViewRequestCount(bufferViewRequestCount).imageViewRequestCount(imageViewRequestCount).layeredImageViewRequestCount(layeredImageViewRequestCount).pipelineCacheRequestCount(pipelineCacheRequestCount).pipelineLayoutRequestCount(pipelineLayoutRequestCount).renderPassRequestCount(renderPassRequestCount).graphicsPipelineRequestCount(graphicsPipelineRequestCount).computePipelineRequestCount(computePipelineRequestCount).descriptorSetLayoutRequestCount(descriptorSetLayoutRequestCount).samplerRequestCount(samplerRequestCount).descriptorPoolRequestCount(descriptorPoolRequestCount).descriptorSetRequestCount(descriptorSetRequestCount).framebufferRequestCount(framebufferRequestCount).commandPoolRequestCount(commandPoolRequestCount).samplerYcbcrConversionRequestCount(samplerYcbcrConversionRequestCount).surfaceRequestCount(surfaceRequestCount).swapchainRequestCount(swapchainRequestCount).displayModeRequestCount(displayModeRequestCount).subpassDescriptionRequestCount(subpassDescriptionRequestCount).attachmentDescriptionRequestCount(attachmentDescriptionRequestCount).descriptorSetLayoutBindingRequestCount(descriptorSetLayoutBindingRequestCount).descriptorSetLayoutBindingLimit(descriptorSetLayoutBindingLimit).maxImageViewMipLevels(maxImageViewMipLevels).maxImageViewArrayLayers(maxImageViewArrayLayers).maxLayeredImageViewMipLevels(maxLayeredImageViewMipLevels).maxOcclusionQueriesPerPool(maxOcclusionQueriesPerPool).maxPipelineStatisticsQueriesPerPool(maxPipelineStatisticsQueriesPerPool).maxTimestampQueriesPerPool(maxTimestampQueriesPerPool).maxImmutableSamplersPerDescriptorSetLayout(maxImmutableSamplersPerDescriptorSetLayout); }
+    public static VkDeviceObjectReservationCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int pipelineCacheCreateInfoCount, @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfos, @CType("uint32_t") int pipelinePoolSizeCount, @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizes, @CType("uint32_t") int semaphoreRequestCount, @CType("uint32_t") int commandBufferRequestCount, @CType("uint32_t") int fenceRequestCount, @CType("uint32_t") int deviceMemoryRequestCount, @CType("uint32_t") int bufferRequestCount, @CType("uint32_t") int imageRequestCount, @CType("uint32_t") int eventRequestCount, @CType("uint32_t") int queryPoolRequestCount, @CType("uint32_t") int bufferViewRequestCount, @CType("uint32_t") int imageViewRequestCount, @CType("uint32_t") int layeredImageViewRequestCount, @CType("uint32_t") int pipelineCacheRequestCount, @CType("uint32_t") int pipelineLayoutRequestCount, @CType("uint32_t") int renderPassRequestCount, @CType("uint32_t") int graphicsPipelineRequestCount, @CType("uint32_t") int computePipelineRequestCount, @CType("uint32_t") int descriptorSetLayoutRequestCount, @CType("uint32_t") int samplerRequestCount, @CType("uint32_t") int descriptorPoolRequestCount, @CType("uint32_t") int descriptorSetRequestCount, @CType("uint32_t") int framebufferRequestCount, @CType("uint32_t") int commandPoolRequestCount, @CType("uint32_t") int samplerYcbcrConversionRequestCount, @CType("uint32_t") int surfaceRequestCount, @CType("uint32_t") int swapchainRequestCount, @CType("uint32_t") int displayModeRequestCount, @CType("uint32_t") int subpassDescriptionRequestCount, @CType("uint32_t") int attachmentDescriptionRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingLimit, @CType("uint32_t") int maxImageViewMipLevels, @CType("uint32_t") int maxImageViewArrayLayers, @CType("uint32_t") int maxLayeredImageViewMipLevels, @CType("uint32_t") int maxOcclusionQueriesPerPool, @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool, @CType("uint32_t") int maxTimestampQueriesPerPool, @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout) { return alloc(allocator).sType(sType).pNext(pNext).pipelineCacheCreateInfoCount(pipelineCacheCreateInfoCount).pPipelineCacheCreateInfos(pPipelineCacheCreateInfos).pipelinePoolSizeCount(pipelinePoolSizeCount).pPipelinePoolSizes(pPipelinePoolSizes).semaphoreRequestCount(semaphoreRequestCount).commandBufferRequestCount(commandBufferRequestCount).fenceRequestCount(fenceRequestCount).deviceMemoryRequestCount(deviceMemoryRequestCount).bufferRequestCount(bufferRequestCount).imageRequestCount(imageRequestCount).eventRequestCount(eventRequestCount).queryPoolRequestCount(queryPoolRequestCount).bufferViewRequestCount(bufferViewRequestCount).imageViewRequestCount(imageViewRequestCount).layeredImageViewRequestCount(layeredImageViewRequestCount).pipelineCacheRequestCount(pipelineCacheRequestCount).pipelineLayoutRequestCount(pipelineLayoutRequestCount).renderPassRequestCount(renderPassRequestCount).graphicsPipelineRequestCount(graphicsPipelineRequestCount).computePipelineRequestCount(computePipelineRequestCount).descriptorSetLayoutRequestCount(descriptorSetLayoutRequestCount).samplerRequestCount(samplerRequestCount).descriptorPoolRequestCount(descriptorPoolRequestCount).descriptorSetRequestCount(descriptorSetRequestCount).framebufferRequestCount(framebufferRequestCount).commandPoolRequestCount(commandPoolRequestCount).samplerYcbcrConversionRequestCount(samplerYcbcrConversionRequestCount).surfaceRequestCount(surfaceRequestCount).swapchainRequestCount(swapchainRequestCount).displayModeRequestCount(displayModeRequestCount).subpassDescriptionRequestCount(subpassDescriptionRequestCount).attachmentDescriptionRequestCount(attachmentDescriptionRequestCount).descriptorSetLayoutBindingRequestCount(descriptorSetLayoutBindingRequestCount).descriptorSetLayoutBindingLimit(descriptorSetLayoutBindingLimit).maxImageViewMipLevels(maxImageViewMipLevels).maxImageViewArrayLayers(maxImageViewArrayLayers).maxLayeredImageViewMipLevels(maxLayeredImageViewMipLevels).maxOcclusionQueriesPerPool(maxOcclusionQueriesPerPool).maxPipelineStatisticsQueriesPerPool(maxPipelineStatisticsQueriesPerPool).maxTimestampQueriesPerPool(maxTimestampQueriesPerPool).maxImmutableSamplersPerDescriptorSetLayout(maxImmutableSamplersPerDescriptorSetLayout); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -374,25 +374,25 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pNext(@CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pipelineCacheCreateInfoCount` at the given index}
     /// @param segment the segment of the struct
@@ -420,25 +420,25 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pPipelineCacheCreateInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelineCacheCreateInfos.get(segment, 0L, index); }
+    public static @CType("const VkPipelineCacheCreateInfo *") MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCacheCreateInfos.get(segment, 0L, index); }
     /// {@return `pPipelineCacheCreateInfos`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(segment, 0L); }
+    public static @CType("const VkPipelineCacheCreateInfo *") MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(segment, 0L); }
     /// {@return `pPipelineCacheCreateInfos`}
-    public @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfos() { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment()); }
+    public @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfos() { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment()); }
     /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, long index, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VH_pPipelineCacheCreateInfos.set(segment, 0L, index, value); }
+    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, long index, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VH_pPipelineCacheCreateInfos.set(segment, 0L, index, value); }
     /// Sets `pPipelineCacheCreateInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(segment, 0L, value); }
+    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(segment, 0L, value); }
     /// Sets `pPipelineCacheCreateInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfos(@CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfos(@CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), value); return this; }
 
     /// {@return `pipelinePoolSizeCount` at the given index}
     /// @param segment the segment of the struct
@@ -466,25 +466,25 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pPipelinePoolSizes` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment get_pPipelinePoolSizes(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelinePoolSizes.get(segment, 0L, index); }
+    public static @CType("const VkPipelinePoolSize *") MemorySegment get_pPipelinePoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelinePoolSizes.get(segment, 0L, index); }
     /// {@return `pPipelinePoolSizes`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment get_pPipelinePoolSizes(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(segment, 0L); }
+    public static @CType("const VkPipelinePoolSize *") MemorySegment get_pPipelinePoolSizes(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(segment, 0L); }
     /// {@return `pPipelinePoolSizes`}
-    public @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizes() { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment()); }
+    public @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizes() { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment()); }
     /// Sets `pPipelinePoolSizes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPipelinePoolSizes(MemorySegment segment, long index, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VH_pPipelinePoolSizes.set(segment, 0L, index, value); }
+    public static void set_pPipelinePoolSizes(MemorySegment segment, long index, @CType("const VkPipelinePoolSize *") MemorySegment value) { VH_pPipelinePoolSizes.set(segment, 0L, index, value); }
     /// Sets `pPipelinePoolSizes` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPipelinePoolSizes(MemorySegment segment, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(segment, 0L, value); }
+    public static void set_pPipelinePoolSizes(MemorySegment segment, @CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(segment, 0L, value); }
     /// Sets `pPipelinePoolSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizes(@CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizes(@CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), value); return this; }
 
     /// {@return `semaphoreRequestCount` at the given index}
     /// @param segment the segment of the struct
@@ -1370,12 +1370,12 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCacheCreateInfoCount` at the given index}
         /// @param index the index
@@ -1388,12 +1388,12 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
 
         /// {@return `pPipelineCacheCreateInfos` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfosAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment(), index); }
+        public @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfosAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment(), index); }
         /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelineCacheCreateInfosAt(long index, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
+        public Buffer pPipelineCacheCreateInfosAt(long index, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
 
         /// {@return `pipelinePoolSizeCount` at the given index}
         /// @param index the index
@@ -1406,12 +1406,12 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
 
         /// {@return `pPipelinePoolSizes` at the given index}
         /// @param index the index
-        public @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizesAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment(), index); }
+        public @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizesAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment(), index); }
         /// Sets `pPipelinePoolSizes` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelinePoolSizesAt(long index, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), index, value); return this; }
+        public Buffer pPipelinePoolSizesAt(long index, @CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), index, value); return this; }
 
         /// {@return `semaphoreRequestCount` at the given index}
         /// @param index the index

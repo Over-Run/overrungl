@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDShaderInfo {
     public static final int VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0;
     public static final int VK_SHADER_INFO_TYPE_BINARY_AMD = 1;
@@ -30,15 +29,8 @@ public class VKAMDShaderInfo {
     public static final int VK_AMD_SHADER_INFO_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info";
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetShaderInfoAMD = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetShaderInfoAMD
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetShaderInfoAMD = RuntimeHelper.downcall(Descriptors.FD_vkGetShaderInfoAMD);
+        public static final MethodHandle MH_vkGetShaderInfoAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetShaderInfoAMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetShaderInfoAMD = func.invoke(device, "vkGetShaderInfoAMD");

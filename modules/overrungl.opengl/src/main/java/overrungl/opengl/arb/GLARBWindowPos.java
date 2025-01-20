@@ -19,67 +19,29 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBWindowPos {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glWindowPos2dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glWindowPos2dvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glWindowPos2fvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glWindowPos2ivARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glWindowPos2svARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glWindowPos3dvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glWindowPos3fvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glWindowPos3ivARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glWindowPos3svARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glWindowPos2dARB,
-            FD_glWindowPos2dvARB,
-            FD_glWindowPos2fARB,
-            FD_glWindowPos2fvARB,
-            FD_glWindowPos2iARB,
-            FD_glWindowPos2ivARB,
-            FD_glWindowPos2sARB,
-            FD_glWindowPos2svARB,
-            FD_glWindowPos3dARB,
-            FD_glWindowPos3dvARB,
-            FD_glWindowPos3fARB,
-            FD_glWindowPos3fvARB,
-            FD_glWindowPos3iARB,
-            FD_glWindowPos3ivARB,
-            FD_glWindowPos3sARB,
-            FD_glWindowPos3svARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glWindowPos2dARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dARB);
-        public static final MethodHandle MH_glWindowPos2dvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dvARB);
-        public static final MethodHandle MH_glWindowPos2fARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2fARB);
-        public static final MethodHandle MH_glWindowPos2fvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2fvARB);
-        public static final MethodHandle MH_glWindowPos2iARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2iARB);
-        public static final MethodHandle MH_glWindowPos2ivARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2ivARB);
-        public static final MethodHandle MH_glWindowPos2sARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2sARB);
-        public static final MethodHandle MH_glWindowPos2svARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2svARB);
-        public static final MethodHandle MH_glWindowPos3dARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3dARB);
-        public static final MethodHandle MH_glWindowPos3dvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3dvARB);
-        public static final MethodHandle MH_glWindowPos3fARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3fARB);
-        public static final MethodHandle MH_glWindowPos3fvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3fvARB);
-        public static final MethodHandle MH_glWindowPos3iARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3iARB);
-        public static final MethodHandle MH_glWindowPos3ivARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3ivARB);
-        public static final MethodHandle MH_glWindowPos3sARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3sARB);
-        public static final MethodHandle MH_glWindowPos3svARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3svARB);
+        public static final MethodHandle MH_glWindowPos2dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos2dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos2ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos2svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos3dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos3ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos3svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowPos2dARB;
         public final MemorySegment PFN_glWindowPos2dvARB;
         public final MemorySegment PFN_glWindowPos2fARB;
@@ -126,7 +88,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dARB", e); }
     }
 
-    public void WindowPos2dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2dvARB(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvARB");
         try { Handles.MH_glWindowPos2dvARB.invokeExact(handles.PFN_glWindowPos2dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dvARB", e); }
@@ -138,7 +100,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fARB", e); }
     }
 
-    public void WindowPos2fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2fvARB(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvARB");
         try { Handles.MH_glWindowPos2fvARB.invokeExact(handles.PFN_glWindowPos2fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fvARB", e); }
@@ -150,7 +112,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2iARB", e); }
     }
 
-    public void WindowPos2ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2ivARB(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivARB");
         try { Handles.MH_glWindowPos2ivARB.invokeExact(handles.PFN_glWindowPos2ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2ivARB", e); }
@@ -162,7 +124,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2sARB", e); }
     }
 
-    public void WindowPos2svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2svARB(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2svARB");
         try { Handles.MH_glWindowPos2svARB.invokeExact(handles.PFN_glWindowPos2svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2svARB", e); }
@@ -174,7 +136,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dARB", e); }
     }
 
-    public void WindowPos3dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3dvARB(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvARB");
         try { Handles.MH_glWindowPos3dvARB.invokeExact(handles.PFN_glWindowPos3dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dvARB", e); }
@@ -186,7 +148,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fARB", e); }
     }
 
-    public void WindowPos3fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3fvARB(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvARB");
         try { Handles.MH_glWindowPos3fvARB.invokeExact(handles.PFN_glWindowPos3fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fvARB", e); }
@@ -198,7 +160,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3iARB", e); }
     }
 
-    public void WindowPos3ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3ivARB(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivARB");
         try { Handles.MH_glWindowPos3ivARB.invokeExact(handles.PFN_glWindowPos3ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3ivARB", e); }
@@ -210,7 +172,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3sARB", e); }
     }
 
-    public void WindowPos3svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3svARB(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3svARB");
         try { Handles.MH_glWindowPos3svARB.invokeExact(handles.PFN_glWindowPos3svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3svARB", e); }

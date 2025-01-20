@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTPackedPixels {
     public static final int GL_UNSIGNED_BYTE_3_3_2_EXT = 0x8032;
     public static final int GL_UNSIGNED_SHORT_4_4_4_4_EXT = 0x8033;

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGISTextureSelect {
     public static final int GL_DUAL_ALPHA4_SGIS = 0x8110;
     public static final int GL_DUAL_ALPHA8_SGIS = 0x8111;

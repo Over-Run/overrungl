@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pLabelName
-/// [VarHandle][#VH_pLabelName] - [Getter][#pLabelName()] - [Setter][#pLabelName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pLabelName] - [Getter][#pLabelName()] - [Setter][#pLabelName(MemorySegment)]
 /// ### color
-/// [Byte offset][#OFFSET_color] - [Memory layout][#ML_color] - [Getter][#color()] - [Setter][#color(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_color] - [Memory layout][#ML_color] - [Getter][#color()] - [Setter][#color(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,9 +53,9 @@ public sealed class VkDebugUtilsLabelEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pLabelName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pLabelName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pLabelName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLabelName"));
     /// The byte offset of `color`.
     public static final long OFFSET_color = LAYOUT.byteOffset(PathElement.groupElement("color"));
@@ -105,7 +105,7 @@ public sealed class VkDebugUtilsLabelEXT extends Struct {
     /// Allocates a `VkDebugUtilsLabelEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDebugUtilsLabelEXT`
-    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const char *") java.lang.foreign.MemorySegment pLabelName, @CType("float[4]") java.lang.foreign.MemorySegment color) { return alloc(allocator).sType(sType).pNext(pNext).pLabelName(pLabelName).color(color); }
+    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const char *") MemorySegment pLabelName, @CType("float[4]") MemorySegment color) { return alloc(allocator).sType(sType).pNext(pNext).pLabelName(pLabelName).color(color); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -142,71 +142,71 @@ public sealed class VkDebugUtilsLabelEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDebugUtilsLabelEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDebugUtilsLabelEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsLabelEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(this.segment(), value); return this; }
+    public VkDebugUtilsLabelEXT pNext(@CType("const void *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pLabelName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pLabelName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pLabelName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pLabelName(MemorySegment segment, long index) { return (MemorySegment) VH_pLabelName.get(segment, 0L, index); }
     /// {@return `pLabelName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pLabelName(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_pLabelName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pLabelName(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_pLabelName(segment, 0L); }
     /// {@return `pLabelName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pLabelName() { return VkDebugUtilsLabelEXT.get_pLabelName(this.segment()); }
+    public @CType("const char *") MemorySegment pLabelName() { return VkDebugUtilsLabelEXT.get_pLabelName(this.segment()); }
     /// Sets `pLabelName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pLabelName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pLabelName.set(segment, 0L, index, value); }
+    public static void set_pLabelName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pLabelName.set(segment, 0L, index, value); }
     /// Sets `pLabelName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pLabelName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(segment, 0L, value); }
+    public static void set_pLabelName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(segment, 0L, value); }
     /// Sets `pLabelName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsLabelEXT pLabelName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(this.segment(), value); return this; }
+    public VkDebugUtilsLabelEXT pLabelName(@CType("const char *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(this.segment(), value); return this; }
 
     /// {@return `color` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_color, index), ML_color); }
+    public static @CType("float[4]") MemorySegment get_color(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_color, index), ML_color); }
     /// {@return `color`}
     /// @param segment the segment of the struct
-    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_color(segment, 0L); }
+    public static @CType("float[4]") MemorySegment get_color(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_color(segment, 0L); }
     /// {@return `color`}
-    public @CType("float[4]") java.lang.foreign.MemorySegment color() { return VkDebugUtilsLabelEXT.get_color(this.segment()); }
+    public @CType("float[4]") MemorySegment color() { return VkDebugUtilsLabelEXT.get_color(this.segment()); }
     /// Sets `color` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_color(MemorySegment segment, long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_color, index), ML_color.byteSize()); }
+    public static void set_color(MemorySegment segment, long index, @CType("float[4]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_color, index), ML_color.byteSize()); }
     /// Sets `color` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_color(MemorySegment segment, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(segment, 0L, value); }
+    public static void set_color(MemorySegment segment, @CType("float[4]") MemorySegment value) { VkDebugUtilsLabelEXT.set_color(segment, 0L, value); }
     /// Sets `color` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsLabelEXT color(@CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), value); return this; }
+    public VkDebugUtilsLabelEXT color(@CType("float[4]") MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), value); return this; }
 
     /// A buffer of [VkDebugUtilsLabelEXT].
     public static final class Buffer extends VkDebugUtilsLabelEXT {
@@ -241,30 +241,30 @@ public sealed class VkDebugUtilsLabelEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDebugUtilsLabelEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDebugUtilsLabelEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pLabelName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pLabelNameAt(long index) { return VkDebugUtilsLabelEXT.get_pLabelName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pLabelNameAt(long index) { return VkDebugUtilsLabelEXT.get_pLabelName(this.segment(), index); }
         /// Sets `pLabelName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pLabelNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(this.segment(), index, value); return this; }
+        public Buffer pLabelNameAt(long index, @CType("const char *") MemorySegment value) { VkDebugUtilsLabelEXT.set_pLabelName(this.segment(), index, value); return this; }
 
         /// {@return `color` at the given index}
         /// @param index the index
-        public @CType("float[4]") java.lang.foreign.MemorySegment colorAt(long index) { return VkDebugUtilsLabelEXT.get_color(this.segment(), index); }
+        public @CType("float[4]") MemorySegment colorAt(long index) { return VkDebugUtilsLabelEXT.get_color(this.segment(), index); }
         /// Sets `color` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer colorAt(long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), index, value); return this; }
+        public Buffer colorAt(long index, @CType("float[4]") MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), index, value); return this; }
 
     }
 }

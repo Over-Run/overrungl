@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalMemoryFd {
     public static final int VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd";
@@ -30,18 +29,9 @@ public class VKKHRExternalMemoryFd {
     public static final int VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR = 1000074001;
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR = 1000074002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetMemoryFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetMemoryFdPropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryFdKHR,
-            FD_vkGetMemoryFdPropertiesKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryFdKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryFdKHR);
-        public static final MethodHandle MH_vkGetMemoryFdPropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryFdPropertiesKHR);
+        public static final MethodHandle MH_vkGetMemoryFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMemoryFdPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryFdKHR;
         public final MemorySegment PFN_vkGetMemoryFdPropertiesKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

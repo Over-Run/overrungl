@@ -26,9 +26,9 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### user_data
-/// [VarHandle][#VH_user_data] - [Getter][#user_data()] - [Setter][#user_data(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_user_data] - [Getter][#user_data()] - [Setter][#user_data(MemorySegment)]
 /// ### input_pixels
-/// [VarHandle][#VH_input_pixels] - [Getter][#input_pixels()] - [Setter][#input_pixels(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_input_pixels] - [Getter][#input_pixels()] - [Setter][#input_pixels(MemorySegment)]
 /// ### input_w
 /// [VarHandle][#VH_input_w] - [Getter][#input_w()] - [Setter][#input_w(int)]
 /// ### input_h
@@ -42,9 +42,9 @@ import overrungl.util.*;
 /// ### input_t1
 /// [VarHandle][#VH_input_t1] - [Getter][#input_t1()] - [Setter][#input_t1(double)]
 /// ### input_cb
-/// [VarHandle][#VH_input_cb] - [Getter][#input_cb()] - [Setter][#input_cb(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_input_cb] - [Getter][#input_cb()] - [Setter][#input_cb(MemorySegment)]
 /// ### output_pixels
-/// [VarHandle][#VH_output_pixels] - [Getter][#output_pixels()] - [Setter][#output_pixels(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_output_pixels] - [Getter][#output_pixels()] - [Setter][#output_pixels(MemorySegment)]
 /// ### output_w
 /// [VarHandle][#VH_output_w] - [Getter][#output_w()] - [Setter][#output_w(int)]
 /// ### output_h
@@ -58,7 +58,7 @@ import overrungl.util.*;
 /// ### output_subh
 /// [VarHandle][#VH_output_subh] - [Getter][#output_subh()] - [Setter][#output_subh(int)]
 /// ### output_cb
-/// [VarHandle][#VH_output_cb] - [Getter][#output_cb()] - [Setter][#output_cb(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_output_cb] - [Getter][#output_cb()] - [Setter][#output_cb(MemorySegment)]
 /// ### input_stride_in_bytes
 /// [VarHandle][#VH_input_stride_in_bytes] - [Getter][#input_stride_in_bytes()] - [Setter][#input_stride_in_bytes(int)]
 /// ### output_stride_in_bytes
@@ -88,15 +88,15 @@ import overrungl.util.*;
 /// ### vertical_edge
 /// [VarHandle][#VH_vertical_edge] - [Getter][#vertical_edge()] - [Setter][#vertical_edge(int)]
 /// ### horizontal_filter_kernel
-/// [VarHandle][#VH_horizontal_filter_kernel] - [Getter][#horizontal_filter_kernel()] - [Setter][#horizontal_filter_kernel(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_horizontal_filter_kernel] - [Getter][#horizontal_filter_kernel()] - [Setter][#horizontal_filter_kernel(MemorySegment)]
 /// ### horizontal_filter_support
-/// [VarHandle][#VH_horizontal_filter_support] - [Getter][#horizontal_filter_support()] - [Setter][#horizontal_filter_support(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_horizontal_filter_support] - [Getter][#horizontal_filter_support()] - [Setter][#horizontal_filter_support(MemorySegment)]
 /// ### vertical_filter_kernel
-/// [VarHandle][#VH_vertical_filter_kernel] - [Getter][#vertical_filter_kernel()] - [Setter][#vertical_filter_kernel(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_vertical_filter_kernel] - [Getter][#vertical_filter_kernel()] - [Setter][#vertical_filter_kernel(MemorySegment)]
 /// ### vertical_filter_support
-/// [VarHandle][#VH_vertical_filter_support] - [Getter][#vertical_filter_support()] - [Setter][#vertical_filter_support(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_vertical_filter_support] - [Getter][#vertical_filter_support()] - [Setter][#vertical_filter_support(MemorySegment)]
 /// ### samplers
-/// [VarHandle][#VH_samplers] - [Getter][#samplers()] - [Setter][#samplers(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_samplers] - [Getter][#samplers()] - [Setter][#samplers(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -179,9 +179,9 @@ public sealed class STBIR_RESIZE extends Struct {
         ValueLayout.ADDRESS.withName("vertical_filter_support"),
         ValueLayout.ADDRESS.withName("samplers")
     );
-    /// The [VarHandle] of `user_data` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `user_data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_user_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("user_data"));
-    /// The [VarHandle] of `input_pixels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `input_pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_input_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_pixels"));
     /// The [VarHandle] of `input_w` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_input_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_w"));
@@ -195,9 +195,9 @@ public sealed class STBIR_RESIZE extends Struct {
     public static final VarHandle VH_input_s1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_s1"));
     /// The [VarHandle] of `input_t1` of type `(MemorySegment base, long baseOffset, long index)double`.
     public static final VarHandle VH_input_t1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_t1"));
-    /// The [VarHandle] of `input_cb` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `input_cb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_input_cb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_cb"));
-    /// The [VarHandle] of `output_pixels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `output_pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_output_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_pixels"));
     /// The [VarHandle] of `output_w` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_output_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_w"));
@@ -211,7 +211,7 @@ public sealed class STBIR_RESIZE extends Struct {
     public static final VarHandle VH_output_subw = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subw"));
     /// The [VarHandle] of `output_subh` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_output_subh = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_subh"));
-    /// The [VarHandle] of `output_cb` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `output_cb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_output_cb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("output_cb"));
     /// The [VarHandle] of `input_stride_in_bytes` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_input_stride_in_bytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("input_stride_in_bytes"));
@@ -241,15 +241,15 @@ public sealed class STBIR_RESIZE extends Struct {
     public static final VarHandle VH_horizontal_edge = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_edge"));
     /// The [VarHandle] of `vertical_edge` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_vertical_edge = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_edge"));
-    /// The [VarHandle] of `horizontal_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `horizontal_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_horizontal_filter_kernel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_kernel"));
-    /// The [VarHandle] of `horizontal_filter_support` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `horizontal_filter_support` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_horizontal_filter_support = LAYOUT.arrayElementVarHandle(PathElement.groupElement("horizontal_filter_support"));
-    /// The [VarHandle] of `vertical_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `vertical_filter_kernel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertical_filter_kernel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_kernel"));
-    /// The [VarHandle] of `vertical_filter_support` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `vertical_filter_support` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertical_filter_support = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertical_filter_support"));
-    /// The [VarHandle] of `samplers` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `samplers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_samplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplers"));
 
     /// Creates `STBIR_RESIZE` with the given segment.
@@ -295,7 +295,7 @@ public sealed class STBIR_RESIZE extends Struct {
     /// Allocates a `STBIR_RESIZE` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `STBIR_RESIZE`
-    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, @CType("void*") java.lang.foreign.MemorySegment user_data, @CType("void const *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("double") double input_s0, @CType("double") double input_t0, @CType("double") double input_s1, @CType("double") double input_t1, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment input_cb, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_subx, @CType("int") int output_suby, @CType("int") int output_subw, @CType("int") int output_subh, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment output_cb, @CType("int") int input_stride_in_bytes, @CType("int") int output_stride_in_bytes, @CType("int") int splits, @CType("int") int fast_alpha, @CType("int") int needs_rebuild, @CType("int") int called_alloc, @CType("stbir_pixel_layout") int input_pixel_layout_public, @CType("stbir_pixel_layout") int output_pixel_layout_public, @CType("stbir_datatype") int input_data_type, @CType("stbir_datatype") int output_data_type, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment horizontal_filter_kernel, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment horizontal_filter_support, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment vertical_filter_kernel, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment vertical_filter_support, @CType("stbir__info *") java.lang.foreign.MemorySegment samplers) { return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support).vertical_filter_kernel(vertical_filter_kernel).vertical_filter_support(vertical_filter_support).samplers(samplers); }
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, @CType("void*") MemorySegment user_data, @CType("void const *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("double") double input_s0, @CType("double") double input_t0, @CType("double") double input_s1, @CType("double") double input_t1, @CType("stbir_input_callback *") MemorySegment input_cb, @CType("void*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_subx, @CType("int") int output_suby, @CType("int") int output_subw, @CType("int") int output_subh, @CType("stbir_output_callback *") MemorySegment output_cb, @CType("int") int input_stride_in_bytes, @CType("int") int output_stride_in_bytes, @CType("int") int splits, @CType("int") int fast_alpha, @CType("int") int needs_rebuild, @CType("int") int called_alloc, @CType("stbir_pixel_layout") int input_pixel_layout_public, @CType("stbir_pixel_layout") int output_pixel_layout_public, @CType("stbir_datatype") int input_data_type, @CType("stbir_datatype") int output_data_type, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge, @CType("stbir__kernel_callback *") MemorySegment horizontal_filter_kernel, @CType("stbir__support_callback *") MemorySegment horizontal_filter_support, @CType("stbir__kernel_callback *") MemorySegment vertical_filter_kernel, @CType("stbir__support_callback *") MemorySegment vertical_filter_support, @CType("stbir__info *") MemorySegment samplers) { return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support).vertical_filter_kernel(vertical_filter_kernel).vertical_filter_support(vertical_filter_support).samplers(samplers); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -309,48 +309,48 @@ public sealed class STBIR_RESIZE extends Struct {
     /// {@return `user_data` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void*") java.lang.foreign.MemorySegment get_user_data(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_user_data.get(segment, 0L, index); }
+    public static @CType("void*") MemorySegment get_user_data(MemorySegment segment, long index) { return (MemorySegment) VH_user_data.get(segment, 0L, index); }
     /// {@return `user_data`}
     /// @param segment the segment of the struct
-    public static @CType("void*") java.lang.foreign.MemorySegment get_user_data(MemorySegment segment) { return STBIR_RESIZE.get_user_data(segment, 0L); }
+    public static @CType("void*") MemorySegment get_user_data(MemorySegment segment) { return STBIR_RESIZE.get_user_data(segment, 0L); }
     /// {@return `user_data`}
-    public @CType("void*") java.lang.foreign.MemorySegment user_data() { return STBIR_RESIZE.get_user_data(this.segment()); }
+    public @CType("void*") MemorySegment user_data() { return STBIR_RESIZE.get_user_data(this.segment()); }
     /// Sets `user_data` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_user_data(MemorySegment segment, long index, @CType("void*") java.lang.foreign.MemorySegment value) { VH_user_data.set(segment, 0L, index, value); }
+    public static void set_user_data(MemorySegment segment, long index, @CType("void*") MemorySegment value) { VH_user_data.set(segment, 0L, index, value); }
     /// Sets `user_data` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_user_data(MemorySegment segment, @CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_user_data(segment, 0L, value); }
+    public static void set_user_data(MemorySegment segment, @CType("void*") MemorySegment value) { STBIR_RESIZE.set_user_data(segment, 0L, value); }
     /// Sets `user_data` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE user_data(@CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_user_data(this.segment(), value); return this; }
+    public STBIR_RESIZE user_data(@CType("void*") MemorySegment value) { STBIR_RESIZE.set_user_data(this.segment(), value); return this; }
 
     /// {@return `input_pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void const *") java.lang.foreign.MemorySegment get_input_pixels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_input_pixels.get(segment, 0L, index); }
+    public static @CType("void const *") MemorySegment get_input_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_input_pixels.get(segment, 0L, index); }
     /// {@return `input_pixels`}
     /// @param segment the segment of the struct
-    public static @CType("void const *") java.lang.foreign.MemorySegment get_input_pixels(MemorySegment segment) { return STBIR_RESIZE.get_input_pixels(segment, 0L); }
+    public static @CType("void const *") MemorySegment get_input_pixels(MemorySegment segment) { return STBIR_RESIZE.get_input_pixels(segment, 0L); }
     /// {@return `input_pixels`}
-    public @CType("void const *") java.lang.foreign.MemorySegment input_pixels() { return STBIR_RESIZE.get_input_pixels(this.segment()); }
+    public @CType("void const *") MemorySegment input_pixels() { return STBIR_RESIZE.get_input_pixels(this.segment()); }
     /// Sets `input_pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_input_pixels(MemorySegment segment, long index, @CType("void const *") java.lang.foreign.MemorySegment value) { VH_input_pixels.set(segment, 0L, index, value); }
+    public static void set_input_pixels(MemorySegment segment, long index, @CType("void const *") MemorySegment value) { VH_input_pixels.set(segment, 0L, index, value); }
     /// Sets `input_pixels` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_input_pixels(MemorySegment segment, @CType("void const *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_pixels(segment, 0L, value); }
+    public static void set_input_pixels(MemorySegment segment, @CType("void const *") MemorySegment value) { STBIR_RESIZE.set_input_pixels(segment, 0L, value); }
     /// Sets `input_pixels` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE input_pixels(@CType("void const *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_pixels(this.segment(), value); return this; }
+    public STBIR_RESIZE input_pixels(@CType("void const *") MemorySegment value) { STBIR_RESIZE.set_input_pixels(this.segment(), value); return this; }
 
     /// {@return `input_w` at the given index}
     /// @param segment the segment of the struct
@@ -493,48 +493,48 @@ public sealed class STBIR_RESIZE extends Struct {
     /// {@return `input_cb` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir_input_callback *") java.lang.foreign.MemorySegment get_input_cb(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_input_cb.get(segment, 0L, index); }
+    public static @CType("stbir_input_callback *") MemorySegment get_input_cb(MemorySegment segment, long index) { return (MemorySegment) VH_input_cb.get(segment, 0L, index); }
     /// {@return `input_cb`}
     /// @param segment the segment of the struct
-    public static @CType("stbir_input_callback *") java.lang.foreign.MemorySegment get_input_cb(MemorySegment segment) { return STBIR_RESIZE.get_input_cb(segment, 0L); }
+    public static @CType("stbir_input_callback *") MemorySegment get_input_cb(MemorySegment segment) { return STBIR_RESIZE.get_input_cb(segment, 0L); }
     /// {@return `input_cb`}
-    public @CType("stbir_input_callback *") java.lang.foreign.MemorySegment input_cb() { return STBIR_RESIZE.get_input_cb(this.segment()); }
+    public @CType("stbir_input_callback *") MemorySegment input_cb() { return STBIR_RESIZE.get_input_cb(this.segment()); }
     /// Sets `input_cb` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_input_cb(MemorySegment segment, long index, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment value) { VH_input_cb.set(segment, 0L, index, value); }
+    public static void set_input_cb(MemorySegment segment, long index, @CType("stbir_input_callback *") MemorySegment value) { VH_input_cb.set(segment, 0L, index, value); }
     /// Sets `input_cb` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_input_cb(MemorySegment segment, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_cb(segment, 0L, value); }
+    public static void set_input_cb(MemorySegment segment, @CType("stbir_input_callback *") MemorySegment value) { STBIR_RESIZE.set_input_cb(segment, 0L, value); }
     /// Sets `input_cb` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE input_cb(@CType("stbir_input_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_cb(this.segment(), value); return this; }
+    public STBIR_RESIZE input_cb(@CType("stbir_input_callback *") MemorySegment value) { STBIR_RESIZE.set_input_cb(this.segment(), value); return this; }
 
     /// {@return `output_pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void*") java.lang.foreign.MemorySegment get_output_pixels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_output_pixels.get(segment, 0L, index); }
+    public static @CType("void*") MemorySegment get_output_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_output_pixels.get(segment, 0L, index); }
     /// {@return `output_pixels`}
     /// @param segment the segment of the struct
-    public static @CType("void*") java.lang.foreign.MemorySegment get_output_pixels(MemorySegment segment) { return STBIR_RESIZE.get_output_pixels(segment, 0L); }
+    public static @CType("void*") MemorySegment get_output_pixels(MemorySegment segment) { return STBIR_RESIZE.get_output_pixels(segment, 0L); }
     /// {@return `output_pixels`}
-    public @CType("void*") java.lang.foreign.MemorySegment output_pixels() { return STBIR_RESIZE.get_output_pixels(this.segment()); }
+    public @CType("void*") MemorySegment output_pixels() { return STBIR_RESIZE.get_output_pixels(this.segment()); }
     /// Sets `output_pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_output_pixels(MemorySegment segment, long index, @CType("void*") java.lang.foreign.MemorySegment value) { VH_output_pixels.set(segment, 0L, index, value); }
+    public static void set_output_pixels(MemorySegment segment, long index, @CType("void*") MemorySegment value) { VH_output_pixels.set(segment, 0L, index, value); }
     /// Sets `output_pixels` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_output_pixels(MemorySegment segment, @CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_pixels(segment, 0L, value); }
+    public static void set_output_pixels(MemorySegment segment, @CType("void*") MemorySegment value) { STBIR_RESIZE.set_output_pixels(segment, 0L, value); }
     /// Sets `output_pixels` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE output_pixels(@CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_pixels(this.segment(), value); return this; }
+    public STBIR_RESIZE output_pixels(@CType("void*") MemorySegment value) { STBIR_RESIZE.set_output_pixels(this.segment(), value); return this; }
 
     /// {@return `output_w` at the given index}
     /// @param segment the segment of the struct
@@ -677,25 +677,25 @@ public sealed class STBIR_RESIZE extends Struct {
     /// {@return `output_cb` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir_output_callback *") java.lang.foreign.MemorySegment get_output_cb(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_output_cb.get(segment, 0L, index); }
+    public static @CType("stbir_output_callback *") MemorySegment get_output_cb(MemorySegment segment, long index) { return (MemorySegment) VH_output_cb.get(segment, 0L, index); }
     /// {@return `output_cb`}
     /// @param segment the segment of the struct
-    public static @CType("stbir_output_callback *") java.lang.foreign.MemorySegment get_output_cb(MemorySegment segment) { return STBIR_RESIZE.get_output_cb(segment, 0L); }
+    public static @CType("stbir_output_callback *") MemorySegment get_output_cb(MemorySegment segment) { return STBIR_RESIZE.get_output_cb(segment, 0L); }
     /// {@return `output_cb`}
-    public @CType("stbir_output_callback *") java.lang.foreign.MemorySegment output_cb() { return STBIR_RESIZE.get_output_cb(this.segment()); }
+    public @CType("stbir_output_callback *") MemorySegment output_cb() { return STBIR_RESIZE.get_output_cb(this.segment()); }
     /// Sets `output_cb` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_output_cb(MemorySegment segment, long index, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment value) { VH_output_cb.set(segment, 0L, index, value); }
+    public static void set_output_cb(MemorySegment segment, long index, @CType("stbir_output_callback *") MemorySegment value) { VH_output_cb.set(segment, 0L, index, value); }
     /// Sets `output_cb` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_output_cb(MemorySegment segment, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_cb(segment, 0L, value); }
+    public static void set_output_cb(MemorySegment segment, @CType("stbir_output_callback *") MemorySegment value) { STBIR_RESIZE.set_output_cb(segment, 0L, value); }
     /// Sets `output_cb` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE output_cb(@CType("stbir_output_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_cb(this.segment(), value); return this; }
+    public STBIR_RESIZE output_cb(@CType("stbir_output_callback *") MemorySegment value) { STBIR_RESIZE.set_output_cb(this.segment(), value); return this; }
 
     /// {@return `input_stride_in_bytes` at the given index}
     /// @param segment the segment of the struct
@@ -1022,117 +1022,117 @@ public sealed class STBIR_RESIZE extends Struct {
     /// {@return `horizontal_filter_kernel` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment get_horizontal_filter_kernel(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_horizontal_filter_kernel.get(segment, 0L, index); }
+    public static @CType("stbir__kernel_callback *") MemorySegment get_horizontal_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_kernel.get(segment, 0L, index); }
     /// {@return `horizontal_filter_kernel`}
     /// @param segment the segment of the struct
-    public static @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment get_horizontal_filter_kernel(MemorySegment segment) { return STBIR_RESIZE.get_horizontal_filter_kernel(segment, 0L); }
+    public static @CType("stbir__kernel_callback *") MemorySegment get_horizontal_filter_kernel(MemorySegment segment) { return STBIR_RESIZE.get_horizontal_filter_kernel(segment, 0L); }
     /// {@return `horizontal_filter_kernel`}
-    public @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment horizontal_filter_kernel() { return STBIR_RESIZE.get_horizontal_filter_kernel(this.segment()); }
+    public @CType("stbir__kernel_callback *") MemorySegment horizontal_filter_kernel() { return STBIR_RESIZE.get_horizontal_filter_kernel(this.segment()); }
     /// Sets `horizontal_filter_kernel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_horizontal_filter_kernel(MemorySegment segment, long index, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { VH_horizontal_filter_kernel.set(segment, 0L, index, value); }
+    public static void set_horizontal_filter_kernel(MemorySegment segment, long index, @CType("stbir__kernel_callback *") MemorySegment value) { VH_horizontal_filter_kernel.set(segment, 0L, index, value); }
     /// Sets `horizontal_filter_kernel` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_horizontal_filter_kernel(MemorySegment segment, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(segment, 0L, value); }
+    public static void set_horizontal_filter_kernel(MemorySegment segment, @CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(segment, 0L, value); }
     /// Sets `horizontal_filter_kernel` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE horizontal_filter_kernel(@CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(this.segment(), value); return this; }
+    public STBIR_RESIZE horizontal_filter_kernel(@CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(this.segment(), value); return this; }
 
     /// {@return `horizontal_filter_support` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir__support_callback *") java.lang.foreign.MemorySegment get_horizontal_filter_support(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_horizontal_filter_support.get(segment, 0L, index); }
+    public static @CType("stbir__support_callback *") MemorySegment get_horizontal_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_horizontal_filter_support.get(segment, 0L, index); }
     /// {@return `horizontal_filter_support`}
     /// @param segment the segment of the struct
-    public static @CType("stbir__support_callback *") java.lang.foreign.MemorySegment get_horizontal_filter_support(MemorySegment segment) { return STBIR_RESIZE.get_horizontal_filter_support(segment, 0L); }
+    public static @CType("stbir__support_callback *") MemorySegment get_horizontal_filter_support(MemorySegment segment) { return STBIR_RESIZE.get_horizontal_filter_support(segment, 0L); }
     /// {@return `horizontal_filter_support`}
-    public @CType("stbir__support_callback *") java.lang.foreign.MemorySegment horizontal_filter_support() { return STBIR_RESIZE.get_horizontal_filter_support(this.segment()); }
+    public @CType("stbir__support_callback *") MemorySegment horizontal_filter_support() { return STBIR_RESIZE.get_horizontal_filter_support(this.segment()); }
     /// Sets `horizontal_filter_support` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_horizontal_filter_support(MemorySegment segment, long index, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { VH_horizontal_filter_support.set(segment, 0L, index, value); }
+    public static void set_horizontal_filter_support(MemorySegment segment, long index, @CType("stbir__support_callback *") MemorySegment value) { VH_horizontal_filter_support.set(segment, 0L, index, value); }
     /// Sets `horizontal_filter_support` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_horizontal_filter_support(MemorySegment segment, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(segment, 0L, value); }
+    public static void set_horizontal_filter_support(MemorySegment segment, @CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(segment, 0L, value); }
     /// Sets `horizontal_filter_support` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE horizontal_filter_support(@CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(this.segment(), value); return this; }
+    public STBIR_RESIZE horizontal_filter_support(@CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(this.segment(), value); return this; }
 
     /// {@return `vertical_filter_kernel` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment get_vertical_filter_kernel(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_vertical_filter_kernel.get(segment, 0L, index); }
+    public static @CType("stbir__kernel_callback *") MemorySegment get_vertical_filter_kernel(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_kernel.get(segment, 0L, index); }
     /// {@return `vertical_filter_kernel`}
     /// @param segment the segment of the struct
-    public static @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment get_vertical_filter_kernel(MemorySegment segment) { return STBIR_RESIZE.get_vertical_filter_kernel(segment, 0L); }
+    public static @CType("stbir__kernel_callback *") MemorySegment get_vertical_filter_kernel(MemorySegment segment) { return STBIR_RESIZE.get_vertical_filter_kernel(segment, 0L); }
     /// {@return `vertical_filter_kernel`}
-    public @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment vertical_filter_kernel() { return STBIR_RESIZE.get_vertical_filter_kernel(this.segment()); }
+    public @CType("stbir__kernel_callback *") MemorySegment vertical_filter_kernel() { return STBIR_RESIZE.get_vertical_filter_kernel(this.segment()); }
     /// Sets `vertical_filter_kernel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_vertical_filter_kernel(MemorySegment segment, long index, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { VH_vertical_filter_kernel.set(segment, 0L, index, value); }
+    public static void set_vertical_filter_kernel(MemorySegment segment, long index, @CType("stbir__kernel_callback *") MemorySegment value) { VH_vertical_filter_kernel.set(segment, 0L, index, value); }
     /// Sets `vertical_filter_kernel` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_vertical_filter_kernel(MemorySegment segment, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(segment, 0L, value); }
+    public static void set_vertical_filter_kernel(MemorySegment segment, @CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(segment, 0L, value); }
     /// Sets `vertical_filter_kernel` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE vertical_filter_kernel(@CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(this.segment(), value); return this; }
+    public STBIR_RESIZE vertical_filter_kernel(@CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(this.segment(), value); return this; }
 
     /// {@return `vertical_filter_support` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir__support_callback *") java.lang.foreign.MemorySegment get_vertical_filter_support(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_vertical_filter_support.get(segment, 0L, index); }
+    public static @CType("stbir__support_callback *") MemorySegment get_vertical_filter_support(MemorySegment segment, long index) { return (MemorySegment) VH_vertical_filter_support.get(segment, 0L, index); }
     /// {@return `vertical_filter_support`}
     /// @param segment the segment of the struct
-    public static @CType("stbir__support_callback *") java.lang.foreign.MemorySegment get_vertical_filter_support(MemorySegment segment) { return STBIR_RESIZE.get_vertical_filter_support(segment, 0L); }
+    public static @CType("stbir__support_callback *") MemorySegment get_vertical_filter_support(MemorySegment segment) { return STBIR_RESIZE.get_vertical_filter_support(segment, 0L); }
     /// {@return `vertical_filter_support`}
-    public @CType("stbir__support_callback *") java.lang.foreign.MemorySegment vertical_filter_support() { return STBIR_RESIZE.get_vertical_filter_support(this.segment()); }
+    public @CType("stbir__support_callback *") MemorySegment vertical_filter_support() { return STBIR_RESIZE.get_vertical_filter_support(this.segment()); }
     /// Sets `vertical_filter_support` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_vertical_filter_support(MemorySegment segment, long index, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { VH_vertical_filter_support.set(segment, 0L, index, value); }
+    public static void set_vertical_filter_support(MemorySegment segment, long index, @CType("stbir__support_callback *") MemorySegment value) { VH_vertical_filter_support.set(segment, 0L, index, value); }
     /// Sets `vertical_filter_support` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_vertical_filter_support(MemorySegment segment, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(segment, 0L, value); }
+    public static void set_vertical_filter_support(MemorySegment segment, @CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(segment, 0L, value); }
     /// Sets `vertical_filter_support` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE vertical_filter_support(@CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(this.segment(), value); return this; }
+    public STBIR_RESIZE vertical_filter_support(@CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(this.segment(), value); return this; }
 
     /// {@return `samplers` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("stbir__info *") java.lang.foreign.MemorySegment get_samplers(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_samplers.get(segment, 0L, index); }
+    public static @CType("stbir__info *") MemorySegment get_samplers(MemorySegment segment, long index) { return (MemorySegment) VH_samplers.get(segment, 0L, index); }
     /// {@return `samplers`}
     /// @param segment the segment of the struct
-    public static @CType("stbir__info *") java.lang.foreign.MemorySegment get_samplers(MemorySegment segment) { return STBIR_RESIZE.get_samplers(segment, 0L); }
+    public static @CType("stbir__info *") MemorySegment get_samplers(MemorySegment segment) { return STBIR_RESIZE.get_samplers(segment, 0L); }
     /// {@return `samplers`}
-    public @CType("stbir__info *") java.lang.foreign.MemorySegment samplers() { return STBIR_RESIZE.get_samplers(this.segment()); }
+    public @CType("stbir__info *") MemorySegment samplers() { return STBIR_RESIZE.get_samplers(this.segment()); }
     /// Sets `samplers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_samplers(MemorySegment segment, long index, @CType("stbir__info *") java.lang.foreign.MemorySegment value) { VH_samplers.set(segment, 0L, index, value); }
+    public static void set_samplers(MemorySegment segment, long index, @CType("stbir__info *") MemorySegment value) { VH_samplers.set(segment, 0L, index, value); }
     /// Sets `samplers` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_samplers(MemorySegment segment, @CType("stbir__info *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_samplers(segment, 0L, value); }
+    public static void set_samplers(MemorySegment segment, @CType("stbir__info *") MemorySegment value) { STBIR_RESIZE.set_samplers(segment, 0L, value); }
     /// Sets `samplers` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIR_RESIZE samplers(@CType("stbir__info *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_samplers(this.segment(), value); return this; }
+    public STBIR_RESIZE samplers(@CType("stbir__info *") MemorySegment value) { STBIR_RESIZE.set_samplers(this.segment(), value); return this; }
 
     /// A buffer of [STBIR_RESIZE].
     public static final class Buffer extends STBIR_RESIZE {
@@ -1158,21 +1158,21 @@ public sealed class STBIR_RESIZE extends Struct {
 
         /// {@return `user_data` at the given index}
         /// @param index the index
-        public @CType("void*") java.lang.foreign.MemorySegment user_dataAt(long index) { return STBIR_RESIZE.get_user_data(this.segment(), index); }
+        public @CType("void*") MemorySegment user_dataAt(long index) { return STBIR_RESIZE.get_user_data(this.segment(), index); }
         /// Sets `user_data` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer user_dataAt(long index, @CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_user_data(this.segment(), index, value); return this; }
+        public Buffer user_dataAt(long index, @CType("void*") MemorySegment value) { STBIR_RESIZE.set_user_data(this.segment(), index, value); return this; }
 
         /// {@return `input_pixels` at the given index}
         /// @param index the index
-        public @CType("void const *") java.lang.foreign.MemorySegment input_pixelsAt(long index) { return STBIR_RESIZE.get_input_pixels(this.segment(), index); }
+        public @CType("void const *") MemorySegment input_pixelsAt(long index) { return STBIR_RESIZE.get_input_pixels(this.segment(), index); }
         /// Sets `input_pixels` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer input_pixelsAt(long index, @CType("void const *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_pixels(this.segment(), index, value); return this; }
+        public Buffer input_pixelsAt(long index, @CType("void const *") MemorySegment value) { STBIR_RESIZE.set_input_pixels(this.segment(), index, value); return this; }
 
         /// {@return `input_w` at the given index}
         /// @param index the index
@@ -1230,21 +1230,21 @@ public sealed class STBIR_RESIZE extends Struct {
 
         /// {@return `input_cb` at the given index}
         /// @param index the index
-        public @CType("stbir_input_callback *") java.lang.foreign.MemorySegment input_cbAt(long index) { return STBIR_RESIZE.get_input_cb(this.segment(), index); }
+        public @CType("stbir_input_callback *") MemorySegment input_cbAt(long index) { return STBIR_RESIZE.get_input_cb(this.segment(), index); }
         /// Sets `input_cb` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer input_cbAt(long index, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_input_cb(this.segment(), index, value); return this; }
+        public Buffer input_cbAt(long index, @CType("stbir_input_callback *") MemorySegment value) { STBIR_RESIZE.set_input_cb(this.segment(), index, value); return this; }
 
         /// {@return `output_pixels` at the given index}
         /// @param index the index
-        public @CType("void*") java.lang.foreign.MemorySegment output_pixelsAt(long index) { return STBIR_RESIZE.get_output_pixels(this.segment(), index); }
+        public @CType("void*") MemorySegment output_pixelsAt(long index) { return STBIR_RESIZE.get_output_pixels(this.segment(), index); }
         /// Sets `output_pixels` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer output_pixelsAt(long index, @CType("void*") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_pixels(this.segment(), index, value); return this; }
+        public Buffer output_pixelsAt(long index, @CType("void*") MemorySegment value) { STBIR_RESIZE.set_output_pixels(this.segment(), index, value); return this; }
 
         /// {@return `output_w` at the given index}
         /// @param index the index
@@ -1302,12 +1302,12 @@ public sealed class STBIR_RESIZE extends Struct {
 
         /// {@return `output_cb` at the given index}
         /// @param index the index
-        public @CType("stbir_output_callback *") java.lang.foreign.MemorySegment output_cbAt(long index) { return STBIR_RESIZE.get_output_cb(this.segment(), index); }
+        public @CType("stbir_output_callback *") MemorySegment output_cbAt(long index) { return STBIR_RESIZE.get_output_cb(this.segment(), index); }
         /// Sets `output_cb` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer output_cbAt(long index, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_output_cb(this.segment(), index, value); return this; }
+        public Buffer output_cbAt(long index, @CType("stbir_output_callback *") MemorySegment value) { STBIR_RESIZE.set_output_cb(this.segment(), index, value); return this; }
 
         /// {@return `input_stride_in_bytes` at the given index}
         /// @param index the index
@@ -1437,48 +1437,48 @@ public sealed class STBIR_RESIZE extends Struct {
 
         /// {@return `horizontal_filter_kernel` at the given index}
         /// @param index the index
-        public @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment horizontal_filter_kernelAt(long index) { return STBIR_RESIZE.get_horizontal_filter_kernel(this.segment(), index); }
+        public @CType("stbir__kernel_callback *") MemorySegment horizontal_filter_kernelAt(long index) { return STBIR_RESIZE.get_horizontal_filter_kernel(this.segment(), index); }
         /// Sets `horizontal_filter_kernel` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer horizontal_filter_kernelAt(long index, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(this.segment(), index, value); return this; }
+        public Buffer horizontal_filter_kernelAt(long index, @CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_kernel(this.segment(), index, value); return this; }
 
         /// {@return `horizontal_filter_support` at the given index}
         /// @param index the index
-        public @CType("stbir__support_callback *") java.lang.foreign.MemorySegment horizontal_filter_supportAt(long index) { return STBIR_RESIZE.get_horizontal_filter_support(this.segment(), index); }
+        public @CType("stbir__support_callback *") MemorySegment horizontal_filter_supportAt(long index) { return STBIR_RESIZE.get_horizontal_filter_support(this.segment(), index); }
         /// Sets `horizontal_filter_support` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer horizontal_filter_supportAt(long index, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(this.segment(), index, value); return this; }
+        public Buffer horizontal_filter_supportAt(long index, @CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_horizontal_filter_support(this.segment(), index, value); return this; }
 
         /// {@return `vertical_filter_kernel` at the given index}
         /// @param index the index
-        public @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment vertical_filter_kernelAt(long index) { return STBIR_RESIZE.get_vertical_filter_kernel(this.segment(), index); }
+        public @CType("stbir__kernel_callback *") MemorySegment vertical_filter_kernelAt(long index) { return STBIR_RESIZE.get_vertical_filter_kernel(this.segment(), index); }
         /// Sets `vertical_filter_kernel` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer vertical_filter_kernelAt(long index, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(this.segment(), index, value); return this; }
+        public Buffer vertical_filter_kernelAt(long index, @CType("stbir__kernel_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_kernel(this.segment(), index, value); return this; }
 
         /// {@return `vertical_filter_support` at the given index}
         /// @param index the index
-        public @CType("stbir__support_callback *") java.lang.foreign.MemorySegment vertical_filter_supportAt(long index) { return STBIR_RESIZE.get_vertical_filter_support(this.segment(), index); }
+        public @CType("stbir__support_callback *") MemorySegment vertical_filter_supportAt(long index) { return STBIR_RESIZE.get_vertical_filter_support(this.segment(), index); }
         /// Sets `vertical_filter_support` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer vertical_filter_supportAt(long index, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(this.segment(), index, value); return this; }
+        public Buffer vertical_filter_supportAt(long index, @CType("stbir__support_callback *") MemorySegment value) { STBIR_RESIZE.set_vertical_filter_support(this.segment(), index, value); return this; }
 
         /// {@return `samplers` at the given index}
         /// @param index the index
-        public @CType("stbir__info *") java.lang.foreign.MemorySegment samplersAt(long index) { return STBIR_RESIZE.get_samplers(this.segment(), index); }
+        public @CType("stbir__info *") MemorySegment samplersAt(long index) { return STBIR_RESIZE.get_samplers(this.segment(), index); }
         /// Sets `samplers` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer samplersAt(long index, @CType("stbir__info *") java.lang.foreign.MemorySegment value) { STBIR_RESIZE.set_samplers(this.segment(), index, value); return this; }
+        public Buffer samplersAt(long index, @CType("stbir__info *") MemorySegment value) { STBIR_RESIZE.set_samplers(this.segment(), index, value); return this; }
 
     }
 }

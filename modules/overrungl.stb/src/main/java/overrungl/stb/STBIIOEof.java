@@ -31,10 +31,10 @@ public interface STBIIOEof extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIIOEof.class, "invoke_", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    boolean invoke(@CType("void*") java.lang.foreign.MemorySegment user);
+    boolean invoke(@CType("void*") MemorySegment user);
 
     /// The target method of the upcall.
-    default @CType("int") int invoke_(@CType("void*") java.lang.foreign.MemorySegment user) {
+    default @CType("int") int invoke_(@CType("void*") MemorySegment user) {
         return invoke(user) ? 1 : 0;
     }
 
@@ -43,7 +43,7 @@ public interface STBIIOEof extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user) {
+    static @CType("int") int invoke(MemorySegment stub, @CType("void*") MemorySegment user) {
         try { return (int) HANDLE.invokeExact(stub, user); }
         catch (Throwable e) { throw new RuntimeException("error in STBIIOEof::invoke (static invoker)", e); }
     }

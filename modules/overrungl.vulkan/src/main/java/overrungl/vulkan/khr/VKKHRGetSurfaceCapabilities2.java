@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRGetSurfaceCapabilities2 {
     public static final int VK_KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION = 1;
     public static final String VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME = "VK_KHR_get_surface_capabilities2";
@@ -30,18 +29,9 @@ public class VKKHRGetSurfaceCapabilities2 {
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR = 1000119001;
     public static final int VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR = 1000119002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceCapabilities2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceFormats2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceSurfaceCapabilities2KHR,
-            FD_vkGetPhysicalDeviceSurfaceFormats2KHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceCapabilities2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormats2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceFormats2KHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormats2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceFormats2KHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

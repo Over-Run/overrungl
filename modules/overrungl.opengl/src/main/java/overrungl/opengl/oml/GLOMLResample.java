@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oml;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLOMLResample {
     public static final int GL_PACK_RESAMPLE_OML = 0x8984;
     public static final int GL_UNPACK_RESAMPLE_OML = 0x8985;

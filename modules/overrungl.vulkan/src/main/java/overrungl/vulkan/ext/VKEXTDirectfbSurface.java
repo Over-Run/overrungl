@@ -22,24 +22,14 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDirectfbSurface {
     public static final int VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME = "VK_EXT_directfb_surface";
     public static final int VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT = 1000346000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateDirectFBSurfaceEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDirectFBSurfaceEXT,
-            FD_vkGetPhysicalDeviceDirectFBPresentationSupportEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDirectFBSurfaceEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateDirectFBSurfaceEXT);
-        public static final MethodHandle MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceDirectFBPresentationSupportEXT);
+        public static final MethodHandle MH_vkCreateDirectFBSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateDirectFBSurfaceEXT;
         public final MemorySegment PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTPackedFloat {
     public static final int GL_R11F_G11F_B10F_EXT = 0x8C3A;
     public static final int GL_UNSIGNED_INT_10F_11F_11F_REV_EXT = 0x8C3B;

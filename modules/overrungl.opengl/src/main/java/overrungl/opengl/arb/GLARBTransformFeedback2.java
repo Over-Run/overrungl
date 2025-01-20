@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,33 +29,14 @@ public final class GLARBTransformFeedback2 {
     public static final int GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24;
     public static final int GL_TRANSFORM_FEEDBACK_BINDING = 0x8E25;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindTransformFeedback = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteTransformFeedbacks = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenTransformFeedbacks = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsTransformFeedback = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPauseTransformFeedback = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glResumeTransformFeedback = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glDrawTransformFeedback = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindTransformFeedback,
-            FD_glDeleteTransformFeedbacks,
-            FD_glGenTransformFeedbacks,
-            FD_glIsTransformFeedback,
-            FD_glPauseTransformFeedback,
-            FD_glResumeTransformFeedback,
-            FD_glDrawTransformFeedback
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glBindTransformFeedback);
-        public static final MethodHandle MH_glDeleteTransformFeedbacks = RuntimeHelper.downcall(Descriptors.FD_glDeleteTransformFeedbacks);
-        public static final MethodHandle MH_glGenTransformFeedbacks = RuntimeHelper.downcall(Descriptors.FD_glGenTransformFeedbacks);
-        public static final MethodHandle MH_glIsTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glIsTransformFeedback);
-        public static final MethodHandle MH_glPauseTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glPauseTransformFeedback);
-        public static final MethodHandle MH_glResumeTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glResumeTransformFeedback);
-        public static final MethodHandle MH_glDrawTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedback);
+        public static final MethodHandle MH_glBindTransformFeedback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteTransformFeedbacks = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenTransformFeedbacks = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsTransformFeedback = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPauseTransformFeedback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glResumeTransformFeedback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glDrawTransformFeedback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindTransformFeedback;
         public final MemorySegment PFN_glDeleteTransformFeedbacks;
         public final MemorySegment PFN_glGenTransformFeedbacks;
@@ -85,13 +65,13 @@ public final class GLARBTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in glBindTransformFeedback", e); }
     }
 
-    public void DeleteTransformFeedbacks(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void DeleteTransformFeedbacks(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteTransformFeedbacks)) throw new SymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacks");
         try { Handles.MH_glDeleteTransformFeedbacks.invokeExact(handles.PFN_glDeleteTransformFeedbacks, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteTransformFeedbacks", e); }
     }
 
-    public void GenTransformFeedbacks(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void GenTransformFeedbacks(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenTransformFeedbacks)) throw new SymbolNotFoundError("Symbol not found: glGenTransformFeedbacks");
         try { Handles.MH_glGenTransformFeedbacks.invokeExact(handles.PFN_glGenTransformFeedbacks, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glGenTransformFeedbacks", e); }

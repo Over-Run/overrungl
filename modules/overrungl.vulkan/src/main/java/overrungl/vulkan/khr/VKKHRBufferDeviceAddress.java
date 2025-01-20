@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRBufferDeviceAddress {
     public static final int VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1;
@@ -38,21 +37,10 @@ public class VKKHRBufferDeviceAddress {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT;
     public static final int VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetBufferDeviceAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetBufferDeviceAddressKHR,
-            FD_vkGetBufferOpaqueCaptureAddressKHR,
-            FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetBufferDeviceAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddressKHR);
-        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferOpaqueCaptureAddressKHR);
-        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR);
+        public static final MethodHandle MH_vkGetBufferDeviceAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetBufferDeviceAddressKHR;
         public final MemorySegment PFN_vkGetBufferOpaqueCaptureAddressKHR;
         public final MemorySegment PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR;

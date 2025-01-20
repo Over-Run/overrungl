@@ -154,8 +154,6 @@ The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
 
 The documentation of OpenGL can be found from [Khronos' references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
-[JavaPoet](https://github.com/palantir/javapoet) is used to generate source files.
-
 ### Credits
 
 [<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)

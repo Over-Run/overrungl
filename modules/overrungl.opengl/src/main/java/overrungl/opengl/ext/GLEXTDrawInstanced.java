@@ -19,25 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTDrawInstanced {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawArraysInstancedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawElementsInstancedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawArraysInstancedEXT,
-            FD_glDrawElementsInstancedEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstancedEXT);
-        public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsInstancedEXT);
+        public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawArraysInstancedEXT;
         public final MemorySegment PFN_glDrawElementsInstancedEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -56,7 +46,7 @@ public final class GLEXTDrawInstanced {
         catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
     }
 
-    public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
+    public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
         try { Handles.MH_glDrawElementsInstancedEXT.invokeExact(handles.PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }

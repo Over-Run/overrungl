@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTMeshShader {
     public static final int VK_EXT_MESH_SHADER_SPEC_VERSION = 1;
     public static final String VK_EXT_MESH_SHADER_EXTENSION_NAME = "VK_EXT_mesh_shader";
@@ -39,21 +38,10 @@ public class VKEXTMeshShader {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT = 1000328000;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT = 1000328001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectCountEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawMeshTasksEXT,
-            FD_vkCmdDrawMeshTasksIndirectEXT,
-            FD_vkCmdDrawMeshTasksIndirectCountEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawMeshTasksEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksEXT);
-        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectEXT);
-        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectCountEXT);
+        public static final MethodHandle MH_vkCmdDrawMeshTasksEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdDrawMeshTasksEXT;
         public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectEXT;
         public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectCountEXT;

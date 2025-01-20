@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLOESCompressedPalettedTexture {
     public static final int GL_PALETTE4_RGB8_OES = 0x8B90;
     public static final int GL_PALETTE4_RGBA8_OES = 0x8B91;

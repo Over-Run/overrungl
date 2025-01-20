@@ -28,27 +28,27 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### displacementBiasAndScaleFormat
 /// [VarHandle][#VH_displacementBiasAndScaleFormat] - [Getter][#displacementBiasAndScaleFormat()] - [Setter][#displacementBiasAndScaleFormat(int)]
 /// ### displacementVectorFormat
 /// [VarHandle][#VH_displacementVectorFormat] - [Getter][#displacementVectorFormat()] - [Setter][#displacementVectorFormat(int)]
 /// ### displacementBiasAndScaleBuffer
-/// [Byte offset][#OFFSET_displacementBiasAndScaleBuffer] - [Memory layout][#ML_displacementBiasAndScaleBuffer] - [Getter][#displacementBiasAndScaleBuffer()] - [Setter][#displacementBiasAndScaleBuffer(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displacementBiasAndScaleBuffer] - [Memory layout][#ML_displacementBiasAndScaleBuffer] - [Getter][#displacementBiasAndScaleBuffer()] - [Setter][#displacementBiasAndScaleBuffer(MemorySegment)]
 /// ### displacementBiasAndScaleStride
 /// [VarHandle][#VH_displacementBiasAndScaleStride] - [Getter][#displacementBiasAndScaleStride()] - [Setter][#displacementBiasAndScaleStride(long)]
 /// ### displacementVectorBuffer
-/// [Byte offset][#OFFSET_displacementVectorBuffer] - [Memory layout][#ML_displacementVectorBuffer] - [Getter][#displacementVectorBuffer()] - [Setter][#displacementVectorBuffer(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displacementVectorBuffer] - [Memory layout][#ML_displacementVectorBuffer] - [Getter][#displacementVectorBuffer()] - [Setter][#displacementVectorBuffer(MemorySegment)]
 /// ### displacementVectorStride
 /// [VarHandle][#VH_displacementVectorStride] - [Getter][#displacementVectorStride()] - [Setter][#displacementVectorStride(long)]
 /// ### displacedMicromapPrimitiveFlags
-/// [Byte offset][#OFFSET_displacedMicromapPrimitiveFlags] - [Memory layout][#ML_displacedMicromapPrimitiveFlags] - [Getter][#displacedMicromapPrimitiveFlags()] - [Setter][#displacedMicromapPrimitiveFlags(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displacedMicromapPrimitiveFlags] - [Memory layout][#ML_displacedMicromapPrimitiveFlags] - [Getter][#displacedMicromapPrimitiveFlags()] - [Setter][#displacedMicromapPrimitiveFlags(MemorySegment)]
 /// ### displacedMicromapPrimitiveFlagsStride
 /// [VarHandle][#VH_displacedMicromapPrimitiveFlagsStride] - [Getter][#displacedMicromapPrimitiveFlagsStride()] - [Setter][#displacedMicromapPrimitiveFlagsStride(long)]
 /// ### indexType
 /// [VarHandle][#VH_indexType] - [Getter][#indexType()] - [Setter][#indexType(int)]
 /// ### indexBuffer
-/// [Byte offset][#OFFSET_indexBuffer] - [Memory layout][#ML_indexBuffer] - [Getter][#indexBuffer()] - [Setter][#indexBuffer(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_indexBuffer] - [Memory layout][#ML_indexBuffer] - [Getter][#indexBuffer()] - [Setter][#indexBuffer(MemorySegment)]
 /// ### indexStride
 /// [VarHandle][#VH_indexStride] - [Getter][#indexStride()] - [Setter][#indexStride(long)]
 /// ### baseTriangle
@@ -56,11 +56,11 @@ import overrungl.util.*;
 /// ### usageCountsCount
 /// [VarHandle][#VH_usageCountsCount] - [Getter][#usageCountsCount()] - [Setter][#usageCountsCount(int)]
 /// ### pUsageCounts
-/// [VarHandle][#VH_pUsageCounts] - [Getter][#pUsageCounts()] - [Setter][#pUsageCounts(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pUsageCounts] - [Getter][#pUsageCounts()] - [Setter][#pUsageCounts(MemorySegment)]
 /// ### ppUsageCounts
-/// [VarHandle][#VH_ppUsageCounts] - [Getter][#ppUsageCounts()] - [Setter][#ppUsageCounts(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_ppUsageCounts] - [Getter][#ppUsageCounts()] - [Setter][#ppUsageCounts(MemorySegment)]
 /// ### micromap
-/// [VarHandle][#VH_micromap] - [Getter][#micromap()] - [Setter][#micromap(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_micromap] - [Getter][#micromap()] - [Setter][#micromap(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -109,7 +109,7 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `displacementBiasAndScaleFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_displacementBiasAndScaleFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displacementBiasAndScaleFormat"));
@@ -145,11 +145,11 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     public static final VarHandle VH_baseTriangle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseTriangle"));
     /// The [VarHandle] of `usageCountsCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_usageCountsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usageCountsCount"));
-    /// The [VarHandle] of `pUsageCounts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUsageCounts"));
-    /// The [VarHandle] of `ppUsageCounts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `ppUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_ppUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppUsageCounts"));
-    /// The [VarHandle] of `micromap` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `micromap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_micromap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("micromap"));
 
     /// Creates `VkAccelerationStructureTrianglesDisplacementMicromapNV` with the given segment.
@@ -195,7 +195,7 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// Allocates a `VkAccelerationStructureTrianglesDisplacementMicromapNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureTrianglesDisplacementMicromapNV`
-    public static VkAccelerationStructureTrianglesDisplacementMicromapNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int displacementBiasAndScaleFormat, @CType("VkFormat") int displacementVectorFormat, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementBiasAndScaleBuffer, @CType("VkDeviceSize") long displacementBiasAndScaleStride, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementVectorBuffer, @CType("VkDeviceSize") long displacementVectorStride, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacedMicromapPrimitiveFlags, @CType("VkDeviceSize") long displacedMicromapPrimitiveFlagsStride, @CType("VkIndexType") int indexType, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment indexBuffer, @CType("VkDeviceSize") long indexStride, @CType("uint32_t") int baseTriangle, @CType("uint32_t") int usageCountsCount, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCounts, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCounts, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment micromap) { return alloc(allocator).sType(sType).pNext(pNext).displacementBiasAndScaleFormat(displacementBiasAndScaleFormat).displacementVectorFormat(displacementVectorFormat).displacementBiasAndScaleBuffer(displacementBiasAndScaleBuffer).displacementBiasAndScaleStride(displacementBiasAndScaleStride).displacementVectorBuffer(displacementVectorBuffer).displacementVectorStride(displacementVectorStride).displacedMicromapPrimitiveFlags(displacedMicromapPrimitiveFlags).displacedMicromapPrimitiveFlagsStride(displacedMicromapPrimitiveFlagsStride).indexType(indexType).indexBuffer(indexBuffer).indexStride(indexStride).baseTriangle(baseTriangle).usageCountsCount(usageCountsCount).pUsageCounts(pUsageCounts).ppUsageCounts(ppUsageCounts).micromap(micromap); }
+    public static VkAccelerationStructureTrianglesDisplacementMicromapNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkFormat") int displacementBiasAndScaleFormat, @CType("VkFormat") int displacementVectorFormat, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementBiasAndScaleBuffer, @CType("VkDeviceSize") long displacementBiasAndScaleStride, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementVectorBuffer, @CType("VkDeviceSize") long displacementVectorStride, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacedMicromapPrimitiveFlags, @CType("VkDeviceSize") long displacedMicromapPrimitiveFlagsStride, @CType("VkIndexType") int indexType, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexBuffer, @CType("VkDeviceSize") long indexStride, @CType("uint32_t") int baseTriangle, @CType("uint32_t") int usageCountsCount, @CType("const VkMicromapUsageEXT *") MemorySegment pUsageCounts, @CType("const VkMicromapUsageEXT * const*") MemorySegment ppUsageCounts, @CType("VkMicromapEXT") MemorySegment micromap) { return alloc(allocator).sType(sType).pNext(pNext).displacementBiasAndScaleFormat(displacementBiasAndScaleFormat).displacementVectorFormat(displacementVectorFormat).displacementBiasAndScaleBuffer(displacementBiasAndScaleBuffer).displacementBiasAndScaleStride(displacementBiasAndScaleStride).displacementVectorBuffer(displacementVectorBuffer).displacementVectorStride(displacementVectorStride).displacedMicromapPrimitiveFlags(displacedMicromapPrimitiveFlags).displacedMicromapPrimitiveFlagsStride(displacedMicromapPrimitiveFlagsStride).indexType(indexType).indexBuffer(indexBuffer).indexStride(indexStride).baseTriangle(baseTriangle).usageCountsCount(usageCountsCount).pUsageCounts(pUsageCounts).ppUsageCounts(ppUsageCounts).micromap(micromap); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -232,25 +232,25 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV pNext(@CType("void *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `displacementBiasAndScaleFormat` at the given index}
     /// @param segment the segment of the struct
@@ -301,25 +301,25 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `displacementBiasAndScaleBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacementBiasAndScaleBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacementBiasAndScaleBuffer, index), ML_displacementBiasAndScaleBuffer); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacementBiasAndScaleBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacementBiasAndScaleBuffer, index), ML_displacementBiasAndScaleBuffer); }
     /// {@return `displacementBiasAndScaleBuffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacementBiasAndScaleBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacementBiasAndScaleBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(segment, 0L); }
     /// {@return `displacementBiasAndScaleBuffer`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementBiasAndScaleBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementBiasAndScaleBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(this.segment()); }
     /// Sets `displacementBiasAndScaleBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displacementBiasAndScaleBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacementBiasAndScaleBuffer, index), ML_displacementBiasAndScaleBuffer.byteSize()); }
+    public static void set_displacementBiasAndScaleBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacementBiasAndScaleBuffer, index), ML_displacementBiasAndScaleBuffer.byteSize()); }
     /// Sets `displacementBiasAndScaleBuffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displacementBiasAndScaleBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(segment, 0L, value); }
+    public static void set_displacementBiasAndScaleBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(segment, 0L, value); }
     /// Sets `displacementBiasAndScaleBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleBuffer(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleBuffer(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(this.segment(), value); return this; }
 
     /// {@return `displacementBiasAndScaleStride` at the given index}
     /// @param segment the segment of the struct
@@ -347,25 +347,25 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `displacementVectorBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacementVectorBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacementVectorBuffer, index), ML_displacementVectorBuffer); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacementVectorBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacementVectorBuffer, index), ML_displacementVectorBuffer); }
     /// {@return `displacementVectorBuffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacementVectorBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacementVectorBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(segment, 0L); }
     /// {@return `displacementVectorBuffer`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementVectorBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementVectorBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(this.segment()); }
     /// Sets `displacementVectorBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displacementVectorBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacementVectorBuffer, index), ML_displacementVectorBuffer.byteSize()); }
+    public static void set_displacementVectorBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacementVectorBuffer, index), ML_displacementVectorBuffer.byteSize()); }
     /// Sets `displacementVectorBuffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displacementVectorBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(segment, 0L, value); }
+    public static void set_displacementVectorBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(segment, 0L, value); }
     /// Sets `displacementVectorBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorBuffer(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorBuffer(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(this.segment(), value); return this; }
 
     /// {@return `displacementVectorStride` at the given index}
     /// @param segment the segment of the struct
@@ -393,25 +393,25 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `displacedMicromapPrimitiveFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacedMicromapPrimitiveFlags(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacedMicromapPrimitiveFlags, index), ML_displacedMicromapPrimitiveFlags); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacedMicromapPrimitiveFlags(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displacedMicromapPrimitiveFlags, index), ML_displacedMicromapPrimitiveFlags); }
     /// {@return `displacedMicromapPrimitiveFlags`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_displacedMicromapPrimitiveFlags(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_displacedMicromapPrimitiveFlags(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(segment, 0L); }
     /// {@return `displacedMicromapPrimitiveFlags`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacedMicromapPrimitiveFlags() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacedMicromapPrimitiveFlags() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(this.segment()); }
     /// Sets `displacedMicromapPrimitiveFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displacedMicromapPrimitiveFlags(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacedMicromapPrimitiveFlags, index), ML_displacedMicromapPrimitiveFlags.byteSize()); }
+    public static void set_displacedMicromapPrimitiveFlags(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displacedMicromapPrimitiveFlags, index), ML_displacedMicromapPrimitiveFlags.byteSize()); }
     /// Sets `displacedMicromapPrimitiveFlags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displacedMicromapPrimitiveFlags(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(segment, 0L, value); }
+    public static void set_displacedMicromapPrimitiveFlags(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(segment, 0L, value); }
     /// Sets `displacedMicromapPrimitiveFlags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(this.segment(), value); return this; }
 
     /// {@return `displacedMicromapPrimitiveFlagsStride` at the given index}
     /// @param segment the segment of the struct
@@ -462,25 +462,25 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `indexBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_indexBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_indexBuffer, index), ML_indexBuffer); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_indexBuffer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_indexBuffer, index), ML_indexBuffer); }
     /// {@return `indexBuffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_indexBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_indexBuffer(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(segment, 0L); }
     /// {@return `indexBuffer`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment indexBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexBuffer() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(this.segment()); }
     /// Sets `indexBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_indexBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_indexBuffer, index), ML_indexBuffer.byteSize()); }
+    public static void set_indexBuffer(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_indexBuffer, index), ML_indexBuffer.byteSize()); }
     /// Sets `indexBuffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_indexBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(segment, 0L, value); }
+    public static void set_indexBuffer(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(segment, 0L, value); }
     /// Sets `indexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(this.segment(), value); return this; }
 
     /// {@return `indexStride` at the given index}
     /// @param segment the segment of the struct
@@ -554,71 +554,71 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// {@return `pUsageCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment get_pUsageCounts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pUsageCounts.get(segment, 0L, index); }
+    public static @CType("const VkMicromapUsageEXT *") MemorySegment get_pUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_pUsageCounts.get(segment, 0L, index); }
     /// {@return `pUsageCounts`}
     /// @param segment the segment of the struct
-    public static @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment get_pUsageCounts(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(segment, 0L); }
+    public static @CType("const VkMicromapUsageEXT *") MemorySegment get_pUsageCounts(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(segment, 0L); }
     /// {@return `pUsageCounts`}
-    public @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCounts() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(this.segment()); }
+    public @CType("const VkMicromapUsageEXT *") MemorySegment pUsageCounts() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(this.segment()); }
     /// Sets `pUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VH_pUsageCounts.set(segment, 0L, index, value); }
+    public static void set_pUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT *") MemorySegment value) { VH_pUsageCounts.set(segment, 0L, index, value); }
     /// Sets `pUsageCounts` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(segment, 0L, value); }
+    public static void set_pUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(segment, 0L, value); }
     /// Sets `pUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV pUsageCounts(@CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV pUsageCounts(@CType("const VkMicromapUsageEXT *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(this.segment(), value); return this; }
 
     /// {@return `ppUsageCounts` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment get_ppUsageCounts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_ppUsageCounts.get(segment, 0L, index); }
+    public static @CType("const VkMicromapUsageEXT * const*") MemorySegment get_ppUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_ppUsageCounts.get(segment, 0L, index); }
     /// {@return `ppUsageCounts`}
     /// @param segment the segment of the struct
-    public static @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment get_ppUsageCounts(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(segment, 0L); }
+    public static @CType("const VkMicromapUsageEXT * const*") MemorySegment get_ppUsageCounts(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(segment, 0L); }
     /// {@return `ppUsageCounts`}
-    public @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCounts() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(this.segment()); }
+    public @CType("const VkMicromapUsageEXT * const*") MemorySegment ppUsageCounts() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(this.segment()); }
     /// Sets `ppUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_ppUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VH_ppUsageCounts.set(segment, 0L, index, value); }
+    public static void set_ppUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT * const*") MemorySegment value) { VH_ppUsageCounts.set(segment, 0L, index, value); }
     /// Sets `ppUsageCounts` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_ppUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(segment, 0L, value); }
+    public static void set_ppUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT * const*") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(segment, 0L, value); }
     /// Sets `ppUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV ppUsageCounts(@CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV ppUsageCounts(@CType("const VkMicromapUsageEXT * const*") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(this.segment(), value); return this; }
 
     /// {@return `micromap` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_micromap(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_micromap.get(segment, 0L, index); }
+    public static @CType("VkMicromapEXT") MemorySegment get_micromap(MemorySegment segment, long index) { return (MemorySegment) VH_micromap.get(segment, 0L, index); }
     /// {@return `micromap`}
     /// @param segment the segment of the struct
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_micromap(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(segment, 0L); }
+    public static @CType("VkMicromapEXT") MemorySegment get_micromap(MemorySegment segment) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(segment, 0L); }
     /// {@return `micromap`}
-    public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment micromap() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(this.segment()); }
+    public @CType("VkMicromapEXT") MemorySegment micromap() { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(this.segment()); }
     /// Sets `micromap` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_micromap(MemorySegment segment, long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VH_micromap.set(segment, 0L, index, value); }
+    public static void set_micromap(MemorySegment segment, long index, @CType("VkMicromapEXT") MemorySegment value) { VH_micromap.set(segment, 0L, index, value); }
     /// Sets `micromap` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_micromap(MemorySegment segment, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(segment, 0L, value); }
+    public static void set_micromap(MemorySegment segment, @CType("VkMicromapEXT") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(segment, 0L, value); }
     /// Sets `micromap` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV micromap(@CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(this.segment(), value); return this; }
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV micromap(@CType("VkMicromapEXT") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(this.segment(), value); return this; }
 
     /// A buffer of [VkAccelerationStructureTrianglesDisplacementMicromapNV].
     public static final class Buffer extends VkAccelerationStructureTrianglesDisplacementMicromapNV {
@@ -653,12 +653,12 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `displacementBiasAndScaleFormat` at the given index}
         /// @param index the index
@@ -680,12 +680,12 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `displacementBiasAndScaleBuffer` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementBiasAndScaleBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementBiasAndScaleBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementBiasAndScaleBuffer(this.segment(), index); }
         /// Sets `displacementBiasAndScaleBuffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displacementBiasAndScaleBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(this.segment(), index, value); return this; }
+        public Buffer displacementBiasAndScaleBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementBiasAndScaleBuffer(this.segment(), index, value); return this; }
 
         /// {@return `displacementBiasAndScaleStride` at the given index}
         /// @param index the index
@@ -698,12 +698,12 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `displacementVectorBuffer` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacementVectorBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacementVectorBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacementVectorBuffer(this.segment(), index); }
         /// Sets `displacementVectorBuffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displacementVectorBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(this.segment(), index, value); return this; }
+        public Buffer displacementVectorBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacementVectorBuffer(this.segment(), index, value); return this; }
 
         /// {@return `displacementVectorStride` at the given index}
         /// @param index the index
@@ -716,12 +716,12 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `displacedMicromapPrimitiveFlags` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment displacedMicromapPrimitiveFlagsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment displacedMicromapPrimitiveFlagsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_displacedMicromapPrimitiveFlags(this.segment(), index); }
         /// Sets `displacedMicromapPrimitiveFlags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displacedMicromapPrimitiveFlagsAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(this.segment(), index, value); return this; }
+        public Buffer displacedMicromapPrimitiveFlagsAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_displacedMicromapPrimitiveFlags(this.segment(), index, value); return this; }
 
         /// {@return `displacedMicromapPrimitiveFlagsStride` at the given index}
         /// @param index the index
@@ -743,12 +743,12 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `indexBuffer` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment indexBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexBufferAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_indexBuffer(this.segment(), index); }
         /// Sets `indexBuffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer indexBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(this.segment(), index, value); return this; }
+        public Buffer indexBufferAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_indexBuffer(this.segment(), index, value); return this; }
 
         /// {@return `indexStride` at the given index}
         /// @param index the index
@@ -779,30 +779,30 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
 
         /// {@return `pUsageCounts` at the given index}
         /// @param index the index
-        public @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCountsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(this.segment(), index); }
+        public @CType("const VkMicromapUsageEXT *") MemorySegment pUsageCountsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_pUsageCounts(this.segment(), index); }
         /// Sets `pUsageCounts` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pUsageCountsAt(long index, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(this.segment(), index, value); return this; }
+        public Buffer pUsageCountsAt(long index, @CType("const VkMicromapUsageEXT *") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_pUsageCounts(this.segment(), index, value); return this; }
 
         /// {@return `ppUsageCounts` at the given index}
         /// @param index the index
-        public @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCountsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(this.segment(), index); }
+        public @CType("const VkMicromapUsageEXT * const*") MemorySegment ppUsageCountsAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_ppUsageCounts(this.segment(), index); }
         /// Sets `ppUsageCounts` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer ppUsageCountsAt(long index, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(this.segment(), index, value); return this; }
+        public Buffer ppUsageCountsAt(long index, @CType("const VkMicromapUsageEXT * const*") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_ppUsageCounts(this.segment(), index, value); return this; }
 
         /// {@return `micromap` at the given index}
         /// @param index the index
-        public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment micromapAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(this.segment(), index); }
+        public @CType("VkMicromapEXT") MemorySegment micromapAt(long index) { return VkAccelerationStructureTrianglesDisplacementMicromapNV.get_micromap(this.segment(), index); }
         /// Sets `micromap` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer micromapAt(long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(this.segment(), index, value); return this; }
+        public Buffer micromapAt(long index, @CType("VkMicromapEXT") MemorySegment value) { VkAccelerationStructureTrianglesDisplacementMicromapNV.set_micromap(this.segment(), index, value); return this; }
 
     }
 }

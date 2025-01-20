@@ -16,8 +16,6 @@
 
 package overrungl.gen
 
-import com.palantir.javapoet.ArrayTypeName
-import com.palantir.javapoet.ClassName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -32,7 +30,7 @@ class Struct(
     private val kindString = if (union) "union" else "struct"
     private val members = mutableListOf<StructMember>()
     val pointerType: CustomTypeSpec by lazy {
-        val className = ClassName.get(packageName, name)
+        val className = "$packageName.$name"
         CustomTypeSpec(
             MemorySegment_,
             className,
@@ -42,7 +40,7 @@ class Struct(
         )
     }
     val byValueType: CustomTypeSpec by lazy {
-        val className = ClassName.get(packageName, name)
+        val className = "$packageName.$name"
         CustomTypeSpec(
             MemorySegment_,
             className,
@@ -450,7 +448,7 @@ data class FixedSizeStructMember(
     override val type: CustomTypeSpec
         get() = CustomTypeSpec(
             carrier = MemorySegment_,
-            javaType = ArrayTypeName.of(componentType.javaType),
+            javaType = "${componentType.javaType}[]",
             processor = IdentityValueProcessor,
             layout = "MemoryLayout.sequenceLayout(${size}, ${componentType.layout})",
             cType = "${componentType.cType}[$size]",

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTSeparateSpecularColor {
     public static final int GL_LIGHT_MODEL_COLOR_CONTROL_EXT = 0x81F8;
     public static final int GL_SINGLE_COLOR_EXT = 0x81F9;

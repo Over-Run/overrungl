@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTImageDrmFormatModifier {
     public static final int VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2;
     public static final String VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
@@ -39,15 +38,8 @@ public class VKEXTImageDrmFormatModifier {
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT = 0x00000400;
     public static final int VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT = 1000158006;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetImageDrmFormatModifierPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetImageDrmFormatModifierPropertiesEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetImageDrmFormatModifierPropertiesEXT);
+        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetImageDrmFormatModifierPropertiesEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetImageDrmFormatModifierPropertiesEXT = func.invoke(device, "vkGetImageDrmFormatModifierPropertiesEXT");

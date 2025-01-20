@@ -31,10 +31,10 @@ public interface GLFWWindowFocusFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowFocusFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean focused);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") boolean focused);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int focused) {
+    default void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int focused) {
         invoke(window, focused != GLFW.GLFW_FALSE);
     }
 
@@ -43,7 +43,7 @@ public interface GLFWWindowFocusFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int focused) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int focused) {
         try { HANDLE.invokeExact(stub, window, focused); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowFocusFun::invoke (static invoker)", e); }
     }

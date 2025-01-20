@@ -31,15 +31,15 @@ public interface STBIRInputCallback extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIRInputCallback.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void const *") java.lang.foreign.MemorySegment invoke(@CType("void*") java.lang.foreign.MemorySegment optional_output, @CType("void const *") java.lang.foreign.MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context);
+    @CType("void const *") MemorySegment invoke(@CType("void*") MemorySegment optional_output, @CType("void const *") MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") MemorySegment context);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void const *") java.lang.foreign.MemorySegment invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment optional_output, @CType("void const *") java.lang.foreign.MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context) {
-        try { return (java.lang.foreign.MemorySegment) HANDLE.invokeExact(stub, optional_output, input_ptr, num_pixels, x, y, context); }
+    static @CType("void const *") MemorySegment invoke(MemorySegment stub, @CType("void*") MemorySegment optional_output, @CType("void const *") MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") MemorySegment context) {
+        try { return (MemorySegment) HANDLE.invokeExact(stub, optional_output, input_ptr, num_pixels, x, y, context); }
         catch (Throwable e) { throw new RuntimeException("error in STBIRInputCallback::invoke (static invoker)", e); }
     }
 

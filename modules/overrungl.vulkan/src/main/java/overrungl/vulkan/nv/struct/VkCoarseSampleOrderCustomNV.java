@@ -32,7 +32,7 @@ import overrungl.util.*;
 /// ### sampleLocationCount
 /// [VarHandle][#VH_sampleLocationCount] - [Getter][#sampleLocationCount()] - [Setter][#sampleLocationCount(int)]
 /// ### pSampleLocations
-/// [VarHandle][#VH_pSampleLocations] - [Getter][#pSampleLocations()] - [Setter][#pSampleLocations(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSampleLocations] - [Getter][#pSampleLocations()] - [Setter][#pSampleLocations(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,7 +57,7 @@ public sealed class VkCoarseSampleOrderCustomNV extends Struct {
     public static final VarHandle VH_sampleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCount"));
     /// The [VarHandle] of `sampleLocationCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sampleLocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationCount"));
-    /// The [VarHandle] of `pSampleLocations` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSampleLocations"));
 
     /// Creates `VkCoarseSampleOrderCustomNV` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkCoarseSampleOrderCustomNV extends Struct {
     /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, @CType("VkShadingRatePaletteEntryNV") int shadingRate, @CType("uint32_t") int sampleCount, @CType("uint32_t") int sampleLocationCount, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocations) { return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount).sampleLocationCount(sampleLocationCount).pSampleLocations(pSampleLocations); }
+    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, @CType("VkShadingRatePaletteEntryNV") int shadingRate, @CType("uint32_t") int sampleCount, @CType("uint32_t") int sampleLocationCount, @CType("const VkCoarseSampleLocationNV *") MemorySegment pSampleLocations) { return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount).sampleLocationCount(sampleLocationCount).pSampleLocations(pSampleLocations); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -186,25 +186,25 @@ public sealed class VkCoarseSampleOrderCustomNV extends Struct {
     /// {@return `pSampleLocations` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment get_pSampleLocations(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSampleLocations.get(segment, 0L, index); }
+    public static @CType("const VkCoarseSampleLocationNV *") MemorySegment get_pSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pSampleLocations.get(segment, 0L, index); }
     /// {@return `pSampleLocations`}
     /// @param segment the segment of the struct
-    public static @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment get_pSampleLocations(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(segment, 0L); }
+    public static @CType("const VkCoarseSampleLocationNV *") MemorySegment get_pSampleLocations(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(segment, 0L); }
     /// {@return `pSampleLocations`}
-    public @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocations() { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment()); }
+    public @CType("const VkCoarseSampleLocationNV *") MemorySegment pSampleLocations() { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment()); }
     /// Sets `pSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSampleLocations(MemorySegment segment, long index, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VH_pSampleLocations.set(segment, 0L, index, value); }
+    public static void set_pSampleLocations(MemorySegment segment, long index, @CType("const VkCoarseSampleLocationNV *") MemorySegment value) { VH_pSampleLocations.set(segment, 0L, index, value); }
     /// Sets `pSampleLocations` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSampleLocations(MemorySegment segment, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(segment, 0L, value); }
+    public static void set_pSampleLocations(MemorySegment segment, @CType("const VkCoarseSampleLocationNV *") MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(segment, 0L, value); }
     /// Sets `pSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCoarseSampleOrderCustomNV pSampleLocations(@CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), value); return this; }
+    public VkCoarseSampleOrderCustomNV pSampleLocations(@CType("const VkCoarseSampleLocationNV *") MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), value); return this; }
 
     /// A buffer of [VkCoarseSampleOrderCustomNV].
     public static final class Buffer extends VkCoarseSampleOrderCustomNV {
@@ -257,12 +257,12 @@ public sealed class VkCoarseSampleOrderCustomNV extends Struct {
 
         /// {@return `pSampleLocations` at the given index}
         /// @param index the index
-        public @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocationsAt(long index) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment(), index); }
+        public @CType("const VkCoarseSampleLocationNV *") MemorySegment pSampleLocationsAt(long index) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment(), index); }
         /// Sets `pSampleLocations` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSampleLocationsAt(long index, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), index, value); return this; }
+        public Buffer pSampleLocationsAt(long index, @CType("const VkCoarseSampleLocationNV *") MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), index, value); return this; }
 
     }
 }

@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### handle
-/// [VarHandle][#VH_handle] - [Getter][#handle()] - [Setter][#handle(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_handle] - [Getter][#handle()] - [Setter][#handle(MemorySegment)]
 /// ### stride
 /// [VarHandle][#VH_stride] - [Getter][#stride()] - [Setter][#stride(int)]
 /// ### format
@@ -38,7 +38,7 @@ import overrungl.util.*;
 /// ### usage
 /// [VarHandle][#VH_usage] - [Getter][#usage()] - [Setter][#usage(int)]
 /// ### usage2
-/// [Byte offset][#OFFSET_usage2] - [Memory layout][#ML_usage2] - [Getter][#usage2()] - [Setter][#usage2(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_usage2] - [Memory layout][#ML_usage2] - [Getter][#usage2()] - [Setter][#usage2(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,9 +65,9 @@ public sealed class VkNativeBufferANDROID extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_handle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle"));
     /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
@@ -123,7 +123,7 @@ public sealed class VkNativeBufferANDROID extends Struct {
     /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkNativeBufferANDROID`
-    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const void *") java.lang.foreign.MemorySegment handle, @CType("int") int stride, @CType("int") int format, @CType("int") int usage, @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment usage2) { return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride).format(format).usage(usage).usage2(usage2); }
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const void *") MemorySegment handle, @CType("int") int stride, @CType("int") int format, @CType("int") int usage, @CType("VkNativeBufferUsage2ANDROID") MemorySegment usage2) { return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride).format(format).usage(usage).usage2(usage2); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -160,48 +160,48 @@ public sealed class VkNativeBufferANDROID extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkNativeBufferANDROID.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkNativeBufferANDROID.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkNativeBufferANDROID.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkNativeBufferANDROID.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkNativeBufferANDROID pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_pNext(this.segment(), value); return this; }
+    public VkNativeBufferANDROID pNext(@CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_pNext(this.segment(), value); return this; }
 
     /// {@return `handle` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_handle(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_handle.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get(segment, 0L, index); }
     /// {@return `handle`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_handle(MemorySegment segment) { return VkNativeBufferANDROID.get_handle(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_handle(MemorySegment segment) { return VkNativeBufferANDROID.get_handle(segment, 0L); }
     /// {@return `handle`}
-    public @CType("const void *") java.lang.foreign.MemorySegment handle() { return VkNativeBufferANDROID.get_handle(this.segment()); }
+    public @CType("const void *") MemorySegment handle() { return VkNativeBufferANDROID.get_handle(this.segment()); }
     /// Sets `handle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_handle(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
+    public static void set_handle(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
     /// Sets `handle` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_handle(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_handle(segment, 0L, value); }
+    public static void set_handle(MemorySegment segment, @CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_handle(segment, 0L, value); }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkNativeBufferANDROID handle(@CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_handle(this.segment(), value); return this; }
+    public VkNativeBufferANDROID handle(@CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_handle(this.segment(), value); return this; }
 
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
@@ -275,25 +275,25 @@ public sealed class VkNativeBufferANDROID extends Struct {
     /// {@return `usage2` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment get_usage2(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_usage2, index), ML_usage2); }
+    public static @CType("VkNativeBufferUsage2ANDROID") MemorySegment get_usage2(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_usage2, index), ML_usage2); }
     /// {@return `usage2`}
     /// @param segment the segment of the struct
-    public static @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment get_usage2(MemorySegment segment) { return VkNativeBufferANDROID.get_usage2(segment, 0L); }
+    public static @CType("VkNativeBufferUsage2ANDROID") MemorySegment get_usage2(MemorySegment segment) { return VkNativeBufferANDROID.get_usage2(segment, 0L); }
     /// {@return `usage2`}
-    public @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment usage2() { return VkNativeBufferANDROID.get_usage2(this.segment()); }
+    public @CType("VkNativeBufferUsage2ANDROID") MemorySegment usage2() { return VkNativeBufferANDROID.get_usage2(this.segment()); }
     /// Sets `usage2` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_usage2(MemorySegment segment, long index, @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_usage2, index), ML_usage2.byteSize()); }
+    public static void set_usage2(MemorySegment segment, long index, @CType("VkNativeBufferUsage2ANDROID") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_usage2, index), ML_usage2.byteSize()); }
     /// Sets `usage2` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_usage2(MemorySegment segment, @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_usage2(segment, 0L, value); }
+    public static void set_usage2(MemorySegment segment, @CType("VkNativeBufferUsage2ANDROID") MemorySegment value) { VkNativeBufferANDROID.set_usage2(segment, 0L, value); }
     /// Sets `usage2` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkNativeBufferANDROID usage2(@CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_usage2(this.segment(), value); return this; }
+    public VkNativeBufferANDROID usage2(@CType("VkNativeBufferUsage2ANDROID") MemorySegment value) { VkNativeBufferANDROID.set_usage2(this.segment(), value); return this; }
 
     /// A buffer of [VkNativeBufferANDROID].
     public static final class Buffer extends VkNativeBufferANDROID {
@@ -328,21 +328,21 @@ public sealed class VkNativeBufferANDROID extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkNativeBufferANDROID.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkNativeBufferANDROID.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `handle` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment handleAt(long index) { return VkNativeBufferANDROID.get_handle(this.segment(), index); }
+        public @CType("const void *") MemorySegment handleAt(long index) { return VkNativeBufferANDROID.get_handle(this.segment(), index); }
         /// Sets `handle` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer handleAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_handle(this.segment(), index, value); return this; }
+        public Buffer handleAt(long index, @CType("const void *") MemorySegment value) { VkNativeBufferANDROID.set_handle(this.segment(), index, value); return this; }
 
         /// {@return `stride` at the given index}
         /// @param index the index
@@ -373,12 +373,12 @@ public sealed class VkNativeBufferANDROID extends Struct {
 
         /// {@return `usage2` at the given index}
         /// @param index the index
-        public @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment usage2At(long index) { return VkNativeBufferANDROID.get_usage2(this.segment(), index); }
+        public @CType("VkNativeBufferUsage2ANDROID") MemorySegment usage2At(long index) { return VkNativeBufferANDROID.get_usage2(this.segment(), index); }
         /// Sets `usage2` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer usage2At(long index, @CType("VkNativeBufferUsage2ANDROID") java.lang.foreign.MemorySegment value) { VkNativeBufferANDROID.set_usage2(this.segment(), index, value); return this; }
+        public Buffer usage2At(long index, @CType("VkNativeBufferUsage2ANDROID") MemorySegment value) { VkNativeBufferANDROID.set_usage2(this.segment(), index, value); return this; }
 
     }
 }

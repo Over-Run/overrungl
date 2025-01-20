@@ -31,10 +31,10 @@ public interface GLFWCursorEnterFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWCursorEnterFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean entered);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") boolean entered);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
+    default void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int entered) {
         invoke(window, entered != GLFW.GLFW_FALSE);
     }
 
@@ -43,7 +43,7 @@ public interface GLFWCursorEnterFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int entered) {
         try { HANDLE.invokeExact(stub, window, entered); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWCursorEnterFun::invoke (static invoker)", e); }
     }

@@ -28,19 +28,19 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### maxLevel
 /// [VarHandle][#VH_maxLevel] - [Getter][#maxLevel()] - [Setter][#maxLevel(int)]
 /// ### codedPictureAlignment
-/// [Byte offset][#OFFSET_codedPictureAlignment] - [Memory layout][#ML_codedPictureAlignment] - [Getter][#codedPictureAlignment()] - [Setter][#codedPictureAlignment(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_codedPictureAlignment] - [Memory layout][#ML_codedPictureAlignment] - [Getter][#codedPictureAlignment()] - [Setter][#codedPictureAlignment(MemorySegment)]
 /// ### maxTiles
-/// [Byte offset][#OFFSET_maxTiles] - [Memory layout][#ML_maxTiles] - [Getter][#maxTiles()] - [Setter][#maxTiles(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxTiles] - [Memory layout][#ML_maxTiles] - [Getter][#maxTiles()] - [Setter][#maxTiles(MemorySegment)]
 /// ### minTileSize
-/// [Byte offset][#OFFSET_minTileSize] - [Memory layout][#ML_minTileSize] - [Getter][#minTileSize()] - [Setter][#minTileSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_minTileSize] - [Memory layout][#ML_minTileSize] - [Getter][#minTileSize()] - [Setter][#minTileSize(MemorySegment)]
 /// ### maxTileSize
-/// [Byte offset][#OFFSET_maxTileSize] - [Memory layout][#ML_maxTileSize] - [Getter][#maxTileSize()] - [Setter][#maxTileSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxTileSize] - [Memory layout][#ML_maxTileSize] - [Getter][#maxTileSize()] - [Setter][#maxTileSize(MemorySegment)]
 /// ### superblockSizes
 /// [VarHandle][#VH_superblockSizes] - [Getter][#superblockSizes()] - [Setter][#superblockSizes(int)]
 /// ### maxSingleReferenceCount
@@ -141,7 +141,7 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
@@ -243,7 +243,7 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
-    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int flags, @CType("StdVideoAV1Level") int maxLevel, @CType("VkExtent2D") java.lang.foreign.MemorySegment codedPictureAlignment, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTiles, @CType("VkExtent2D") java.lang.foreign.MemorySegment minTileSize, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTileSize, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int superblockSizes, @CType("uint32_t") int maxSingleReferenceCount, @CType("uint32_t") int singleReferenceNameMask, @CType("uint32_t") int maxUnidirectionalCompoundReferenceCount, @CType("uint32_t") int maxUnidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int unidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxBidirectionalCompoundReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup2ReferenceCount, @CType("uint32_t") int bidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxTemporalLayerCount, @CType("uint32_t") int maxSpatialLayerCount, @CType("uint32_t") int maxOperatingPoints, @CType("uint32_t") int minQIndex, @CType("uint32_t") int maxQIndex, @CType("VkBool32") int prefersGopRemainingFrames, @CType("VkBool32") int requiresGopRemainingFrames, @CType("VkVideoEncodeAV1StdFlagsKHR") int stdSyntaxFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames).stdSyntaxFlags(stdSyntaxFlags); }
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int flags, @CType("StdVideoAV1Level") int maxLevel, @CType("VkExtent2D") MemorySegment codedPictureAlignment, @CType("VkExtent2D") MemorySegment maxTiles, @CType("VkExtent2D") MemorySegment minTileSize, @CType("VkExtent2D") MemorySegment maxTileSize, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int superblockSizes, @CType("uint32_t") int maxSingleReferenceCount, @CType("uint32_t") int singleReferenceNameMask, @CType("uint32_t") int maxUnidirectionalCompoundReferenceCount, @CType("uint32_t") int maxUnidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int unidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxBidirectionalCompoundReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup2ReferenceCount, @CType("uint32_t") int bidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxTemporalLayerCount, @CType("uint32_t") int maxSpatialLayerCount, @CType("uint32_t") int maxOperatingPoints, @CType("uint32_t") int minQIndex, @CType("uint32_t") int maxQIndex, @CType("VkBool32") int prefersGopRemainingFrames, @CType("VkBool32") int requiresGopRemainingFrames, @CType("VkVideoEncodeAV1StdFlagsKHR") int stdSyntaxFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames).stdSyntaxFlags(stdSyntaxFlags); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -280,25 +280,25 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -349,94 +349,94 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// {@return `codedPictureAlignment` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_codedPictureAlignment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment); }
+    public static @CType("VkExtent2D") MemorySegment get_codedPictureAlignment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment); }
     /// {@return `codedPictureAlignment`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_codedPictureAlignment(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_codedPictureAlignment(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(segment, 0L); }
     /// {@return `codedPictureAlignment`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment codedPictureAlignment() { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment codedPictureAlignment() { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment()); }
     /// Sets `codedPictureAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_codedPictureAlignment(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment.byteSize()); }
+    public static void set_codedPictureAlignment(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment.byteSize()); }
     /// Sets `codedPictureAlignment` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_codedPictureAlignment(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(segment, 0L, value); }
+    public static void set_codedPictureAlignment(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(segment, 0L, value); }
     /// Sets `codedPictureAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), value); return this; }
 
     /// {@return `maxTiles` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxTiles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles); }
+    public static @CType("VkExtent2D") MemorySegment get_maxTiles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles); }
     /// {@return `maxTiles`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxTiles(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxTiles(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(segment, 0L); }
     /// {@return `maxTiles`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTiles() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxTiles() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment()); }
     /// Sets `maxTiles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxTiles(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles.byteSize()); }
+    public static void set_maxTiles(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles.byteSize()); }
     /// Sets `maxTiles` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxTiles(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(segment, 0L, value); }
+    public static void set_maxTiles(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(segment, 0L, value); }
     /// Sets `maxTiles` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), value); return this; }
 
     /// {@return `minTileSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize); }
+    public static @CType("VkExtent2D") MemorySegment get_minTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize); }
     /// {@return `minTileSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_minTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(segment, 0L); }
     /// {@return `minTileSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment minTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment()); }
     /// Sets `minTileSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_minTileSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize.byteSize()); }
+    public static void set_minTileSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize.byteSize()); }
     /// Sets `minTileSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_minTileSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(segment, 0L, value); }
+    public static void set_minTileSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(segment, 0L, value); }
     /// Sets `minTileSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), value); return this; }
 
     /// {@return `maxTileSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize); }
+    public static @CType("VkExtent2D") MemorySegment get_maxTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize); }
     /// {@return `maxTileSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(segment, 0L); }
     /// {@return `maxTileSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment()); }
     /// Sets `maxTileSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxTileSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize.byteSize()); }
+    public static void set_maxTileSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize.byteSize()); }
     /// Sets `maxTileSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxTileSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(segment, 0L, value); }
+    public static void set_maxTileSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(segment, 0L, value); }
     /// Sets `maxTileSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), value); return this; }
 
     /// {@return `superblockSizes` at the given index}
     /// @param segment the segment of the struct
@@ -885,12 +885,12 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -912,39 +912,39 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
 
         /// {@return `codedPictureAlignment` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment codedPictureAlignmentAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment codedPictureAlignmentAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment(), index); }
         /// Sets `codedPictureAlignment` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer codedPictureAlignmentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), index, value); return this; }
+        public Buffer codedPictureAlignmentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), index, value); return this; }
 
         /// {@return `maxTiles` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTilesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxTilesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment(), index); }
         /// Sets `maxTiles` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxTilesAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), index, value); return this; }
+        public Buffer maxTilesAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), index, value); return this; }
 
         /// {@return `minTileSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment minTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment(), index); }
         /// Sets `minTileSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer minTileSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), index, value); return this; }
+        public Buffer minTileSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), index, value); return this; }
 
         /// {@return `maxTileSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment(), index); }
         /// Sets `maxTileSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxTileSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), index, value); return this; }
+        public Buffer maxTileSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), index, value); return this; }
 
         /// {@return `superblockSizes` at the given index}
         /// @param index the index

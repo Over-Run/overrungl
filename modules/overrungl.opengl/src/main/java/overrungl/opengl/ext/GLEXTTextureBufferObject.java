@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,15 +30,8 @@ public final class GLEXTTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D;
     public static final int GL_TEXTURE_BUFFER_FORMAT_EXT = 0x8C2E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexBufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexBufferEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexBufferEXT = RuntimeHelper.downcall(Descriptors.FD_glTexBufferEXT);
+        public static final MethodHandle MH_glTexBufferEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexBufferEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTexBufferEXT = func.invoke("glTexBufferEXT", "glTexBuffer");

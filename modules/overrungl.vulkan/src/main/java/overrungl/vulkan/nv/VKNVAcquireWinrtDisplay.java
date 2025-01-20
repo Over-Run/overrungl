@@ -22,23 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVAcquireWinrtDisplay {
     public static final int VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkAcquireWinrtDisplayNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetWinrtDisplayNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkAcquireWinrtDisplayNV,
-            FD_vkGetWinrtDisplayNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkAcquireWinrtDisplayNV = RuntimeHelper.downcall(Descriptors.FD_vkAcquireWinrtDisplayNV);
-        public static final MethodHandle MH_vkGetWinrtDisplayNV = RuntimeHelper.downcall(Descriptors.FD_vkGetWinrtDisplayNV);
+        public static final MethodHandle MH_vkAcquireWinrtDisplayNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetWinrtDisplayNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkAcquireWinrtDisplayNV;
         public final MemorySegment PFN_vkGetWinrtDisplayNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

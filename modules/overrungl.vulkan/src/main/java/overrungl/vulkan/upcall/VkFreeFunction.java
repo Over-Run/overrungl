@@ -31,14 +31,14 @@ public interface VkFreeFunction extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkFreeFunction.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("void *") java.lang.foreign.MemorySegment pMemory);
+    @CType("void") void invoke(@CType("void *") MemorySegment pUserData, @CType("void *") MemorySegment pMemory);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("void *") java.lang.foreign.MemorySegment pMemory) {
+    static @CType("void") void invoke(MemorySegment stub, @CType("void *") MemorySegment pUserData, @CType("void *") MemorySegment pMemory) {
         try { HANDLE.invokeExact(stub, pUserData, pMemory); }
         catch (Throwable e) { throw new RuntimeException("error in VkFreeFunction::invoke (static invoker)", e); }
     }

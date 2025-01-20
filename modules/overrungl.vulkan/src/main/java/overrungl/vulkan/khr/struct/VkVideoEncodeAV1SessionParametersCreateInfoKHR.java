@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pStdSequenceHeader
-/// [VarHandle][#VH_pStdSequenceHeader] - [Getter][#pStdSequenceHeader()] - [Setter][#pStdSequenceHeader(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pStdSequenceHeader] - [Getter][#pStdSequenceHeader()] - [Setter][#pStdSequenceHeader(MemorySegment)]
 /// ### pStdDecoderModelInfo
-/// [VarHandle][#VH_pStdDecoderModelInfo] - [Getter][#pStdDecoderModelInfo()] - [Setter][#pStdDecoderModelInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pStdDecoderModelInfo] - [Getter][#pStdDecoderModelInfo()] - [Setter][#pStdDecoderModelInfo(MemorySegment)]
 /// ### stdOperatingPointCount
 /// [VarHandle][#VH_stdOperatingPointCount] - [Getter][#stdOperatingPointCount()] - [Setter][#stdOperatingPointCount(int)]
 /// ### pStdOperatingPoints
-/// [VarHandle][#VH_pStdOperatingPoints] - [Getter][#pStdOperatingPoints()] - [Setter][#pStdOperatingPoints(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pStdOperatingPoints] - [Getter][#pStdOperatingPoints()] - [Setter][#pStdOperatingPoints(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -61,15 +61,15 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pStdSequenceHeader` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pStdSequenceHeader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStdSequenceHeader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSequenceHeader"));
-    /// The [VarHandle] of `pStdDecoderModelInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pStdDecoderModelInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStdDecoderModelInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdDecoderModelInfo"));
     /// The [VarHandle] of `stdOperatingPointCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stdOperatingPointCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdOperatingPointCount"));
-    /// The [VarHandle] of `pStdOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pStdOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStdOperatingPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdOperatingPoints"));
 
     /// Creates `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment.
@@ -115,7 +115,7 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
     /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment pStdSequenceHeader, @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment pStdDecoderModelInfo, @CType("uint32_t") int stdOperatingPointCount, @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment pStdOperatingPoints) { return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader).pStdDecoderModelInfo(pStdDecoderModelInfo).stdOperatingPointCount(stdOperatingPointCount).pStdOperatingPoints(pStdOperatingPoints); }
+    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const StdVideoAV1SequenceHeader *") MemorySegment pStdSequenceHeader, @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment pStdDecoderModelInfo, @CType("uint32_t") int stdOperatingPointCount, @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment pStdOperatingPoints) { return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader).pStdDecoderModelInfo(pStdDecoderModelInfo).stdOperatingPointCount(stdOperatingPointCount).pStdOperatingPoints(pStdOperatingPoints); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -152,71 +152,71 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pStdSequenceHeader` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment get_pStdSequenceHeader(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStdSequenceHeader.get(segment, 0L, index); }
+    public static @CType("const StdVideoAV1SequenceHeader *") MemorySegment get_pStdSequenceHeader(MemorySegment segment, long index) { return (MemorySegment) VH_pStdSequenceHeader.get(segment, 0L, index); }
     /// {@return `pStdSequenceHeader`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment get_pStdSequenceHeader(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(segment, 0L); }
+    public static @CType("const StdVideoAV1SequenceHeader *") MemorySegment get_pStdSequenceHeader(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(segment, 0L); }
     /// {@return `pStdSequenceHeader`}
-    public @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment pStdSequenceHeader() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(this.segment()); }
+    public @CType("const StdVideoAV1SequenceHeader *") MemorySegment pStdSequenceHeader() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(this.segment()); }
     /// Sets `pStdSequenceHeader` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pStdSequenceHeader(MemorySegment segment, long index, @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment value) { VH_pStdSequenceHeader.set(segment, 0L, index, value); }
+    public static void set_pStdSequenceHeader(MemorySegment segment, long index, @CType("const StdVideoAV1SequenceHeader *") MemorySegment value) { VH_pStdSequenceHeader.set(segment, 0L, index, value); }
     /// Sets `pStdSequenceHeader` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pStdSequenceHeader(MemorySegment segment, @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(segment, 0L, value); }
+    public static void set_pStdSequenceHeader(MemorySegment segment, @CType("const StdVideoAV1SequenceHeader *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(segment, 0L, value); }
     /// Sets `pStdSequenceHeader` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdSequenceHeader(@CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(this.segment(), value); return this; }
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdSequenceHeader(@CType("const StdVideoAV1SequenceHeader *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(this.segment(), value); return this; }
 
     /// {@return `pStdDecoderModelInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment get_pStdDecoderModelInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStdDecoderModelInfo.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment get_pStdDecoderModelInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdDecoderModelInfo.get(segment, 0L, index); }
     /// {@return `pStdDecoderModelInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment get_pStdDecoderModelInfo(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(segment, 0L); }
+    public static @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment get_pStdDecoderModelInfo(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(segment, 0L); }
     /// {@return `pStdDecoderModelInfo`}
-    public @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment pStdDecoderModelInfo() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(this.segment()); }
+    public @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment pStdDecoderModelInfo() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(this.segment()); }
     /// Sets `pStdDecoderModelInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pStdDecoderModelInfo(MemorySegment segment, long index, @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment value) { VH_pStdDecoderModelInfo.set(segment, 0L, index, value); }
+    public static void set_pStdDecoderModelInfo(MemorySegment segment, long index, @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment value) { VH_pStdDecoderModelInfo.set(segment, 0L, index, value); }
     /// Sets `pStdDecoderModelInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pStdDecoderModelInfo(MemorySegment segment, @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(segment, 0L, value); }
+    public static void set_pStdDecoderModelInfo(MemorySegment segment, @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(segment, 0L, value); }
     /// Sets `pStdDecoderModelInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdDecoderModelInfo(@CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(this.segment(), value); return this; }
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdDecoderModelInfo(@CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(this.segment(), value); return this; }
 
     /// {@return `stdOperatingPointCount` at the given index}
     /// @param segment the segment of the struct
@@ -244,25 +244,25 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
     /// {@return `pStdOperatingPoints` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment get_pStdOperatingPoints(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStdOperatingPoints.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment get_pStdOperatingPoints(MemorySegment segment, long index) { return (MemorySegment) VH_pStdOperatingPoints.get(segment, 0L, index); }
     /// {@return `pStdOperatingPoints`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment get_pStdOperatingPoints(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(segment, 0L); }
+    public static @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment get_pStdOperatingPoints(MemorySegment segment) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(segment, 0L); }
     /// {@return `pStdOperatingPoints`}
-    public @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment pStdOperatingPoints() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(this.segment()); }
+    public @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment pStdOperatingPoints() { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(this.segment()); }
     /// Sets `pStdOperatingPoints` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pStdOperatingPoints(MemorySegment segment, long index, @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment value) { VH_pStdOperatingPoints.set(segment, 0L, index, value); }
+    public static void set_pStdOperatingPoints(MemorySegment segment, long index, @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment value) { VH_pStdOperatingPoints.set(segment, 0L, index, value); }
     /// Sets `pStdOperatingPoints` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pStdOperatingPoints(MemorySegment segment, @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(segment, 0L, value); }
+    public static void set_pStdOperatingPoints(MemorySegment segment, @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(segment, 0L, value); }
     /// Sets `pStdOperatingPoints` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdOperatingPoints(@CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(this.segment(), value); return this; }
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdOperatingPoints(@CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoEncodeAV1SessionParametersCreateInfoKHR].
     public static final class Buffer extends VkVideoEncodeAV1SessionParametersCreateInfoKHR {
@@ -297,30 +297,30 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pStdSequenceHeader` at the given index}
         /// @param index the index
-        public @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment pStdSequenceHeaderAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(this.segment(), index); }
+        public @CType("const StdVideoAV1SequenceHeader *") MemorySegment pStdSequenceHeaderAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdSequenceHeader(this.segment(), index); }
         /// Sets `pStdSequenceHeader` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pStdSequenceHeaderAt(long index, @CType("const StdVideoAV1SequenceHeader *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(this.segment(), index, value); return this; }
+        public Buffer pStdSequenceHeaderAt(long index, @CType("const StdVideoAV1SequenceHeader *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdSequenceHeader(this.segment(), index, value); return this; }
 
         /// {@return `pStdDecoderModelInfo` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment pStdDecoderModelInfoAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(this.segment(), index); }
+        public @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment pStdDecoderModelInfoAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdDecoderModelInfo(this.segment(), index); }
         /// Sets `pStdDecoderModelInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pStdDecoderModelInfoAt(long index, @CType("const StdVideoEncodeAV1DecoderModelInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(this.segment(), index, value); return this; }
+        public Buffer pStdDecoderModelInfoAt(long index, @CType("const StdVideoEncodeAV1DecoderModelInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdDecoderModelInfo(this.segment(), index, value); return this; }
 
         /// {@return `stdOperatingPointCount` at the given index}
         /// @param index the index
@@ -333,12 +333,12 @@ public sealed class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends Struc
 
         /// {@return `pStdOperatingPoints` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment pStdOperatingPointsAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(this.segment(), index); }
+        public @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment pStdOperatingPointsAt(long index) { return VkVideoEncodeAV1SessionParametersCreateInfoKHR.get_pStdOperatingPoints(this.segment(), index); }
         /// Sets `pStdOperatingPoints` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pStdOperatingPointsAt(long index, @CType("const StdVideoEncodeAV1OperatingPointInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(this.segment(), index, value); return this; }
+        public Buffer pStdOperatingPointsAt(long index, @CType("const StdVideoEncodeAV1OperatingPointInfo *") MemorySegment value) { VkVideoEncodeAV1SessionParametersCreateInfoKHR.set_pStdOperatingPoints(this.segment(), index, value); return this; }
 
     }
 }

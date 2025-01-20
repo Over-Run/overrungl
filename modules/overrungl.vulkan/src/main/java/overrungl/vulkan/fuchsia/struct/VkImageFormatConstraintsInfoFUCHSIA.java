@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### imageCreateInfo
-/// [Byte offset][#OFFSET_imageCreateInfo] - [Memory layout][#ML_imageCreateInfo] - [Getter][#imageCreateInfo()] - [Setter][#imageCreateInfo(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageCreateInfo] - [Memory layout][#ML_imageCreateInfo] - [Getter][#imageCreateInfo()] - [Setter][#imageCreateInfo(MemorySegment)]
 /// ### requiredFormatFeatures
 /// [VarHandle][#VH_requiredFormatFeatures] - [Getter][#requiredFormatFeatures()] - [Setter][#requiredFormatFeatures(int)]
 /// ### flags
@@ -40,7 +40,7 @@ import overrungl.util.*;
 /// ### colorSpaceCount
 /// [VarHandle][#VH_colorSpaceCount] - [Getter][#colorSpaceCount()] - [Setter][#colorSpaceCount(int)]
 /// ### pColorSpaces
-/// [VarHandle][#VH_pColorSpaces] - [Getter][#pColorSpaces()] - [Setter][#pColorSpaces(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pColorSpaces] - [Getter][#pColorSpaces()] - [Setter][#pColorSpaces(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,7 +69,7 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `imageCreateInfo`.
     public static final long OFFSET_imageCreateInfo = LAYOUT.byteOffset(PathElement.groupElement("imageCreateInfo"));
@@ -83,7 +83,7 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
     public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
     /// The [VarHandle] of `colorSpaceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_colorSpaceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpaceCount"));
-    /// The [VarHandle] of `pColorSpaces` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pColorSpaces` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorSpaces = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorSpaces"));
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
@@ -129,7 +129,7 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
     /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageFormatConstraintsInfoFUCHSIA`
-    public static VkImageFormatConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment imageCreateInfo, @CType("VkFormatFeatureFlags") int requiredFormatFeatures, @CType("VkImageFormatConstraintsFlagsFUCHSIA") int flags, @CType("uint64_t") long sysmemPixelFormat, @CType("uint32_t") int colorSpaceCount, @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment pColorSpaces) { return alloc(allocator).sType(sType).pNext(pNext).imageCreateInfo(imageCreateInfo).requiredFormatFeatures(requiredFormatFeatures).flags(flags).sysmemPixelFormat(sysmemPixelFormat).colorSpaceCount(colorSpaceCount).pColorSpaces(pColorSpaces); }
+    public static VkImageFormatConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageCreateInfo") MemorySegment imageCreateInfo, @CType("VkFormatFeatureFlags") int requiredFormatFeatures, @CType("VkImageFormatConstraintsFlagsFUCHSIA") int flags, @CType("uint64_t") long sysmemPixelFormat, @CType("uint32_t") int colorSpaceCount, @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment pColorSpaces) { return alloc(allocator).sType(sType).pNext(pNext).imageCreateInfo(imageCreateInfo).requiredFormatFeatures(requiredFormatFeatures).flags(flags).sysmemPixelFormat(sysmemPixelFormat).colorSpaceCount(colorSpaceCount).pColorSpaces(pColorSpaces); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -166,48 +166,48 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(this.segment(), value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pNext(@CType("const void *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(this.segment(), value); return this; }
 
     /// {@return `imageCreateInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment get_imageCreateInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageCreateInfo, index), ML_imageCreateInfo); }
+    public static @CType("VkImageCreateInfo") MemorySegment get_imageCreateInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageCreateInfo, index), ML_imageCreateInfo); }
     /// {@return `imageCreateInfo`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment get_imageCreateInfo(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(segment, 0L); }
+    public static @CType("VkImageCreateInfo") MemorySegment get_imageCreateInfo(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(segment, 0L); }
     /// {@return `imageCreateInfo`}
-    public @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment imageCreateInfo() { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(this.segment()); }
+    public @CType("VkImageCreateInfo") MemorySegment imageCreateInfo() { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(this.segment()); }
     /// Sets `imageCreateInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageCreateInfo(MemorySegment segment, long index, @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageCreateInfo, index), ML_imageCreateInfo.byteSize()); }
+    public static void set_imageCreateInfo(MemorySegment segment, long index, @CType("VkImageCreateInfo") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageCreateInfo, index), ML_imageCreateInfo.byteSize()); }
     /// Sets `imageCreateInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageCreateInfo(MemorySegment segment, @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(segment, 0L, value); }
+    public static void set_imageCreateInfo(MemorySegment segment, @CType("VkImageCreateInfo") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(segment, 0L, value); }
     /// Sets `imageCreateInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(@CType("VkImageCreateInfo") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(this.segment(), value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(@CType("VkImageCreateInfo") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(this.segment(), value); return this; }
 
     /// {@return `requiredFormatFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -304,25 +304,25 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
     /// {@return `pColorSpaces` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment get_pColorSpaces(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pColorSpaces.get(segment, 0L, index); }
+    public static @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment get_pColorSpaces(MemorySegment segment, long index) { return (MemorySegment) VH_pColorSpaces.get(segment, 0L, index); }
     /// {@return `pColorSpaces`}
     /// @param segment the segment of the struct
-    public static @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment get_pColorSpaces(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(segment, 0L); }
+    public static @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment get_pColorSpaces(MemorySegment segment) { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(segment, 0L); }
     /// {@return `pColorSpaces`}
-    public @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment pColorSpaces() { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(this.segment()); }
+    public @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment pColorSpaces() { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(this.segment()); }
     /// Sets `pColorSpaces` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pColorSpaces(MemorySegment segment, long index, @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment value) { VH_pColorSpaces.set(segment, 0L, index, value); }
+    public static void set_pColorSpaces(MemorySegment segment, long index, @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment value) { VH_pColorSpaces.set(segment, 0L, index, value); }
     /// Sets `pColorSpaces` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pColorSpaces(MemorySegment segment, @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(segment, 0L, value); }
+    public static void set_pColorSpaces(MemorySegment segment, @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(segment, 0L, value); }
     /// Sets `pColorSpaces` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(@CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(this.segment(), value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(@CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(this.segment(), value); return this; }
 
     /// A buffer of [VkImageFormatConstraintsInfoFUCHSIA].
     public static final class Buffer extends VkImageFormatConstraintsInfoFUCHSIA {
@@ -357,21 +357,21 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageCreateInfo` at the given index}
         /// @param index the index
-        public @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment imageCreateInfoAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(this.segment(), index); }
+        public @CType("VkImageCreateInfo") MemorySegment imageCreateInfoAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_imageCreateInfo(this.segment(), index); }
         /// Sets `imageCreateInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageCreateInfoAt(long index, @CType("VkImageCreateInfo") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(this.segment(), index, value); return this; }
+        public Buffer imageCreateInfoAt(long index, @CType("VkImageCreateInfo") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_imageCreateInfo(this.segment(), index, value); return this; }
 
         /// {@return `requiredFormatFeatures` at the given index}
         /// @param index the index
@@ -411,12 +411,12 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends Struct {
 
         /// {@return `pColorSpaces` at the given index}
         /// @param index the index
-        public @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment pColorSpacesAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(this.segment(), index); }
+        public @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment pColorSpacesAt(long index) { return VkImageFormatConstraintsInfoFUCHSIA.get_pColorSpaces(this.segment(), index); }
         /// Sets `pColorSpaces` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pColorSpacesAt(long index, @CType("const VkSysmemColorSpaceFUCHSIA *") java.lang.foreign.MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(this.segment(), index, value); return this; }
+        public Buffer pColorSpacesAt(long index, @CType("const VkSysmemColorSpaceFUCHSIA *") MemorySegment value) { VkImageFormatConstraintsInfoFUCHSIA.set_pColorSpaces(this.segment(), index, value); return this; }
 
     }
 }

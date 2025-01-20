@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRPipelineExecutableProperties {
     public static final int VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR = 0;
     public static final int VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR = 1;
@@ -39,21 +38,10 @@ public class VKKHRPipelineExecutableProperties {
     public static final int VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR = 0x00000040;
     public static final int VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR = 0x00000080;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPipelineExecutablePropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineExecutableStatisticsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineExecutableInternalRepresentationsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPipelineExecutablePropertiesKHR,
-            FD_vkGetPipelineExecutableStatisticsKHR,
-            FD_vkGetPipelineExecutableInternalRepresentationsKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPipelineExecutablePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutablePropertiesKHR);
-        public static final MethodHandle MH_vkGetPipelineExecutableStatisticsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutableStatisticsKHR);
-        public static final MethodHandle MH_vkGetPipelineExecutableInternalRepresentationsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutableInternalRepresentationsKHR);
+        public static final MethodHandle MH_vkGetPipelineExecutablePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineExecutableStatisticsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineExecutableInternalRepresentationsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPipelineExecutablePropertiesKHR;
         public final MemorySegment PFN_vkGetPipelineExecutableStatisticsKHR;
         public final MemorySegment PFN_vkGetPipelineExecutableInternalRepresentationsKHR;

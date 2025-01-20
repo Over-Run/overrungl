@@ -16,7 +16,6 @@
 
 package overrungl.opengl
 
-import com.palantir.javapoet.TypeName
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.Text
@@ -28,6 +27,7 @@ import kotlin.io.path.createDirectories
 // gl.xml updated: 2025/01/01
 
 private val recordingErrorType = mutableSetOf<String>()
+private val downcallDescriptors = mutableListOf<String>()
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -402,7 +402,7 @@ fun computeFunctionDescriptor(command: GLCommand): String {
     val paramTypeSpecs = command.params.map { computePType(it.type) }
     return buildString {
         append("FunctionDescriptor.of")
-        if (returnTypeSpec.carrier == TypeName.VOID) {
+        if (returnTypeSpec.carrier == "void") {
             append("Void(")
         } else {
             append("(")
@@ -619,14 +619,8 @@ fun main() {
         val get = commandMap[command.name]!!
 
         // descriptor
-        descriptorFields.add(
-            InstanceDowncallField(
-                modifier = "public static final",
-                type = "FunctionDescriptor",
-                name = "FD_${get.name}",
-                value = computeFunctionDescriptor(get)
-            )
-        )
+        val descriptor = computeFunctionDescriptor(get)
+        downcallDescriptors.add(descriptor)
 
         // handle
         handleFields.add(
@@ -634,7 +628,7 @@ fun main() {
                 modifier = "public static final",
                 type = "MethodHandle",
                 name = "MH_${get.name}",
-                value = "RuntimeHelper.downcall(Descriptors.FD_${get.name})"
+                value = "RuntimeHelper.downcall($descriptor)"
             )
         )
 
@@ -811,6 +805,7 @@ fun main() {
                     |
                     |    requires transitive overrungl.core;
                     |    requires static org.jetbrains.annotations;
+                    |    requires org.graalvm.nativeimage;
                 """.trimMargin()
             )
             appendLine("}")
@@ -878,6 +873,8 @@ fun main() {
             System.err.println(it)
         }
     }
+
+    writeNativeImageRegistration(openglPackage, downcall = downcallDescriptors)
 }
 
 // Define special upcall

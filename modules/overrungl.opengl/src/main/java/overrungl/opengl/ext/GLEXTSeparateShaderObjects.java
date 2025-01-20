@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,153 +31,54 @@ public final class GLEXTSeparateShaderObjects {
     public static final int GL_PROGRAM_SEPARABLE_EXT = 0x8258;
     public static final int GL_PROGRAM_PIPELINE_BINDING_EXT = 0x825A;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glUseShaderProgramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glActiveProgramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreateShaderProgramEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glActiveShaderProgramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindProgramPipelineEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreateShaderProgramvEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteProgramPipelinesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenProgramPipelinesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramPipelineInfoLogEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramPipelineivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsProgramPipelineEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramParameteriEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform1fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glProgramUniform1fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform1iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform1ivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform2fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glProgramUniform2fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform2iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform2ivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform3fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glProgramUniform3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform3iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform3ivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform4fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glProgramUniform4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform4iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform4ivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix2fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUseProgramStagesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glValidateProgramPipelineEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform1uiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform2uiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform3uiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform4uiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramUniform1uivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform2uivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform3uivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniform4uivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix2x3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix3x2fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix2x4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix4x2fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix3x4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformMatrix4x3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUseShaderProgramEXT,
-            FD_glActiveProgramEXT,
-            FD_glCreateShaderProgramEXT,
-            FD_glActiveShaderProgramEXT,
-            FD_glBindProgramPipelineEXT,
-            FD_glCreateShaderProgramvEXT,
-            FD_glDeleteProgramPipelinesEXT,
-            FD_glGenProgramPipelinesEXT,
-            FD_glGetProgramPipelineInfoLogEXT,
-            FD_glGetProgramPipelineivEXT,
-            FD_glIsProgramPipelineEXT,
-            FD_glProgramParameteriEXT,
-            FD_glProgramUniform1fEXT,
-            FD_glProgramUniform1fvEXT,
-            FD_glProgramUniform1iEXT,
-            FD_glProgramUniform1ivEXT,
-            FD_glProgramUniform2fEXT,
-            FD_glProgramUniform2fvEXT,
-            FD_glProgramUniform2iEXT,
-            FD_glProgramUniform2ivEXT,
-            FD_glProgramUniform3fEXT,
-            FD_glProgramUniform3fvEXT,
-            FD_glProgramUniform3iEXT,
-            FD_glProgramUniform3ivEXT,
-            FD_glProgramUniform4fEXT,
-            FD_glProgramUniform4fvEXT,
-            FD_glProgramUniform4iEXT,
-            FD_glProgramUniform4ivEXT,
-            FD_glProgramUniformMatrix2fvEXT,
-            FD_glProgramUniformMatrix3fvEXT,
-            FD_glProgramUniformMatrix4fvEXT,
-            FD_glUseProgramStagesEXT,
-            FD_glValidateProgramPipelineEXT,
-            FD_glProgramUniform1uiEXT,
-            FD_glProgramUniform2uiEXT,
-            FD_glProgramUniform3uiEXT,
-            FD_glProgramUniform4uiEXT,
-            FD_glProgramUniform1uivEXT,
-            FD_glProgramUniform2uivEXT,
-            FD_glProgramUniform3uivEXT,
-            FD_glProgramUniform4uivEXT,
-            FD_glProgramUniformMatrix2x3fvEXT,
-            FD_glProgramUniformMatrix3x2fvEXT,
-            FD_glProgramUniformMatrix2x4fvEXT,
-            FD_glProgramUniformMatrix4x2fvEXT,
-            FD_glProgramUniformMatrix3x4fvEXT,
-            FD_glProgramUniformMatrix4x3fvEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glUseShaderProgramEXT = RuntimeHelper.downcall(Descriptors.FD_glUseShaderProgramEXT);
-        public static final MethodHandle MH_glActiveProgramEXT = RuntimeHelper.downcall(Descriptors.FD_glActiveProgramEXT);
-        public static final MethodHandle MH_glCreateShaderProgramEXT = RuntimeHelper.downcall(Descriptors.FD_glCreateShaderProgramEXT);
-        public static final MethodHandle MH_glActiveShaderProgramEXT = RuntimeHelper.downcall(Descriptors.FD_glActiveShaderProgramEXT);
-        public static final MethodHandle MH_glBindProgramPipelineEXT = RuntimeHelper.downcall(Descriptors.FD_glBindProgramPipelineEXT);
-        public static final MethodHandle MH_glCreateShaderProgramvEXT = RuntimeHelper.downcall(Descriptors.FD_glCreateShaderProgramvEXT);
-        public static final MethodHandle MH_glDeleteProgramPipelinesEXT = RuntimeHelper.downcall(Descriptors.FD_glDeleteProgramPipelinesEXT);
-        public static final MethodHandle MH_glGenProgramPipelinesEXT = RuntimeHelper.downcall(Descriptors.FD_glGenProgramPipelinesEXT);
-        public static final MethodHandle MH_glGetProgramPipelineInfoLogEXT = RuntimeHelper.downcall(Descriptors.FD_glGetProgramPipelineInfoLogEXT);
-        public static final MethodHandle MH_glGetProgramPipelineivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetProgramPipelineivEXT);
-        public static final MethodHandle MH_glIsProgramPipelineEXT = RuntimeHelper.downcall(Descriptors.FD_glIsProgramPipelineEXT);
-        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteriEXT);
-        public static final MethodHandle MH_glProgramUniform1fEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1fEXT);
-        public static final MethodHandle MH_glProgramUniform1fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1fvEXT);
-        public static final MethodHandle MH_glProgramUniform1iEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1iEXT);
-        public static final MethodHandle MH_glProgramUniform1ivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1ivEXT);
-        public static final MethodHandle MH_glProgramUniform2fEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2fEXT);
-        public static final MethodHandle MH_glProgramUniform2fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2fvEXT);
-        public static final MethodHandle MH_glProgramUniform2iEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2iEXT);
-        public static final MethodHandle MH_glProgramUniform2ivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2ivEXT);
-        public static final MethodHandle MH_glProgramUniform3fEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3fEXT);
-        public static final MethodHandle MH_glProgramUniform3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3fvEXT);
-        public static final MethodHandle MH_glProgramUniform3iEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3iEXT);
-        public static final MethodHandle MH_glProgramUniform3ivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3ivEXT);
-        public static final MethodHandle MH_glProgramUniform4fEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4fEXT);
-        public static final MethodHandle MH_glProgramUniform4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4fvEXT);
-        public static final MethodHandle MH_glProgramUniform4iEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4iEXT);
-        public static final MethodHandle MH_glProgramUniform4ivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4ivEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix2fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix2fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix3fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix4fvEXT);
-        public static final MethodHandle MH_glUseProgramStagesEXT = RuntimeHelper.downcall(Descriptors.FD_glUseProgramStagesEXT);
-        public static final MethodHandle MH_glValidateProgramPipelineEXT = RuntimeHelper.downcall(Descriptors.FD_glValidateProgramPipelineEXT);
-        public static final MethodHandle MH_glProgramUniform1uiEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1uiEXT);
-        public static final MethodHandle MH_glProgramUniform2uiEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2uiEXT);
-        public static final MethodHandle MH_glProgramUniform3uiEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3uiEXT);
-        public static final MethodHandle MH_glProgramUniform4uiEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4uiEXT);
-        public static final MethodHandle MH_glProgramUniform1uivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform1uivEXT);
-        public static final MethodHandle MH_glProgramUniform2uivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform2uivEXT);
-        public static final MethodHandle MH_glProgramUniform3uivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform3uivEXT);
-        public static final MethodHandle MH_glProgramUniform4uivEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniform4uivEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix2x3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix2x3fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix3x2fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix3x2fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix2x4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix2x4fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix4x2fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix4x2fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix3x4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix3x4fvEXT);
-        public static final MethodHandle MH_glProgramUniformMatrix4x3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformMatrix4x3fvEXT);
+        public static final MethodHandle MH_glUseShaderProgramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glActiveProgramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateShaderProgramEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glActiveShaderProgramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindProgramPipelineEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateShaderProgramvEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteProgramPipelinesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenProgramPipelinesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramPipelineInfoLogEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramPipelineivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsProgramPipelineEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform1fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramUniform1fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform1iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform1ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform2fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramUniform2fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform2iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform2ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform3fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramUniform3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform3iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform3ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform4fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramUniform4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform4iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform4ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix2fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUseProgramStagesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glValidateProgramPipelineEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform1uiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform2uiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform3uiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform4uiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramUniform1uivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform2uivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform3uivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniform4uivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix2x3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix3x2fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix2x4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix4x2fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix3x4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformMatrix4x3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glUseShaderProgramEXT;
         public final MemorySegment PFN_glActiveProgramEXT;
         public final MemorySegment PFN_glCreateShaderProgramEXT;
@@ -291,7 +191,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glActiveProgramEXT", e); }
     }
 
-    public @CType("GLuint") int CreateShaderProgramEXT(@CType("GLenum") int type, @CType("const GLchar *") java.lang.foreign.MemorySegment string) {
+    public @CType("GLuint") int CreateShaderProgramEXT(@CType("GLenum") int type, @CType("const GLchar *") MemorySegment string) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateShaderProgramEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateShaderProgramEXT");
         try { return (int) Handles.MH_glCreateShaderProgramEXT.invokeExact(handles.PFN_glCreateShaderProgramEXT, type, string); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateShaderProgramEXT", e); }
@@ -309,31 +209,31 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glBindProgramPipelineEXT", e); }
     }
 
-    public @CType("GLuint") int CreateShaderProgramvEXT(@CType("GLenum") int type, @CType("GLsizei") int count, @CType("const GLchar *const*") java.lang.foreign.MemorySegment strings) {
+    public @CType("GLuint") int CreateShaderProgramvEXT(@CType("GLenum") int type, @CType("GLsizei") int count, @CType("const GLchar *const*") MemorySegment strings) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateShaderProgramvEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateShaderProgramvEXT");
         try { return (int) Handles.MH_glCreateShaderProgramvEXT.invokeExact(handles.PFN_glCreateShaderProgramvEXT, type, count, strings); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateShaderProgramvEXT", e); }
     }
 
-    public void DeleteProgramPipelinesEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment pipelines) {
+    public void DeleteProgramPipelinesEXT(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment pipelines) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteProgramPipelinesEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteProgramPipelinesEXT");
         try { Handles.MH_glDeleteProgramPipelinesEXT.invokeExact(handles.PFN_glDeleteProgramPipelinesEXT, n, pipelines); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteProgramPipelinesEXT", e); }
     }
 
-    public void GenProgramPipelinesEXT(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment pipelines) {
+    public void GenProgramPipelinesEXT(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment pipelines) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenProgramPipelinesEXT)) throw new SymbolNotFoundError("Symbol not found: glGenProgramPipelinesEXT");
         try { Handles.MH_glGenProgramPipelinesEXT.invokeExact(handles.PFN_glGenProgramPipelinesEXT, n, pipelines); }
         catch (Throwable e) { throw new RuntimeException("error in glGenProgramPipelinesEXT", e); }
     }
 
-    public void GetProgramPipelineInfoLogEXT(@CType("GLuint") int pipeline, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment infoLog) {
+    public void GetProgramPipelineInfoLogEXT(@CType("GLuint") int pipeline, @CType("GLsizei") int bufSize, @CType("GLsizei *") MemorySegment length, @CType("GLchar *") MemorySegment infoLog) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetProgramPipelineInfoLogEXT)) throw new SymbolNotFoundError("Symbol not found: glGetProgramPipelineInfoLogEXT");
         try { Handles.MH_glGetProgramPipelineInfoLogEXT.invokeExact(handles.PFN_glGetProgramPipelineInfoLogEXT, pipeline, bufSize, length, infoLog); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramPipelineInfoLogEXT", e); }
     }
 
-    public void GetProgramPipelineivEXT(@CType("GLuint") int pipeline, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetProgramPipelineivEXT(@CType("GLuint") int pipeline, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetProgramPipelineivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetProgramPipelineivEXT");
         try { Handles.MH_glGetProgramPipelineivEXT.invokeExact(handles.PFN_glGetProgramPipelineivEXT, pipeline, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramPipelineivEXT", e); }
@@ -357,7 +257,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1fEXT", e); }
     }
 
-    public void ProgramUniform1fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform1fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1fvEXT");
         try { Handles.MH_glProgramUniform1fvEXT.invokeExact(handles.PFN_glProgramUniform1fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1fvEXT", e); }
@@ -369,7 +269,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1iEXT", e); }
     }
 
-    public void ProgramUniform1ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform1ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ivEXT");
         try { Handles.MH_glProgramUniform1ivEXT.invokeExact(handles.PFN_glProgramUniform1ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1ivEXT", e); }
@@ -381,7 +281,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2fEXT", e); }
     }
 
-    public void ProgramUniform2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2fvEXT");
         try { Handles.MH_glProgramUniform2fvEXT.invokeExact(handles.PFN_glProgramUniform2fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2fvEXT", e); }
@@ -393,7 +293,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2iEXT", e); }
     }
 
-    public void ProgramUniform2ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform2ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ivEXT");
         try { Handles.MH_glProgramUniform2ivEXT.invokeExact(handles.PFN_glProgramUniform2ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2ivEXT", e); }
@@ -405,7 +305,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3fEXT", e); }
     }
 
-    public void ProgramUniform3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3fvEXT");
         try { Handles.MH_glProgramUniform3fvEXT.invokeExact(handles.PFN_glProgramUniform3fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3fvEXT", e); }
@@ -417,7 +317,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3iEXT", e); }
     }
 
-    public void ProgramUniform3ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform3ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ivEXT");
         try { Handles.MH_glProgramUniform3ivEXT.invokeExact(handles.PFN_glProgramUniform3ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3ivEXT", e); }
@@ -429,7 +329,7 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4fEXT", e); }
     }
 
-    public void ProgramUniform4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4fvEXT");
         try { Handles.MH_glProgramUniform4fvEXT.invokeExact(handles.PFN_glProgramUniform4fvEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4fvEXT", e); }
@@ -441,25 +341,25 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4iEXT", e); }
     }
 
-    public void ProgramUniform4ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform4ivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ivEXT");
         try { Handles.MH_glProgramUniform4ivEXT.invokeExact(handles.PFN_glProgramUniform4ivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4ivEXT", e); }
     }
 
-    public void ProgramUniformMatrix2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2fvEXT");
         try { Handles.MH_glProgramUniformMatrix2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix2fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3fvEXT");
         try { Handles.MH_glProgramUniformMatrix3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix3fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4fvEXT");
         try { Handles.MH_glProgramUniformMatrix4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix4fvEXT", e); }
@@ -501,61 +401,61 @@ public final class GLEXTSeparateShaderObjects {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4uiEXT", e); }
     }
 
-    public void ProgramUniform1uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform1uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1uivEXT");
         try { Handles.MH_glProgramUniform1uivEXT.invokeExact(handles.PFN_glProgramUniform1uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1uivEXT", e); }
     }
 
-    public void ProgramUniform2uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform2uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2uivEXT");
         try { Handles.MH_glProgramUniform2uivEXT.invokeExact(handles.PFN_glProgramUniform2uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2uivEXT", e); }
     }
 
-    public void ProgramUniform3uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform3uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3uivEXT");
         try { Handles.MH_glProgramUniform3uivEXT.invokeExact(handles.PFN_glProgramUniform3uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3uivEXT", e); }
     }
 
-    public void ProgramUniform4uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniform4uivEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4uivEXT");
         try { Handles.MH_glProgramUniform4uivEXT.invokeExact(handles.PFN_glProgramUniform4uivEXT, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4uivEXT", e); }
     }
 
-    public void ProgramUniformMatrix2x3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix2x3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix2x3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3fvEXT");
         try { Handles.MH_glProgramUniformMatrix2x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x3fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix2x3fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix3x2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix3x2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix3x2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2fvEXT");
         try { Handles.MH_glProgramUniformMatrix3x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x2fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix3x2fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix2x4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix2x4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix2x4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4fvEXT");
         try { Handles.MH_glProgramUniformMatrix2x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix2x4fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix2x4fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix4x2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix4x2fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix4x2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2fvEXT");
         try { Handles.MH_glProgramUniformMatrix4x2fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x2fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix4x2fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix3x4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix3x4fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix3x4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4fvEXT");
         try { Handles.MH_glProgramUniformMatrix3x4fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix3x4fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix3x4fvEXT", e); }
     }
 
-    public void ProgramUniformMatrix4x3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void ProgramUniformMatrix4x3fvEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformMatrix4x3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3fvEXT");
         try { Handles.MH_glProgramUniformMatrix4x3fvEXT.invokeExact(handles.PFN_glProgramUniformMatrix4x3fvEXT, program, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformMatrix4x3fvEXT", e); }

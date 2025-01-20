@@ -19,7 +19,6 @@ package overrungl.opengl.sunx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,15 +27,8 @@ public final class GLSUNXConstantData {
     public static final int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFinishTextureSUNX = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFinishTextureSUNX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFinishTextureSUNX = RuntimeHelper.downcall(Descriptors.FD_glFinishTextureSUNX);
+        public static final MethodHandle MH_glFinishTextureSUNX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFinishTextureSUNX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFinishTextureSUNX = func.invoke("glFinishTextureSUNX");

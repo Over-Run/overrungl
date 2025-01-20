@@ -31,15 +31,15 @@ public interface GLFWAllocateFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWAllocateFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void*") java.lang.foreign.MemorySegment invoke(@CType("size_t") long size, @CType("void*") java.lang.foreign.MemorySegment user);
+    @CType("void*") MemorySegment invoke(@CType("size_t") long size, @CType("void*") MemorySegment user);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void*") java.lang.foreign.MemorySegment invoke(MemorySegment stub, @CType("size_t") long size, @CType("void*") java.lang.foreign.MemorySegment user) {
-        try { return (java.lang.foreign.MemorySegment) HANDLE.invokeExact(stub, size, user); }
+    static @CType("void*") MemorySegment invoke(MemorySegment stub, @CType("size_t") long size, @CType("void*") MemorySegment user) {
+        try { return (MemorySegment) HANDLE.invokeExact(stub, size, user); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWAllocateFun::invoke (static invoker)", e); }
     }
 

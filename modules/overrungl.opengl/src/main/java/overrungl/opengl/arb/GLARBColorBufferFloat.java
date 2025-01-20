@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,15 +30,8 @@ public final class GLARBColorBufferFloat {
     public static final int GL_CLAMP_READ_COLOR_ARB = 0x891C;
     public static final int GL_FIXED_ONLY_ARB = 0x891D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glClampColorARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glClampColorARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glClampColorARB = RuntimeHelper.downcall(Descriptors.FD_glClampColorARB);
+        public static final MethodHandle MH_glClampColorARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClampColorARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glClampColorARB = func.invoke("glClampColorARB", "glClampColor");

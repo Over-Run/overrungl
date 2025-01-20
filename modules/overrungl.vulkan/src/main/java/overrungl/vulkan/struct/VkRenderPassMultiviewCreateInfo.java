@@ -28,19 +28,19 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### subpassCount
 /// [VarHandle][#VH_subpassCount] - [Getter][#subpassCount()] - [Setter][#subpassCount(int)]
 /// ### pViewMasks
-/// [VarHandle][#VH_pViewMasks] - [Getter][#pViewMasks()] - [Setter][#pViewMasks(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pViewMasks] - [Getter][#pViewMasks()] - [Setter][#pViewMasks(MemorySegment)]
 /// ### dependencyCount
 /// [VarHandle][#VH_dependencyCount] - [Getter][#dependencyCount()] - [Setter][#dependencyCount(int)]
 /// ### pViewOffsets
-/// [VarHandle][#VH_pViewOffsets] - [Getter][#pViewOffsets()] - [Setter][#pViewOffsets(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pViewOffsets] - [Getter][#pViewOffsets()] - [Setter][#pViewOffsets(MemorySegment)]
 /// ### correlationMaskCount
 /// [VarHandle][#VH_correlationMaskCount] - [Getter][#correlationMaskCount()] - [Setter][#correlationMaskCount(int)]
 /// ### pCorrelationMasks
-/// [VarHandle][#VH_pCorrelationMasks] - [Getter][#pCorrelationMasks()] - [Setter][#pCorrelationMasks(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCorrelationMasks] - [Getter][#pCorrelationMasks()] - [Setter][#pCorrelationMasks(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,19 +69,19 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `subpassCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_subpassCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassCount"));
-    /// The [VarHandle] of `pViewMasks` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pViewMasks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewMasks"));
     /// The [VarHandle] of `dependencyCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_dependencyCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyCount"));
-    /// The [VarHandle] of `pViewOffsets` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pViewOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewOffsets"));
     /// The [VarHandle] of `correlationMaskCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_correlationMaskCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("correlationMaskCount"));
-    /// The [VarHandle] of `pCorrelationMasks` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCorrelationMasks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCorrelationMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCorrelationMasks"));
 
     /// Creates `VkRenderPassMultiviewCreateInfo` with the given segment.
@@ -127,7 +127,7 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderPassMultiviewCreateInfo`
-    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int subpassCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pViewMasks, @CType("uint32_t") int dependencyCount, @CType("const int32_t *") java.lang.foreign.MemorySegment pViewOffsets, @CType("uint32_t") int correlationMaskCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pCorrelationMasks) { return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount).pViewOffsets(pViewOffsets).correlationMaskCount(correlationMaskCount).pCorrelationMasks(pCorrelationMasks); }
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int subpassCount, @CType("const uint32_t *") MemorySegment pViewMasks, @CType("uint32_t") int dependencyCount, @CType("const int32_t *") MemorySegment pViewOffsets, @CType("uint32_t") int correlationMaskCount, @CType("const uint32_t *") MemorySegment pCorrelationMasks) { return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount).pViewOffsets(pViewOffsets).correlationMaskCount(correlationMaskCount).pCorrelationMasks(pCorrelationMasks); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassMultiviewCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkRenderPassMultiviewCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassMultiviewCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkRenderPassMultiviewCreateInfo pNext(@CType("const void *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `subpassCount` at the given index}
     /// @param segment the segment of the struct
@@ -210,25 +210,25 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     /// {@return `pViewMasks` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pViewMasks(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pViewMasks.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pViewMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pViewMasks.get(segment, 0L, index); }
     /// {@return `pViewMasks`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pViewMasks(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pViewMasks(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(segment, 0L); }
     /// {@return `pViewMasks`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pViewMasks() { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pViewMasks() { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(this.segment()); }
     /// Sets `pViewMasks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pViewMasks(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pViewMasks.set(segment, 0L, index, value); }
+    public static void set_pViewMasks(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pViewMasks.set(segment, 0L, index, value); }
     /// Sets `pViewMasks` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pViewMasks(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(segment, 0L, value); }
+    public static void set_pViewMasks(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(segment, 0L, value); }
     /// Sets `pViewMasks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassMultiviewCreateInfo pViewMasks(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(this.segment(), value); return this; }
+    public VkRenderPassMultiviewCreateInfo pViewMasks(@CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(this.segment(), value); return this; }
 
     /// {@return `dependencyCount` at the given index}
     /// @param segment the segment of the struct
@@ -256,25 +256,25 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     /// {@return `pViewOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const int32_t *") java.lang.foreign.MemorySegment get_pViewOffsets(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pViewOffsets.get(segment, 0L, index); }
+    public static @CType("const int32_t *") MemorySegment get_pViewOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pViewOffsets.get(segment, 0L, index); }
     /// {@return `pViewOffsets`}
     /// @param segment the segment of the struct
-    public static @CType("const int32_t *") java.lang.foreign.MemorySegment get_pViewOffsets(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(segment, 0L); }
+    public static @CType("const int32_t *") MemorySegment get_pViewOffsets(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(segment, 0L); }
     /// {@return `pViewOffsets`}
-    public @CType("const int32_t *") java.lang.foreign.MemorySegment pViewOffsets() { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(this.segment()); }
+    public @CType("const int32_t *") MemorySegment pViewOffsets() { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(this.segment()); }
     /// Sets `pViewOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pViewOffsets(MemorySegment segment, long index, @CType("const int32_t *") java.lang.foreign.MemorySegment value) { VH_pViewOffsets.set(segment, 0L, index, value); }
+    public static void set_pViewOffsets(MemorySegment segment, long index, @CType("const int32_t *") MemorySegment value) { VH_pViewOffsets.set(segment, 0L, index, value); }
     /// Sets `pViewOffsets` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pViewOffsets(MemorySegment segment, @CType("const int32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(segment, 0L, value); }
+    public static void set_pViewOffsets(MemorySegment segment, @CType("const int32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(segment, 0L, value); }
     /// Sets `pViewOffsets` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassMultiviewCreateInfo pViewOffsets(@CType("const int32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(this.segment(), value); return this; }
+    public VkRenderPassMultiviewCreateInfo pViewOffsets(@CType("const int32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(this.segment(), value); return this; }
 
     /// {@return `correlationMaskCount` at the given index}
     /// @param segment the segment of the struct
@@ -302,25 +302,25 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
     /// {@return `pCorrelationMasks` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCorrelationMasks(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCorrelationMasks.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pCorrelationMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pCorrelationMasks.get(segment, 0L, index); }
     /// {@return `pCorrelationMasks`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCorrelationMasks(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pCorrelationMasks(MemorySegment segment) { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(segment, 0L); }
     /// {@return `pCorrelationMasks`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCorrelationMasks() { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pCorrelationMasks() { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(this.segment()); }
     /// Sets `pCorrelationMasks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCorrelationMasks(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pCorrelationMasks.set(segment, 0L, index, value); }
+    public static void set_pCorrelationMasks(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pCorrelationMasks.set(segment, 0L, index, value); }
     /// Sets `pCorrelationMasks` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCorrelationMasks(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(segment, 0L, value); }
+    public static void set_pCorrelationMasks(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(segment, 0L, value); }
     /// Sets `pCorrelationMasks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassMultiviewCreateInfo pCorrelationMasks(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(this.segment(), value); return this; }
+    public VkRenderPassMultiviewCreateInfo pCorrelationMasks(@CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(this.segment(), value); return this; }
 
     /// A buffer of [VkRenderPassMultiviewCreateInfo].
     public static final class Buffer extends VkRenderPassMultiviewCreateInfo {
@@ -355,12 +355,12 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `subpassCount` at the given index}
         /// @param index the index
@@ -373,12 +373,12 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
 
         /// {@return `pViewMasks` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pViewMasksAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pViewMasksAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pViewMasks(this.segment(), index); }
         /// Sets `pViewMasks` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pViewMasksAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(this.segment(), index, value); return this; }
+        public Buffer pViewMasksAt(long index, @CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewMasks(this.segment(), index, value); return this; }
 
         /// {@return `dependencyCount` at the given index}
         /// @param index the index
@@ -391,12 +391,12 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
 
         /// {@return `pViewOffsets` at the given index}
         /// @param index the index
-        public @CType("const int32_t *") java.lang.foreign.MemorySegment pViewOffsetsAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(this.segment(), index); }
+        public @CType("const int32_t *") MemorySegment pViewOffsetsAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pViewOffsets(this.segment(), index); }
         /// Sets `pViewOffsets` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pViewOffsetsAt(long index, @CType("const int32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(this.segment(), index, value); return this; }
+        public Buffer pViewOffsetsAt(long index, @CType("const int32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pViewOffsets(this.segment(), index, value); return this; }
 
         /// {@return `correlationMaskCount` at the given index}
         /// @param index the index
@@ -409,12 +409,12 @@ public sealed class VkRenderPassMultiviewCreateInfo extends Struct {
 
         /// {@return `pCorrelationMasks` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCorrelationMasksAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pCorrelationMasksAt(long index) { return VkRenderPassMultiviewCreateInfo.get_pCorrelationMasks(this.segment(), index); }
         /// Sets `pCorrelationMasks` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCorrelationMasksAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(this.segment(), index, value); return this; }
+        public Buffer pCorrelationMasksAt(long index, @CType("const uint32_t *") MemorySegment value) { VkRenderPassMultiviewCreateInfo.set_pCorrelationMasks(this.segment(), index, value); return this; }
 
     }
 }

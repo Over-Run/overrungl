@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,21 +30,10 @@ public final class GLAMDNameGenDelete {
     public static final int GL_VERTEX_ARRAY_OBJECT_AMD = 0x9154;
     public static final int GL_SAMPLER_OBJECT_AMD = 0x9155;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsNameAMD = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenNamesAMD,
-            FD_glDeleteNamesAMD,
-            FD_glIsNameAMD
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(Descriptors.FD_glGenNamesAMD);
-        public static final MethodHandle MH_glDeleteNamesAMD = RuntimeHelper.downcall(Descriptors.FD_glDeleteNamesAMD);
-        public static final MethodHandle MH_glIsNameAMD = RuntimeHelper.downcall(Descriptors.FD_glIsNameAMD);
+        public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsNameAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGenNamesAMD;
         public final MemorySegment PFN_glDeleteNamesAMD;
         public final MemorySegment PFN_glIsNameAMD;
@@ -60,13 +48,13 @@ public final class GLAMDNameGenDelete {
         this.handles = new Handles(func);
     }
 
-    public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") java.lang.foreign.MemorySegment names) {
+    public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") MemorySegment names) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD");
         try { Handles.MH_glGenNamesAMD.invokeExact(handles.PFN_glGenNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
     }
 
-    public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") java.lang.foreign.MemorySegment names) {
+    public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") MemorySegment names) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
         try { Handles.MH_glDeleteNamesAMD.invokeExact(handles.PFN_glDeleteNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }

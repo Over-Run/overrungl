@@ -130,11 +130,11 @@ import overrungl.util.*;
 /// ### maxComputeSharedMemorySize
 /// [VarHandle][#VH_maxComputeSharedMemorySize] - [Getter][#maxComputeSharedMemorySize()] - [Setter][#maxComputeSharedMemorySize(int)]
 /// ### maxComputeWorkGroupCount
-/// [Byte offset][#OFFSET_maxComputeWorkGroupCount] - [Memory layout][#ML_maxComputeWorkGroupCount] - [Getter][#maxComputeWorkGroupCount()] - [Setter][#maxComputeWorkGroupCount(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxComputeWorkGroupCount] - [Memory layout][#ML_maxComputeWorkGroupCount] - [Getter][#maxComputeWorkGroupCount()] - [Setter][#maxComputeWorkGroupCount(MemorySegment)]
 /// ### maxComputeWorkGroupInvocations
 /// [VarHandle][#VH_maxComputeWorkGroupInvocations] - [Getter][#maxComputeWorkGroupInvocations()] - [Setter][#maxComputeWorkGroupInvocations(int)]
 /// ### maxComputeWorkGroupSize
-/// [Byte offset][#OFFSET_maxComputeWorkGroupSize] - [Memory layout][#ML_maxComputeWorkGroupSize] - [Getter][#maxComputeWorkGroupSize()] - [Setter][#maxComputeWorkGroupSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxComputeWorkGroupSize] - [Memory layout][#ML_maxComputeWorkGroupSize] - [Getter][#maxComputeWorkGroupSize()] - [Setter][#maxComputeWorkGroupSize(MemorySegment)]
 /// ### subPixelPrecisionBits
 /// [VarHandle][#VH_subPixelPrecisionBits] - [Getter][#subPixelPrecisionBits()] - [Setter][#subPixelPrecisionBits(int)]
 /// ### subTexelPrecisionBits
@@ -152,9 +152,9 @@ import overrungl.util.*;
 /// ### maxViewports
 /// [VarHandle][#VH_maxViewports] - [Getter][#maxViewports()] - [Setter][#maxViewports(int)]
 /// ### maxViewportDimensions
-/// [Byte offset][#OFFSET_maxViewportDimensions] - [Memory layout][#ML_maxViewportDimensions] - [Getter][#maxViewportDimensions()] - [Setter][#maxViewportDimensions(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxViewportDimensions] - [Memory layout][#ML_maxViewportDimensions] - [Getter][#maxViewportDimensions()] - [Setter][#maxViewportDimensions(MemorySegment)]
 /// ### viewportBoundsRange
-/// [Byte offset][#OFFSET_viewportBoundsRange] - [Memory layout][#ML_viewportBoundsRange] - [Getter][#viewportBoundsRange()] - [Setter][#viewportBoundsRange(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_viewportBoundsRange] - [Memory layout][#ML_viewportBoundsRange] - [Getter][#viewportBoundsRange()] - [Setter][#viewportBoundsRange(MemorySegment)]
 /// ### viewportSubPixelBits
 /// [VarHandle][#VH_viewportSubPixelBits] - [Getter][#viewportSubPixelBits()] - [Setter][#viewportSubPixelBits(int)]
 /// ### minMemoryMapAlignment
@@ -220,9 +220,9 @@ import overrungl.util.*;
 /// ### discreteQueuePriorities
 /// [VarHandle][#VH_discreteQueuePriorities] - [Getter][#discreteQueuePriorities()] - [Setter][#discreteQueuePriorities(int)]
 /// ### pointSizeRange
-/// [Byte offset][#OFFSET_pointSizeRange] - [Memory layout][#ML_pointSizeRange] - [Getter][#pointSizeRange()] - [Setter][#pointSizeRange(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pointSizeRange] - [Memory layout][#ML_pointSizeRange] - [Getter][#pointSizeRange()] - [Setter][#pointSizeRange(MemorySegment)]
 /// ### lineWidthRange
-/// [Byte offset][#OFFSET_lineWidthRange] - [Memory layout][#ML_lineWidthRange] - [Getter][#lineWidthRange()] - [Setter][#lineWidthRange(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_lineWidthRange] - [Memory layout][#ML_lineWidthRange] - [Getter][#lineWidthRange()] - [Setter][#lineWidthRange(MemorySegment)]
 /// ### pointSizeGranularity
 /// [VarHandle][#VH_pointSizeGranularity] - [Getter][#pointSizeGranularity()] - [Setter][#pointSizeGranularity(float)]
 /// ### lineWidthGranularity
@@ -727,7 +727,7 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
     /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceLimits`
-    public static VkPhysicalDeviceLimits allocInit(SegmentAllocator allocator, @CType("uint32_t") int maxImageDimension1D, @CType("uint32_t") int maxImageDimension2D, @CType("uint32_t") int maxImageDimension3D, @CType("uint32_t") int maxImageDimensionCube, @CType("uint32_t") int maxImageArrayLayers, @CType("uint32_t") int maxTexelBufferElements, @CType("uint32_t") int maxUniformBufferRange, @CType("uint32_t") int maxStorageBufferRange, @CType("uint32_t") int maxPushConstantsSize, @CType("uint32_t") int maxMemoryAllocationCount, @CType("uint32_t") int maxSamplerAllocationCount, @CType("VkDeviceSize") long bufferImageGranularity, @CType("VkDeviceSize") long sparseAddressSpaceSize, @CType("uint32_t") int maxBoundDescriptorSets, @CType("uint32_t") int maxPerStageDescriptorSamplers, @CType("uint32_t") int maxPerStageDescriptorUniformBuffers, @CType("uint32_t") int maxPerStageDescriptorStorageBuffers, @CType("uint32_t") int maxPerStageDescriptorSampledImages, @CType("uint32_t") int maxPerStageDescriptorStorageImages, @CType("uint32_t") int maxPerStageDescriptorInputAttachments, @CType("uint32_t") int maxPerStageResources, @CType("uint32_t") int maxDescriptorSetSamplers, @CType("uint32_t") int maxDescriptorSetUniformBuffers, @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamic, @CType("uint32_t") int maxDescriptorSetStorageBuffers, @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamic, @CType("uint32_t") int maxDescriptorSetSampledImages, @CType("uint32_t") int maxDescriptorSetStorageImages, @CType("uint32_t") int maxDescriptorSetInputAttachments, @CType("uint32_t") int maxVertexInputAttributes, @CType("uint32_t") int maxVertexInputBindings, @CType("uint32_t") int maxVertexInputAttributeOffset, @CType("uint32_t") int maxVertexInputBindingStride, @CType("uint32_t") int maxVertexOutputComponents, @CType("uint32_t") int maxTessellationGenerationLevel, @CType("uint32_t") int maxTessellationPatchSize, @CType("uint32_t") int maxTessellationControlPerVertexInputComponents, @CType("uint32_t") int maxTessellationControlPerVertexOutputComponents, @CType("uint32_t") int maxTessellationControlPerPatchOutputComponents, @CType("uint32_t") int maxTessellationControlTotalOutputComponents, @CType("uint32_t") int maxTessellationEvaluationInputComponents, @CType("uint32_t") int maxTessellationEvaluationOutputComponents, @CType("uint32_t") int maxGeometryShaderInvocations, @CType("uint32_t") int maxGeometryInputComponents, @CType("uint32_t") int maxGeometryOutputComponents, @CType("uint32_t") int maxGeometryOutputVertices, @CType("uint32_t") int maxGeometryTotalOutputComponents, @CType("uint32_t") int maxFragmentInputComponents, @CType("uint32_t") int maxFragmentOutputAttachments, @CType("uint32_t") int maxFragmentDualSrcAttachments, @CType("uint32_t") int maxFragmentCombinedOutputResources, @CType("uint32_t") int maxComputeSharedMemorySize, @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount, @CType("uint32_t") int maxComputeWorkGroupInvocations, @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize, @CType("uint32_t") int subPixelPrecisionBits, @CType("uint32_t") int subTexelPrecisionBits, @CType("uint32_t") int mipmapPrecisionBits, @CType("uint32_t") int maxDrawIndexedIndexValue, @CType("uint32_t") int maxDrawIndirectCount, @CType("float") float maxSamplerLodBias, @CType("float") float maxSamplerAnisotropy, @CType("uint32_t") int maxViewports, @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions, @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange, @CType("uint32_t") int viewportSubPixelBits, @CType("size_t") long minMemoryMapAlignment, @CType("VkDeviceSize") long minTexelBufferOffsetAlignment, @CType("VkDeviceSize") long minUniformBufferOffsetAlignment, @CType("VkDeviceSize") long minStorageBufferOffsetAlignment, @CType("int32_t") int minTexelOffset, @CType("uint32_t") int maxTexelOffset, @CType("int32_t") int minTexelGatherOffset, @CType("uint32_t") int maxTexelGatherOffset, @CType("float") float minInterpolationOffset, @CType("float") float maxInterpolationOffset, @CType("uint32_t") int subPixelInterpolationOffsetBits, @CType("uint32_t") int maxFramebufferWidth, @CType("uint32_t") int maxFramebufferHeight, @CType("uint32_t") int maxFramebufferLayers, @CType("VkSampleCountFlags") int framebufferColorSampleCounts, @CType("VkSampleCountFlags") int framebufferDepthSampleCounts, @CType("VkSampleCountFlags") int framebufferStencilSampleCounts, @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCounts, @CType("uint32_t") int maxColorAttachments, @CType("VkSampleCountFlags") int sampledImageColorSampleCounts, @CType("VkSampleCountFlags") int sampledImageIntegerSampleCounts, @CType("VkSampleCountFlags") int sampledImageDepthSampleCounts, @CType("VkSampleCountFlags") int sampledImageStencilSampleCounts, @CType("VkSampleCountFlags") int storageImageSampleCounts, @CType("uint32_t") int maxSampleMaskWords, @CType("VkBool32") int timestampComputeAndGraphics, @CType("float") float timestampPeriod, @CType("uint32_t") int maxClipDistances, @CType("uint32_t") int maxCullDistances, @CType("uint32_t") int maxCombinedClipAndCullDistances, @CType("uint32_t") int discreteQueuePriorities, @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange, @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange, @CType("float") float pointSizeGranularity, @CType("float") float lineWidthGranularity, @CType("VkBool32") int strictLines, @CType("VkBool32") int standardSampleLocations, @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignment, @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignment, @CType("VkDeviceSize") long nonCoherentAtomSize) { return alloc(allocator).maxImageDimension1D(maxImageDimension1D).maxImageDimension2D(maxImageDimension2D).maxImageDimension3D(maxImageDimension3D).maxImageDimensionCube(maxImageDimensionCube).maxImageArrayLayers(maxImageArrayLayers).maxTexelBufferElements(maxTexelBufferElements).maxUniformBufferRange(maxUniformBufferRange).maxStorageBufferRange(maxStorageBufferRange).maxPushConstantsSize(maxPushConstantsSize).maxMemoryAllocationCount(maxMemoryAllocationCount).maxSamplerAllocationCount(maxSamplerAllocationCount).bufferImageGranularity(bufferImageGranularity).sparseAddressSpaceSize(sparseAddressSpaceSize).maxBoundDescriptorSets(maxBoundDescriptorSets).maxPerStageDescriptorSamplers(maxPerStageDescriptorSamplers).maxPerStageDescriptorUniformBuffers(maxPerStageDescriptorUniformBuffers).maxPerStageDescriptorStorageBuffers(maxPerStageDescriptorStorageBuffers).maxPerStageDescriptorSampledImages(maxPerStageDescriptorSampledImages).maxPerStageDescriptorStorageImages(maxPerStageDescriptorStorageImages).maxPerStageDescriptorInputAttachments(maxPerStageDescriptorInputAttachments).maxPerStageResources(maxPerStageResources).maxDescriptorSetSamplers(maxDescriptorSetSamplers).maxDescriptorSetUniformBuffers(maxDescriptorSetUniformBuffers).maxDescriptorSetUniformBuffersDynamic(maxDescriptorSetUniformBuffersDynamic).maxDescriptorSetStorageBuffers(maxDescriptorSetStorageBuffers).maxDescriptorSetStorageBuffersDynamic(maxDescriptorSetStorageBuffersDynamic).maxDescriptorSetSampledImages(maxDescriptorSetSampledImages).maxDescriptorSetStorageImages(maxDescriptorSetStorageImages).maxDescriptorSetInputAttachments(maxDescriptorSetInputAttachments).maxVertexInputAttributes(maxVertexInputAttributes).maxVertexInputBindings(maxVertexInputBindings).maxVertexInputAttributeOffset(maxVertexInputAttributeOffset).maxVertexInputBindingStride(maxVertexInputBindingStride).maxVertexOutputComponents(maxVertexOutputComponents).maxTessellationGenerationLevel(maxTessellationGenerationLevel).maxTessellationPatchSize(maxTessellationPatchSize).maxTessellationControlPerVertexInputComponents(maxTessellationControlPerVertexInputComponents).maxTessellationControlPerVertexOutputComponents(maxTessellationControlPerVertexOutputComponents).maxTessellationControlPerPatchOutputComponents(maxTessellationControlPerPatchOutputComponents).maxTessellationControlTotalOutputComponents(maxTessellationControlTotalOutputComponents).maxTessellationEvaluationInputComponents(maxTessellationEvaluationInputComponents).maxTessellationEvaluationOutputComponents(maxTessellationEvaluationOutputComponents).maxGeometryShaderInvocations(maxGeometryShaderInvocations).maxGeometryInputComponents(maxGeometryInputComponents).maxGeometryOutputComponents(maxGeometryOutputComponents).maxGeometryOutputVertices(maxGeometryOutputVertices).maxGeometryTotalOutputComponents(maxGeometryTotalOutputComponents).maxFragmentInputComponents(maxFragmentInputComponents).maxFragmentOutputAttachments(maxFragmentOutputAttachments).maxFragmentDualSrcAttachments(maxFragmentDualSrcAttachments).maxFragmentCombinedOutputResources(maxFragmentCombinedOutputResources).maxComputeSharedMemorySize(maxComputeSharedMemorySize).maxComputeWorkGroupCount(maxComputeWorkGroupCount).maxComputeWorkGroupInvocations(maxComputeWorkGroupInvocations).maxComputeWorkGroupSize(maxComputeWorkGroupSize).subPixelPrecisionBits(subPixelPrecisionBits).subTexelPrecisionBits(subTexelPrecisionBits).mipmapPrecisionBits(mipmapPrecisionBits).maxDrawIndexedIndexValue(maxDrawIndexedIndexValue).maxDrawIndirectCount(maxDrawIndirectCount).maxSamplerLodBias(maxSamplerLodBias).maxSamplerAnisotropy(maxSamplerAnisotropy).maxViewports(maxViewports).maxViewportDimensions(maxViewportDimensions).viewportBoundsRange(viewportBoundsRange).viewportSubPixelBits(viewportSubPixelBits).minMemoryMapAlignment(minMemoryMapAlignment).minTexelBufferOffsetAlignment(minTexelBufferOffsetAlignment).minUniformBufferOffsetAlignment(minUniformBufferOffsetAlignment).minStorageBufferOffsetAlignment(minStorageBufferOffsetAlignment).minTexelOffset(minTexelOffset).maxTexelOffset(maxTexelOffset).minTexelGatherOffset(minTexelGatherOffset).maxTexelGatherOffset(maxTexelGatherOffset).minInterpolationOffset(minInterpolationOffset).maxInterpolationOffset(maxInterpolationOffset).subPixelInterpolationOffsetBits(subPixelInterpolationOffsetBits).maxFramebufferWidth(maxFramebufferWidth).maxFramebufferHeight(maxFramebufferHeight).maxFramebufferLayers(maxFramebufferLayers).framebufferColorSampleCounts(framebufferColorSampleCounts).framebufferDepthSampleCounts(framebufferDepthSampleCounts).framebufferStencilSampleCounts(framebufferStencilSampleCounts).framebufferNoAttachmentsSampleCounts(framebufferNoAttachmentsSampleCounts).maxColorAttachments(maxColorAttachments).sampledImageColorSampleCounts(sampledImageColorSampleCounts).sampledImageIntegerSampleCounts(sampledImageIntegerSampleCounts).sampledImageDepthSampleCounts(sampledImageDepthSampleCounts).sampledImageStencilSampleCounts(sampledImageStencilSampleCounts).storageImageSampleCounts(storageImageSampleCounts).maxSampleMaskWords(maxSampleMaskWords).timestampComputeAndGraphics(timestampComputeAndGraphics).timestampPeriod(timestampPeriod).maxClipDistances(maxClipDistances).maxCullDistances(maxCullDistances).maxCombinedClipAndCullDistances(maxCombinedClipAndCullDistances).discreteQueuePriorities(discreteQueuePriorities).pointSizeRange(pointSizeRange).lineWidthRange(lineWidthRange).pointSizeGranularity(pointSizeGranularity).lineWidthGranularity(lineWidthGranularity).strictLines(strictLines).standardSampleLocations(standardSampleLocations).optimalBufferCopyOffsetAlignment(optimalBufferCopyOffsetAlignment).optimalBufferCopyRowPitchAlignment(optimalBufferCopyRowPitchAlignment).nonCoherentAtomSize(nonCoherentAtomSize); }
+    public static VkPhysicalDeviceLimits allocInit(SegmentAllocator allocator, @CType("uint32_t") int maxImageDimension1D, @CType("uint32_t") int maxImageDimension2D, @CType("uint32_t") int maxImageDimension3D, @CType("uint32_t") int maxImageDimensionCube, @CType("uint32_t") int maxImageArrayLayers, @CType("uint32_t") int maxTexelBufferElements, @CType("uint32_t") int maxUniformBufferRange, @CType("uint32_t") int maxStorageBufferRange, @CType("uint32_t") int maxPushConstantsSize, @CType("uint32_t") int maxMemoryAllocationCount, @CType("uint32_t") int maxSamplerAllocationCount, @CType("VkDeviceSize") long bufferImageGranularity, @CType("VkDeviceSize") long sparseAddressSpaceSize, @CType("uint32_t") int maxBoundDescriptorSets, @CType("uint32_t") int maxPerStageDescriptorSamplers, @CType("uint32_t") int maxPerStageDescriptorUniformBuffers, @CType("uint32_t") int maxPerStageDescriptorStorageBuffers, @CType("uint32_t") int maxPerStageDescriptorSampledImages, @CType("uint32_t") int maxPerStageDescriptorStorageImages, @CType("uint32_t") int maxPerStageDescriptorInputAttachments, @CType("uint32_t") int maxPerStageResources, @CType("uint32_t") int maxDescriptorSetSamplers, @CType("uint32_t") int maxDescriptorSetUniformBuffers, @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamic, @CType("uint32_t") int maxDescriptorSetStorageBuffers, @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamic, @CType("uint32_t") int maxDescriptorSetSampledImages, @CType("uint32_t") int maxDescriptorSetStorageImages, @CType("uint32_t") int maxDescriptorSetInputAttachments, @CType("uint32_t") int maxVertexInputAttributes, @CType("uint32_t") int maxVertexInputBindings, @CType("uint32_t") int maxVertexInputAttributeOffset, @CType("uint32_t") int maxVertexInputBindingStride, @CType("uint32_t") int maxVertexOutputComponents, @CType("uint32_t") int maxTessellationGenerationLevel, @CType("uint32_t") int maxTessellationPatchSize, @CType("uint32_t") int maxTessellationControlPerVertexInputComponents, @CType("uint32_t") int maxTessellationControlPerVertexOutputComponents, @CType("uint32_t") int maxTessellationControlPerPatchOutputComponents, @CType("uint32_t") int maxTessellationControlTotalOutputComponents, @CType("uint32_t") int maxTessellationEvaluationInputComponents, @CType("uint32_t") int maxTessellationEvaluationOutputComponents, @CType("uint32_t") int maxGeometryShaderInvocations, @CType("uint32_t") int maxGeometryInputComponents, @CType("uint32_t") int maxGeometryOutputComponents, @CType("uint32_t") int maxGeometryOutputVertices, @CType("uint32_t") int maxGeometryTotalOutputComponents, @CType("uint32_t") int maxFragmentInputComponents, @CType("uint32_t") int maxFragmentOutputAttachments, @CType("uint32_t") int maxFragmentDualSrcAttachments, @CType("uint32_t") int maxFragmentCombinedOutputResources, @CType("uint32_t") int maxComputeSharedMemorySize, @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupCount, @CType("uint32_t") int maxComputeWorkGroupInvocations, @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupSize, @CType("uint32_t") int subPixelPrecisionBits, @CType("uint32_t") int subTexelPrecisionBits, @CType("uint32_t") int mipmapPrecisionBits, @CType("uint32_t") int maxDrawIndexedIndexValue, @CType("uint32_t") int maxDrawIndirectCount, @CType("float") float maxSamplerLodBias, @CType("float") float maxSamplerAnisotropy, @CType("uint32_t") int maxViewports, @CType("uint32_t[2]") MemorySegment maxViewportDimensions, @CType("float[2]") MemorySegment viewportBoundsRange, @CType("uint32_t") int viewportSubPixelBits, @CType("size_t") long minMemoryMapAlignment, @CType("VkDeviceSize") long minTexelBufferOffsetAlignment, @CType("VkDeviceSize") long minUniformBufferOffsetAlignment, @CType("VkDeviceSize") long minStorageBufferOffsetAlignment, @CType("int32_t") int minTexelOffset, @CType("uint32_t") int maxTexelOffset, @CType("int32_t") int minTexelGatherOffset, @CType("uint32_t") int maxTexelGatherOffset, @CType("float") float minInterpolationOffset, @CType("float") float maxInterpolationOffset, @CType("uint32_t") int subPixelInterpolationOffsetBits, @CType("uint32_t") int maxFramebufferWidth, @CType("uint32_t") int maxFramebufferHeight, @CType("uint32_t") int maxFramebufferLayers, @CType("VkSampleCountFlags") int framebufferColorSampleCounts, @CType("VkSampleCountFlags") int framebufferDepthSampleCounts, @CType("VkSampleCountFlags") int framebufferStencilSampleCounts, @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCounts, @CType("uint32_t") int maxColorAttachments, @CType("VkSampleCountFlags") int sampledImageColorSampleCounts, @CType("VkSampleCountFlags") int sampledImageIntegerSampleCounts, @CType("VkSampleCountFlags") int sampledImageDepthSampleCounts, @CType("VkSampleCountFlags") int sampledImageStencilSampleCounts, @CType("VkSampleCountFlags") int storageImageSampleCounts, @CType("uint32_t") int maxSampleMaskWords, @CType("VkBool32") int timestampComputeAndGraphics, @CType("float") float timestampPeriod, @CType("uint32_t") int maxClipDistances, @CType("uint32_t") int maxCullDistances, @CType("uint32_t") int maxCombinedClipAndCullDistances, @CType("uint32_t") int discreteQueuePriorities, @CType("float[2]") MemorySegment pointSizeRange, @CType("float[2]") MemorySegment lineWidthRange, @CType("float") float pointSizeGranularity, @CType("float") float lineWidthGranularity, @CType("VkBool32") int strictLines, @CType("VkBool32") int standardSampleLocations, @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignment, @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignment, @CType("VkDeviceSize") long nonCoherentAtomSize) { return alloc(allocator).maxImageDimension1D(maxImageDimension1D).maxImageDimension2D(maxImageDimension2D).maxImageDimension3D(maxImageDimension3D).maxImageDimensionCube(maxImageDimensionCube).maxImageArrayLayers(maxImageArrayLayers).maxTexelBufferElements(maxTexelBufferElements).maxUniformBufferRange(maxUniformBufferRange).maxStorageBufferRange(maxStorageBufferRange).maxPushConstantsSize(maxPushConstantsSize).maxMemoryAllocationCount(maxMemoryAllocationCount).maxSamplerAllocationCount(maxSamplerAllocationCount).bufferImageGranularity(bufferImageGranularity).sparseAddressSpaceSize(sparseAddressSpaceSize).maxBoundDescriptorSets(maxBoundDescriptorSets).maxPerStageDescriptorSamplers(maxPerStageDescriptorSamplers).maxPerStageDescriptorUniformBuffers(maxPerStageDescriptorUniformBuffers).maxPerStageDescriptorStorageBuffers(maxPerStageDescriptorStorageBuffers).maxPerStageDescriptorSampledImages(maxPerStageDescriptorSampledImages).maxPerStageDescriptorStorageImages(maxPerStageDescriptorStorageImages).maxPerStageDescriptorInputAttachments(maxPerStageDescriptorInputAttachments).maxPerStageResources(maxPerStageResources).maxDescriptorSetSamplers(maxDescriptorSetSamplers).maxDescriptorSetUniformBuffers(maxDescriptorSetUniformBuffers).maxDescriptorSetUniformBuffersDynamic(maxDescriptorSetUniformBuffersDynamic).maxDescriptorSetStorageBuffers(maxDescriptorSetStorageBuffers).maxDescriptorSetStorageBuffersDynamic(maxDescriptorSetStorageBuffersDynamic).maxDescriptorSetSampledImages(maxDescriptorSetSampledImages).maxDescriptorSetStorageImages(maxDescriptorSetStorageImages).maxDescriptorSetInputAttachments(maxDescriptorSetInputAttachments).maxVertexInputAttributes(maxVertexInputAttributes).maxVertexInputBindings(maxVertexInputBindings).maxVertexInputAttributeOffset(maxVertexInputAttributeOffset).maxVertexInputBindingStride(maxVertexInputBindingStride).maxVertexOutputComponents(maxVertexOutputComponents).maxTessellationGenerationLevel(maxTessellationGenerationLevel).maxTessellationPatchSize(maxTessellationPatchSize).maxTessellationControlPerVertexInputComponents(maxTessellationControlPerVertexInputComponents).maxTessellationControlPerVertexOutputComponents(maxTessellationControlPerVertexOutputComponents).maxTessellationControlPerPatchOutputComponents(maxTessellationControlPerPatchOutputComponents).maxTessellationControlTotalOutputComponents(maxTessellationControlTotalOutputComponents).maxTessellationEvaluationInputComponents(maxTessellationEvaluationInputComponents).maxTessellationEvaluationOutputComponents(maxTessellationEvaluationOutputComponents).maxGeometryShaderInvocations(maxGeometryShaderInvocations).maxGeometryInputComponents(maxGeometryInputComponents).maxGeometryOutputComponents(maxGeometryOutputComponents).maxGeometryOutputVertices(maxGeometryOutputVertices).maxGeometryTotalOutputComponents(maxGeometryTotalOutputComponents).maxFragmentInputComponents(maxFragmentInputComponents).maxFragmentOutputAttachments(maxFragmentOutputAttachments).maxFragmentDualSrcAttachments(maxFragmentDualSrcAttachments).maxFragmentCombinedOutputResources(maxFragmentCombinedOutputResources).maxComputeSharedMemorySize(maxComputeSharedMemorySize).maxComputeWorkGroupCount(maxComputeWorkGroupCount).maxComputeWorkGroupInvocations(maxComputeWorkGroupInvocations).maxComputeWorkGroupSize(maxComputeWorkGroupSize).subPixelPrecisionBits(subPixelPrecisionBits).subTexelPrecisionBits(subTexelPrecisionBits).mipmapPrecisionBits(mipmapPrecisionBits).maxDrawIndexedIndexValue(maxDrawIndexedIndexValue).maxDrawIndirectCount(maxDrawIndirectCount).maxSamplerLodBias(maxSamplerLodBias).maxSamplerAnisotropy(maxSamplerAnisotropy).maxViewports(maxViewports).maxViewportDimensions(maxViewportDimensions).viewportBoundsRange(viewportBoundsRange).viewportSubPixelBits(viewportSubPixelBits).minMemoryMapAlignment(minMemoryMapAlignment).minTexelBufferOffsetAlignment(minTexelBufferOffsetAlignment).minUniformBufferOffsetAlignment(minUniformBufferOffsetAlignment).minStorageBufferOffsetAlignment(minStorageBufferOffsetAlignment).minTexelOffset(minTexelOffset).maxTexelOffset(maxTexelOffset).minTexelGatherOffset(minTexelGatherOffset).maxTexelGatherOffset(maxTexelGatherOffset).minInterpolationOffset(minInterpolationOffset).maxInterpolationOffset(maxInterpolationOffset).subPixelInterpolationOffsetBits(subPixelInterpolationOffsetBits).maxFramebufferWidth(maxFramebufferWidth).maxFramebufferHeight(maxFramebufferHeight).maxFramebufferLayers(maxFramebufferLayers).framebufferColorSampleCounts(framebufferColorSampleCounts).framebufferDepthSampleCounts(framebufferDepthSampleCounts).framebufferStencilSampleCounts(framebufferStencilSampleCounts).framebufferNoAttachmentsSampleCounts(framebufferNoAttachmentsSampleCounts).maxColorAttachments(maxColorAttachments).sampledImageColorSampleCounts(sampledImageColorSampleCounts).sampledImageIntegerSampleCounts(sampledImageIntegerSampleCounts).sampledImageDepthSampleCounts(sampledImageDepthSampleCounts).sampledImageStencilSampleCounts(sampledImageStencilSampleCounts).storageImageSampleCounts(storageImageSampleCounts).maxSampleMaskWords(maxSampleMaskWords).timestampComputeAndGraphics(timestampComputeAndGraphics).timestampPeriod(timestampPeriod).maxClipDistances(maxClipDistances).maxCullDistances(maxCullDistances).maxCombinedClipAndCullDistances(maxCombinedClipAndCullDistances).discreteQueuePriorities(discreteQueuePriorities).pointSizeRange(pointSizeRange).lineWidthRange(lineWidthRange).pointSizeGranularity(pointSizeGranularity).lineWidthGranularity(lineWidthGranularity).strictLines(strictLines).standardSampleLocations(standardSampleLocations).optimalBufferCopyOffsetAlignment(optimalBufferCopyOffsetAlignment).optimalBufferCopyRowPitchAlignment(optimalBufferCopyRowPitchAlignment).nonCoherentAtomSize(nonCoherentAtomSize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -1937,25 +1937,25 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeWorkGroupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount); }
+    public static @CType("uint32_t[3]") MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount); }
     /// {@return `maxComputeWorkGroupCount`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(segment, 0L); }
+    public static @CType("uint32_t[3]") MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(segment, 0L); }
     /// {@return `maxComputeWorkGroupCount`}
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment()); }
+    public @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupCount() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment()); }
     /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxComputeWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount.byteSize()); }
+    public static void set_maxComputeWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount.byteSize()); }
     /// Sets `maxComputeWorkGroupCount` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxComputeWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(segment, 0L, value); }
+    public static void set_maxComputeWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(segment, 0L, value); }
     /// Sets `maxComputeWorkGroupCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), value); return this; }
 
     /// {@return `maxComputeWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
@@ -1983,25 +1983,25 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize); }
+    public static @CType("uint32_t[3]") MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize); }
     /// {@return `maxComputeWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(segment, 0L); }
+    public static @CType("uint32_t[3]") MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(segment, 0L); }
     /// {@return `maxComputeWorkGroupSize`}
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupSize() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment()); }
     /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxComputeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize.byteSize()); }
+    public static void set_maxComputeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize.byteSize()); }
     /// Sets `maxComputeWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxComputeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(segment, 0L, value); }
+    public static void set_maxComputeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(segment, 0L, value); }
     /// Sets `maxComputeWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), value); return this; }
 
     /// {@return `subPixelPrecisionBits` at the given index}
     /// @param segment the segment of the struct
@@ -2190,48 +2190,48 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxViewportDimensions` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions); }
+    public static @CType("uint32_t[2]") MemorySegment get_maxViewportDimensions(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions); }
     /// {@return `maxViewportDimensions`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(segment, 0L); }
+    public static @CType("uint32_t[2]") MemorySegment get_maxViewportDimensions(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(segment, 0L); }
     /// {@return `maxViewportDimensions`}
-    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions() { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment()); }
+    public @CType("uint32_t[2]") MemorySegment maxViewportDimensions() { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment()); }
     /// Sets `maxViewportDimensions` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxViewportDimensions(MemorySegment segment, long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions.byteSize()); }
+    public static void set_maxViewportDimensions(MemorySegment segment, long index, @CType("uint32_t[2]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions.byteSize()); }
     /// Sets `maxViewportDimensions` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxViewportDimensions(MemorySegment segment, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(segment, 0L, value); }
+    public static void set_maxViewportDimensions(MemorySegment segment, @CType("uint32_t[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(segment, 0L, value); }
     /// Sets `maxViewportDimensions` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxViewportDimensions(@CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits maxViewportDimensions(@CType("uint32_t[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), value); return this; }
 
     /// {@return `viewportBoundsRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange); }
+    public static @CType("float[2]") MemorySegment get_viewportBoundsRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange); }
     /// {@return `viewportBoundsRange`}
     /// @param segment the segment of the struct
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(segment, 0L); }
+    public static @CType("float[2]") MemorySegment get_viewportBoundsRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(segment, 0L); }
     /// {@return `viewportBoundsRange`}
-    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange() { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment()); }
+    public @CType("float[2]") MemorySegment viewportBoundsRange() { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment()); }
     /// Sets `viewportBoundsRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_viewportBoundsRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange.byteSize()); }
+    public static void set_viewportBoundsRange(MemorySegment segment, long index, @CType("float[2]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange.byteSize()); }
     /// Sets `viewportBoundsRange` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_viewportBoundsRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(segment, 0L, value); }
+    public static void set_viewportBoundsRange(MemorySegment segment, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(segment, 0L, value); }
     /// Sets `viewportBoundsRange` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits viewportBoundsRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits viewportBoundsRange(@CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), value); return this; }
 
     /// {@return `viewportSubPixelBits` at the given index}
     /// @param segment the segment of the struct
@@ -2972,48 +2972,48 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
     /// {@return `pointSizeRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange); }
+    public static @CType("float[2]") MemorySegment get_pointSizeRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange); }
     /// {@return `pointSizeRange`}
     /// @param segment the segment of the struct
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_pointSizeRange(segment, 0L); }
+    public static @CType("float[2]") MemorySegment get_pointSizeRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_pointSizeRange(segment, 0L); }
     /// {@return `pointSizeRange`}
-    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange() { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment()); }
+    public @CType("float[2]") MemorySegment pointSizeRange() { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment()); }
     /// Sets `pointSizeRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pointSizeRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange.byteSize()); }
+    public static void set_pointSizeRange(MemorySegment segment, long index, @CType("float[2]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange.byteSize()); }
     /// Sets `pointSizeRange` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pointSizeRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(segment, 0L, value); }
+    public static void set_pointSizeRange(MemorySegment segment, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(segment, 0L, value); }
     /// Sets `pointSizeRange` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits pointSizeRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits pointSizeRange(@CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), value); return this; }
 
     /// {@return `lineWidthRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange); }
+    public static @CType("float[2]") MemorySegment get_lineWidthRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange); }
     /// {@return `lineWidthRange`}
     /// @param segment the segment of the struct
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_lineWidthRange(segment, 0L); }
+    public static @CType("float[2]") MemorySegment get_lineWidthRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_lineWidthRange(segment, 0L); }
     /// {@return `lineWidthRange`}
-    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange() { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment()); }
+    public @CType("float[2]") MemorySegment lineWidthRange() { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment()); }
     /// Sets `lineWidthRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_lineWidthRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange.byteSize()); }
+    public static void set_lineWidthRange(MemorySegment segment, long index, @CType("float[2]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange.byteSize()); }
     /// Sets `lineWidthRange` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_lineWidthRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(segment, 0L, value); }
+    public static void set_lineWidthRange(MemorySegment segment, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(segment, 0L, value); }
     /// Sets `lineWidthRange` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits lineWidthRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), value); return this; }
+    public VkPhysicalDeviceLimits lineWidthRange(@CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), value); return this; }
 
     /// {@return `pointSizeGranularity` at the given index}
     /// @param segment the segment of the struct
@@ -3668,12 +3668,12 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
 
         /// {@return `maxComputeWorkGroupCount` at the given index}
         /// @param index the index
-        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCountAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index); }
+        public @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupCountAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index); }
         /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxComputeWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, value); return this; }
+        public Buffer maxComputeWorkGroupCountAt(long index, @CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, value); return this; }
 
         /// {@return `maxComputeWorkGroupInvocations` at the given index}
         /// @param index the index
@@ -3686,12 +3686,12 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
 
         /// {@return `maxComputeWorkGroupSize` at the given index}
         /// @param index the index
-        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index); }
+        public @CType("uint32_t[3]") MemorySegment maxComputeWorkGroupSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index); }
         /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxComputeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, value); return this; }
+        public Buffer maxComputeWorkGroupSizeAt(long index, @CType("uint32_t[3]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, value); return this; }
 
         /// {@return `subPixelPrecisionBits` at the given index}
         /// @param index the index
@@ -3767,21 +3767,21 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
 
         /// {@return `maxViewportDimensions` at the given index}
         /// @param index the index
-        public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensionsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index); }
+        public @CType("uint32_t[2]") MemorySegment maxViewportDimensionsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index); }
         /// Sets `maxViewportDimensions` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxViewportDimensionsAt(long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, value); return this; }
+        public Buffer maxViewportDimensionsAt(long index, @CType("uint32_t[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, value); return this; }
 
         /// {@return `viewportBoundsRange` at the given index}
         /// @param index the index
-        public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRangeAt(long index) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index); }
+        public @CType("float[2]") MemorySegment viewportBoundsRangeAt(long index) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index); }
         /// Sets `viewportBoundsRange` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer viewportBoundsRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, value); return this; }
+        public Buffer viewportBoundsRangeAt(long index, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, value); return this; }
 
         /// {@return `viewportSubPixelBits` at the given index}
         /// @param index the index
@@ -4073,21 +4073,21 @@ public sealed class VkPhysicalDeviceLimits extends Struct {
 
         /// {@return `pointSizeRange` at the given index}
         /// @param index the index
-        public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRangeAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index); }
+        public @CType("float[2]") MemorySegment pointSizeRangeAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index); }
         /// Sets `pointSizeRange` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pointSizeRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, value); return this; }
+        public Buffer pointSizeRangeAt(long index, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, value); return this; }
 
         /// {@return `lineWidthRange` at the given index}
         /// @param index the index
-        public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRangeAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index); }
+        public @CType("float[2]") MemorySegment lineWidthRangeAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index); }
         /// Sets `lineWidthRange` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer lineWidthRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, value); return this; }
+        public Buffer lineWidthRangeAt(long index, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, value); return this; }
 
         /// {@return `pointSizeGranularity` at the given index}
         /// @param index the index

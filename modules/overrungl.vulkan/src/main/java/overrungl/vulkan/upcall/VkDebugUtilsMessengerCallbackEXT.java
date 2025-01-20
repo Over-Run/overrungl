@@ -31,14 +31,14 @@ public interface VkDebugUtilsMessengerCallbackEXT extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkDebugUtilsMessengerCallbackEXT.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("VkBool32") int invoke(@CType("VkDebugUtilsMessageSeverityFlagBitsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypes, @CType("const VkDebugUtilsMessengerCallbackDataEXT *") java.lang.foreign.MemorySegment pCallbackData, @CType("void *") java.lang.foreign.MemorySegment pUserData);
+    @CType("VkBool32") int invoke(@CType("VkDebugUtilsMessageSeverityFlagBitsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypes, @CType("const VkDebugUtilsMessengerCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("VkBool32") int invoke(MemorySegment stub, @CType("VkDebugUtilsMessageSeverityFlagBitsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypes, @CType("const VkDebugUtilsMessengerCallbackDataEXT *") java.lang.foreign.MemorySegment pCallbackData, @CType("void *") java.lang.foreign.MemorySegment pUserData) {
+    static @CType("VkBool32") int invoke(MemorySegment stub, @CType("VkDebugUtilsMessageSeverityFlagBitsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypes, @CType("const VkDebugUtilsMessengerCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData) {
         try { return (int) HANDLE.invokeExact(stub, messageSeverity, messageTypes, pCallbackData, pUserData); }
         catch (Throwable e) { throw new RuntimeException("error in VkDebugUtilsMessengerCallbackEXT::invoke (static invoker)", e); }
     }

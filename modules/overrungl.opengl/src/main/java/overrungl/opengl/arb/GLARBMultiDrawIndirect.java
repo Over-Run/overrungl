@@ -19,25 +19,15 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBMultiDrawIndirect {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMultiDrawArraysIndirect,
-            FD_glMultiDrawElementsIndirect
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirect = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirect);
-        public static final MethodHandle MH_glMultiDrawElementsIndirect = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirect);
+        public static final MethodHandle MH_glMultiDrawArraysIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirect;
         public final MemorySegment PFN_glMultiDrawElementsIndirect;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -50,13 +40,13 @@ public final class GLARBMultiDrawIndirect {
         this.handles = new Handles(func);
     }
 
-    public void MultiDrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
+    public void MultiDrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirect");
         try { Handles.MH_glMultiDrawArraysIndirect.invokeExact(handles.PFN_glMultiDrawArraysIndirect, mode, indirect, drawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirect", e); }
     }
 
-    public void MultiDrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
+    public void MultiDrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirect");
         try { Handles.MH_glMultiDrawElementsIndirect.invokeExact(handles.PFN_glMultiDrawElementsIndirect, mode, type, indirect, drawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirect", e); }

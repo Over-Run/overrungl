@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBTextureFloat {
     public static final int GL_TEXTURE_RED_TYPE_ARB = 0x8C10;
     public static final int GL_TEXTURE_GREEN_TYPE_ARB = 0x8C11;

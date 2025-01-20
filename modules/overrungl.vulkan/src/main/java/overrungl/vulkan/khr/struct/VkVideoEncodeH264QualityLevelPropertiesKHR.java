@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### preferredRateControlFlags
 /// [VarHandle][#VH_preferredRateControlFlags] - [Getter][#preferredRateControlFlags()] - [Setter][#preferredRateControlFlags(int)]
 /// ### preferredGopFrameCount
@@ -40,7 +40,7 @@ import overrungl.util.*;
 /// ### preferredTemporalLayerCount
 /// [VarHandle][#VH_preferredTemporalLayerCount] - [Getter][#preferredTemporalLayerCount()] - [Setter][#preferredTemporalLayerCount(int)]
 /// ### preferredConstantQp
-/// [Byte offset][#OFFSET_preferredConstantQp] - [Memory layout][#ML_preferredConstantQp] - [Getter][#preferredConstantQp()] - [Setter][#preferredConstantQp(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_preferredConstantQp] - [Memory layout][#ML_preferredConstantQp] - [Getter][#preferredConstantQp()] - [Setter][#preferredConstantQp(MemorySegment)]
 /// ### preferredMaxL0ReferenceCount
 /// [VarHandle][#VH_preferredMaxL0ReferenceCount] - [Getter][#preferredMaxL0ReferenceCount()] - [Setter][#preferredMaxL0ReferenceCount(int)]
 /// ### preferredMaxL1ReferenceCount
@@ -81,7 +81,7 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `preferredRateControlFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_preferredRateControlFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredRateControlFlags"));
@@ -147,7 +147,7 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
     /// Allocates a `VkVideoEncodeH264QualityLevelPropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeH264QualityLevelPropertiesKHR`
-    public static VkVideoEncodeH264QualityLevelPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkVideoEncodeH264RateControlFlagsKHR") int preferredRateControlFlags, @CType("uint32_t") int preferredGopFrameCount, @CType("uint32_t") int preferredIdrPeriod, @CType("uint32_t") int preferredConsecutiveBFrameCount, @CType("uint32_t") int preferredTemporalLayerCount, @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment preferredConstantQp, @CType("uint32_t") int preferredMaxL0ReferenceCount, @CType("uint32_t") int preferredMaxL1ReferenceCount, @CType("VkBool32") int preferredStdEntropyCodingModeFlag) { return alloc(allocator).sType(sType).pNext(pNext).preferredRateControlFlags(preferredRateControlFlags).preferredGopFrameCount(preferredGopFrameCount).preferredIdrPeriod(preferredIdrPeriod).preferredConsecutiveBFrameCount(preferredConsecutiveBFrameCount).preferredTemporalLayerCount(preferredTemporalLayerCount).preferredConstantQp(preferredConstantQp).preferredMaxL0ReferenceCount(preferredMaxL0ReferenceCount).preferredMaxL1ReferenceCount(preferredMaxL1ReferenceCount).preferredStdEntropyCodingModeFlag(preferredStdEntropyCodingModeFlag); }
+    public static VkVideoEncodeH264QualityLevelPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeH264RateControlFlagsKHR") int preferredRateControlFlags, @CType("uint32_t") int preferredGopFrameCount, @CType("uint32_t") int preferredIdrPeriod, @CType("uint32_t") int preferredConsecutiveBFrameCount, @CType("uint32_t") int preferredTemporalLayerCount, @CType("VkVideoEncodeH264QpKHR") MemorySegment preferredConstantQp, @CType("uint32_t") int preferredMaxL0ReferenceCount, @CType("uint32_t") int preferredMaxL1ReferenceCount, @CType("VkBool32") int preferredStdEntropyCodingModeFlag) { return alloc(allocator).sType(sType).pNext(pNext).preferredRateControlFlags(preferredRateControlFlags).preferredGopFrameCount(preferredGopFrameCount).preferredIdrPeriod(preferredIdrPeriod).preferredConsecutiveBFrameCount(preferredConsecutiveBFrameCount).preferredTemporalLayerCount(preferredTemporalLayerCount).preferredConstantQp(preferredConstantQp).preferredMaxL0ReferenceCount(preferredMaxL0ReferenceCount).preferredMaxL1ReferenceCount(preferredMaxL1ReferenceCount).preferredStdEntropyCodingModeFlag(preferredStdEntropyCodingModeFlag); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -184,25 +184,25 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264QualityLevelPropertiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeH264QualityLevelPropertiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `preferredRateControlFlags` at the given index}
     /// @param segment the segment of the struct
@@ -322,25 +322,25 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
     /// {@return `preferredConstantQp` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment get_preferredConstantQp(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_preferredConstantQp, index), ML_preferredConstantQp); }
+    public static @CType("VkVideoEncodeH264QpKHR") MemorySegment get_preferredConstantQp(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_preferredConstantQp, index), ML_preferredConstantQp); }
     /// {@return `preferredConstantQp`}
     /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment get_preferredConstantQp(MemorySegment segment) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(segment, 0L); }
+    public static @CType("VkVideoEncodeH264QpKHR") MemorySegment get_preferredConstantQp(MemorySegment segment) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(segment, 0L); }
     /// {@return `preferredConstantQp`}
-    public @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment preferredConstantQp() { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(this.segment()); }
+    public @CType("VkVideoEncodeH264QpKHR") MemorySegment preferredConstantQp() { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(this.segment()); }
     /// Sets `preferredConstantQp` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_preferredConstantQp(MemorySegment segment, long index, @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_preferredConstantQp, index), ML_preferredConstantQp.byteSize()); }
+    public static void set_preferredConstantQp(MemorySegment segment, long index, @CType("VkVideoEncodeH264QpKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_preferredConstantQp, index), ML_preferredConstantQp.byteSize()); }
     /// Sets `preferredConstantQp` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_preferredConstantQp(MemorySegment segment, @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(segment, 0L, value); }
+    public static void set_preferredConstantQp(MemorySegment segment, @CType("VkVideoEncodeH264QpKHR") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(segment, 0L, value); }
     /// Sets `preferredConstantQp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredConstantQp(@CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(this.segment(), value); return this; }
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredConstantQp(@CType("VkVideoEncodeH264QpKHR") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(this.segment(), value); return this; }
 
     /// {@return `preferredMaxL0ReferenceCount` at the given index}
     /// @param segment the segment of the struct
@@ -444,12 +444,12 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `preferredRateControlFlags` at the given index}
         /// @param index the index
@@ -498,12 +498,12 @@ public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends Struct {
 
         /// {@return `preferredConstantQp` at the given index}
         /// @param index the index
-        public @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment preferredConstantQpAt(long index) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(this.segment(), index); }
+        public @CType("VkVideoEncodeH264QpKHR") MemorySegment preferredConstantQpAt(long index) { return VkVideoEncodeH264QualityLevelPropertiesKHR.get_preferredConstantQp(this.segment(), index); }
         /// Sets `preferredConstantQp` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer preferredConstantQpAt(long index, @CType("VkVideoEncodeH264QpKHR") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(this.segment(), index, value); return this; }
+        public Buffer preferredConstantQpAt(long index, @CType("VkVideoEncodeH264QpKHR") MemorySegment value) { VkVideoEncodeH264QualityLevelPropertiesKHR.set_preferredConstantQp(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxL0ReferenceCount` at the given index}
         /// @param index the index

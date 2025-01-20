@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,78 +39,29 @@ public final class GLEXTCoordinateFrame {
     public static final int GL_MAP1_BINORMAL_EXT = 0x8446;
     public static final int GL_MAP2_BINORMAL_EXT = 0x8447;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTangent3bEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glTangent3bvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTangent3dEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glTangent3dvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTangent3fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glTangent3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTangent3iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTangent3ivEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTangent3sEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glTangent3svEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormal3bEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glBinormal3bvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormal3dEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glBinormal3dvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormal3fEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glBinormal3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormal3iEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBinormal3ivEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormal3sEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glBinormal3svEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTangentPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBinormalPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTangent3bEXT,
-            FD_glTangent3bvEXT,
-            FD_glTangent3dEXT,
-            FD_glTangent3dvEXT,
-            FD_glTangent3fEXT,
-            FD_glTangent3fvEXT,
-            FD_glTangent3iEXT,
-            FD_glTangent3ivEXT,
-            FD_glTangent3sEXT,
-            FD_glTangent3svEXT,
-            FD_glBinormal3bEXT,
-            FD_glBinormal3bvEXT,
-            FD_glBinormal3dEXT,
-            FD_glBinormal3dvEXT,
-            FD_glBinormal3fEXT,
-            FD_glBinormal3fvEXT,
-            FD_glBinormal3iEXT,
-            FD_glBinormal3ivEXT,
-            FD_glBinormal3sEXT,
-            FD_glBinormal3svEXT,
-            FD_glTangentPointerEXT,
-            FD_glBinormalPointerEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTangent3bEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3bEXT);
-        public static final MethodHandle MH_glTangent3bvEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3bvEXT);
-        public static final MethodHandle MH_glTangent3dEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3dEXT);
-        public static final MethodHandle MH_glTangent3dvEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3dvEXT);
-        public static final MethodHandle MH_glTangent3fEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3fEXT);
-        public static final MethodHandle MH_glTangent3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3fvEXT);
-        public static final MethodHandle MH_glTangent3iEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3iEXT);
-        public static final MethodHandle MH_glTangent3ivEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3ivEXT);
-        public static final MethodHandle MH_glTangent3sEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3sEXT);
-        public static final MethodHandle MH_glTangent3svEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3svEXT);
-        public static final MethodHandle MH_glBinormal3bEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3bEXT);
-        public static final MethodHandle MH_glBinormal3bvEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3bvEXT);
-        public static final MethodHandle MH_glBinormal3dEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3dEXT);
-        public static final MethodHandle MH_glBinormal3dvEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3dvEXT);
-        public static final MethodHandle MH_glBinormal3fEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3fEXT);
-        public static final MethodHandle MH_glBinormal3fvEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3fvEXT);
-        public static final MethodHandle MH_glBinormal3iEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3iEXT);
-        public static final MethodHandle MH_glBinormal3ivEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3ivEXT);
-        public static final MethodHandle MH_glBinormal3sEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3sEXT);
-        public static final MethodHandle MH_glBinormal3svEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormal3svEXT);
-        public static final MethodHandle MH_glTangentPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glTangentPointerEXT);
-        public static final MethodHandle MH_glBinormalPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glBinormalPointerEXT);
+        public static final MethodHandle MH_glTangent3bEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glTangent3bvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTangent3dEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glTangent3dvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTangent3fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTangent3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTangent3iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTangent3ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTangent3sEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glTangent3svEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormal3bEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glBinormal3bvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormal3dEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glBinormal3dvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormal3fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glBinormal3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormal3iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBinormal3ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormal3sEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glBinormal3svEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTangentPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBinormalPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTangent3bEXT;
         public final MemorySegment PFN_glTangent3bvEXT;
         public final MemorySegment PFN_glTangent3dEXT;
@@ -170,7 +120,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3bEXT", e); }
     }
 
-    public void Tangent3bvEXT(@CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3bvEXT(@CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bvEXT");
         try { Handles.MH_glTangent3bvEXT.invokeExact(handles.PFN_glTangent3bvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3bvEXT", e); }
@@ -182,7 +132,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3dEXT", e); }
     }
 
-    public void Tangent3dvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3dvEXT(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dvEXT");
         try { Handles.MH_glTangent3dvEXT.invokeExact(handles.PFN_glTangent3dvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3dvEXT", e); }
@@ -194,7 +144,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3fEXT", e); }
     }
 
-    public void Tangent3fvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3fvEXT(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fvEXT");
         try { Handles.MH_glTangent3fvEXT.invokeExact(handles.PFN_glTangent3fvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3fvEXT", e); }
@@ -206,7 +156,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3iEXT", e); }
     }
 
-    public void Tangent3ivEXT(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3ivEXT(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3ivEXT");
         try { Handles.MH_glTangent3ivEXT.invokeExact(handles.PFN_glTangent3ivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3ivEXT", e); }
@@ -218,7 +168,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3sEXT", e); }
     }
 
-    public void Tangent3svEXT(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3svEXT(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3svEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3svEXT");
         try { Handles.MH_glTangent3svEXT.invokeExact(handles.PFN_glTangent3svEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3svEXT", e); }
@@ -230,7 +180,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3bEXT", e); }
     }
 
-    public void Binormal3bvEXT(@CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3bvEXT(@CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bvEXT");
         try { Handles.MH_glBinormal3bvEXT.invokeExact(handles.PFN_glBinormal3bvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3bvEXT", e); }
@@ -242,7 +192,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3dEXT", e); }
     }
 
-    public void Binormal3dvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3dvEXT(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dvEXT");
         try { Handles.MH_glBinormal3dvEXT.invokeExact(handles.PFN_glBinormal3dvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3dvEXT", e); }
@@ -254,7 +204,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3fEXT", e); }
     }
 
-    public void Binormal3fvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3fvEXT(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fvEXT");
         try { Handles.MH_glBinormal3fvEXT.invokeExact(handles.PFN_glBinormal3fvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3fvEXT", e); }
@@ -266,7 +216,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3iEXT", e); }
     }
 
-    public void Binormal3ivEXT(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3ivEXT(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3ivEXT");
         try { Handles.MH_glBinormal3ivEXT.invokeExact(handles.PFN_glBinormal3ivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3ivEXT", e); }
@@ -278,19 +228,19 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3sEXT", e); }
     }
 
-    public void Binormal3svEXT(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3svEXT(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3svEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3svEXT");
         try { Handles.MH_glBinormal3svEXT.invokeExact(handles.PFN_glBinormal3svEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3svEXT", e); }
     }
 
-    public void TangentPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void TangentPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangentPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTangentPointerEXT");
         try { Handles.MH_glTangentPointerEXT.invokeExact(handles.PFN_glTangentPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glTangentPointerEXT", e); }
     }
 
-    public void BinormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void BinormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormalPointerEXT");
         try { Handles.MH_glBinormalPointerEXT.invokeExact(handles.PFN_glBinormalPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormalPointerEXT", e); }

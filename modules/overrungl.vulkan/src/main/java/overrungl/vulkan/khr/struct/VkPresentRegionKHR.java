@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### rectangleCount
 /// [VarHandle][#VH_rectangleCount] - [Getter][#rectangleCount()] - [Setter][#rectangleCount(int)]
 /// ### pRectangles
-/// [VarHandle][#VH_pRectangles] - [Getter][#pRectangles()] - [Setter][#pRectangles(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pRectangles] - [Getter][#pRectangles()] - [Setter][#pRectangles(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -45,7 +45,7 @@ public sealed class VkPresentRegionKHR extends Struct {
     );
     /// The [VarHandle] of `rectangleCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_rectangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rectangleCount"));
-    /// The [VarHandle] of `pRectangles` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pRectangles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pRectangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRectangles"));
 
     /// Creates `VkPresentRegionKHR` with the given segment.
@@ -91,7 +91,7 @@ public sealed class VkPresentRegionKHR extends Struct {
     /// Allocates a `VkPresentRegionKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPresentRegionKHR`
-    public static VkPresentRegionKHR allocInit(SegmentAllocator allocator, @CType("uint32_t") int rectangleCount, @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment pRectangles) { return alloc(allocator).rectangleCount(rectangleCount).pRectangles(pRectangles); }
+    public static VkPresentRegionKHR allocInit(SegmentAllocator allocator, @CType("uint32_t") int rectangleCount, @CType("const VkRectLayerKHR *") MemorySegment pRectangles) { return alloc(allocator).rectangleCount(rectangleCount).pRectangles(pRectangles); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -128,25 +128,25 @@ public sealed class VkPresentRegionKHR extends Struct {
     /// {@return `pRectangles` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment get_pRectangles(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pRectangles.get(segment, 0L, index); }
+    public static @CType("const VkRectLayerKHR *") MemorySegment get_pRectangles(MemorySegment segment, long index) { return (MemorySegment) VH_pRectangles.get(segment, 0L, index); }
     /// {@return `pRectangles`}
     /// @param segment the segment of the struct
-    public static @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment get_pRectangles(MemorySegment segment) { return VkPresentRegionKHR.get_pRectangles(segment, 0L); }
+    public static @CType("const VkRectLayerKHR *") MemorySegment get_pRectangles(MemorySegment segment) { return VkPresentRegionKHR.get_pRectangles(segment, 0L); }
     /// {@return `pRectangles`}
-    public @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment pRectangles() { return VkPresentRegionKHR.get_pRectangles(this.segment()); }
+    public @CType("const VkRectLayerKHR *") MemorySegment pRectangles() { return VkPresentRegionKHR.get_pRectangles(this.segment()); }
     /// Sets `pRectangles` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pRectangles(MemorySegment segment, long index, @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment value) { VH_pRectangles.set(segment, 0L, index, value); }
+    public static void set_pRectangles(MemorySegment segment, long index, @CType("const VkRectLayerKHR *") MemorySegment value) { VH_pRectangles.set(segment, 0L, index, value); }
     /// Sets `pRectangles` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pRectangles(MemorySegment segment, @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment value) { VkPresentRegionKHR.set_pRectangles(segment, 0L, value); }
+    public static void set_pRectangles(MemorySegment segment, @CType("const VkRectLayerKHR *") MemorySegment value) { VkPresentRegionKHR.set_pRectangles(segment, 0L, value); }
     /// Sets `pRectangles` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentRegionKHR pRectangles(@CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment value) { VkPresentRegionKHR.set_pRectangles(this.segment(), value); return this; }
+    public VkPresentRegionKHR pRectangles(@CType("const VkRectLayerKHR *") MemorySegment value) { VkPresentRegionKHR.set_pRectangles(this.segment(), value); return this; }
 
     /// A buffer of [VkPresentRegionKHR].
     public static final class Buffer extends VkPresentRegionKHR {
@@ -181,12 +181,12 @@ public sealed class VkPresentRegionKHR extends Struct {
 
         /// {@return `pRectangles` at the given index}
         /// @param index the index
-        public @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment pRectanglesAt(long index) { return VkPresentRegionKHR.get_pRectangles(this.segment(), index); }
+        public @CType("const VkRectLayerKHR *") MemorySegment pRectanglesAt(long index) { return VkPresentRegionKHR.get_pRectangles(this.segment(), index); }
         /// Sets `pRectangles` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pRectanglesAt(long index, @CType("const VkRectLayerKHR *") java.lang.foreign.MemorySegment value) { VkPresentRegionKHR.set_pRectangles(this.segment(), index, value); return this; }
+        public Buffer pRectanglesAt(long index, @CType("const VkRectLayerKHR *") MemorySegment value) { VkPresentRegionKHR.set_pRectangles(this.segment(), index, value); return this; }
 
     }
 }

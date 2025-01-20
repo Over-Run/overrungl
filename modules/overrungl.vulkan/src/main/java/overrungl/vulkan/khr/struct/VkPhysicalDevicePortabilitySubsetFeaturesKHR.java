@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### constantAlphaColorBlendFactors
 /// [VarHandle][#VH_constantAlphaColorBlendFactors] - [Getter][#constantAlphaColorBlendFactors()] - [Setter][#constantAlphaColorBlendFactors(int)]
 /// ### events
@@ -105,7 +105,7 @@ public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct 
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `constantAlphaColorBlendFactors` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_constantAlphaColorBlendFactors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantAlphaColorBlendFactors"));
@@ -181,7 +181,7 @@ public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct 
     /// Allocates a `VkPhysicalDevicePortabilitySubsetFeaturesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevicePortabilitySubsetFeaturesKHR`
-    public static VkPhysicalDevicePortabilitySubsetFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int constantAlphaColorBlendFactors, @CType("VkBool32") int events, @CType("VkBool32") int imageViewFormatReinterpretation, @CType("VkBool32") int imageViewFormatSwizzle, @CType("VkBool32") int imageView2DOn3DImage, @CType("VkBool32") int multisampleArrayImage, @CType("VkBool32") int mutableComparisonSamplers, @CType("VkBool32") int pointPolygons, @CType("VkBool32") int samplerMipLodBias, @CType("VkBool32") int separateStencilMaskRef, @CType("VkBool32") int shaderSampleRateInterpolationFunctions, @CType("VkBool32") int tessellationIsolines, @CType("VkBool32") int tessellationPointMode, @CType("VkBool32") int triangleFans, @CType("VkBool32") int vertexAttributeAccessBeyondStride) { return alloc(allocator).sType(sType).pNext(pNext).constantAlphaColorBlendFactors(constantAlphaColorBlendFactors).events(events).imageViewFormatReinterpretation(imageViewFormatReinterpretation).imageViewFormatSwizzle(imageViewFormatSwizzle).imageView2DOn3DImage(imageView2DOn3DImage).multisampleArrayImage(multisampleArrayImage).mutableComparisonSamplers(mutableComparisonSamplers).pointPolygons(pointPolygons).samplerMipLodBias(samplerMipLodBias).separateStencilMaskRef(separateStencilMaskRef).shaderSampleRateInterpolationFunctions(shaderSampleRateInterpolationFunctions).tessellationIsolines(tessellationIsolines).tessellationPointMode(tessellationPointMode).triangleFans(triangleFans).vertexAttributeAccessBeyondStride(vertexAttributeAccessBeyondStride); }
+    public static VkPhysicalDevicePortabilitySubsetFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int constantAlphaColorBlendFactors, @CType("VkBool32") int events, @CType("VkBool32") int imageViewFormatReinterpretation, @CType("VkBool32") int imageViewFormatSwizzle, @CType("VkBool32") int imageView2DOn3DImage, @CType("VkBool32") int multisampleArrayImage, @CType("VkBool32") int mutableComparisonSamplers, @CType("VkBool32") int pointPolygons, @CType("VkBool32") int samplerMipLodBias, @CType("VkBool32") int separateStencilMaskRef, @CType("VkBool32") int shaderSampleRateInterpolationFunctions, @CType("VkBool32") int tessellationIsolines, @CType("VkBool32") int tessellationPointMode, @CType("VkBool32") int triangleFans, @CType("VkBool32") int vertexAttributeAccessBeyondStride) { return alloc(allocator).sType(sType).pNext(pNext).constantAlphaColorBlendFactors(constantAlphaColorBlendFactors).events(events).imageViewFormatReinterpretation(imageViewFormatReinterpretation).imageViewFormatSwizzle(imageViewFormatSwizzle).imageView2DOn3DImage(imageView2DOn3DImage).multisampleArrayImage(multisampleArrayImage).mutableComparisonSamplers(mutableComparisonSamplers).pointPolygons(pointPolygons).samplerMipLodBias(samplerMipLodBias).separateStencilMaskRef(separateStencilMaskRef).shaderSampleRateInterpolationFunctions(shaderSampleRateInterpolationFunctions).tessellationIsolines(tessellationIsolines).tessellationPointMode(tessellationPointMode).triangleFans(triangleFans).vertexAttributeAccessBeyondStride(vertexAttributeAccessBeyondStride); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -218,25 +218,25 @@ public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePortabilitySubsetFeaturesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `constantAlphaColorBlendFactors` at the given index}
     /// @param segment the segment of the struct
@@ -616,12 +616,12 @@ public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct 
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `constantAlphaColorBlendFactors` at the given index}
         /// @param index the index

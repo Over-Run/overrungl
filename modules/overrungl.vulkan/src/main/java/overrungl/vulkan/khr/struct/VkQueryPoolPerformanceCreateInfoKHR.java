@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### queueFamilyIndex
 /// [VarHandle][#VH_queueFamilyIndex] - [Getter][#queueFamilyIndex()] - [Setter][#queueFamilyIndex(int)]
 /// ### counterIndexCount
 /// [VarHandle][#VH_counterIndexCount] - [Getter][#counterIndexCount()] - [Setter][#counterIndexCount(int)]
 /// ### pCounterIndices
-/// [VarHandle][#VH_pCounterIndices] - [Getter][#pCounterIndices()] - [Setter][#pCounterIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCounterIndices] - [Getter][#pCounterIndices()] - [Setter][#pCounterIndices(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `queueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_queueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex"));
     /// The [VarHandle] of `counterIndexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_counterIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("counterIndexCount"));
-    /// The [VarHandle] of `pCounterIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCounterIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCounterIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCounterIndices"));
 
     /// Creates `VkQueryPoolPerformanceCreateInfoKHR` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
     /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
-    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int queueFamilyIndex, @CType("uint32_t") int counterIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pCounterIndices) { return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).counterIndexCount(counterIndexCount).pCounterIndices(pCounterIndices); }
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int queueFamilyIndex, @CType("uint32_t") int counterIndexCount, @CType("const uint32_t *") MemorySegment pCounterIndices) { return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).counterIndexCount(counterIndexCount).pCounterIndices(pCounterIndices); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueryPoolPerformanceCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkQueryPoolPerformanceCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `queueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
     /// {@return `pCounterIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCounterIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCounterIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pCounterIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pCounterIndices.get(segment, 0L, index); }
     /// {@return `pCounterIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCounterIndices(MemorySegment segment) { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pCounterIndices(MemorySegment segment) { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(segment, 0L); }
     /// {@return `pCounterIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCounterIndices() { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pCounterIndices() { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(this.segment()); }
     /// Sets `pCounterIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCounterIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pCounterIndices.set(segment, 0L, index, value); }
+    public static void set_pCounterIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pCounterIndices.set(segment, 0L, index, value); }
     /// Sets `pCounterIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCounterIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(segment, 0L, value); }
+    public static void set_pCounterIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(segment, 0L, value); }
     /// Sets `pCounterIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueryPoolPerformanceCreateInfoKHR pCounterIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(this.segment(), value); return this; }
+    public VkQueryPoolPerformanceCreateInfoKHR pCounterIndices(@CType("const uint32_t *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(this.segment(), value); return this; }
 
     /// A buffer of [VkQueryPoolPerformanceCreateInfoKHR].
     public static final class Buffer extends VkQueryPoolPerformanceCreateInfoKHR {
@@ -268,12 +268,12 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkQueryPoolPerformanceCreateInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `queueFamilyIndex` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends Struct {
 
         /// {@return `pCounterIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCounterIndicesAt(long index) { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pCounterIndicesAt(long index) { return VkQueryPoolPerformanceCreateInfoKHR.get_pCounterIndices(this.segment(), index); }
         /// Sets `pCounterIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCounterIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(this.segment(), index, value); return this; }
+        public Buffer pCounterIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkQueryPoolPerformanceCreateInfoKHR.set_pCounterIndices(this.segment(), index, value); return this; }
 
     }
 }

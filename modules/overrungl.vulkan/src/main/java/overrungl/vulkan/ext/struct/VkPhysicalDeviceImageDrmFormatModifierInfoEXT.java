@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### drmFormatModifier
 /// [VarHandle][#VH_drmFormatModifier] - [Getter][#drmFormatModifier()] - [Setter][#drmFormatModifier(long)]
 /// ### sharingMode
@@ -36,7 +36,7 @@ import overrungl.util.*;
 /// ### queueFamilyIndexCount
 /// [VarHandle][#VH_queueFamilyIndexCount] - [Getter][#queueFamilyIndexCount()] - [Setter][#queueFamilyIndexCount(int)]
 /// ### pQueueFamilyIndices
-/// [VarHandle][#VH_pQueueFamilyIndices] - [Getter][#pQueueFamilyIndices()] - [Setter][#pQueueFamilyIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pQueueFamilyIndices] - [Getter][#pQueueFamilyIndices()] - [Setter][#pQueueFamilyIndices(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -61,7 +61,7 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `drmFormatModifier` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_drmFormatModifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("drmFormatModifier"));
@@ -69,7 +69,7 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
     public static final VarHandle VH_sharingMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sharingMode"));
     /// The [VarHandle] of `queueFamilyIndexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_queueFamilyIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndexCount"));
-    /// The [VarHandle] of `pQueueFamilyIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pQueueFamilyIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pQueueFamilyIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueueFamilyIndices"));
 
     /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment.
@@ -115,7 +115,7 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
     /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint64_t") long drmFormatModifier, @CType("VkSharingMode") int sharingMode, @CType("uint32_t") int queueFamilyIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices) { return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint64_t") long drmFormatModifier, @CType("VkSharingMode") int sharingMode, @CType("uint32_t") int queueFamilyIndexCount, @CType("const uint32_t *") MemorySegment pQueueFamilyIndices) { return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -152,25 +152,25 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNext(@CType("const void *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `drmFormatModifier` at the given index}
     /// @param segment the segment of the struct
@@ -244,25 +244,25 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
     /// {@return `pQueueFamilyIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pQueueFamilyIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pQueueFamilyIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pQueueFamilyIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pQueueFamilyIndices.get(segment, 0L, index); }
     /// {@return `pQueueFamilyIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pQueueFamilyIndices(MemorySegment segment) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pQueueFamilyIndices(MemorySegment segment) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(segment, 0L); }
     /// {@return `pQueueFamilyIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices() { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pQueueFamilyIndices() { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(this.segment()); }
     /// Sets `pQueueFamilyIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pQueueFamilyIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pQueueFamilyIndices.set(segment, 0L, index, value); }
+    public static void set_pQueueFamilyIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pQueueFamilyIndices.set(segment, 0L, index, value); }
     /// Sets `pQueueFamilyIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pQueueFamilyIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(segment, 0L, value); }
+    public static void set_pQueueFamilyIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(segment, 0L, value); }
     /// Sets `pQueueFamilyIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pQueueFamilyIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pQueueFamilyIndices(@CType("const uint32_t *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(this.segment(), value); return this; }
 
     /// A buffer of [VkPhysicalDeviceImageDrmFormatModifierInfoEXT].
     public static final class Buffer extends VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
@@ -297,12 +297,12 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `drmFormatModifier` at the given index}
         /// @param index the index
@@ -333,12 +333,12 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends Struct
 
         /// {@return `pQueueFamilyIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pQueueFamilyIndicesAt(long index) { return VkPhysicalDeviceImageDrmFormatModifierInfoEXT.get_pQueueFamilyIndices(this.segment(), index); }
         /// Sets `pQueueFamilyIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
+        public Buffer pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkPhysicalDeviceImageDrmFormatModifierInfoEXT.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
 
     }
 }

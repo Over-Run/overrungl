@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVTessellationProgram5 {
     public static final int GL_MAX_PROGRAM_PATCH_ATTRIBS_NV = 0x86D8;
     public static final int GL_TESS_CONTROL_PROGRAM_NV = 0x891E;

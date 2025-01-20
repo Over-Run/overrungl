@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.rend;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLRENDScreenCoordinates {
     public static final int GL_SCREEN_COORDINATES_REND = 0x8490;
     public static final int GL_INVERTED_SCREEN_W_REND = 0x8491;

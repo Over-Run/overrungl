@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.mesa;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLMESATileRasterOrder {
     public static final int GL_TILE_RASTER_ORDER_FIXED_MESA = 0x8BB8;
     public static final int GL_TILE_RASTER_ORDER_INCREASING_X_MESA = 0x8BB9;

@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### geometryType
 /// [VarHandle][#VH_geometryType] - [Getter][#geometryType()] - [Setter][#geometryType(int)]
 /// ### geometry
-/// [Byte offset][#OFFSET_geometry] - [Memory layout][#ML_geometry] - [Getter][#geometry()] - [Setter][#geometry(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_geometry] - [Memory layout][#ML_geometry] - [Getter][#geometry()] - [Setter][#geometry(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ## Layout
@@ -57,7 +57,7 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `geometryType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_geometryType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryType"));
@@ -111,7 +111,7 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
     /// Allocates a `VkAccelerationStructureGeometryKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureGeometryKHR`
-    public static VkAccelerationStructureGeometryKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkGeometryTypeKHR") int geometryType, @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment geometry, @CType("VkGeometryFlagsKHR") int flags) { return alloc(allocator).sType(sType).pNext(pNext).geometryType(geometryType).geometry(geometry).flags(flags); }
+    public static VkAccelerationStructureGeometryKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkGeometryTypeKHR") int geometryType, @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment geometry, @CType("VkGeometryFlagsKHR") int flags) { return alloc(allocator).sType(sType).pNext(pNext).geometryType(geometryType).geometry(geometry).flags(flags); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -148,25 +148,25 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureGeometryKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureGeometryKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureGeometryKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkAccelerationStructureGeometryKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryKHR pNext(@CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `geometryType` at the given index}
     /// @param segment the segment of the struct
@@ -194,25 +194,25 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
     /// {@return `geometry` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment get_geometry(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_geometry, index), ML_geometry); }
+    public static @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment get_geometry(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_geometry, index), ML_geometry); }
     /// {@return `geometry`}
     /// @param segment the segment of the struct
-    public static @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment get_geometry(MemorySegment segment) { return VkAccelerationStructureGeometryKHR.get_geometry(segment, 0L); }
+    public static @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment get_geometry(MemorySegment segment) { return VkAccelerationStructureGeometryKHR.get_geometry(segment, 0L); }
     /// {@return `geometry`}
-    public @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment geometry() { return VkAccelerationStructureGeometryKHR.get_geometry(this.segment()); }
+    public @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment geometry() { return VkAccelerationStructureGeometryKHR.get_geometry(this.segment()); }
     /// Sets `geometry` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_geometry(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_geometry, index), ML_geometry.byteSize()); }
+    public static void set_geometry(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_geometry, index), ML_geometry.byteSize()); }
     /// Sets `geometry` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_geometry(MemorySegment segment, @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(segment, 0L, value); }
+    public static void set_geometry(MemorySegment segment, @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(segment, 0L, value); }
     /// Sets `geometry` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryKHR geometry(@CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryKHR geometry(@CType("VkAccelerationStructureGeometryDataKHR") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -270,12 +270,12 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureGeometryKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkAccelerationStructureGeometryKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `geometryType` at the given index}
         /// @param index the index
@@ -288,12 +288,12 @@ public sealed class VkAccelerationStructureGeometryKHR extends Struct {
 
         /// {@return `geometry` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment geometryAt(long index) { return VkAccelerationStructureGeometryKHR.get_geometry(this.segment(), index); }
+        public @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment geometryAt(long index) { return VkAccelerationStructureGeometryKHR.get_geometry(this.segment(), index); }
         /// Sets `geometry` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer geometryAt(long index, @CType("VkAccelerationStructureGeometryDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(this.segment(), index, value); return this; }
+        public Buffer geometryAt(long index, @CType("VkAccelerationStructureGeometryDataKHR") MemorySegment value) { VkAccelerationStructureGeometryKHR.set_geometry(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index

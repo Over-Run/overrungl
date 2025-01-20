@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDDisplayNativeHdr {
     public static final int VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1;
     public static final String VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
@@ -30,15 +29,8 @@ public class VKAMDDisplayNativeHdr {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD = 1000213001;
     public static final int VK_COLOR_SPACE_DISPLAY_NATIVE_AMD = 1000213000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetLocalDimmingAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetLocalDimmingAMD
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(Descriptors.FD_vkSetLocalDimmingAMD);
+        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkSetLocalDimmingAMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkSetLocalDimmingAMD = func.invoke(device, "vkSetLocalDimmingAMD");

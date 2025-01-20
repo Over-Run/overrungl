@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### vps_video_parameter_set_id
 /// [VarHandle][#VH_vps_video_parameter_set_id] - [Getter][#vps_video_parameter_set_id()] - [Setter][#vps_video_parameter_set_id(byte)]
 /// ### vps_max_sub_layers_minus1
@@ -44,11 +44,11 @@ import overrungl.util.*;
 /// ### reserved3
 /// [VarHandle][#VH_reserved3] - [Getter][#reserved3()] - [Setter][#reserved3(int)]
 /// ### pDecPicBufMgr
-/// [VarHandle][#VH_pDecPicBufMgr] - [Getter][#pDecPicBufMgr()] - [Setter][#pDecPicBufMgr(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDecPicBufMgr] - [Getter][#pDecPicBufMgr()] - [Setter][#pDecPicBufMgr(MemorySegment)]
 /// ### pHrdParameters
-/// [VarHandle][#VH_pHrdParameters] - [Getter][#pHrdParameters()] - [Setter][#pHrdParameters(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pHrdParameters] - [Getter][#pHrdParameters()] - [Setter][#pHrdParameters(MemorySegment)]
 /// ### pProfileTierLevel
-/// [VarHandle][#VH_pProfileTierLevel] - [Getter][#pProfileTierLevel()] - [Setter][#pProfileTierLevel(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pProfileTierLevel] - [Getter][#pProfileTierLevel()] - [Setter][#pProfileTierLevel(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -83,7 +83,7 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
         ValueLayout.ADDRESS.withName("pHrdParameters"),
         ValueLayout.ADDRESS.withName("pProfileTierLevel")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `vps_video_parameter_set_id` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_vps_video_parameter_set_id = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vps_video_parameter_set_id"));
@@ -101,11 +101,11 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
     public static final VarHandle VH_vps_num_ticks_poc_diff_one_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vps_num_ticks_poc_diff_one_minus1"));
     /// The [VarHandle] of `reserved3` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_reserved3 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved3"));
-    /// The [VarHandle] of `pDecPicBufMgr` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDecPicBufMgr` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDecPicBufMgr = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDecPicBufMgr"));
-    /// The [VarHandle] of `pHrdParameters` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pHrdParameters` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pHrdParameters = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHrdParameters"));
-    /// The [VarHandle] of `pProfileTierLevel` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pProfileTierLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pProfileTierLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pProfileTierLevel"));
 
     /// Creates `StdVideoH265VideoParameterSet` with the given segment.
@@ -151,7 +151,7 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
     /// Allocates a `StdVideoH265VideoParameterSet` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265VideoParameterSet`
-    public static StdVideoH265VideoParameterSet allocInit(SegmentAllocator allocator, @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte vps_video_parameter_set_id, @CType("uint8_t") byte vps_max_sub_layers_minus1, @CType("uint8_t") byte reserved1, @CType("uint8_t") byte reserved2, @CType("uint32_t") int vps_num_units_in_tick, @CType("uint32_t") int vps_time_scale, @CType("uint32_t") int vps_num_ticks_poc_diff_one_minus1, @CType("uint32_t") int reserved3, @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment pDecPicBufMgr, @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment pHrdParameters, @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment pProfileTierLevel) { return alloc(allocator).flags(flags).vps_video_parameter_set_id(vps_video_parameter_set_id).vps_max_sub_layers_minus1(vps_max_sub_layers_minus1).reserved1(reserved1).reserved2(reserved2).vps_num_units_in_tick(vps_num_units_in_tick).vps_time_scale(vps_time_scale).vps_num_ticks_poc_diff_one_minus1(vps_num_ticks_poc_diff_one_minus1).reserved3(reserved3).pDecPicBufMgr(pDecPicBufMgr).pHrdParameters(pHrdParameters).pProfileTierLevel(pProfileTierLevel); }
+    public static StdVideoH265VideoParameterSet allocInit(SegmentAllocator allocator, @CType("StdVideoH265VpsFlags") MemorySegment flags, @CType("uint8_t") byte vps_video_parameter_set_id, @CType("uint8_t") byte vps_max_sub_layers_minus1, @CType("uint8_t") byte reserved1, @CType("uint8_t") byte reserved2, @CType("uint32_t") int vps_num_units_in_tick, @CType("uint32_t") int vps_time_scale, @CType("uint32_t") int vps_num_ticks_poc_diff_one_minus1, @CType("uint32_t") int reserved3, @CType("const StdVideoH265DecPicBufMgr *") MemorySegment pDecPicBufMgr, @CType("const StdVideoH265HrdParameters *") MemorySegment pHrdParameters, @CType("const StdVideoH265ProfileTierLevel *") MemorySegment pProfileTierLevel) { return alloc(allocator).flags(flags).vps_video_parameter_set_id(vps_video_parameter_set_id).vps_max_sub_layers_minus1(vps_max_sub_layers_minus1).reserved1(reserved1).reserved2(reserved2).vps_num_units_in_tick(vps_num_units_in_tick).vps_time_scale(vps_time_scale).vps_num_ticks_poc_diff_one_minus1(vps_num_ticks_poc_diff_one_minus1).reserved3(reserved3).pDecPicBufMgr(pDecPicBufMgr).pHrdParameters(pHrdParameters).pProfileTierLevel(pProfileTierLevel); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -165,25 +165,25 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoH265VpsFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_flags(segment, 0L); }
+    public static @CType("StdVideoH265VpsFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH265VideoParameterSet.get_flags(this.segment()); }
+    public @CType("StdVideoH265VpsFlags") MemorySegment flags() { return StdVideoH265VideoParameterSet.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265VpsFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoH265VpsFlags") MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265VideoParameterSet flags(@CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(this.segment(), value); return this; }
+    public StdVideoH265VideoParameterSet flags(@CType("StdVideoH265VpsFlags") MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(this.segment(), value); return this; }
 
     /// {@return `vps_video_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
@@ -372,71 +372,71 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
     /// {@return `pDecPicBufMgr` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment get_pDecPicBufMgr(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDecPicBufMgr.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265DecPicBufMgr *") MemorySegment get_pDecPicBufMgr(MemorySegment segment, long index) { return (MemorySegment) VH_pDecPicBufMgr.get(segment, 0L, index); }
     /// {@return `pDecPicBufMgr`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment get_pDecPicBufMgr(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(segment, 0L); }
+    public static @CType("const StdVideoH265DecPicBufMgr *") MemorySegment get_pDecPicBufMgr(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(segment, 0L); }
     /// {@return `pDecPicBufMgr`}
-    public @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment pDecPicBufMgr() { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(this.segment()); }
+    public @CType("const StdVideoH265DecPicBufMgr *") MemorySegment pDecPicBufMgr() { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(this.segment()); }
     /// Sets `pDecPicBufMgr` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDecPicBufMgr(MemorySegment segment, long index, @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment value) { VH_pDecPicBufMgr.set(segment, 0L, index, value); }
+    public static void set_pDecPicBufMgr(MemorySegment segment, long index, @CType("const StdVideoH265DecPicBufMgr *") MemorySegment value) { VH_pDecPicBufMgr.set(segment, 0L, index, value); }
     /// Sets `pDecPicBufMgr` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDecPicBufMgr(MemorySegment segment, @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(segment, 0L, value); }
+    public static void set_pDecPicBufMgr(MemorySegment segment, @CType("const StdVideoH265DecPicBufMgr *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(segment, 0L, value); }
     /// Sets `pDecPicBufMgr` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265VideoParameterSet pDecPicBufMgr(@CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(this.segment(), value); return this; }
+    public StdVideoH265VideoParameterSet pDecPicBufMgr(@CType("const StdVideoH265DecPicBufMgr *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(this.segment(), value); return this; }
 
     /// {@return `pHrdParameters` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment get_pHrdParameters(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pHrdParameters.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265HrdParameters *") MemorySegment get_pHrdParameters(MemorySegment segment, long index) { return (MemorySegment) VH_pHrdParameters.get(segment, 0L, index); }
     /// {@return `pHrdParameters`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment get_pHrdParameters(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pHrdParameters(segment, 0L); }
+    public static @CType("const StdVideoH265HrdParameters *") MemorySegment get_pHrdParameters(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pHrdParameters(segment, 0L); }
     /// {@return `pHrdParameters`}
-    public @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment pHrdParameters() { return StdVideoH265VideoParameterSet.get_pHrdParameters(this.segment()); }
+    public @CType("const StdVideoH265HrdParameters *") MemorySegment pHrdParameters() { return StdVideoH265VideoParameterSet.get_pHrdParameters(this.segment()); }
     /// Sets `pHrdParameters` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pHrdParameters(MemorySegment segment, long index, @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment value) { VH_pHrdParameters.set(segment, 0L, index, value); }
+    public static void set_pHrdParameters(MemorySegment segment, long index, @CType("const StdVideoH265HrdParameters *") MemorySegment value) { VH_pHrdParameters.set(segment, 0L, index, value); }
     /// Sets `pHrdParameters` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pHrdParameters(MemorySegment segment, @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(segment, 0L, value); }
+    public static void set_pHrdParameters(MemorySegment segment, @CType("const StdVideoH265HrdParameters *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(segment, 0L, value); }
     /// Sets `pHrdParameters` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265VideoParameterSet pHrdParameters(@CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(this.segment(), value); return this; }
+    public StdVideoH265VideoParameterSet pHrdParameters(@CType("const StdVideoH265HrdParameters *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(this.segment(), value); return this; }
 
     /// {@return `pProfileTierLevel` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment get_pProfileTierLevel(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pProfileTierLevel.get(segment, 0L, index); }
+    public static @CType("const StdVideoH265ProfileTierLevel *") MemorySegment get_pProfileTierLevel(MemorySegment segment, long index) { return (MemorySegment) VH_pProfileTierLevel.get(segment, 0L, index); }
     /// {@return `pProfileTierLevel`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment get_pProfileTierLevel(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(segment, 0L); }
+    public static @CType("const StdVideoH265ProfileTierLevel *") MemorySegment get_pProfileTierLevel(MemorySegment segment) { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(segment, 0L); }
     /// {@return `pProfileTierLevel`}
-    public @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment pProfileTierLevel() { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(this.segment()); }
+    public @CType("const StdVideoH265ProfileTierLevel *") MemorySegment pProfileTierLevel() { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(this.segment()); }
     /// Sets `pProfileTierLevel` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pProfileTierLevel(MemorySegment segment, long index, @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment value) { VH_pProfileTierLevel.set(segment, 0L, index, value); }
+    public static void set_pProfileTierLevel(MemorySegment segment, long index, @CType("const StdVideoH265ProfileTierLevel *") MemorySegment value) { VH_pProfileTierLevel.set(segment, 0L, index, value); }
     /// Sets `pProfileTierLevel` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pProfileTierLevel(MemorySegment segment, @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(segment, 0L, value); }
+    public static void set_pProfileTierLevel(MemorySegment segment, @CType("const StdVideoH265ProfileTierLevel *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(segment, 0L, value); }
     /// Sets `pProfileTierLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265VideoParameterSet pProfileTierLevel(@CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(this.segment(), value); return this; }
+    public StdVideoH265VideoParameterSet pProfileTierLevel(@CType("const StdVideoH265ProfileTierLevel *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoH265VideoParameterSet].
     public static final class Buffer extends StdVideoH265VideoParameterSet {
@@ -462,12 +462,12 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265VideoParameterSet.get_flags(this.segment(), index); }
+        public @CType("StdVideoH265VpsFlags") MemorySegment flagsAt(long index) { return StdVideoH265VideoParameterSet.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoH265VpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoH265VpsFlags") MemorySegment value) { StdVideoH265VideoParameterSet.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `vps_video_parameter_set_id` at the given index}
         /// @param index the index
@@ -543,30 +543,30 @@ public sealed class StdVideoH265VideoParameterSet extends Struct {
 
         /// {@return `pDecPicBufMgr` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment pDecPicBufMgrAt(long index) { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(this.segment(), index); }
+        public @CType("const StdVideoH265DecPicBufMgr *") MemorySegment pDecPicBufMgrAt(long index) { return StdVideoH265VideoParameterSet.get_pDecPicBufMgr(this.segment(), index); }
         /// Sets `pDecPicBufMgr` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDecPicBufMgrAt(long index, @CType("const StdVideoH265DecPicBufMgr *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(this.segment(), index, value); return this; }
+        public Buffer pDecPicBufMgrAt(long index, @CType("const StdVideoH265DecPicBufMgr *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pDecPicBufMgr(this.segment(), index, value); return this; }
 
         /// {@return `pHrdParameters` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment pHrdParametersAt(long index) { return StdVideoH265VideoParameterSet.get_pHrdParameters(this.segment(), index); }
+        public @CType("const StdVideoH265HrdParameters *") MemorySegment pHrdParametersAt(long index) { return StdVideoH265VideoParameterSet.get_pHrdParameters(this.segment(), index); }
         /// Sets `pHrdParameters` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pHrdParametersAt(long index, @CType("const StdVideoH265HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(this.segment(), index, value); return this; }
+        public Buffer pHrdParametersAt(long index, @CType("const StdVideoH265HrdParameters *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pHrdParameters(this.segment(), index, value); return this; }
 
         /// {@return `pProfileTierLevel` at the given index}
         /// @param index the index
-        public @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment pProfileTierLevelAt(long index) { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(this.segment(), index); }
+        public @CType("const StdVideoH265ProfileTierLevel *") MemorySegment pProfileTierLevelAt(long index) { return StdVideoH265VideoParameterSet.get_pProfileTierLevel(this.segment(), index); }
         /// Sets `pProfileTierLevel` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pProfileTierLevelAt(long index, @CType("const StdVideoH265ProfileTierLevel *") java.lang.foreign.MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(this.segment(), index, value); return this; }
+        public Buffer pProfileTierLevelAt(long index, @CType("const StdVideoH265ProfileTierLevel *") MemorySegment value) { StdVideoH265VideoParameterSet.set_pProfileTierLevel(this.segment(), index, value); return this; }
 
     }
 }

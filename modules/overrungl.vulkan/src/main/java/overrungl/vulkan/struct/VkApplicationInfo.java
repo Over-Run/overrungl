@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pApplicationName
-/// [VarHandle][#VH_pApplicationName] - [Getter][#pApplicationName()] - [Setter][#pApplicationName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pApplicationName] - [Getter][#pApplicationName()] - [Setter][#pApplicationName(MemorySegment)]
 /// ### applicationVersion
 /// [VarHandle][#VH_applicationVersion] - [Getter][#applicationVersion()] - [Setter][#applicationVersion(int)]
 /// ### pEngineName
-/// [VarHandle][#VH_pEngineName] - [Getter][#pEngineName()] - [Setter][#pEngineName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pEngineName] - [Getter][#pEngineName()] - [Setter][#pEngineName(MemorySegment)]
 /// ### engineVersion
 /// [VarHandle][#VH_engineVersion] - [Getter][#engineVersion()] - [Setter][#engineVersion(int)]
 /// ### apiVersion
@@ -65,13 +65,13 @@ public sealed class VkApplicationInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pApplicationName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pApplicationName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pApplicationName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pApplicationName"));
     /// The [VarHandle] of `applicationVersion` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_applicationVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("applicationVersion"));
-    /// The [VarHandle] of `pEngineName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pEngineName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pEngineName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pEngineName"));
     /// The [VarHandle] of `engineVersion` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_engineVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("engineVersion"));
@@ -121,7 +121,7 @@ public sealed class VkApplicationInfo extends Struct {
     /// Allocates a `VkApplicationInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkApplicationInfo`
-    public static VkApplicationInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const char *") java.lang.foreign.MemorySegment pApplicationName, @CType("uint32_t") int applicationVersion, @CType("const char *") java.lang.foreign.MemorySegment pEngineName, @CType("uint32_t") int engineVersion, @CType("uint32_t") int apiVersion) { return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion).pEngineName(pEngineName).engineVersion(engineVersion).apiVersion(apiVersion); }
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const char *") MemorySegment pApplicationName, @CType("uint32_t") int applicationVersion, @CType("const char *") MemorySegment pEngineName, @CType("uint32_t") int engineVersion, @CType("uint32_t") int apiVersion) { return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion).pEngineName(pEngineName).engineVersion(engineVersion).apiVersion(apiVersion); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,48 +158,48 @@ public sealed class VkApplicationInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkApplicationInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkApplicationInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkApplicationInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkApplicationInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkApplicationInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkApplicationInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pNext(this.segment(), value); return this; }
+    public VkApplicationInfo pNext(@CType("const void *") MemorySegment value) { VkApplicationInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pApplicationName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pApplicationName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pApplicationName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pApplicationName(MemorySegment segment, long index) { return (MemorySegment) VH_pApplicationName.get(segment, 0L, index); }
     /// {@return `pApplicationName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pApplicationName(MemorySegment segment) { return VkApplicationInfo.get_pApplicationName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pApplicationName(MemorySegment segment) { return VkApplicationInfo.get_pApplicationName(segment, 0L); }
     /// {@return `pApplicationName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pApplicationName() { return VkApplicationInfo.get_pApplicationName(this.segment()); }
+    public @CType("const char *") MemorySegment pApplicationName() { return VkApplicationInfo.get_pApplicationName(this.segment()); }
     /// Sets `pApplicationName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pApplicationName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pApplicationName.set(segment, 0L, index, value); }
+    public static void set_pApplicationName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pApplicationName.set(segment, 0L, index, value); }
     /// Sets `pApplicationName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pApplicationName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pApplicationName(segment, 0L, value); }
+    public static void set_pApplicationName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkApplicationInfo.set_pApplicationName(segment, 0L, value); }
     /// Sets `pApplicationName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkApplicationInfo pApplicationName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pApplicationName(this.segment(), value); return this; }
+    public VkApplicationInfo pApplicationName(@CType("const char *") MemorySegment value) { VkApplicationInfo.set_pApplicationName(this.segment(), value); return this; }
 
     /// {@return `applicationVersion` at the given index}
     /// @param segment the segment of the struct
@@ -227,25 +227,25 @@ public sealed class VkApplicationInfo extends Struct {
     /// {@return `pEngineName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pEngineName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pEngineName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pEngineName(MemorySegment segment, long index) { return (MemorySegment) VH_pEngineName.get(segment, 0L, index); }
     /// {@return `pEngineName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pEngineName(MemorySegment segment) { return VkApplicationInfo.get_pEngineName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pEngineName(MemorySegment segment) { return VkApplicationInfo.get_pEngineName(segment, 0L); }
     /// {@return `pEngineName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pEngineName() { return VkApplicationInfo.get_pEngineName(this.segment()); }
+    public @CType("const char *") MemorySegment pEngineName() { return VkApplicationInfo.get_pEngineName(this.segment()); }
     /// Sets `pEngineName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pEngineName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pEngineName.set(segment, 0L, index, value); }
+    public static void set_pEngineName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pEngineName.set(segment, 0L, index, value); }
     /// Sets `pEngineName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pEngineName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pEngineName(segment, 0L, value); }
+    public static void set_pEngineName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkApplicationInfo.set_pEngineName(segment, 0L, value); }
     /// Sets `pEngineName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkApplicationInfo pEngineName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pEngineName(this.segment(), value); return this; }
+    public VkApplicationInfo pEngineName(@CType("const char *") MemorySegment value) { VkApplicationInfo.set_pEngineName(this.segment(), value); return this; }
 
     /// {@return `engineVersion` at the given index}
     /// @param segment the segment of the struct
@@ -326,21 +326,21 @@ public sealed class VkApplicationInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkApplicationInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkApplicationInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkApplicationInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pApplicationName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pApplicationNameAt(long index) { return VkApplicationInfo.get_pApplicationName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pApplicationNameAt(long index) { return VkApplicationInfo.get_pApplicationName(this.segment(), index); }
         /// Sets `pApplicationName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pApplicationNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pApplicationName(this.segment(), index, value); return this; }
+        public Buffer pApplicationNameAt(long index, @CType("const char *") MemorySegment value) { VkApplicationInfo.set_pApplicationName(this.segment(), index, value); return this; }
 
         /// {@return `applicationVersion` at the given index}
         /// @param index the index
@@ -353,12 +353,12 @@ public sealed class VkApplicationInfo extends Struct {
 
         /// {@return `pEngineName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pEngineNameAt(long index) { return VkApplicationInfo.get_pEngineName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pEngineNameAt(long index) { return VkApplicationInfo.get_pEngineName(this.segment(), index); }
         /// Sets `pEngineName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pEngineNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkApplicationInfo.set_pEngineName(this.segment(), index, value); return this; }
+        public Buffer pEngineNameAt(long index, @CType("const char *") MemorySegment value) { VkApplicationInfo.set_pEngineName(this.segment(), index, value); return this; }
 
         /// {@return `engineVersion` at the given index}
         /// @param index the index

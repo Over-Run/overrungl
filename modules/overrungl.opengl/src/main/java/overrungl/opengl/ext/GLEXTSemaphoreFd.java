@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,15 +26,8 @@ import overrungl.util.*;
 public final class GLEXTSemaphoreFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportSemaphoreFdEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glImportSemaphoreFdEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportSemaphoreFdEXT = RuntimeHelper.downcall(Descriptors.FD_glImportSemaphoreFdEXT);
+        public static final MethodHandle MH_glImportSemaphoreFdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportSemaphoreFdEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportSemaphoreFdEXT = func.invoke("glImportSemaphoreFdEXT");

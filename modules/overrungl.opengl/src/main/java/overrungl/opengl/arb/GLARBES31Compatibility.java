@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,15 +26,8 @@ import overrungl.util.*;
 public final class GLARBES31Compatibility {
     public static final int GL_BACK = 0x0405;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMemoryBarrierByRegion = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMemoryBarrierByRegion
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMemoryBarrierByRegion = RuntimeHelper.downcall(Descriptors.FD_glMemoryBarrierByRegion);
+        public static final MethodHandle MH_glMemoryBarrierByRegion = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMemoryBarrierByRegion;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glMemoryBarrierByRegion = func.invoke("glMemoryBarrierByRegion");

@@ -16,8 +16,6 @@
 
 package overrungl.vulkan
 
-import com.palantir.javapoet.ClassName
-import com.palantir.javapoet.TypeName
 import overrungl.gen.CustomTypeSpec
 
 data class VkType(
@@ -27,16 +25,15 @@ data class VkType(
     val struct: Boolean
 ) {
     fun toCustomTypeSpec(): CustomTypeSpec {
-        //todo no TypeName
         val typeName = when (javaName) {
-            "void" -> TypeName.VOID
-            "byte" -> TypeName.BYTE
-            "short" -> TypeName.SHORT
-            "int" -> TypeName.INT
-            "long" -> TypeName.LONG
-            "float" -> TypeName.FLOAT
-            "double" -> TypeName.DOUBLE
-            "MemorySegment" -> ClassName.get("java.lang.foreign", "MemorySegment")
+            "void" -> "void"
+            "byte" -> "byte"
+            "short" -> "short"
+            "int" -> "int"
+            "long" -> "long"
+            "float" -> "float"
+            "double" -> "double"
+            "MemorySegment" -> "MemorySegment"
             else -> error(javaName)
         }
         return CustomTypeSpec(carrier = typeName, javaType = typeName, layout = layout, cType = originalName)

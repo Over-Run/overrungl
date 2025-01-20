@@ -31,14 +31,14 @@ public interface GLFWWindowPosFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowPosFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int xpos, @CType("int") int ypos);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int xpos, @CType("int") int ypos);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int xpos, @CType("int") int ypos) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int xpos, @CType("int") int ypos) {
         try { HANDLE.invokeExact(stub, window, xpos, ypos); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowPosFun::invoke (static invoker)", e); }
     }

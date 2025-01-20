@@ -26,9 +26,9 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### displayMode
-/// [VarHandle][#VH_displayMode] - [Getter][#displayMode()] - [Setter][#displayMode(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_displayMode] - [Getter][#displayMode()] - [Setter][#displayMode(MemorySegment)]
 /// ### parameters
-/// [Byte offset][#OFFSET_parameters] - [Memory layout][#ML_parameters] - [Getter][#parameters()] - [Setter][#parameters(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_parameters] - [Memory layout][#ML_parameters] - [Getter][#parameters()] - [Setter][#parameters(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -43,7 +43,7 @@ public sealed class VkDisplayModePropertiesKHR extends Struct {
         ValueLayout.ADDRESS.withName("displayMode"),
         overrungl.vulkan.khr.struct.VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
     );
-    /// The [VarHandle] of `displayMode` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `displayMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_displayMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayMode"));
     /// The byte offset of `parameters`.
     public static final long OFFSET_parameters = LAYOUT.byteOffset(PathElement.groupElement("parameters"));
@@ -93,7 +93,7 @@ public sealed class VkDisplayModePropertiesKHR extends Struct {
     /// Allocates a `VkDisplayModePropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayModePropertiesKHR`
-    public static VkDisplayModePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayMode, @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment parameters) { return alloc(allocator).displayMode(displayMode).parameters(parameters); }
+    public static VkDisplayModePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkDisplayModeKHR") MemorySegment displayMode, @CType("VkDisplayModeParametersKHR") MemorySegment parameters) { return alloc(allocator).displayMode(displayMode).parameters(parameters); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -107,48 +107,48 @@ public sealed class VkDisplayModePropertiesKHR extends Struct {
     /// {@return `displayMode` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment get_displayMode(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_displayMode.get(segment, 0L, index); }
+    public static @CType("VkDisplayModeKHR") MemorySegment get_displayMode(MemorySegment segment, long index) { return (MemorySegment) VH_displayMode.get(segment, 0L, index); }
     /// {@return `displayMode`}
     /// @param segment the segment of the struct
-    public static @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment get_displayMode(MemorySegment segment) { return VkDisplayModePropertiesKHR.get_displayMode(segment, 0L); }
+    public static @CType("VkDisplayModeKHR") MemorySegment get_displayMode(MemorySegment segment) { return VkDisplayModePropertiesKHR.get_displayMode(segment, 0L); }
     /// {@return `displayMode`}
-    public @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayMode() { return VkDisplayModePropertiesKHR.get_displayMode(this.segment()); }
+    public @CType("VkDisplayModeKHR") MemorySegment displayMode() { return VkDisplayModePropertiesKHR.get_displayMode(this.segment()); }
     /// Sets `displayMode` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displayMode(MemorySegment segment, long index, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VH_displayMode.set(segment, 0L, index, value); }
+    public static void set_displayMode(MemorySegment segment, long index, @CType("VkDisplayModeKHR") MemorySegment value) { VH_displayMode.set(segment, 0L, index, value); }
     /// Sets `displayMode` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displayMode(MemorySegment segment, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(segment, 0L, value); }
+    public static void set_displayMode(MemorySegment segment, @CType("VkDisplayModeKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(segment, 0L, value); }
     /// Sets `displayMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayModePropertiesKHR displayMode(@CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(this.segment(), value); return this; }
+    public VkDisplayModePropertiesKHR displayMode(@CType("VkDisplayModeKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(this.segment(), value); return this; }
 
     /// {@return `parameters` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment get_parameters(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parameters, index), ML_parameters); }
+    public static @CType("VkDisplayModeParametersKHR") MemorySegment get_parameters(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parameters, index), ML_parameters); }
     /// {@return `parameters`}
     /// @param segment the segment of the struct
-    public static @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment get_parameters(MemorySegment segment) { return VkDisplayModePropertiesKHR.get_parameters(segment, 0L); }
+    public static @CType("VkDisplayModeParametersKHR") MemorySegment get_parameters(MemorySegment segment) { return VkDisplayModePropertiesKHR.get_parameters(segment, 0L); }
     /// {@return `parameters`}
-    public @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment parameters() { return VkDisplayModePropertiesKHR.get_parameters(this.segment()); }
+    public @CType("VkDisplayModeParametersKHR") MemorySegment parameters() { return VkDisplayModePropertiesKHR.get_parameters(this.segment()); }
     /// Sets `parameters` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_parameters(MemorySegment segment, long index, @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parameters, index), ML_parameters.byteSize()); }
+    public static void set_parameters(MemorySegment segment, long index, @CType("VkDisplayModeParametersKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parameters, index), ML_parameters.byteSize()); }
     /// Sets `parameters` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_parameters(MemorySegment segment, @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(segment, 0L, value); }
+    public static void set_parameters(MemorySegment segment, @CType("VkDisplayModeParametersKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(segment, 0L, value); }
     /// Sets `parameters` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayModePropertiesKHR parameters(@CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(this.segment(), value); return this; }
+    public VkDisplayModePropertiesKHR parameters(@CType("VkDisplayModeParametersKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(this.segment(), value); return this; }
 
     /// A buffer of [VkDisplayModePropertiesKHR].
     public static final class Buffer extends VkDisplayModePropertiesKHR {
@@ -174,21 +174,21 @@ public sealed class VkDisplayModePropertiesKHR extends Struct {
 
         /// {@return `displayMode` at the given index}
         /// @param index the index
-        public @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayModeAt(long index) { return VkDisplayModePropertiesKHR.get_displayMode(this.segment(), index); }
+        public @CType("VkDisplayModeKHR") MemorySegment displayModeAt(long index) { return VkDisplayModePropertiesKHR.get_displayMode(this.segment(), index); }
         /// Sets `displayMode` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displayModeAt(long index, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(this.segment(), index, value); return this; }
+        public Buffer displayModeAt(long index, @CType("VkDisplayModeKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_displayMode(this.segment(), index, value); return this; }
 
         /// {@return `parameters` at the given index}
         /// @param index the index
-        public @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment parametersAt(long index) { return VkDisplayModePropertiesKHR.get_parameters(this.segment(), index); }
+        public @CType("VkDisplayModeParametersKHR") MemorySegment parametersAt(long index) { return VkDisplayModePropertiesKHR.get_parameters(this.segment(), index); }
         /// Sets `parameters` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer parametersAt(long index, @CType("VkDisplayModeParametersKHR") java.lang.foreign.MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(this.segment(), index, value); return this; }
+        public Buffer parametersAt(long index, @CType("VkDisplayModeParametersKHR") MemorySegment value) { VkDisplayModePropertiesKHR.set_parameters(this.segment(), index, value); return this; }
 
     }
 }

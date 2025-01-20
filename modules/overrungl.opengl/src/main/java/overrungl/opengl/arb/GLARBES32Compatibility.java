@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,15 +28,8 @@ public final class GLARBES32Compatibility {
     public static final int GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB = 0x9381;
     public static final int GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB = 0x9382;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPrimitiveBoundingBoxARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPrimitiveBoundingBoxARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPrimitiveBoundingBoxARB = RuntimeHelper.downcall(Descriptors.FD_glPrimitiveBoundingBoxARB);
+        public static final MethodHandle MH_glPrimitiveBoundingBoxARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPrimitiveBoundingBoxARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPrimitiveBoundingBoxARB = func.invoke("glPrimitiveBoundingBoxARB", "glPrimitiveBoundingBox");

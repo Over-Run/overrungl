@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### shaderStageMask
 /// [VarHandle][#VH_shaderStageMask] - [Getter][#shaderStageMask()] - [Setter][#shaderStageMask(int)]
 /// ### resourceUsage
-/// [Byte offset][#OFFSET_resourceUsage] - [Memory layout][#ML_resourceUsage] - [Getter][#resourceUsage()] - [Setter][#resourceUsage(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_resourceUsage] - [Memory layout][#ML_resourceUsage] - [Getter][#resourceUsage()] - [Setter][#resourceUsage(MemorySegment)]
 /// ### numPhysicalVgprs
 /// [VarHandle][#VH_numPhysicalVgprs] - [Getter][#numPhysicalVgprs()] - [Setter][#numPhysicalVgprs(int)]
 /// ### numPhysicalSgprs
@@ -38,7 +38,7 @@ import overrungl.util.*;
 /// ### numAvailableSgprs
 /// [VarHandle][#VH_numAvailableSgprs] - [Getter][#numAvailableSgprs()] - [Setter][#numAvailableSgprs(int)]
 /// ### computeWorkGroupSize
-/// [Byte offset][#OFFSET_computeWorkGroupSize] - [Memory layout][#ML_computeWorkGroupSize] - [Getter][#computeWorkGroupSize()] - [Setter][#computeWorkGroupSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_computeWorkGroupSize] - [Memory layout][#ML_computeWorkGroupSize] - [Getter][#computeWorkGroupSize()] - [Setter][#computeWorkGroupSize(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -125,7 +125,7 @@ public sealed class VkShaderStatisticsInfoAMD extends Struct {
     /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkShaderStatisticsInfoAMD`
-    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, @CType("VkShaderStageFlags") int shaderStageMask, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsage, @CType("uint32_t") int numPhysicalVgprs, @CType("uint32_t") int numPhysicalSgprs, @CType("uint32_t") int numAvailableVgprs, @CType("uint32_t") int numAvailableSgprs, @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSize) { return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs).numAvailableSgprs(numAvailableSgprs).computeWorkGroupSize(computeWorkGroupSize); }
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, @CType("VkShaderStageFlags") int shaderStageMask, @CType("VkShaderResourceUsageAMD") MemorySegment resourceUsage, @CType("uint32_t") int numPhysicalVgprs, @CType("uint32_t") int numPhysicalSgprs, @CType("uint32_t") int numAvailableVgprs, @CType("uint32_t") int numAvailableSgprs, @CType("uint32_t[3]") MemorySegment computeWorkGroupSize) { return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs).numAvailableSgprs(numAvailableSgprs).computeWorkGroupSize(computeWorkGroupSize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -162,25 +162,25 @@ public sealed class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `resourceUsage` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment get_resourceUsage(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_resourceUsage, index), ML_resourceUsage); }
+    public static @CType("VkShaderResourceUsageAMD") MemorySegment get_resourceUsage(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_resourceUsage, index), ML_resourceUsage); }
     /// {@return `resourceUsage`}
     /// @param segment the segment of the struct
-    public static @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment get_resourceUsage(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_resourceUsage(segment, 0L); }
+    public static @CType("VkShaderResourceUsageAMD") MemorySegment get_resourceUsage(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_resourceUsage(segment, 0L); }
     /// {@return `resourceUsage`}
-    public @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsage() { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment()); }
+    public @CType("VkShaderResourceUsageAMD") MemorySegment resourceUsage() { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment()); }
     /// Sets `resourceUsage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_resourceUsage(MemorySegment segment, long index, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_resourceUsage, index), ML_resourceUsage.byteSize()); }
+    public static void set_resourceUsage(MemorySegment segment, long index, @CType("VkShaderResourceUsageAMD") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_resourceUsage, index), ML_resourceUsage.byteSize()); }
     /// Sets `resourceUsage` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_resourceUsage(MemorySegment segment, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(segment, 0L, value); }
+    public static void set_resourceUsage(MemorySegment segment, @CType("VkShaderResourceUsageAMD") MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(segment, 0L, value); }
     /// Sets `resourceUsage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShaderStatisticsInfoAMD resourceUsage(@CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), value); return this; }
+    public VkShaderStatisticsInfoAMD resourceUsage(@CType("VkShaderResourceUsageAMD") MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), value); return this; }
 
     /// {@return `numPhysicalVgprs` at the given index}
     /// @param segment the segment of the struct
@@ -277,25 +277,25 @@ public sealed class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `computeWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_computeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize); }
+    public static @CType("uint32_t[3]") MemorySegment get_computeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize); }
     /// {@return `computeWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_computeWorkGroupSize(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(segment, 0L); }
+    public static @CType("uint32_t[3]") MemorySegment get_computeWorkGroupSize(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(segment, 0L); }
     /// {@return `computeWorkGroupSize`}
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSize() { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") MemorySegment computeWorkGroupSize() { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment()); }
     /// Sets `computeWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_computeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize.byteSize()); }
+    public static void set_computeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize.byteSize()); }
     /// Sets `computeWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_computeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(segment, 0L, value); }
+    public static void set_computeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(segment, 0L, value); }
     /// Sets `computeWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), value); return this; }
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@CType("uint32_t[3]") MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), value); return this; }
 
     /// A buffer of [VkShaderStatisticsInfoAMD].
     public static final class Buffer extends VkShaderStatisticsInfoAMD {
@@ -330,12 +330,12 @@ public sealed class VkShaderStatisticsInfoAMD extends Struct {
 
         /// {@return `resourceUsage` at the given index}
         /// @param index the index
-        public @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsageAt(long index) { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment(), index); }
+        public @CType("VkShaderResourceUsageAMD") MemorySegment resourceUsageAt(long index) { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment(), index); }
         /// Sets `resourceUsage` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer resourceUsageAt(long index, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), index, value); return this; }
+        public Buffer resourceUsageAt(long index, @CType("VkShaderResourceUsageAMD") MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), index, value); return this; }
 
         /// {@return `numPhysicalVgprs` at the given index}
         /// @param index the index
@@ -375,12 +375,12 @@ public sealed class VkShaderStatisticsInfoAMD extends Struct {
 
         /// {@return `computeWorkGroupSize` at the given index}
         /// @param index the index
-        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSizeAt(long index) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment(), index); }
+        public @CType("uint32_t[3]") MemorySegment computeWorkGroupSizeAt(long index) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment(), index); }
         /// Sets `computeWorkGroupSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer computeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), index, value); return this; }
+        public Buffer computeWorkGroupSizeAt(long index, @CType("uint32_t[3]") MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), index, value); return this; }
 
     }
 }

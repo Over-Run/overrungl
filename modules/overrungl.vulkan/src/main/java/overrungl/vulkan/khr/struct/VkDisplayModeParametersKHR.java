@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### visibleRegion
-/// [Byte offset][#OFFSET_visibleRegion] - [Memory layout][#ML_visibleRegion] - [Getter][#visibleRegion()] - [Setter][#visibleRegion(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_visibleRegion] - [Memory layout][#ML_visibleRegion] - [Getter][#visibleRegion()] - [Setter][#visibleRegion(MemorySegment)]
 /// ### refreshRate
 /// [VarHandle][#VH_refreshRate] - [Getter][#refreshRate()] - [Setter][#refreshRate(int)]
 /// ## Layout
@@ -93,7 +93,7 @@ public sealed class VkDisplayModeParametersKHR extends Struct {
     /// Allocates a `VkDisplayModeParametersKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayModeParametersKHR`
-    public static VkDisplayModeParametersKHR allocInit(SegmentAllocator allocator, @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegion, @CType("uint32_t") int refreshRate) { return alloc(allocator).visibleRegion(visibleRegion).refreshRate(refreshRate); }
+    public static VkDisplayModeParametersKHR allocInit(SegmentAllocator allocator, @CType("VkExtent2D") MemorySegment visibleRegion, @CType("uint32_t") int refreshRate) { return alloc(allocator).visibleRegion(visibleRegion).refreshRate(refreshRate); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -107,25 +107,25 @@ public sealed class VkDisplayModeParametersKHR extends Struct {
     /// {@return `visibleRegion` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_visibleRegion(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_visibleRegion, index), ML_visibleRegion); }
+    public static @CType("VkExtent2D") MemorySegment get_visibleRegion(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_visibleRegion, index), ML_visibleRegion); }
     /// {@return `visibleRegion`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_visibleRegion(MemorySegment segment) { return VkDisplayModeParametersKHR.get_visibleRegion(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_visibleRegion(MemorySegment segment) { return VkDisplayModeParametersKHR.get_visibleRegion(segment, 0L); }
     /// {@return `visibleRegion`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegion() { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment visibleRegion() { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment()); }
     /// Sets `visibleRegion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_visibleRegion(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_visibleRegion, index), ML_visibleRegion.byteSize()); }
+    public static void set_visibleRegion(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_visibleRegion, index), ML_visibleRegion.byteSize()); }
     /// Sets `visibleRegion` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_visibleRegion(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(segment, 0L, value); }
+    public static void set_visibleRegion(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(segment, 0L, value); }
     /// Sets `visibleRegion` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayModeParametersKHR visibleRegion(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), value); return this; }
+    public VkDisplayModeParametersKHR visibleRegion(@CType("VkExtent2D") MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), value); return this; }
 
     /// {@return `refreshRate` at the given index}
     /// @param segment the segment of the struct
@@ -174,12 +174,12 @@ public sealed class VkDisplayModeParametersKHR extends Struct {
 
         /// {@return `visibleRegion` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegionAt(long index) { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment visibleRegionAt(long index) { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment(), index); }
         /// Sets `visibleRegion` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer visibleRegionAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), index, value); return this; }
+        public Buffer visibleRegionAt(long index, @CType("VkExtent2D") MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), index, value); return this; }
 
         /// {@return `refreshRate` at the given index}
         /// @param index the index

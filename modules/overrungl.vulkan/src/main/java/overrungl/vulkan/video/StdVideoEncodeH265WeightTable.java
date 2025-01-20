@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### luma_log2_weight_denom
 /// [VarHandle][#VH_luma_log2_weight_denom] - [Getter][#luma_log2_weight_denom()] - [Setter][#luma_log2_weight_denom(byte)]
 /// ### delta_chroma_log2_weight_denom
@@ -79,7 +79,7 @@ public sealed class StdVideoEncodeH265WeightTable extends Struct {
         ValueLayout.JAVA_BYTE.withName("delta_chroma_weight_l1"),
         ValueLayout.JAVA_BYTE.withName("delta_chroma_offset_l1")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `luma_log2_weight_denom` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_luma_log2_weight_denom = LAYOUT.arrayElementVarHandle(PathElement.groupElement("luma_log2_weight_denom"));
@@ -145,7 +145,7 @@ public sealed class StdVideoEncodeH265WeightTable extends Struct {
     /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH265WeightTable`
-    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte luma_log2_weight_denom, @CType("int8_t") byte delta_chroma_log2_weight_denom, @CType("int8_t [ ]") byte delta_luma_weight_l0, @CType("int8_t [ ]") byte luma_offset_l0, @CType("int8_t [ ][ ]") byte delta_chroma_weight_l0, @CType("int8_t [ ][ ]") byte delta_chroma_offset_l0, @CType("int8_t [ ]") byte delta_luma_weight_l1, @CType("int8_t [ ]") byte luma_offset_l1, @CType("int8_t [ ][ ]") byte delta_chroma_weight_l1, @CType("int8_t [ ][ ]") byte delta_chroma_offset_l1) { return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1).luma_offset_l1(luma_offset_l1).delta_chroma_weight_l1(delta_chroma_weight_l1).delta_chroma_offset_l1(delta_chroma_offset_l1); }
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment flags, @CType("uint8_t") byte luma_log2_weight_denom, @CType("int8_t") byte delta_chroma_log2_weight_denom, @CType("int8_t [ ]") byte delta_luma_weight_l0, @CType("int8_t [ ]") byte luma_offset_l0, @CType("int8_t [ ][ ]") byte delta_chroma_weight_l0, @CType("int8_t [ ][ ]") byte delta_chroma_offset_l0, @CType("int8_t [ ]") byte delta_luma_weight_l1, @CType("int8_t [ ]") byte luma_offset_l1, @CType("int8_t [ ][ ]") byte delta_chroma_weight_l1, @CType("int8_t [ ][ ]") byte delta_chroma_offset_l1) { return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1).luma_offset_l1(luma_offset_l1).delta_chroma_weight_l1(delta_chroma_weight_l1).delta_chroma_offset_l1(delta_chroma_offset_l1); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -159,25 +159,25 @@ public sealed class StdVideoEncodeH265WeightTable extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH265WeightTable.get_flags(segment, 0L); }
+    public static @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH265WeightTable.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH265WeightTable.get_flags(this.segment()); }
+    public @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment flags() { return StdVideoEncodeH265WeightTable.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265WeightTable flags(@CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeH265WeightTable flags(@CType("StdVideoEncodeH265WeightTableFlags") MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(this.segment(), value); return this; }
 
     /// {@return `luma_log2_weight_denom` at the given index}
     /// @param segment the segment of the struct
@@ -433,12 +433,12 @@ public sealed class StdVideoEncodeH265WeightTable extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH265WeightTable.get_flags(this.segment(), index); }
+        public @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeH265WeightTable.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeH265WeightTableFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH265WeightTableFlags") MemorySegment value) { StdVideoEncodeH265WeightTable.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `luma_log2_weight_denom` at the given index}
         /// @param index the index

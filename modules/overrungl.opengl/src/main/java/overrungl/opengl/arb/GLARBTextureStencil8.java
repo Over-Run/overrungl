@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBTextureStencil8 {
     public static final int GL_STENCIL_INDEX = 0x1901;
     public static final int GL_STENCIL_INDEX8 = 0x8D48;

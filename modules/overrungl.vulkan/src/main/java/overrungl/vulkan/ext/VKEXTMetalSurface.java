@@ -22,21 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTMetalSurface {
     public static final int VK_EXT_METAL_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
     public static final int VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT = 1000217000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateMetalSurfaceEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateMetalSurfaceEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateMetalSurfaceEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateMetalSurfaceEXT);
+        public static final MethodHandle MH_vkCreateMetalSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateMetalSurfaceEXT;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateMetalSurfaceEXT = func.invoke(instance, "vkCreateMetalSurfaceEXT");

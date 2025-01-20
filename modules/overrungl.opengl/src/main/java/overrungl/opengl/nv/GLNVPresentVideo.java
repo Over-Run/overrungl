@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,30 +31,13 @@ public final class GLNVPresentVideo {
     public static final int GL_PRESENT_TIME_NV = 0x8E2A;
     public static final int GL_PRESENT_DURATION_NV = 0x8E2B;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPresentFrameKeyedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPresentFrameDualFillNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetVideoivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideouivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoi64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPresentFrameKeyedNV,
-            FD_glPresentFrameDualFillNV,
-            FD_glGetVideoivNV,
-            FD_glGetVideouivNV,
-            FD_glGetVideoi64vNV,
-            FD_glGetVideoui64vNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPresentFrameKeyedNV = RuntimeHelper.downcall(Descriptors.FD_glPresentFrameKeyedNV);
-        public static final MethodHandle MH_glPresentFrameDualFillNV = RuntimeHelper.downcall(Descriptors.FD_glPresentFrameDualFillNV);
-        public static final MethodHandle MH_glGetVideoivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoivNV);
-        public static final MethodHandle MH_glGetVideouivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideouivNV);
-        public static final MethodHandle MH_glGetVideoi64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoi64vNV);
-        public static final MethodHandle MH_glGetVideoui64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoui64vNV);
+        public static final MethodHandle MH_glPresentFrameKeyedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPresentFrameDualFillNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetVideoivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideouivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoi64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPresentFrameKeyedNV;
         public final MemorySegment PFN_glPresentFrameDualFillNV;
         public final MemorySegment PFN_glGetVideoivNV;
@@ -88,25 +70,25 @@ public final class GLNVPresentVideo {
         catch (Throwable e) { throw new RuntimeException("error in glPresentFrameDualFillNV", e); }
     }
 
-    public void GetVideoivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoivNV");
         try { Handles.MH_glGetVideoivNV.invokeExact(handles.PFN_glGetVideoivNV, video_slot, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoivNV", e); }
     }
 
-    public void GetVideouivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void GetVideouivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideouivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideouivNV");
         try { Handles.MH_glGetVideouivNV.invokeExact(handles.PFN_glGetVideouivNV, video_slot, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideouivNV", e); }
     }
 
-    public void GetVideoi64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoi64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoi64vNV");
         try { Handles.MH_glGetVideoi64vNV.invokeExact(handles.PFN_glGetVideoi64vNV, video_slot, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoi64vNV", e); }
     }
 
-    public void GetVideoui64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoui64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoui64vNV");
         try { Handles.MH_glGetVideoui64vNV.invokeExact(handles.PFN_glGetVideoui64vNV, video_slot, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoui64vNV", e); }

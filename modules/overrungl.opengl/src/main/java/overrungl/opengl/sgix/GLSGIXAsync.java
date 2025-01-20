@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,30 +26,13 @@ import overrungl.util.*;
 public final class GLSGIXAsync {
     public static final int GL_ASYNC_MARKER_SGIX = 0x8329;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAsyncMarkerSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFinishAsyncSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPollAsyncSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenAsyncMarkersSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteAsyncMarkersSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsAsyncMarkerSGIX = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAsyncMarkerSGIX,
-            FD_glFinishAsyncSGIX,
-            FD_glPollAsyncSGIX,
-            FD_glGenAsyncMarkersSGIX,
-            FD_glDeleteAsyncMarkersSGIX,
-            FD_glIsAsyncMarkerSGIX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAsyncMarkerSGIX = RuntimeHelper.downcall(Descriptors.FD_glAsyncMarkerSGIX);
-        public static final MethodHandle MH_glFinishAsyncSGIX = RuntimeHelper.downcall(Descriptors.FD_glFinishAsyncSGIX);
-        public static final MethodHandle MH_glPollAsyncSGIX = RuntimeHelper.downcall(Descriptors.FD_glPollAsyncSGIX);
-        public static final MethodHandle MH_glGenAsyncMarkersSGIX = RuntimeHelper.downcall(Descriptors.FD_glGenAsyncMarkersSGIX);
-        public static final MethodHandle MH_glDeleteAsyncMarkersSGIX = RuntimeHelper.downcall(Descriptors.FD_glDeleteAsyncMarkersSGIX);
-        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(Descriptors.FD_glIsAsyncMarkerSGIX);
+        public static final MethodHandle MH_glAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinishAsyncSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPollAsyncSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAsyncMarkerSGIX;
         public final MemorySegment PFN_glFinishAsyncSGIX;
         public final MemorySegment PFN_glPollAsyncSGIX;
@@ -77,13 +59,13 @@ public final class GLSGIXAsync {
         catch (Throwable e) { throw new RuntimeException("error in glAsyncMarkerSGIX", e); }
     }
 
-    public @CType("GLint") int FinishAsyncSGIX(@CType("GLuint *") java.lang.foreign.MemorySegment markerp) {
+    public @CType("GLint") int FinishAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
         if (Unmarshal.isNullPointer(handles.PFN_glFinishAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glFinishAsyncSGIX");
         try { return (int) Handles.MH_glFinishAsyncSGIX.invokeExact(handles.PFN_glFinishAsyncSGIX, markerp); }
         catch (Throwable e) { throw new RuntimeException("error in glFinishAsyncSGIX", e); }
     }
 
-    public @CType("GLint") int PollAsyncSGIX(@CType("GLuint *") java.lang.foreign.MemorySegment markerp) {
+    public @CType("GLint") int PollAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
         if (Unmarshal.isNullPointer(handles.PFN_glPollAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollAsyncSGIX");
         try { return (int) Handles.MH_glPollAsyncSGIX.invokeExact(handles.PFN_glPollAsyncSGIX, markerp); }
         catch (Throwable e) { throw new RuntimeException("error in glPollAsyncSGIX", e); }

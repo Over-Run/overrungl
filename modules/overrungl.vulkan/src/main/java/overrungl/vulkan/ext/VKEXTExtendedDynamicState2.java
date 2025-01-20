@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTExtendedDynamicState2 {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
@@ -34,27 +33,12 @@ public class VKEXTExtendedDynamicState2 {
     public static final int VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT = VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE;
     public static final int VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT = VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetPatchControlPointsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetRasterizerDiscardEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetDepthBiasEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetLogicOpEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetPrimitiveRestartEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetPatchControlPointsEXT,
-            FD_vkCmdSetRasterizerDiscardEnableEXT,
-            FD_vkCmdSetDepthBiasEnableEXT,
-            FD_vkCmdSetLogicOpEXT,
-            FD_vkCmdSetPrimitiveRestartEnableEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetPatchControlPointsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetPatchControlPointsEXT);
-        public static final MethodHandle MH_vkCmdSetRasterizerDiscardEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRasterizerDiscardEnableEXT);
-        public static final MethodHandle MH_vkCmdSetDepthBiasEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDepthBiasEnableEXT);
-        public static final MethodHandle MH_vkCmdSetLogicOpEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetLogicOpEXT);
-        public static final MethodHandle MH_vkCmdSetPrimitiveRestartEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetPrimitiveRestartEnableEXT);
+        public static final MethodHandle MH_vkCmdSetPatchControlPointsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetRasterizerDiscardEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetDepthBiasEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetLogicOpEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetPrimitiveRestartEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdSetPatchControlPointsEXT;
         public final MemorySegment PFN_vkCmdSetRasterizerDiscardEnableEXT;
         public final MemorySegment PFN_vkCmdSetDepthBiasEnableEXT;

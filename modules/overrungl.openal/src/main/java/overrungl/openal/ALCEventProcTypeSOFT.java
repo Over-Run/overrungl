@@ -31,14 +31,14 @@ public interface ALCEventProcTypeSOFT extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(ALCEventProcTypeSOFT.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("ALCenum") int eventType, @CType("ALCenum") int deviceType, @CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCsizei") int length, @CType("const ALCchar*") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam);
+    void invoke(@CType("ALCenum") int eventType, @CType("ALCenum") int deviceType, @CType("ALCdevice *") MemorySegment device, @CType("ALCsizei") int length, @CType("const ALCchar*") MemorySegment message, @CType("void*") MemorySegment userParam);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("ALCenum") int eventType, @CType("ALCenum") int deviceType, @CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCsizei") int length, @CType("const ALCchar*") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
+    static void invoke(MemorySegment stub, @CType("ALCenum") int eventType, @CType("ALCenum") int deviceType, @CType("ALCdevice *") MemorySegment device, @CType("ALCsizei") int length, @CType("const ALCchar*") MemorySegment message, @CType("void*") MemorySegment userParam) {
         try { HANDLE.invokeExact(stub, eventType, deviceType, device, length, message, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in ALCEventProcTypeSOFT::invoke (static invoker)", e); }
     }

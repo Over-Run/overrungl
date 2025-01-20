@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVScissorExclusive {
     public static final int VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 2;
     public static final String VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive";
@@ -31,18 +30,9 @@ public class VKNVScissorExclusive {
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV = 1000205000;
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV = 1000205001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetExclusiveScissorEnableNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetExclusiveScissorNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetExclusiveScissorEnableNV,
-            FD_vkCmdSetExclusiveScissorNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetExclusiveScissorEnableNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetExclusiveScissorEnableNV);
-        public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetExclusiveScissorNV);
+        public static final MethodHandle MH_vkCmdSetExclusiveScissorEnableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetExclusiveScissorEnableNV;
         public final MemorySegment PFN_vkCmdSetExclusiveScissorNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

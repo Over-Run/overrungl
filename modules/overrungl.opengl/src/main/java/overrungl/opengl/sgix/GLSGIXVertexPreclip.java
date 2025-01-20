@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXVertexPreclip {
     public static final int GL_VERTEX_PRECLIP_SGIX = 0x83EE;
     public static final int GL_VERTEX_PRECLIP_HINT_SGIX = 0x83EF;

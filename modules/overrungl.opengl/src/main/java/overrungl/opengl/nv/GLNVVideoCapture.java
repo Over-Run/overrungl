@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -55,48 +54,19 @@ public final class GLNVVideoCapture {
     public static final int GL_VIDEO_CAPTURE_FIELD_LOWER_HEIGHT_NV = 0x903B;
     public static final int GL_VIDEO_CAPTURE_SURFACE_ORIGIN_NV = 0x903C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginVideoCaptureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindVideoCaptureStreamBufferNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindVideoCaptureStreamTextureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndVideoCaptureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetVideoCaptureivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginVideoCaptureNV,
-            FD_glBindVideoCaptureStreamBufferNV,
-            FD_glBindVideoCaptureStreamTextureNV,
-            FD_glEndVideoCaptureNV,
-            FD_glGetVideoCaptureivNV,
-            FD_glGetVideoCaptureStreamivNV,
-            FD_glGetVideoCaptureStreamfvNV,
-            FD_glGetVideoCaptureStreamdvNV,
-            FD_glVideoCaptureNV,
-            FD_glVideoCaptureStreamParameterivNV,
-            FD_glVideoCaptureStreamParameterfvNV,
-            FD_glVideoCaptureStreamParameterdvNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glBeginVideoCaptureNV);
-        public static final MethodHandle MH_glBindVideoCaptureStreamBufferNV = RuntimeHelper.downcall(Descriptors.FD_glBindVideoCaptureStreamBufferNV);
-        public static final MethodHandle MH_glBindVideoCaptureStreamTextureNV = RuntimeHelper.downcall(Descriptors.FD_glBindVideoCaptureStreamTextureNV);
-        public static final MethodHandle MH_glEndVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glEndVideoCaptureNV);
-        public static final MethodHandle MH_glGetVideoCaptureivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureivNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamivNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamfvNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamdvNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamdvNV);
-        public static final MethodHandle MH_glVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterivNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterfvNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterdvNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterdvNV);
+        public static final MethodHandle MH_glBeginVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindVideoCaptureStreamBufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindVideoCaptureStreamTextureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetVideoCaptureivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamdvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterdvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBeginVideoCaptureNV;
         public final MemorySegment PFN_glBindVideoCaptureStreamBufferNV;
         public final MemorySegment PFN_glBindVideoCaptureStreamTextureNV;
@@ -153,49 +123,49 @@ public final class GLNVVideoCapture {
         catch (Throwable e) { throw new RuntimeException("error in glEndVideoCaptureNV", e); }
     }
 
-    public void GetVideoCaptureivNV(@CType("GLuint") int video_capture_slot, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoCaptureivNV(@CType("GLuint") int video_capture_slot, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureivNV");
         try { Handles.MH_glGetVideoCaptureivNV.invokeExact(handles.PFN_glGetVideoCaptureivNV, video_capture_slot, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureivNV", e); }
     }
 
-    public void GetVideoCaptureStreamivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoCaptureStreamivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamivNV");
         try { Handles.MH_glGetVideoCaptureStreamivNV.invokeExact(handles.PFN_glGetVideoCaptureStreamivNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamivNV", e); }
     }
 
-    public void GetVideoCaptureStreamfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoCaptureStreamfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamfvNV");
         try { Handles.MH_glGetVideoCaptureStreamfvNV.invokeExact(handles.PFN_glGetVideoCaptureStreamfvNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamfvNV", e); }
     }
 
-    public void GetVideoCaptureStreamdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
+    public void GetVideoCaptureStreamdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamdvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamdvNV");
         try { Handles.MH_glGetVideoCaptureStreamdvNV.invokeExact(handles.PFN_glGetVideoCaptureStreamdvNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamdvNV", e); }
     }
 
-    public @CType("GLenum") int VideoCaptureNV(@CType("GLuint") int video_capture_slot, @CType("GLuint *") java.lang.foreign.MemorySegment sequence_num, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment capture_time) {
+    public @CType("GLenum") int VideoCaptureNV(@CType("GLuint") int video_capture_slot, @CType("GLuint *") MemorySegment sequence_num, @CType("GLuint64EXT *") MemorySegment capture_time) {
         if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureNV");
         try { return (int) Handles.MH_glVideoCaptureNV.invokeExact(handles.PFN_glVideoCaptureNV, video_capture_slot, sequence_num, capture_time); }
         catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureNV", e); }
     }
 
-    public void VideoCaptureStreamParameterivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void VideoCaptureStreamParameterivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterivNV");
         try { Handles.MH_glVideoCaptureStreamParameterivNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterivNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterivNV", e); }
     }
 
-    public void VideoCaptureStreamParameterfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void VideoCaptureStreamParameterfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterfvNV");
         try { Handles.MH_glVideoCaptureStreamParameterfvNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterfvNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterfvNV", e); }
     }
 
-    public void VideoCaptureStreamParameterdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLdouble *") java.lang.foreign.MemorySegment params) {
+    public void VideoCaptureStreamParameterdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLdouble *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterdvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterdvNV");
         try { Handles.MH_glVideoCaptureStreamParameterdvNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterdvNV, video_capture_slot, stream, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterdvNV", e); }

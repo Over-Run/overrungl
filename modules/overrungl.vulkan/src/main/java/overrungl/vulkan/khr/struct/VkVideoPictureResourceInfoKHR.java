@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### codedOffset
-/// [Byte offset][#OFFSET_codedOffset] - [Memory layout][#ML_codedOffset] - [Getter][#codedOffset()] - [Setter][#codedOffset(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_codedOffset] - [Memory layout][#ML_codedOffset] - [Getter][#codedOffset()] - [Setter][#codedOffset(MemorySegment)]
 /// ### codedExtent
-/// [Byte offset][#OFFSET_codedExtent] - [Memory layout][#ML_codedExtent] - [Getter][#codedExtent()] - [Setter][#codedExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_codedExtent] - [Memory layout][#ML_codedExtent] - [Getter][#codedExtent()] - [Setter][#codedExtent(MemorySegment)]
 /// ### baseArrayLayer
 /// [VarHandle][#VH_baseArrayLayer] - [Getter][#baseArrayLayer()] - [Setter][#baseArrayLayer(int)]
 /// ### imageViewBinding
-/// [VarHandle][#VH_imageViewBinding] - [Getter][#imageViewBinding()] - [Setter][#imageViewBinding(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_imageViewBinding] - [Getter][#imageViewBinding()] - [Setter][#imageViewBinding(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -61,7 +61,7 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `codedOffset`.
     public static final long OFFSET_codedOffset = LAYOUT.byteOffset(PathElement.groupElement("codedOffset"));
@@ -73,7 +73,7 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
     public static final MemoryLayout ML_codedExtent = LAYOUT.select(PathElement.groupElement("codedExtent"));
     /// The [VarHandle] of `baseArrayLayer` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseArrayLayer"));
-    /// The [VarHandle] of `imageViewBinding` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `imageViewBinding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageViewBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewBinding"));
 
     /// Creates `VkVideoPictureResourceInfoKHR` with the given segment.
@@ -119,7 +119,7 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
     /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkOffset2D") java.lang.foreign.MemorySegment codedOffset, @CType("VkExtent2D") java.lang.foreign.MemorySegment codedExtent, @CType("uint32_t") int baseArrayLayer, @CType("VkImageView") java.lang.foreign.MemorySegment imageViewBinding) { return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset).codedExtent(codedExtent).baseArrayLayer(baseArrayLayer).imageViewBinding(imageViewBinding); }
+    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkOffset2D") MemorySegment codedOffset, @CType("VkExtent2D") MemorySegment codedExtent, @CType("uint32_t") int baseArrayLayer, @CType("VkImageView") MemorySegment imageViewBinding) { return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset).codedExtent(codedExtent).baseArrayLayer(baseArrayLayer).imageViewBinding(imageViewBinding); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -156,71 +156,71 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoPictureResourceInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkVideoPictureResourceInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoPictureResourceInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoPictureResourceInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `codedOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_codedOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedOffset, index), ML_codedOffset); }
+    public static @CType("VkOffset2D") MemorySegment get_codedOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedOffset, index), ML_codedOffset); }
     /// {@return `codedOffset`}
     /// @param segment the segment of the struct
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_codedOffset(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_codedOffset(segment, 0L); }
+    public static @CType("VkOffset2D") MemorySegment get_codedOffset(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_codedOffset(segment, 0L); }
     /// {@return `codedOffset`}
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment codedOffset() { return VkVideoPictureResourceInfoKHR.get_codedOffset(this.segment()); }
+    public @CType("VkOffset2D") MemorySegment codedOffset() { return VkVideoPictureResourceInfoKHR.get_codedOffset(this.segment()); }
     /// Sets `codedOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_codedOffset(MemorySegment segment, long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedOffset, index), ML_codedOffset.byteSize()); }
+    public static void set_codedOffset(MemorySegment segment, long index, @CType("VkOffset2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedOffset, index), ML_codedOffset.byteSize()); }
     /// Sets `codedOffset` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_codedOffset(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(segment, 0L, value); }
+    public static void set_codedOffset(MemorySegment segment, @CType("VkOffset2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(segment, 0L, value); }
     /// Sets `codedOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoPictureResourceInfoKHR codedOffset(@CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(this.segment(), value); return this; }
+    public VkVideoPictureResourceInfoKHR codedOffset(@CType("VkOffset2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(this.segment(), value); return this; }
 
     /// {@return `codedExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_codedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedExtent, index), ML_codedExtent); }
+    public static @CType("VkExtent2D") MemorySegment get_codedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedExtent, index), ML_codedExtent); }
     /// {@return `codedExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_codedExtent(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_codedExtent(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_codedExtent(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_codedExtent(segment, 0L); }
     /// {@return `codedExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment codedExtent() { return VkVideoPictureResourceInfoKHR.get_codedExtent(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment codedExtent() { return VkVideoPictureResourceInfoKHR.get_codedExtent(this.segment()); }
     /// Sets `codedExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_codedExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedExtent, index), ML_codedExtent.byteSize()); }
+    public static void set_codedExtent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedExtent, index), ML_codedExtent.byteSize()); }
     /// Sets `codedExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_codedExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(segment, 0L, value); }
+    public static void set_codedExtent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(segment, 0L, value); }
     /// Sets `codedExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoPictureResourceInfoKHR codedExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(this.segment(), value); return this; }
+    public VkVideoPictureResourceInfoKHR codedExtent(@CType("VkExtent2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(this.segment(), value); return this; }
 
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
@@ -248,25 +248,25 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
     /// {@return `imageViewBinding` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageViewBinding(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_imageViewBinding.get(segment, 0L, index); }
+    public static @CType("VkImageView") MemorySegment get_imageViewBinding(MemorySegment segment, long index) { return (MemorySegment) VH_imageViewBinding.get(segment, 0L, index); }
     /// {@return `imageViewBinding`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageViewBinding(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(segment, 0L); }
+    public static @CType("VkImageView") MemorySegment get_imageViewBinding(MemorySegment segment) { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(segment, 0L); }
     /// {@return `imageViewBinding`}
-    public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewBinding() { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(this.segment()); }
+    public @CType("VkImageView") MemorySegment imageViewBinding() { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(this.segment()); }
     /// Sets `imageViewBinding` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageViewBinding(MemorySegment segment, long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VH_imageViewBinding.set(segment, 0L, index, value); }
+    public static void set_imageViewBinding(MemorySegment segment, long index, @CType("VkImageView") MemorySegment value) { VH_imageViewBinding.set(segment, 0L, index, value); }
     /// Sets `imageViewBinding` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageViewBinding(MemorySegment segment, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(segment, 0L, value); }
+    public static void set_imageViewBinding(MemorySegment segment, @CType("VkImageView") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(segment, 0L, value); }
     /// Sets `imageViewBinding` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoPictureResourceInfoKHR imageViewBinding(@CType("VkImageView") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(this.segment(), value); return this; }
+    public VkVideoPictureResourceInfoKHR imageViewBinding(@CType("VkImageView") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoPictureResourceInfoKHR].
     public static final class Buffer extends VkVideoPictureResourceInfoKHR {
@@ -301,30 +301,30 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoPictureResourceInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoPictureResourceInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `codedOffset` at the given index}
         /// @param index the index
-        public @CType("VkOffset2D") java.lang.foreign.MemorySegment codedOffsetAt(long index) { return VkVideoPictureResourceInfoKHR.get_codedOffset(this.segment(), index); }
+        public @CType("VkOffset2D") MemorySegment codedOffsetAt(long index) { return VkVideoPictureResourceInfoKHR.get_codedOffset(this.segment(), index); }
         /// Sets `codedOffset` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer codedOffsetAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(this.segment(), index, value); return this; }
+        public Buffer codedOffsetAt(long index, @CType("VkOffset2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedOffset(this.segment(), index, value); return this; }
 
         /// {@return `codedExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment codedExtentAt(long index) { return VkVideoPictureResourceInfoKHR.get_codedExtent(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment codedExtentAt(long index) { return VkVideoPictureResourceInfoKHR.get_codedExtent(this.segment(), index); }
         /// Sets `codedExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer codedExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(this.segment(), index, value); return this; }
+        public Buffer codedExtentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_codedExtent(this.segment(), index, value); return this; }
 
         /// {@return `baseArrayLayer` at the given index}
         /// @param index the index
@@ -337,12 +337,12 @@ public sealed class VkVideoPictureResourceInfoKHR extends Struct {
 
         /// {@return `imageViewBinding` at the given index}
         /// @param index the index
-        public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewBindingAt(long index) { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(this.segment(), index); }
+        public @CType("VkImageView") MemorySegment imageViewBindingAt(long index) { return VkVideoPictureResourceInfoKHR.get_imageViewBinding(this.segment(), index); }
         /// Sets `imageViewBinding` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageViewBindingAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(this.segment(), index, value); return this; }
+        public Buffer imageViewBindingAt(long index, @CType("VkImageView") MemorySegment value) { VkVideoPictureResourceInfoKHR.set_imageViewBinding(this.segment(), index, value); return this; }
 
     }
 }

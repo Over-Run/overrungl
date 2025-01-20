@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### rateControlModes
@@ -40,7 +40,7 @@ import overrungl.util.*;
 /// ### maxQualityLevels
 /// [VarHandle][#VH_maxQualityLevels] - [Getter][#maxQualityLevels()] - [Setter][#maxQualityLevels(int)]
 /// ### encodeInputPictureGranularity
-/// [Byte offset][#OFFSET_encodeInputPictureGranularity] - [Memory layout][#ML_encodeInputPictureGranularity] - [Getter][#encodeInputPictureGranularity()] - [Setter][#encodeInputPictureGranularity(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_encodeInputPictureGranularity] - [Memory layout][#ML_encodeInputPictureGranularity] - [Getter][#encodeInputPictureGranularity()] - [Setter][#encodeInputPictureGranularity(MemorySegment)]
 /// ### supportedEncodeFeedbackFlags
 /// [VarHandle][#VH_supportedEncodeFeedbackFlags] - [Getter][#supportedEncodeFeedbackFlags()] - [Setter][#supportedEncodeFeedbackFlags(int)]
 /// ## Layout
@@ -73,7 +73,7 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
@@ -135,7 +135,7 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
     /// Allocates a `VkVideoEncodeCapabilitiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeCapabilitiesKHR`
-    public static VkVideoEncodeCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkVideoEncodeCapabilityFlagsKHR") int flags, @CType("VkVideoEncodeRateControlModeFlagsKHR") int rateControlModes, @CType("uint32_t") int maxRateControlLayers, @CType("uint64_t") long maxBitrate, @CType("uint32_t") int maxQualityLevels, @CType("VkExtent2D") java.lang.foreign.MemorySegment encodeInputPictureGranularity, @CType("VkVideoEncodeFeedbackFlagsKHR") int supportedEncodeFeedbackFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlModes(rateControlModes).maxRateControlLayers(maxRateControlLayers).maxBitrate(maxBitrate).maxQualityLevels(maxQualityLevels).encodeInputPictureGranularity(encodeInputPictureGranularity).supportedEncodeFeedbackFlags(supportedEncodeFeedbackFlags); }
+    public static VkVideoEncodeCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeCapabilityFlagsKHR") int flags, @CType("VkVideoEncodeRateControlModeFlagsKHR") int rateControlModes, @CType("uint32_t") int maxRateControlLayers, @CType("uint64_t") long maxBitrate, @CType("uint32_t") int maxQualityLevels, @CType("VkExtent2D") MemorySegment encodeInputPictureGranularity, @CType("VkVideoEncodeFeedbackFlagsKHR") int supportedEncodeFeedbackFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlModes(rateControlModes).maxRateControlLayers(maxRateControlLayers).maxBitrate(maxBitrate).maxQualityLevels(maxQualityLevels).encodeInputPictureGranularity(encodeInputPictureGranularity).supportedEncodeFeedbackFlags(supportedEncodeFeedbackFlags); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -172,25 +172,25 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeCapabilitiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeCapabilitiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeCapabilitiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeCapabilitiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeCapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeCapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -310,25 +310,25 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
     /// {@return `encodeInputPictureGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_encodeInputPictureGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_encodeInputPictureGranularity, index), ML_encodeInputPictureGranularity); }
+    public static @CType("VkExtent2D") MemorySegment get_encodeInputPictureGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_encodeInputPictureGranularity, index), ML_encodeInputPictureGranularity); }
     /// {@return `encodeInputPictureGranularity`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_encodeInputPictureGranularity(MemorySegment segment) { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_encodeInputPictureGranularity(MemorySegment segment) { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(segment, 0L); }
     /// {@return `encodeInputPictureGranularity`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment encodeInputPictureGranularity() { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment encodeInputPictureGranularity() { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(this.segment()); }
     /// Sets `encodeInputPictureGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_encodeInputPictureGranularity(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_encodeInputPictureGranularity, index), ML_encodeInputPictureGranularity.byteSize()); }
+    public static void set_encodeInputPictureGranularity(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_encodeInputPictureGranularity, index), ML_encodeInputPictureGranularity.byteSize()); }
     /// Sets `encodeInputPictureGranularity` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_encodeInputPictureGranularity(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(segment, 0L, value); }
+    public static void set_encodeInputPictureGranularity(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(segment, 0L, value); }
     /// Sets `encodeInputPictureGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(this.segment(), value); return this; }
+    public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(this.segment(), value); return this; }
 
     /// {@return `supportedEncodeFeedbackFlags` at the given index}
     /// @param segment the segment of the struct
@@ -386,12 +386,12 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeCapabilitiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeCapabilitiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -440,12 +440,12 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends Struct {
 
         /// {@return `encodeInputPictureGranularity` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment encodeInputPictureGranularityAt(long index) { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment encodeInputPictureGranularityAt(long index) { return VkVideoEncodeCapabilitiesKHR.get_encodeInputPictureGranularity(this.segment(), index); }
         /// Sets `encodeInputPictureGranularity` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer encodeInputPictureGranularityAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(this.segment(), index, value); return this; }
+        public Buffer encodeInputPictureGranularityAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeCapabilitiesKHR.set_encodeInputPictureGranularity(this.segment(), index, value); return this; }
 
         /// {@return `supportedEncodeFeedbackFlags` at the given index}
         /// @param index the index

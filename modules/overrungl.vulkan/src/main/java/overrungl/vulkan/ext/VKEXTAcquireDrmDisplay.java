@@ -22,23 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTAcquireDrmDisplay {
     public static final int VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkAcquireDrmDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDrmDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkAcquireDrmDisplayEXT,
-            FD_vkGetDrmDisplayEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkAcquireDrmDisplayEXT = RuntimeHelper.downcall(Descriptors.FD_vkAcquireDrmDisplayEXT);
-        public static final MethodHandle MH_vkGetDrmDisplayEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDrmDisplayEXT);
+        public static final MethodHandle MH_vkAcquireDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkAcquireDrmDisplayEXT;
         public final MemorySegment PFN_vkGetDrmDisplayEXT;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

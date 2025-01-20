@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVPrimitiveShadingRate {
     public static final int GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1;
     public static final int GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2;

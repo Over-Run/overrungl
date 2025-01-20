@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,69 +36,26 @@ public final class GLEXTMemoryObject {
     public static final int GL_DRIVER_UUID_EXT = 0x9598;
     public static final int GL_UUID_SIZE_EXT = 16;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetUnsignedBytevEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUnsignedBytei_vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteMemoryObjectsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsMemoryObjectEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreateMemoryObjectsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMemoryObjectParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMemoryObjectParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexStorageMem2DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTexStorageMem2DMultisampleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTexStorageMem3DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTexStorageMem3DMultisampleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBufferStorageMemEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureStorageMem2DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureStorageMem2DMultisampleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureStorageMem3DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureStorageMem3DMultisampleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glNamedBufferStorageMemEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTexStorageMem1DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureStorageMem1DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetUnsignedBytevEXT,
-            FD_glGetUnsignedBytei_vEXT,
-            FD_glDeleteMemoryObjectsEXT,
-            FD_glIsMemoryObjectEXT,
-            FD_glCreateMemoryObjectsEXT,
-            FD_glMemoryObjectParameterivEXT,
-            FD_glGetMemoryObjectParameterivEXT,
-            FD_glTexStorageMem2DEXT,
-            FD_glTexStorageMem2DMultisampleEXT,
-            FD_glTexStorageMem3DEXT,
-            FD_glTexStorageMem3DMultisampleEXT,
-            FD_glBufferStorageMemEXT,
-            FD_glTextureStorageMem2DEXT,
-            FD_glTextureStorageMem2DMultisampleEXT,
-            FD_glTextureStorageMem3DEXT,
-            FD_glTextureStorageMem3DMultisampleEXT,
-            FD_glNamedBufferStorageMemEXT,
-            FD_glTexStorageMem1DEXT,
-            FD_glTextureStorageMem1DEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUnsignedBytevEXT);
-        public static final MethodHandle MH_glGetUnsignedBytei_vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUnsignedBytei_vEXT);
-        public static final MethodHandle MH_glDeleteMemoryObjectsEXT = RuntimeHelper.downcall(Descriptors.FD_glDeleteMemoryObjectsEXT);
-        public static final MethodHandle MH_glIsMemoryObjectEXT = RuntimeHelper.downcall(Descriptors.FD_glIsMemoryObjectEXT);
-        public static final MethodHandle MH_glCreateMemoryObjectsEXT = RuntimeHelper.downcall(Descriptors.FD_glCreateMemoryObjectsEXT);
-        public static final MethodHandle MH_glMemoryObjectParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glMemoryObjectParameterivEXT);
-        public static final MethodHandle MH_glGetMemoryObjectParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetMemoryObjectParameterivEXT);
-        public static final MethodHandle MH_glTexStorageMem2DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorageMem2DEXT);
-        public static final MethodHandle MH_glTexStorageMem2DMultisampleEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorageMem2DMultisampleEXT);
-        public static final MethodHandle MH_glTexStorageMem3DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorageMem3DEXT);
-        public static final MethodHandle MH_glTexStorageMem3DMultisampleEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorageMem3DMultisampleEXT);
-        public static final MethodHandle MH_glBufferStorageMemEXT = RuntimeHelper.downcall(Descriptors.FD_glBufferStorageMemEXT);
-        public static final MethodHandle MH_glTextureStorageMem2DEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageMem2DEXT);
-        public static final MethodHandle MH_glTextureStorageMem2DMultisampleEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageMem2DMultisampleEXT);
-        public static final MethodHandle MH_glTextureStorageMem3DEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageMem3DEXT);
-        public static final MethodHandle MH_glTextureStorageMem3DMultisampleEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageMem3DMultisampleEXT);
-        public static final MethodHandle MH_glNamedBufferStorageMemEXT = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferStorageMemEXT);
-        public static final MethodHandle MH_glTexStorageMem1DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorageMem1DEXT);
-        public static final MethodHandle MH_glTextureStorageMem1DEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageMem1DEXT);
+        public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUnsignedBytei_vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteMemoryObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsMemoryObjectEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateMemoryObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMemoryObjectParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMemoryObjectParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexStorageMem2DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBufferStorageMemEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem2DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glNamedBufferStorageMemEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem1DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem1DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glGetUnsignedBytevEXT;
         public final MemorySegment PFN_glGetUnsignedBytei_vEXT;
         public final MemorySegment PFN_glDeleteMemoryObjectsEXT;
@@ -143,19 +99,19 @@ public final class GLEXTMemoryObject {
         this.handles = new Handles(func);
     }
 
-    public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
+    public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
         try { Handles.MH_glGetUnsignedBytevEXT.invokeExact(handles.PFN_glGetUnsignedBytevEXT, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytevEXT", e); }
     }
 
-    public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
+    public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
         try { Handles.MH_glGetUnsignedBytei_vEXT.invokeExact(handles.PFN_glGetUnsignedBytei_vEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytei_vEXT", e); }
     }
 
-    public void DeleteMemoryObjectsEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment memoryObjects) {
+    public void DeleteMemoryObjectsEXT(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment memoryObjects) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteMemoryObjectsEXT");
         try { Handles.MH_glDeleteMemoryObjectsEXT.invokeExact(handles.PFN_glDeleteMemoryObjectsEXT, n, memoryObjects); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteMemoryObjectsEXT", e); }
@@ -167,19 +123,19 @@ public final class GLEXTMemoryObject {
         catch (Throwable e) { throw new RuntimeException("error in glIsMemoryObjectEXT", e); }
     }
 
-    public void CreateMemoryObjectsEXT(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment memoryObjects) {
+    public void CreateMemoryObjectsEXT(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment memoryObjects) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateMemoryObjectsEXT");
         try { Handles.MH_glCreateMemoryObjectsEXT.invokeExact(handles.PFN_glCreateMemoryObjectsEXT, n, memoryObjects); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateMemoryObjectsEXT", e); }
     }
 
-    public void MemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void MemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryObjectParameterivEXT");
         try { Handles.MH_glMemoryObjectParameterivEXT.invokeExact(handles.PFN_glMemoryObjectParameterivEXT, memoryObject, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMemoryObjectParameterivEXT", e); }
     }
 
-    public void GetMemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetMemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectParameterivEXT");
         try { Handles.MH_glGetMemoryObjectParameterivEXT.invokeExact(handles.PFN_glGetMemoryObjectParameterivEXT, memoryObject, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectParameterivEXT", e); }

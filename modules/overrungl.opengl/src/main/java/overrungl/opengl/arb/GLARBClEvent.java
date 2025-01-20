@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,15 +27,8 @@ public final class GLARBClEvent {
     public static final int GL_SYNC_CL_EVENT_ARB = 0x8240;
     public static final int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCreateSyncFromCLeventARB = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCreateSyncFromCLeventARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCreateSyncFromCLeventARB = RuntimeHelper.downcall(Descriptors.FD_glCreateSyncFromCLeventARB);
+        public static final MethodHandle MH_glCreateSyncFromCLeventARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glCreateSyncFromCLeventARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glCreateSyncFromCLeventARB = func.invoke("glCreateSyncFromCLeventARB");
@@ -47,9 +39,9 @@ public final class GLARBClEvent {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLsync") java.lang.foreign.MemorySegment CreateSyncFromCLeventARB(@CType("struct _cl_context *") java.lang.foreign.MemorySegment context, @CType("struct _cl_event *") java.lang.foreign.MemorySegment event, @CType("GLbitfield") int flags) {
+    public @CType("GLsync") MemorySegment CreateSyncFromCLeventARB(@CType("struct _cl_context *") MemorySegment context, @CType("struct _cl_event *") MemorySegment event, @CType("GLbitfield") int flags) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
+        try { return (MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateSyncFromCLeventARB", e); }
     }
 

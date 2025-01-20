@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### disabledValidationCheckCount
 /// [VarHandle][#VH_disabledValidationCheckCount] - [Getter][#disabledValidationCheckCount()] - [Setter][#disabledValidationCheckCount(int)]
 /// ### pDisabledValidationChecks
-/// [VarHandle][#VH_pDisabledValidationChecks] - [Getter][#pDisabledValidationChecks()] - [Setter][#pDisabledValidationChecks(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDisabledValidationChecks] - [Getter][#pDisabledValidationChecks()] - [Setter][#pDisabledValidationChecks(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkValidationFlagsEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `disabledValidationCheckCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_disabledValidationCheckCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("disabledValidationCheckCount"));
-    /// The [VarHandle] of `pDisabledValidationChecks` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDisabledValidationChecks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDisabledValidationChecks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDisabledValidationChecks"));
 
     /// Creates `VkValidationFlagsEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// Allocates a `VkValidationFlagsEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkValidationFlagsEXT`
-    public static VkValidationFlagsEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int disabledValidationCheckCount, @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment pDisabledValidationChecks) { return alloc(allocator).sType(sType).pNext(pNext).disabledValidationCheckCount(disabledValidationCheckCount).pDisabledValidationChecks(pDisabledValidationChecks); }
+    public static VkValidationFlagsEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int disabledValidationCheckCount, @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecks) { return alloc(allocator).sType(sType).pNext(pNext).disabledValidationCheckCount(disabledValidationCheckCount).pDisabledValidationChecks(pDisabledValidationChecks); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkValidationFlagsEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkValidationFlagsEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkValidationFlagsEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkValidationFlagsEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), value); return this; }
+    public VkValidationFlagsEXT pNext(@CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `disabledValidationCheckCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// {@return `pDisabledValidationChecks` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment get_pDisabledValidationChecks(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDisabledValidationChecks.get(segment, 0L, index); }
+    public static @CType("const VkValidationCheckEXT *") MemorySegment get_pDisabledValidationChecks(MemorySegment segment, long index) { return (MemorySegment) VH_pDisabledValidationChecks.get(segment, 0L, index); }
     /// {@return `pDisabledValidationChecks`}
     /// @param segment the segment of the struct
-    public static @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment get_pDisabledValidationChecks(MemorySegment segment) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(segment, 0L); }
+    public static @CType("const VkValidationCheckEXT *") MemorySegment get_pDisabledValidationChecks(MemorySegment segment) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(segment, 0L); }
     /// {@return `pDisabledValidationChecks`}
-    public @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment pDisabledValidationChecks() { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment()); }
+    public @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecks() { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment()); }
     /// Sets `pDisabledValidationChecks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDisabledValidationChecks(MemorySegment segment, long index, @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment value) { VH_pDisabledValidationChecks.set(segment, 0L, index, value); }
+    public static void set_pDisabledValidationChecks(MemorySegment segment, long index, @CType("const VkValidationCheckEXT *") MemorySegment value) { VH_pDisabledValidationChecks.set(segment, 0L, index, value); }
     /// Sets `pDisabledValidationChecks` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDisabledValidationChecks(MemorySegment segment, @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(segment, 0L, value); }
+    public static void set_pDisabledValidationChecks(MemorySegment segment, @CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(segment, 0L, value); }
     /// Sets `pDisabledValidationChecks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT pDisabledValidationChecks(@CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), value); return this; }
+    public VkValidationFlagsEXT pDisabledValidationChecks(@CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), value); return this; }
 
     /// A buffer of [VkValidationFlagsEXT].
     public static final class Buffer extends VkValidationFlagsEXT {
@@ -239,12 +239,12 @@ public sealed class VkValidationFlagsEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkValidationFlagsEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkValidationFlagsEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `disabledValidationCheckCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkValidationFlagsEXT extends Struct {
 
         /// {@return `pDisabledValidationChecks` at the given index}
         /// @param index the index
-        public @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment pDisabledValidationChecksAt(long index) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment(), index); }
+        public @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecksAt(long index) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment(), index); }
         /// Sets `pDisabledValidationChecks` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDisabledValidationChecksAt(long index, @CType("const VkValidationCheckEXT *") java.lang.foreign.MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), index, value); return this; }
+        public Buffer pDisabledValidationChecksAt(long index, @CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), index, value); return this; }
 
     }
 }

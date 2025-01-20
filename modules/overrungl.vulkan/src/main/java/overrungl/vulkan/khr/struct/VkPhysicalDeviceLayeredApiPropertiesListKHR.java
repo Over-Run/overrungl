@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### layeredApiCount
 /// [VarHandle][#VH_layeredApiCount] - [Getter][#layeredApiCount()] - [Setter][#layeredApiCount(int)]
 /// ### pLayeredApis
-/// [VarHandle][#VH_pLayeredApis] - [Getter][#pLayeredApis()] - [Setter][#pLayeredApis(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pLayeredApis] - [Getter][#pLayeredApis()] - [Setter][#pLayeredApis(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `layeredApiCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_layeredApiCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredApiCount"));
-    /// The [VarHandle] of `pLayeredApis` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pLayeredApis` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pLayeredApis = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLayeredApis"));
 
     /// Creates `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
     /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int layeredApiCount, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment pLayeredApis) { return alloc(allocator).sType(sType).pNext(pNext).layeredApiCount(layeredApiCount).pLayeredApis(pLayeredApis); }
+    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint32_t") int layeredApiCount, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment pLayeredApis) { return alloc(allocator).sType(sType).pNext(pNext).layeredApiCount(layeredApiCount).pLayeredApis(pLayeredApis); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesListKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `layeredApiCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
     /// {@return `pLayeredApis` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment get_pLayeredApis(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pLayeredApis.get(segment, 0L, index); }
+    public static @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment get_pLayeredApis(MemorySegment segment, long index) { return (MemorySegment) VH_pLayeredApis.get(segment, 0L, index); }
     /// {@return `pLayeredApis`}
     /// @param segment the segment of the struct
-    public static @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment get_pLayeredApis(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(segment, 0L); }
+    public static @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment get_pLayeredApis(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(segment, 0L); }
     /// {@return `pLayeredApis`}
-    public @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment pLayeredApis() { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(this.segment()); }
+    public @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment pLayeredApis() { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(this.segment()); }
     /// Sets `pLayeredApis` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pLayeredApis(MemorySegment segment, long index, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment value) { VH_pLayeredApis.set(segment, 0L, index, value); }
+    public static void set_pLayeredApis(MemorySegment segment, long index, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment value) { VH_pLayeredApis.set(segment, 0L, index, value); }
     /// Sets `pLayeredApis` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pLayeredApis(MemorySegment segment, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(segment, 0L, value); }
+    public static void set_pLayeredApis(MemorySegment segment, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(segment, 0L, value); }
     /// Sets `pLayeredApis` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesListKHR pLayeredApis(@CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR pLayeredApis(@CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(this.segment(), value); return this; }
 
     /// A buffer of [VkPhysicalDeviceLayeredApiPropertiesListKHR].
     public static final class Buffer extends VkPhysicalDeviceLayeredApiPropertiesListKHR {
@@ -239,12 +239,12 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `layeredApiCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesListKHR extends Struct {
 
         /// {@return `pLayeredApis` at the given index}
         /// @param index the index
-        public @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment pLayeredApisAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(this.segment(), index); }
+        public @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment pLayeredApisAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesListKHR.get_pLayeredApis(this.segment(), index); }
         /// Sets `pLayeredApis` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pLayeredApisAt(long index, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(this.segment(), index, value); return this; }
+        public Buffer pLayeredApisAt(long index, @CType("VkPhysicalDeviceLayeredApiPropertiesKHR *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesListKHR.set_pLayeredApis(this.segment(), index, value); return this; }
 
     }
 }

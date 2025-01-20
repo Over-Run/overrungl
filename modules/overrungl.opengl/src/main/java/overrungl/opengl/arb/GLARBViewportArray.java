@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,48 +38,19 @@ public final class GLARBViewportArray {
     public static final int GL_LAST_VERTEX_CONVENTION = 0x8E4E;
     public static final int GL_PROVOKING_VERTEX = 0x8E4F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glViewportArrayv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glViewportIndexedf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glViewportIndexedfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glScissorArrayv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glScissorIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glScissorIndexedv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDepthRangeArrayv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDepthRangeIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glGetFloati_v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetDoublei_v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDepthRangeArraydvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDepthRangeIndexeddNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glViewportArrayv,
-            FD_glViewportIndexedf,
-            FD_glViewportIndexedfv,
-            FD_glScissorArrayv,
-            FD_glScissorIndexed,
-            FD_glScissorIndexedv,
-            FD_glDepthRangeArrayv,
-            FD_glDepthRangeIndexed,
-            FD_glGetFloati_v,
-            FD_glGetDoublei_v,
-            FD_glDepthRangeArraydvNV,
-            FD_glDepthRangeIndexeddNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glViewportArrayv = RuntimeHelper.downcall(Descriptors.FD_glViewportArrayv);
-        public static final MethodHandle MH_glViewportIndexedf = RuntimeHelper.downcall(Descriptors.FD_glViewportIndexedf);
-        public static final MethodHandle MH_glViewportIndexedfv = RuntimeHelper.downcall(Descriptors.FD_glViewportIndexedfv);
-        public static final MethodHandle MH_glScissorArrayv = RuntimeHelper.downcall(Descriptors.FD_glScissorArrayv);
-        public static final MethodHandle MH_glScissorIndexed = RuntimeHelper.downcall(Descriptors.FD_glScissorIndexed);
-        public static final MethodHandle MH_glScissorIndexedv = RuntimeHelper.downcall(Descriptors.FD_glScissorIndexedv);
-        public static final MethodHandle MH_glDepthRangeArrayv = RuntimeHelper.downcall(Descriptors.FD_glDepthRangeArrayv);
-        public static final MethodHandle MH_glDepthRangeIndexed = RuntimeHelper.downcall(Descriptors.FD_glDepthRangeIndexed);
-        public static final MethodHandle MH_glGetFloati_v = RuntimeHelper.downcall(Descriptors.FD_glGetFloati_v);
-        public static final MethodHandle MH_glGetDoublei_v = RuntimeHelper.downcall(Descriptors.FD_glGetDoublei_v);
-        public static final MethodHandle MH_glDepthRangeArraydvNV = RuntimeHelper.downcall(Descriptors.FD_glDepthRangeArraydvNV);
-        public static final MethodHandle MH_glDepthRangeIndexeddNV = RuntimeHelper.downcall(Descriptors.FD_glDepthRangeIndexeddNV);
+        public static final MethodHandle MH_glViewportArrayv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glViewportIndexedf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glViewportIndexedfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glScissorArrayv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glScissorIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glScissorIndexedv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangeArrayv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangeIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glGetFloati_v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDoublei_v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangeArraydvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangeIndexeddNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         public final MemorySegment PFN_glViewportArrayv;
         public final MemorySegment PFN_glViewportIndexedf;
         public final MemorySegment PFN_glViewportIndexedfv;
@@ -112,7 +82,7 @@ public final class GLARBViewportArray {
         this.handles = new Handles(func);
     }
 
-    public void ViewportArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ViewportArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glViewportArrayv)) throw new SymbolNotFoundError("Symbol not found: glViewportArrayv");
         try { Handles.MH_glViewportArrayv.invokeExact(handles.PFN_glViewportArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glViewportArrayv", e); }
@@ -124,13 +94,13 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in glViewportIndexedf", e); }
     }
 
-    public void ViewportIndexedfv(@CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ViewportIndexedfv(@CType("GLuint") int index, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glViewportIndexedfv)) throw new SymbolNotFoundError("Symbol not found: glViewportIndexedfv");
         try { Handles.MH_glViewportIndexedfv.invokeExact(handles.PFN_glViewportIndexedfv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glViewportIndexedfv", e); }
     }
 
-    public void ScissorArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void ScissorArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glScissorArrayv)) throw new SymbolNotFoundError("Symbol not found: glScissorArrayv");
         try { Handles.MH_glScissorArrayv.invokeExact(handles.PFN_glScissorArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glScissorArrayv", e); }
@@ -142,13 +112,13 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in glScissorIndexed", e); }
     }
 
-    public void ScissorIndexedv(@CType("GLuint") int index, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void ScissorIndexedv(@CType("GLuint") int index, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glScissorIndexedv)) throw new SymbolNotFoundError("Symbol not found: glScissorIndexedv");
         try { Handles.MH_glScissorIndexedv.invokeExact(handles.PFN_glScissorIndexedv, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glScissorIndexedv", e); }
     }
 
-    public void DepthRangeArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void DepthRangeArrayv(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glDepthRangeArrayv)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeArrayv");
         try { Handles.MH_glDepthRangeArrayv.invokeExact(handles.PFN_glDepthRangeArrayv, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glDepthRangeArrayv", e); }
@@ -160,19 +130,19 @@ public final class GLARBViewportArray {
         catch (Throwable e) { throw new RuntimeException("error in glDepthRangeIndexed", e); }
     }
 
-    public void GetFloati_v(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
+    public void GetFloati_v(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFloati_v)) throw new SymbolNotFoundError("Symbol not found: glGetFloati_v");
         try { Handles.MH_glGetFloati_v.invokeExact(handles.PFN_glGetFloati_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFloati_v", e); }
     }
 
-    public void GetDoublei_v(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble *") java.lang.foreign.MemorySegment data) {
+    public void GetDoublei_v(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetDoublei_v)) throw new SymbolNotFoundError("Symbol not found: glGetDoublei_v");
         try { Handles.MH_glGetDoublei_v.invokeExact(handles.PFN_glGetDoublei_v, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetDoublei_v", e); }
     }
 
-    public void DepthRangeArraydvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void DepthRangeArraydvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glDepthRangeArraydvNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeArraydvNV");
         try { Handles.MH_glDepthRangeArraydvNV.invokeExact(handles.PFN_glDepthRangeArraydvNV, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glDepthRangeArraydvNV", e); }

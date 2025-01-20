@@ -31,14 +31,14 @@ public interface STBIIORead extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIIORead.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("int") int invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size);
+    @CType("int") int invoke(@CType("void*") MemorySegment user, @CType("char *") MemorySegment data, @CType("int") int size);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size) {
+    static @CType("int") int invoke(MemorySegment stub, @CType("void*") MemorySegment user, @CType("char *") MemorySegment data, @CType("int") int size) {
         try { return (int) HANDLE.invokeExact(stub, user, data, size); }
         catch (Throwable e) { throw new RuntimeException("error in STBIIORead::invoke (static invoker)", e); }
     }

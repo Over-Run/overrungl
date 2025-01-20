@@ -30,7 +30,7 @@ import overrungl.util.*;
 /// ### payloadCount
 /// [VarHandle][#VH_payloadCount] - [Getter][#payloadCount()] - [Setter][#payloadCount(int)]
 /// ### payloads
-/// [Byte offset][#OFFSET_payloads] - [Memory layout][#ML_payloads] - [Getter][#payloads()] - [Setter][#payloads(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_payloads] - [Memory layout][#ML_payloads] - [Getter][#payloads()] - [Setter][#payloads(MemorySegment)]
 /// ### payloadStride
 /// [VarHandle][#VH_payloadStride] - [Getter][#payloadStride()] - [Setter][#payloadStride(long)]
 /// ## Layout
@@ -105,7 +105,7 @@ public sealed class VkDispatchGraphInfoAMDX extends Struct {
     /// Allocates a `VkDispatchGraphInfoAMDX` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDispatchGraphInfoAMDX`
-    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, @CType("uint32_t") int nodeIndex, @CType("uint32_t") int payloadCount, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment payloads, @CType("uint64_t") long payloadStride) { return alloc(allocator).nodeIndex(nodeIndex).payloadCount(payloadCount).payloads(payloads).payloadStride(payloadStride); }
+    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, @CType("uint32_t") int nodeIndex, @CType("uint32_t") int payloadCount, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment payloads, @CType("uint64_t") long payloadStride) { return alloc(allocator).nodeIndex(nodeIndex).payloadCount(payloadCount).payloads(payloads).payloadStride(payloadStride); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -165,25 +165,25 @@ public sealed class VkDispatchGraphInfoAMDX extends Struct {
     /// {@return `payloads` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment get_payloads(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_payloads, index), ML_payloads); }
+    public static @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment get_payloads(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_payloads, index), ML_payloads); }
     /// {@return `payloads`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment get_payloads(MemorySegment segment) { return VkDispatchGraphInfoAMDX.get_payloads(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment get_payloads(MemorySegment segment) { return VkDispatchGraphInfoAMDX.get_payloads(segment, 0L); }
     /// {@return `payloads`}
-    public @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment payloads() { return VkDispatchGraphInfoAMDX.get_payloads(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment payloads() { return VkDispatchGraphInfoAMDX.get_payloads(this.segment()); }
     /// Sets `payloads` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_payloads(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_payloads, index), ML_payloads.byteSize()); }
+    public static void set_payloads(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_payloads, index), ML_payloads.byteSize()); }
     /// Sets `payloads` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_payloads(MemorySegment segment, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(segment, 0L, value); }
+    public static void set_payloads(MemorySegment segment, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(segment, 0L, value); }
     /// Sets `payloads` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDispatchGraphInfoAMDX payloads(@CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(this.segment(), value); return this; }
+    public VkDispatchGraphInfoAMDX payloads(@CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(this.segment(), value); return this; }
 
     /// {@return `payloadStride` at the given index}
     /// @param segment the segment of the struct
@@ -250,12 +250,12 @@ public sealed class VkDispatchGraphInfoAMDX extends Struct {
 
         /// {@return `payloads` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment payloadsAt(long index) { return VkDispatchGraphInfoAMDX.get_payloads(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment payloadsAt(long index) { return VkDispatchGraphInfoAMDX.get_payloads(this.segment(), index); }
         /// Sets `payloads` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer payloadsAt(long index, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(this.segment(), index, value); return this; }
+        public Buffer payloadsAt(long index, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphInfoAMDX.set_payloads(this.segment(), index, value); return this; }
 
         /// {@return `payloadStride` at the given index}
         /// @param index the index

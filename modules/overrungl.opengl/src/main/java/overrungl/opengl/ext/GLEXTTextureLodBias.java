@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTTextureLodBias {
     public static final int GL_MAX_TEXTURE_LOD_BIAS_EXT = 0x84FD;
     public static final int GL_TEXTURE_FILTER_CONTROL_EXT = 0x8500;

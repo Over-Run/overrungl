@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### displayPrimaryRed
-/// [Byte offset][#OFFSET_displayPrimaryRed] - [Memory layout][#ML_displayPrimaryRed] - [Getter][#displayPrimaryRed()] - [Setter][#displayPrimaryRed(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displayPrimaryRed] - [Memory layout][#ML_displayPrimaryRed] - [Getter][#displayPrimaryRed()] - [Setter][#displayPrimaryRed(MemorySegment)]
 /// ### displayPrimaryGreen
-/// [Byte offset][#OFFSET_displayPrimaryGreen] - [Memory layout][#ML_displayPrimaryGreen] - [Getter][#displayPrimaryGreen()] - [Setter][#displayPrimaryGreen(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displayPrimaryGreen] - [Memory layout][#ML_displayPrimaryGreen] - [Getter][#displayPrimaryGreen()] - [Setter][#displayPrimaryGreen(MemorySegment)]
 /// ### displayPrimaryBlue
-/// [Byte offset][#OFFSET_displayPrimaryBlue] - [Memory layout][#ML_displayPrimaryBlue] - [Getter][#displayPrimaryBlue()] - [Setter][#displayPrimaryBlue(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_displayPrimaryBlue] - [Memory layout][#ML_displayPrimaryBlue] - [Getter][#displayPrimaryBlue()] - [Setter][#displayPrimaryBlue(MemorySegment)]
 /// ### whitePoint
-/// [Byte offset][#OFFSET_whitePoint] - [Memory layout][#ML_whitePoint] - [Getter][#whitePoint()] - [Setter][#whitePoint(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_whitePoint] - [Memory layout][#ML_whitePoint] - [Getter][#whitePoint()] - [Setter][#whitePoint(MemorySegment)]
 /// ### maxLuminance
 /// [VarHandle][#VH_maxLuminance] - [Getter][#maxLuminance()] - [Setter][#maxLuminance(float)]
 /// ### minLuminance
@@ -77,7 +77,7 @@ public sealed class VkHdrMetadataEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `displayPrimaryRed`.
     public static final long OFFSET_displayPrimaryRed = LAYOUT.byteOffset(PathElement.groupElement("displayPrimaryRed"));
@@ -147,7 +147,7 @@ public sealed class VkHdrMetadataEXT extends Struct {
     /// Allocates a `VkHdrMetadataEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkHdrMetadataEXT`
-    public static VkHdrMetadataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryRed, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryGreen, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryBlue, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment whitePoint, @CType("float") float maxLuminance, @CType("float") float minLuminance, @CType("float") float maxContentLightLevel, @CType("float") float maxFrameAverageLightLevel) { return alloc(allocator).sType(sType).pNext(pNext).displayPrimaryRed(displayPrimaryRed).displayPrimaryGreen(displayPrimaryGreen).displayPrimaryBlue(displayPrimaryBlue).whitePoint(whitePoint).maxLuminance(maxLuminance).minLuminance(minLuminance).maxContentLightLevel(maxContentLightLevel).maxFrameAverageLightLevel(maxFrameAverageLightLevel); }
+    public static VkHdrMetadataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkXYColorEXT") MemorySegment displayPrimaryRed, @CType("VkXYColorEXT") MemorySegment displayPrimaryGreen, @CType("VkXYColorEXT") MemorySegment displayPrimaryBlue, @CType("VkXYColorEXT") MemorySegment whitePoint, @CType("float") float maxLuminance, @CType("float") float minLuminance, @CType("float") float maxContentLightLevel, @CType("float") float maxFrameAverageLightLevel) { return alloc(allocator).sType(sType).pNext(pNext).displayPrimaryRed(displayPrimaryRed).displayPrimaryGreen(displayPrimaryGreen).displayPrimaryBlue(displayPrimaryBlue).whitePoint(whitePoint).maxLuminance(maxLuminance).minLuminance(minLuminance).maxContentLightLevel(maxContentLightLevel).maxFrameAverageLightLevel(maxFrameAverageLightLevel); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -184,117 +184,117 @@ public sealed class VkHdrMetadataEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkHdrMetadataEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkHdrMetadataEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkHdrMetadataEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkHdrMetadataEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), value); return this; }
+    public VkHdrMetadataEXT pNext(@CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `displayPrimaryRed` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryRed(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryRed(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed); }
     /// {@return `displayPrimaryRed`}
     /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryRed(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryRed(segment, 0L); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryRed(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryRed(segment, 0L); }
     /// {@return `displayPrimaryRed`}
-    public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryRed() { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment()); }
+    public @CType("VkXYColorEXT") MemorySegment displayPrimaryRed() { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment()); }
     /// Sets `displayPrimaryRed` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displayPrimaryRed(MemorySegment segment, long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed.byteSize()); }
+    public static void set_displayPrimaryRed(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed.byteSize()); }
     /// Sets `displayPrimaryRed` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displayPrimaryRed(MemorySegment segment, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(segment, 0L, value); }
+    public static void set_displayPrimaryRed(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(segment, 0L, value); }
     /// Sets `displayPrimaryRed` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryRed(@CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryRed(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), value); return this; }
 
     /// {@return `displayPrimaryGreen` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryGreen(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryGreen(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen); }
     /// {@return `displayPrimaryGreen`}
     /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryGreen(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryGreen(segment, 0L); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryGreen(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryGreen(segment, 0L); }
     /// {@return `displayPrimaryGreen`}
-    public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryGreen() { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment()); }
+    public @CType("VkXYColorEXT") MemorySegment displayPrimaryGreen() { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment()); }
     /// Sets `displayPrimaryGreen` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displayPrimaryGreen(MemorySegment segment, long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen.byteSize()); }
+    public static void set_displayPrimaryGreen(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen.byteSize()); }
     /// Sets `displayPrimaryGreen` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displayPrimaryGreen(MemorySegment segment, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(segment, 0L, value); }
+    public static void set_displayPrimaryGreen(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(segment, 0L, value); }
     /// Sets `displayPrimaryGreen` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryGreen(@CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryGreen(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), value); return this; }
 
     /// {@return `displayPrimaryBlue` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryBlue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryBlue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue); }
     /// {@return `displayPrimaryBlue`}
     /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_displayPrimaryBlue(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryBlue(segment, 0L); }
+    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryBlue(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryBlue(segment, 0L); }
     /// {@return `displayPrimaryBlue`}
-    public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryBlue() { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment()); }
+    public @CType("VkXYColorEXT") MemorySegment displayPrimaryBlue() { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment()); }
     /// Sets `displayPrimaryBlue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_displayPrimaryBlue(MemorySegment segment, long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue.byteSize()); }
+    public static void set_displayPrimaryBlue(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue.byteSize()); }
     /// Sets `displayPrimaryBlue` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_displayPrimaryBlue(MemorySegment segment, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(segment, 0L, value); }
+    public static void set_displayPrimaryBlue(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(segment, 0L, value); }
     /// Sets `displayPrimaryBlue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryBlue(@CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryBlue(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), value); return this; }
 
     /// {@return `whitePoint` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_whitePoint(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint); }
+    public static @CType("VkXYColorEXT") MemorySegment get_whitePoint(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint); }
     /// {@return `whitePoint`}
     /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") java.lang.foreign.MemorySegment get_whitePoint(MemorySegment segment) { return VkHdrMetadataEXT.get_whitePoint(segment, 0L); }
+    public static @CType("VkXYColorEXT") MemorySegment get_whitePoint(MemorySegment segment) { return VkHdrMetadataEXT.get_whitePoint(segment, 0L); }
     /// {@return `whitePoint`}
-    public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment whitePoint() { return VkHdrMetadataEXT.get_whitePoint(this.segment()); }
+    public @CType("VkXYColorEXT") MemorySegment whitePoint() { return VkHdrMetadataEXT.get_whitePoint(this.segment()); }
     /// Sets `whitePoint` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_whitePoint(MemorySegment segment, long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint.byteSize()); }
+    public static void set_whitePoint(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint.byteSize()); }
     /// Sets `whitePoint` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_whitePoint(MemorySegment segment, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(segment, 0L, value); }
+    public static void set_whitePoint(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(segment, 0L, value); }
     /// Sets `whitePoint` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT whitePoint(@CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), value); return this; }
+    public VkHdrMetadataEXT whitePoint(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), value); return this; }
 
     /// {@return `maxLuminance` at the given index}
     /// @param segment the segment of the struct
@@ -421,48 +421,48 @@ public sealed class VkHdrMetadataEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkHdrMetadataEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkHdrMetadataEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryRed` at the given index}
         /// @param index the index
-        public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryRedAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment(), index); }
+        public @CType("VkXYColorEXT") MemorySegment displayPrimaryRedAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment(), index); }
         /// Sets `displayPrimaryRed` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryRedAt(long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryRedAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryGreen` at the given index}
         /// @param index the index
-        public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryGreenAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment(), index); }
+        public @CType("VkXYColorEXT") MemorySegment displayPrimaryGreenAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment(), index); }
         /// Sets `displayPrimaryGreen` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryGreenAt(long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryGreenAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryBlue` at the given index}
         /// @param index the index
-        public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment displayPrimaryBlueAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment(), index); }
+        public @CType("VkXYColorEXT") MemorySegment displayPrimaryBlueAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment(), index); }
         /// Sets `displayPrimaryBlue` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryBlueAt(long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryBlueAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), index, value); return this; }
 
         /// {@return `whitePoint` at the given index}
         /// @param index the index
-        public @CType("VkXYColorEXT") java.lang.foreign.MemorySegment whitePointAt(long index) { return VkHdrMetadataEXT.get_whitePoint(this.segment(), index); }
+        public @CType("VkXYColorEXT") MemorySegment whitePointAt(long index) { return VkHdrMetadataEXT.get_whitePoint(this.segment(), index); }
         /// Sets `whitePoint` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer whitePointAt(long index, @CType("VkXYColorEXT") java.lang.foreign.MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), index, value); return this; }
+        public Buffer whitePointAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), index, value); return this; }
 
         /// {@return `maxLuminance` at the given index}
         /// @param index the index

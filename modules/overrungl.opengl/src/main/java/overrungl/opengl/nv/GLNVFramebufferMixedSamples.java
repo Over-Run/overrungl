@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,24 +39,11 @@ public final class GLNVFramebufferMixedSamples {
     public static final int GL_COVERAGE_MODULATION_NV = 0x9332;
     public static final int GL_COVERAGE_MODULATION_TABLE_SIZE_NV = 0x9333;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRasterSamplesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCoverageModulationNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glRasterSamplesEXT,
-            FD_glCoverageModulationTableNV,
-            FD_glGetCoverageModulationTableNV,
-            FD_glCoverageModulationNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(Descriptors.FD_glRasterSamplesEXT);
-        public static final MethodHandle MH_glCoverageModulationTableNV = RuntimeHelper.downcall(Descriptors.FD_glCoverageModulationTableNV);
-        public static final MethodHandle MH_glGetCoverageModulationTableNV = RuntimeHelper.downcall(Descriptors.FD_glGetCoverageModulationTableNV);
-        public static final MethodHandle MH_glCoverageModulationNV = RuntimeHelper.downcall(Descriptors.FD_glCoverageModulationNV);
+        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCoverageModulationNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRasterSamplesEXT;
         public final MemorySegment PFN_glCoverageModulationTableNV;
         public final MemorySegment PFN_glGetCoverageModulationTableNV;
@@ -80,13 +66,13 @@ public final class GLNVFramebufferMixedSamples {
         catch (Throwable e) { throw new RuntimeException("error in glRasterSamplesEXT", e); }
     }
 
-    public void CoverageModulationTableNV(@CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void CoverageModulationTableNV(@CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glCoverageModulationTableNV");
         try { Handles.MH_glCoverageModulationTableNV.invokeExact(handles.PFN_glCoverageModulationTableNV, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glCoverageModulationTableNV", e); }
     }
 
-    public void GetCoverageModulationTableNV(@CType("GLsizei") int bufSize, @CType("GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void GetCoverageModulationTableNV(@CType("GLsizei") int bufSize, @CType("GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glGetCoverageModulationTableNV");
         try { Handles.MH_glGetCoverageModulationTableNV.invokeExact(handles.PFN_glGetCoverageModulationTableNV, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCoverageModulationTableNV", e); }

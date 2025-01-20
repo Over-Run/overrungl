@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### handleType
 /// [VarHandle][#VH_handleType] - [Getter][#handleType()] - [Setter][#handleType(int)]
 /// ### pHostPointer
-/// [VarHandle][#VH_pHostPointer] - [Getter][#pHostPointer()] - [Setter][#pHostPointer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pHostPointer] - [Getter][#pHostPointer()] - [Setter][#pHostPointer(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `handleType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_handleType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handleType"));
-    /// The [VarHandle] of `pHostPointer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pHostPointer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pHostPointer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHostPointer"));
 
     /// Creates `VkImportMemoryHostPointerInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
     /// Allocates a `VkImportMemoryHostPointerInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
-    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType, @CType("void *") java.lang.foreign.MemorySegment pHostPointer) { return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).pHostPointer(pHostPointer); }
+    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType, @CType("void *") MemorySegment pHostPointer) { return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).pHostPointer(pHostPointer); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImportMemoryHostPointerInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImportMemoryHostPointerInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImportMemoryHostPointerInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkImportMemoryHostPointerInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMemoryHostPointerInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkImportMemoryHostPointerInfoEXT pNext(@CType("const void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `handleType` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
     /// {@return `pHostPointer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pHostPointer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pHostPointer.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pHostPointer(MemorySegment segment, long index) { return (MemorySegment) VH_pHostPointer.get(segment, 0L, index); }
     /// {@return `pHostPointer`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pHostPointer(MemorySegment segment) { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pHostPointer(MemorySegment segment) { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(segment, 0L); }
     /// {@return `pHostPointer`}
-    public @CType("void *") java.lang.foreign.MemorySegment pHostPointer() { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(this.segment()); }
+    public @CType("void *") MemorySegment pHostPointer() { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(this.segment()); }
     /// Sets `pHostPointer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pHostPointer(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pHostPointer.set(segment, 0L, index, value); }
+    public static void set_pHostPointer(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pHostPointer.set(segment, 0L, index, value); }
     /// Sets `pHostPointer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pHostPointer(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(segment, 0L, value); }
+    public static void set_pHostPointer(MemorySegment segment, @CType("void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(segment, 0L, value); }
     /// Sets `pHostPointer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMemoryHostPointerInfoEXT pHostPointer(@CType("void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(this.segment(), value); return this; }
+    public VkImportMemoryHostPointerInfoEXT pHostPointer(@CType("void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(this.segment(), value); return this; }
 
     /// A buffer of [VkImportMemoryHostPointerInfoEXT].
     public static final class Buffer extends VkImportMemoryHostPointerInfoEXT {
@@ -239,12 +239,12 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImportMemoryHostPointerInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImportMemoryHostPointerInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `handleType` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends Struct {
 
         /// {@return `pHostPointer` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pHostPointerAt(long index) { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(this.segment(), index); }
+        public @CType("void *") MemorySegment pHostPointerAt(long index) { return VkImportMemoryHostPointerInfoEXT.get_pHostPointer(this.segment(), index); }
         /// Sets `pHostPointer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pHostPointerAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(this.segment(), index, value); return this; }
+        public Buffer pHostPointerAt(long index, @CType("void *") MemorySegment value) { VkImportMemoryHostPointerInfoEXT.set_pHostPointer(this.segment(), index, value); return this; }
 
     }
 }

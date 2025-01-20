@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,24 +27,11 @@ public final class GLARBTransformFeedback3 {
     public static final int GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
     public static final int GL_MAX_VERTEX_STREAMS = 0x8E71;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawTransformFeedbackStream = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetQueryIndexediv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawTransformFeedbackStream,
-            FD_glBeginQueryIndexed,
-            FD_glEndQueryIndexed,
-            FD_glGetQueryIndexediv
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedbackStream);
-        public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glBeginQueryIndexed);
-        public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glEndQueryIndexed);
-        public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(Descriptors.FD_glGetQueryIndexediv);
+        public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawTransformFeedbackStream;
         public final MemorySegment PFN_glBeginQueryIndexed;
         public final MemorySegment PFN_glEndQueryIndexed;
@@ -80,7 +66,7 @@ public final class GLARBTransformFeedback3 {
         catch (Throwable e) { throw new RuntimeException("error in glEndQueryIndexed", e); }
     }
 
-    public void GetQueryIndexediv(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetQueryIndexediv(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetQueryIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
         try { Handles.MH_glGetQueryIndexediv.invokeExact(handles.PFN_glGetQueryIndexediv, target, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetQueryIndexediv", e); }

@@ -19,25 +19,15 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBTextureStorageMultisample {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexStorage2DMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTexStorage3DMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexStorage2DMultisample,
-            FD_glTexStorage3DMultisample
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexStorage2DMultisample = RuntimeHelper.downcall(Descriptors.FD_glTexStorage2DMultisample);
-        public static final MethodHandle MH_glTexStorage3DMultisample = RuntimeHelper.downcall(Descriptors.FD_glTexStorage3DMultisample);
+        public static final MethodHandle MH_glTexStorage2DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTexStorage3DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glTexStorage2DMultisample;
         public final MemorySegment PFN_glTexStorage3DMultisample;
         private Handles(overrungl.opengl.GLLoadFunc func) {

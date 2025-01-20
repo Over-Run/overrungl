@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### seq_profile
 /// [VarHandle][#VH_seq_profile] - [Getter][#seq_profile()] - [Setter][#seq_profile(int)]
 /// ### frame_width_bits_minus_1
@@ -50,9 +50,9 @@ import overrungl.util.*;
 /// ### reserved1
 /// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(byte)]
 /// ### pColorConfig
-/// [VarHandle][#VH_pColorConfig] - [Getter][#pColorConfig()] - [Setter][#pColorConfig(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pColorConfig] - [Getter][#pColorConfig()] - [Setter][#pColorConfig(MemorySegment)]
 /// ### pTimingInfo
-/// [VarHandle][#VH_pTimingInfo] - [Getter][#pTimingInfo()] - [Setter][#pTimingInfo(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pTimingInfo] - [Getter][#pTimingInfo()] - [Setter][#pTimingInfo(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -91,7 +91,7 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
         ValueLayout.ADDRESS.withName("pColorConfig"),
         ValueLayout.ADDRESS.withName("pTimingInfo")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `seq_profile` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_seq_profile = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_profile"));
@@ -115,9 +115,9 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
     public static final VarHandle VH_seq_force_screen_content_tools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("seq_force_screen_content_tools"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
-    /// The [VarHandle] of `pColorConfig` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pColorConfig` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorConfig = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorConfig"));
-    /// The [VarHandle] of `pTimingInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pTimingInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTimingInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTimingInfo"));
 
     /// Creates `StdVideoAV1SequenceHeader` with the given segment.
@@ -163,7 +163,7 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
     /// Allocates a `StdVideoAV1SequenceHeader` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1SequenceHeader`
-    public static StdVideoAV1SequenceHeader allocInit(SegmentAllocator allocator, @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoAV1Profile") int seq_profile, @CType("uint8_t") byte frame_width_bits_minus_1, @CType("uint8_t") byte frame_height_bits_minus_1, @CType("uint16_t") short max_frame_width_minus_1, @CType("uint16_t") short max_frame_height_minus_1, @CType("uint8_t") byte delta_frame_id_length_minus_2, @CType("uint8_t") byte additional_frame_id_length_minus_1, @CType("uint8_t") byte order_hint_bits_minus_1, @CType("uint8_t") byte seq_force_integer_mv, @CType("uint8_t") byte seq_force_screen_content_tools, @CType("uint8_t [5]") byte reserved1, @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment pColorConfig, @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment pTimingInfo) { return alloc(allocator).flags(flags).seq_profile(seq_profile).frame_width_bits_minus_1(frame_width_bits_minus_1).frame_height_bits_minus_1(frame_height_bits_minus_1).max_frame_width_minus_1(max_frame_width_minus_1).max_frame_height_minus_1(max_frame_height_minus_1).delta_frame_id_length_minus_2(delta_frame_id_length_minus_2).additional_frame_id_length_minus_1(additional_frame_id_length_minus_1).order_hint_bits_minus_1(order_hint_bits_minus_1).seq_force_integer_mv(seq_force_integer_mv).seq_force_screen_content_tools(seq_force_screen_content_tools).reserved1(reserved1).pColorConfig(pColorConfig).pTimingInfo(pTimingInfo); }
+    public static StdVideoAV1SequenceHeader allocInit(SegmentAllocator allocator, @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment flags, @CType("StdVideoAV1Profile") int seq_profile, @CType("uint8_t") byte frame_width_bits_minus_1, @CType("uint8_t") byte frame_height_bits_minus_1, @CType("uint16_t") short max_frame_width_minus_1, @CType("uint16_t") short max_frame_height_minus_1, @CType("uint8_t") byte delta_frame_id_length_minus_2, @CType("uint8_t") byte additional_frame_id_length_minus_1, @CType("uint8_t") byte order_hint_bits_minus_1, @CType("uint8_t") byte seq_force_integer_mv, @CType("uint8_t") byte seq_force_screen_content_tools, @CType("uint8_t [5]") byte reserved1, @CType("const StdVideoAV1ColorConfig *") MemorySegment pColorConfig, @CType("const StdVideoAV1TimingInfo *") MemorySegment pTimingInfo) { return alloc(allocator).flags(flags).seq_profile(seq_profile).frame_width_bits_minus_1(frame_width_bits_minus_1).frame_height_bits_minus_1(frame_height_bits_minus_1).max_frame_width_minus_1(max_frame_width_minus_1).max_frame_height_minus_1(max_frame_height_minus_1).delta_frame_id_length_minus_2(delta_frame_id_length_minus_2).additional_frame_id_length_minus_1(additional_frame_id_length_minus_1).order_hint_bits_minus_1(order_hint_bits_minus_1).seq_force_integer_mv(seq_force_integer_mv).seq_force_screen_content_tools(seq_force_screen_content_tools).reserved1(reserved1).pColorConfig(pColorConfig).pTimingInfo(pTimingInfo); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -177,25 +177,25 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1SequenceHeader.get_flags(this.segment()); }
+    public @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment flags() { return StdVideoAV1SequenceHeader.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1SequenceHeader flags(@CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1SequenceHeader flags(@CType("StdVideoAV1SequenceHeaderFlags") MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(this.segment(), value); return this; }
 
     /// {@return `seq_profile` at the given index}
     /// @param segment the segment of the struct
@@ -453,48 +453,48 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
     /// {@return `pColorConfig` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment get_pColorConfig(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pColorConfig.get(segment, 0L, index); }
+    public static @CType("const StdVideoAV1ColorConfig *") MemorySegment get_pColorConfig(MemorySegment segment, long index) { return (MemorySegment) VH_pColorConfig.get(segment, 0L, index); }
     /// {@return `pColorConfig`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment get_pColorConfig(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_pColorConfig(segment, 0L); }
+    public static @CType("const StdVideoAV1ColorConfig *") MemorySegment get_pColorConfig(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_pColorConfig(segment, 0L); }
     /// {@return `pColorConfig`}
-    public @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment pColorConfig() { return StdVideoAV1SequenceHeader.get_pColorConfig(this.segment()); }
+    public @CType("const StdVideoAV1ColorConfig *") MemorySegment pColorConfig() { return StdVideoAV1SequenceHeader.get_pColorConfig(this.segment()); }
     /// Sets `pColorConfig` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pColorConfig(MemorySegment segment, long index, @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment value) { VH_pColorConfig.set(segment, 0L, index, value); }
+    public static void set_pColorConfig(MemorySegment segment, long index, @CType("const StdVideoAV1ColorConfig *") MemorySegment value) { VH_pColorConfig.set(segment, 0L, index, value); }
     /// Sets `pColorConfig` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pColorConfig(MemorySegment segment, @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(segment, 0L, value); }
+    public static void set_pColorConfig(MemorySegment segment, @CType("const StdVideoAV1ColorConfig *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(segment, 0L, value); }
     /// Sets `pColorConfig` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1SequenceHeader pColorConfig(@CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(this.segment(), value); return this; }
+    public StdVideoAV1SequenceHeader pColorConfig(@CType("const StdVideoAV1ColorConfig *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(this.segment(), value); return this; }
 
     /// {@return `pTimingInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment get_pTimingInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTimingInfo.get(segment, 0L, index); }
+    public static @CType("const StdVideoAV1TimingInfo *") MemorySegment get_pTimingInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pTimingInfo.get(segment, 0L, index); }
     /// {@return `pTimingInfo`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment get_pTimingInfo(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_pTimingInfo(segment, 0L); }
+    public static @CType("const StdVideoAV1TimingInfo *") MemorySegment get_pTimingInfo(MemorySegment segment) { return StdVideoAV1SequenceHeader.get_pTimingInfo(segment, 0L); }
     /// {@return `pTimingInfo`}
-    public @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment pTimingInfo() { return StdVideoAV1SequenceHeader.get_pTimingInfo(this.segment()); }
+    public @CType("const StdVideoAV1TimingInfo *") MemorySegment pTimingInfo() { return StdVideoAV1SequenceHeader.get_pTimingInfo(this.segment()); }
     /// Sets `pTimingInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pTimingInfo(MemorySegment segment, long index, @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment value) { VH_pTimingInfo.set(segment, 0L, index, value); }
+    public static void set_pTimingInfo(MemorySegment segment, long index, @CType("const StdVideoAV1TimingInfo *") MemorySegment value) { VH_pTimingInfo.set(segment, 0L, index, value); }
     /// Sets `pTimingInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pTimingInfo(MemorySegment segment, @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(segment, 0L, value); }
+    public static void set_pTimingInfo(MemorySegment segment, @CType("const StdVideoAV1TimingInfo *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(segment, 0L, value); }
     /// Sets `pTimingInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1SequenceHeader pTimingInfo(@CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(this.segment(), value); return this; }
+    public StdVideoAV1SequenceHeader pTimingInfo(@CType("const StdVideoAV1TimingInfo *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoAV1SequenceHeader].
     public static final class Buffer extends StdVideoAV1SequenceHeader {
@@ -520,12 +520,12 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1SequenceHeader.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment flagsAt(long index) { return StdVideoAV1SequenceHeader.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1SequenceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1SequenceHeaderFlags") MemorySegment value) { StdVideoAV1SequenceHeader.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `seq_profile` at the given index}
         /// @param index the index
@@ -628,21 +628,21 @@ public sealed class StdVideoAV1SequenceHeader extends Struct {
 
         /// {@return `pColorConfig` at the given index}
         /// @param index the index
-        public @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment pColorConfigAt(long index) { return StdVideoAV1SequenceHeader.get_pColorConfig(this.segment(), index); }
+        public @CType("const StdVideoAV1ColorConfig *") MemorySegment pColorConfigAt(long index) { return StdVideoAV1SequenceHeader.get_pColorConfig(this.segment(), index); }
         /// Sets `pColorConfig` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pColorConfigAt(long index, @CType("const StdVideoAV1ColorConfig *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(this.segment(), index, value); return this; }
+        public Buffer pColorConfigAt(long index, @CType("const StdVideoAV1ColorConfig *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pColorConfig(this.segment(), index, value); return this; }
 
         /// {@return `pTimingInfo` at the given index}
         /// @param index the index
-        public @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment pTimingInfoAt(long index) { return StdVideoAV1SequenceHeader.get_pTimingInfo(this.segment(), index); }
+        public @CType("const StdVideoAV1TimingInfo *") MemorySegment pTimingInfoAt(long index) { return StdVideoAV1SequenceHeader.get_pTimingInfo(this.segment(), index); }
         /// Sets `pTimingInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pTimingInfoAt(long index, @CType("const StdVideoAV1TimingInfo *") java.lang.foreign.MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(this.segment(), index, value); return this; }
+        public Buffer pTimingInfoAt(long index, @CType("const StdVideoAV1TimingInfo *") MemorySegment value) { StdVideoAV1SequenceHeader.set_pTimingInfo(this.segment(), index, value); return this; }
 
     }
 }

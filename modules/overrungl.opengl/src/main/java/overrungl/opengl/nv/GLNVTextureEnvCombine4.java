@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVTextureEnvCombine4 {
     public static final int GL_COMBINE4_NV = 0x8503;
     public static final int GL_SOURCE3_RGB_NV = 0x8583;

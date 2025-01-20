@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### validationCache
-/// [VarHandle][#VH_validationCache] - [Getter][#validationCache()] - [Setter][#validationCache(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_validationCache] - [Getter][#validationCache()] - [Setter][#validationCache(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkShaderModuleValidationCacheCreateInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `validationCache` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `validationCache` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_validationCache = LAYOUT.arrayElementVarHandle(PathElement.groupElement("validationCache"));
 
     /// Creates `VkShaderModuleValidationCacheCreateInfoEXT` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkShaderModuleValidationCacheCreateInfoEXT extends Struct {
     /// Allocates a `VkShaderModuleValidationCacheCreateInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkShaderModuleValidationCacheCreateInfoEXT`
-    public static VkShaderModuleValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment validationCache) { return alloc(allocator).sType(sType).pNext(pNext).validationCache(validationCache); }
+    public static VkShaderModuleValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkValidationCacheEXT") MemorySegment validationCache) { return alloc(allocator).sType(sType).pNext(pNext).validationCache(validationCache); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkShaderModuleValidationCacheCreateInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShaderModuleValidationCacheCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkShaderModuleValidationCacheCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `validationCache` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment get_validationCache(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_validationCache.get(segment, 0L, index); }
+    public static @CType("VkValidationCacheEXT") MemorySegment get_validationCache(MemorySegment segment, long index) { return (MemorySegment) VH_validationCache.get(segment, 0L, index); }
     /// {@return `validationCache`}
     /// @param segment the segment of the struct
-    public static @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment get_validationCache(MemorySegment segment) { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(segment, 0L); }
+    public static @CType("VkValidationCacheEXT") MemorySegment get_validationCache(MemorySegment segment) { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(segment, 0L); }
     /// {@return `validationCache`}
-    public @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment validationCache() { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(this.segment()); }
+    public @CType("VkValidationCacheEXT") MemorySegment validationCache() { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(this.segment()); }
     /// Sets `validationCache` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_validationCache(MemorySegment segment, long index, @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment value) { VH_validationCache.set(segment, 0L, index, value); }
+    public static void set_validationCache(MemorySegment segment, long index, @CType("VkValidationCacheEXT") MemorySegment value) { VH_validationCache.set(segment, 0L, index, value); }
     /// Sets `validationCache` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_validationCache(MemorySegment segment, @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(segment, 0L, value); }
+    public static void set_validationCache(MemorySegment segment, @CType("VkValidationCacheEXT") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(segment, 0L, value); }
     /// Sets `validationCache` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShaderModuleValidationCacheCreateInfoEXT validationCache(@CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(this.segment(), value); return this; }
+    public VkShaderModuleValidationCacheCreateInfoEXT validationCache(@CType("VkValidationCacheEXT") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(this.segment(), value); return this; }
 
     /// A buffer of [VkShaderModuleValidationCacheCreateInfoEXT].
     public static final class Buffer extends VkShaderModuleValidationCacheCreateInfoEXT {
@@ -210,21 +210,21 @@ public sealed class VkShaderModuleValidationCacheCreateInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkShaderModuleValidationCacheCreateInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `validationCache` at the given index}
         /// @param index the index
-        public @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment validationCacheAt(long index) { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(this.segment(), index); }
+        public @CType("VkValidationCacheEXT") MemorySegment validationCacheAt(long index) { return VkShaderModuleValidationCacheCreateInfoEXT.get_validationCache(this.segment(), index); }
         /// Sets `validationCache` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer validationCacheAt(long index, @CType("VkValidationCacheEXT") java.lang.foreign.MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(this.segment(), index, value); return this; }
+        public Buffer validationCacheAt(long index, @CType("VkValidationCacheEXT") MemorySegment value) { VkShaderModuleValidationCacheCreateInfoEXT.set_validationCache(this.segment(), index, value); return this; }
 
     }
 }

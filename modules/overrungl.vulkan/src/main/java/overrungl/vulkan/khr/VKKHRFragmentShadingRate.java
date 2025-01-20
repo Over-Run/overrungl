@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
 public class VKKHRFragmentShadingRate {
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR = 0;
@@ -48,18 +47,9 @@ public class VKKHRFragmentShadingRate {
     public static final int VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = 0x00200000;
     public static final int VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceFragmentShadingRatesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetFragmentShadingRateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceFragmentShadingRatesKHR,
-            FD_vkCmdSetFragmentShadingRateKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceFragmentShadingRatesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceFragmentShadingRatesKHR);
-        public static final MethodHandle MH_vkCmdSetFragmentShadingRateKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetFragmentShadingRateKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceFragmentShadingRatesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetFragmentShadingRateKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR;
         public final MemorySegment PFN_vkCmdSetFragmentShadingRateKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

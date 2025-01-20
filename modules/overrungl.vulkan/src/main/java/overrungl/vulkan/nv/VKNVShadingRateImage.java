@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
 public class VKNVShadingRateImage {
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0;
@@ -54,21 +53,10 @@ public class VKNVShadingRateImage {
     public static final int VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR;
     public static final int VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBindShadingRateImageNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetViewportShadingRatePaletteNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetCoarseSampleOrderNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindShadingRateImageNV,
-            FD_vkCmdSetViewportShadingRatePaletteNV,
-            FD_vkCmdSetCoarseSampleOrderNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindShadingRateImageNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindShadingRateImageNV);
-        public static final MethodHandle MH_vkCmdSetViewportShadingRatePaletteNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetViewportShadingRatePaletteNV);
-        public static final MethodHandle MH_vkCmdSetCoarseSampleOrderNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetCoarseSampleOrderNV);
+        public static final MethodHandle MH_vkCmdBindShadingRateImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetViewportShadingRatePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetCoarseSampleOrderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBindShadingRateImageNV;
         public final MemorySegment PFN_vkCmdSetViewportShadingRatePaletteNV;
         public final MemorySegment PFN_vkCmdSetCoarseSampleOrderNV;

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLKHRContextFlushControl {
     public static final int GL_CONTEXT_RELEASE_BEHAVIOR = 0x82FB;
     public static final int GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC;

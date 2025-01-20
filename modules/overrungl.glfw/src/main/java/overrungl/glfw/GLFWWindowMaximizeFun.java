@@ -31,10 +31,10 @@ public interface GLFWWindowMaximizeFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowMaximizeFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean maximized);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") boolean maximized);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int maximized) {
+    default void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int maximized) {
         invoke(window, maximized != GLFW.GLFW_FALSE);
     }
 
@@ -43,7 +43,7 @@ public interface GLFWWindowMaximizeFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int maximized) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int maximized) {
         try { HANDLE.invokeExact(stub, window, maximized); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowMaximizeFun::invoke (static invoker)", e); }
     }

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.khr;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLKHRShaderSubgroup {
     public static final int GL_SUBGROUP_SIZE_KHR = 0x9532;
     public static final int GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533;

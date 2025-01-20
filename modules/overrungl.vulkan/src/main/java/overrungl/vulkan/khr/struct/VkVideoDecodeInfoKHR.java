@@ -28,23 +28,23 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### srcBuffer
-/// [VarHandle][#VH_srcBuffer] - [Getter][#srcBuffer()] - [Setter][#srcBuffer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_srcBuffer] - [Getter][#srcBuffer()] - [Setter][#srcBuffer(MemorySegment)]
 /// ### srcBufferOffset
 /// [VarHandle][#VH_srcBufferOffset] - [Getter][#srcBufferOffset()] - [Setter][#srcBufferOffset(long)]
 /// ### srcBufferRange
 /// [VarHandle][#VH_srcBufferRange] - [Getter][#srcBufferRange()] - [Setter][#srcBufferRange(long)]
 /// ### dstPictureResource
-/// [Byte offset][#OFFSET_dstPictureResource] - [Memory layout][#ML_dstPictureResource] - [Getter][#dstPictureResource()] - [Setter][#dstPictureResource(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_dstPictureResource] - [Memory layout][#ML_dstPictureResource] - [Getter][#dstPictureResource()] - [Setter][#dstPictureResource(MemorySegment)]
 /// ### pSetupReferenceSlot
-/// [VarHandle][#VH_pSetupReferenceSlot] - [Getter][#pSetupReferenceSlot()] - [Setter][#pSetupReferenceSlot(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSetupReferenceSlot] - [Getter][#pSetupReferenceSlot()] - [Setter][#pSetupReferenceSlot(MemorySegment)]
 /// ### referenceSlotCount
 /// [VarHandle][#VH_referenceSlotCount] - [Getter][#referenceSlotCount()] - [Setter][#referenceSlotCount(int)]
 /// ### pReferenceSlots
-/// [VarHandle][#VH_pReferenceSlots] - [Getter][#pReferenceSlots()] - [Setter][#pReferenceSlots(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pReferenceSlots] - [Getter][#pReferenceSlots()] - [Setter][#pReferenceSlots(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -77,11 +77,11 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `srcBuffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `srcBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBuffer"));
     /// The [VarHandle] of `srcBufferOffset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_srcBufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBufferOffset"));
@@ -91,11 +91,11 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     public static final long OFFSET_dstPictureResource = LAYOUT.byteOffset(PathElement.groupElement("dstPictureResource"));
     /// The memory layout of `dstPictureResource`.
     public static final MemoryLayout ML_dstPictureResource = LAYOUT.select(PathElement.groupElement("dstPictureResource"));
-    /// The [VarHandle] of `pSetupReferenceSlot` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSetupReferenceSlot` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSetupReferenceSlot = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetupReferenceSlot"));
     /// The [VarHandle] of `referenceSlotCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_referenceSlotCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceSlotCount"));
-    /// The [VarHandle] of `pReferenceSlots` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pReferenceSlots` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pReferenceSlots = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReferenceSlots"));
 
     /// Creates `VkVideoDecodeInfoKHR` with the given segment.
@@ -141,7 +141,7 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     /// Allocates a `VkVideoDecodeInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoDecodeInfoKHR`
-    public static VkVideoDecodeInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkVideoDecodeFlagsKHR") int flags, @CType("VkBuffer") java.lang.foreign.MemorySegment srcBuffer, @CType("VkDeviceSize") long srcBufferOffset, @CType("VkDeviceSize") long srcBufferRange, @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment dstPictureResource, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pSetupReferenceSlot, @CType("uint32_t") int referenceSlotCount, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pReferenceSlots) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcBuffer(srcBuffer).srcBufferOffset(srcBufferOffset).srcBufferRange(srcBufferRange).dstPictureResource(dstPictureResource).pSetupReferenceSlot(pSetupReferenceSlot).referenceSlotCount(referenceSlotCount).pReferenceSlots(pReferenceSlots); }
+    public static VkVideoDecodeInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkVideoDecodeFlagsKHR") int flags, @CType("VkBuffer") MemorySegment srcBuffer, @CType("VkDeviceSize") long srcBufferOffset, @CType("VkDeviceSize") long srcBufferRange, @CType("VkVideoPictureResourceInfoKHR") MemorySegment dstPictureResource, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pSetupReferenceSlot, @CType("uint32_t") int referenceSlotCount, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pReferenceSlots) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcBuffer(srcBuffer).srcBufferOffset(srcBufferOffset).srcBufferRange(srcBufferRange).dstPictureResource(dstPictureResource).pSetupReferenceSlot(pSetupReferenceSlot).referenceSlotCount(referenceSlotCount).pReferenceSlots(pReferenceSlots); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -178,25 +178,25 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoDecodeInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkVideoDecodeInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoDecodeInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -224,25 +224,25 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     /// {@return `srcBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_srcBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_srcBuffer.get(segment, 0L, index); }
+    public static @CType("VkBuffer") MemorySegment get_srcBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_srcBuffer.get(segment, 0L, index); }
     /// {@return `srcBuffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_srcBuffer(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_srcBuffer(segment, 0L); }
+    public static @CType("VkBuffer") MemorySegment get_srcBuffer(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_srcBuffer(segment, 0L); }
     /// {@return `srcBuffer`}
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment srcBuffer() { return VkVideoDecodeInfoKHR.get_srcBuffer(this.segment()); }
+    public @CType("VkBuffer") MemorySegment srcBuffer() { return VkVideoDecodeInfoKHR.get_srcBuffer(this.segment()); }
     /// Sets `srcBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_srcBuffer(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_srcBuffer.set(segment, 0L, index, value); }
+    public static void set_srcBuffer(MemorySegment segment, long index, @CType("VkBuffer") MemorySegment value) { VH_srcBuffer.set(segment, 0L, index, value); }
     /// Sets `srcBuffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_srcBuffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(segment, 0L, value); }
+    public static void set_srcBuffer(MemorySegment segment, @CType("VkBuffer") MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(segment, 0L, value); }
     /// Sets `srcBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeInfoKHR srcBuffer(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(this.segment(), value); return this; }
+    public VkVideoDecodeInfoKHR srcBuffer(@CType("VkBuffer") MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(this.segment(), value); return this; }
 
     /// {@return `srcBufferOffset` at the given index}
     /// @param segment the segment of the struct
@@ -293,48 +293,48 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     /// {@return `dstPictureResource` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment get_dstPictureResource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstPictureResource, index), ML_dstPictureResource); }
+    public static @CType("VkVideoPictureResourceInfoKHR") MemorySegment get_dstPictureResource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstPictureResource, index), ML_dstPictureResource); }
     /// {@return `dstPictureResource`}
     /// @param segment the segment of the struct
-    public static @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment get_dstPictureResource(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_dstPictureResource(segment, 0L); }
+    public static @CType("VkVideoPictureResourceInfoKHR") MemorySegment get_dstPictureResource(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_dstPictureResource(segment, 0L); }
     /// {@return `dstPictureResource`}
-    public @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment dstPictureResource() { return VkVideoDecodeInfoKHR.get_dstPictureResource(this.segment()); }
+    public @CType("VkVideoPictureResourceInfoKHR") MemorySegment dstPictureResource() { return VkVideoDecodeInfoKHR.get_dstPictureResource(this.segment()); }
     /// Sets `dstPictureResource` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_dstPictureResource(MemorySegment segment, long index, @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstPictureResource, index), ML_dstPictureResource.byteSize()); }
+    public static void set_dstPictureResource(MemorySegment segment, long index, @CType("VkVideoPictureResourceInfoKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstPictureResource, index), ML_dstPictureResource.byteSize()); }
     /// Sets `dstPictureResource` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_dstPictureResource(MemorySegment segment, @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(segment, 0L, value); }
+    public static void set_dstPictureResource(MemorySegment segment, @CType("VkVideoPictureResourceInfoKHR") MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(segment, 0L, value); }
     /// Sets `dstPictureResource` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeInfoKHR dstPictureResource(@CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(this.segment(), value); return this; }
+    public VkVideoDecodeInfoKHR dstPictureResource(@CType("VkVideoPictureResourceInfoKHR") MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(this.segment(), value); return this; }
 
     /// {@return `pSetupReferenceSlot` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment get_pSetupReferenceSlot(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSetupReferenceSlot.get(segment, 0L, index); }
+    public static @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment get_pSetupReferenceSlot(MemorySegment segment, long index) { return (MemorySegment) VH_pSetupReferenceSlot.get(segment, 0L, index); }
     /// {@return `pSetupReferenceSlot`}
     /// @param segment the segment of the struct
-    public static @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment get_pSetupReferenceSlot(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(segment, 0L); }
+    public static @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment get_pSetupReferenceSlot(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(segment, 0L); }
     /// {@return `pSetupReferenceSlot`}
-    public @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pSetupReferenceSlot() { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(this.segment()); }
+    public @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pSetupReferenceSlot() { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(this.segment()); }
     /// Sets `pSetupReferenceSlot` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSetupReferenceSlot(MemorySegment segment, long index, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VH_pSetupReferenceSlot.set(segment, 0L, index, value); }
+    public static void set_pSetupReferenceSlot(MemorySegment segment, long index, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VH_pSetupReferenceSlot.set(segment, 0L, index, value); }
     /// Sets `pSetupReferenceSlot` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSetupReferenceSlot(MemorySegment segment, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(segment, 0L, value); }
+    public static void set_pSetupReferenceSlot(MemorySegment segment, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(segment, 0L, value); }
     /// Sets `pSetupReferenceSlot` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeInfoKHR pSetupReferenceSlot(@CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(this.segment(), value); return this; }
+    public VkVideoDecodeInfoKHR pSetupReferenceSlot(@CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(this.segment(), value); return this; }
 
     /// {@return `referenceSlotCount` at the given index}
     /// @param segment the segment of the struct
@@ -362,25 +362,25 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
     /// {@return `pReferenceSlots` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment get_pReferenceSlots(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pReferenceSlots.get(segment, 0L, index); }
+    public static @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment get_pReferenceSlots(MemorySegment segment, long index) { return (MemorySegment) VH_pReferenceSlots.get(segment, 0L, index); }
     /// {@return `pReferenceSlots`}
     /// @param segment the segment of the struct
-    public static @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment get_pReferenceSlots(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pReferenceSlots(segment, 0L); }
+    public static @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment get_pReferenceSlots(MemorySegment segment) { return VkVideoDecodeInfoKHR.get_pReferenceSlots(segment, 0L); }
     /// {@return `pReferenceSlots`}
-    public @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pReferenceSlots() { return VkVideoDecodeInfoKHR.get_pReferenceSlots(this.segment()); }
+    public @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pReferenceSlots() { return VkVideoDecodeInfoKHR.get_pReferenceSlots(this.segment()); }
     /// Sets `pReferenceSlots` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pReferenceSlots(MemorySegment segment, long index, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VH_pReferenceSlots.set(segment, 0L, index, value); }
+    public static void set_pReferenceSlots(MemorySegment segment, long index, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VH_pReferenceSlots.set(segment, 0L, index, value); }
     /// Sets `pReferenceSlots` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pReferenceSlots(MemorySegment segment, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(segment, 0L, value); }
+    public static void set_pReferenceSlots(MemorySegment segment, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(segment, 0L, value); }
     /// Sets `pReferenceSlots` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeInfoKHR pReferenceSlots(@CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(this.segment(), value); return this; }
+    public VkVideoDecodeInfoKHR pReferenceSlots(@CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoDecodeInfoKHR].
     public static final class Buffer extends VkVideoDecodeInfoKHR {
@@ -415,12 +415,12 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoDecodeInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoDecodeInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -433,12 +433,12 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
 
         /// {@return `srcBuffer` at the given index}
         /// @param index the index
-        public @CType("VkBuffer") java.lang.foreign.MemorySegment srcBufferAt(long index) { return VkVideoDecodeInfoKHR.get_srcBuffer(this.segment(), index); }
+        public @CType("VkBuffer") MemorySegment srcBufferAt(long index) { return VkVideoDecodeInfoKHR.get_srcBuffer(this.segment(), index); }
         /// Sets `srcBuffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer srcBufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(this.segment(), index, value); return this; }
+        public Buffer srcBufferAt(long index, @CType("VkBuffer") MemorySegment value) { VkVideoDecodeInfoKHR.set_srcBuffer(this.segment(), index, value); return this; }
 
         /// {@return `srcBufferOffset` at the given index}
         /// @param index the index
@@ -460,21 +460,21 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
 
         /// {@return `dstPictureResource` at the given index}
         /// @param index the index
-        public @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment dstPictureResourceAt(long index) { return VkVideoDecodeInfoKHR.get_dstPictureResource(this.segment(), index); }
+        public @CType("VkVideoPictureResourceInfoKHR") MemorySegment dstPictureResourceAt(long index) { return VkVideoDecodeInfoKHR.get_dstPictureResource(this.segment(), index); }
         /// Sets `dstPictureResource` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer dstPictureResourceAt(long index, @CType("VkVideoPictureResourceInfoKHR") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(this.segment(), index, value); return this; }
+        public Buffer dstPictureResourceAt(long index, @CType("VkVideoPictureResourceInfoKHR") MemorySegment value) { VkVideoDecodeInfoKHR.set_dstPictureResource(this.segment(), index, value); return this; }
 
         /// {@return `pSetupReferenceSlot` at the given index}
         /// @param index the index
-        public @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pSetupReferenceSlotAt(long index) { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(this.segment(), index); }
+        public @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pSetupReferenceSlotAt(long index) { return VkVideoDecodeInfoKHR.get_pSetupReferenceSlot(this.segment(), index); }
         /// Sets `pSetupReferenceSlot` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSetupReferenceSlotAt(long index, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(this.segment(), index, value); return this; }
+        public Buffer pSetupReferenceSlotAt(long index, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pSetupReferenceSlot(this.segment(), index, value); return this; }
 
         /// {@return `referenceSlotCount` at the given index}
         /// @param index the index
@@ -487,12 +487,12 @@ public sealed class VkVideoDecodeInfoKHR extends Struct {
 
         /// {@return `pReferenceSlots` at the given index}
         /// @param index the index
-        public @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment pReferenceSlotsAt(long index) { return VkVideoDecodeInfoKHR.get_pReferenceSlots(this.segment(), index); }
+        public @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment pReferenceSlotsAt(long index) { return VkVideoDecodeInfoKHR.get_pReferenceSlots(this.segment(), index); }
         /// Sets `pReferenceSlots` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pReferenceSlotsAt(long index, @CType("const VkVideoReferenceSlotInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(this.segment(), index, value); return this; }
+        public Buffer pReferenceSlotsAt(long index, @CType("const VkVideoReferenceSlotInfoKHR *") MemorySegment value) { VkVideoDecodeInfoKHR.set_pReferenceSlots(this.segment(), index, value); return this; }
 
     }
 }

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLATITextureEnvCombine3 {
     public static final int GL_MODULATE_ADD_ATI = 0x8744;
     public static final int GL_MODULATE_SIGNED_ADD_ATI = 0x8745;

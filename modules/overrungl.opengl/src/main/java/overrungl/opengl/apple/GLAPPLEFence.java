@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,36 +27,15 @@ public final class GLAPPLEFence {
     public static final int GL_DRAW_PIXELS_APPLE = 0x8A0A;
     public static final int GL_FENCE_APPLE = 0x8A0B;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenFencesAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteFencesAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSetFenceAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsFenceAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTestFenceAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFinishFenceAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTestObjectAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFinishObjectAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenFencesAPPLE,
-            FD_glDeleteFencesAPPLE,
-            FD_glSetFenceAPPLE,
-            FD_glIsFenceAPPLE,
-            FD_glTestFenceAPPLE,
-            FD_glFinishFenceAPPLE,
-            FD_glTestObjectAPPLE,
-            FD_glFinishObjectAPPLE
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenFencesAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGenFencesAPPLE);
-        public static final MethodHandle MH_glDeleteFencesAPPLE = RuntimeHelper.downcall(Descriptors.FD_glDeleteFencesAPPLE);
-        public static final MethodHandle MH_glSetFenceAPPLE = RuntimeHelper.downcall(Descriptors.FD_glSetFenceAPPLE);
-        public static final MethodHandle MH_glIsFenceAPPLE = RuntimeHelper.downcall(Descriptors.FD_glIsFenceAPPLE);
-        public static final MethodHandle MH_glTestFenceAPPLE = RuntimeHelper.downcall(Descriptors.FD_glTestFenceAPPLE);
-        public static final MethodHandle MH_glFinishFenceAPPLE = RuntimeHelper.downcall(Descriptors.FD_glFinishFenceAPPLE);
-        public static final MethodHandle MH_glTestObjectAPPLE = RuntimeHelper.downcall(Descriptors.FD_glTestObjectAPPLE);
-        public static final MethodHandle MH_glFinishObjectAPPLE = RuntimeHelper.downcall(Descriptors.FD_glFinishObjectAPPLE);
+        public static final MethodHandle MH_glGenFencesAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteFencesAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSetFenceAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsFenceAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTestFenceAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinishFenceAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTestObjectAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinishObjectAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGenFencesAPPLE;
         public final MemorySegment PFN_glDeleteFencesAPPLE;
         public final MemorySegment PFN_glSetFenceAPPLE;
@@ -82,13 +60,13 @@ public final class GLAPPLEFence {
         this.handles = new Handles(func);
     }
 
-    public void GenFencesAPPLE(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void GenFencesAPPLE(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGenFencesAPPLE");
         try { Handles.MH_glGenFencesAPPLE.invokeExact(handles.PFN_glGenFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glGenFencesAPPLE", e); }
     }
 
-    public void DeleteFencesAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void DeleteFencesAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesAPPLE");
         try { Handles.MH_glDeleteFencesAPPLE.invokeExact(handles.PFN_glDeleteFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesAPPLE", e); }

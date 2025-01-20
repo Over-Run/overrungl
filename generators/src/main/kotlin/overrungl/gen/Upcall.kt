@@ -16,13 +16,11 @@
 
 package overrungl.gen
 
-import com.palantir.javapoet.ClassName
-import com.palantir.javapoet.TypeName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
 fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
-    val typeName = ClassName.get(packageName, name)
+    val typeName = "$packageName.$name"
     return CustomTypeSpec(
         carrier = MemorySegment_,
         javaType = typeName,
@@ -47,6 +45,7 @@ class Upcall(
     init {
         action(this)
         write()
+        nativeImageUpcallDescriptors.add("$packageName.$name.DESCRIPTOR")
     }
 
     operator fun CustomTypeSpec.invoke(name: String): UpcallMethodParameter =
@@ -101,7 +100,7 @@ class Upcall(
                 |    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of
             """.trimMargin()
         )
-        val returnVoid = targetMethodNotNull.returnType.carrier == TypeName.VOID
+        val returnVoid = targetMethodNotNull.returnType.carrier == "void"
         if (returnVoid) {
             sb.append("Void(")
         } else {

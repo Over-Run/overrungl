@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### swapchainCount
 /// [VarHandle][#VH_swapchainCount] - [Getter][#swapchainCount()] - [Setter][#swapchainCount(int)]
 /// ### pPresentIds
-/// [VarHandle][#VH_pPresentIds] - [Getter][#pPresentIds()] - [Setter][#pPresentIds(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPresentIds] - [Getter][#pPresentIds()] - [Setter][#pPresentIds(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkPresentIdKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
-    /// The [VarHandle] of `pPresentIds` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPresentIds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPresentIds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPresentIds"));
 
     /// Creates `VkPresentIdKHR` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkPresentIdKHR extends Struct {
     /// Allocates a `VkPresentIdKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPresentIdKHR`
-    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int swapchainCount, @CType("const uint64_t *") java.lang.foreign.MemorySegment pPresentIds) { return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pPresentIds(pPresentIds); }
+    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int swapchainCount, @CType("const uint64_t *") MemorySegment pPresentIds) { return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pPresentIds(pPresentIds); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkPresentIdKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPresentIdKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPresentIdKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPresentIdKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPresentIdKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPresentIdKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentIdKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pNext(this.segment(), value); return this; }
+    public VkPresentIdKHR pNext(@CType("const void *") MemorySegment value) { VkPresentIdKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `swapchainCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkPresentIdKHR extends Struct {
     /// {@return `pPresentIds` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint64_t *") java.lang.foreign.MemorySegment get_pPresentIds(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPresentIds.get(segment, 0L, index); }
+    public static @CType("const uint64_t *") MemorySegment get_pPresentIds(MemorySegment segment, long index) { return (MemorySegment) VH_pPresentIds.get(segment, 0L, index); }
     /// {@return `pPresentIds`}
     /// @param segment the segment of the struct
-    public static @CType("const uint64_t *") java.lang.foreign.MemorySegment get_pPresentIds(MemorySegment segment) { return VkPresentIdKHR.get_pPresentIds(segment, 0L); }
+    public static @CType("const uint64_t *") MemorySegment get_pPresentIds(MemorySegment segment) { return VkPresentIdKHR.get_pPresentIds(segment, 0L); }
     /// {@return `pPresentIds`}
-    public @CType("const uint64_t *") java.lang.foreign.MemorySegment pPresentIds() { return VkPresentIdKHR.get_pPresentIds(this.segment()); }
+    public @CType("const uint64_t *") MemorySegment pPresentIds() { return VkPresentIdKHR.get_pPresentIds(this.segment()); }
     /// Sets `pPresentIds` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPresentIds(MemorySegment segment, long index, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VH_pPresentIds.set(segment, 0L, index, value); }
+    public static void set_pPresentIds(MemorySegment segment, long index, @CType("const uint64_t *") MemorySegment value) { VH_pPresentIds.set(segment, 0L, index, value); }
     /// Sets `pPresentIds` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPresentIds(MemorySegment segment, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pPresentIds(segment, 0L, value); }
+    public static void set_pPresentIds(MemorySegment segment, @CType("const uint64_t *") MemorySegment value) { VkPresentIdKHR.set_pPresentIds(segment, 0L, value); }
     /// Sets `pPresentIds` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentIdKHR pPresentIds(@CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pPresentIds(this.segment(), value); return this; }
+    public VkPresentIdKHR pPresentIds(@CType("const uint64_t *") MemorySegment value) { VkPresentIdKHR.set_pPresentIds(this.segment(), value); return this; }
 
     /// A buffer of [VkPresentIdKHR].
     public static final class Buffer extends VkPresentIdKHR {
@@ -239,12 +239,12 @@ public sealed class VkPresentIdKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPresentIdKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPresentIdKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPresentIdKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `swapchainCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkPresentIdKHR extends Struct {
 
         /// {@return `pPresentIds` at the given index}
         /// @param index the index
-        public @CType("const uint64_t *") java.lang.foreign.MemorySegment pPresentIdsAt(long index) { return VkPresentIdKHR.get_pPresentIds(this.segment(), index); }
+        public @CType("const uint64_t *") MemorySegment pPresentIdsAt(long index) { return VkPresentIdKHR.get_pPresentIds(this.segment(), index); }
         /// Sets `pPresentIds` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPresentIdsAt(long index, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkPresentIdKHR.set_pPresentIds(this.segment(), index, value); return this; }
+        public Buffer pPresentIdsAt(long index, @CType("const uint64_t *") MemorySegment value) { VkPresentIdKHR.set_pPresentIds(this.segment(), index, value); return this; }
 
     }
 }

@@ -22,21 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTPageableDeviceLocalMemory {
     public static final int VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetDeviceMemoryPriorityEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetDeviceMemoryPriorityEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetDeviceMemoryPriorityEXT);
+        public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_vkSetDeviceMemoryPriorityEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkSetDeviceMemoryPriorityEXT = func.invoke(device, "vkSetDeviceMemoryPriorityEXT");

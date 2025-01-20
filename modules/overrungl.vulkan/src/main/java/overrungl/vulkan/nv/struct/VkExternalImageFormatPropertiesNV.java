@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### imageFormatProperties
-/// [Byte offset][#OFFSET_imageFormatProperties] - [Memory layout][#ML_imageFormatProperties] - [Getter][#imageFormatProperties()] - [Setter][#imageFormatProperties(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageFormatProperties] - [Memory layout][#ML_imageFormatProperties] - [Getter][#imageFormatProperties()] - [Setter][#imageFormatProperties(MemorySegment)]
 /// ### externalMemoryFeatures
 /// [VarHandle][#VH_externalMemoryFeatures] - [Getter][#externalMemoryFeatures()] - [Setter][#externalMemoryFeatures(int)]
 /// ### exportFromImportedHandleTypes
@@ -105,7 +105,7 @@ public sealed class VkExternalImageFormatPropertiesNV extends Struct {
     /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExternalImageFormatPropertiesNV`
-    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment imageFormatProperties, @CType("VkExternalMemoryFeatureFlagsNV") int externalMemoryFeatures, @CType("VkExternalMemoryHandleTypeFlagsNV") int exportFromImportedHandleTypes, @CType("VkExternalMemoryHandleTypeFlagsNV") int compatibleHandleTypes) { return alloc(allocator).imageFormatProperties(imageFormatProperties).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes); }
+    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkImageFormatProperties") MemorySegment imageFormatProperties, @CType("VkExternalMemoryFeatureFlagsNV") int externalMemoryFeatures, @CType("VkExternalMemoryHandleTypeFlagsNV") int exportFromImportedHandleTypes, @CType("VkExternalMemoryHandleTypeFlagsNV") int compatibleHandleTypes) { return alloc(allocator).imageFormatProperties(imageFormatProperties).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -119,25 +119,25 @@ public sealed class VkExternalImageFormatPropertiesNV extends Struct {
     /// {@return `imageFormatProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment get_imageFormatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageFormatProperties, index), ML_imageFormatProperties); }
+    public static @CType("VkImageFormatProperties") MemorySegment get_imageFormatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageFormatProperties, index), ML_imageFormatProperties); }
     /// {@return `imageFormatProperties`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment get_imageFormatProperties(MemorySegment segment) { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(segment, 0L); }
+    public static @CType("VkImageFormatProperties") MemorySegment get_imageFormatProperties(MemorySegment segment) { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(segment, 0L); }
     /// {@return `imageFormatProperties`}
-    public @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment imageFormatProperties() { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(this.segment()); }
+    public @CType("VkImageFormatProperties") MemorySegment imageFormatProperties() { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(this.segment()); }
     /// Sets `imageFormatProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageFormatProperties(MemorySegment segment, long index, @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageFormatProperties, index), ML_imageFormatProperties.byteSize()); }
+    public static void set_imageFormatProperties(MemorySegment segment, long index, @CType("VkImageFormatProperties") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageFormatProperties, index), ML_imageFormatProperties.byteSize()); }
     /// Sets `imageFormatProperties` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageFormatProperties(MemorySegment segment, @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(segment, 0L, value); }
+    public static void set_imageFormatProperties(MemorySegment segment, @CType("VkImageFormatProperties") MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(segment, 0L, value); }
     /// Sets `imageFormatProperties` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExternalImageFormatPropertiesNV imageFormatProperties(@CType("VkImageFormatProperties") java.lang.foreign.MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(this.segment(), value); return this; }
+    public VkExternalImageFormatPropertiesNV imageFormatProperties(@CType("VkImageFormatProperties") MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(this.segment(), value); return this; }
 
     /// {@return `externalMemoryFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -232,12 +232,12 @@ public sealed class VkExternalImageFormatPropertiesNV extends Struct {
 
         /// {@return `imageFormatProperties` at the given index}
         /// @param index the index
-        public @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment imageFormatPropertiesAt(long index) { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(this.segment(), index); }
+        public @CType("VkImageFormatProperties") MemorySegment imageFormatPropertiesAt(long index) { return VkExternalImageFormatPropertiesNV.get_imageFormatProperties(this.segment(), index); }
         /// Sets `imageFormatProperties` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageFormatPropertiesAt(long index, @CType("VkImageFormatProperties") java.lang.foreign.MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(this.segment(), index, value); return this; }
+        public Buffer imageFormatPropertiesAt(long index, @CType("VkImageFormatProperties") MemorySegment value) { VkExternalImageFormatPropertiesNV.set_imageFormatProperties(this.segment(), index, value); return this; }
 
         /// {@return `externalMemoryFeatures` at the given index}
         /// @param index the index

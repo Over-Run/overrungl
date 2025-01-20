@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### TileCols
 /// [VarHandle][#VH_TileCols] - [Getter][#TileCols()] - [Setter][#TileCols(byte)]
 /// ### TileRows
@@ -38,13 +38,13 @@ import overrungl.util.*;
 /// ### reserved1
 /// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(byte)]
 /// ### pMiColStarts
-/// [VarHandle][#VH_pMiColStarts] - [Getter][#pMiColStarts()] - [Setter][#pMiColStarts(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pMiColStarts] - [Getter][#pMiColStarts()] - [Setter][#pMiColStarts(MemorySegment)]
 /// ### pMiRowStarts
-/// [VarHandle][#VH_pMiRowStarts] - [Getter][#pMiRowStarts()] - [Setter][#pMiRowStarts(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pMiRowStarts] - [Getter][#pMiRowStarts()] - [Setter][#pMiRowStarts(MemorySegment)]
 /// ### pWidthInSbsMinus1
-/// [VarHandle][#VH_pWidthInSbsMinus1] - [Getter][#pWidthInSbsMinus1()] - [Setter][#pWidthInSbsMinus1(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pWidthInSbsMinus1] - [Getter][#pWidthInSbsMinus1()] - [Setter][#pWidthInSbsMinus1(MemorySegment)]
 /// ### pHeightInSbsMinus1
-/// [VarHandle][#VH_pHeightInSbsMinus1] - [Getter][#pHeightInSbsMinus1()] - [Setter][#pHeightInSbsMinus1(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pHeightInSbsMinus1] - [Getter][#pHeightInSbsMinus1()] - [Setter][#pHeightInSbsMinus1(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -75,7 +75,7 @@ public sealed class StdVideoAV1TileInfo extends Struct {
         ValueLayout.ADDRESS.withName("pWidthInSbsMinus1"),
         ValueLayout.ADDRESS.withName("pHeightInSbsMinus1")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `TileCols` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_TileCols = LAYOUT.arrayElementVarHandle(PathElement.groupElement("TileCols"));
@@ -87,13 +87,13 @@ public sealed class StdVideoAV1TileInfo extends Struct {
     public static final VarHandle VH_tile_size_bytes_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tile_size_bytes_minus_1"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
-    /// The [VarHandle] of `pMiColStarts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pMiColStarts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMiColStarts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiColStarts"));
-    /// The [VarHandle] of `pMiRowStarts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pMiRowStarts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMiRowStarts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMiRowStarts"));
-    /// The [VarHandle] of `pWidthInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pWidthInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWidthInSbsMinus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWidthInSbsMinus1"));
-    /// The [VarHandle] of `pHeightInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pHeightInSbsMinus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pHeightInSbsMinus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeightInSbsMinus1"));
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
@@ -139,7 +139,7 @@ public sealed class StdVideoAV1TileInfo extends Struct {
     /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1TileInfo`
-    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte TileCols, @CType("uint8_t") byte TileRows, @CType("uint16_t") short context_update_tile_id, @CType("uint8_t") byte tile_size_bytes_minus_1, @CType("uint8_t [7]") byte reserved1, @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiColStarts, @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiRowStarts, @CType("const uint16_t *") java.lang.foreign.MemorySegment pWidthInSbsMinus1, @CType("const uint16_t *") java.lang.foreign.MemorySegment pHeightInSbsMinus1) { return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts).pMiRowStarts(pMiRowStarts).pWidthInSbsMinus1(pWidthInSbsMinus1).pHeightInSbsMinus1(pHeightInSbsMinus1); }
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, @CType("StdVideoAV1TileInfoFlags") MemorySegment flags, @CType("uint8_t") byte TileCols, @CType("uint8_t") byte TileRows, @CType("uint16_t") short context_update_tile_id, @CType("uint8_t") byte tile_size_bytes_minus_1, @CType("uint8_t [7]") byte reserved1, @CType("const uint16_t *") MemorySegment pMiColStarts, @CType("const uint16_t *") MemorySegment pMiRowStarts, @CType("const uint16_t *") MemorySegment pWidthInSbsMinus1, @CType("const uint16_t *") MemorySegment pHeightInSbsMinus1) { return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts).pMiRowStarts(pMiRowStarts).pWidthInSbsMinus1(pWidthInSbsMinus1).pHeightInSbsMinus1(pHeightInSbsMinus1); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -153,25 +153,25 @@ public sealed class StdVideoAV1TileInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1TileInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1TileInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1TileInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1TileInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1TileInfo.get_flags(this.segment()); }
+    public @CType("StdVideoAV1TileInfoFlags") MemorySegment flags() { return StdVideoAV1TileInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1TileInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1TileInfoFlags") MemorySegment value) { StdVideoAV1TileInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TileInfo flags(@CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1TileInfo flags(@CType("StdVideoAV1TileInfoFlags") MemorySegment value) { StdVideoAV1TileInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `TileCols` at the given index}
     /// @param segment the segment of the struct
@@ -291,94 +291,94 @@ public sealed class StdVideoAV1TileInfo extends Struct {
     /// {@return `pMiColStarts` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pMiColStarts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pMiColStarts.get(segment, 0L, index); }
+    public static @CType("const uint16_t *") MemorySegment get_pMiColStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiColStarts.get(segment, 0L, index); }
     /// {@return `pMiColStarts`}
     /// @param segment the segment of the struct
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pMiColStarts(MemorySegment segment) { return StdVideoAV1TileInfo.get_pMiColStarts(segment, 0L); }
+    public static @CType("const uint16_t *") MemorySegment get_pMiColStarts(MemorySegment segment) { return StdVideoAV1TileInfo.get_pMiColStarts(segment, 0L); }
     /// {@return `pMiColStarts`}
-    public @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiColStarts() { return StdVideoAV1TileInfo.get_pMiColStarts(this.segment()); }
+    public @CType("const uint16_t *") MemorySegment pMiColStarts() { return StdVideoAV1TileInfo.get_pMiColStarts(this.segment()); }
     /// Sets `pMiColStarts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pMiColStarts(MemorySegment segment, long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { VH_pMiColStarts.set(segment, 0L, index, value); }
+    public static void set_pMiColStarts(MemorySegment segment, long index, @CType("const uint16_t *") MemorySegment value) { VH_pMiColStarts.set(segment, 0L, index, value); }
     /// Sets `pMiColStarts` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pMiColStarts(MemorySegment segment, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(segment, 0L, value); }
+    public static void set_pMiColStarts(MemorySegment segment, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(segment, 0L, value); }
     /// Sets `pMiColStarts` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TileInfo pMiColStarts(@CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(this.segment(), value); return this; }
+    public StdVideoAV1TileInfo pMiColStarts(@CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(this.segment(), value); return this; }
 
     /// {@return `pMiRowStarts` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pMiRowStarts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pMiRowStarts.get(segment, 0L, index); }
+    public static @CType("const uint16_t *") MemorySegment get_pMiRowStarts(MemorySegment segment, long index) { return (MemorySegment) VH_pMiRowStarts.get(segment, 0L, index); }
     /// {@return `pMiRowStarts`}
     /// @param segment the segment of the struct
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pMiRowStarts(MemorySegment segment) { return StdVideoAV1TileInfo.get_pMiRowStarts(segment, 0L); }
+    public static @CType("const uint16_t *") MemorySegment get_pMiRowStarts(MemorySegment segment) { return StdVideoAV1TileInfo.get_pMiRowStarts(segment, 0L); }
     /// {@return `pMiRowStarts`}
-    public @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiRowStarts() { return StdVideoAV1TileInfo.get_pMiRowStarts(this.segment()); }
+    public @CType("const uint16_t *") MemorySegment pMiRowStarts() { return StdVideoAV1TileInfo.get_pMiRowStarts(this.segment()); }
     /// Sets `pMiRowStarts` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pMiRowStarts(MemorySegment segment, long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { VH_pMiRowStarts.set(segment, 0L, index, value); }
+    public static void set_pMiRowStarts(MemorySegment segment, long index, @CType("const uint16_t *") MemorySegment value) { VH_pMiRowStarts.set(segment, 0L, index, value); }
     /// Sets `pMiRowStarts` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pMiRowStarts(MemorySegment segment, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(segment, 0L, value); }
+    public static void set_pMiRowStarts(MemorySegment segment, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(segment, 0L, value); }
     /// Sets `pMiRowStarts` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TileInfo pMiRowStarts(@CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(this.segment(), value); return this; }
+    public StdVideoAV1TileInfo pMiRowStarts(@CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(this.segment(), value); return this; }
 
     /// {@return `pWidthInSbsMinus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pWidthInSbsMinus1(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pWidthInSbsMinus1.get(segment, 0L, index); }
+    public static @CType("const uint16_t *") MemorySegment get_pWidthInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pWidthInSbsMinus1.get(segment, 0L, index); }
     /// {@return `pWidthInSbsMinus1`}
     /// @param segment the segment of the struct
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pWidthInSbsMinus1(MemorySegment segment) { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(segment, 0L); }
+    public static @CType("const uint16_t *") MemorySegment get_pWidthInSbsMinus1(MemorySegment segment) { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(segment, 0L); }
     /// {@return `pWidthInSbsMinus1`}
-    public @CType("const uint16_t *") java.lang.foreign.MemorySegment pWidthInSbsMinus1() { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(this.segment()); }
+    public @CType("const uint16_t *") MemorySegment pWidthInSbsMinus1() { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(this.segment()); }
     /// Sets `pWidthInSbsMinus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pWidthInSbsMinus1(MemorySegment segment, long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { VH_pWidthInSbsMinus1.set(segment, 0L, index, value); }
+    public static void set_pWidthInSbsMinus1(MemorySegment segment, long index, @CType("const uint16_t *") MemorySegment value) { VH_pWidthInSbsMinus1.set(segment, 0L, index, value); }
     /// Sets `pWidthInSbsMinus1` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pWidthInSbsMinus1(MemorySegment segment, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(segment, 0L, value); }
+    public static void set_pWidthInSbsMinus1(MemorySegment segment, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(segment, 0L, value); }
     /// Sets `pWidthInSbsMinus1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TileInfo pWidthInSbsMinus1(@CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(this.segment(), value); return this; }
+    public StdVideoAV1TileInfo pWidthInSbsMinus1(@CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(this.segment(), value); return this; }
 
     /// {@return `pHeightInSbsMinus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pHeightInSbsMinus1(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pHeightInSbsMinus1.get(segment, 0L, index); }
+    public static @CType("const uint16_t *") MemorySegment get_pHeightInSbsMinus1(MemorySegment segment, long index) { return (MemorySegment) VH_pHeightInSbsMinus1.get(segment, 0L, index); }
     /// {@return `pHeightInSbsMinus1`}
     /// @param segment the segment of the struct
-    public static @CType("const uint16_t *") java.lang.foreign.MemorySegment get_pHeightInSbsMinus1(MemorySegment segment) { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(segment, 0L); }
+    public static @CType("const uint16_t *") MemorySegment get_pHeightInSbsMinus1(MemorySegment segment) { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(segment, 0L); }
     /// {@return `pHeightInSbsMinus1`}
-    public @CType("const uint16_t *") java.lang.foreign.MemorySegment pHeightInSbsMinus1() { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(this.segment()); }
+    public @CType("const uint16_t *") MemorySegment pHeightInSbsMinus1() { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(this.segment()); }
     /// Sets `pHeightInSbsMinus1` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pHeightInSbsMinus1(MemorySegment segment, long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { VH_pHeightInSbsMinus1.set(segment, 0L, index, value); }
+    public static void set_pHeightInSbsMinus1(MemorySegment segment, long index, @CType("const uint16_t *") MemorySegment value) { VH_pHeightInSbsMinus1.set(segment, 0L, index, value); }
     /// Sets `pHeightInSbsMinus1` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pHeightInSbsMinus1(MemorySegment segment, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(segment, 0L, value); }
+    public static void set_pHeightInSbsMinus1(MemorySegment segment, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(segment, 0L, value); }
     /// Sets `pHeightInSbsMinus1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TileInfo pHeightInSbsMinus1(@CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(this.segment(), value); return this; }
+    public StdVideoAV1TileInfo pHeightInSbsMinus1(@CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoAV1TileInfo].
     public static final class Buffer extends StdVideoAV1TileInfo {
@@ -404,12 +404,12 @@ public sealed class StdVideoAV1TileInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1TileInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1TileInfoFlags") MemorySegment flagsAt(long index) { return StdVideoAV1TileInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1TileInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1TileInfoFlags") MemorySegment value) { StdVideoAV1TileInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `TileCols` at the given index}
         /// @param index the index
@@ -458,39 +458,39 @@ public sealed class StdVideoAV1TileInfo extends Struct {
 
         /// {@return `pMiColStarts` at the given index}
         /// @param index the index
-        public @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiColStartsAt(long index) { return StdVideoAV1TileInfo.get_pMiColStarts(this.segment(), index); }
+        public @CType("const uint16_t *") MemorySegment pMiColStartsAt(long index) { return StdVideoAV1TileInfo.get_pMiColStarts(this.segment(), index); }
         /// Sets `pMiColStarts` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pMiColStartsAt(long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(this.segment(), index, value); return this; }
+        public Buffer pMiColStartsAt(long index, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiColStarts(this.segment(), index, value); return this; }
 
         /// {@return `pMiRowStarts` at the given index}
         /// @param index the index
-        public @CType("const uint16_t *") java.lang.foreign.MemorySegment pMiRowStartsAt(long index) { return StdVideoAV1TileInfo.get_pMiRowStarts(this.segment(), index); }
+        public @CType("const uint16_t *") MemorySegment pMiRowStartsAt(long index) { return StdVideoAV1TileInfo.get_pMiRowStarts(this.segment(), index); }
         /// Sets `pMiRowStarts` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pMiRowStartsAt(long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(this.segment(), index, value); return this; }
+        public Buffer pMiRowStartsAt(long index, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pMiRowStarts(this.segment(), index, value); return this; }
 
         /// {@return `pWidthInSbsMinus1` at the given index}
         /// @param index the index
-        public @CType("const uint16_t *") java.lang.foreign.MemorySegment pWidthInSbsMinus1At(long index) { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(this.segment(), index); }
+        public @CType("const uint16_t *") MemorySegment pWidthInSbsMinus1At(long index) { return StdVideoAV1TileInfo.get_pWidthInSbsMinus1(this.segment(), index); }
         /// Sets `pWidthInSbsMinus1` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pWidthInSbsMinus1At(long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(this.segment(), index, value); return this; }
+        public Buffer pWidthInSbsMinus1At(long index, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pWidthInSbsMinus1(this.segment(), index, value); return this; }
 
         /// {@return `pHeightInSbsMinus1` at the given index}
         /// @param index the index
-        public @CType("const uint16_t *") java.lang.foreign.MemorySegment pHeightInSbsMinus1At(long index) { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(this.segment(), index); }
+        public @CType("const uint16_t *") MemorySegment pHeightInSbsMinus1At(long index) { return StdVideoAV1TileInfo.get_pHeightInSbsMinus1(this.segment(), index); }
         /// Sets `pHeightInSbsMinus1` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pHeightInSbsMinus1At(long index, @CType("const uint16_t *") java.lang.foreign.MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(this.segment(), index, value); return this; }
+        public Buffer pHeightInSbsMinus1At(long index, @CType("const uint16_t *") MemorySegment value) { StdVideoAV1TileInfo.set_pHeightInSbsMinus1(this.segment(), index, value); return this; }
 
     }
 }

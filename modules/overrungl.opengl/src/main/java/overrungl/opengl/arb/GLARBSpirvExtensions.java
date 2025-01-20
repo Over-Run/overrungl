@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBSpirvExtensions {
     public static final int GL_SPIR_V_EXTENSIONS = 0x9553;
     public static final int GL_NUM_SPIR_V_EXTENSIONS = 0x9554;

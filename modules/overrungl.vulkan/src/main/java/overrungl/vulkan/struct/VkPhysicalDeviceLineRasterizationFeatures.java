@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### rectangularLines
 /// [VarHandle][#VH_rectangularLines] - [Getter][#rectangularLines()] - [Setter][#rectangularLines(int)]
 /// ### bresenhamLines
@@ -69,7 +69,7 @@ public sealed class VkPhysicalDeviceLineRasterizationFeatures extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `rectangularLines` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_rectangularLines = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rectangularLines"));
@@ -127,7 +127,7 @@ public sealed class VkPhysicalDeviceLineRasterizationFeatures extends Struct {
     /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
-    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int rectangularLines, @CType("VkBool32") int bresenhamLines, @CType("VkBool32") int smoothLines, @CType("VkBool32") int stippledRectangularLines, @CType("VkBool32") int stippledBresenhamLines, @CType("VkBool32") int stippledSmoothLines) { return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines); }
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int rectangularLines, @CType("VkBool32") int bresenhamLines, @CType("VkBool32") int smoothLines, @CType("VkBool32") int stippledRectangularLines, @CType("VkBool32") int stippledBresenhamLines, @CType("VkBool32") int stippledSmoothLines) { return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkPhysicalDeviceLineRasterizationFeatures extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLineRasterizationFeatures pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceLineRasterizationFeatures pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(this.segment(), value); return this; }
 
     /// {@return `rectangularLines` at the given index}
     /// @param segment the segment of the struct
@@ -355,12 +355,12 @@ public sealed class VkPhysicalDeviceLineRasterizationFeatures extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceLineRasterizationFeatures.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceLineRasterizationFeatures.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `rectangularLines` at the given index}
         /// @param index the index

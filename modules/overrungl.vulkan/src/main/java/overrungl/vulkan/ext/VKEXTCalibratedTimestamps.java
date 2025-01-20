@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRCalibratedTimestamps.*;
 public class VKEXTCalibratedTimestamps {
     public static final int VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2;
@@ -33,18 +32,9 @@ public class VKEXTCalibratedTimestamps {
     public static final int VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT = VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR;
     public static final int VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT = VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetCalibratedTimestampsEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT,
-            FD_vkGetCalibratedTimestampsEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
-        public static final MethodHandle MH_vkGetCalibratedTimestampsEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetCalibratedTimestampsEXT);
+        public static final MethodHandle MH_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetCalibratedTimestampsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT;
         public final MemorySegment PFN_vkGetCalibratedTimestampsEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

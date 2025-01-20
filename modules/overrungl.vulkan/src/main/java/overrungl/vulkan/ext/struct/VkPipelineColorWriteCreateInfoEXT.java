@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### attachmentCount
 /// [VarHandle][#VH_attachmentCount] - [Getter][#attachmentCount()] - [Setter][#attachmentCount(int)]
 /// ### pColorWriteEnables
-/// [VarHandle][#VH_pColorWriteEnables] - [Getter][#pColorWriteEnables()] - [Setter][#pColorWriteEnables(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pColorWriteEnables] - [Getter][#pColorWriteEnables()] - [Setter][#pColorWriteEnables(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `attachmentCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_attachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentCount"));
-    /// The [VarHandle] of `pColorWriteEnables` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pColorWriteEnables` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorWriteEnables = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorWriteEnables"));
 
     /// Creates `VkPipelineColorWriteCreateInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
     /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int attachmentCount, @CType("const VkBool32 *") java.lang.foreign.MemorySegment pColorWriteEnables) { return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount).pColorWriteEnables(pColorWriteEnables); }
+    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int attachmentCount, @CType("const VkBool32 *") MemorySegment pColorWriteEnables) { return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount).pColorWriteEnables(pColorWriteEnables); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineColorWriteCreateInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineColorWriteCreateInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineColorWriteCreateInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineColorWriteCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorWriteCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkPipelineColorWriteCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `attachmentCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
     /// {@return `pColorWriteEnables` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkBool32 *") java.lang.foreign.MemorySegment get_pColorWriteEnables(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pColorWriteEnables.get(segment, 0L, index); }
+    public static @CType("const VkBool32 *") MemorySegment get_pColorWriteEnables(MemorySegment segment, long index) { return (MemorySegment) VH_pColorWriteEnables.get(segment, 0L, index); }
     /// {@return `pColorWriteEnables`}
     /// @param segment the segment of the struct
-    public static @CType("const VkBool32 *") java.lang.foreign.MemorySegment get_pColorWriteEnables(MemorySegment segment) { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(segment, 0L); }
+    public static @CType("const VkBool32 *") MemorySegment get_pColorWriteEnables(MemorySegment segment) { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(segment, 0L); }
     /// {@return `pColorWriteEnables`}
-    public @CType("const VkBool32 *") java.lang.foreign.MemorySegment pColorWriteEnables() { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(this.segment()); }
+    public @CType("const VkBool32 *") MemorySegment pColorWriteEnables() { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(this.segment()); }
     /// Sets `pColorWriteEnables` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pColorWriteEnables(MemorySegment segment, long index, @CType("const VkBool32 *") java.lang.foreign.MemorySegment value) { VH_pColorWriteEnables.set(segment, 0L, index, value); }
+    public static void set_pColorWriteEnables(MemorySegment segment, long index, @CType("const VkBool32 *") MemorySegment value) { VH_pColorWriteEnables.set(segment, 0L, index, value); }
     /// Sets `pColorWriteEnables` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pColorWriteEnables(MemorySegment segment, @CType("const VkBool32 *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(segment, 0L, value); }
+    public static void set_pColorWriteEnables(MemorySegment segment, @CType("const VkBool32 *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(segment, 0L, value); }
     /// Sets `pColorWriteEnables` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorWriteCreateInfoEXT pColorWriteEnables(@CType("const VkBool32 *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(this.segment(), value); return this; }
+    public VkPipelineColorWriteCreateInfoEXT pColorWriteEnables(@CType("const VkBool32 *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineColorWriteCreateInfoEXT].
     public static final class Buffer extends VkPipelineColorWriteCreateInfoEXT {
@@ -239,12 +239,12 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineColorWriteCreateInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineColorWriteCreateInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `attachmentCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends Struct {
 
         /// {@return `pColorWriteEnables` at the given index}
         /// @param index the index
-        public @CType("const VkBool32 *") java.lang.foreign.MemorySegment pColorWriteEnablesAt(long index) { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(this.segment(), index); }
+        public @CType("const VkBool32 *") MemorySegment pColorWriteEnablesAt(long index) { return VkPipelineColorWriteCreateInfoEXT.get_pColorWriteEnables(this.segment(), index); }
         /// Sets `pColorWriteEnables` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pColorWriteEnablesAt(long index, @CType("const VkBool32 *") java.lang.foreign.MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(this.segment(), index, value); return this; }
+        public Buffer pColorWriteEnablesAt(long index, @CType("const VkBool32 *") MemorySegment value) { VkPipelineColorWriteCreateInfoEXT.set_pColorWriteEnables(this.segment(), index, value); return this; }
 
     }
 }

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTPrivateData {
     public static final int VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1;
@@ -32,24 +31,11 @@ public class VKEXTPrivateData {
     public static final int VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO;
     public static final int VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VK_OBJECT_TYPE_PRIVATE_DATA_SLOT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreatePrivateDataSlotEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyPrivateDataSlotEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetPrivateDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkGetPrivateDataEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreatePrivateDataSlotEXT,
-            FD_vkDestroyPrivateDataSlotEXT,
-            FD_vkSetPrivateDataEXT,
-            FD_vkGetPrivateDataEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreatePrivateDataSlotEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreatePrivateDataSlotEXT);
-        public static final MethodHandle MH_vkDestroyPrivateDataSlotEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyPrivateDataSlotEXT);
-        public static final MethodHandle MH_vkSetPrivateDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetPrivateDataEXT);
-        public static final MethodHandle MH_vkGetPrivateDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPrivateDataEXT);
+        public static final MethodHandle MH_vkCreatePrivateDataSlotEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyPrivateDataSlotEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetPrivateDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetPrivateDataEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreatePrivateDataSlotEXT;
         public final MemorySegment PFN_vkDestroyPrivateDataSlotEXT;
         public final MemorySegment PFN_vkSetPrivateDataEXT;

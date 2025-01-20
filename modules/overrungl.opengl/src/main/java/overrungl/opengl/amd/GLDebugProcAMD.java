@@ -31,10 +31,10 @@ public interface GLDebugProcAMD extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLDebugProcAMD.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("const GLchar *") java.lang.String message, @CType("void*") java.lang.foreign.MemorySegment userParam);
+    void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("const GLchar *") String message, @CType("void*") MemorySegment userParam);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
+    default void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("void*") MemorySegment userParam) {
         invoke(id, category, severity, Unmarshal.unmarshalAsString(message), userParam);
     }
 
@@ -43,7 +43,7 @@ public interface GLDebugProcAMD extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
+    static void invoke(MemorySegment stub, @CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("void*") MemorySegment userParam) {
         try { HANDLE.invokeExact(stub, id, category, severity, length, message, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in GLDebugProcAMD::invoke (static invoker)", e); }
     }

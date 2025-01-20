@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKKHRMaintenance4 {
     public static final int VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2;
@@ -33,21 +32,10 @@ public class VKKHRMaintenance4 {
     public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS;
     public static final int VK_IMAGE_ASPECT_NONE_KHR = VK_IMAGE_ASPECT_NONE;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDeviceBufferMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageSparseMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetDeviceBufferMemoryRequirementsKHR,
-            FD_vkGetDeviceImageMemoryRequirementsKHR,
-            FD_vkGetDeviceImageSparseMemoryRequirementsKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceBufferMemoryRequirementsKHR);
-        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageMemoryRequirementsKHR);
-        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageSparseMemoryRequirementsKHR);
+        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDeviceBufferMemoryRequirementsKHR;
         public final MemorySegment PFN_vkGetDeviceImageMemoryRequirementsKHR;
         public final MemorySegment PFN_vkGetDeviceImageSparseMemoryRequirementsKHR;

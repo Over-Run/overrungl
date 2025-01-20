@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### num_ref_idx_l0_active_minus1
 /// [VarHandle][#VH_num_ref_idx_l0_active_minus1] - [Getter][#num_ref_idx_l0_active_minus1()] - [Setter][#num_ref_idx_l0_active_minus1(byte)]
 /// ### num_ref_idx_l1_active_minus1
@@ -44,11 +44,11 @@ import overrungl.util.*;
 /// ### reserved1
 /// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(byte)]
 /// ### pRefList0ModOperations
-/// [VarHandle][#VH_pRefList0ModOperations] - [Getter][#pRefList0ModOperations()] - [Setter][#pRefList0ModOperations(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pRefList0ModOperations] - [Getter][#pRefList0ModOperations()] - [Setter][#pRefList0ModOperations(MemorySegment)]
 /// ### pRefList1ModOperations
-/// [VarHandle][#VH_pRefList1ModOperations] - [Getter][#pRefList1ModOperations()] - [Setter][#pRefList1ModOperations(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pRefList1ModOperations] - [Getter][#pRefList1ModOperations()] - [Setter][#pRefList1ModOperations(MemorySegment)]
 /// ### pRefPicMarkingOperations
-/// [VarHandle][#VH_pRefPicMarkingOperations] - [Getter][#pRefPicMarkingOperations()] - [Setter][#pRefPicMarkingOperations(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pRefPicMarkingOperations] - [Getter][#pRefPicMarkingOperations()] - [Setter][#pRefPicMarkingOperations(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -83,7 +83,7 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
         ValueLayout.ADDRESS.withName("pRefList1ModOperations"),
         ValueLayout.ADDRESS.withName("pRefPicMarkingOperations")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `num_ref_idx_l0_active_minus1` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_num_ref_idx_l0_active_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ref_idx_l0_active_minus1"));
@@ -101,11 +101,11 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
     public static final VarHandle VH_refPicMarkingOpCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("refPicMarkingOpCount"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
-    /// The [VarHandle] of `pRefList0ModOperations` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pRefList0ModOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pRefList0ModOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRefList0ModOperations"));
-    /// The [VarHandle] of `pRefList1ModOperations` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pRefList1ModOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pRefList1ModOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRefList1ModOperations"));
-    /// The [VarHandle] of `pRefPicMarkingOperations` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pRefPicMarkingOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pRefPicMarkingOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRefPicMarkingOperations"));
 
     /// Creates `StdVideoEncodeH264ReferenceListsInfo` with the given segment.
@@ -151,7 +151,7 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
     /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
-    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte num_ref_idx_l0_active_minus1, @CType("uint8_t") byte num_ref_idx_l1_active_minus1, @CType("uint8_t [STD_VIDEO_H264_MAX_NUM_LIST_REF]") byte RefPicList0, @CType("uint8_t [STD_VIDEO_H264_MAX_NUM_LIST_REF]") byte RefPicList1, @CType("uint8_t") byte refList0ModOpCount, @CType("uint8_t") byte refList1ModOpCount, @CType("uint8_t") byte refPicMarkingOpCount, @CType("uint8_t [7]") byte reserved1, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList0ModOperations, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList1ModOperations, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment pRefPicMarkingOperations) { return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1).pRefList0ModOperations(pRefList0ModOperations).pRefList1ModOperations(pRefList1ModOperations).pRefPicMarkingOperations(pRefPicMarkingOperations); }
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment flags, @CType("uint8_t") byte num_ref_idx_l0_active_minus1, @CType("uint8_t") byte num_ref_idx_l1_active_minus1, @CType("uint8_t [STD_VIDEO_H264_MAX_NUM_LIST_REF]") byte RefPicList0, @CType("uint8_t [STD_VIDEO_H264_MAX_NUM_LIST_REF]") byte RefPicList1, @CType("uint8_t") byte refList0ModOpCount, @CType("uint8_t") byte refList1ModOpCount, @CType("uint8_t") byte refPicMarkingOpCount, @CType("uint8_t [7]") byte reserved1, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList0ModOperations, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList1ModOperations, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment pRefPicMarkingOperations) { return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1).pRefList0ModOperations(pRefList0ModOperations).pRefList1ModOperations(pRefList1ModOperations).pRefPicMarkingOperations(pRefPicMarkingOperations); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -165,25 +165,25 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH264ReferenceListsInfo.get_flags(this.segment()); }
+    public @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment flags() { return StdVideoEncodeH264ReferenceListsInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264ReferenceListsInfo flags(@CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeH264ReferenceListsInfo flags(@CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `num_ref_idx_l0_active_minus1` at the given index}
     /// @param segment the segment of the struct
@@ -372,71 +372,71 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
     /// {@return `pRefList0ModOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment get_pRefList0ModOperations(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pRefList0ModOperations.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment get_pRefList0ModOperations(MemorySegment segment, long index) { return (MemorySegment) VH_pRefList0ModOperations.get(segment, 0L, index); }
     /// {@return `pRefList0ModOperations`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment get_pRefList0ModOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(segment, 0L); }
+    public static @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment get_pRefList0ModOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(segment, 0L); }
     /// {@return `pRefList0ModOperations`}
-    public @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList0ModOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(this.segment()); }
+    public @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList0ModOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(this.segment()); }
     /// Sets `pRefList0ModOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pRefList0ModOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { VH_pRefList0ModOperations.set(segment, 0L, index, value); }
+    public static void set_pRefList0ModOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { VH_pRefList0ModOperations.set(segment, 0L, index, value); }
     /// Sets `pRefList0ModOperations` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pRefList0ModOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(segment, 0L, value); }
+    public static void set_pRefList0ModOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(segment, 0L, value); }
     /// Sets `pRefList0ModOperations` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264ReferenceListsInfo pRefList0ModOperations(@CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(this.segment(), value); return this; }
+    public StdVideoEncodeH264ReferenceListsInfo pRefList0ModOperations(@CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(this.segment(), value); return this; }
 
     /// {@return `pRefList1ModOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment get_pRefList1ModOperations(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pRefList1ModOperations.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment get_pRefList1ModOperations(MemorySegment segment, long index) { return (MemorySegment) VH_pRefList1ModOperations.get(segment, 0L, index); }
     /// {@return `pRefList1ModOperations`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment get_pRefList1ModOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(segment, 0L); }
+    public static @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment get_pRefList1ModOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(segment, 0L); }
     /// {@return `pRefList1ModOperations`}
-    public @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList1ModOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(this.segment()); }
+    public @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList1ModOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(this.segment()); }
     /// Sets `pRefList1ModOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pRefList1ModOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { VH_pRefList1ModOperations.set(segment, 0L, index, value); }
+    public static void set_pRefList1ModOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { VH_pRefList1ModOperations.set(segment, 0L, index, value); }
     /// Sets `pRefList1ModOperations` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pRefList1ModOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(segment, 0L, value); }
+    public static void set_pRefList1ModOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(segment, 0L, value); }
     /// Sets `pRefList1ModOperations` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264ReferenceListsInfo pRefList1ModOperations(@CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(this.segment(), value); return this; }
+    public StdVideoEncodeH264ReferenceListsInfo pRefList1ModOperations(@CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(this.segment(), value); return this; }
 
     /// {@return `pRefPicMarkingOperations` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment get_pRefPicMarkingOperations(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pRefPicMarkingOperations.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment get_pRefPicMarkingOperations(MemorySegment segment, long index) { return (MemorySegment) VH_pRefPicMarkingOperations.get(segment, 0L, index); }
     /// {@return `pRefPicMarkingOperations`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment get_pRefPicMarkingOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(segment, 0L); }
+    public static @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment get_pRefPicMarkingOperations(MemorySegment segment) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(segment, 0L); }
     /// {@return `pRefPicMarkingOperations`}
-    public @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment pRefPicMarkingOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(this.segment()); }
+    public @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment pRefPicMarkingOperations() { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(this.segment()); }
     /// Sets `pRefPicMarkingOperations` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pRefPicMarkingOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment value) { VH_pRefPicMarkingOperations.set(segment, 0L, index, value); }
+    public static void set_pRefPicMarkingOperations(MemorySegment segment, long index, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment value) { VH_pRefPicMarkingOperations.set(segment, 0L, index, value); }
     /// Sets `pRefPicMarkingOperations` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pRefPicMarkingOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(segment, 0L, value); }
+    public static void set_pRefPicMarkingOperations(MemorySegment segment, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(segment, 0L, value); }
     /// Sets `pRefPicMarkingOperations` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264ReferenceListsInfo pRefPicMarkingOperations(@CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(this.segment(), value); return this; }
+    public StdVideoEncodeH264ReferenceListsInfo pRefPicMarkingOperations(@CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoEncodeH264ReferenceListsInfo].
     public static final class Buffer extends StdVideoEncodeH264ReferenceListsInfo {
@@ -462,12 +462,12 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264ReferenceListsInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `num_ref_idx_l0_active_minus1` at the given index}
         /// @param index the index
@@ -543,30 +543,30 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends Struct {
 
         /// {@return `pRefList0ModOperations` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList0ModOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(this.segment(), index); }
+        public @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList0ModOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList0ModOperations(this.segment(), index); }
         /// Sets `pRefList0ModOperations` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pRefList0ModOperationsAt(long index, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(this.segment(), index, value); return this; }
+        public Buffer pRefList0ModOperationsAt(long index, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList0ModOperations(this.segment(), index, value); return this; }
 
         /// {@return `pRefList1ModOperations` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment pRefList1ModOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(this.segment(), index); }
+        public @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment pRefList1ModOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefList1ModOperations(this.segment(), index); }
         /// Sets `pRefList1ModOperations` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pRefList1ModOperationsAt(long index, @CType("const StdVideoEncodeH264RefListModEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(this.segment(), index, value); return this; }
+        public Buffer pRefList1ModOperationsAt(long index, @CType("const StdVideoEncodeH264RefListModEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefList1ModOperations(this.segment(), index, value); return this; }
 
         /// {@return `pRefPicMarkingOperations` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment pRefPicMarkingOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(this.segment(), index); }
+        public @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment pRefPicMarkingOperationsAt(long index) { return StdVideoEncodeH264ReferenceListsInfo.get_pRefPicMarkingOperations(this.segment(), index); }
         /// Sets `pRefPicMarkingOperations` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pRefPicMarkingOperationsAt(long index, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(this.segment(), index, value); return this; }
+        public Buffer pRefPicMarkingOperationsAt(long index, @CType("const StdVideoEncodeH264RefPicMarkingEntry *") MemorySegment value) { StdVideoEncodeH264ReferenceListsInfo.set_pRefPicMarkingOperations(this.segment(), index, value); return this; }
 
     }
 }

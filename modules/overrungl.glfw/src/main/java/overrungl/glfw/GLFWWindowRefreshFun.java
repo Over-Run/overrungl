@@ -31,14 +31,14 @@ public interface GLFWWindowRefreshFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowRefreshFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window);
+    void invoke(@CType("GLFWwindow*") MemorySegment window);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window) {
         try { HANDLE.invokeExact(stub, window); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowRefreshFun::invoke (static invoker)", e); }
     }

@@ -27,7 +27,7 @@ import static overrungl.vulkan.VK10.*;
 
 /// ## Members
 /// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(MemorySegment)]
 /// ### vendorFaultCode
 /// [VarHandle][#VH_vendorFaultCode] - [Getter][#vendorFaultCode()] - [Setter][#vendorFaultCode(long)]
 /// ### vendorFaultData
@@ -100,7 +100,7 @@ public sealed class VkDeviceFaultVendorInfoEXT extends Struct {
     /// Allocates a `VkDeviceFaultVendorInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceFaultVendorInfoEXT`
-    public static VkDeviceFaultVendorInfoEXT allocInit(SegmentAllocator allocator, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description, @CType("uint64_t") long vendorFaultCode, @CType("uint64_t") long vendorFaultData) { return alloc(allocator).description(description).vendorFaultCode(vendorFaultCode).vendorFaultData(vendorFaultData); }
+    public static VkDeviceFaultVendorInfoEXT allocInit(SegmentAllocator allocator, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description, @CType("uint64_t") long vendorFaultCode, @CType("uint64_t") long vendorFaultData) { return alloc(allocator).description(description).vendorFaultCode(vendorFaultCode).vendorFaultData(vendorFaultData); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -114,25 +114,25 @@ public sealed class VkDeviceFaultVendorInfoEXT extends Struct {
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
     /// {@return `description`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkDeviceFaultVendorInfoEXT.get_description(segment, 0L); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment) { return VkDeviceFaultVendorInfoEXT.get_description(segment, 0L); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkDeviceFaultVendorInfoEXT.get_description(this.segment()); }
+    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description() { return VkDeviceFaultVendorInfoEXT.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
+    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
     /// Sets `description` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(segment, 0L, value); }
+    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(segment, 0L, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultVendorInfoEXT description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(this.segment(), value); return this; }
+    public VkDeviceFaultVendorInfoEXT description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(this.segment(), value); return this; }
 
     /// {@return `vendorFaultCode` at the given index}
     /// @param segment the segment of the struct
@@ -204,12 +204,12 @@ public sealed class VkDeviceFaultVendorInfoEXT extends Struct {
 
         /// {@return `description` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkDeviceFaultVendorInfoEXT.get_description(this.segment(), index); }
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment descriptionAt(long index) { return VkDeviceFaultVendorInfoEXT.get_description(this.segment(), index); }
         /// Sets `description` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultVendorInfoEXT.set_description(this.segment(), index, value); return this; }
 
         /// {@return `vendorFaultCode` at the given index}
         /// @param index the index

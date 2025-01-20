@@ -29,15 +29,15 @@ import static overrungl.vulkan.VK10.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(MemorySegment)]
 /// ### pAddressInfos
-/// [VarHandle][#VH_pAddressInfos] - [Getter][#pAddressInfos()] - [Setter][#pAddressInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pAddressInfos] - [Getter][#pAddressInfos()] - [Setter][#pAddressInfos(MemorySegment)]
 /// ### pVendorInfos
-/// [VarHandle][#VH_pVendorInfos] - [Getter][#pVendorInfos()] - [Setter][#pVendorInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVendorInfos] - [Getter][#pVendorInfos()] - [Setter][#pVendorInfos(MemorySegment)]
 /// ### pVendorBinaryData
-/// [VarHandle][#VH_pVendorBinaryData] - [Getter][#pVendorBinaryData()] - [Setter][#pVendorBinaryData(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVendorBinaryData] - [Getter][#pVendorBinaryData()] - [Setter][#pVendorBinaryData(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -62,17 +62,17 @@ public sealed class VkDeviceFaultInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
     public static final MemoryLayout ML_description = LAYOUT.select(PathElement.groupElement("description"));
-    /// The [VarHandle] of `pAddressInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pAddressInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pAddressInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAddressInfos"));
-    /// The [VarHandle] of `pVendorInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVendorInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVendorInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorInfos"));
-    /// The [VarHandle] of `pVendorBinaryData` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVendorBinaryData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVendorBinaryData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorBinaryData"));
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
@@ -118,7 +118,7 @@ public sealed class VkDeviceFaultInfoEXT extends Struct {
     /// Allocates a `VkDeviceFaultInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceFaultInfoEXT`
-    public static VkDeviceFaultInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description, @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment pAddressInfos, @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment pVendorInfos, @CType("void *") java.lang.foreign.MemorySegment pVendorBinaryData) { return alloc(allocator).sType(sType).pNext(pNext).description(description).pAddressInfos(pAddressInfos).pVendorInfos(pVendorInfos).pVendorBinaryData(pVendorBinaryData); }
+    public static VkDeviceFaultInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description, @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment pAddressInfos, @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment pVendorInfos, @CType("void *") MemorySegment pVendorBinaryData) { return alloc(allocator).sType(sType).pNext(pNext).description(description).pAddressInfos(pAddressInfos).pVendorInfos(pVendorInfos).pVendorBinaryData(pVendorBinaryData); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -155,117 +155,117 @@ public sealed class VkDeviceFaultInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceFaultInfoEXT.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkDeviceFaultInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultInfoEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkDeviceFaultInfoEXT pNext(@CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
     /// {@return `description`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_description(segment, 0L); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_description(segment, 0L); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkDeviceFaultInfoEXT.get_description(this.segment()); }
+    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description() { return VkDeviceFaultInfoEXT.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
+    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
     /// Sets `description` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_description(segment, 0L, value); }
+    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultInfoEXT.set_description(segment, 0L, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultInfoEXT description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_description(this.segment(), value); return this; }
+    public VkDeviceFaultInfoEXT description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultInfoEXT.set_description(this.segment(), value); return this; }
 
     /// {@return `pAddressInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment get_pAddressInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pAddressInfos.get(segment, 0L, index); }
+    public static @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment get_pAddressInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pAddressInfos.get(segment, 0L, index); }
     /// {@return `pAddressInfos`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment get_pAddressInfos(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pAddressInfos(segment, 0L); }
+    public static @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment get_pAddressInfos(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pAddressInfos(segment, 0L); }
     /// {@return `pAddressInfos`}
-    public @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment pAddressInfos() { return VkDeviceFaultInfoEXT.get_pAddressInfos(this.segment()); }
+    public @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment pAddressInfos() { return VkDeviceFaultInfoEXT.get_pAddressInfos(this.segment()); }
     /// Sets `pAddressInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pAddressInfos(MemorySegment segment, long index, @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pAddressInfos.set(segment, 0L, index, value); }
+    public static void set_pAddressInfos(MemorySegment segment, long index, @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment value) { VH_pAddressInfos.set(segment, 0L, index, value); }
     /// Sets `pAddressInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pAddressInfos(MemorySegment segment, @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(segment, 0L, value); }
+    public static void set_pAddressInfos(MemorySegment segment, @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(segment, 0L, value); }
     /// Sets `pAddressInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultInfoEXT pAddressInfos(@CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(this.segment(), value); return this; }
+    public VkDeviceFaultInfoEXT pAddressInfos(@CType("VkDeviceFaultAddressInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(this.segment(), value); return this; }
 
     /// {@return `pVendorInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment get_pVendorInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVendorInfos.get(segment, 0L, index); }
+    public static @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment get_pVendorInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorInfos.get(segment, 0L, index); }
     /// {@return `pVendorInfos`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment get_pVendorInfos(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pVendorInfos(segment, 0L); }
+    public static @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment get_pVendorInfos(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pVendorInfos(segment, 0L); }
     /// {@return `pVendorInfos`}
-    public @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment pVendorInfos() { return VkDeviceFaultInfoEXT.get_pVendorInfos(this.segment()); }
+    public @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment pVendorInfos() { return VkDeviceFaultInfoEXT.get_pVendorInfos(this.segment()); }
     /// Sets `pVendorInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVendorInfos(MemorySegment segment, long index, @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pVendorInfos.set(segment, 0L, index, value); }
+    public static void set_pVendorInfos(MemorySegment segment, long index, @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment value) { VH_pVendorInfos.set(segment, 0L, index, value); }
     /// Sets `pVendorInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVendorInfos(MemorySegment segment, @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(segment, 0L, value); }
+    public static void set_pVendorInfos(MemorySegment segment, @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(segment, 0L, value); }
     /// Sets `pVendorInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultInfoEXT pVendorInfos(@CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(this.segment(), value); return this; }
+    public VkDeviceFaultInfoEXT pVendorInfos(@CType("VkDeviceFaultVendorInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(this.segment(), value); return this; }
 
     /// {@return `pVendorBinaryData` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pVendorBinaryData(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVendorBinaryData.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pVendorBinaryData(MemorySegment segment, long index) { return (MemorySegment) VH_pVendorBinaryData.get(segment, 0L, index); }
     /// {@return `pVendorBinaryData`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pVendorBinaryData(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pVendorBinaryData(MemorySegment segment) { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(segment, 0L); }
     /// {@return `pVendorBinaryData`}
-    public @CType("void *") java.lang.foreign.MemorySegment pVendorBinaryData() { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(this.segment()); }
+    public @CType("void *") MemorySegment pVendorBinaryData() { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(this.segment()); }
     /// Sets `pVendorBinaryData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVendorBinaryData(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pVendorBinaryData.set(segment, 0L, index, value); }
+    public static void set_pVendorBinaryData(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pVendorBinaryData.set(segment, 0L, index, value); }
     /// Sets `pVendorBinaryData` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVendorBinaryData(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(segment, 0L, value); }
+    public static void set_pVendorBinaryData(MemorySegment segment, @CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(segment, 0L, value); }
     /// Sets `pVendorBinaryData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceFaultInfoEXT pVendorBinaryData(@CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(this.segment(), value); return this; }
+    public VkDeviceFaultInfoEXT pVendorBinaryData(@CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(this.segment(), value); return this; }
 
     /// A buffer of [VkDeviceFaultInfoEXT].
     public static final class Buffer extends VkDeviceFaultInfoEXT {
@@ -300,48 +300,48 @@ public sealed class VkDeviceFaultInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceFaultInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkDeviceFaultInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `description` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkDeviceFaultInfoEXT.get_description(this.segment(), index); }
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment descriptionAt(long index) { return VkDeviceFaultInfoEXT.get_description(this.segment(), index); }
         /// Sets `description` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkDeviceFaultInfoEXT.set_description(this.segment(), index, value); return this; }
 
         /// {@return `pAddressInfos` at the given index}
         /// @param index the index
-        public @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment pAddressInfosAt(long index) { return VkDeviceFaultInfoEXT.get_pAddressInfos(this.segment(), index); }
+        public @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment pAddressInfosAt(long index) { return VkDeviceFaultInfoEXT.get_pAddressInfos(this.segment(), index); }
         /// Sets `pAddressInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pAddressInfosAt(long index, @CType("VkDeviceFaultAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(this.segment(), index, value); return this; }
+        public Buffer pAddressInfosAt(long index, @CType("VkDeviceFaultAddressInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pAddressInfos(this.segment(), index, value); return this; }
 
         /// {@return `pVendorInfos` at the given index}
         /// @param index the index
-        public @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment pVendorInfosAt(long index) { return VkDeviceFaultInfoEXT.get_pVendorInfos(this.segment(), index); }
+        public @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment pVendorInfosAt(long index) { return VkDeviceFaultInfoEXT.get_pVendorInfos(this.segment(), index); }
         /// Sets `pVendorInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVendorInfosAt(long index, @CType("VkDeviceFaultVendorInfoEXT *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(this.segment(), index, value); return this; }
+        public Buffer pVendorInfosAt(long index, @CType("VkDeviceFaultVendorInfoEXT *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorInfos(this.segment(), index, value); return this; }
 
         /// {@return `pVendorBinaryData` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pVendorBinaryDataAt(long index) { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(this.segment(), index); }
+        public @CType("void *") MemorySegment pVendorBinaryDataAt(long index) { return VkDeviceFaultInfoEXT.get_pVendorBinaryData(this.segment(), index); }
         /// Sets `pVendorBinaryData` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVendorBinaryDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(this.segment(), index, value); return this; }
+        public Buffer pVendorBinaryDataAt(long index, @CType("void *") MemorySegment value) { VkDeviceFaultInfoEXT.set_pVendorBinaryData(this.segment(), index, value); return this; }
 
     }
 }

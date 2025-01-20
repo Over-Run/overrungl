@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### maxExtent
-/// [Byte offset][#OFFSET_maxExtent] - [Memory layout][#ML_maxExtent] - [Getter][#maxExtent()] - [Setter][#maxExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxExtent] - [Memory layout][#ML_maxExtent] - [Getter][#maxExtent()] - [Setter][#maxExtent(MemorySegment)]
 /// ### maxMipLevels
 /// [VarHandle][#VH_maxMipLevels] - [Getter][#maxMipLevels()] - [Setter][#maxMipLevels(int)]
 /// ### maxArrayLayers
@@ -111,7 +111,7 @@ public sealed class VkImageFormatProperties extends Struct {
     /// Allocates a `VkImageFormatProperties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, @CType("VkExtent3D") java.lang.foreign.MemorySegment maxExtent, @CType("uint32_t") int maxMipLevels, @CType("uint32_t") int maxArrayLayers, @CType("VkSampleCountFlags") int sampleCounts, @CType("VkDeviceSize") long maxResourceSize) { return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels).maxArrayLayers(maxArrayLayers).sampleCounts(sampleCounts).maxResourceSize(maxResourceSize); }
+    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, @CType("VkExtent3D") MemorySegment maxExtent, @CType("uint32_t") int maxMipLevels, @CType("uint32_t") int maxArrayLayers, @CType("VkSampleCountFlags") int sampleCounts, @CType("VkDeviceSize") long maxResourceSize) { return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels).maxArrayLayers(maxArrayLayers).sampleCounts(sampleCounts).maxResourceSize(maxResourceSize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -125,25 +125,25 @@ public sealed class VkImageFormatProperties extends Struct {
     /// {@return `maxExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_maxExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxExtent, index), ML_maxExtent); }
+    public static @CType("VkExtent3D") MemorySegment get_maxExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxExtent, index), ML_maxExtent); }
     /// {@return `maxExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_maxExtent(MemorySegment segment) { return VkImageFormatProperties.get_maxExtent(segment, 0L); }
+    public static @CType("VkExtent3D") MemorySegment get_maxExtent(MemorySegment segment) { return VkImageFormatProperties.get_maxExtent(segment, 0L); }
     /// {@return `maxExtent`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment maxExtent() { return VkImageFormatProperties.get_maxExtent(this.segment()); }
+    public @CType("VkExtent3D") MemorySegment maxExtent() { return VkImageFormatProperties.get_maxExtent(this.segment()); }
     /// Sets `maxExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxExtent(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxExtent, index), ML_maxExtent.byteSize()); }
+    public static void set_maxExtent(MemorySegment segment, long index, @CType("VkExtent3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxExtent, index), ML_maxExtent.byteSize()); }
     /// Sets `maxExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxExtent(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageFormatProperties.set_maxExtent(segment, 0L, value); }
+    public static void set_maxExtent(MemorySegment segment, @CType("VkExtent3D") MemorySegment value) { VkImageFormatProperties.set_maxExtent(segment, 0L, value); }
     /// Sets `maxExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageFormatProperties maxExtent(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageFormatProperties.set_maxExtent(this.segment(), value); return this; }
+    public VkImageFormatProperties maxExtent(@CType("VkExtent3D") MemorySegment value) { VkImageFormatProperties.set_maxExtent(this.segment(), value); return this; }
 
     /// {@return `maxMipLevels` at the given index}
     /// @param segment the segment of the struct
@@ -261,12 +261,12 @@ public sealed class VkImageFormatProperties extends Struct {
 
         /// {@return `maxExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment maxExtentAt(long index) { return VkImageFormatProperties.get_maxExtent(this.segment(), index); }
+        public @CType("VkExtent3D") MemorySegment maxExtentAt(long index) { return VkImageFormatProperties.get_maxExtent(this.segment(), index); }
         /// Sets `maxExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxExtentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageFormatProperties.set_maxExtent(this.segment(), index, value); return this; }
+        public Buffer maxExtentAt(long index, @CType("VkExtent3D") MemorySegment value) { VkImageFormatProperties.set_maxExtent(this.segment(), index, value); return this; }
 
         /// {@return `maxMipLevels` at the given index}
         /// @param index the index

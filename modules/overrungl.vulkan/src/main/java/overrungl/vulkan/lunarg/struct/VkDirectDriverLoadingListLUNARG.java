@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### mode
 /// [VarHandle][#VH_mode] - [Getter][#mode()] - [Setter][#mode(int)]
 /// ### driverCount
 /// [VarHandle][#VH_driverCount] - [Getter][#driverCount()] - [Setter][#driverCount(int)]
 /// ### pDrivers
-/// [VarHandle][#VH_pDrivers] - [Getter][#pDrivers()] - [Setter][#pDrivers(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDrivers] - [Getter][#pDrivers()] - [Setter][#pDrivers(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
     /// The [VarHandle] of `driverCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_driverCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverCount"));
-    /// The [VarHandle] of `pDrivers` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDrivers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDrivers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDrivers"));
 
     /// Creates `VkDirectDriverLoadingListLUNARG` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
     /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDirectDriverLoadingListLUNARG`
-    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDirectDriverLoadingModeLUNARG") int mode, @CType("uint32_t") int driverCount, @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment pDrivers) { return alloc(allocator).sType(sType).pNext(pNext).mode(mode).driverCount(driverCount).pDrivers(pDrivers); }
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDirectDriverLoadingModeLUNARG") int mode, @CType("uint32_t") int driverCount, @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment pDrivers) { return alloc(allocator).sType(sType).pNext(pNext).mode(mode).driverCount(driverCount).pDrivers(pDrivers); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDirectDriverLoadingListLUNARG.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDirectDriverLoadingListLUNARG.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDirectDriverLoadingListLUNARG.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDirectDriverLoadingListLUNARG.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(this.segment(), value); return this; }
+    public VkDirectDriverLoadingListLUNARG pNext(@CType("const void *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(this.segment(), value); return this; }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
     /// {@return `pDrivers` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment get_pDrivers(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDrivers.get(segment, 0L, index); }
+    public static @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment get_pDrivers(MemorySegment segment, long index) { return (MemorySegment) VH_pDrivers.get(segment, 0L, index); }
     /// {@return `pDrivers`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment get_pDrivers(MemorySegment segment) { return VkDirectDriverLoadingListLUNARG.get_pDrivers(segment, 0L); }
+    public static @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment get_pDrivers(MemorySegment segment) { return VkDirectDriverLoadingListLUNARG.get_pDrivers(segment, 0L); }
     /// {@return `pDrivers`}
-    public @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment pDrivers() { return VkDirectDriverLoadingListLUNARG.get_pDrivers(this.segment()); }
+    public @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment pDrivers() { return VkDirectDriverLoadingListLUNARG.get_pDrivers(this.segment()); }
     /// Sets `pDrivers` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDrivers(MemorySegment segment, long index, @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment value) { VH_pDrivers.set(segment, 0L, index, value); }
+    public static void set_pDrivers(MemorySegment segment, long index, @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment value) { VH_pDrivers.set(segment, 0L, index, value); }
     /// Sets `pDrivers` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDrivers(MemorySegment segment, @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(segment, 0L, value); }
+    public static void set_pDrivers(MemorySegment segment, @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(segment, 0L, value); }
     /// Sets `pDrivers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingListLUNARG pDrivers(@CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(this.segment(), value); return this; }
+    public VkDirectDriverLoadingListLUNARG pDrivers(@CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(this.segment(), value); return this; }
 
     /// A buffer of [VkDirectDriverLoadingListLUNARG].
     public static final class Buffer extends VkDirectDriverLoadingListLUNARG {
@@ -268,12 +268,12 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDirectDriverLoadingListLUNARG.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDirectDriverLoadingListLUNARG.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `mode` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkDirectDriverLoadingListLUNARG extends Struct {
 
         /// {@return `pDrivers` at the given index}
         /// @param index the index
-        public @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment pDriversAt(long index) { return VkDirectDriverLoadingListLUNARG.get_pDrivers(this.segment(), index); }
+        public @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment pDriversAt(long index) { return VkDirectDriverLoadingListLUNARG.get_pDrivers(this.segment(), index); }
         /// Sets `pDrivers` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDriversAt(long index, @CType("const VkDirectDriverLoadingInfoLUNARG *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(this.segment(), index, value); return this; }
+        public Buffer pDriversAt(long index, @CType("const VkDirectDriverLoadingInfoLUNARG *") MemorySegment value) { VkDirectDriverLoadingListLUNARG.set_pDrivers(this.segment(), index, value); return this; }
 
     }
 }

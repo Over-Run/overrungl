@@ -30,7 +30,7 @@ import overrungl.util.*;
 /// ### colorAttachment
 /// [VarHandle][#VH_colorAttachment] - [Getter][#colorAttachment()] - [Setter][#colorAttachment(int)]
 /// ### clearValue
-/// [Byte offset][#OFFSET_clearValue] - [Memory layout][#ML_clearValue] - [Getter][#clearValue()] - [Setter][#clearValue(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_clearValue] - [Memory layout][#ML_clearValue] - [Getter][#clearValue()] - [Setter][#clearValue(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -99,7 +99,7 @@ public sealed class VkClearAttachment extends Struct {
     /// Allocates a `VkClearAttachment` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClearAttachment`
-    public static VkClearAttachment allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("uint32_t") int colorAttachment, @CType("VkClearValue") java.lang.foreign.MemorySegment clearValue) { return alloc(allocator).aspectMask(aspectMask).colorAttachment(colorAttachment).clearValue(clearValue); }
+    public static VkClearAttachment allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("uint32_t") int colorAttachment, @CType("VkClearValue") MemorySegment clearValue) { return alloc(allocator).aspectMask(aspectMask).colorAttachment(colorAttachment).clearValue(clearValue); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -159,25 +159,25 @@ public sealed class VkClearAttachment extends Struct {
     /// {@return `clearValue` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkClearValue") java.lang.foreign.MemorySegment get_clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue); }
+    public static @CType("VkClearValue") MemorySegment get_clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue); }
     /// {@return `clearValue`}
     /// @param segment the segment of the struct
-    public static @CType("VkClearValue") java.lang.foreign.MemorySegment get_clearValue(MemorySegment segment) { return VkClearAttachment.get_clearValue(segment, 0L); }
+    public static @CType("VkClearValue") MemorySegment get_clearValue(MemorySegment segment) { return VkClearAttachment.get_clearValue(segment, 0L); }
     /// {@return `clearValue`}
-    public @CType("VkClearValue") java.lang.foreign.MemorySegment clearValue() { return VkClearAttachment.get_clearValue(this.segment()); }
+    public @CType("VkClearValue") MemorySegment clearValue() { return VkClearAttachment.get_clearValue(this.segment()); }
     /// Sets `clearValue` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_clearValue(MemorySegment segment, long index, @CType("VkClearValue") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue.byteSize()); }
+    public static void set_clearValue(MemorySegment segment, long index, @CType("VkClearValue") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue.byteSize()); }
     /// Sets `clearValue` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_clearValue(MemorySegment segment, @CType("VkClearValue") java.lang.foreign.MemorySegment value) { VkClearAttachment.set_clearValue(segment, 0L, value); }
+    public static void set_clearValue(MemorySegment segment, @CType("VkClearValue") MemorySegment value) { VkClearAttachment.set_clearValue(segment, 0L, value); }
     /// Sets `clearValue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkClearAttachment clearValue(@CType("VkClearValue") java.lang.foreign.MemorySegment value) { VkClearAttachment.set_clearValue(this.segment(), value); return this; }
+    public VkClearAttachment clearValue(@CType("VkClearValue") MemorySegment value) { VkClearAttachment.set_clearValue(this.segment(), value); return this; }
 
     /// A buffer of [VkClearAttachment].
     public static final class Buffer extends VkClearAttachment {
@@ -221,12 +221,12 @@ public sealed class VkClearAttachment extends Struct {
 
         /// {@return `clearValue` at the given index}
         /// @param index the index
-        public @CType("VkClearValue") java.lang.foreign.MemorySegment clearValueAt(long index) { return VkClearAttachment.get_clearValue(this.segment(), index); }
+        public @CType("VkClearValue") MemorySegment clearValueAt(long index) { return VkClearAttachment.get_clearValue(this.segment(), index); }
         /// Sets `clearValue` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer clearValueAt(long index, @CType("VkClearValue") java.lang.foreign.MemorySegment value) { VkClearAttachment.set_clearValue(this.segment(), index, value); return this; }
+        public Buffer clearValueAt(long index, @CType("VkClearValue") MemorySegment value) { VkClearAttachment.set_clearValue(this.segment(), index, value); return this; }
 
     }
 }

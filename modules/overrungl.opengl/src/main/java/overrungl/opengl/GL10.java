@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -196,156 +195,55 @@ public class GL10 {
     public static final int GL_TEXTURE_WRAP_T = 0x2803;
     public static final int GL_REPEAT = 0x2901;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCullFace = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFrontFace = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glHint = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLineWidth = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPointSize = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPolygonMode = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glScissor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexParameterf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glTexParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexImage1D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexImage2D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDrawBuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClear = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClearColor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glClearStencil = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClearDepth = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glStencilMask = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorMask = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glDepthMask = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glDisable = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEnable = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFinish = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glFlush = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glBlendFunc = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLogicOp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glStencilFunc = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glStencilOp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDepthFunc = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelStoref = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPixelStorei = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glReadBuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glReadPixels = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetBooleanv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetDoublev = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetError = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFloatv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetIntegerv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetString = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetTexImage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexLevelParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexLevelParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsEnabled = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDepthRange = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glViewport = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCullFace,
-            FD_glFrontFace,
-            FD_glHint,
-            FD_glLineWidth,
-            FD_glPointSize,
-            FD_glPolygonMode,
-            FD_glScissor,
-            FD_glTexParameterf,
-            FD_glTexParameterfv,
-            FD_glTexParameteri,
-            FD_glTexParameteriv,
-            FD_glTexImage1D,
-            FD_glTexImage2D,
-            FD_glDrawBuffer,
-            FD_glClear,
-            FD_glClearColor,
-            FD_glClearStencil,
-            FD_glClearDepth,
-            FD_glStencilMask,
-            FD_glColorMask,
-            FD_glDepthMask,
-            FD_glDisable,
-            FD_glEnable,
-            FD_glFinish,
-            FD_glFlush,
-            FD_glBlendFunc,
-            FD_glLogicOp,
-            FD_glStencilFunc,
-            FD_glStencilOp,
-            FD_glDepthFunc,
-            FD_glPixelStoref,
-            FD_glPixelStorei,
-            FD_glReadBuffer,
-            FD_glReadPixels,
-            FD_glGetBooleanv,
-            FD_glGetDoublev,
-            FD_glGetError,
-            FD_glGetFloatv,
-            FD_glGetIntegerv,
-            FD_glGetString,
-            FD_glGetTexImage,
-            FD_glGetTexParameterfv,
-            FD_glGetTexParameteriv,
-            FD_glGetTexLevelParameterfv,
-            FD_glGetTexLevelParameteriv,
-            FD_glIsEnabled,
-            FD_glDepthRange,
-            FD_glViewport
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCullFace = RuntimeHelper.downcall(Descriptors.FD_glCullFace);
-        public static final MethodHandle MH_glFrontFace = RuntimeHelper.downcall(Descriptors.FD_glFrontFace);
-        public static final MethodHandle MH_glHint = RuntimeHelper.downcall(Descriptors.FD_glHint);
-        public static final MethodHandle MH_glLineWidth = RuntimeHelper.downcall(Descriptors.FD_glLineWidth);
-        public static final MethodHandle MH_glPointSize = RuntimeHelper.downcall(Descriptors.FD_glPointSize);
-        public static final MethodHandle MH_glPolygonMode = RuntimeHelper.downcall(Descriptors.FD_glPolygonMode);
-        public static final MethodHandle MH_glScissor = RuntimeHelper.downcall(Descriptors.FD_glScissor);
-        public static final MethodHandle MH_glTexParameterf = RuntimeHelper.downcall(Descriptors.FD_glTexParameterf);
-        public static final MethodHandle MH_glTexParameterfv = RuntimeHelper.downcall(Descriptors.FD_glTexParameterfv);
-        public static final MethodHandle MH_glTexParameteri = RuntimeHelper.downcall(Descriptors.FD_glTexParameteri);
-        public static final MethodHandle MH_glTexParameteriv = RuntimeHelper.downcall(Descriptors.FD_glTexParameteriv);
-        public static final MethodHandle MH_glTexImage1D = RuntimeHelper.downcall(Descriptors.FD_glTexImage1D);
-        public static final MethodHandle MH_glTexImage2D = RuntimeHelper.downcall(Descriptors.FD_glTexImage2D);
-        public static final MethodHandle MH_glDrawBuffer = RuntimeHelper.downcall(Descriptors.FD_glDrawBuffer);
-        public static final MethodHandle MH_glClear = RuntimeHelper.downcall(Descriptors.FD_glClear);
-        public static final MethodHandle MH_glClearColor = RuntimeHelper.downcall(Descriptors.FD_glClearColor);
-        public static final MethodHandle MH_glClearStencil = RuntimeHelper.downcall(Descriptors.FD_glClearStencil);
-        public static final MethodHandle MH_glClearDepth = RuntimeHelper.downcall(Descriptors.FD_glClearDepth);
-        public static final MethodHandle MH_glStencilMask = RuntimeHelper.downcall(Descriptors.FD_glStencilMask);
-        public static final MethodHandle MH_glColorMask = RuntimeHelper.downcall(Descriptors.FD_glColorMask);
-        public static final MethodHandle MH_glDepthMask = RuntimeHelper.downcall(Descriptors.FD_glDepthMask);
-        public static final MethodHandle MH_glDisable = RuntimeHelper.downcall(Descriptors.FD_glDisable);
-        public static final MethodHandle MH_glEnable = RuntimeHelper.downcall(Descriptors.FD_glEnable);
-        public static final MethodHandle MH_glFinish = RuntimeHelper.downcall(Descriptors.FD_glFinish);
-        public static final MethodHandle MH_glFlush = RuntimeHelper.downcall(Descriptors.FD_glFlush);
-        public static final MethodHandle MH_glBlendFunc = RuntimeHelper.downcall(Descriptors.FD_glBlendFunc);
-        public static final MethodHandle MH_glLogicOp = RuntimeHelper.downcall(Descriptors.FD_glLogicOp);
-        public static final MethodHandle MH_glStencilFunc = RuntimeHelper.downcall(Descriptors.FD_glStencilFunc);
-        public static final MethodHandle MH_glStencilOp = RuntimeHelper.downcall(Descriptors.FD_glStencilOp);
-        public static final MethodHandle MH_glDepthFunc = RuntimeHelper.downcall(Descriptors.FD_glDepthFunc);
-        public static final MethodHandle MH_glPixelStoref = RuntimeHelper.downcall(Descriptors.FD_glPixelStoref);
-        public static final MethodHandle MH_glPixelStorei = RuntimeHelper.downcall(Descriptors.FD_glPixelStorei);
-        public static final MethodHandle MH_glReadBuffer = RuntimeHelper.downcall(Descriptors.FD_glReadBuffer);
-        public static final MethodHandle MH_glReadPixels = RuntimeHelper.downcall(Descriptors.FD_glReadPixels);
-        public static final MethodHandle MH_glGetBooleanv = RuntimeHelper.downcall(Descriptors.FD_glGetBooleanv);
-        public static final MethodHandle MH_glGetDoublev = RuntimeHelper.downcall(Descriptors.FD_glGetDoublev);
-        public static final MethodHandle MH_glGetError = RuntimeHelper.downcall(Descriptors.FD_glGetError);
-        public static final MethodHandle MH_glGetFloatv = RuntimeHelper.downcall(Descriptors.FD_glGetFloatv);
-        public static final MethodHandle MH_glGetIntegerv = RuntimeHelper.downcall(Descriptors.FD_glGetIntegerv);
-        public static final MethodHandle MH_glGetString = RuntimeHelper.downcall(Descriptors.FD_glGetString);
-        public static final MethodHandle MH_glGetTexImage = RuntimeHelper.downcall(Descriptors.FD_glGetTexImage);
-        public static final MethodHandle MH_glGetTexParameterfv = RuntimeHelper.downcall(Descriptors.FD_glGetTexParameterfv);
-        public static final MethodHandle MH_glGetTexParameteriv = RuntimeHelper.downcall(Descriptors.FD_glGetTexParameteriv);
-        public static final MethodHandle MH_glGetTexLevelParameterfv = RuntimeHelper.downcall(Descriptors.FD_glGetTexLevelParameterfv);
-        public static final MethodHandle MH_glGetTexLevelParameteriv = RuntimeHelper.downcall(Descriptors.FD_glGetTexLevelParameteriv);
-        public static final MethodHandle MH_glIsEnabled = RuntimeHelper.downcall(Descriptors.FD_glIsEnabled);
-        public static final MethodHandle MH_glDepthRange = RuntimeHelper.downcall(Descriptors.FD_glDepthRange);
-        public static final MethodHandle MH_glViewport = RuntimeHelper.downcall(Descriptors.FD_glViewport);
+        public static final MethodHandle MH_glCullFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFrontFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glHint = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLineWidth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointSize = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPolygonMode = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glScissor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexParameterf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClear = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearColor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glClearStencil = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearDepth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glStencilMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glDepthMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glDisable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEnable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinish = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glFlush = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glBlendFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLogicOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDepthFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelStoref = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPixelStorei = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReadBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReadPixels = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetBooleanv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDoublev = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFloatv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetIntegerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexLevelParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexLevelParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsEnabled = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDepthRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glViewport = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glCullFace;
         public final MemorySegment PFN_glFrontFace;
         public final MemorySegment PFN_glHint;
@@ -498,7 +396,7 @@ public class GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glTexParameterf", e); }
     }
 
-    public void TexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void TexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexParameterfv)) throw new SymbolNotFoundError("Symbol not found: glTexParameterfv");
         try { Handles.MH_glTexParameterfv.invokeExact(handles.PFN_glTexParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glTexParameterfv", e); }
@@ -510,19 +408,19 @@ public class GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glTexParameteri", e); }
     }
 
-    public void TexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void TexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexParameteriv)) throw new SymbolNotFoundError("Symbol not found: glTexParameteriv");
         try { Handles.MH_glTexParameteriv.invokeExact(handles.PFN_glTexParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glTexParameteriv", e); }
     }
 
-    public void TexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+    public void TexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glTexImage1D");
         try { Handles.MH_glTexImage1D.invokeExact(handles.PFN_glTexImage1D, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage1D", e); }
     }
 
-    public void TexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+    public void TexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glTexImage2D");
         try { Handles.MH_glTexImage2D.invokeExact(handles.PFN_glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage2D", e); }
@@ -648,19 +546,19 @@ public class GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glReadBuffer", e); }
     }
 
-    public void ReadPixels(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment pixels) {
+    public void ReadPixels(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glReadPixels)) throw new SymbolNotFoundError("Symbol not found: glReadPixels");
         try { Handles.MH_glReadPixels.invokeExact(handles.PFN_glReadPixels, x, y, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glReadPixels", e); }
     }
 
-    public void GetBooleanv(@CType("GLenum") int pname, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
+    public void GetBooleanv(@CType("GLenum") int pname, @CType("GLboolean *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetBooleanv)) throw new SymbolNotFoundError("Symbol not found: glGetBooleanv");
         try { Handles.MH_glGetBooleanv.invokeExact(handles.PFN_glGetBooleanv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetBooleanv", e); }
     }
 
-    public void GetDoublev(@CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment data) {
+    public void GetDoublev(@CType("GLenum") int pname, @CType("GLdouble *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetDoublev)) throw new SymbolNotFoundError("Symbol not found: glGetDoublev");
         try { Handles.MH_glGetDoublev.invokeExact(handles.PFN_glGetDoublev, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetDoublev", e); }
@@ -672,49 +570,49 @@ public class GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glGetError", e); }
     }
 
-    public void GetFloatv(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
+    public void GetFloatv(@CType("GLenum") int pname, @CType("GLfloat *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFloatv)) throw new SymbolNotFoundError("Symbol not found: glGetFloatv");
         try { Handles.MH_glGetFloatv.invokeExact(handles.PFN_glGetFloatv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFloatv", e); }
     }
 
-    public void GetIntegerv(@CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment data) {
+    public void GetIntegerv(@CType("GLenum") int pname, @CType("GLint *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetIntegerv)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerv");
         try { Handles.MH_glGetIntegerv.invokeExact(handles.PFN_glGetIntegerv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetIntegerv", e); }
     }
 
-    public @CType("const GLubyte *") java.lang.foreign.MemorySegment GetString(@CType("GLenum") int name) {
+    public @CType("const GLubyte *") MemorySegment GetString(@CType("GLenum") int name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetString)) throw new SymbolNotFoundError("Symbol not found: glGetString");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glGetString.invokeExact(handles.PFN_glGetString, name); }
+        try { return (MemorySegment) Handles.MH_glGetString.invokeExact(handles.PFN_glGetString, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetString", e); }
     }
 
-    public void GetTexImage(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment pixels) {
+    public void GetTexImage(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexImage)) throw new SymbolNotFoundError("Symbol not found: glGetTexImage");
         try { Handles.MH_glGetTexImage.invokeExact(handles.PFN_glGetTexImage, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexImage", e); }
     }
 
-    public void GetTexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetTexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterfv");
         try { Handles.MH_glGetTexParameterfv.invokeExact(handles.PFN_glGetTexParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterfv", e); }
     }
 
-    public void GetTexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetTexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameteriv");
         try { Handles.MH_glGetTexParameteriv.invokeExact(handles.PFN_glGetTexParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexParameteriv", e); }
     }
 
-    public void GetTexLevelParameterfv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetTexLevelParameterfv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexLevelParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameterfv");
         try { Handles.MH_glGetTexLevelParameterfv.invokeExact(handles.PFN_glGetTexLevelParameterfv, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameterfv", e); }
     }
 
-    public void GetTexLevelParameteriv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetTexLevelParameteriv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexLevelParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameteriv");
         try { Handles.MH_glGetTexLevelParameteriv.invokeExact(handles.PFN_glGetTexLevelParameteriv, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameteriv", e); }

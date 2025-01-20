@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### currentDisplay
-/// [VarHandle][#VH_currentDisplay] - [Getter][#currentDisplay()] - [Setter][#currentDisplay(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_currentDisplay] - [Getter][#currentDisplay()] - [Setter][#currentDisplay(MemorySegment)]
 /// ### currentStackIndex
 /// [VarHandle][#VH_currentStackIndex] - [Getter][#currentStackIndex()] - [Setter][#currentStackIndex(int)]
 /// ## Layout
@@ -43,7 +43,7 @@ public sealed class VkDisplayPlanePropertiesKHR extends Struct {
         ValueLayout.ADDRESS.withName("currentDisplay"),
         ValueLayout.JAVA_INT.withName("currentStackIndex")
     );
-    /// The [VarHandle] of `currentDisplay` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `currentDisplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_currentDisplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentDisplay"));
     /// The [VarHandle] of `currentStackIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_currentStackIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("currentStackIndex"));
@@ -91,7 +91,7 @@ public sealed class VkDisplayPlanePropertiesKHR extends Struct {
     /// Allocates a `VkDisplayPlanePropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayPlanePropertiesKHR`
-    public static VkDisplayPlanePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkDisplayKHR") java.lang.foreign.MemorySegment currentDisplay, @CType("uint32_t") int currentStackIndex) { return alloc(allocator).currentDisplay(currentDisplay).currentStackIndex(currentStackIndex); }
+    public static VkDisplayPlanePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkDisplayKHR") MemorySegment currentDisplay, @CType("uint32_t") int currentStackIndex) { return alloc(allocator).currentDisplay(currentDisplay).currentStackIndex(currentStackIndex); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -105,25 +105,25 @@ public sealed class VkDisplayPlanePropertiesKHR extends Struct {
     /// {@return `currentDisplay` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDisplayKHR") java.lang.foreign.MemorySegment get_currentDisplay(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_currentDisplay.get(segment, 0L, index); }
+    public static @CType("VkDisplayKHR") MemorySegment get_currentDisplay(MemorySegment segment, long index) { return (MemorySegment) VH_currentDisplay.get(segment, 0L, index); }
     /// {@return `currentDisplay`}
     /// @param segment the segment of the struct
-    public static @CType("VkDisplayKHR") java.lang.foreign.MemorySegment get_currentDisplay(MemorySegment segment) { return VkDisplayPlanePropertiesKHR.get_currentDisplay(segment, 0L); }
+    public static @CType("VkDisplayKHR") MemorySegment get_currentDisplay(MemorySegment segment) { return VkDisplayPlanePropertiesKHR.get_currentDisplay(segment, 0L); }
     /// {@return `currentDisplay`}
-    public @CType("VkDisplayKHR") java.lang.foreign.MemorySegment currentDisplay() { return VkDisplayPlanePropertiesKHR.get_currentDisplay(this.segment()); }
+    public @CType("VkDisplayKHR") MemorySegment currentDisplay() { return VkDisplayPlanePropertiesKHR.get_currentDisplay(this.segment()); }
     /// Sets `currentDisplay` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_currentDisplay(MemorySegment segment, long index, @CType("VkDisplayKHR") java.lang.foreign.MemorySegment value) { VH_currentDisplay.set(segment, 0L, index, value); }
+    public static void set_currentDisplay(MemorySegment segment, long index, @CType("VkDisplayKHR") MemorySegment value) { VH_currentDisplay.set(segment, 0L, index, value); }
     /// Sets `currentDisplay` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_currentDisplay(MemorySegment segment, @CType("VkDisplayKHR") java.lang.foreign.MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(segment, 0L, value); }
+    public static void set_currentDisplay(MemorySegment segment, @CType("VkDisplayKHR") MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(segment, 0L, value); }
     /// Sets `currentDisplay` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPlanePropertiesKHR currentDisplay(@CType("VkDisplayKHR") java.lang.foreign.MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(this.segment(), value); return this; }
+    public VkDisplayPlanePropertiesKHR currentDisplay(@CType("VkDisplayKHR") MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(this.segment(), value); return this; }
 
     /// {@return `currentStackIndex` at the given index}
     /// @param segment the segment of the struct
@@ -172,12 +172,12 @@ public sealed class VkDisplayPlanePropertiesKHR extends Struct {
 
         /// {@return `currentDisplay` at the given index}
         /// @param index the index
-        public @CType("VkDisplayKHR") java.lang.foreign.MemorySegment currentDisplayAt(long index) { return VkDisplayPlanePropertiesKHR.get_currentDisplay(this.segment(), index); }
+        public @CType("VkDisplayKHR") MemorySegment currentDisplayAt(long index) { return VkDisplayPlanePropertiesKHR.get_currentDisplay(this.segment(), index); }
         /// Sets `currentDisplay` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer currentDisplayAt(long index, @CType("VkDisplayKHR") java.lang.foreign.MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(this.segment(), index, value); return this; }
+        public Buffer currentDisplayAt(long index, @CType("VkDisplayKHR") MemorySegment value) { VkDisplayPlanePropertiesKHR.set_currentDisplay(this.segment(), index, value); return this; }
 
         /// {@return `currentStackIndex` at the given index}
         /// @param index the index

@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### swapchain
-/// [VarHandle][#VH_swapchain] - [Getter][#swapchain()] - [Setter][#swapchain(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_swapchain] - [Getter][#swapchain()] - [Setter][#swapchain(MemorySegment)]
 /// ### imageIndexCount
 /// [VarHandle][#VH_imageIndexCount] - [Getter][#imageIndexCount()] - [Setter][#imageIndexCount(int)]
 /// ### pImageIndices
-/// [VarHandle][#VH_pImageIndices] - [Getter][#pImageIndices()] - [Setter][#pImageIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pImageIndices] - [Getter][#pImageIndices()] - [Setter][#pImageIndices(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
     /// The [VarHandle] of `imageIndexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_imageIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndexCount"));
-    /// The [VarHandle] of `pImageIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pImageIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pImageIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageIndices"));
 
     /// Creates `VkReleaseSwapchainImagesInfoEXT` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
     /// Allocates a `VkReleaseSwapchainImagesInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkReleaseSwapchainImagesInfoEXT`
-    public static VkReleaseSwapchainImagesInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchain, @CType("uint32_t") int imageIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndices) { return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).imageIndexCount(imageIndexCount).pImageIndices(pImageIndices); }
+    public static VkReleaseSwapchainImagesInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("uint32_t") int imageIndexCount, @CType("const uint32_t *") MemorySegment pImageIndices) { return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).imageIndexCount(imageIndexCount).pImageIndices(pImageIndices); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,48 +146,48 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkReleaseSwapchainImagesInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkReleaseSwapchainImagesInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pNext(@CType("const void *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `swapchain` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment get_swapchain(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_swapchain.get(segment, 0L, index); }
+    public static @CType("VkSwapchainKHR") MemorySegment get_swapchain(MemorySegment segment, long index) { return (MemorySegment) VH_swapchain.get(segment, 0L, index); }
     /// {@return `swapchain`}
     /// @param segment the segment of the struct
-    public static @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment get_swapchain(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(segment, 0L); }
+    public static @CType("VkSwapchainKHR") MemorySegment get_swapchain(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(segment, 0L); }
     /// {@return `swapchain`}
-    public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchain() { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(this.segment()); }
+    public @CType("VkSwapchainKHR") MemorySegment swapchain() { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(this.segment()); }
     /// Sets `swapchain` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_swapchain(MemorySegment segment, long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VH_swapchain.set(segment, 0L, index, value); }
+    public static void set_swapchain(MemorySegment segment, long index, @CType("VkSwapchainKHR") MemorySegment value) { VH_swapchain.set(segment, 0L, index, value); }
     /// Sets `swapchain` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_swapchain(MemorySegment segment, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(segment, 0L, value); }
+    public static void set_swapchain(MemorySegment segment, @CType("VkSwapchainKHR") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(segment, 0L, value); }
     /// Sets `swapchain` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT swapchain(@CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(this.segment(), value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT swapchain(@CType("VkSwapchainKHR") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(this.segment(), value); return this; }
 
     /// {@return `imageIndexCount` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
     /// {@return `pImageIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pImageIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pImageIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pImageIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pImageIndices.get(segment, 0L, index); }
     /// {@return `pImageIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pImageIndices(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pImageIndices(MemorySegment segment) { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(segment, 0L); }
     /// {@return `pImageIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndices() { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pImageIndices() { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(this.segment()); }
     /// Sets `pImageIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pImageIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pImageIndices.set(segment, 0L, index, value); }
+    public static void set_pImageIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pImageIndices.set(segment, 0L, index, value); }
     /// Sets `pImageIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pImageIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(segment, 0L, value); }
+    public static void set_pImageIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(segment, 0L, value); }
     /// Sets `pImageIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pImageIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(this.segment(), value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pImageIndices(@CType("const uint32_t *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(this.segment(), value); return this; }
 
     /// A buffer of [VkReleaseSwapchainImagesInfoEXT].
     public static final class Buffer extends VkReleaseSwapchainImagesInfoEXT {
@@ -268,21 +268,21 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `swapchain` at the given index}
         /// @param index the index
-        public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchainAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(this.segment(), index); }
+        public @CType("VkSwapchainKHR") MemorySegment swapchainAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_swapchain(this.segment(), index); }
         /// Sets `swapchain` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer swapchainAt(long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(this.segment(), index, value); return this; }
+        public Buffer swapchainAt(long index, @CType("VkSwapchainKHR") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_swapchain(this.segment(), index, value); return this; }
 
         /// {@return `imageIndexCount` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkReleaseSwapchainImagesInfoEXT extends Struct {
 
         /// {@return `pImageIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndicesAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pImageIndicesAt(long index) { return VkReleaseSwapchainImagesInfoEXT.get_pImageIndices(this.segment(), index); }
         /// Sets `pImageIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pImageIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(this.segment(), index, value); return this; }
+        public Buffer pImageIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkReleaseSwapchainImagesInfoEXT.set_pImageIndices(this.segment(), index, value); return this; }
 
     }
 }

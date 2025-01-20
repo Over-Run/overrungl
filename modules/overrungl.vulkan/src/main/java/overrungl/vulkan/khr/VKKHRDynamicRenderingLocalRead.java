@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRDynamicRenderingLocalRead {
     public static final int VK_KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION = 1;
@@ -32,18 +31,9 @@ public class VKKHRDynamicRenderingLocalRead {
     public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO;
     public static final int VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetRenderingAttachmentLocationsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetRenderingInputAttachmentIndicesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetRenderingAttachmentLocationsKHR,
-            FD_vkCmdSetRenderingInputAttachmentIndicesKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingAttachmentLocationsKHR);
-        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingInputAttachmentIndicesKHR);
+        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetRenderingAttachmentLocationsKHR;
         public final MemorySegment PFN_vkCmdSetRenderingInputAttachmentIndicesKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pPlacedAddress
-/// [VarHandle][#VH_pPlacedAddress] - [Getter][#pPlacedAddress()] - [Setter][#pPlacedAddress(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pPlacedAddress] - [Getter][#pPlacedAddress()] - [Setter][#pPlacedAddress(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkMemoryMapPlacedInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pPlacedAddress` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pPlacedAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPlacedAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPlacedAddress"));
 
     /// Creates `VkMemoryMapPlacedInfoEXT` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkMemoryMapPlacedInfoEXT extends Struct {
     /// Allocates a `VkMemoryMapPlacedInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMemoryMapPlacedInfoEXT`
-    public static VkMemoryMapPlacedInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("void *") java.lang.foreign.MemorySegment pPlacedAddress) { return alloc(allocator).sType(sType).pNext(pNext).pPlacedAddress(pPlacedAddress); }
+    public static VkMemoryMapPlacedInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("void *") MemorySegment pPlacedAddress) { return alloc(allocator).sType(sType).pNext(pNext).pPlacedAddress(pPlacedAddress); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkMemoryMapPlacedInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkMemoryMapPlacedInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkMemoryMapPlacedInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkMemoryMapPlacedInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkMemoryMapPlacedInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMemoryMapPlacedInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkMemoryMapPlacedInfoEXT pNext(@CType("const void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pPlacedAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pPlacedAddress(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPlacedAddress.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pPlacedAddress(MemorySegment segment, long index) { return (MemorySegment) VH_pPlacedAddress.get(segment, 0L, index); }
     /// {@return `pPlacedAddress`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pPlacedAddress(MemorySegment segment) { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pPlacedAddress(MemorySegment segment) { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(segment, 0L); }
     /// {@return `pPlacedAddress`}
-    public @CType("void *") java.lang.foreign.MemorySegment pPlacedAddress() { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(this.segment()); }
+    public @CType("void *") MemorySegment pPlacedAddress() { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(this.segment()); }
     /// Sets `pPlacedAddress` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pPlacedAddress(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pPlacedAddress.set(segment, 0L, index, value); }
+    public static void set_pPlacedAddress(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pPlacedAddress.set(segment, 0L, index, value); }
     /// Sets `pPlacedAddress` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pPlacedAddress(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(segment, 0L, value); }
+    public static void set_pPlacedAddress(MemorySegment segment, @CType("void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(segment, 0L, value); }
     /// Sets `pPlacedAddress` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMemoryMapPlacedInfoEXT pPlacedAddress(@CType("void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(this.segment(), value); return this; }
+    public VkMemoryMapPlacedInfoEXT pPlacedAddress(@CType("void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(this.segment(), value); return this; }
 
     /// A buffer of [VkMemoryMapPlacedInfoEXT].
     public static final class Buffer extends VkMemoryMapPlacedInfoEXT {
@@ -210,21 +210,21 @@ public sealed class VkMemoryMapPlacedInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMemoryMapPlacedInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkMemoryMapPlacedInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pPlacedAddress` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pPlacedAddressAt(long index) { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(this.segment(), index); }
+        public @CType("void *") MemorySegment pPlacedAddressAt(long index) { return VkMemoryMapPlacedInfoEXT.get_pPlacedAddress(this.segment(), index); }
         /// Sets `pPlacedAddress` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pPlacedAddressAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(this.segment(), index, value); return this; }
+        public Buffer pPlacedAddressAt(long index, @CType("void *") MemorySegment value) { VkMemoryMapPlacedInfoEXT.set_pPlacedAddress(this.segment(), index, value); return this; }
 
     }
 }
