@@ -19,6 +19,7 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLKHRParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_KHR = 0x91B0;
     public static final int GL_COMPLETION_STATUS_KHR = 0x91B1;
-    public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMaxShaderCompilerThreadsKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glMaxShaderCompilerThreadsKHR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glMaxShaderCompilerThreadsKHR
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = RuntimeHelper.downcall(Descriptors.FD_glMaxShaderCompilerThreadsKHR);
+        public final MemorySegment PFN_glMaxShaderCompilerThreadsKHR;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR");
+        }
+    }
 
     public GLKHRParallelShaderCompile(overrungl.opengl.GLLoadFunc func) {
-        PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR");
+        this.handles = new Handles(func);
     }
 
     public void MaxShaderCompilerThreadsKHR(@CType("GLuint") int count) {
-        if (Unmarshal.isNullPointer(PFN_glMaxShaderCompilerThreadsKHR)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");
-        try { MH_glMaxShaderCompilerThreadsKHR.invokeExact(PFN_glMaxShaderCompilerThreadsKHR, count); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsKHR)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");
+        try { Handles.MH_glMaxShaderCompilerThreadsKHR.invokeExact(handles.PFN_glMaxShaderCompilerThreadsKHR, count); }
         catch (Throwable e) { throw new RuntimeException("error in glMaxShaderCompilerThreadsKHR", e); }
     }
 

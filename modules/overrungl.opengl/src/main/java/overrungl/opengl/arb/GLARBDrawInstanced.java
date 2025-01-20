@@ -19,30 +19,46 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBDrawInstanced {
-    public static final MethodHandle MH_glDrawArraysInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDrawElementsInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArraysInstancedARB;
-    public final MemorySegment PFN_glDrawElementsInstancedARB;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDrawArraysInstancedARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDrawElementsInstancedARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDrawArraysInstancedARB,
+            FD_glDrawElementsInstancedARB
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDrawArraysInstancedARB = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstancedARB);
+        public static final MethodHandle MH_glDrawElementsInstancedARB = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsInstancedARB);
+        public final MemorySegment PFN_glDrawArraysInstancedARB;
+        public final MemorySegment PFN_glDrawElementsInstancedARB;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glDrawArraysInstancedARB = func.invoke("glDrawArraysInstancedARB", "glDrawArraysInstanced");
+            PFN_glDrawElementsInstancedARB = func.invoke("glDrawElementsInstancedARB", "glDrawElementsInstanced");
+        }
+    }
 
     public GLARBDrawInstanced(overrungl.opengl.GLLoadFunc func) {
-        PFN_glDrawArraysInstancedARB = func.invoke("glDrawArraysInstancedARB", "glDrawArraysInstanced");
-        PFN_glDrawElementsInstancedARB = func.invoke("glDrawElementsInstancedARB", "glDrawElementsInstanced");
+        this.handles = new Handles(func);
     }
 
     public void DrawArraysInstancedARB(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(PFN_glDrawArraysInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
-        try { MH_glDrawArraysInstancedARB.invokeExact(PFN_glDrawArraysInstancedARB, mode, first, count, primcount); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawArraysInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
+        try { Handles.MH_glDrawArraysInstancedARB.invokeExact(handles.PFN_glDrawArraysInstancedARB, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
     }
 
     public void DrawElementsInstancedARB(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
-        try { MH_glDrawElementsInstancedARB.invokeExact(PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
+        try { Handles.MH_glDrawElementsInstancedARB.invokeExact(handles.PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }
     }
 

@@ -19,21 +19,35 @@ package overrungl.opengl.intel;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLINTELFramebufferCMAA {
-    public static final MethodHandle MH_glApplyFramebufferAttachmentCMAAINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glApplyFramebufferAttachmentCMAAINTEL;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glApplyFramebufferAttachmentCMAAINTEL = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glApplyFramebufferAttachmentCMAAINTEL
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glApplyFramebufferAttachmentCMAAINTEL = RuntimeHelper.downcall(Descriptors.FD_glApplyFramebufferAttachmentCMAAINTEL);
+        public final MemorySegment PFN_glApplyFramebufferAttachmentCMAAINTEL;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glApplyFramebufferAttachmentCMAAINTEL = func.invoke("glApplyFramebufferAttachmentCMAAINTEL");
+        }
+    }
 
     public GLINTELFramebufferCMAA(overrungl.opengl.GLLoadFunc func) {
-        PFN_glApplyFramebufferAttachmentCMAAINTEL = func.invoke("glApplyFramebufferAttachmentCMAAINTEL");
+        this.handles = new Handles(func);
     }
 
     public void ApplyFramebufferAttachmentCMAAINTEL() {
-        if (Unmarshal.isNullPointer(PFN_glApplyFramebufferAttachmentCMAAINTEL)) throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL");
-        try { MH_glApplyFramebufferAttachmentCMAAINTEL.invokeExact(PFN_glApplyFramebufferAttachmentCMAAINTEL); }
+        if (Unmarshal.isNullPointer(handles.PFN_glApplyFramebufferAttachmentCMAAINTEL)) throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL");
+        try { Handles.MH_glApplyFramebufferAttachmentCMAAINTEL.invokeExact(handles.PFN_glApplyFramebufferAttachmentCMAAINTEL); }
         catch (Throwable e) { throw new RuntimeException("error in glApplyFramebufferAttachmentCMAAINTEL", e); }
     }
 

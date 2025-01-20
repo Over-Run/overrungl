@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -38,16 +39,27 @@ public final class ALCSOFTHRTF {
     public static final int ALC_HRTF_SPECIFIER_SOFT = 0x1995;
     public static final int ALC_HRTF_ID_SOFT = 0x1996;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcGetStringiSOFT`.
+        public static final FunctionDescriptor FD_alcGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alcResetDeviceSOFT`.
+        public static final FunctionDescriptor FD_alcResetDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcGetStringiSOFT,
+            FD_alcResetDeviceSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcGetStringiSOFT`.
-        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetStringiSOFT", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetStringiSOFT", Descriptors.FD_alcGetStringiSOFT);
         /// The method handle of `alcResetDeviceSOFT`.
-        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcResetDeviceSOFT", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcResetDeviceSOFT", Descriptors.FD_alcResetDeviceSOFT);
     }
-    //endregion
 
     public static @CType("const ALCchar*") java.lang.foreign.MemorySegment alcGetStringiSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCenum") int paramName, @CType("ALCsizei") int index) {
         if (Handles.MH_alcGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcGetStringiSOFT");

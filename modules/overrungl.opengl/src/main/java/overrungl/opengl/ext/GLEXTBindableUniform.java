@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,34 +31,51 @@ public final class GLEXTBindableUniform {
     public static final int GL_MAX_BINDABLE_UNIFORM_SIZE_EXT = 0x8DED;
     public static final int GL_UNIFORM_BUFFER_EXT = 0x8DEE;
     public static final int GL_UNIFORM_BUFFER_BINDING_EXT = 0x8DEF;
-    public static final MethodHandle MH_glUniformBufferEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetUniformBufferSizeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetUniformOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glUniformBufferEXT;
-    public final MemorySegment PFN_glGetUniformBufferSizeEXT;
-    public final MemorySegment PFN_glGetUniformOffsetEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glUniformBufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetUniformBufferSizeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetUniformOffsetEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glUniformBufferEXT,
+            FD_glGetUniformBufferSizeEXT,
+            FD_glGetUniformOffsetEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glUniformBufferEXT = RuntimeHelper.downcall(Descriptors.FD_glUniformBufferEXT);
+        public static final MethodHandle MH_glGetUniformBufferSizeEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUniformBufferSizeEXT);
+        public static final MethodHandle MH_glGetUniformOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUniformOffsetEXT);
+        public final MemorySegment PFN_glUniformBufferEXT;
+        public final MemorySegment PFN_glGetUniformBufferSizeEXT;
+        public final MemorySegment PFN_glGetUniformOffsetEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glUniformBufferEXT = func.invoke("glUniformBufferEXT");
+            PFN_glGetUniformBufferSizeEXT = func.invoke("glGetUniformBufferSizeEXT");
+            PFN_glGetUniformOffsetEXT = func.invoke("glGetUniformOffsetEXT");
+        }
+    }
 
     public GLEXTBindableUniform(overrungl.opengl.GLLoadFunc func) {
-        PFN_glUniformBufferEXT = func.invoke("glUniformBufferEXT");
-        PFN_glGetUniformBufferSizeEXT = func.invoke("glGetUniformBufferSizeEXT");
-        PFN_glGetUniformOffsetEXT = func.invoke("glGetUniformOffsetEXT");
+        this.handles = new Handles(func);
     }
 
     public void UniformBufferEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(PFN_glUniformBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glUniformBufferEXT");
-        try { MH_glUniformBufferEXT.invokeExact(PFN_glUniformBufferEXT, program, location, buffer); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glUniformBufferEXT");
+        try { Handles.MH_glUniformBufferEXT.invokeExact(handles.PFN_glUniformBufferEXT, program, location, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformBufferEXT", e); }
     }
 
     public @CType("GLint") int GetUniformBufferSizeEXT(@CType("GLuint") int program, @CType("GLint") int location) {
-        if (Unmarshal.isNullPointer(PFN_glGetUniformBufferSizeEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT");
-        try { return (int) MH_glGetUniformBufferSizeEXT.invokeExact(PFN_glGetUniformBufferSizeEXT, program, location); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetUniformBufferSizeEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT");
+        try { return (int) Handles.MH_glGetUniformBufferSizeEXT.invokeExact(handles.PFN_glGetUniformBufferSizeEXT, program, location); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUniformBufferSizeEXT", e); }
     }
 
     public @CType("GLintptr") long GetUniformOffsetEXT(@CType("GLuint") int program, @CType("GLint") int location) {
-        if (Unmarshal.isNullPointer(PFN_glGetUniformOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT");
-        try { return (long) MH_glGetUniformOffsetEXT.invokeExact(PFN_glGetUniformOffsetEXT, program, location); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetUniformOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT");
+        try { return (long) Handles.MH_glGetUniformOffsetEXT.invokeExact(handles.PFN_glGetUniformOffsetEXT, program, location); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUniformOffsetEXT", e); }
     }
 

@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,16 +30,29 @@ public final class GLARBTextureBufferObject {
     public static final int GL_TEXTURE_BINDING_BUFFER_ARB = 0x8C2C;
     public static final int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_ARB = 0x8C2D;
     public static final int GL_TEXTURE_BUFFER_FORMAT_ARB = 0x8C2E;
-    public static final MethodHandle MH_glTexBufferARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glTexBufferARB;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glTexBufferARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glTexBufferARB
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glTexBufferARB = RuntimeHelper.downcall(Descriptors.FD_glTexBufferARB);
+        public final MemorySegment PFN_glTexBufferARB;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glTexBufferARB = func.invoke("glTexBufferARB", "glTexBuffer");
+        }
+    }
 
     public GLARBTextureBufferObject(overrungl.opengl.GLLoadFunc func) {
-        PFN_glTexBufferARB = func.invoke("glTexBufferARB", "glTexBuffer");
+        this.handles = new Handles(func);
     }
 
     public void TexBufferARB(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(PFN_glTexBufferARB)) throw new SymbolNotFoundError("Symbol not found: glTexBufferARB");
-        try { MH_glTexBufferARB.invokeExact(PFN_glTexBufferARB, target, internalformat, buffer); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexBufferARB)) throw new SymbolNotFoundError("Symbol not found: glTexBufferARB");
+        try { Handles.MH_glTexBufferARB.invokeExact(handles.PFN_glTexBufferARB, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glTexBufferARB", e); }
     }
 

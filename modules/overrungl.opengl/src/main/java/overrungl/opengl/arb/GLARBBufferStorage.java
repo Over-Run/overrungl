@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,16 +34,29 @@ public final class GLARBBufferStorage {
     public static final int GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = 0x00004000;
     public static final int GL_BUFFER_IMMUTABLE_STORAGE = 0x821F;
     public static final int GL_BUFFER_STORAGE_FLAGS = 0x8220;
-    public static final MethodHandle MH_glBufferStorage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBufferStorage;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBufferStorage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBufferStorage
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBufferStorage = RuntimeHelper.downcall(Descriptors.FD_glBufferStorage);
+        public final MemorySegment PFN_glBufferStorage;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBufferStorage = func.invoke("glBufferStorage");
+        }
+    }
 
     public GLARBBufferStorage(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBufferStorage = func.invoke("glBufferStorage");
+        this.handles = new Handles(func);
     }
 
     public void BufferStorage(@CType("GLenum") int target, @CType("GLsizeiptr") long size, @CType("const void *") java.lang.foreign.MemorySegment data, @CType("GLbitfield") int flags) {
-        if (Unmarshal.isNullPointer(PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
-        try { MH_glBufferStorage.invokeExact(PFN_glBufferStorage, target, size, data, flags); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
+        try { Handles.MH_glBufferStorage.invokeExact(handles.PFN_glBufferStorage, target, size, data, flags); }
         catch (Throwable e) { throw new RuntimeException("error in glBufferStorage", e); }
     }
 

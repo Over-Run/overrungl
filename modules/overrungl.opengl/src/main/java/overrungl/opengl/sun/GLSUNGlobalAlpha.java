@@ -19,6 +19,7 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,79 +27,106 @@ import overrungl.util.*;
 public final class GLSUNGlobalAlpha {
     public static final int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     public static final int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
-    public static final MethodHandle MH_glGlobalAlphaFactorbSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-    public static final MethodHandle MH_glGlobalAlphaFactorsSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
-    public static final MethodHandle MH_glGlobalAlphaFactoriSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGlobalAlphaFactorfSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glGlobalAlphaFactordSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glGlobalAlphaFactorubSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-    public static final MethodHandle MH_glGlobalAlphaFactorusSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
-    public static final MethodHandle MH_glGlobalAlphaFactoruiSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGlobalAlphaFactorbSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactorsSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactoriSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactorfSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactordSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactorubSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactorusSUN;
-    public final MemorySegment PFN_glGlobalAlphaFactoruiSUN;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glGlobalAlphaFactorbSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactorsSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactoriSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactorfSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactordSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactorubSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactorusSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
+        public static final FunctionDescriptor FD_glGlobalAlphaFactoruiSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glGlobalAlphaFactorbSUN,
+            FD_glGlobalAlphaFactorsSUN,
+            FD_glGlobalAlphaFactoriSUN,
+            FD_glGlobalAlphaFactorfSUN,
+            FD_glGlobalAlphaFactordSUN,
+            FD_glGlobalAlphaFactorubSUN,
+            FD_glGlobalAlphaFactorusSUN,
+            FD_glGlobalAlphaFactoruiSUN
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glGlobalAlphaFactorbSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorbSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactorsSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorsSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactoriSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactoriSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactorfSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorfSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactordSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactordSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactorubSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorubSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactorusSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorusSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactoruiSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactoruiSUN);
+        public final MemorySegment PFN_glGlobalAlphaFactorbSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactorsSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactoriSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactorfSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactordSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactorubSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactorusSUN;
+        public final MemorySegment PFN_glGlobalAlphaFactoruiSUN;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glGlobalAlphaFactorbSUN = func.invoke("glGlobalAlphaFactorbSUN");
+            PFN_glGlobalAlphaFactorsSUN = func.invoke("glGlobalAlphaFactorsSUN");
+            PFN_glGlobalAlphaFactoriSUN = func.invoke("glGlobalAlphaFactoriSUN");
+            PFN_glGlobalAlphaFactorfSUN = func.invoke("glGlobalAlphaFactorfSUN");
+            PFN_glGlobalAlphaFactordSUN = func.invoke("glGlobalAlphaFactordSUN");
+            PFN_glGlobalAlphaFactorubSUN = func.invoke("glGlobalAlphaFactorubSUN");
+            PFN_glGlobalAlphaFactorusSUN = func.invoke("glGlobalAlphaFactorusSUN");
+            PFN_glGlobalAlphaFactoruiSUN = func.invoke("glGlobalAlphaFactoruiSUN");
+        }
+    }
 
     public GLSUNGlobalAlpha(overrungl.opengl.GLLoadFunc func) {
-        PFN_glGlobalAlphaFactorbSUN = func.invoke("glGlobalAlphaFactorbSUN");
-        PFN_glGlobalAlphaFactorsSUN = func.invoke("glGlobalAlphaFactorsSUN");
-        PFN_glGlobalAlphaFactoriSUN = func.invoke("glGlobalAlphaFactoriSUN");
-        PFN_glGlobalAlphaFactorfSUN = func.invoke("glGlobalAlphaFactorfSUN");
-        PFN_glGlobalAlphaFactordSUN = func.invoke("glGlobalAlphaFactordSUN");
-        PFN_glGlobalAlphaFactorubSUN = func.invoke("glGlobalAlphaFactorubSUN");
-        PFN_glGlobalAlphaFactorusSUN = func.invoke("glGlobalAlphaFactorusSUN");
-        PFN_glGlobalAlphaFactoruiSUN = func.invoke("glGlobalAlphaFactoruiSUN");
+        this.handles = new Handles(func);
     }
 
     public void GlobalAlphaFactorbSUN(@CType("GLbyte") byte factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactorbSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorbSUN");
-        try { MH_glGlobalAlphaFactorbSUN.invokeExact(PFN_glGlobalAlphaFactorbSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactorbSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorbSUN");
+        try { Handles.MH_glGlobalAlphaFactorbSUN.invokeExact(handles.PFN_glGlobalAlphaFactorbSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactorbSUN", e); }
     }
 
     public void GlobalAlphaFactorsSUN(@CType("GLshort") short factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactorsSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorsSUN");
-        try { MH_glGlobalAlphaFactorsSUN.invokeExact(PFN_glGlobalAlphaFactorsSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactorsSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorsSUN");
+        try { Handles.MH_glGlobalAlphaFactorsSUN.invokeExact(handles.PFN_glGlobalAlphaFactorsSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactorsSUN", e); }
     }
 
     public void GlobalAlphaFactoriSUN(@CType("GLint") int factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactoriSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoriSUN");
-        try { MH_glGlobalAlphaFactoriSUN.invokeExact(PFN_glGlobalAlphaFactoriSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactoriSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoriSUN");
+        try { Handles.MH_glGlobalAlphaFactoriSUN.invokeExact(handles.PFN_glGlobalAlphaFactoriSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactoriSUN", e); }
     }
 
     public void GlobalAlphaFactorfSUN(@CType("GLfloat") float factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactorfSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorfSUN");
-        try { MH_glGlobalAlphaFactorfSUN.invokeExact(PFN_glGlobalAlphaFactorfSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactorfSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorfSUN");
+        try { Handles.MH_glGlobalAlphaFactorfSUN.invokeExact(handles.PFN_glGlobalAlphaFactorfSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactorfSUN", e); }
     }
 
     public void GlobalAlphaFactordSUN(@CType("GLdouble") double factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactordSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactordSUN");
-        try { MH_glGlobalAlphaFactordSUN.invokeExact(PFN_glGlobalAlphaFactordSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactordSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactordSUN");
+        try { Handles.MH_glGlobalAlphaFactordSUN.invokeExact(handles.PFN_glGlobalAlphaFactordSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactordSUN", e); }
     }
 
     public void GlobalAlphaFactorubSUN(@CType("GLubyte") byte factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactorubSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorubSUN");
-        try { MH_glGlobalAlphaFactorubSUN.invokeExact(PFN_glGlobalAlphaFactorubSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactorubSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorubSUN");
+        try { Handles.MH_glGlobalAlphaFactorubSUN.invokeExact(handles.PFN_glGlobalAlphaFactorubSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactorubSUN", e); }
     }
 
     public void GlobalAlphaFactorusSUN(@CType("GLushort") short factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactorusSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorusSUN");
-        try { MH_glGlobalAlphaFactorusSUN.invokeExact(PFN_glGlobalAlphaFactorusSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactorusSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorusSUN");
+        try { Handles.MH_glGlobalAlphaFactorusSUN.invokeExact(handles.PFN_glGlobalAlphaFactorusSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactorusSUN", e); }
     }
 
     public void GlobalAlphaFactoruiSUN(@CType("GLuint") int factor) {
-        if (Unmarshal.isNullPointer(PFN_glGlobalAlphaFactoruiSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoruiSUN");
-        try { MH_glGlobalAlphaFactoruiSUN.invokeExact(PFN_glGlobalAlphaFactoruiSUN, factor); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGlobalAlphaFactoruiSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoruiSUN");
+        try { Handles.MH_glGlobalAlphaFactoruiSUN.invokeExact(handles.PFN_glGlobalAlphaFactoruiSUN, factor); }
         catch (Throwable e) { throw new RuntimeException("error in glGlobalAlphaFactoruiSUN", e); }
     }
 

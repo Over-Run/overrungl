@@ -607,7 +607,7 @@ fun main() {
         val longType = get.type == "ull"
         field(
             InstanceDowncallField(
-                modifier = "static",
+                modifier = "public static final",
                 type = if (longType) "long" else "int",
                 name = get.name,
                 value = if (longType) "${get.value}L" else get.value
@@ -617,19 +617,31 @@ fun main() {
 
     fun InstanceDowncall.addCommand(command: GLRequireCommand) {
         val get = commandMap[command.name]!!
-        // handles
+
+        // descriptor
+        descriptorFields.add(
+            InstanceDowncallField(
+                modifier = "public static final",
+                type = "FunctionDescriptor",
+                name = "FD_${get.name}",
+                value = computeFunctionDescriptor(get)
+            )
+        )
+
+        // handle
         handleFields.add(
             InstanceDowncallField(
-                modifier = "static",
+                modifier = "public static final",
                 type = "MethodHandle",
                 name = "MH_${get.name}",
-                value = "RuntimeHelper.downcall(${computeFunctionDescriptor(get)})"
+                value = "RuntimeHelper.downcall(Descriptors.FD_${get.name})"
             )
         )
 
         // address
         pfnFields.add(
             InstanceDowncallField(
+                modifier = "public final",
                 type = "MemorySegment",
                 name = "PFN_${get.name}"
             )
@@ -652,10 +664,7 @@ fun main() {
         InstanceDowncall(openglPackage, "GL${feature.number.replace(".", "")}") {
             featureExtends[feature.number]?.also { extends("GL${it}") }
             constructorParam = "GLLoadFunc func"
-            constructorCode = buildString {
-                if (feature.number != "1.0") {
-                    appendLine("super(func);")
-                }
+            handlesConstructorCode = buildString {
                 val thisFeatureAddedCommand = mutableListOf<String>()
                 var i = 0
                 feature.coreForEach(removeCommands, GLRequire::commands) { command ->
@@ -674,6 +683,12 @@ fun main() {
                     }
                 }
             }
+            constructorCode = buildString {
+                if (feature.number != "1.0") {
+                    appendLine("super(func);")
+                }
+                append("this.handles = new Handles(func);")
+            }
             customCode = featureCustomCode(feature.number)
 
             feature.coreForEach(removeEnums, GLRequire::enums) {
@@ -687,6 +702,9 @@ fun main() {
                     addCommand(it)
                     featureAddedCommands.add(it.name)
                 }
+            }
+            if (handleFields.isNotEmpty()) {
+                field(InstanceDowncallField(modifier = "private final", type = "Handles", name = "handles"))
             }
         }
     }
@@ -749,7 +767,7 @@ fun main() {
                         constructorModifier = "private"
                     } else {
                         constructorParam = "overrungl.opengl.GLLoadFunc func"
-                        constructorCode = buildString {
+                        handlesConstructorCode = buildString {
                             extension.requires.forEach { require ->
                                 require.commands.forEachIndexed { index, command ->
                                     if (index > 0) {
@@ -762,11 +780,15 @@ fun main() {
                                 }
                             }
                         }
+                        constructorCode = "this.handles = new Handles(func);"
                     }
 
                     extension.requires.forEach { require ->
                         require.enums.forEach(::addEnum)
                         require.commands.forEach(::addCommand)
+                    }
+                    if (handleFields.isNotEmpty()) {
+                        field(InstanceDowncallField(modifier = "private final", type = "Handles", name = "handles"))
                     }
                 }
             }

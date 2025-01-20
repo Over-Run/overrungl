@@ -28,6 +28,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 /// =======================================================================
 ///
@@ -105,130 +106,312 @@ public final class STBTrueType {
     public static final int STBTT_MAC_LANG_CHINESE_SIMPLIFIED = 33;
     public static final int STBTT_MAC_LANG_CHINESE_TRAD = 19;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stbtt_BakeFontBitmap`.
+        public static final FunctionDescriptor FD_stbtt_BakeFontBitmap = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT));
+        /// The function descriptor of `stbtt_GetBakedQuad`.
+        public static final FunctionDescriptor FD_stbtt_GetBakedQuad = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `stbtt_GetScaledFontVMetrics`.
+        public static final FunctionDescriptor FD_stbtt_GetScaledFontVMetrics = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_PackBegin`.
+        public static final FunctionDescriptor FD_stbtt_PackBegin = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_PackEnd`.
+        public static final FunctionDescriptor FD_stbtt_PackEnd = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_PackFontRange`.
+        public static final FunctionDescriptor FD_stbtt_PackFontRange = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT));
+        /// The function descriptor of `stbtt_PackFontRanges`.
+        public static final FunctionDescriptor FD_stbtt_PackFontRanges = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_PackSetOversampling`.
+        public static final FunctionDescriptor FD_stbtt_PackSetOversampling = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_PackSetSkipMissingCodepoints`.
+        public static final FunctionDescriptor FD_stbtt_PackSetSkipMissingCodepoints = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `stbtt_GetPackedQuad`.
+        public static final FunctionDescriptor FD_stbtt_GetPackedQuad = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `stbtt_PackFontRangesGatherRects`.
+        public static final FunctionDescriptor FD_stbtt_PackFontRangesGatherRects = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT);
+        /// The function descriptor of `stbtt_PackFontRangesPackRects`.
+        public static final FunctionDescriptor FD_stbtt_PackFontRangesPackRects = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, STBRPRect.LAYOUT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_PackFontRangesRenderIntoRects`.
+        public static final FunctionDescriptor FD_stbtt_PackFontRangesRenderIntoRects = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT);
+        /// The function descriptor of `stbtt_GetNumberOfFonts`.
+        public static final FunctionDescriptor FD_stbtt_GetNumberOfFonts = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetFontOffsetForIndex`.
+        public static final FunctionDescriptor FD_stbtt_GetFontOffsetForIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_InitFont`.
+        public static final FunctionDescriptor FD_stbtt_InitFont = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_FindGlyphIndex`.
+        public static final FunctionDescriptor FD_stbtt_FindGlyphIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_ScaleForPixelHeight`.
+        public static final FunctionDescriptor FD_stbtt_ScaleForPixelHeight = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `stbtt_ScaleForMappingEmToPixels`.
+        public static final FunctionDescriptor FD_stbtt_ScaleForMappingEmToPixels = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `stbtt_GetFontVMetrics`.
+        public static final FunctionDescriptor FD_stbtt_GetFontVMetrics = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetFontVMetricsOS2`.
+        public static final FunctionDescriptor FD_stbtt_GetFontVMetricsOS2 = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetFontBoundingBox`.
+        public static final FunctionDescriptor FD_stbtt_GetFontBoundingBox = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointHMetrics`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointHMetrics = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointKernAdvance`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointKernAdvance = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetCodepointBox`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointBox = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphHMetrics`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphHMetrics = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphKernAdvance`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphKernAdvance = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetGlyphBox`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphBox = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetKerningTableLength`.
+        public static final FunctionDescriptor FD_stbtt_GetKerningTableLength = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT));
+        /// The function descriptor of `stbtt_GetKerningTable`.
+        public static final FunctionDescriptor FD_stbtt_GetKerningTable = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTKerningEntry.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_IsGlyphEmpty`.
+        public static final FunctionDescriptor FD_stbtt_IsGlyphEmpty = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetCodepointShape`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointShape = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphShape`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphShape = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_FreeShape`.
+        public static final FunctionDescriptor FD_stbtt_FreeShape = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT));
+        /// The function descriptor of `stbtt_FindSVGDoc`.
+        public static final FunctionDescriptor FD_stbtt_FindSVGDoc = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetCodepointSVG`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointSVG = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphSVG`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphSVG = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_FreeBitmap`.
+        public static final FunctionDescriptor FD_stbtt_FreeBitmap = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointBitmap`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointBitmap = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointBitmapSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointBitmapSubpixel = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_MakeCodepointBitmap`.
+        public static final FunctionDescriptor FD_stbtt_MakeCodepointBitmap = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_MakeCodepointBitmapSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_MakeCodepointBitmapSubpixel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_MakeCodepointBitmapSubpixelPrefilter`.
+        public static final FunctionDescriptor FD_stbtt_MakeCodepointBitmapSubpixelPrefilter = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetCodepointBitmapBox`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointBitmapBox = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointBitmapBoxSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointBitmapBoxSubpixel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphBitmap`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphBitmap = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphBitmapSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphBitmapSubpixel = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_MakeGlyphBitmap`.
+        public static final FunctionDescriptor FD_stbtt_MakeGlyphBitmap = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_MakeGlyphBitmapSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_MakeGlyphBitmapSubpixel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_MakeGlyphBitmapSubpixelPrefilter`.
+        public static final FunctionDescriptor FD_stbtt_MakeGlyphBitmapSubpixelPrefilter = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetGlyphBitmapBox`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphBitmapBox = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphBitmapBoxSubpixel`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphBitmapBoxSubpixel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_Rasterize`.
+        public static final FunctionDescriptor FD_stbtt_Rasterize = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTT__bitmap.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_FreeSDF`.
+        public static final FunctionDescriptor FD_stbtt_FreeSDF = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetGlyphSDF`.
+        public static final FunctionDescriptor FD_stbtt_GetGlyphSDF = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_GetCodepointSDF`.
+        public static final FunctionDescriptor FD_stbtt_GetCodepointSDF = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbtt_FindMatchingFont`.
+        public static final FunctionDescriptor FD_stbtt_FindMatchingFont = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_CompareUTF8toUTF16_bigendian`.
+        public static final FunctionDescriptor FD_stbtt_CompareUTF8toUTF16_bigendian = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbtt_GetFontNameString`.
+        public static final FunctionDescriptor FD_stbtt_GetFontNameString = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stbtt_BakeFontBitmap,
+            FD_stbtt_GetBakedQuad,
+            FD_stbtt_GetScaledFontVMetrics,
+            FD_stbtt_PackBegin,
+            FD_stbtt_PackEnd,
+            FD_stbtt_PackFontRange,
+            FD_stbtt_PackFontRanges,
+            FD_stbtt_PackSetOversampling,
+            FD_stbtt_PackSetSkipMissingCodepoints,
+            FD_stbtt_GetPackedQuad,
+            FD_stbtt_PackFontRangesGatherRects,
+            FD_stbtt_PackFontRangesPackRects,
+            FD_stbtt_PackFontRangesRenderIntoRects,
+            FD_stbtt_GetNumberOfFonts,
+            FD_stbtt_GetFontOffsetForIndex,
+            FD_stbtt_InitFont,
+            FD_stbtt_FindGlyphIndex,
+            FD_stbtt_ScaleForPixelHeight,
+            FD_stbtt_ScaleForMappingEmToPixels,
+            FD_stbtt_GetFontVMetrics,
+            FD_stbtt_GetFontVMetricsOS2,
+            FD_stbtt_GetFontBoundingBox,
+            FD_stbtt_GetCodepointHMetrics,
+            FD_stbtt_GetCodepointKernAdvance,
+            FD_stbtt_GetCodepointBox,
+            FD_stbtt_GetGlyphHMetrics,
+            FD_stbtt_GetGlyphKernAdvance,
+            FD_stbtt_GetGlyphBox,
+            FD_stbtt_GetKerningTableLength,
+            FD_stbtt_GetKerningTable,
+            FD_stbtt_IsGlyphEmpty,
+            FD_stbtt_GetCodepointShape,
+            FD_stbtt_GetGlyphShape,
+            FD_stbtt_FreeShape,
+            FD_stbtt_FindSVGDoc,
+            FD_stbtt_GetCodepointSVG,
+            FD_stbtt_GetGlyphSVG,
+            FD_stbtt_FreeBitmap,
+            FD_stbtt_GetCodepointBitmap,
+            FD_stbtt_GetCodepointBitmapSubpixel,
+            FD_stbtt_MakeCodepointBitmap,
+            FD_stbtt_MakeCodepointBitmapSubpixel,
+            FD_stbtt_MakeCodepointBitmapSubpixelPrefilter,
+            FD_stbtt_GetCodepointBitmapBox,
+            FD_stbtt_GetCodepointBitmapBoxSubpixel,
+            FD_stbtt_GetGlyphBitmap,
+            FD_stbtt_GetGlyphBitmapSubpixel,
+            FD_stbtt_MakeGlyphBitmap,
+            FD_stbtt_MakeGlyphBitmapSubpixel,
+            FD_stbtt_MakeGlyphBitmapSubpixelPrefilter,
+            FD_stbtt_GetGlyphBitmapBox,
+            FD_stbtt_GetGlyphBitmapBoxSubpixel,
+            FD_stbtt_Rasterize,
+            FD_stbtt_FreeSDF,
+            FD_stbtt_GetGlyphSDF,
+            FD_stbtt_GetCodepointSDF,
+            FD_stbtt_FindMatchingFont,
+            FD_stbtt_CompareUTF8toUTF16_bigendian,
+            FD_stbtt_GetFontNameString
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stbtt_BakeFontBitmap`.
-        public static final MethodHandle MH_stbtt_BakeFontBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_BakeFontBitmap", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT)));
+        public static final MethodHandle MH_stbtt_BakeFontBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_BakeFontBitmap", Descriptors.FD_stbtt_BakeFontBitmap);
         /// The method handle of `stbtt_GetBakedQuad`.
-        public static final MethodHandle MH_stbtt_GetBakedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetBakedQuad", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbtt_GetBakedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetBakedQuad", Descriptors.FD_stbtt_GetBakedQuad);
         /// The method handle of `stbtt_GetScaledFontVMetrics`.
-        public static final MethodHandle MH_stbtt_GetScaledFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetScaledFontVMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetScaledFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetScaledFontVMetrics", Descriptors.FD_stbtt_GetScaledFontVMetrics);
         /// The method handle of `stbtt_PackBegin`.
-        public static final MethodHandle MH_stbtt_PackBegin = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackBegin", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_PackBegin = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackBegin", Descriptors.FD_stbtt_PackBegin);
         /// The method handle of `stbtt_PackEnd`.
-        public static final MethodHandle MH_stbtt_PackEnd = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackEnd", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_PackEnd = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackEnd", Descriptors.FD_stbtt_PackEnd);
         /// The method handle of `stbtt_PackFontRange`.
-        public static final MethodHandle MH_stbtt_PackFontRange = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRange", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT)));
+        public static final MethodHandle MH_stbtt_PackFontRange = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRange", Descriptors.FD_stbtt_PackFontRange);
         /// The method handle of `stbtt_PackFontRanges`.
-        public static final MethodHandle MH_stbtt_PackFontRanges = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRanges", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_PackFontRanges = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRanges", Descriptors.FD_stbtt_PackFontRanges);
         /// The method handle of `stbtt_PackSetOversampling`.
-        public static final MethodHandle MH_stbtt_PackSetOversampling = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetOversampling", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_PackSetOversampling = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetOversampling", Descriptors.FD_stbtt_PackSetOversampling);
         /// The method handle of `stbtt_PackSetSkipMissingCodepoints`.
-        public static final MethodHandle MH_stbtt_PackSetSkipMissingCodepoints = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetSkipMissingCodepoints", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbtt_PackSetSkipMissingCodepoints = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetSkipMissingCodepoints", Descriptors.FD_stbtt_PackSetSkipMissingCodepoints);
         /// The method handle of `stbtt_GetPackedQuad`.
-        public static final MethodHandle MH_stbtt_GetPackedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetPackedQuad", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbtt_GetPackedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetPackedQuad", Descriptors.FD_stbtt_GetPackedQuad);
         /// The method handle of `stbtt_PackFontRangesGatherRects`.
-        public static final MethodHandle MH_stbtt_PackFontRangesGatherRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesGatherRects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT));
+        public static final MethodHandle MH_stbtt_PackFontRangesGatherRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesGatherRects", Descriptors.FD_stbtt_PackFontRangesGatherRects);
         /// The method handle of `stbtt_PackFontRangesPackRects`.
-        public static final MethodHandle MH_stbtt_PackFontRangesPackRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesPackRects", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, STBRPRect.LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_PackFontRangesPackRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesPackRects", Descriptors.FD_stbtt_PackFontRangesPackRects);
         /// The method handle of `stbtt_PackFontRangesRenderIntoRects`.
-        public static final MethodHandle MH_stbtt_PackFontRangesRenderIntoRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesRenderIntoRects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT));
+        public static final MethodHandle MH_stbtt_PackFontRangesRenderIntoRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesRenderIntoRects", Descriptors.FD_stbtt_PackFontRangesRenderIntoRects);
         /// The method handle of `stbtt_GetNumberOfFonts`.
-        public static final MethodHandle MH_stbtt_GetNumberOfFonts = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetNumberOfFonts", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetNumberOfFonts = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetNumberOfFonts", Descriptors.FD_stbtt_GetNumberOfFonts);
         /// The method handle of `stbtt_GetFontOffsetForIndex`.
-        public static final MethodHandle MH_stbtt_GetFontOffsetForIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontOffsetForIndex", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_GetFontOffsetForIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontOffsetForIndex", Descriptors.FD_stbtt_GetFontOffsetForIndex);
         /// The method handle of `stbtt_InitFont`.
-        public static final MethodHandle MH_stbtt_InitFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_InitFont", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_InitFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_InitFont", Descriptors.FD_stbtt_InitFont);
         /// The method handle of `stbtt_FindGlyphIndex`.
-        public static final MethodHandle MH_stbtt_FindGlyphIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindGlyphIndex", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_FindGlyphIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindGlyphIndex", Descriptors.FD_stbtt_FindGlyphIndex);
         /// The method handle of `stbtt_ScaleForPixelHeight`.
-        public static final MethodHandle MH_stbtt_ScaleForPixelHeight = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForPixelHeight", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbtt_ScaleForPixelHeight = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForPixelHeight", Descriptors.FD_stbtt_ScaleForPixelHeight);
         /// The method handle of `stbtt_ScaleForMappingEmToPixels`.
-        public static final MethodHandle MH_stbtt_ScaleForMappingEmToPixels = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForMappingEmToPixels", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbtt_ScaleForMappingEmToPixels = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForMappingEmToPixels", Descriptors.FD_stbtt_ScaleForMappingEmToPixels);
         /// The method handle of `stbtt_GetFontVMetrics`.
-        public static final MethodHandle MH_stbtt_GetFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetrics", Descriptors.FD_stbtt_GetFontVMetrics);
         /// The method handle of `stbtt_GetFontVMetricsOS2`.
-        public static final MethodHandle MH_stbtt_GetFontVMetricsOS2 = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetricsOS2", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetFontVMetricsOS2 = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetricsOS2", Descriptors.FD_stbtt_GetFontVMetricsOS2);
         /// The method handle of `stbtt_GetFontBoundingBox`.
-        public static final MethodHandle MH_stbtt_GetFontBoundingBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontBoundingBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetFontBoundingBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontBoundingBox", Descriptors.FD_stbtt_GetFontBoundingBox);
         /// The method handle of `stbtt_GetCodepointHMetrics`.
-        public static final MethodHandle MH_stbtt_GetCodepointHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointHMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointHMetrics", Descriptors.FD_stbtt_GetCodepointHMetrics);
         /// The method handle of `stbtt_GetCodepointKernAdvance`.
-        public static final MethodHandle MH_stbtt_GetCodepointKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointKernAdvance", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_GetCodepointKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointKernAdvance", Descriptors.FD_stbtt_GetCodepointKernAdvance);
         /// The method handle of `stbtt_GetCodepointBox`.
-        public static final MethodHandle MH_stbtt_GetCodepointBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBox", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBox", Descriptors.FD_stbtt_GetCodepointBox);
         /// The method handle of `stbtt_GetGlyphHMetrics`.
-        public static final MethodHandle MH_stbtt_GetGlyphHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphHMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphHMetrics", Descriptors.FD_stbtt_GetGlyphHMetrics);
         /// The method handle of `stbtt_GetGlyphKernAdvance`.
-        public static final MethodHandle MH_stbtt_GetGlyphKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphKernAdvance", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_GetGlyphKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphKernAdvance", Descriptors.FD_stbtt_GetGlyphKernAdvance);
         /// The method handle of `stbtt_GetGlyphBox`.
-        public static final MethodHandle MH_stbtt_GetGlyphBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBox", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBox", Descriptors.FD_stbtt_GetGlyphBox);
         /// The method handle of `stbtt_GetKerningTableLength`.
-        public static final MethodHandle MH_stbtt_GetKerningTableLength = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTableLength", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT)));
+        public static final MethodHandle MH_stbtt_GetKerningTableLength = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTableLength", Descriptors.FD_stbtt_GetKerningTableLength);
         /// The method handle of `stbtt_GetKerningTable`.
-        public static final MethodHandle MH_stbtt_GetKerningTable = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTable", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTKerningEntry.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_GetKerningTable = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTable", Descriptors.FD_stbtt_GetKerningTable);
         /// The method handle of `stbtt_IsGlyphEmpty`.
-        public static final MethodHandle MH_stbtt_IsGlyphEmpty = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_IsGlyphEmpty", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_IsGlyphEmpty = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_IsGlyphEmpty", Descriptors.FD_stbtt_IsGlyphEmpty);
         /// The method handle of `stbtt_GetCodepointShape`.
-        public static final MethodHandle MH_stbtt_GetCodepointShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointShape", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointShape", Descriptors.FD_stbtt_GetCodepointShape);
         /// The method handle of `stbtt_GetGlyphShape`.
-        public static final MethodHandle MH_stbtt_GetGlyphShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphShape", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphShape", Descriptors.FD_stbtt_GetGlyphShape);
         /// The method handle of `stbtt_FreeShape`.
-        public static final MethodHandle MH_stbtt_FreeShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeShape", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT)));
+        public static final MethodHandle MH_stbtt_FreeShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeShape", Descriptors.FD_stbtt_FreeShape);
         /// The method handle of `stbtt_FindSVGDoc`.
-        public static final MethodHandle MH_stbtt_FindSVGDoc = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindSVGDoc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_FindSVGDoc = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindSVGDoc", Descriptors.FD_stbtt_FindSVGDoc);
         /// The method handle of `stbtt_GetCodepointSVG`.
-        public static final MethodHandle MH_stbtt_GetCodepointSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSVG", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSVG", Descriptors.FD_stbtt_GetCodepointSVG);
         /// The method handle of `stbtt_GetGlyphSVG`.
-        public static final MethodHandle MH_stbtt_GetGlyphSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSVG", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSVG", Descriptors.FD_stbtt_GetGlyphSVG);
         /// The method handle of `stbtt_FreeBitmap`.
-        public static final MethodHandle MH_stbtt_FreeBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_FreeBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeBitmap", Descriptors.FD_stbtt_FreeBitmap);
         /// The method handle of `stbtt_GetCodepointBitmap`.
-        public static final MethodHandle MH_stbtt_GetCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmap", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmap", Descriptors.FD_stbtt_GetCodepointBitmap);
         /// The method handle of `stbtt_GetCodepointBitmapSubpixel`.
-        public static final MethodHandle MH_stbtt_GetCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapSubpixel", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapSubpixel", Descriptors.FD_stbtt_GetCodepointBitmapSubpixel);
         /// The method handle of `stbtt_MakeCodepointBitmap`.
-        public static final MethodHandle MH_stbtt_MakeCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmap", Descriptors.FD_stbtt_MakeCodepointBitmap);
         /// The method handle of `stbtt_MakeCodepointBitmapSubpixel`.
-        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixel", Descriptors.FD_stbtt_MakeCodepointBitmapSubpixel);
         /// The method handle of `stbtt_MakeCodepointBitmapSubpixelPrefilter`.
-        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixelPrefilter", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixelPrefilter", Descriptors.FD_stbtt_MakeCodepointBitmapSubpixelPrefilter);
         /// The method handle of `stbtt_GetCodepointBitmapBox`.
-        public static final MethodHandle MH_stbtt_GetCodepointBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBox", Descriptors.FD_stbtt_GetCodepointBitmapBox);
         /// The method handle of `stbtt_GetCodepointBitmapBoxSubpixel`.
-        public static final MethodHandle MH_stbtt_GetCodepointBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBoxSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBoxSubpixel", Descriptors.FD_stbtt_GetCodepointBitmapBoxSubpixel);
         /// The method handle of `stbtt_GetGlyphBitmap`.
-        public static final MethodHandle MH_stbtt_GetGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmap", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmap", Descriptors.FD_stbtt_GetGlyphBitmap);
         /// The method handle of `stbtt_GetGlyphBitmapSubpixel`.
-        public static final MethodHandle MH_stbtt_GetGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapSubpixel", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapSubpixel", Descriptors.FD_stbtt_GetGlyphBitmapSubpixel);
         /// The method handle of `stbtt_MakeGlyphBitmap`.
-        public static final MethodHandle MH_stbtt_MakeGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmap", Descriptors.FD_stbtt_MakeGlyphBitmap);
         /// The method handle of `stbtt_MakeGlyphBitmapSubpixel`.
-        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixel", Descriptors.FD_stbtt_MakeGlyphBitmapSubpixel);
         /// The method handle of `stbtt_MakeGlyphBitmapSubpixelPrefilter`.
-        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixelPrefilter", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixelPrefilter", Descriptors.FD_stbtt_MakeGlyphBitmapSubpixelPrefilter);
         /// The method handle of `stbtt_GetGlyphBitmapBox`.
-        public static final MethodHandle MH_stbtt_GetGlyphBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBox", Descriptors.FD_stbtt_GetGlyphBitmapBox);
         /// The method handle of `stbtt_GetGlyphBitmapBoxSubpixel`.
-        public static final MethodHandle MH_stbtt_GetGlyphBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBoxSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBoxSubpixel", Descriptors.FD_stbtt_GetGlyphBitmapBoxSubpixel);
         /// The method handle of `stbtt_Rasterize`.
-        public static final MethodHandle MH_stbtt_Rasterize = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_Rasterize", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTT__bitmap.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_Rasterize = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_Rasterize", Descriptors.FD_stbtt_Rasterize);
         /// The method handle of `stbtt_FreeSDF`.
-        public static final MethodHandle MH_stbtt_FreeSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeSDF", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_FreeSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeSDF", Descriptors.FD_stbtt_FreeSDF);
         /// The method handle of `stbtt_GetGlyphSDF`.
-        public static final MethodHandle MH_stbtt_GetGlyphSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSDF", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetGlyphSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSDF", Descriptors.FD_stbtt_GetGlyphSDF);
         /// The method handle of `stbtt_GetCodepointSDF`.
-        public static final MethodHandle MH_stbtt_GetCodepointSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSDF", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbtt_GetCodepointSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSDF", Descriptors.FD_stbtt_GetCodepointSDF);
         /// The method handle of `stbtt_FindMatchingFont`.
-        public static final MethodHandle MH_stbtt_FindMatchingFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindMatchingFont", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_FindMatchingFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindMatchingFont", Descriptors.FD_stbtt_FindMatchingFont);
         /// The method handle of `stbtt_CompareUTF8toUTF16_bigendian`.
-        public static final MethodHandle MH_stbtt_CompareUTF8toUTF16_bigendian = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_CompareUTF8toUTF16_bigendian", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_CompareUTF8toUTF16_bigendian = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_CompareUTF8toUTF16_bigendian", Descriptors.FD_stbtt_CompareUTF8toUTF16_bigendian);
         /// The method handle of `stbtt_GetFontNameString`.
-        public static final MethodHandle MH_stbtt_GetFontNameString = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontNameString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbtt_GetFontNameString = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontNameString", Descriptors.FD_stbtt_GetFontNameString);
     }
-    //endregion
 
     public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") java.lang.foreign.MemorySegment chardata) {
         try {

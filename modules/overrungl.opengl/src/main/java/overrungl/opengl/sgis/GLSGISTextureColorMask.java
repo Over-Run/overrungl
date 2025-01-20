@@ -19,22 +19,36 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLSGISTextureColorMask {
     public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
-    public static final MethodHandle MH_glTextureColorMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glTextureColorMaskSGIS;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glTextureColorMaskSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glTextureColorMaskSGIS
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glTextureColorMaskSGIS = RuntimeHelper.downcall(Descriptors.FD_glTextureColorMaskSGIS);
+        public final MemorySegment PFN_glTextureColorMaskSGIS;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glTextureColorMaskSGIS = func.invoke("glTextureColorMaskSGIS");
+        }
+    }
 
     public GLSGISTextureColorMask(overrungl.opengl.GLLoadFunc func) {
-        PFN_glTextureColorMaskSGIS = func.invoke("glTextureColorMaskSGIS");
+        this.handles = new Handles(func);
     }
 
     public void TextureColorMaskSGIS(@CType("GLboolean") boolean red, @CType("GLboolean") boolean green, @CType("GLboolean") boolean blue, @CType("GLboolean") boolean alpha) {
-        if (Unmarshal.isNullPointer(PFN_glTextureColorMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS");
-        try { MH_glTextureColorMaskSGIS.invokeExact(PFN_glTextureColorMaskSGIS, red, green, blue, alpha); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTextureColorMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS");
+        try { Handles.MH_glTextureColorMaskSGIS.invokeExact(handles.PFN_glTextureColorMaskSGIS, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in glTextureColorMaskSGIS", e); }
     }
 

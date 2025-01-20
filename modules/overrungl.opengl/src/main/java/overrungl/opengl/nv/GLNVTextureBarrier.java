@@ -19,21 +19,35 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVTextureBarrier {
-    public static final MethodHandle MH_glTextureBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glTextureBarrierNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glTextureBarrierNV = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glTextureBarrierNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glTextureBarrierNV = RuntimeHelper.downcall(Descriptors.FD_glTextureBarrierNV);
+        public final MemorySegment PFN_glTextureBarrierNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glTextureBarrierNV = func.invoke("glTextureBarrierNV");
+        }
+    }
 
     public GLNVTextureBarrier(overrungl.opengl.GLLoadFunc func) {
-        PFN_glTextureBarrierNV = func.invoke("glTextureBarrierNV");
+        this.handles = new Handles(func);
     }
 
     public void TextureBarrierNV() {
-        if (Unmarshal.isNullPointer(PFN_glTextureBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glTextureBarrierNV");
-        try { MH_glTextureBarrierNV.invokeExact(PFN_glTextureBarrierNV); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTextureBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glTextureBarrierNV");
+        try { Handles.MH_glTextureBarrierNV.invokeExact(handles.PFN_glTextureBarrierNV); }
         catch (Throwable e) { throw new RuntimeException("error in glTextureBarrierNV", e); }
     }
 

@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRBufferDeviceAddress {
     public static final int VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1;
@@ -36,34 +37,51 @@ public class VKKHRBufferDeviceAddress {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT_KHR = VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT;
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT;
     public static final int VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
-    public static final MethodHandle MH_vkGetBufferDeviceAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetBufferDeviceAddressKHR;
-    public final MemorySegment PFN_vkGetBufferOpaqueCaptureAddressKHR;
-    public final MemorySegment PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetBufferDeviceAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetBufferDeviceAddressKHR,
+            FD_vkGetBufferOpaqueCaptureAddressKHR,
+            FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetBufferDeviceAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddressKHR);
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferOpaqueCaptureAddressKHR);
+        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR);
+        public final MemorySegment PFN_vkGetBufferDeviceAddressKHR;
+        public final MemorySegment PFN_vkGetBufferOpaqueCaptureAddressKHR;
+        public final MemorySegment PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetBufferDeviceAddressKHR = func.invoke(device, "vkGetBufferDeviceAddressKHR", "vkGetBufferDeviceAddress");
+            PFN_vkGetBufferOpaqueCaptureAddressKHR = func.invoke(device, "vkGetBufferOpaqueCaptureAddressKHR", "vkGetBufferOpaqueCaptureAddress");
+            PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR = func.invoke(device, "vkGetDeviceMemoryOpaqueCaptureAddressKHR", "vkGetDeviceMemoryOpaqueCaptureAddress");
+        }
+    }
 
     public VKKHRBufferDeviceAddress(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetBufferDeviceAddressKHR = func.invoke(device, "vkGetBufferDeviceAddressKHR", "vkGetBufferDeviceAddress");
-        PFN_vkGetBufferOpaqueCaptureAddressKHR = func.invoke(device, "vkGetBufferOpaqueCaptureAddressKHR", "vkGetBufferOpaqueCaptureAddress");
-        PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR = func.invoke(device, "vkGetDeviceMemoryOpaqueCaptureAddressKHR", "vkGetDeviceMemoryOpaqueCaptureAddress");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkDeviceAddress") long GetBufferDeviceAddressKHR(@CType("VkDevice") MemorySegment device, @CType("const VkBufferDeviceAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetBufferDeviceAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressKHR");
-        try { return (long) MH_vkGetBufferDeviceAddressKHR.invokeExact(PFN_vkGetBufferDeviceAddressKHR, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferDeviceAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressKHR");
+        try { return (long) Handles.MH_vkGetBufferDeviceAddressKHR.invokeExact(handles.PFN_vkGetBufferDeviceAddressKHR, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressKHR", e); }
     }
 
     public @CType("uint64_t") long GetBufferOpaqueCaptureAddressKHR(@CType("VkDevice") MemorySegment device, @CType("const VkBufferDeviceAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetBufferOpaqueCaptureAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddressKHR");
-        try { return (long) MH_vkGetBufferOpaqueCaptureAddressKHR.invokeExact(PFN_vkGetBufferOpaqueCaptureAddressKHR, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferOpaqueCaptureAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddressKHR");
+        try { return (long) Handles.MH_vkGetBufferOpaqueCaptureAddressKHR.invokeExact(handles.PFN_vkGetBufferOpaqueCaptureAddressKHR, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferOpaqueCaptureAddressKHR", e); }
     }
 
     public @CType("uint64_t") long GetDeviceMemoryOpaqueCaptureAddressKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceMemoryOpaqueCaptureAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddressKHR");
-        try { return (long) MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR.invokeExact(PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddressKHR");
+        try { return (long) Handles.MH_vkGetDeviceMemoryOpaqueCaptureAddressKHR.invokeExact(handles.PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceMemoryOpaqueCaptureAddressKHR", e); }
     }
 

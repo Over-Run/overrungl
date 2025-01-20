@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRDeviceGroup {
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 0x00000001;
@@ -53,70 +54,95 @@ public class VKKHRDeviceGroup {
     public static final int VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR = VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO;
     public static final int VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO_KHR = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO;
     public static final int VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR = VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT;
-    public static final MethodHandle MH_vkGetDeviceGroupPeerMemoryFeaturesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdSetDeviceMaskKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCmdDispatchBaseKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkGetDeviceGroupPresentCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetPhysicalDevicePresentRectanglesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkAcquireNextImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR;
-    public final MemorySegment PFN_vkCmdSetDeviceMaskKHR;
-    public final MemorySegment PFN_vkCmdDispatchBaseKHR;
-    public final MemorySegment PFN_vkGetDeviceGroupPresentCapabilitiesKHR;
-    public final MemorySegment PFN_vkGetDeviceGroupSurfacePresentModesKHR;
-    public final MemorySegment PFN_vkGetPhysicalDevicePresentRectanglesKHR;
-    public final MemorySegment PFN_vkAcquireNextImage2KHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetDeviceGroupPeerMemoryFeaturesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdSetDeviceMaskKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCmdDispatchBaseKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkGetDeviceGroupPresentCapabilitiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetDeviceGroupSurfacePresentModesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetPhysicalDevicePresentRectanglesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkAcquireNextImage2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetDeviceGroupPeerMemoryFeaturesKHR,
+            FD_vkCmdSetDeviceMaskKHR,
+            FD_vkCmdDispatchBaseKHR,
+            FD_vkGetDeviceGroupPresentCapabilitiesKHR,
+            FD_vkGetDeviceGroupSurfacePresentModesKHR,
+            FD_vkGetPhysicalDevicePresentRectanglesKHR,
+            FD_vkAcquireNextImage2KHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetDeviceGroupPeerMemoryFeaturesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceGroupPeerMemoryFeaturesKHR);
+        public static final MethodHandle MH_vkCmdSetDeviceMaskKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDeviceMaskKHR);
+        public static final MethodHandle MH_vkCmdDispatchBaseKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdDispatchBaseKHR);
+        public static final MethodHandle MH_vkGetDeviceGroupPresentCapabilitiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceGroupPresentCapabilitiesKHR);
+        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceGroupSurfacePresentModesKHR);
+        public static final MethodHandle MH_vkGetPhysicalDevicePresentRectanglesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDevicePresentRectanglesKHR);
+        public static final MethodHandle MH_vkAcquireNextImage2KHR = RuntimeHelper.downcall(Descriptors.FD_vkAcquireNextImage2KHR);
+        public final MemorySegment PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR;
+        public final MemorySegment PFN_vkCmdSetDeviceMaskKHR;
+        public final MemorySegment PFN_vkCmdDispatchBaseKHR;
+        public final MemorySegment PFN_vkGetDeviceGroupPresentCapabilitiesKHR;
+        public final MemorySegment PFN_vkGetDeviceGroupSurfacePresentModesKHR;
+        public final MemorySegment PFN_vkGetPhysicalDevicePresentRectanglesKHR;
+        public final MemorySegment PFN_vkAcquireNextImage2KHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR = func.invoke(device, "vkGetDeviceGroupPeerMemoryFeaturesKHR", "vkGetDeviceGroupPeerMemoryFeatures");
+            PFN_vkCmdSetDeviceMaskKHR = func.invoke(device, "vkCmdSetDeviceMaskKHR", "vkCmdSetDeviceMask");
+            PFN_vkCmdDispatchBaseKHR = func.invoke(device, "vkCmdDispatchBaseKHR", "vkCmdDispatchBase");
+            PFN_vkGetDeviceGroupPresentCapabilitiesKHR = func.invoke(device, "vkGetDeviceGroupPresentCapabilitiesKHR");
+            PFN_vkGetDeviceGroupSurfacePresentModesKHR = func.invoke(device, "vkGetDeviceGroupSurfacePresentModesKHR");
+            PFN_vkGetPhysicalDevicePresentRectanglesKHR = func.invoke(device, "vkGetPhysicalDevicePresentRectanglesKHR");
+            PFN_vkAcquireNextImage2KHR = func.invoke(device, "vkAcquireNextImage2KHR");
+        }
+    }
 
     public VKKHRDeviceGroup(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR = func.invoke(device, "vkGetDeviceGroupPeerMemoryFeaturesKHR", "vkGetDeviceGroupPeerMemoryFeatures");
-        PFN_vkCmdSetDeviceMaskKHR = func.invoke(device, "vkCmdSetDeviceMaskKHR", "vkCmdSetDeviceMask");
-        PFN_vkCmdDispatchBaseKHR = func.invoke(device, "vkCmdDispatchBaseKHR", "vkCmdDispatchBase");
-        PFN_vkGetDeviceGroupPresentCapabilitiesKHR = func.invoke(device, "vkGetDeviceGroupPresentCapabilitiesKHR");
-        PFN_vkGetDeviceGroupSurfacePresentModesKHR = func.invoke(device, "vkGetDeviceGroupSurfacePresentModesKHR");
-        PFN_vkGetPhysicalDevicePresentRectanglesKHR = func.invoke(device, "vkGetPhysicalDevicePresentRectanglesKHR");
-        PFN_vkAcquireNextImage2KHR = func.invoke(device, "vkAcquireNextImage2KHR");
+        this.handles = new Handles(device, func);
     }
 
     public void GetDeviceGroupPeerMemoryFeaturesKHR(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int heapIndex, @CType("uint32_t") int localDeviceIndex, @CType("uint32_t") int remoteDeviceIndex, @CType("VkPeerMemoryFeatureFlags *") MemorySegment pPeerMemoryFeatures) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPeerMemoryFeaturesKHR");
-        try { MH_vkGetDeviceGroupPeerMemoryFeaturesKHR.invokeExact(PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR, device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPeerMemoryFeaturesKHR");
+        try { Handles.MH_vkGetDeviceGroupPeerMemoryFeaturesKHR.invokeExact(handles.PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR, device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPeerMemoryFeaturesKHR", e); }
     }
 
     public void CmdSetDeviceMaskKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int deviceMask) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetDeviceMaskKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDeviceMaskKHR");
-        try { MH_vkCmdSetDeviceMaskKHR.invokeExact(PFN_vkCmdSetDeviceMaskKHR, commandBuffer, deviceMask); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetDeviceMaskKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDeviceMaskKHR");
+        try { Handles.MH_vkCmdSetDeviceMaskKHR.invokeExact(handles.PFN_vkCmdSetDeviceMaskKHR, commandBuffer, deviceMask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDeviceMaskKHR", e); }
     }
 
     public void CmdDispatchBaseKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int baseGroupX, @CType("uint32_t") int baseGroupY, @CType("uint32_t") int baseGroupZ, @CType("uint32_t") int groupCountX, @CType("uint32_t") int groupCountY, @CType("uint32_t") int groupCountZ) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDispatchBaseKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchBaseKHR");
-        try { MH_vkCmdDispatchBaseKHR.invokeExact(PFN_vkCmdDispatchBaseKHR, commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDispatchBaseKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchBaseKHR");
+        try { Handles.MH_vkCmdDispatchBaseKHR.invokeExact(handles.PFN_vkCmdDispatchBaseKHR, commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchBaseKHR", e); }
     }
 
     public @CType("VkResult") int GetDeviceGroupPresentCapabilitiesKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeviceGroupPresentCapabilitiesKHR *") MemorySegment pDeviceGroupPresentCapabilities) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceGroupPresentCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPresentCapabilitiesKHR");
-        try { return (int) MH_vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(PFN_vkGetDeviceGroupPresentCapabilitiesKHR, device, pDeviceGroupPresentCapabilities); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceGroupPresentCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPresentCapabilitiesKHR");
+        try { return (int) Handles.MH_vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(handles.PFN_vkGetDeviceGroupPresentCapabilitiesKHR, device, pDeviceGroupPresentCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPresentCapabilitiesKHR", e); }
     }
 
     public @CType("VkResult") int GetDeviceGroupSurfacePresentModesKHR(@CType("VkDevice") MemorySegment device, @CType("VkSurfaceKHR") MemorySegment surface, @CType("VkDeviceGroupPresentModeFlagsKHR *") MemorySegment pModes) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceGroupSurfacePresentModesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModesKHR");
-        try { return (int) MH_vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(PFN_vkGetDeviceGroupSurfacePresentModesKHR, device, surface, pModes); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceGroupSurfacePresentModesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModesKHR");
+        try { return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(handles.PFN_vkGetDeviceGroupSurfacePresentModesKHR, device, surface, pModes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupSurfacePresentModesKHR", e); }
     }
 
     public @CType("VkResult") int GetPhysicalDevicePresentRectanglesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkSurfaceKHR") MemorySegment surface, @CType("uint32_t *") MemorySegment pRectCount, @CType("VkRect2D *") MemorySegment pRects) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDevicePresentRectanglesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDevicePresentRectanglesKHR");
-        try { return (int) MH_vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(PFN_vkGetPhysicalDevicePresentRectanglesKHR, physicalDevice, surface, pRectCount, pRects); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDevicePresentRectanglesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDevicePresentRectanglesKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(handles.PFN_vkGetPhysicalDevicePresentRectanglesKHR, physicalDevice, surface, pRectCount, pRects); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDevicePresentRectanglesKHR", e); }
     }
 
     public @CType("VkResult") int AcquireNextImage2KHR(@CType("VkDevice") MemorySegment device, @CType("const VkAcquireNextImageInfoKHR *") MemorySegment pAcquireInfo, @CType("uint32_t *") MemorySegment pImageIndex) {
-        if (Unmarshal.isNullPointer(PFN_vkAcquireNextImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkAcquireNextImage2KHR");
-        try { return (int) MH_vkAcquireNextImage2KHR.invokeExact(PFN_vkAcquireNextImage2KHR, device, pAcquireInfo, pImageIndex); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkAcquireNextImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkAcquireNextImage2KHR");
+        try { return (int) Handles.MH_vkAcquireNextImage2KHR.invokeExact(handles.PFN_vkAcquireNextImage2KHR, device, pAcquireInfo, pImageIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireNextImage2KHR", e); }
     }
 

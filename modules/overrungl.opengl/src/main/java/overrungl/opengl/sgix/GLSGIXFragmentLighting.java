@@ -19,6 +19,7 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -44,169 +45,216 @@ public final class GLSGIXFragmentLighting {
     public static final int GL_FRAGMENT_LIGHT5_SGIX = 0x8411;
     public static final int GL_FRAGMENT_LIGHT6_SGIX = 0x8412;
     public static final int GL_FRAGMENT_LIGHT7_SGIX = 0x8413;
-    public static final MethodHandle MH_glFragmentColorMaterialSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glFragmentLightfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glFragmentLightfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glFragmentLightiSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glFragmentLightivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glFragmentLightModelfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glFragmentLightModelfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glFragmentLightModeliSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glFragmentLightModelivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glFragmentMaterialfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glFragmentMaterialfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glFragmentMaterialiSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glFragmentMaterialivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFragmentLightfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFragmentLightivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFragmentMaterialfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFragmentMaterialivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glLightEnviSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glFragmentColorMaterialSGIX;
-    public final MemorySegment PFN_glFragmentLightfSGIX;
-    public final MemorySegment PFN_glFragmentLightfvSGIX;
-    public final MemorySegment PFN_glFragmentLightiSGIX;
-    public final MemorySegment PFN_glFragmentLightivSGIX;
-    public final MemorySegment PFN_glFragmentLightModelfSGIX;
-    public final MemorySegment PFN_glFragmentLightModelfvSGIX;
-    public final MemorySegment PFN_glFragmentLightModeliSGIX;
-    public final MemorySegment PFN_glFragmentLightModelivSGIX;
-    public final MemorySegment PFN_glFragmentMaterialfSGIX;
-    public final MemorySegment PFN_glFragmentMaterialfvSGIX;
-    public final MemorySegment PFN_glFragmentMaterialiSGIX;
-    public final MemorySegment PFN_glFragmentMaterialivSGIX;
-    public final MemorySegment PFN_glGetFragmentLightfvSGIX;
-    public final MemorySegment PFN_glGetFragmentLightivSGIX;
-    public final MemorySegment PFN_glGetFragmentMaterialfvSGIX;
-    public final MemorySegment PFN_glGetFragmentMaterialivSGIX;
-    public final MemorySegment PFN_glLightEnviSGIX;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glFragmentColorMaterialSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glFragmentLightfSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glFragmentLightfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glFragmentLightiSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glFragmentLightivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glFragmentLightModelfSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glFragmentLightModelfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glFragmentLightModeliSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glFragmentLightModelivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glFragmentMaterialfSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glFragmentMaterialfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glFragmentMaterialiSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glFragmentMaterialivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFragmentLightfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFragmentLightivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFragmentMaterialfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFragmentMaterialivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glLightEnviSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glFragmentColorMaterialSGIX,
+            FD_glFragmentLightfSGIX,
+            FD_glFragmentLightfvSGIX,
+            FD_glFragmentLightiSGIX,
+            FD_glFragmentLightivSGIX,
+            FD_glFragmentLightModelfSGIX,
+            FD_glFragmentLightModelfvSGIX,
+            FD_glFragmentLightModeliSGIX,
+            FD_glFragmentLightModelivSGIX,
+            FD_glFragmentMaterialfSGIX,
+            FD_glFragmentMaterialfvSGIX,
+            FD_glFragmentMaterialiSGIX,
+            FD_glFragmentMaterialivSGIX,
+            FD_glGetFragmentLightfvSGIX,
+            FD_glGetFragmentLightivSGIX,
+            FD_glGetFragmentMaterialfvSGIX,
+            FD_glGetFragmentMaterialivSGIX,
+            FD_glLightEnviSGIX
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glFragmentColorMaterialSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentColorMaterialSGIX);
+        public static final MethodHandle MH_glFragmentLightfSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightfSGIX);
+        public static final MethodHandle MH_glFragmentLightfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightfvSGIX);
+        public static final MethodHandle MH_glFragmentLightiSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightiSGIX);
+        public static final MethodHandle MH_glFragmentLightivSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightivSGIX);
+        public static final MethodHandle MH_glFragmentLightModelfSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightModelfSGIX);
+        public static final MethodHandle MH_glFragmentLightModelfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightModelfvSGIX);
+        public static final MethodHandle MH_glFragmentLightModeliSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightModeliSGIX);
+        public static final MethodHandle MH_glFragmentLightModelivSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentLightModelivSGIX);
+        public static final MethodHandle MH_glFragmentMaterialfSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentMaterialfSGIX);
+        public static final MethodHandle MH_glFragmentMaterialfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentMaterialfvSGIX);
+        public static final MethodHandle MH_glFragmentMaterialiSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentMaterialiSGIX);
+        public static final MethodHandle MH_glFragmentMaterialivSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentMaterialivSGIX);
+        public static final MethodHandle MH_glGetFragmentLightfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetFragmentLightfvSGIX);
+        public static final MethodHandle MH_glGetFragmentLightivSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetFragmentLightivSGIX);
+        public static final MethodHandle MH_glGetFragmentMaterialfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetFragmentMaterialfvSGIX);
+        public static final MethodHandle MH_glGetFragmentMaterialivSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetFragmentMaterialivSGIX);
+        public static final MethodHandle MH_glLightEnviSGIX = RuntimeHelper.downcall(Descriptors.FD_glLightEnviSGIX);
+        public final MemorySegment PFN_glFragmentColorMaterialSGIX;
+        public final MemorySegment PFN_glFragmentLightfSGIX;
+        public final MemorySegment PFN_glFragmentLightfvSGIX;
+        public final MemorySegment PFN_glFragmentLightiSGIX;
+        public final MemorySegment PFN_glFragmentLightivSGIX;
+        public final MemorySegment PFN_glFragmentLightModelfSGIX;
+        public final MemorySegment PFN_glFragmentLightModelfvSGIX;
+        public final MemorySegment PFN_glFragmentLightModeliSGIX;
+        public final MemorySegment PFN_glFragmentLightModelivSGIX;
+        public final MemorySegment PFN_glFragmentMaterialfSGIX;
+        public final MemorySegment PFN_glFragmentMaterialfvSGIX;
+        public final MemorySegment PFN_glFragmentMaterialiSGIX;
+        public final MemorySegment PFN_glFragmentMaterialivSGIX;
+        public final MemorySegment PFN_glGetFragmentLightfvSGIX;
+        public final MemorySegment PFN_glGetFragmentLightivSGIX;
+        public final MemorySegment PFN_glGetFragmentMaterialfvSGIX;
+        public final MemorySegment PFN_glGetFragmentMaterialivSGIX;
+        public final MemorySegment PFN_glLightEnviSGIX;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glFragmentColorMaterialSGIX = func.invoke("glFragmentColorMaterialSGIX");
+            PFN_glFragmentLightfSGIX = func.invoke("glFragmentLightfSGIX");
+            PFN_glFragmentLightfvSGIX = func.invoke("glFragmentLightfvSGIX");
+            PFN_glFragmentLightiSGIX = func.invoke("glFragmentLightiSGIX");
+            PFN_glFragmentLightivSGIX = func.invoke("glFragmentLightivSGIX");
+            PFN_glFragmentLightModelfSGIX = func.invoke("glFragmentLightModelfSGIX");
+            PFN_glFragmentLightModelfvSGIX = func.invoke("glFragmentLightModelfvSGIX");
+            PFN_glFragmentLightModeliSGIX = func.invoke("glFragmentLightModeliSGIX");
+            PFN_glFragmentLightModelivSGIX = func.invoke("glFragmentLightModelivSGIX");
+            PFN_glFragmentMaterialfSGIX = func.invoke("glFragmentMaterialfSGIX");
+            PFN_glFragmentMaterialfvSGIX = func.invoke("glFragmentMaterialfvSGIX");
+            PFN_glFragmentMaterialiSGIX = func.invoke("glFragmentMaterialiSGIX");
+            PFN_glFragmentMaterialivSGIX = func.invoke("glFragmentMaterialivSGIX");
+            PFN_glGetFragmentLightfvSGIX = func.invoke("glGetFragmentLightfvSGIX");
+            PFN_glGetFragmentLightivSGIX = func.invoke("glGetFragmentLightivSGIX");
+            PFN_glGetFragmentMaterialfvSGIX = func.invoke("glGetFragmentMaterialfvSGIX");
+            PFN_glGetFragmentMaterialivSGIX = func.invoke("glGetFragmentMaterialivSGIX");
+            PFN_glLightEnviSGIX = func.invoke("glLightEnviSGIX");
+        }
+    }
 
     public GLSGIXFragmentLighting(overrungl.opengl.GLLoadFunc func) {
-        PFN_glFragmentColorMaterialSGIX = func.invoke("glFragmentColorMaterialSGIX");
-        PFN_glFragmentLightfSGIX = func.invoke("glFragmentLightfSGIX");
-        PFN_glFragmentLightfvSGIX = func.invoke("glFragmentLightfvSGIX");
-        PFN_glFragmentLightiSGIX = func.invoke("glFragmentLightiSGIX");
-        PFN_glFragmentLightivSGIX = func.invoke("glFragmentLightivSGIX");
-        PFN_glFragmentLightModelfSGIX = func.invoke("glFragmentLightModelfSGIX");
-        PFN_glFragmentLightModelfvSGIX = func.invoke("glFragmentLightModelfvSGIX");
-        PFN_glFragmentLightModeliSGIX = func.invoke("glFragmentLightModeliSGIX");
-        PFN_glFragmentLightModelivSGIX = func.invoke("glFragmentLightModelivSGIX");
-        PFN_glFragmentMaterialfSGIX = func.invoke("glFragmentMaterialfSGIX");
-        PFN_glFragmentMaterialfvSGIX = func.invoke("glFragmentMaterialfvSGIX");
-        PFN_glFragmentMaterialiSGIX = func.invoke("glFragmentMaterialiSGIX");
-        PFN_glFragmentMaterialivSGIX = func.invoke("glFragmentMaterialivSGIX");
-        PFN_glGetFragmentLightfvSGIX = func.invoke("glGetFragmentLightfvSGIX");
-        PFN_glGetFragmentLightivSGIX = func.invoke("glGetFragmentLightivSGIX");
-        PFN_glGetFragmentMaterialfvSGIX = func.invoke("glGetFragmentMaterialfvSGIX");
-        PFN_glGetFragmentMaterialivSGIX = func.invoke("glGetFragmentMaterialivSGIX");
-        PFN_glLightEnviSGIX = func.invoke("glLightEnviSGIX");
+        this.handles = new Handles(func);
     }
 
     public void FragmentColorMaterialSGIX(@CType("GLenum") int face, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentColorMaterialSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentColorMaterialSGIX");
-        try { MH_glFragmentColorMaterialSGIX.invokeExact(PFN_glFragmentColorMaterialSGIX, face, mode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentColorMaterialSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentColorMaterialSGIX");
+        try { Handles.MH_glFragmentColorMaterialSGIX.invokeExact(handles.PFN_glFragmentColorMaterialSGIX, face, mode); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentColorMaterialSGIX", e); }
     }
 
     public void FragmentLightfSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfSGIX");
-        try { MH_glFragmentLightfSGIX.invokeExact(PFN_glFragmentLightfSGIX, light, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfSGIX");
+        try { Handles.MH_glFragmentLightfSGIX.invokeExact(handles.PFN_glFragmentLightfSGIX, light, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfSGIX", e); }
     }
 
     public void FragmentLightfvSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfvSGIX");
-        try { MH_glFragmentLightfvSGIX.invokeExact(PFN_glFragmentLightfvSGIX, light, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfvSGIX");
+        try { Handles.MH_glFragmentLightfvSGIX.invokeExact(handles.PFN_glFragmentLightfvSGIX, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfvSGIX", e); }
     }
 
     public void FragmentLightiSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightiSGIX");
-        try { MH_glFragmentLightiSGIX.invokeExact(PFN_glFragmentLightiSGIX, light, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightiSGIX");
+        try { Handles.MH_glFragmentLightiSGIX.invokeExact(handles.PFN_glFragmentLightiSGIX, light, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightiSGIX", e); }
     }
 
     public void FragmentLightivSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightivSGIX");
-        try { MH_glFragmentLightivSGIX.invokeExact(PFN_glFragmentLightivSGIX, light, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightivSGIX");
+        try { Handles.MH_glFragmentLightivSGIX.invokeExact(handles.PFN_glFragmentLightivSGIX, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightivSGIX", e); }
     }
 
     public void FragmentLightModelfSGIX(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightModelfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfSGIX");
-        try { MH_glFragmentLightModelfSGIX.invokeExact(PFN_glFragmentLightModelfSGIX, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightModelfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfSGIX");
+        try { Handles.MH_glFragmentLightModelfSGIX.invokeExact(handles.PFN_glFragmentLightModelfSGIX, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfSGIX", e); }
     }
 
     public void FragmentLightModelfvSGIX(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightModelfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfvSGIX");
-        try { MH_glFragmentLightModelfvSGIX.invokeExact(PFN_glFragmentLightModelfvSGIX, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightModelfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfvSGIX");
+        try { Handles.MH_glFragmentLightModelfvSGIX.invokeExact(handles.PFN_glFragmentLightModelfvSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfvSGIX", e); }
     }
 
     public void FragmentLightModeliSGIX(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightModeliSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModeliSGIX");
-        try { MH_glFragmentLightModeliSGIX.invokeExact(PFN_glFragmentLightModeliSGIX, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightModeliSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModeliSGIX");
+        try { Handles.MH_glFragmentLightModeliSGIX.invokeExact(handles.PFN_glFragmentLightModeliSGIX, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModeliSGIX", e); }
     }
 
     public void FragmentLightModelivSGIX(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentLightModelivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelivSGIX");
-        try { MH_glFragmentLightModelivSGIX.invokeExact(PFN_glFragmentLightModelivSGIX, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentLightModelivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelivSGIX");
+        try { Handles.MH_glFragmentLightModelivSGIX.invokeExact(handles.PFN_glFragmentLightModelivSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelivSGIX", e); }
     }
 
     public void FragmentMaterialfSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentMaterialfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfSGIX");
-        try { MH_glFragmentMaterialfSGIX.invokeExact(PFN_glFragmentMaterialfSGIX, face, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentMaterialfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfSGIX");
+        try { Handles.MH_glFragmentMaterialfSGIX.invokeExact(handles.PFN_glFragmentMaterialfSGIX, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfSGIX", e); }
     }
 
     public void FragmentMaterialfvSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfvSGIX");
-        try { MH_glFragmentMaterialfvSGIX.invokeExact(PFN_glFragmentMaterialfvSGIX, face, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfvSGIX");
+        try { Handles.MH_glFragmentMaterialfvSGIX.invokeExact(handles.PFN_glFragmentMaterialfvSGIX, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfvSGIX", e); }
     }
 
     public void FragmentMaterialiSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentMaterialiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialiSGIX");
-        try { MH_glFragmentMaterialiSGIX.invokeExact(PFN_glFragmentMaterialiSGIX, face, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentMaterialiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialiSGIX");
+        try { Handles.MH_glFragmentMaterialiSGIX.invokeExact(handles.PFN_glFragmentMaterialiSGIX, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialiSGIX", e); }
     }
 
     public void FragmentMaterialivSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialivSGIX");
-        try { MH_glFragmentMaterialivSGIX.invokeExact(PFN_glFragmentMaterialivSGIX, face, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialivSGIX");
+        try { Handles.MH_glFragmentMaterialivSGIX.invokeExact(handles.PFN_glFragmentMaterialivSGIX, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialivSGIX", e); }
     }
 
     public void GetFragmentLightfvSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightfvSGIX");
-        try { MH_glGetFragmentLightfvSGIX.invokeExact(PFN_glGetFragmentLightfvSGIX, light, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightfvSGIX");
+        try { Handles.MH_glGetFragmentLightfvSGIX.invokeExact(handles.PFN_glGetFragmentLightfvSGIX, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightfvSGIX", e); }
     }
 
     public void GetFragmentLightivSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightivSGIX");
-        try { MH_glGetFragmentLightivSGIX.invokeExact(PFN_glGetFragmentLightivSGIX, light, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightivSGIX");
+        try { Handles.MH_glGetFragmentLightivSGIX.invokeExact(handles.PFN_glGetFragmentLightivSGIX, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightivSGIX", e); }
     }
 
     public void GetFragmentMaterialfvSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialfvSGIX");
-        try { MH_glGetFragmentMaterialfvSGIX.invokeExact(PFN_glGetFragmentMaterialfvSGIX, face, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialfvSGIX");
+        try { Handles.MH_glGetFragmentMaterialfvSGIX.invokeExact(handles.PFN_glGetFragmentMaterialfvSGIX, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialfvSGIX", e); }
     }
 
     public void GetFragmentMaterialivSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialivSGIX");
-        try { MH_glGetFragmentMaterialivSGIX.invokeExact(PFN_glGetFragmentMaterialivSGIX, face, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialivSGIX");
+        try { Handles.MH_glGetFragmentMaterialivSGIX.invokeExact(handles.PFN_glGetFragmentMaterialivSGIX, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialivSGIX", e); }
     }
 
     public void LightEnviSGIX(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glLightEnviSGIX)) throw new SymbolNotFoundError("Symbol not found: glLightEnviSGIX");
-        try { MH_glLightEnviSGIX.invokeExact(PFN_glLightEnviSGIX, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glLightEnviSGIX)) throw new SymbolNotFoundError("Symbol not found: glLightEnviSGIX");
+        try { Handles.MH_glLightEnviSGIX.invokeExact(handles.PFN_glLightEnviSGIX, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glLightEnviSGIX", e); }
     }
 

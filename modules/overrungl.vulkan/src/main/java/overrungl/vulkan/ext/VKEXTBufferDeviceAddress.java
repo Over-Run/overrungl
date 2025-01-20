@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK12.*;
 import static overrungl.vulkan.ext.VKEXTBufferDeviceAddress.*;
 public class VKEXTBufferDeviceAddress {
@@ -34,16 +35,29 @@ public class VKEXTBufferDeviceAddress {
     public static final int VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT = VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT;
     public static final int VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT;
     public static final int VK_ERROR_INVALID_DEVICE_ADDRESS_EXT = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
-    public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetBufferDeviceAddressEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetBufferDeviceAddressEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetBufferDeviceAddressEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddressEXT);
+        public final MemorySegment PFN_vkGetBufferDeviceAddressEXT;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetBufferDeviceAddressEXT = func.invoke(device, "vkGetBufferDeviceAddressEXT", "vkGetBufferDeviceAddress");
+        }
+    }
 
     public VKEXTBufferDeviceAddress(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetBufferDeviceAddressEXT = func.invoke(device, "vkGetBufferDeviceAddressEXT", "vkGetBufferDeviceAddress");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkDeviceAddress") long GetBufferDeviceAddressEXT(@CType("VkDevice") MemorySegment device, @CType("const VkBufferDeviceAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetBufferDeviceAddressEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
-        try { return (long) MH_vkGetBufferDeviceAddressEXT.invokeExact(PFN_vkGetBufferDeviceAddressEXT, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferDeviceAddressEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
+        try { return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(handles.PFN_vkGetBufferDeviceAddressEXT, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressEXT", e); }
     }
 

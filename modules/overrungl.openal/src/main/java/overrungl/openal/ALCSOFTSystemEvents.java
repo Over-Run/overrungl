@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -33,18 +34,32 @@ public final class ALCSOFTSystemEvents {
     public static final int ALC_EVENT_SUPPORTED_SOFT = 0x19D9;
     public static final int ALC_EVENT_NOT_SUPPORTED_SOFT = 0x19DA;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcEventIsSupportedSOFT`.
+        public static final FunctionDescriptor FD_alcEventIsSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alcEventControlSOFT`.
+        public static final FunctionDescriptor FD_alcEventControlSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `alcEventCallbackSOFT`.
+        public static final FunctionDescriptor FD_alcEventCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcEventIsSupportedSOFT,
+            FD_alcEventControlSOFT,
+            FD_alcEventCallbackSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcEventIsSupportedSOFT`.
-        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventIsSupportedSOFT", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventIsSupportedSOFT", Descriptors.FD_alcEventIsSupportedSOFT);
         /// The method handle of `alcEventControlSOFT`.
-        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventControlSOFT", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventControlSOFT", Descriptors.FD_alcEventControlSOFT);
         /// The method handle of `alcEventCallbackSOFT`.
-        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventCallbackSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventCallbackSOFT", Descriptors.FD_alcEventCallbackSOFT);
     }
-    //endregion
 
     public static @CType("ALCenum") int alcEventIsSupportedSOFT(@CType("ALCenum") int eventType, @CType("ALCenum") int deviceType) {
         if (Handles.MH_alcEventIsSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventIsSupportedSOFT");

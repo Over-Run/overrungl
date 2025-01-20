@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,25 +30,40 @@ public final class GLARBBlendFuncExtended {
     public static final int GL_ONE_MINUS_SRC1_COLOR = 0x88FA;
     public static final int GL_ONE_MINUS_SRC1_ALPHA = 0x88FB;
     public static final int GL_MAX_DUAL_SOURCE_DRAW_BUFFERS = 0x88FC;
-    public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindFragDataLocationIndexed;
-    public final MemorySegment PFN_glGetFragDataIndex;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBindFragDataLocationIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFragDataIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBindFragDataLocationIndexed,
+            FD_glGetFragDataIndex
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(Descriptors.FD_glBindFragDataLocationIndexed);
+        public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(Descriptors.FD_glGetFragDataIndex);
+        public final MemorySegment PFN_glBindFragDataLocationIndexed;
+        public final MemorySegment PFN_glGetFragDataIndex;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBindFragDataLocationIndexed = func.invoke("glBindFragDataLocationIndexed");
+            PFN_glGetFragDataIndex = func.invoke("glGetFragDataIndex");
+        }
+    }
 
     public GLARBBlendFuncExtended(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBindFragDataLocationIndexed = func.invoke("glBindFragDataLocationIndexed");
-        PFN_glGetFragDataIndex = func.invoke("glGetFragDataIndex");
+        this.handles = new Handles(func);
     }
 
     public void BindFragDataLocationIndexed(@CType("GLuint") int program, @CType("GLuint") int colorNumber, @CType("GLuint") int index, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (Unmarshal.isNullPointer(PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
-        try { MH_glBindFragDataLocationIndexed.invokeExact(PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
+        try { Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
         catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
     }
 
     public @CType("GLint") int GetFragDataIndex(@CType("GLuint") int program, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (Unmarshal.isNullPointer(PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
-        try { return (int) MH_glGetFragDataIndex.invokeExact(PFN_glGetFragDataIndex, program, name); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
+        try { return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
     }
 

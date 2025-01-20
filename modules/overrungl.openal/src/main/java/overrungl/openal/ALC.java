@@ -23,8 +23,10 @@ import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /**
  * The OpenAL context related functions.
@@ -64,52 +66,117 @@ public final class ALC {
     public static final int ALC_DEFAULT_ALL_DEVICES_SPECIFIER = 0x1012;
     public static final int ALC_ALL_DEVICES_SPECIFIER = 0x1013;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcCreateContext`.
+        public static final FunctionDescriptor FD_alcCreateContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcMakeContextCurrent`.
+        public static final FunctionDescriptor FD_alcMakeContextCurrent = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcProcessContext`.
+        public static final FunctionDescriptor FD_alcProcessContext = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcSuspendContext`.
+        public static final FunctionDescriptor FD_alcSuspendContext = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcDestroyContext`.
+        public static final FunctionDescriptor FD_alcDestroyContext = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcGetCurrentContext`.
+        public static final FunctionDescriptor FD_alcGetCurrentContext = FunctionDescriptor.of(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcGetContextsDevice`.
+        public static final FunctionDescriptor FD_alcGetContextsDevice = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcOpenDevice`.
+        public static final FunctionDescriptor FD_alcOpenDevice = FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alcCloseDevice`.
+        public static final FunctionDescriptor FD_alcCloseDevice = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcGetError`.
+        public static final FunctionDescriptor FD_alcGetError = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcIsExtensionPresent`.
+        public static final FunctionDescriptor FD_alcIsExtensionPresent = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alcGetProcAddress`.
+        public static final FunctionDescriptor FD_alcGetProcAddress = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alcGetEnumValue`.
+        public static final FunctionDescriptor FD_alcGetEnumValue = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alcGetString`.
+        public static final FunctionDescriptor FD_alcGetString = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alcGetIntegerv`.
+        public static final FunctionDescriptor FD_alcGetIntegerv = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcCaptureOpenDevice`.
+        public static final FunctionDescriptor FD_alcCaptureOpenDevice = FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alcCaptureCloseDevice`.
+        public static final FunctionDescriptor FD_alcCaptureCloseDevice = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcCaptureStart`.
+        public static final FunctionDescriptor FD_alcCaptureStart = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcCaptureStop`.
+        public static final FunctionDescriptor FD_alcCaptureStop = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alcCaptureSamples`.
+        public static final FunctionDescriptor FD_alcCaptureSamples = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcCreateContext,
+            FD_alcMakeContextCurrent,
+            FD_alcProcessContext,
+            FD_alcSuspendContext,
+            FD_alcDestroyContext,
+            FD_alcGetCurrentContext,
+            FD_alcGetContextsDevice,
+            FD_alcOpenDevice,
+            FD_alcCloseDevice,
+            FD_alcGetError,
+            FD_alcIsExtensionPresent,
+            FD_alcGetProcAddress,
+            FD_alcGetEnumValue,
+            FD_alcGetString,
+            FD_alcGetIntegerv,
+            FD_alcCaptureOpenDevice,
+            FD_alcCaptureCloseDevice,
+            FD_alcCaptureStart,
+            FD_alcCaptureStop,
+            FD_alcCaptureSamples
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcCreateContext`.
-        public static final MethodHandle MH_alcCreateContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcCreateContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCreateContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcCreateContext", Descriptors.FD_alcCreateContext);
         /// The method handle of `alcMakeContextCurrent`.
-        public static final MethodHandle MH_alcMakeContextCurrent = RuntimeHelper.downcall(ALInternal.lookup(), "alcMakeContextCurrent", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcMakeContextCurrent = RuntimeHelper.downcall(ALInternal.lookup(), "alcMakeContextCurrent", Descriptors.FD_alcMakeContextCurrent);
         /// The method handle of `alcProcessContext`.
-        public static final MethodHandle MH_alcProcessContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcProcessContext", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcProcessContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcProcessContext", Descriptors.FD_alcProcessContext);
         /// The method handle of `alcSuspendContext`.
-        public static final MethodHandle MH_alcSuspendContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcSuspendContext", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcSuspendContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcSuspendContext", Descriptors.FD_alcSuspendContext);
         /// The method handle of `alcDestroyContext`.
-        public static final MethodHandle MH_alcDestroyContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcDestroyContext", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcDestroyContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcDestroyContext", Descriptors.FD_alcDestroyContext);
         /// The method handle of `alcGetCurrentContext`.
-        public static final MethodHandle MH_alcGetCurrentContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetCurrentContext", FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetCurrentContext = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetCurrentContext", Descriptors.FD_alcGetCurrentContext);
         /// The method handle of `alcGetContextsDevice`.
-        public static final MethodHandle MH_alcGetContextsDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetContextsDevice", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetContextsDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetContextsDevice", Descriptors.FD_alcGetContextsDevice);
         /// The method handle of `alcOpenDevice`.
-        public static final MethodHandle MH_alcOpenDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcOpenDevice", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcOpenDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcOpenDevice", Descriptors.FD_alcOpenDevice);
         /// The method handle of `alcCloseDevice`.
-        public static final MethodHandle MH_alcCloseDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCloseDevice", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCloseDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCloseDevice", Descriptors.FD_alcCloseDevice);
         /// The method handle of `alcGetError`.
-        public static final MethodHandle MH_alcGetError = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetError", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetError = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetError", Descriptors.FD_alcGetError);
         /// The method handle of `alcIsExtensionPresent`.
-        public static final MethodHandle MH_alcIsExtensionPresent = RuntimeHelper.downcall(ALInternal.lookup(), "alcIsExtensionPresent", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcIsExtensionPresent = RuntimeHelper.downcall(ALInternal.lookup(), "alcIsExtensionPresent", Descriptors.FD_alcIsExtensionPresent);
         /// The method handle of `alcGetProcAddress`.
-        public static final MethodHandle MH_alcGetProcAddress = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetProcAddress", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcGetProcAddress = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetProcAddress", Descriptors.FD_alcGetProcAddress);
         /// The method handle of `alcGetEnumValue`.
-        public static final MethodHandle MH_alcGetEnumValue = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetEnumValue", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcGetEnumValue = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetEnumValue", Descriptors.FD_alcGetEnumValue);
         /// The method handle of `alcGetString`.
-        public static final MethodHandle MH_alcGetString = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcGetString = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetString", Descriptors.FD_alcGetString);
         /// The method handle of `alcGetIntegerv`.
-        public static final MethodHandle MH_alcGetIntegerv = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetIntegerv", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetIntegerv = RuntimeHelper.downcall(ALInternal.lookup(), "alcGetIntegerv", Descriptors.FD_alcGetIntegerv);
         /// The method handle of `alcCaptureOpenDevice`.
-        public static final MethodHandle MH_alcCaptureOpenDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureOpenDevice", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcCaptureOpenDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureOpenDevice", Descriptors.FD_alcCaptureOpenDevice);
         /// The method handle of `alcCaptureCloseDevice`.
-        public static final MethodHandle MH_alcCaptureCloseDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureCloseDevice", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureCloseDevice = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureCloseDevice", Descriptors.FD_alcCaptureCloseDevice);
         /// The method handle of `alcCaptureStart`.
-        public static final MethodHandle MH_alcCaptureStart = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureStart", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureStart = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureStart", Descriptors.FD_alcCaptureStart);
         /// The method handle of `alcCaptureStop`.
-        public static final MethodHandle MH_alcCaptureStop = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureStop", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureStop = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureStop", Descriptors.FD_alcCaptureStop);
         /// The method handle of `alcCaptureSamples`.
-        public static final MethodHandle MH_alcCaptureSamples = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureSamples", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcCaptureSamples = RuntimeHelper.downcall(ALInternal.lookup(), "alcCaptureSamples", Descriptors.FD_alcCaptureSamples);
     }
-    //endregion
 
     public static @CType("ALCcontext *") java.lang.foreign.MemorySegment alcCreateContext(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCint *") java.lang.foreign.MemorySegment attrlist) {
         try {

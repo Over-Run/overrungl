@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -30,14 +31,22 @@ public final class ALSOFTSourceResampler {
     public static final int AL_SOURCE_RESAMPLER_SOFT = 0x1212;
     public static final int AL_RESAMPLER_NAME_SOFT = 0x1213;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alGetStringiSOFT`.
+        public static final FunctionDescriptor FD_alGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alGetStringiSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alGetStringiSOFT`.
-        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringiSOFT", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringiSOFT", Descriptors.FD_alGetStringiSOFT);
     }
-    //endregion
 
     public static @CType("const ALchar*") java.lang.foreign.MemorySegment alGetStringiSOFT(@CType("ALenum") int pname, @CType("ALsizei") int index) {
         if (Handles.MH_alGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetStringiSOFT");

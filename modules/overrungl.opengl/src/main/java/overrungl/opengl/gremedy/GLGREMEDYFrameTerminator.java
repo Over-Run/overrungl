@@ -19,21 +19,35 @@ package overrungl.opengl.gremedy;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLGREMEDYFrameTerminator {
-    public static final MethodHandle MH_glFrameTerminatorGREMEDY = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glFrameTerminatorGREMEDY;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glFrameTerminatorGREMEDY = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glFrameTerminatorGREMEDY
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glFrameTerminatorGREMEDY = RuntimeHelper.downcall(Descriptors.FD_glFrameTerminatorGREMEDY);
+        public final MemorySegment PFN_glFrameTerminatorGREMEDY;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glFrameTerminatorGREMEDY = func.invoke("glFrameTerminatorGREMEDY");
+        }
+    }
 
     public GLGREMEDYFrameTerminator(overrungl.opengl.GLLoadFunc func) {
-        PFN_glFrameTerminatorGREMEDY = func.invoke("glFrameTerminatorGREMEDY");
+        this.handles = new Handles(func);
     }
 
     public void FrameTerminatorGREMEDY() {
-        if (Unmarshal.isNullPointer(PFN_glFrameTerminatorGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
-        try { MH_glFrameTerminatorGREMEDY.invokeExact(PFN_glFrameTerminatorGREMEDY); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFrameTerminatorGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
+        try { Handles.MH_glFrameTerminatorGREMEDY.invokeExact(handles.PFN_glFrameTerminatorGREMEDY); }
         catch (Throwable e) { throw new RuntimeException("error in glFrameTerminatorGREMEDY", e); }
     }
 

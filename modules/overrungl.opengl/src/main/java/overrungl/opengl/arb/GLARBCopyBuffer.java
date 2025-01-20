@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLARBCopyBuffer {
     public static final int GL_COPY_READ_BUFFER = 0x8F36;
     public static final int GL_COPY_WRITE_BUFFER = 0x8F37;
-    public static final MethodHandle MH_glCopyBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glCopyBufferSubData;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glCopyBufferSubData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glCopyBufferSubData
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glCopyBufferSubData = RuntimeHelper.downcall(Descriptors.FD_glCopyBufferSubData);
+        public final MemorySegment PFN_glCopyBufferSubData;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData");
+        }
+    }
 
     public GLARBCopyBuffer(overrungl.opengl.GLLoadFunc func) {
-        PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData");
+        this.handles = new Handles(func);
     }
 
     public void CopyBufferSubData(@CType("GLenum") int readTarget, @CType("GLenum") int writeTarget, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");
-        try { MH_glCopyBufferSubData.invokeExact(PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");
+        try { Handles.MH_glCopyBufferSubData.invokeExact(handles.PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size); }
         catch (Throwable e) { throw new RuntimeException("error in glCopyBufferSubData", e); }
     }
 

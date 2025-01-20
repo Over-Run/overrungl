@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLEXTStencilTwoSide {
     public static final int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
     public static final int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
-    public static final MethodHandle MH_glActiveStencilFaceEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glActiveStencilFaceEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glActiveStencilFaceEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glActiveStencilFaceEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glActiveStencilFaceEXT = RuntimeHelper.downcall(Descriptors.FD_glActiveStencilFaceEXT);
+        public final MemorySegment PFN_glActiveStencilFaceEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glActiveStencilFaceEXT = func.invoke("glActiveStencilFaceEXT");
+        }
+    }
 
     public GLEXTStencilTwoSide(overrungl.opengl.GLLoadFunc func) {
-        PFN_glActiveStencilFaceEXT = func.invoke("glActiveStencilFaceEXT");
+        this.handles = new Handles(func);
     }
 
     public void ActiveStencilFaceEXT(@CType("GLenum") int face) {
-        if (Unmarshal.isNullPointer(PFN_glActiveStencilFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");
-        try { MH_glActiveStencilFaceEXT.invokeExact(PFN_glActiveStencilFaceEXT, face); }
+        if (Unmarshal.isNullPointer(handles.PFN_glActiveStencilFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");
+        try { Handles.MH_glActiveStencilFaceEXT.invokeExact(handles.PFN_glActiveStencilFaceEXT, face); }
         catch (Throwable e) { throw new RuntimeException("error in glActiveStencilFaceEXT", e); }
     }
 

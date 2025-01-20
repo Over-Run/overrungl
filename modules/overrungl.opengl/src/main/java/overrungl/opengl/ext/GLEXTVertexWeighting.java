@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,34 +38,51 @@ public final class GLEXTVertexWeighting {
     public static final int GL_VERTEX_WEIGHT_ARRAY_TYPE_EXT = 0x850E;
     public static final int GL_VERTEX_WEIGHT_ARRAY_STRIDE_EXT = 0x850F;
     public static final int GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT = 0x8510;
-    public static final MethodHandle MH_glVertexWeightfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glVertexWeightfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVertexWeightPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glVertexWeightfEXT;
-    public final MemorySegment PFN_glVertexWeightfvEXT;
-    public final MemorySegment PFN_glVertexWeightPointerEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glVertexWeightfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glVertexWeightfvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVertexWeightPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glVertexWeightfEXT,
+            FD_glVertexWeightfvEXT,
+            FD_glVertexWeightPointerEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glVertexWeightfEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightfEXT);
+        public static final MethodHandle MH_glVertexWeightfvEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightfvEXT);
+        public static final MethodHandle MH_glVertexWeightPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightPointerEXT);
+        public final MemorySegment PFN_glVertexWeightfEXT;
+        public final MemorySegment PFN_glVertexWeightfvEXT;
+        public final MemorySegment PFN_glVertexWeightPointerEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glVertexWeightfEXT = func.invoke("glVertexWeightfEXT");
+            PFN_glVertexWeightfvEXT = func.invoke("glVertexWeightfvEXT");
+            PFN_glVertexWeightPointerEXT = func.invoke("glVertexWeightPointerEXT");
+        }
+    }
 
     public GLEXTVertexWeighting(overrungl.opengl.GLLoadFunc func) {
-        PFN_glVertexWeightfEXT = func.invoke("glVertexWeightfEXT");
-        PFN_glVertexWeightfvEXT = func.invoke("glVertexWeightfvEXT");
-        PFN_glVertexWeightPointerEXT = func.invoke("glVertexWeightPointerEXT");
+        this.handles = new Handles(func);
     }
 
     public void VertexWeightfEXT(@CType("GLfloat") float weight) {
-        if (Unmarshal.isNullPointer(PFN_glVertexWeightfEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightfEXT");
-        try { MH_glVertexWeightfEXT.invokeExact(PFN_glVertexWeightfEXT, weight); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVertexWeightfEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightfEXT");
+        try { Handles.MH_glVertexWeightfEXT.invokeExact(handles.PFN_glVertexWeightfEXT, weight); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfEXT", e); }
     }
 
     public void VertexWeightfvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment weight) {
-        if (Unmarshal.isNullPointer(PFN_glVertexWeightfvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightfvEXT");
-        try { MH_glVertexWeightfvEXT.invokeExact(PFN_glVertexWeightfvEXT, weight); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVertexWeightfvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightfvEXT");
+        try { Handles.MH_glVertexWeightfvEXT.invokeExact(handles.PFN_glVertexWeightfvEXT, weight); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfvEXT", e); }
     }
 
     public void VertexWeightPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(PFN_glVertexWeightPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightPointerEXT");
-        try { MH_glVertexWeightPointerEXT.invokeExact(PFN_glVertexWeightPointerEXT, size, type, stride, pointer); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVertexWeightPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightPointerEXT");
+        try { Handles.MH_glVertexWeightPointerEXT.invokeExact(handles.PFN_glVertexWeightPointerEXT, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexWeightPointerEXT", e); }
     }
 

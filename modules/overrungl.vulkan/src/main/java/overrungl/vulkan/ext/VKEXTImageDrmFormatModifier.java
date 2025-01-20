@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKEXTImageDrmFormatModifier {
     public static final int VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2;
     public static final String VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
@@ -37,16 +38,29 @@ public class VKEXTImageDrmFormatModifier {
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT = 0x00000200;
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT = 0x00000400;
     public static final int VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT = 1000158006;
-    public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetImageDrmFormatModifierPropertiesEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetImageDrmFormatModifierPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetImageDrmFormatModifierPropertiesEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetImageDrmFormatModifierPropertiesEXT);
+        public final MemorySegment PFN_vkGetImageDrmFormatModifierPropertiesEXT;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetImageDrmFormatModifierPropertiesEXT = func.invoke(device, "vkGetImageDrmFormatModifierPropertiesEXT");
+        }
+    }
 
     public VKEXTImageDrmFormatModifier(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetImageDrmFormatModifierPropertiesEXT = func.invoke(device, "vkGetImageDrmFormatModifierPropertiesEXT");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int GetImageDrmFormatModifierPropertiesEXT(@CType("VkDevice") MemorySegment device, @CType("VkImage") MemorySegment image, @CType("VkImageDrmFormatModifierPropertiesEXT *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
-        try { return (int) MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(PFN_vkGetImageDrmFormatModifierPropertiesEXT, device, image, pProperties); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
+        try { return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(handles.PFN_vkGetImageDrmFormatModifierPropertiesEXT, device, image, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageDrmFormatModifierPropertiesEXT", e); }
     }
 

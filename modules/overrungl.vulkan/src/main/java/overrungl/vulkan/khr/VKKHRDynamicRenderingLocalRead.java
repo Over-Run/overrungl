@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRDynamicRenderingLocalRead {
     public static final int VK_KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION = 1;
@@ -30,25 +31,40 @@ public class VKKHRDynamicRenderingLocalRead {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES;
     public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO;
     public static final int VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO;
-    public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdSetRenderingAttachmentLocationsKHR;
-    public final MemorySegment PFN_vkCmdSetRenderingInputAttachmentIndicesKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdSetRenderingAttachmentLocationsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdSetRenderingInputAttachmentIndicesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdSetRenderingAttachmentLocationsKHR,
+            FD_vkCmdSetRenderingInputAttachmentIndicesKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingAttachmentLocationsKHR);
+        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingInputAttachmentIndicesKHR);
+        public final MemorySegment PFN_vkCmdSetRenderingAttachmentLocationsKHR;
+        public final MemorySegment PFN_vkCmdSetRenderingInputAttachmentIndicesKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdSetRenderingAttachmentLocationsKHR = func.invoke(device, "vkCmdSetRenderingAttachmentLocationsKHR", "vkCmdSetRenderingAttachmentLocations");
+            PFN_vkCmdSetRenderingInputAttachmentIndicesKHR = func.invoke(device, "vkCmdSetRenderingInputAttachmentIndicesKHR", "vkCmdSetRenderingInputAttachmentIndices");
+        }
+    }
 
     public VKKHRDynamicRenderingLocalRead(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdSetRenderingAttachmentLocationsKHR = func.invoke(device, "vkCmdSetRenderingAttachmentLocationsKHR", "vkCmdSetRenderingAttachmentLocations");
-        PFN_vkCmdSetRenderingInputAttachmentIndicesKHR = func.invoke(device, "vkCmdSetRenderingInputAttachmentIndicesKHR", "vkCmdSetRenderingInputAttachmentIndices");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdSetRenderingAttachmentLocationsKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderingAttachmentLocationInfo *") MemorySegment pLocationInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
-        try { MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer, pLocationInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
+        try { Handles.MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(handles.PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer, pLocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingAttachmentLocationsKHR", e); }
     }
 
     public void CmdSetRenderingInputAttachmentIndicesKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderingInputAttachmentIndexInfo *") MemorySegment pInputAttachmentIndexInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
-        try { MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer, pInputAttachmentIndexInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
+        try { Handles.MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(handles.PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer, pInputAttachmentIndexInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingInputAttachmentIndicesKHR", e); }
     }
 

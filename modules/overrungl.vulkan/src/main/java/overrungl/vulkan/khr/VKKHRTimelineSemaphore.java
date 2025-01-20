@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRTimelineSemaphore {
     public static final int VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION = 2;
@@ -35,34 +36,51 @@ public class VKKHRTimelineSemaphore {
     public static final int VK_SEMAPHORE_TYPE_BINARY_KHR = VK_SEMAPHORE_TYPE_BINARY;
     public static final int VK_SEMAPHORE_TYPE_TIMELINE_KHR = VK_SEMAPHORE_TYPE_TIMELINE;
     public static final int VK_SEMAPHORE_WAIT_ANY_BIT_KHR = VK_SEMAPHORE_WAIT_ANY_BIT;
-    public static final MethodHandle MH_vkGetSemaphoreCounterValueKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkWaitSemaphoresKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-    public static final MethodHandle MH_vkSignalSemaphoreKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetSemaphoreCounterValueKHR;
-    public final MemorySegment PFN_vkWaitSemaphoresKHR;
-    public final MemorySegment PFN_vkSignalSemaphoreKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetSemaphoreCounterValueKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkWaitSemaphoresKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
+        public static final FunctionDescriptor FD_vkSignalSemaphoreKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetSemaphoreCounterValueKHR,
+            FD_vkWaitSemaphoresKHR,
+            FD_vkSignalSemaphoreKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetSemaphoreCounterValueKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreCounterValueKHR);
+        public static final MethodHandle MH_vkWaitSemaphoresKHR = RuntimeHelper.downcall(Descriptors.FD_vkWaitSemaphoresKHR);
+        public static final MethodHandle MH_vkSignalSemaphoreKHR = RuntimeHelper.downcall(Descriptors.FD_vkSignalSemaphoreKHR);
+        public final MemorySegment PFN_vkGetSemaphoreCounterValueKHR;
+        public final MemorySegment PFN_vkWaitSemaphoresKHR;
+        public final MemorySegment PFN_vkSignalSemaphoreKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetSemaphoreCounterValueKHR = func.invoke(device, "vkGetSemaphoreCounterValueKHR", "vkGetSemaphoreCounterValue");
+            PFN_vkWaitSemaphoresKHR = func.invoke(device, "vkWaitSemaphoresKHR", "vkWaitSemaphores");
+            PFN_vkSignalSemaphoreKHR = func.invoke(device, "vkSignalSemaphoreKHR", "vkSignalSemaphore");
+        }
+    }
 
     public VKKHRTimelineSemaphore(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetSemaphoreCounterValueKHR = func.invoke(device, "vkGetSemaphoreCounterValueKHR", "vkGetSemaphoreCounterValue");
-        PFN_vkWaitSemaphoresKHR = func.invoke(device, "vkWaitSemaphoresKHR", "vkWaitSemaphores");
-        PFN_vkSignalSemaphoreKHR = func.invoke(device, "vkSignalSemaphoreKHR", "vkSignalSemaphore");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int GetSemaphoreCounterValueKHR(@CType("VkDevice") MemorySegment device, @CType("VkSemaphore") MemorySegment semaphore, @CType("uint64_t *") MemorySegment pValue) {
-        if (Unmarshal.isNullPointer(PFN_vkGetSemaphoreCounterValueKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValueKHR");
-        try { return (int) MH_vkGetSemaphoreCounterValueKHR.invokeExact(PFN_vkGetSemaphoreCounterValueKHR, device, semaphore, pValue); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetSemaphoreCounterValueKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValueKHR");
+        try { return (int) Handles.MH_vkGetSemaphoreCounterValueKHR.invokeExact(handles.PFN_vkGetSemaphoreCounterValueKHR, device, semaphore, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreCounterValueKHR", e); }
     }
 
     public @CType("VkResult") int WaitSemaphoresKHR(@CType("VkDevice") MemorySegment device, @CType("const VkSemaphoreWaitInfo *") MemorySegment pWaitInfo, @CType("uint64_t") long timeout) {
-        if (Unmarshal.isNullPointer(PFN_vkWaitSemaphoresKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitSemaphoresKHR");
-        try { return (int) MH_vkWaitSemaphoresKHR.invokeExact(PFN_vkWaitSemaphoresKHR, device, pWaitInfo, timeout); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkWaitSemaphoresKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitSemaphoresKHR");
+        try { return (int) Handles.MH_vkWaitSemaphoresKHR.invokeExact(handles.PFN_vkWaitSemaphoresKHR, device, pWaitInfo, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitSemaphoresKHR", e); }
     }
 
     public @CType("VkResult") int SignalSemaphoreKHR(@CType("VkDevice") MemorySegment device, @CType("const VkSemaphoreSignalInfo *") MemorySegment pSignalInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkSignalSemaphoreKHR)) throw new SymbolNotFoundError("Symbol not found: vkSignalSemaphoreKHR");
-        try { return (int) MH_vkSignalSemaphoreKHR.invokeExact(PFN_vkSignalSemaphoreKHR, device, pSignalInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkSignalSemaphoreKHR)) throw new SymbolNotFoundError("Symbol not found: vkSignalSemaphoreKHR");
+        try { return (int) Handles.MH_vkSignalSemaphoreKHR.invokeExact(handles.PFN_vkSignalSemaphoreKHR, device, pSignalInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSignalSemaphoreKHR", e); }
     }
 

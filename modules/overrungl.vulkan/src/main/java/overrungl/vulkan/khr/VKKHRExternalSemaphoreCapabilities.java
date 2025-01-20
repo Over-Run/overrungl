@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRExternalSemaphoreCapabilities {
     public static final int VK_KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION = 1;
@@ -37,16 +38,29 @@ public class VKKHRExternalSemaphoreCapabilities {
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT;
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR = VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT;
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR = VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT;
-    public static final MethodHandle MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR);
+        public final MemorySegment PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", "vkGetPhysicalDeviceExternalSemaphoreProperties");
+        }
+    }
 
     public VKKHRExternalSemaphoreCapabilities(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", "vkGetPhysicalDeviceExternalSemaphoreProperties");
+        this.handles = new Handles(instance, func);
     }
 
     public void GetPhysicalDeviceExternalSemaphorePropertiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceExternalSemaphoreInfo *") MemorySegment pExternalSemaphoreInfo, @CType("VkExternalSemaphoreProperties *") MemorySegment pExternalSemaphoreProperties) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
-        try { MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR.invokeExact(PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR, physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
+        try { Handles.MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR, physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", e); }
     }
 

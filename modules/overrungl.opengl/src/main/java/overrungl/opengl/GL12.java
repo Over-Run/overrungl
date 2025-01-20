@@ -19,6 +19,7 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -60,44 +61,63 @@ public class GL12 extends GL11 {
     public static final int GL_SMOOTH_LINE_WIDTH_RANGE = 0x0B22;
     public static final int GL_SMOOTH_LINE_WIDTH_GRANULARITY = 0x0B23;
     public static final int GL_ALIASED_LINE_WIDTH_RANGE = 0x846E;
-    public static final MethodHandle MH_glDrawRangeElements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glTexImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glTexSubImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCopyTexSubImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawRangeElements;
-    public final MemorySegment PFN_glTexImage3D;
-    public final MemorySegment PFN_glTexSubImage3D;
-    public final MemorySegment PFN_glCopyTexSubImage3D;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDrawRangeElements = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glTexImage3D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glTexSubImage3D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCopyTexSubImage3D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDrawRangeElements,
+            FD_glTexImage3D,
+            FD_glTexSubImage3D,
+            FD_glCopyTexSubImage3D
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDrawRangeElements = RuntimeHelper.downcall(Descriptors.FD_glDrawRangeElements);
+        public static final MethodHandle MH_glTexImage3D = RuntimeHelper.downcall(Descriptors.FD_glTexImage3D);
+        public static final MethodHandle MH_glTexSubImage3D = RuntimeHelper.downcall(Descriptors.FD_glTexSubImage3D);
+        public static final MethodHandle MH_glCopyTexSubImage3D = RuntimeHelper.downcall(Descriptors.FD_glCopyTexSubImage3D);
+        public final MemorySegment PFN_glDrawRangeElements;
+        public final MemorySegment PFN_glTexImage3D;
+        public final MemorySegment PFN_glTexSubImage3D;
+        public final MemorySegment PFN_glCopyTexSubImage3D;
+        private Handles(GLLoadFunc func) {
+            PFN_glDrawRangeElements = func.invoke("glDrawRangeElements", "glDrawRangeElementsEXT");
+            PFN_glTexImage3D = func.invoke("glTexImage3D", "glTexImage3DEXT");
+            PFN_glTexSubImage3D = func.invoke("glTexSubImage3D", "glTexSubImage3DEXT");
+            PFN_glCopyTexSubImage3D = func.invoke("glCopyTexSubImage3D", "glCopyTexSubImage3DEXT");
+        }
+    }
 
     public GL12(GLLoadFunc func) {
         super(func);
-        PFN_glDrawRangeElements = func.invoke("glDrawRangeElements", "glDrawRangeElementsEXT");
-        PFN_glTexImage3D = func.invoke("glTexImage3D", "glTexImage3DEXT");
-        PFN_glTexSubImage3D = func.invoke("glTexSubImage3D", "glTexSubImage3DEXT");
-        PFN_glCopyTexSubImage3D = func.invoke("glCopyTexSubImage3D", "glCopyTexSubImage3DEXT");
+        this.handles = new Handles(func);
     }
 
     public void DrawRangeElements(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices) {
-        if (Unmarshal.isNullPointer(PFN_glDrawRangeElements)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElements");
-        try { MH_glDrawRangeElements.invokeExact(PFN_glDrawRangeElements, mode, start, end, count, type, indices); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElements)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElements");
+        try { Handles.MH_glDrawRangeElements.invokeExact(handles.PFN_glDrawRangeElements, mode, start, end, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElements", e); }
     }
 
     public void TexImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(PFN_glTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexImage3D");
-        try { MH_glTexImage3D.invokeExact(PFN_glTexImage3D, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexImage3D");
+        try { Handles.MH_glTexImage3D.invokeExact(handles.PFN_glTexImage3D, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage3D", e); }
     }
 
     public void TexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(PFN_glTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3D");
-        try { MH_glTexSubImage3D.invokeExact(PFN_glTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3D");
+        try { Handles.MH_glTexSubImage3D.invokeExact(handles.PFN_glTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3D", e); }
     }
 
     public void CopyTexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(PFN_glCopyTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");
-        try { MH_glCopyTexSubImage3D.invokeExact(PFN_glCopyTexSubImage3D, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCopyTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");
+        try { Handles.MH_glCopyTexSubImage3D.invokeExact(handles.PFN_glCopyTexSubImage3D, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage3D", e); }
     }
 

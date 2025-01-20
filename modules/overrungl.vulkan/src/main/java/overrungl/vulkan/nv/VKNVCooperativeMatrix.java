@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.khr.VKKHRCooperativeMatrix.*;
 public class VKNVCooperativeMatrix {
     public static final int VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1;
@@ -44,16 +45,29 @@ public class VKNVCooperativeMatrix {
     public static final int VK_COMPONENT_TYPE_UINT16_NV = VK_COMPONENT_TYPE_UINT16_KHR;
     public static final int VK_COMPONENT_TYPE_UINT32_NV = VK_COMPONENT_TYPE_UINT32_KHR;
     public static final int VK_COMPONENT_TYPE_UINT64_NV = VK_COMPONENT_TYPE_UINT64_KHR;
-    public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
+        public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+        }
+    }
 
     public VKNVCooperativeMatrix(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int GetPhysicalDeviceCooperativeMatrixPropertiesNV(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkCooperativeMatrixPropertiesNV *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
-        try { return (int) MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.invokeExact(PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, physicalDevice, pPropertyCount, pProperties); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.invokeExact(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, physicalDevice, pPropertyCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeMatrixPropertiesNV", e); }
     }
 

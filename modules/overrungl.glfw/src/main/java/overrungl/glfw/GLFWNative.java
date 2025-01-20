@@ -28,6 +28,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// GLFW native functions.
 ///
@@ -42,62 +43,142 @@ public final class GLFWNative {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `glfwGetWin32Adapter`.
+        public static final FunctionDescriptor FD_glfwGetWin32Adapter = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWin32Monitor`.
+        public static final FunctionDescriptor FD_glfwGetWin32Monitor = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWin32Window`.
+        public static final FunctionDescriptor FD_glfwGetWin32Window = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWGLContext`.
+        public static final FunctionDescriptor FD_glfwGetWGLContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetCocoaMonitor`.
+        public static final FunctionDescriptor FD_glfwGetCocoaMonitor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetCocoaWindow`.
+        public static final FunctionDescriptor FD_glfwGetCocoaWindow = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetCocoaView`.
+        public static final FunctionDescriptor FD_glfwGetCocoaView = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetNSGLContext`.
+        public static final FunctionDescriptor FD_glfwGetNSGLContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetX11Display`.
+        public static final FunctionDescriptor FD_glfwGetX11Display = FunctionDescriptor.of(ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetX11Adapter`.
+        public static final FunctionDescriptor FD_glfwGetX11Adapter = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetX11Monitor`.
+        public static final FunctionDescriptor FD_glfwGetX11Monitor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetX11Window`.
+        public static final FunctionDescriptor FD_glfwGetX11Window = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwSetX11SelectionString`.
+        public static final FunctionDescriptor FD_glfwSetX11SelectionString = FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `glfwGetX11SelectionString`.
+        public static final FunctionDescriptor FD_glfwGetX11SelectionString = FunctionDescriptor.of(Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `glfwGetGLXContext`.
+        public static final FunctionDescriptor FD_glfwGetGLXContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetGLXWindow`.
+        public static final FunctionDescriptor FD_glfwGetGLXWindow = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWaylandDisplay`.
+        public static final FunctionDescriptor FD_glfwGetWaylandDisplay = FunctionDescriptor.of(ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWaylandMonitor`.
+        public static final FunctionDescriptor FD_glfwGetWaylandMonitor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetWaylandWindow`.
+        public static final FunctionDescriptor FD_glfwGetWaylandWindow = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetEGLDisplay`.
+        public static final FunctionDescriptor FD_glfwGetEGLDisplay = FunctionDescriptor.of(ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetEGLContext`.
+        public static final FunctionDescriptor FD_glfwGetEGLContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetEGLSurface`.
+        public static final FunctionDescriptor FD_glfwGetEGLSurface = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetOSMesaColorBuffer`.
+        public static final FunctionDescriptor FD_glfwGetOSMesaColorBuffer = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetOSMesaDepthBuffer`.
+        public static final FunctionDescriptor FD_glfwGetOSMesaDepthBuffer = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `glfwGetOSMesaContext`.
+        public static final FunctionDescriptor FD_glfwGetOSMesaContext = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glfwGetWin32Adapter,
+            FD_glfwGetWin32Monitor,
+            FD_glfwGetWin32Window,
+            FD_glfwGetWGLContext,
+            FD_glfwGetCocoaMonitor,
+            FD_glfwGetCocoaWindow,
+            FD_glfwGetCocoaView,
+            FD_glfwGetNSGLContext,
+            FD_glfwGetX11Display,
+            FD_glfwGetX11Adapter,
+            FD_glfwGetX11Monitor,
+            FD_glfwGetX11Window,
+            FD_glfwSetX11SelectionString,
+            FD_glfwGetX11SelectionString,
+            FD_glfwGetGLXContext,
+            FD_glfwGetGLXWindow,
+            FD_glfwGetWaylandDisplay,
+            FD_glfwGetWaylandMonitor,
+            FD_glfwGetWaylandWindow,
+            FD_glfwGetEGLDisplay,
+            FD_glfwGetEGLContext,
+            FD_glfwGetEGLSurface,
+            FD_glfwGetOSMesaColorBuffer,
+            FD_glfwGetOSMesaDepthBuffer,
+            FD_glfwGetOSMesaContext
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `glfwGetWin32Adapter`.
-        public static final MethodHandle MH_glfwGetWin32Adapter = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Adapter", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWin32Adapter = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Adapter", Descriptors.FD_glfwGetWin32Adapter);
         /// The method handle of `glfwGetWin32Monitor`.
-        public static final MethodHandle MH_glfwGetWin32Monitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Monitor", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWin32Monitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Monitor", Descriptors.FD_glfwGetWin32Monitor);
         /// The method handle of `glfwGetWin32Window`.
-        public static final MethodHandle MH_glfwGetWin32Window = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Window", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWin32Window = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWin32Window", Descriptors.FD_glfwGetWin32Window);
         /// The method handle of `glfwGetWGLContext`.
-        public static final MethodHandle MH_glfwGetWGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWGLContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWGLContext", Descriptors.FD_glfwGetWGLContext);
         /// The method handle of `glfwGetCocoaMonitor`.
-        public static final MethodHandle MH_glfwGetCocoaMonitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaMonitor", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetCocoaMonitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaMonitor", Descriptors.FD_glfwGetCocoaMonitor);
         /// The method handle of `glfwGetCocoaWindow`.
-        public static final MethodHandle MH_glfwGetCocoaWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaWindow", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetCocoaWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaWindow", Descriptors.FD_glfwGetCocoaWindow);
         /// The method handle of `glfwGetCocoaView`.
-        public static final MethodHandle MH_glfwGetCocoaView = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaView", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetCocoaView = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetCocoaView", Descriptors.FD_glfwGetCocoaView);
         /// The method handle of `glfwGetNSGLContext`.
-        public static final MethodHandle MH_glfwGetNSGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetNSGLContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetNSGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetNSGLContext", Descriptors.FD_glfwGetNSGLContext);
         /// The method handle of `glfwGetX11Display`.
-        public static final MethodHandle MH_glfwGetX11Display = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Display", FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetX11Display = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Display", Descriptors.FD_glfwGetX11Display);
         /// The method handle of `glfwGetX11Adapter`.
-        public static final MethodHandle MH_glfwGetX11Adapter = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Adapter", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetX11Adapter = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Adapter", Descriptors.FD_glfwGetX11Adapter);
         /// The method handle of `glfwGetX11Monitor`.
-        public static final MethodHandle MH_glfwGetX11Monitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Monitor", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetX11Monitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Monitor", Descriptors.FD_glfwGetX11Monitor);
         /// The method handle of `glfwGetX11Window`.
-        public static final MethodHandle MH_glfwGetX11Window = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Window", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetX11Window = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11Window", Descriptors.FD_glfwGetX11Window);
         /// The method handle of `glfwSetX11SelectionString`.
-        public static final MethodHandle MH_glfwSetX11SelectionString = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwSetX11SelectionString", FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwSetX11SelectionString = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwSetX11SelectionString", Descriptors.FD_glfwSetX11SelectionString);
         /// The method handle of `glfwGetX11SelectionString`.
-        public static final MethodHandle MH_glfwGetX11SelectionString = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11SelectionString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwGetX11SelectionString = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetX11SelectionString", Descriptors.FD_glfwGetX11SelectionString);
         /// The method handle of `glfwGetGLXContext`.
-        public static final MethodHandle MH_glfwGetGLXContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetGLXContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetGLXContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetGLXContext", Descriptors.FD_glfwGetGLXContext);
         /// The method handle of `glfwGetGLXWindow`.
-        public static final MethodHandle MH_glfwGetGLXWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetGLXWindow", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetGLXWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetGLXWindow", Descriptors.FD_glfwGetGLXWindow);
         /// The method handle of `glfwGetWaylandDisplay`.
-        public static final MethodHandle MH_glfwGetWaylandDisplay = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandDisplay", FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWaylandDisplay = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandDisplay", Descriptors.FD_glfwGetWaylandDisplay);
         /// The method handle of `glfwGetWaylandMonitor`.
-        public static final MethodHandle MH_glfwGetWaylandMonitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandMonitor", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWaylandMonitor = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandMonitor", Descriptors.FD_glfwGetWaylandMonitor);
         /// The method handle of `glfwGetWaylandWindow`.
-        public static final MethodHandle MH_glfwGetWaylandWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandWindow", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWaylandWindow = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetWaylandWindow", Descriptors.FD_glfwGetWaylandWindow);
         /// The method handle of `glfwGetEGLDisplay`.
-        public static final MethodHandle MH_glfwGetEGLDisplay = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLDisplay", FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetEGLDisplay = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLDisplay", Descriptors.FD_glfwGetEGLDisplay);
         /// The method handle of `glfwGetEGLContext`.
-        public static final MethodHandle MH_glfwGetEGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetEGLContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLContext", Descriptors.FD_glfwGetEGLContext);
         /// The method handle of `glfwGetEGLSurface`.
-        public static final MethodHandle MH_glfwGetEGLSurface = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLSurface", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetEGLSurface = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetEGLSurface", Descriptors.FD_glfwGetEGLSurface);
         /// The method handle of `glfwGetOSMesaColorBuffer`.
-        public static final MethodHandle MH_glfwGetOSMesaColorBuffer = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaColorBuffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetOSMesaColorBuffer = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaColorBuffer", Descriptors.FD_glfwGetOSMesaColorBuffer);
         /// The method handle of `glfwGetOSMesaDepthBuffer`.
-        public static final MethodHandle MH_glfwGetOSMesaDepthBuffer = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaDepthBuffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetOSMesaDepthBuffer = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaDepthBuffer", Descriptors.FD_glfwGetOSMesaDepthBuffer);
         /// The method handle of `glfwGetOSMesaContext`.
-        public static final MethodHandle MH_glfwGetOSMesaContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaContext", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetOSMesaContext = RuntimeHelper.downcallOrNull(GLFWInternal.lookup(), "glfwGetOSMesaContext", Descriptors.FD_glfwGetOSMesaContext);
     }
-    //endregion
 
     public static @CType("const char*") java.lang.foreign.MemorySegment glfwGetWin32Adapter_(@CType("GLFWmonitor*") java.lang.foreign.MemorySegment monitor) {
         if (Handles.MH_glfwGetWin32Adapter == null) throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Adapter");

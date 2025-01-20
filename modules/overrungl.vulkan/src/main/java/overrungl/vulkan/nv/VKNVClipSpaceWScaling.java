@@ -22,21 +22,35 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKNVClipSpaceWScaling {
     public static final int VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1;
     public static final String VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000;
-    public static final MethodHandle MH_vkCmdSetViewportWScalingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdSetViewportWScalingNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdSetViewportWScalingNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdSetViewportWScalingNV
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdSetViewportWScalingNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetViewportWScalingNV);
+        public final MemorySegment PFN_vkCmdSetViewportWScalingNV;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdSetViewportWScalingNV = func.invoke(device, "vkCmdSetViewportWScalingNV");
+        }
+    }
 
     public VKNVClipSpaceWScaling(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdSetViewportWScalingNV = func.invoke(device, "vkCmdSetViewportWScalingNV");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdSetViewportWScalingNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int firstViewport, @CType("uint32_t") int viewportCount, @CType("const VkViewportWScalingNV *") MemorySegment pViewportWScalings) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetViewportWScalingNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
-        try { MH_vkCmdSetViewportWScalingNV.invokeExact(PFN_vkCmdSetViewportWScalingNV, commandBuffer, firstViewport, viewportCount, pViewportWScalings); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetViewportWScalingNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
+        try { Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(handles.PFN_vkCmdSetViewportWScalingNV, commandBuffer, firstViewport, viewportCount, pViewportWScalings); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWScalingNV", e); }
     }
 

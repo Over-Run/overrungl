@@ -19,22 +19,36 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBInternalformatQuery {
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
-    public static final MethodHandle MH_glGetInternalformativ = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetInternalformativ;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glGetInternalformativ = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glGetInternalformativ
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glGetInternalformativ = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformativ);
+        public final MemorySegment PFN_glGetInternalformativ;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glGetInternalformativ = func.invoke("glGetInternalformativ");
+        }
+    }
 
     public GLARBInternalformatQuery(overrungl.opengl.GLLoadFunc func) {
-        PFN_glGetInternalformativ = func.invoke("glGetInternalformativ");
+        this.handles = new Handles(func);
     }
 
     public void GetInternalformativ(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetInternalformativ)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ");
-        try { MH_glGetInternalformativ.invokeExact(PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformativ)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ");
+        try { Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInternalformativ", e); }
     }
 

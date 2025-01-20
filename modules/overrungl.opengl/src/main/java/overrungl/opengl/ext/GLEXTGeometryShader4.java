@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -44,16 +45,29 @@ public final class GLEXTGeometryShader4 {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_LAYERED_EXT = 0x8DA7;
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4;
     public static final int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
-    public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glProgramParameteriEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glProgramParameteriEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glProgramParameteriEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteriEXT);
+        public final MemorySegment PFN_glProgramParameteriEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glProgramParameteriEXT = func.invoke("glProgramParameteriEXT", "glProgramParameteri");
+        }
+    }
 
     public GLEXTGeometryShader4(overrungl.opengl.GLLoadFunc func) {
-        PFN_glProgramParameteriEXT = func.invoke("glProgramParameteriEXT", "glProgramParameteri");
+        this.handles = new Handles(func);
     }
 
     public void ProgramParameteriEXT(@CType("GLuint") int program, @CType("GLenum") int pname, @CType("GLint") int value) {
-        if (Unmarshal.isNullPointer(PFN_glProgramParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriEXT");
-        try { MH_glProgramParameteriEXT.invokeExact(PFN_glProgramParameteriEXT, program, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriEXT");
+        try { Handles.MH_glProgramParameteriEXT.invokeExact(handles.PFN_glProgramParameteriEXT, program, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramParameteriEXT", e); }
     }
 

@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKKHRPerformanceQuery {
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = 0x00000002;
@@ -61,43 +62,62 @@ public class VKKHRPerformanceQuery {
     public static final int VK_QUERY_SCOPE_COMMAND_BUFFER_KHR = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR;
     public static final int VK_QUERY_SCOPE_RENDER_PASS_KHR = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR;
     public static final int VK_QUERY_SCOPE_COMMAND_KHR = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR;
-    public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkAcquireProfilingLockKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkReleaseProfilingLockKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
-    public final MemorySegment PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
-    public final MemorySegment PFN_vkAcquireProfilingLockKHR;
-    public final MemorySegment PFN_vkReleaseProfilingLockKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkAcquireProfilingLockKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkReleaseProfilingLockKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR,
+            FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR,
+            FD_vkAcquireProfilingLockKHR,
+            FD_vkReleaseProfilingLockKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = RuntimeHelper.downcall(Descriptors.FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
+        public static final MethodHandle MH_vkAcquireProfilingLockKHR = RuntimeHelper.downcall(Descriptors.FD_vkAcquireProfilingLockKHR);
+        public static final MethodHandle MH_vkReleaseProfilingLockKHR = RuntimeHelper.downcall(Descriptors.FD_vkReleaseProfilingLockKHR);
+        public final MemorySegment PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
+        public final MemorySegment PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
+        public final MemorySegment PFN_vkAcquireProfilingLockKHR;
+        public final MemorySegment PFN_vkReleaseProfilingLockKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = func.invoke(device, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
+            PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = func.invoke(device, "vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
+            PFN_vkAcquireProfilingLockKHR = func.invoke(device, "vkAcquireProfilingLockKHR");
+            PFN_vkReleaseProfilingLockKHR = func.invoke(device, "vkReleaseProfilingLockKHR");
+        }
+    }
 
     public VKKHRPerformanceQuery(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = func.invoke(device, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
-        PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = func.invoke(device, "vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
-        PFN_vkAcquireProfilingLockKHR = func.invoke(device, "vkAcquireProfilingLockKHR");
-        PFN_vkReleaseProfilingLockKHR = func.invoke(device, "vkReleaseProfilingLockKHR");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t") int queueFamilyIndex, @CType("uint32_t *") MemorySegment pCounterCount, @CType("VkPerformanceCounterKHR *") MemorySegment pCounters, @CType("VkPerformanceCounterDescriptionKHR *") MemorySegment pCounterDescriptions) {
-        if (Unmarshal.isNullPointer(PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
-        try { return (int) MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, physicalDevice, queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
+        try { return (int) Handles.MH_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.invokeExact(handles.PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, physicalDevice, queueFamilyIndex, pCounterCount, pCounters, pCounterDescriptions); }
         catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR", e); }
     }
 
     public void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkQueryPoolPerformanceCreateInfoKHR *") MemorySegment pPerformanceQueryCreateInfo, @CType("uint32_t *") MemorySegment pNumPasses) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
-        try { MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, physicalDevice, pPerformanceQueryCreateInfo, pNumPasses); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
+        try { Handles.MH_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, physicalDevice, pPerformanceQueryCreateInfo, pNumPasses); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR", e); }
     }
 
     public @CType("VkResult") int AcquireProfilingLockKHR(@CType("VkDevice") MemorySegment device, @CType("const VkAcquireProfilingLockInfoKHR *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkAcquireProfilingLockKHR)) throw new SymbolNotFoundError("Symbol not found: vkAcquireProfilingLockKHR");
-        try { return (int) MH_vkAcquireProfilingLockKHR.invokeExact(PFN_vkAcquireProfilingLockKHR, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkAcquireProfilingLockKHR)) throw new SymbolNotFoundError("Symbol not found: vkAcquireProfilingLockKHR");
+        try { return (int) Handles.MH_vkAcquireProfilingLockKHR.invokeExact(handles.PFN_vkAcquireProfilingLockKHR, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireProfilingLockKHR", e); }
     }
 
     public void ReleaseProfilingLockKHR(@CType("VkDevice") MemorySegment device) {
-        if (Unmarshal.isNullPointer(PFN_vkReleaseProfilingLockKHR)) throw new SymbolNotFoundError("Symbol not found: vkReleaseProfilingLockKHR");
-        try { MH_vkReleaseProfilingLockKHR.invokeExact(PFN_vkReleaseProfilingLockKHR, device); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkReleaseProfilingLockKHR)) throw new SymbolNotFoundError("Symbol not found: vkReleaseProfilingLockKHR");
+        try { Handles.MH_vkReleaseProfilingLockKHR.invokeExact(handles.PFN_vkReleaseProfilingLockKHR, device); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseProfilingLockKHR", e); }
     }
 

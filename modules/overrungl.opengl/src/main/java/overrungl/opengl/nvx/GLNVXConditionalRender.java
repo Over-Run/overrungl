@@ -19,30 +19,46 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVXConditionalRender {
-    public static final MethodHandle MH_glBeginConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glEndConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glBeginConditionalRenderNVX;
-    public final MemorySegment PFN_glEndConditionalRenderNVX;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBeginConditionalRenderNVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glEndConditionalRenderNVX = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBeginConditionalRenderNVX,
+            FD_glEndConditionalRenderNVX
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBeginConditionalRenderNVX = RuntimeHelper.downcall(Descriptors.FD_glBeginConditionalRenderNVX);
+        public static final MethodHandle MH_glEndConditionalRenderNVX = RuntimeHelper.downcall(Descriptors.FD_glEndConditionalRenderNVX);
+        public final MemorySegment PFN_glBeginConditionalRenderNVX;
+        public final MemorySegment PFN_glEndConditionalRenderNVX;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBeginConditionalRenderNVX = func.invoke("glBeginConditionalRenderNVX");
+            PFN_glEndConditionalRenderNVX = func.invoke("glEndConditionalRenderNVX", "glEndConditionalRender");
+        }
+    }
 
     public GLNVXConditionalRender(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBeginConditionalRenderNVX = func.invoke("glBeginConditionalRenderNVX");
-        PFN_glEndConditionalRenderNVX = func.invoke("glEndConditionalRenderNVX", "glEndConditionalRender");
+        this.handles = new Handles(func);
     }
 
     public void BeginConditionalRenderNVX(@CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glBeginConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");
-        try { MH_glBeginConditionalRenderNVX.invokeExact(PFN_glBeginConditionalRenderNVX, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBeginConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");
+        try { Handles.MH_glBeginConditionalRenderNVX.invokeExact(handles.PFN_glBeginConditionalRenderNVX, id); }
         catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNVX", e); }
     }
 
     public void EndConditionalRenderNVX() {
-        if (Unmarshal.isNullPointer(PFN_glEndConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX");
-        try { MH_glEndConditionalRenderNVX.invokeExact(PFN_glEndConditionalRenderNVX); }
+        if (Unmarshal.isNullPointer(handles.PFN_glEndConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX");
+        try { Handles.MH_glEndConditionalRenderNVX.invokeExact(handles.PFN_glEndConditionalRenderNVX); }
         catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNVX", e); }
     }
 

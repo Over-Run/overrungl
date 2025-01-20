@@ -22,20 +22,34 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKKHRAndroidSurface {
     public static final int VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
     public static final int VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR = 1000008000;
-    public static final MethodHandle MH_vkCreateAndroidSurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCreateAndroidSurfaceKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCreateAndroidSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCreateAndroidSurfaceKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCreateAndroidSurfaceKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateAndroidSurfaceKHR);
+        public final MemorySegment PFN_vkCreateAndroidSurfaceKHR;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkCreateAndroidSurfaceKHR = func.invoke(instance, "vkCreateAndroidSurfaceKHR");
+        }
+    }
 
     public VKKHRAndroidSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkCreateAndroidSurfaceKHR = func.invoke(instance, "vkCreateAndroidSurfaceKHR");
+        this.handles = new Handles(instance, func);
     }
 
     public @CType("VkResult") int CreateAndroidSurfaceKHR(@CType("VkInstance") MemorySegment instance, @CType("const VkAndroidSurfaceCreateInfoKHR *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateAndroidSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateAndroidSurfaceKHR");
-        try { return (int) MH_vkCreateAndroidSurfaceKHR.invokeExact(PFN_vkCreateAndroidSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateAndroidSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateAndroidSurfaceKHR");
+        try { return (int) Handles.MH_vkCreateAndroidSurfaceKHR.invokeExact(handles.PFN_vkCreateAndroidSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateAndroidSurfaceKHR", e); }
     }
 

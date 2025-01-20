@@ -30,10 +30,12 @@ class InstanceDowncall(
     var modifier: String? = null
     var constructorModifier: String? = "public"
     var constructorParam: String? = null
+    var handlesConstructorCode: String? = null
     var constructorCode: String? = null
     var customCode: String? = null
     private val extends = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
+    val descriptorFields = mutableListOf<InstanceDowncallField>()
     val handleFields = mutableListOf<InstanceDowncallField>()
     val pfnFields = mutableListOf<InstanceDowncallField>()
     private val methods = mutableListOf<InstanceDowncallMethod>()
@@ -67,6 +69,7 @@ class InstanceDowncall(
 
                 import java.lang.foreign.*;
                 import java.lang.invoke.*;
+                import java.util.*;
                 import overrungl.annotation.*;
                 import overrungl.internal.RuntimeHelper;
                 import overrungl.util.*;
@@ -86,23 +89,51 @@ class InstanceDowncall(
         sb.appendLine(" {")
 
         // fields
-        fun writeFields(list: List<InstanceDowncallField>) {
+        fun writeFields(list: List<InstanceDowncallField>, indent: Int) {
             list.forEach {
-                sb.append("    public")
+                sb.append(" ".repeat(indent))
                 if (it.modifier != null) {
-                    sb.append(" ")
                     sb.append(it.modifier)
                 }
-                sb.append(" final ${it.type} ${it.name}")
+                sb.append(" ${it.type} ${it.name}")
                 if (it.value != null) {
                     sb.append(" = ${it.value}")
                 }
                 sb.appendLine(";")
             }
         }
-        writeFields(fields)
-        writeFields(handleFields)
-        writeFields(pfnFields)
+        writeFields(fields, 4)
+        if (descriptorFields.isNotEmpty()) {
+            sb.appendLine("    public static final class Descriptors {")
+            sb.appendLine("        private Descriptors() {}")
+            writeFields(descriptorFields, 8)
+            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
+            descriptorFields.forEachIndexed { index, it ->
+                sb.append("            ${it.name}")
+                if (index + 1 == descriptorFields.size) {
+                    sb.appendLine()
+                } else {
+                    sb.appendLine(",")
+                }
+            }
+            sb.appendLine("        );")
+            sb.appendLine("    }")
+        }
+        if (handleFields.isNotEmpty()) {
+            sb.appendLine("    public static final class Handles {")
+            writeFields(handleFields, 8)
+            writeFields(pfnFields, 8)
+            sb.append("        private Handles(")
+            if (constructorParam != null) {
+                sb.append(constructorParam)
+            }
+            sb.appendLine(") {")
+            if (handlesConstructorCode != null) {
+                sb.appendLine(handlesConstructorCode!!.prependIndent("            "))
+            }
+            sb.appendLine("        }")
+            sb.appendLine("    }")
+        }
 
         // constructor
         sb.appendLine()
@@ -128,12 +159,12 @@ class InstanceDowncall(
             sb.append(m.params.joinToString(", ") { p -> "${p.type.carrierWithC()} ${p.name}" })
             sb.appendLine(") {")
 
-            sb.appendLine("""        if (Unmarshal.isNullPointer(PFN_${m.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
+            sb.appendLine("""        if (Unmarshal.isNullPointer(handles.PFN_${m.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
             sb.append("        try { ")
             if (m.returnType.carrier != TypeName.VOID) {
                 sb.append("return (${m.returnType.carrier}) ")
             }
-            sb.append("MH_${m.entrypoint}.invokeExact(PFN_${m.entrypoint}")
+            sb.append("Handles.MH_${m.entrypoint}.invokeExact(handles.PFN_${m.entrypoint}")
             m.params.forEach {
                 sb.append(", ${it.name}")
             }
@@ -156,7 +187,7 @@ class InstanceDowncall(
 }
 
 data class InstanceDowncallField(
-    val modifier: String? = null,
+    val modifier: String?,
     val type: String,
     val name: String,
     val value: String? = null,

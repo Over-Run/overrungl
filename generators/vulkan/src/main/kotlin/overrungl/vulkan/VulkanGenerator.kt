@@ -569,6 +569,12 @@ fun main() {
                     if (vkExtends.containsKey(featureNumber)) {
                         appendLine("    super(instance, func);")
                     }
+                    appendLine("    this.handles = new Handles(instance, func);")
+                    append("}")
+                }
+
+                handlesConstructor = buildString {
+                    appendLine("""private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {""")
                     featureReqCommands.forEach { command ->
                         append("""    PFN_$command = func.invoke(instance, "$command"""")
                         commandAliasMap[command]?.onEach { append(""", "$it"""") }
@@ -592,28 +598,28 @@ fun main() {
                         public static @CType("VkResult") int vkEnumerateInstanceExtensionProperties(VKLoadFunc func, @CType("const char *") MemorySegment pLayerName, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkExtensionProperties *") MemorySegment pProperties) {
                             var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceExtensionProperties");
                             if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceExtensionProperties");
-                            try { return (int) MH_vkEnumerateInstanceExtensionProperties.invokeExact(p, pLayerName, pPropertyCount, pProperties); }
+                            try { return (int) Handles.MH_vkEnumerateInstanceExtensionProperties.invokeExact(p, pLayerName, pPropertyCount, pProperties); }
                             catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceExtensionProperties", e); }
                         }
 
                         public static @CType("VkResult") int vkEnumerateInstanceLayerProperties(VKLoadFunc func, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkLayerProperties *") MemorySegment pProperties) {
                             var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceLayerProperties");
                             if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceLayerProperties");
-                            try { return (int) MH_vkEnumerateInstanceLayerProperties.invokeExact(p, pPropertyCount, pProperties); }
+                            try { return (int) Handles.MH_vkEnumerateInstanceLayerProperties.invokeExact(p, pPropertyCount, pProperties); }
                             catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceLayerProperties", e); }
                         }
 
                         public static @CType("VkResult") int vkCreateInstance(VKLoadFunc func, @CType("const VkInstanceCreateInfo *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkInstance *") MemorySegment pInstance) {
                             var p = func.invoke(MemorySegment.NULL, "vkCreateInstance");
                             if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkCreateInstance");
-                            try { return (int) MH_vkCreateInstance.invokeExact(p, pCreateInfo, pAllocator, pInstance); }
+                            try { return (int) Handles.MH_vkCreateInstance.invokeExact(p, pCreateInfo, pAllocator, pInstance); }
                             catch (Throwable e) { throw new RuntimeException("error in vkCreateInstance", e); }
                         }
 
                         public static @CType("PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VKLoadFunc func, @CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName) {
                             var p = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
                             if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkGetInstanceProcAddr");
-                            try { return (MemorySegment) MH_vkGetInstanceProcAddr.invokeExact(p, instance, pName); }
+                            try { return (MemorySegment) Handles.MH_vkGetInstanceProcAddr.invokeExact(p, instance, pName); }
                             catch (Throwable e) { throw new RuntimeException("error in vkGetInstanceProcAddr", e); }
                         }
                     """.trimIndent()
@@ -677,12 +683,31 @@ fun main() {
                 addReqEnums(extReqEnums)
                 addReqCommand(extReqCommands, commandMap, commandAliasMap)
 
-                if (extReqCommands.isEmpty()){
+                if (extReqCommands.isEmpty()) {
                     modifier = "final"
                     constructor = "private $extName() { }"
-                }else {
+                } else {
                     constructor = buildString {
                         append("public $extName(")
+                        when (extType) {
+                            "device" -> append("""@CType("VkDevice") MemorySegment device""")
+                            "instance" -> append("""@CType("VkInstance") MemorySegment instance""")
+                        }
+                        appendLine(", VKLoadFunc func) {")
+                        appendLine(
+                            "    this.handles = new Handles(${
+                                when (extType) {
+                                    "device" -> "device"
+                                    "instance" -> "instance"
+                                    else -> error(extType)
+                                }
+                            }, func);"
+                        )
+                        append("}")
+                    }
+
+                    handlesConstructor = buildString {
+                        append("private Handles(")
                         when (extType) {
                             "device" -> append("""@CType("VkDevice") MemorySegment device""")
                             "instance" -> append("""@CType("VkInstance") MemorySegment instance""")

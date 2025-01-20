@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,25 +33,40 @@ public final class GLEXTDebugLabel {
     public static final int GL_VERTEX_ARRAY_OBJECT_EXT = 0x9154;
     public static final int GL_SAMPLER = 0x82E6;
     public static final int GL_TRANSFORM_FEEDBACK = 0x8E22;
-    public static final MethodHandle MH_glLabelObjectEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetObjectLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glLabelObjectEXT;
-    public final MemorySegment PFN_glGetObjectLabelEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glLabelObjectEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetObjectLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glLabelObjectEXT,
+            FD_glGetObjectLabelEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glLabelObjectEXT = RuntimeHelper.downcall(Descriptors.FD_glLabelObjectEXT);
+        public static final MethodHandle MH_glGetObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_glGetObjectLabelEXT);
+        public final MemorySegment PFN_glLabelObjectEXT;
+        public final MemorySegment PFN_glGetObjectLabelEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glLabelObjectEXT = func.invoke("glLabelObjectEXT");
+            PFN_glGetObjectLabelEXT = func.invoke("glGetObjectLabelEXT");
+        }
+    }
 
     public GLEXTDebugLabel(overrungl.opengl.GLLoadFunc func) {
-        PFN_glLabelObjectEXT = func.invoke("glLabelObjectEXT");
-        PFN_glGetObjectLabelEXT = func.invoke("glGetObjectLabelEXT");
+        this.handles = new Handles(func);
     }
 
     public void LabelObjectEXT(@CType("GLenum") int type, @CType("GLuint") int object, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        if (Unmarshal.isNullPointer(PFN_glLabelObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glLabelObjectEXT");
-        try { MH_glLabelObjectEXT.invokeExact(PFN_glLabelObjectEXT, type, object, length, label); }
+        if (Unmarshal.isNullPointer(handles.PFN_glLabelObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glLabelObjectEXT");
+        try { Handles.MH_glLabelObjectEXT.invokeExact(handles.PFN_glLabelObjectEXT, type, object, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in glLabelObjectEXT", e); }
     }
 
     public void GetObjectLabelEXT(@CType("GLenum") int type, @CType("GLuint") int object, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        if (Unmarshal.isNullPointer(PFN_glGetObjectLabelEXT)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelEXT");
-        try { MH_glGetObjectLabelEXT.invokeExact(PFN_glGetObjectLabelEXT, type, object, bufSize, length, label); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetObjectLabelEXT)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelEXT");
+        try { Handles.MH_glGetObjectLabelEXT.invokeExact(handles.PFN_glGetObjectLabelEXT, type, object, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelEXT", e); }
     }
 

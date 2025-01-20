@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.ext.VKEXTDebugReport.*;
 public class VKKHRSamplerYcbcrConversion {
@@ -90,25 +91,40 @@ public class VKKHRSamplerYcbcrConversion {
     public static final int VK_CHROMA_LOCATION_COSITED_EVEN_KHR = VK_CHROMA_LOCATION_COSITED_EVEN;
     public static final int VK_CHROMA_LOCATION_MIDPOINT_KHR = VK_CHROMA_LOCATION_MIDPOINT;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT;
-    public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCreateSamplerYcbcrConversionKHR;
-    public final MemorySegment PFN_vkDestroySamplerYcbcrConversionKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCreateSamplerYcbcrConversionKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkDestroySamplerYcbcrConversionKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCreateSamplerYcbcrConversionKHR,
+            FD_vkDestroySamplerYcbcrConversionKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateSamplerYcbcrConversionKHR);
+        public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroySamplerYcbcrConversionKHR);
+        public final MemorySegment PFN_vkCreateSamplerYcbcrConversionKHR;
+        public final MemorySegment PFN_vkDestroySamplerYcbcrConversionKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCreateSamplerYcbcrConversionKHR = func.invoke(device, "vkCreateSamplerYcbcrConversionKHR", "vkCreateSamplerYcbcrConversion");
+            PFN_vkDestroySamplerYcbcrConversionKHR = func.invoke(device, "vkDestroySamplerYcbcrConversionKHR", "vkDestroySamplerYcbcrConversion");
+        }
+    }
 
     public VKKHRSamplerYcbcrConversion(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCreateSamplerYcbcrConversionKHR = func.invoke(device, "vkCreateSamplerYcbcrConversionKHR", "vkCreateSamplerYcbcrConversion");
-        PFN_vkDestroySamplerYcbcrConversionKHR = func.invoke(device, "vkDestroySamplerYcbcrConversionKHR", "vkDestroySamplerYcbcrConversion");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int CreateSamplerYcbcrConversionKHR(@CType("VkDevice") MemorySegment device, @CType("const VkSamplerYcbcrConversionCreateInfo *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSamplerYcbcrConversion *") MemorySegment pYcbcrConversion) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateSamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
-        try { return (int) MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(PFN_vkCreateSamplerYcbcrConversionKHR, device, pCreateInfo, pAllocator, pYcbcrConversion); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateSamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
+        try { return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(handles.PFN_vkCreateSamplerYcbcrConversionKHR, device, pCreateInfo, pAllocator, pYcbcrConversion); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSamplerYcbcrConversionKHR", e); }
     }
 
     public void DestroySamplerYcbcrConversionKHR(@CType("VkDevice") MemorySegment device, @CType("VkSamplerYcbcrConversion") MemorySegment ycbcrConversion, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(PFN_vkDestroySamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
-        try { MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(PFN_vkDestroySamplerYcbcrConversionKHR, device, ycbcrConversion, pAllocator); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkDestroySamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
+        try { Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(handles.PFN_vkDestroySamplerYcbcrConversionKHR, device, ycbcrConversion, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroySamplerYcbcrConversionKHR", e); }
     }
 

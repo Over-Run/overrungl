@@ -19,22 +19,36 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTPolygonOffsetClamp {
     public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
-    public static final MethodHandle MH_glPolygonOffsetClampEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glPolygonOffsetClampEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glPolygonOffsetClampEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glPolygonOffsetClampEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glPolygonOffsetClampEXT = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetClampEXT);
+        public final MemorySegment PFN_glPolygonOffsetClampEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glPolygonOffsetClampEXT = func.invoke("glPolygonOffsetClampEXT", "glPolygonOffsetClamp");
+        }
+    }
 
     public GLEXTPolygonOffsetClamp(overrungl.opengl.GLLoadFunc func) {
-        PFN_glPolygonOffsetClampEXT = func.invoke("glPolygonOffsetClampEXT", "glPolygonOffsetClamp");
+        this.handles = new Handles(func);
     }
 
     public void PolygonOffsetClampEXT(@CType("GLfloat") float factor, @CType("GLfloat") float units, @CType("GLfloat") float clamp) {
-        if (Unmarshal.isNullPointer(PFN_glPolygonOffsetClampEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");
-        try { MH_glPolygonOffsetClampEXT.invokeExact(PFN_glPolygonOffsetClampEXT, factor, units, clamp); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPolygonOffsetClampEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");
+        try { Handles.MH_glPolygonOffsetClampEXT.invokeExact(handles.PFN_glPolygonOffsetClampEXT, factor, units, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClampEXT", e); }
     }
 

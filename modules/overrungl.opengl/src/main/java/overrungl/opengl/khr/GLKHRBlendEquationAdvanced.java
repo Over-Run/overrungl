@@ -19,6 +19,7 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,16 +40,29 @@ public final class GLKHRBlendEquationAdvanced {
     public static final int GL_HSL_SATURATION_KHR = 0x92AE;
     public static final int GL_HSL_COLOR_KHR = 0x92AF;
     public static final int GL_HSL_LUMINOSITY_KHR = 0x92B0;
-    public static final MethodHandle MH_glBlendBarrierKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glBlendBarrierKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBlendBarrierKHR = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBlendBarrierKHR
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBlendBarrierKHR = RuntimeHelper.downcall(Descriptors.FD_glBlendBarrierKHR);
+        public final MemorySegment PFN_glBlendBarrierKHR;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBlendBarrierKHR = func.invoke("glBlendBarrierKHR", "glBlendBarrier");
+        }
+    }
 
     public GLKHRBlendEquationAdvanced(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBlendBarrierKHR = func.invoke("glBlendBarrierKHR", "glBlendBarrier");
+        this.handles = new Handles(func);
     }
 
     public void BlendBarrierKHR() {
-        if (Unmarshal.isNullPointer(PFN_glBlendBarrierKHR)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierKHR");
-        try { MH_glBlendBarrierKHR.invokeExact(PFN_glBlendBarrierKHR); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBlendBarrierKHR)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierKHR");
+        try { Handles.MH_glBlendBarrierKHR.invokeExact(handles.PFN_glBlendBarrierKHR); }
         catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierKHR", e); }
     }
 

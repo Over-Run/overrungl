@@ -19,6 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,16 +34,29 @@ public final class GLAMDInterleavedElements {
     public static final int GL_RG8UI = 0x8238;
     public static final int GL_RG16UI = 0x823A;
     public static final int GL_RGBA8UI = 0x8D7C;
-    public static final MethodHandle MH_glVertexAttribParameteriAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glVertexAttribParameteriAMD;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glVertexAttribParameteriAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glVertexAttribParameteriAMD
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glVertexAttribParameteriAMD = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribParameteriAMD);
+        public final MemorySegment PFN_glVertexAttribParameteriAMD;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glVertexAttribParameteriAMD = func.invoke("glVertexAttribParameteriAMD");
+        }
+    }
 
     public GLAMDInterleavedElements(overrungl.opengl.GLLoadFunc func) {
-        PFN_glVertexAttribParameteriAMD = func.invoke("glVertexAttribParameteriAMD");
+        this.handles = new Handles(func);
     }
 
     public void VertexAttribParameteriAMD(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
-        try { MH_glVertexAttribParameteriAMD.invokeExact(PFN_glVertexAttribParameteriAMD, index, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
+        try { Handles.MH_glVertexAttribParameteriAMD.invokeExact(handles.PFN_glVertexAttribParameteriAMD, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribParameteriAMD", e); }
     }
 

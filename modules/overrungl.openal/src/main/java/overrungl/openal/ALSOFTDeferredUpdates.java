@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -27,16 +28,27 @@ public final class ALSOFTDeferredUpdates {
     //region Fields
     public static final int AL_DEFERRED_UPDATES_SOFT = 0xC002;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alDeferUpdatesSOFT`.
+        public static final FunctionDescriptor FD_alDeferUpdatesSOFT = FunctionDescriptor.ofVoid();
+        /// The function descriptor of `alProcessUpdatesSOFT`.
+        public static final FunctionDescriptor FD_alProcessUpdatesSOFT = FunctionDescriptor.ofVoid();
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alDeferUpdatesSOFT,
+            FD_alProcessUpdatesSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alDeferUpdatesSOFT`.
-        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeferUpdatesSOFT", FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeferUpdatesSOFT", Descriptors.FD_alDeferUpdatesSOFT);
         /// The method handle of `alProcessUpdatesSOFT`.
-        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alProcessUpdatesSOFT", FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alProcessUpdatesSOFT", Descriptors.FD_alProcessUpdatesSOFT);
     }
-    //endregion
 
     public static void alDeferUpdatesSOFT() {
         if (Handles.MH_alDeferUpdatesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alDeferUpdatesSOFT");

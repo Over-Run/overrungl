@@ -19,6 +19,7 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,25 +29,40 @@ public final class GLATISeparateStencil {
     public static final int GL_STENCIL_BACK_FAIL_ATI = 0x8801;
     public static final int GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI = 0x8802;
     public static final int GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI = 0x8803;
-    public static final MethodHandle MH_glStencilOpSeparateATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glStencilFuncSeparateATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glStencilOpSeparateATI;
-    public final MemorySegment PFN_glStencilFuncSeparateATI;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glStencilOpSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glStencilFuncSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glStencilOpSeparateATI,
+            FD_glStencilFuncSeparateATI
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glStencilOpSeparateATI = RuntimeHelper.downcall(Descriptors.FD_glStencilOpSeparateATI);
+        public static final MethodHandle MH_glStencilFuncSeparateATI = RuntimeHelper.downcall(Descriptors.FD_glStencilFuncSeparateATI);
+        public final MemorySegment PFN_glStencilOpSeparateATI;
+        public final MemorySegment PFN_glStencilFuncSeparateATI;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glStencilOpSeparateATI = func.invoke("glStencilOpSeparateATI", "glStencilOpSeparate");
+            PFN_glStencilFuncSeparateATI = func.invoke("glStencilFuncSeparateATI");
+        }
+    }
 
     public GLATISeparateStencil(overrungl.opengl.GLLoadFunc func) {
-        PFN_glStencilOpSeparateATI = func.invoke("glStencilOpSeparateATI", "glStencilOpSeparate");
-        PFN_glStencilFuncSeparateATI = func.invoke("glStencilFuncSeparateATI");
+        this.handles = new Handles(func);
     }
 
     public void StencilOpSeparateATI(@CType("GLenum") int face, @CType("GLenum") int sfail, @CType("GLenum") int dpfail, @CType("GLenum") int dppass) {
-        if (Unmarshal.isNullPointer(PFN_glStencilOpSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilOpSeparateATI");
-        try { MH_glStencilOpSeparateATI.invokeExact(PFN_glStencilOpSeparateATI, face, sfail, dpfail, dppass); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilOpSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilOpSeparateATI");
+        try { Handles.MH_glStencilOpSeparateATI.invokeExact(handles.PFN_glStencilOpSeparateATI, face, sfail, dpfail, dppass); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilOpSeparateATI", e); }
     }
 
     public void StencilFuncSeparateATI(@CType("GLenum") int frontfunc, @CType("GLenum") int backfunc, @CType("GLint") int ref, @CType("GLuint") int mask) {
-        if (Unmarshal.isNullPointer(PFN_glStencilFuncSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilFuncSeparateATI");
-        try { MH_glStencilFuncSeparateATI.invokeExact(PFN_glStencilFuncSeparateATI, frontfunc, backfunc, ref, mask); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilFuncSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilFuncSeparateATI");
+        try { Handles.MH_glStencilFuncSeparateATI.invokeExact(handles.PFN_glStencilFuncSeparateATI, frontfunc, backfunc, ref, mask); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilFuncSeparateATI", e); }
     }
 

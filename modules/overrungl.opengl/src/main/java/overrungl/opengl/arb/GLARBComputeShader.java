@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -42,25 +43,40 @@ public final class GLARBComputeShader {
     public static final int GL_DISPATCH_INDIRECT_BUFFER = 0x90EE;
     public static final int GL_DISPATCH_INDIRECT_BUFFER_BINDING = 0x90EF;
     public static final int GL_COMPUTE_SHADER_BIT = 0x00000020;
-    public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glDispatchCompute;
-    public final MemorySegment PFN_glDispatchComputeIndirect;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDispatchCompute = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDispatchComputeIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDispatchCompute,
+            FD_glDispatchComputeIndirect
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(Descriptors.FD_glDispatchCompute);
+        public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(Descriptors.FD_glDispatchComputeIndirect);
+        public final MemorySegment PFN_glDispatchCompute;
+        public final MemorySegment PFN_glDispatchComputeIndirect;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glDispatchCompute = func.invoke("glDispatchCompute");
+            PFN_glDispatchComputeIndirect = func.invoke("glDispatchComputeIndirect");
+        }
+    }
 
     public GLARBComputeShader(overrungl.opengl.GLLoadFunc func) {
-        PFN_glDispatchCompute = func.invoke("glDispatchCompute");
-        PFN_glDispatchComputeIndirect = func.invoke("glDispatchComputeIndirect");
+        this.handles = new Handles(func);
     }
 
     public void DispatchCompute(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z) {
-        if (Unmarshal.isNullPointer(PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
-        try { MH_glDispatchCompute.invokeExact(PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
+        try { Handles.MH_glDispatchCompute.invokeExact(handles.PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
         catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
     }
 
     public void DispatchComputeIndirect(@CType("GLintptr") long indirect) {
-        if (Unmarshal.isNullPointer(PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
-        try { MH_glDispatchComputeIndirect.invokeExact(PFN_glDispatchComputeIndirect, indirect); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
+        try { Handles.MH_glDispatchComputeIndirect.invokeExact(handles.PFN_glDispatchComputeIndirect, indirect); }
         catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
     }
 

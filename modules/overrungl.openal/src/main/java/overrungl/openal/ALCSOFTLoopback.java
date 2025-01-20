@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -41,18 +42,32 @@ public final class ALCSOFTLoopback {
     public static final int ALC_6POINT1_SOFT = 0x1505;
     public static final int ALC_7POINT1_SOFT = 0x1506;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcLoopbackOpenDeviceSOFT`.
+        public static final FunctionDescriptor FD_alcLoopbackOpenDeviceSOFT = FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alcIsRenderFormatSupportedSOFT`.
+        public static final FunctionDescriptor FD_alcIsRenderFormatSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alcRenderSamplesSOFT`.
+        public static final FunctionDescriptor FD_alcRenderSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcLoopbackOpenDeviceSOFT,
+            FD_alcIsRenderFormatSupportedSOFT,
+            FD_alcRenderSamplesSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcLoopbackOpenDeviceSOFT`.
-        public static final MethodHandle MH_alcLoopbackOpenDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcLoopbackOpenDeviceSOFT", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcLoopbackOpenDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcLoopbackOpenDeviceSOFT", Descriptors.FD_alcLoopbackOpenDeviceSOFT);
         /// The method handle of `alcIsRenderFormatSupportedSOFT`.
-        public static final MethodHandle MH_alcIsRenderFormatSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcIsRenderFormatSupportedSOFT", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcIsRenderFormatSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcIsRenderFormatSupportedSOFT", Descriptors.FD_alcIsRenderFormatSupportedSOFT);
         /// The method handle of `alcRenderSamplesSOFT`.
-        public static final MethodHandle MH_alcRenderSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcRenderSamplesSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcRenderSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcRenderSamplesSOFT", Descriptors.FD_alcRenderSamplesSOFT);
     }
-    //endregion
 
     public static @CType("ALCdevice *") java.lang.foreign.MemorySegment alcLoopbackOpenDeviceSOFT(@CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName) {
         if (Handles.MH_alcLoopbackOpenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcLoopbackOpenDeviceSOFT");

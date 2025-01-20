@@ -19,6 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -80,124 +81,161 @@ public final class GLNVRegisterCombiners {
     public static final int GL_ZERO = 0;
     public static final int GL_NONE = 0;
     public static final int GL_FOG = 0x0B60;
-    public static final MethodHandle MH_glCombinerParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCombinerParameterfNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glCombinerParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCombinerParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glCombinerInputNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glCombinerOutputNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glFinalCombinerInputNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetCombinerInputParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetCombinerInputParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetCombinerOutputParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetCombinerOutputParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFinalCombinerInputParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetFinalCombinerInputParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glCombinerParameterfvNV;
-    public final MemorySegment PFN_glCombinerParameterfNV;
-    public final MemorySegment PFN_glCombinerParameterivNV;
-    public final MemorySegment PFN_glCombinerParameteriNV;
-    public final MemorySegment PFN_glCombinerInputNV;
-    public final MemorySegment PFN_glCombinerOutputNV;
-    public final MemorySegment PFN_glFinalCombinerInputNV;
-    public final MemorySegment PFN_glGetCombinerInputParameterfvNV;
-    public final MemorySegment PFN_glGetCombinerInputParameterivNV;
-    public final MemorySegment PFN_glGetCombinerOutputParameterfvNV;
-    public final MemorySegment PFN_glGetCombinerOutputParameterivNV;
-    public final MemorySegment PFN_glGetFinalCombinerInputParameterfvNV;
-    public final MemorySegment PFN_glGetFinalCombinerInputParameterivNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glCombinerParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCombinerParameterfNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glCombinerParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCombinerParameteriNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glCombinerInputNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glCombinerOutputNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glFinalCombinerInputNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetCombinerInputParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetCombinerInputParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetCombinerOutputParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetCombinerOutputParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFinalCombinerInputParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetFinalCombinerInputParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glCombinerParameterfvNV,
+            FD_glCombinerParameterfNV,
+            FD_glCombinerParameterivNV,
+            FD_glCombinerParameteriNV,
+            FD_glCombinerInputNV,
+            FD_glCombinerOutputNV,
+            FD_glFinalCombinerInputNV,
+            FD_glGetCombinerInputParameterfvNV,
+            FD_glGetCombinerInputParameterivNV,
+            FD_glGetCombinerOutputParameterfvNV,
+            FD_glGetCombinerOutputParameterivNV,
+            FD_glGetFinalCombinerInputParameterfvNV,
+            FD_glGetFinalCombinerInputParameterivNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glCombinerParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerParameterfvNV);
+        public static final MethodHandle MH_glCombinerParameterfNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerParameterfNV);
+        public static final MethodHandle MH_glCombinerParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerParameterivNV);
+        public static final MethodHandle MH_glCombinerParameteriNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerParameteriNV);
+        public static final MethodHandle MH_glCombinerInputNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerInputNV);
+        public static final MethodHandle MH_glCombinerOutputNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerOutputNV);
+        public static final MethodHandle MH_glFinalCombinerInputNV = RuntimeHelper.downcall(Descriptors.FD_glFinalCombinerInputNV);
+        public static final MethodHandle MH_glGetCombinerInputParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerInputParameterfvNV);
+        public static final MethodHandle MH_glGetCombinerInputParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerInputParameterivNV);
+        public static final MethodHandle MH_glGetCombinerOutputParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerOutputParameterfvNV);
+        public static final MethodHandle MH_glGetCombinerOutputParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerOutputParameterivNV);
+        public static final MethodHandle MH_glGetFinalCombinerInputParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetFinalCombinerInputParameterfvNV);
+        public static final MethodHandle MH_glGetFinalCombinerInputParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glGetFinalCombinerInputParameterivNV);
+        public final MemorySegment PFN_glCombinerParameterfvNV;
+        public final MemorySegment PFN_glCombinerParameterfNV;
+        public final MemorySegment PFN_glCombinerParameterivNV;
+        public final MemorySegment PFN_glCombinerParameteriNV;
+        public final MemorySegment PFN_glCombinerInputNV;
+        public final MemorySegment PFN_glCombinerOutputNV;
+        public final MemorySegment PFN_glFinalCombinerInputNV;
+        public final MemorySegment PFN_glGetCombinerInputParameterfvNV;
+        public final MemorySegment PFN_glGetCombinerInputParameterivNV;
+        public final MemorySegment PFN_glGetCombinerOutputParameterfvNV;
+        public final MemorySegment PFN_glGetCombinerOutputParameterivNV;
+        public final MemorySegment PFN_glGetFinalCombinerInputParameterfvNV;
+        public final MemorySegment PFN_glGetFinalCombinerInputParameterivNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glCombinerParameterfvNV = func.invoke("glCombinerParameterfvNV");
+            PFN_glCombinerParameterfNV = func.invoke("glCombinerParameterfNV");
+            PFN_glCombinerParameterivNV = func.invoke("glCombinerParameterivNV");
+            PFN_glCombinerParameteriNV = func.invoke("glCombinerParameteriNV");
+            PFN_glCombinerInputNV = func.invoke("glCombinerInputNV");
+            PFN_glCombinerOutputNV = func.invoke("glCombinerOutputNV");
+            PFN_glFinalCombinerInputNV = func.invoke("glFinalCombinerInputNV");
+            PFN_glGetCombinerInputParameterfvNV = func.invoke("glGetCombinerInputParameterfvNV");
+            PFN_glGetCombinerInputParameterivNV = func.invoke("glGetCombinerInputParameterivNV");
+            PFN_glGetCombinerOutputParameterfvNV = func.invoke("glGetCombinerOutputParameterfvNV");
+            PFN_glGetCombinerOutputParameterivNV = func.invoke("glGetCombinerOutputParameterivNV");
+            PFN_glGetFinalCombinerInputParameterfvNV = func.invoke("glGetFinalCombinerInputParameterfvNV");
+            PFN_glGetFinalCombinerInputParameterivNV = func.invoke("glGetFinalCombinerInputParameterivNV");
+        }
+    }
 
     public GLNVRegisterCombiners(overrungl.opengl.GLLoadFunc func) {
-        PFN_glCombinerParameterfvNV = func.invoke("glCombinerParameterfvNV");
-        PFN_glCombinerParameterfNV = func.invoke("glCombinerParameterfNV");
-        PFN_glCombinerParameterivNV = func.invoke("glCombinerParameterivNV");
-        PFN_glCombinerParameteriNV = func.invoke("glCombinerParameteriNV");
-        PFN_glCombinerInputNV = func.invoke("glCombinerInputNV");
-        PFN_glCombinerOutputNV = func.invoke("glCombinerOutputNV");
-        PFN_glFinalCombinerInputNV = func.invoke("glFinalCombinerInputNV");
-        PFN_glGetCombinerInputParameterfvNV = func.invoke("glGetCombinerInputParameterfvNV");
-        PFN_glGetCombinerInputParameterivNV = func.invoke("glGetCombinerInputParameterivNV");
-        PFN_glGetCombinerOutputParameterfvNV = func.invoke("glGetCombinerOutputParameterfvNV");
-        PFN_glGetCombinerOutputParameterivNV = func.invoke("glGetCombinerOutputParameterivNV");
-        PFN_glGetFinalCombinerInputParameterfvNV = func.invoke("glGetFinalCombinerInputParameterfvNV");
-        PFN_glGetFinalCombinerInputParameterivNV = func.invoke("glGetFinalCombinerInputParameterivNV");
+        this.handles = new Handles(func);
     }
 
     public void CombinerParameterfvNV(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterfvNV");
-        try { MH_glCombinerParameterfvNV.invokeExact(PFN_glCombinerParameterfvNV, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterfvNV");
+        try { Handles.MH_glCombinerParameterfvNV.invokeExact(handles.PFN_glCombinerParameterfvNV, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerParameterfvNV", e); }
     }
 
     public void CombinerParameterfNV(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterfNV");
-        try { MH_glCombinerParameterfNV.invokeExact(PFN_glCombinerParameterfNV, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterfNV");
+        try { Handles.MH_glCombinerParameterfNV.invokeExact(handles.PFN_glCombinerParameterfNV, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerParameterfNV", e); }
     }
 
     public void CombinerParameterivNV(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterivNV");
-        try { MH_glCombinerParameterivNV.invokeExact(PFN_glCombinerParameterivNV, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameterivNV");
+        try { Handles.MH_glCombinerParameterivNV.invokeExact(handles.PFN_glCombinerParameterivNV, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerParameterivNV", e); }
     }
 
     public void CombinerParameteriNV(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameteriNV");
-        try { MH_glCombinerParameteriNV.invokeExact(PFN_glCombinerParameteriNV, pname, param); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerParameteriNV");
+        try { Handles.MH_glCombinerParameteriNV.invokeExact(handles.PFN_glCombinerParameteriNV, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerParameteriNV", e); }
     }
 
     public void CombinerInputNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int variable, @CType("GLenum") int input, @CType("GLenum") int mapping, @CType("GLenum") int componentUsage) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerInputNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerInputNV");
-        try { MH_glCombinerInputNV.invokeExact(PFN_glCombinerInputNV, stage, portion, variable, input, mapping, componentUsage); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerInputNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerInputNV");
+        try { Handles.MH_glCombinerInputNV.invokeExact(handles.PFN_glCombinerInputNV, stage, portion, variable, input, mapping, componentUsage); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerInputNV", e); }
     }
 
     public void CombinerOutputNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int abOutput, @CType("GLenum") int cdOutput, @CType("GLenum") int sumOutput, @CType("GLenum") int scale, @CType("GLenum") int bias, @CType("GLboolean") boolean abDotProduct, @CType("GLboolean") boolean cdDotProduct, @CType("GLboolean") boolean muxSum) {
-        if (Unmarshal.isNullPointer(PFN_glCombinerOutputNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerOutputNV");
-        try { MH_glCombinerOutputNV.invokeExact(PFN_glCombinerOutputNV, stage, portion, abOutput, cdOutput, sumOutput, scale, bias, abDotProduct, cdDotProduct, muxSum); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCombinerOutputNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerOutputNV");
+        try { Handles.MH_glCombinerOutputNV.invokeExact(handles.PFN_glCombinerOutputNV, stage, portion, abOutput, cdOutput, sumOutput, scale, bias, abDotProduct, cdDotProduct, muxSum); }
         catch (Throwable e) { throw new RuntimeException("error in glCombinerOutputNV", e); }
     }
 
     public void FinalCombinerInputNV(@CType("GLenum") int variable, @CType("GLenum") int input, @CType("GLenum") int mapping, @CType("GLenum") int componentUsage) {
-        if (Unmarshal.isNullPointer(PFN_glFinalCombinerInputNV)) throw new SymbolNotFoundError("Symbol not found: glFinalCombinerInputNV");
-        try { MH_glFinalCombinerInputNV.invokeExact(PFN_glFinalCombinerInputNV, variable, input, mapping, componentUsage); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFinalCombinerInputNV)) throw new SymbolNotFoundError("Symbol not found: glFinalCombinerInputNV");
+        try { Handles.MH_glFinalCombinerInputNV.invokeExact(handles.PFN_glFinalCombinerInputNV, variable, input, mapping, componentUsage); }
         catch (Throwable e) { throw new RuntimeException("error in glFinalCombinerInputNV", e); }
     }
 
     public void GetCombinerInputParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int variable, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetCombinerInputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerInputParameterfvNV");
-        try { MH_glGetCombinerInputParameterfvNV.invokeExact(PFN_glGetCombinerInputParameterfvNV, stage, portion, variable, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerInputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerInputParameterfvNV");
+        try { Handles.MH_glGetCombinerInputParameterfvNV.invokeExact(handles.PFN_glGetCombinerInputParameterfvNV, stage, portion, variable, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCombinerInputParameterfvNV", e); }
     }
 
     public void GetCombinerInputParameterivNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int variable, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetCombinerInputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerInputParameterivNV");
-        try { MH_glGetCombinerInputParameterivNV.invokeExact(PFN_glGetCombinerInputParameterivNV, stage, portion, variable, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerInputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerInputParameterivNV");
+        try { Handles.MH_glGetCombinerInputParameterivNV.invokeExact(handles.PFN_glGetCombinerInputParameterivNV, stage, portion, variable, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCombinerInputParameterivNV", e); }
     }
 
     public void GetCombinerOutputParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetCombinerOutputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerOutputParameterfvNV");
-        try { MH_glGetCombinerOutputParameterfvNV.invokeExact(PFN_glGetCombinerOutputParameterfvNV, stage, portion, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerOutputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerOutputParameterfvNV");
+        try { Handles.MH_glGetCombinerOutputParameterfvNV.invokeExact(handles.PFN_glGetCombinerOutputParameterfvNV, stage, portion, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCombinerOutputParameterfvNV", e); }
     }
 
     public void GetCombinerOutputParameterivNV(@CType("GLenum") int stage, @CType("GLenum") int portion, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetCombinerOutputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerOutputParameterivNV");
-        try { MH_glGetCombinerOutputParameterivNV.invokeExact(PFN_glGetCombinerOutputParameterivNV, stage, portion, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerOutputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerOutputParameterivNV");
+        try { Handles.MH_glGetCombinerOutputParameterivNV.invokeExact(handles.PFN_glGetCombinerOutputParameterivNV, stage, portion, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCombinerOutputParameterivNV", e); }
     }
 
     public void GetFinalCombinerInputParameterfvNV(@CType("GLenum") int variable, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFinalCombinerInputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetFinalCombinerInputParameterfvNV");
-        try { MH_glGetFinalCombinerInputParameterfvNV.invokeExact(PFN_glGetFinalCombinerInputParameterfvNV, variable, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFinalCombinerInputParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetFinalCombinerInputParameterfvNV");
+        try { Handles.MH_glGetFinalCombinerInputParameterfvNV.invokeExact(handles.PFN_glGetFinalCombinerInputParameterfvNV, variable, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFinalCombinerInputParameterfvNV", e); }
     }
 
     public void GetFinalCombinerInputParameterivNV(@CType("GLenum") int variable, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetFinalCombinerInputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetFinalCombinerInputParameterivNV");
-        try { MH_glGetFinalCombinerInputParameterivNV.invokeExact(PFN_glGetFinalCombinerInputParameterivNV, variable, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetFinalCombinerInputParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetFinalCombinerInputParameterivNV");
+        try { Handles.MH_glGetFinalCombinerInputParameterivNV.invokeExact(handles.PFN_glGetFinalCombinerInputParameterivNV, variable, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFinalCombinerInputParameterivNV", e); }
     }
 

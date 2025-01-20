@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -53,16 +54,29 @@ public final class GLARBShaderAtomicCounters {
     public static final int GL_ACTIVE_ATOMIC_COUNTER_BUFFERS = 0x92D9;
     public static final int GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX = 0x92DA;
     public static final int GL_UNSIGNED_INT_ATOMIC_COUNTER = 0x92DB;
-    public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetActiveAtomicCounterBufferiv;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glGetActiveAtomicCounterBufferiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glGetActiveAtomicCounterBufferiv
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = RuntimeHelper.downcall(Descriptors.FD_glGetActiveAtomicCounterBufferiv);
+        public final MemorySegment PFN_glGetActiveAtomicCounterBufferiv;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glGetActiveAtomicCounterBufferiv = func.invoke("glGetActiveAtomicCounterBufferiv");
+        }
+    }
 
     public GLARBShaderAtomicCounters(overrungl.opengl.GLLoadFunc func) {
-        PFN_glGetActiveAtomicCounterBufferiv = func.invoke("glGetActiveAtomicCounterBufferiv");
+        this.handles = new Handles(func);
     }
 
     public void GetActiveAtomicCounterBufferiv(@CType("GLuint") int program, @CType("GLuint") int bufferIndex, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetActiveAtomicCounterBufferiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
-        try { MH_glGetActiveAtomicCounterBufferiv.invokeExact(PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
+        try { Handles.MH_glGetActiveAtomicCounterBufferiv.invokeExact(handles.PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetActiveAtomicCounterBufferiv", e); }
     }
 

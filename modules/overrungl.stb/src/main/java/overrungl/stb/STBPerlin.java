@@ -20,8 +20,10 @@ import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// [stb_perlin.h](https://github.com/nothings/stb/blob/master/stb_perlin.h)
 ///
@@ -32,24 +34,47 @@ public final class STBPerlin {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stb_perlin_noise3`.
+        public static final FunctionDescriptor FD_stb_perlin_noise3 = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_perlin_noise3_seed`.
+        public static final FunctionDescriptor FD_stb_perlin_noise3_seed = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_perlin_ridge_noise3`.
+        public static final FunctionDescriptor FD_stb_perlin_ridge_noise3 = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_perlin_fbm_noise3`.
+        public static final FunctionDescriptor FD_stb_perlin_fbm_noise3 = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_perlin_turbulence_noise3`.
+        public static final FunctionDescriptor FD_stb_perlin_turbulence_noise3 = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_perlin_noise3_wrap_nonpow2`.
+        public static final FunctionDescriptor FD_stb_perlin_noise3_wrap_nonpow2 = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stb_perlin_noise3,
+            FD_stb_perlin_noise3_seed,
+            FD_stb_perlin_ridge_noise3,
+            FD_stb_perlin_fbm_noise3,
+            FD_stb_perlin_turbulence_noise3,
+            FD_stb_perlin_noise3_wrap_nonpow2
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stb_perlin_noise3`.
-        public static final MethodHandle MH_stb_perlin_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_perlin_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3", Descriptors.FD_stb_perlin_noise3);
         /// The method handle of `stb_perlin_noise3_seed`.
-        public static final MethodHandle MH_stb_perlin_noise3_seed = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_seed", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_perlin_noise3_seed = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_seed", Descriptors.FD_stb_perlin_noise3_seed);
         /// The method handle of `stb_perlin_ridge_noise3`.
-        public static final MethodHandle MH_stb_perlin_ridge_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_ridge_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_perlin_ridge_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_ridge_noise3", Descriptors.FD_stb_perlin_ridge_noise3);
         /// The method handle of `stb_perlin_fbm_noise3`.
-        public static final MethodHandle MH_stb_perlin_fbm_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_fbm_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_perlin_fbm_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_fbm_noise3", Descriptors.FD_stb_perlin_fbm_noise3);
         /// The method handle of `stb_perlin_turbulence_noise3`.
-        public static final MethodHandle MH_stb_perlin_turbulence_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_turbulence_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_perlin_turbulence_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_turbulence_noise3", Descriptors.FD_stb_perlin_turbulence_noise3);
         /// The method handle of `stb_perlin_noise3_wrap_nonpow2`.
-        public static final MethodHandle MH_stb_perlin_noise3_wrap_nonpow2 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_wrap_nonpow2", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_stb_perlin_noise3_wrap_nonpow2 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_wrap_nonpow2", Descriptors.FD_stb_perlin_noise3_wrap_nonpow2);
     }
-    //endregion
 
     public static @CType("float") float stb_perlin_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap) {
         try {

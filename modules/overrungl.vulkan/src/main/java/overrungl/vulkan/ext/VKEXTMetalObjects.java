@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKEXTMetalObjects {
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = 0x00000001;
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = 0x00000002;
@@ -43,16 +44,29 @@ public class VKEXTMetalObjects {
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT = 1000311009;
     public static final int VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311010;
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311011;
-    public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkExportMetalObjectsEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkExportMetalObjectsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkExportMetalObjectsEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(Descriptors.FD_vkExportMetalObjectsEXT);
+        public final MemorySegment PFN_vkExportMetalObjectsEXT;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");
+        }
+    }
 
     public VKEXTMetalObjects(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");
+        this.handles = new Handles(device, func);
     }
 
     public void ExportMetalObjectsEXT(@CType("VkDevice") MemorySegment device, @CType("VkExportMetalObjectsInfoEXT *") MemorySegment pMetalObjectsInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
-        try { MH_vkExportMetalObjectsEXT.invokeExact(PFN_vkExportMetalObjectsEXT, device, pMetalObjectsInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
+        try { Handles.MH_vkExportMetalObjectsEXT.invokeExact(handles.PFN_vkExportMetalObjectsEXT, device, pMetalObjectsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkExportMetalObjectsEXT", e); }
     }
 

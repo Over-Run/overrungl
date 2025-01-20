@@ -19,66 +19,90 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLOESSinglePrecision {
-    public static final MethodHandle MH_glClearDepthfOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glClipPlanefOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glDepthRangefOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glFrustumfOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glGetClipPlanefOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glOrthofOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glClearDepthfOES;
-    public final MemorySegment PFN_glClipPlanefOES;
-    public final MemorySegment PFN_glDepthRangefOES;
-    public final MemorySegment PFN_glFrustumfOES;
-    public final MemorySegment PFN_glGetClipPlanefOES;
-    public final MemorySegment PFN_glOrthofOES;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glClearDepthfOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glClipPlanefOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glDepthRangefOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glFrustumfOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glGetClipPlanefOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glOrthofOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glClearDepthfOES,
+            FD_glClipPlanefOES,
+            FD_glDepthRangefOES,
+            FD_glFrustumfOES,
+            FD_glGetClipPlanefOES,
+            FD_glOrthofOES
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glClearDepthfOES = RuntimeHelper.downcall(Descriptors.FD_glClearDepthfOES);
+        public static final MethodHandle MH_glClipPlanefOES = RuntimeHelper.downcall(Descriptors.FD_glClipPlanefOES);
+        public static final MethodHandle MH_glDepthRangefOES = RuntimeHelper.downcall(Descriptors.FD_glDepthRangefOES);
+        public static final MethodHandle MH_glFrustumfOES = RuntimeHelper.downcall(Descriptors.FD_glFrustumfOES);
+        public static final MethodHandle MH_glGetClipPlanefOES = RuntimeHelper.downcall(Descriptors.FD_glGetClipPlanefOES);
+        public static final MethodHandle MH_glOrthofOES = RuntimeHelper.downcall(Descriptors.FD_glOrthofOES);
+        public final MemorySegment PFN_glClearDepthfOES;
+        public final MemorySegment PFN_glClipPlanefOES;
+        public final MemorySegment PFN_glDepthRangefOES;
+        public final MemorySegment PFN_glFrustumfOES;
+        public final MemorySegment PFN_glGetClipPlanefOES;
+        public final MemorySegment PFN_glOrthofOES;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glClearDepthfOES = func.invoke("glClearDepthfOES", "glClearDepthf");
+            PFN_glClipPlanefOES = func.invoke("glClipPlanefOES");
+            PFN_glDepthRangefOES = func.invoke("glDepthRangefOES", "glDepthRangef");
+            PFN_glFrustumfOES = func.invoke("glFrustumfOES");
+            PFN_glGetClipPlanefOES = func.invoke("glGetClipPlanefOES");
+            PFN_glOrthofOES = func.invoke("glOrthofOES");
+        }
+    }
 
     public GLOESSinglePrecision(overrungl.opengl.GLLoadFunc func) {
-        PFN_glClearDepthfOES = func.invoke("glClearDepthfOES", "glClearDepthf");
-        PFN_glClipPlanefOES = func.invoke("glClipPlanefOES");
-        PFN_glDepthRangefOES = func.invoke("glDepthRangefOES", "glDepthRangef");
-        PFN_glFrustumfOES = func.invoke("glFrustumfOES");
-        PFN_glGetClipPlanefOES = func.invoke("glGetClipPlanefOES");
-        PFN_glOrthofOES = func.invoke("glOrthofOES");
+        this.handles = new Handles(func);
     }
 
     public void ClearDepthfOES(@CType("GLclampf") float depth) {
-        if (Unmarshal.isNullPointer(PFN_glClearDepthfOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthfOES");
-        try { MH_glClearDepthfOES.invokeExact(PFN_glClearDepthfOES, depth); }
+        if (Unmarshal.isNullPointer(handles.PFN_glClearDepthfOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthfOES");
+        try { Handles.MH_glClearDepthfOES.invokeExact(handles.PFN_glClearDepthfOES, depth); }
         catch (Throwable e) { throw new RuntimeException("error in glClearDepthfOES", e); }
     }
 
     public void ClipPlanefOES(@CType("GLenum") int plane, @CType("const GLfloat *") java.lang.foreign.MemorySegment equation) {
-        if (Unmarshal.isNullPointer(PFN_glClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES");
-        try { MH_glClipPlanefOES.invokeExact(PFN_glClipPlanefOES, plane, equation); }
+        if (Unmarshal.isNullPointer(handles.PFN_glClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES");
+        try { Handles.MH_glClipPlanefOES.invokeExact(handles.PFN_glClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glClipPlanefOES", e); }
     }
 
     public void DepthRangefOES(@CType("GLclampf") float n, @CType("GLclampf") float f) {
-        if (Unmarshal.isNullPointer(PFN_glDepthRangefOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangefOES");
-        try { MH_glDepthRangefOES.invokeExact(PFN_glDepthRangefOES, n, f); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDepthRangefOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangefOES");
+        try { Handles.MH_glDepthRangefOES.invokeExact(handles.PFN_glDepthRangefOES, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in glDepthRangefOES", e); }
     }
 
     public void FrustumfOES(@CType("GLfloat") float l, @CType("GLfloat") float r, @CType("GLfloat") float b, @CType("GLfloat") float t, @CType("GLfloat") float n, @CType("GLfloat") float f) {
-        if (Unmarshal.isNullPointer(PFN_glFrustumfOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumfOES");
-        try { MH_glFrustumfOES.invokeExact(PFN_glFrustumfOES, l, r, b, t, n, f); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFrustumfOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumfOES");
+        try { Handles.MH_glFrustumfOES.invokeExact(handles.PFN_glFrustumfOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in glFrustumfOES", e); }
     }
 
     public void GetClipPlanefOES(@CType("GLenum") int plane, @CType("GLfloat *") java.lang.foreign.MemorySegment equation) {
-        if (Unmarshal.isNullPointer(PFN_glGetClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
-        try { MH_glGetClipPlanefOES.invokeExact(PFN_glGetClipPlanefOES, plane, equation); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
+        try { Handles.MH_glGetClipPlanefOES.invokeExact(handles.PFN_glGetClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanefOES", e); }
     }
 
     public void OrthofOES(@CType("GLfloat") float l, @CType("GLfloat") float r, @CType("GLfloat") float b, @CType("GLfloat") float t, @CType("GLfloat") float n, @CType("GLfloat") float f) {
-        if (Unmarshal.isNullPointer(PFN_glOrthofOES)) throw new SymbolNotFoundError("Symbol not found: glOrthofOES");
-        try { MH_glOrthofOES.invokeExact(PFN_glOrthofOES, l, r, b, t, n, f); }
+        if (Unmarshal.isNullPointer(handles.PFN_glOrthofOES)) throw new SymbolNotFoundError("Symbol not found: glOrthofOES");
+        try { Handles.MH_glOrthofOES.invokeExact(handles.PFN_glOrthofOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in glOrthofOES", e); }
     }
 

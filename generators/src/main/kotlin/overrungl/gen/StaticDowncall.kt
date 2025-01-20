@@ -93,6 +93,7 @@ class StaticDowncall(
                     """
                         import java.lang.foreign.*;
                         import java.lang.invoke.*;
+                        import java.util.*;
                         import overrungl.annotation.*;
                         import overrungl.internal.*;
                         import overrungl.util.*;
@@ -124,12 +125,7 @@ class StaticDowncall(
         sb.appendLine("    //endregion")
 
         if (methods.isNotEmpty()) {
-            // method handles
-            sb.appendLine("    //region Method handles")
-            sb.appendLine("    /// Method handles.")
-            sb.appendLine("    public static final class Handles {")
-            sb.appendLine("        private Handles() { }")
-            mutableListOf<DowncallMethod>().also { l ->
+            val list = mutableListOf<DowncallMethod>().also { l ->
                 methods.forEach {
                     if (it.entrypoint != null) {
                         val functionDescriptor = it.functionDescriptor
@@ -140,19 +136,54 @@ class StaticDowncall(
                                 error("Redefining method ${it.name} (entrypoint ${it.entrypoint}, descriptor $functionDescriptor) with method ${m1.name} (entrypoint ${m1.entrypoint}, descriptor ${m1.functionDescriptor})")
                             }
                         } else {
-                            sb.appendLine(
-                                """
-                                |        /// The method handle of `${it.entrypoint}`.
-                                |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.${if (it.optional) "downcallOrNull" else "downcall"}($symbolLookup, "${it.entrypoint}", $functionDescriptor);
-                            """.trimMargin()
-                            )
                             l.add(it)
                         }
                     }
                 }
             }
+
+            // function descriptors
+            sb.appendLine("    /// Function descriptors.")
+            sb.appendLine("    public static final class Descriptors {")
+            sb.appendLine("        private Descriptors() { }")
+            list.forEach {
+                sb.appendLine(
+                    """
+                        |        /// The function descriptor of `${it.entrypoint}`.
+                        |        public static final FunctionDescriptor FD_${it.entrypoint} = ${it.functionDescriptor};
+                    """.trimMargin()
+                )
+            }
+            sb.appendLine(
+                """
+                    |        /// Function descriptors.
+                    |        public static final List<FunctionDescriptor> LIST = List.of(
+                """.trimMargin()
+            )
+            list.forEachIndexed { index, it ->
+                sb.append("            FD_${it.entrypoint}")
+                if (index + 1 == list.size) {
+                    sb.appendLine()
+                } else {
+                    sb.appendLine(",")
+                }
+            }
+            sb.appendLine("        );")
             sb.appendLine("    }")
-            sb.appendLine("    //endregion")
+
+            // method handles
+            sb.appendLine("    /// Method handles.")
+            sb.appendLine("    public static final class Handles {")
+            sb.appendLine("        private Handles() { }")
+            list.forEach {
+                sb.appendLine(
+                    """
+                        |        /// The method handle of `${it.entrypoint}`.
+                        |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.${if (it.optional) "downcallOrNull" else "downcall"}($symbolLookup, "${it.entrypoint}", Descriptors.FD_${it.entrypoint});
+                    """.trimMargin()
+                )
+            }
+            sb.appendLine("    }")
 
             sb.appendLine()
 

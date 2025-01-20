@@ -27,6 +27,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// [stb_easy_font.h](https://github.com/nothings/stb/blob/master/stb_easy_font.h)
 ///
@@ -37,22 +38,42 @@ public final class STBEasyFont {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stb_easy_font_get_spacing`.
+        public static final FunctionDescriptor FD_stb_easy_font_get_spacing = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `stb_easy_font_spacing`.
+        public static final FunctionDescriptor FD_stb_easy_font_spacing = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `stb_easy_font_print`.
+        public static final FunctionDescriptor FD_stb_easy_font_print = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_easy_font_width`.
+        public static final FunctionDescriptor FD_stb_easy_font_width = FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `stb_easy_font_height`.
+        public static final FunctionDescriptor FD_stb_easy_font_height = FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stb_easy_font_get_spacing,
+            FD_stb_easy_font_spacing,
+            FD_stb_easy_font_print,
+            FD_stb_easy_font_width,
+            FD_stb_easy_font_height
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stb_easy_font_get_spacing`.
-        public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_get_spacing", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_get_spacing", Descriptors.FD_stb_easy_font_get_spacing);
         /// The method handle of `stb_easy_font_spacing`.
-        public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_spacing", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_spacing", Descriptors.FD_stb_easy_font_spacing);
         /// The method handle of `stb_easy_font_print`.
-        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_print", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_print", Descriptors.FD_stb_easy_font_print);
         /// The method handle of `stb_easy_font_width`.
-        public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_width", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_width", Descriptors.FD_stb_easy_font_width);
         /// The method handle of `stb_easy_font_height`.
-        public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_height", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_height", Descriptors.FD_stb_easy_font_height);
     }
-    //endregion
 
     public static @CType("float") float stb_easy_font_get_spacing() {
         try {
