@@ -623,6 +623,11 @@ fun main() {
         "glfwTerminate"(void, entrypoint = "glfwTerminate")
         "glfwInitHint"(void, int("hint"), int("value"), entrypoint = "glfwInitHint")
         +"glfwInitAllocator"(void, const_GLFWallocator_ptr("allocator"), entrypoint = "glfwInitAllocator").overload()
+        "glfwInitVulkanLoader"(
+            void,
+            (address c "PFN_vkGetInstanceProcAddr")("loader"),
+            entrypoint = "glfwInitVulkanLoader"
+        )
         +"glfwGetVersion"(
             void,
             int_ptr("major").ref(),
@@ -1046,21 +1051,12 @@ fun main() {
             entrypoint = "glfwGetRequiredInstanceExtensions"
         )
 
-        //endregion
-    }
-
-    StaticDowncall(glfwPackage, "GLFWVulkan", symbolLookup = glfwLookup) {
         val VkInstance = address c "VkInstance"
         val VkPhysicalDevice = address c "VkPhysicalDevice"
         val const_VkAllocationCallbacks_ptr = address c "const VkAllocationCallbacks*"
         val VkSurfaceKHR_ptr = address c "VkSurfaceKHR*"
         val VkResult = int c "VkResult"
 
-        "glfwInitVulkanLoader"(
-            void,
-            (address c "PFN_vkGetInstanceProcAddr")("loader"),
-            entrypoint = "glfwInitVulkanLoader"
-        )
         +"glfwGetInstanceProcAddress"(
             address c "GLFWvkproc",
             VkInstance("instance"),
@@ -1083,6 +1079,8 @@ fun main() {
             VkSurfaceKHR_ptr("surface").ref(),
             entrypoint = "glfwCreateWindowSurface"
         )
+
+        //endregion
     }
 
     StaticDowncall(glfwPackage, "GLFWNative", symbolLookup = glfwLookup) {

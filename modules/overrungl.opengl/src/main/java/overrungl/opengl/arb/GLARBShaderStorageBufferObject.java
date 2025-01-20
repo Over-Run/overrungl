@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,16 +42,29 @@ public final class GLARBShaderStorageBufferObject {
     public static final int GL_SHADER_STORAGE_BARRIER_BIT = 0x00002000;
     public static final int GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES = 0x8F39;
     public static final int GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS = 0x8F39;
-    public static final MethodHandle MH_glShaderStorageBlockBinding = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glShaderStorageBlockBinding;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glShaderStorageBlockBinding = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glShaderStorageBlockBinding
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glShaderStorageBlockBinding = RuntimeHelper.downcall(Descriptors.FD_glShaderStorageBlockBinding);
+        public final MemorySegment PFN_glShaderStorageBlockBinding;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glShaderStorageBlockBinding = func.invoke("glShaderStorageBlockBinding");
+        }
+    }
 
     public GLARBShaderStorageBufferObject(overrungl.opengl.GLLoadFunc func) {
-        PFN_glShaderStorageBlockBinding = func.invoke("glShaderStorageBlockBinding");
+        this.handles = new Handles(func);
     }
 
     public void ShaderStorageBlockBinding(@CType("GLuint") int program, @CType("GLuint") int storageBlockIndex, @CType("GLuint") int storageBlockBinding) {
-        if (Unmarshal.isNullPointer(PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");
-        try { MH_glShaderStorageBlockBinding.invokeExact(PFN_glShaderStorageBlockBinding, program, storageBlockIndex, storageBlockBinding); }
+        if (Unmarshal.isNullPointer(handles.PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");
+        try { Handles.MH_glShaderStorageBlockBinding.invokeExact(handles.PFN_glShaderStorageBlockBinding, program, storageBlockIndex, storageBlockBinding); }
         catch (Throwable e) { throw new RuntimeException("error in glShaderStorageBlockBinding", e); }
     }
 

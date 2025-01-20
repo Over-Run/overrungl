@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,43 +27,62 @@ import overrungl.util.*;
 public final class GLARBTransformFeedback3 {
     public static final int GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
     public static final int GL_MAX_VERTEX_STREAMS = 0x8E71;
-    public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDrawTransformFeedbackStream;
-    public final MemorySegment PFN_glBeginQueryIndexed;
-    public final MemorySegment PFN_glEndQueryIndexed;
-    public final MemorySegment PFN_glGetQueryIndexediv;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDrawTransformFeedbackStream = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBeginQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glEndQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetQueryIndexediv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDrawTransformFeedbackStream,
+            FD_glBeginQueryIndexed,
+            FD_glEndQueryIndexed,
+            FD_glGetQueryIndexediv
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedbackStream);
+        public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glBeginQueryIndexed);
+        public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glEndQueryIndexed);
+        public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(Descriptors.FD_glGetQueryIndexediv);
+        public final MemorySegment PFN_glDrawTransformFeedbackStream;
+        public final MemorySegment PFN_glBeginQueryIndexed;
+        public final MemorySegment PFN_glEndQueryIndexed;
+        public final MemorySegment PFN_glGetQueryIndexediv;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glDrawTransformFeedbackStream = func.invoke("glDrawTransformFeedbackStream");
+            PFN_glBeginQueryIndexed = func.invoke("glBeginQueryIndexed");
+            PFN_glEndQueryIndexed = func.invoke("glEndQueryIndexed");
+            PFN_glGetQueryIndexediv = func.invoke("glGetQueryIndexediv");
+        }
+    }
 
     public GLARBTransformFeedback3(overrungl.opengl.GLLoadFunc func) {
-        PFN_glDrawTransformFeedbackStream = func.invoke("glDrawTransformFeedbackStream");
-        PFN_glBeginQueryIndexed = func.invoke("glBeginQueryIndexed");
-        PFN_glEndQueryIndexed = func.invoke("glEndQueryIndexed");
-        PFN_glGetQueryIndexediv = func.invoke("glGetQueryIndexediv");
+        this.handles = new Handles(func);
     }
 
     public void DrawTransformFeedbackStream(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream) {
-        if (Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStream)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStream");
-        try { MH_glDrawTransformFeedbackStream.invokeExact(PFN_glDrawTransformFeedbackStream, mode, id, stream); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawTransformFeedbackStream)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStream");
+        try { Handles.MH_glDrawTransformFeedbackStream.invokeExact(handles.PFN_glDrawTransformFeedbackStream, mode, id, stream); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStream", e); }
     }
 
     public void BeginQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glBeginQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glBeginQueryIndexed");
-        try { MH_glBeginQueryIndexed.invokeExact(PFN_glBeginQueryIndexed, target, index, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBeginQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glBeginQueryIndexed");
+        try { Handles.MH_glBeginQueryIndexed.invokeExact(handles.PFN_glBeginQueryIndexed, target, index, id); }
         catch (Throwable e) { throw new RuntimeException("error in glBeginQueryIndexed", e); }
     }
 
     public void EndQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(PFN_glEndQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glEndQueryIndexed");
-        try { MH_glEndQueryIndexed.invokeExact(PFN_glEndQueryIndexed, target, index); }
+        if (Unmarshal.isNullPointer(handles.PFN_glEndQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glEndQueryIndexed");
+        try { Handles.MH_glEndQueryIndexed.invokeExact(handles.PFN_glEndQueryIndexed, target, index); }
         catch (Throwable e) { throw new RuntimeException("error in glEndQueryIndexed", e); }
     }
 
     public void GetQueryIndexediv(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetQueryIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
-        try { MH_glGetQueryIndexediv.invokeExact(PFN_glGetQueryIndexediv, target, index, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
+        try { Handles.MH_glGetQueryIndexediv.invokeExact(handles.PFN_glGetQueryIndexediv, target, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetQueryIndexediv", e); }
     }
 

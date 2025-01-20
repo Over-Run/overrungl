@@ -19,6 +19,7 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLSUNMeshArray {
     public static final int GL_QUAD_MESH_SUN = 0x8614;
     public static final int GL_TRIANGLE_MESH_SUN = 0x8615;
-    public static final MethodHandle MH_glDrawMeshArraysSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawMeshArraysSUN;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDrawMeshArraysSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDrawMeshArraysSUN
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDrawMeshArraysSUN = RuntimeHelper.downcall(Descriptors.FD_glDrawMeshArraysSUN);
+        public final MemorySegment PFN_glDrawMeshArraysSUN;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glDrawMeshArraysSUN = func.invoke("glDrawMeshArraysSUN");
+        }
+    }
 
     public GLSUNMeshArray(overrungl.opengl.GLLoadFunc func) {
-        PFN_glDrawMeshArraysSUN = func.invoke("glDrawMeshArraysSUN");
+        this.handles = new Handles(func);
     }
 
     public void DrawMeshArraysSUN(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(PFN_glDrawMeshArraysSUN)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
-        try { MH_glDrawMeshArraysSUN.invokeExact(PFN_glDrawMeshArraysSUN, mode, first, count, width); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawMeshArraysSUN)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
+        try { Handles.MH_glDrawMeshArraysSUN.invokeExact(handles.PFN_glDrawMeshArraysSUN, mode, first, count, width); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawMeshArraysSUN", e); }
     }
 

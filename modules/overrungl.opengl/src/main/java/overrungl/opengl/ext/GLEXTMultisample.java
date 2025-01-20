@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,25 +42,40 @@ public final class GLEXTMultisample {
     public static final int GL_SAMPLE_MASK_INVERT_EXT = 0x80AB;
     public static final int GL_SAMPLE_PATTERN_EXT = 0x80AC;
     public static final int GL_MULTISAMPLE_BIT_EXT = 0x20000000;
-    public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glSamplePatternEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSampleMaskEXT;
-    public final MemorySegment PFN_glSamplePatternEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glSampleMaskEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glSamplePatternEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glSampleMaskEXT,
+            FD_glSamplePatternEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskEXT);
+        public static final MethodHandle MH_glSamplePatternEXT = RuntimeHelper.downcall(Descriptors.FD_glSamplePatternEXT);
+        public final MemorySegment PFN_glSampleMaskEXT;
+        public final MemorySegment PFN_glSamplePatternEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glSampleMaskEXT = func.invoke("glSampleMaskEXT");
+            PFN_glSamplePatternEXT = func.invoke("glSamplePatternEXT");
+        }
+    }
 
     public GLEXTMultisample(overrungl.opengl.GLLoadFunc func) {
-        PFN_glSampleMaskEXT = func.invoke("glSampleMaskEXT");
-        PFN_glSamplePatternEXT = func.invoke("glSamplePatternEXT");
+        this.handles = new Handles(func);
     }
 
     public void SampleMaskEXT(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(PFN_glSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT");
-        try { MH_glSampleMaskEXT.invokeExact(PFN_glSampleMaskEXT, value, invert); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT");
+        try { Handles.MH_glSampleMaskEXT.invokeExact(handles.PFN_glSampleMaskEXT, value, invert); }
         catch (Throwable e) { throw new RuntimeException("error in glSampleMaskEXT", e); }
     }
 
     public void SamplePatternEXT(@CType("GLenum") int pattern) {
-        if (Unmarshal.isNullPointer(PFN_glSamplePatternEXT)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT");
-        try { MH_glSamplePatternEXT.invokeExact(PFN_glSamplePatternEXT, pattern); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSamplePatternEXT)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT");
+        try { Handles.MH_glSamplePatternEXT.invokeExact(handles.PFN_glSamplePatternEXT, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in glSamplePatternEXT", e); }
     }
 

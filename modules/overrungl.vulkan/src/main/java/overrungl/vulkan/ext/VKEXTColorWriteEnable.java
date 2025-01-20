@@ -22,22 +22,36 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKEXTColorWriteEnable {
     public static final int VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1;
     public static final String VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT = 1000381000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = 1000381001;
     public static final int VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT = 1000381000;
-    public static final MethodHandle MH_vkCmdSetColorWriteEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdSetColorWriteEnableEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdSetColorWriteEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdSetColorWriteEnableEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdSetColorWriteEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetColorWriteEnableEXT);
+        public final MemorySegment PFN_vkCmdSetColorWriteEnableEXT;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdSetColorWriteEnableEXT = func.invoke(device, "vkCmdSetColorWriteEnableEXT");
+        }
+    }
 
     public VKEXTColorWriteEnable(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdSetColorWriteEnableEXT = func.invoke(device, "vkCmdSetColorWriteEnableEXT");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdSetColorWriteEnableEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int attachmentCount, @CType("const VkBool32 *") MemorySegment pColorWriteEnables) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
-        try { MH_vkCmdSetColorWriteEnableEXT.invokeExact(PFN_vkCmdSetColorWriteEnableEXT, commandBuffer, attachmentCount, pColorWriteEnables); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
+        try { Handles.MH_vkCmdSetColorWriteEnableEXT.invokeExact(handles.PFN_vkCmdSetColorWriteEnableEXT, commandBuffer, attachmentCount, pColorWriteEnables); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorWriteEnableEXT", e); }
     }
 

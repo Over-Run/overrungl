@@ -21,8 +21,10 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// [stb_rect_pack.h](https://github.com/nothings/stb/blob/master/stb_rect_pack.h)
 ///
@@ -37,20 +39,37 @@ public final class STBRectPack {
     public static final int STBRP_HEURISTIC_Skyline_BL_sortHeight = STBRP_HEURISTIC_Skyline_default;
     public static final int STBRP_HEURISTIC_Skyline_BF_sortHeight = 1;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stbrp_pack_rects`.
+        public static final FunctionDescriptor FD_stbrp_pack_rects = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPRect.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbrp_init_target`.
+        public static final FunctionDescriptor FD_stbrp_init_target = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT), ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbrp_setup_allow_out_of_mem`.
+        public static final FunctionDescriptor FD_stbrp_setup_allow_out_of_mem = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `stbrp_setup_heuristic`.
+        public static final FunctionDescriptor FD_stbrp_setup_heuristic = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stbrp_pack_rects,
+            FD_stbrp_init_target,
+            FD_stbrp_setup_allow_out_of_mem,
+            FD_stbrp_setup_heuristic
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stbrp_pack_rects`.
-        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_pack_rects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPRect.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_pack_rects", Descriptors.FD_stbrp_pack_rects);
         /// The method handle of `stbrp_init_target`.
-        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_init_target", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_init_target", Descriptors.FD_stbrp_init_target);
         /// The method handle of `stbrp_setup_allow_out_of_mem`.
-        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_allow_out_of_mem", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_allow_out_of_mem", Descriptors.FD_stbrp_setup_allow_out_of_mem);
         /// The method handle of `stbrp_setup_heuristic`.
-        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_heuristic", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_heuristic", Descriptors.FD_stbrp_setup_heuristic);
     }
-    //endregion
 
     public static @CType("int") int stbrp_pack_rects(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects, @CType("int") int num_rects) {
         try {

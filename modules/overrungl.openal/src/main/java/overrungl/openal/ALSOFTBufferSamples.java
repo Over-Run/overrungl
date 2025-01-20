@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -68,20 +69,37 @@ public final class ALSOFTBufferSamples {
     public static final int AL_SAMPLE_LENGTH_SOFT = 0x200A;
     public static final int AL_SEC_LENGTH_SOFT = 0x200B;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alBufferSamplesSOFT`.
+        public static final FunctionDescriptor FD_alBufferSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alBufferSubSamplesSOFT`.
+        public static final FunctionDescriptor FD_alBufferSubSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferSamplesSOFT`.
+        public static final FunctionDescriptor FD_alGetBufferSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsBufferFormatSupportedSOFT`.
+        public static final FunctionDescriptor FD_alIsBufferFormatSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alBufferSamplesSOFT,
+            FD_alBufferSubSamplesSOFT,
+            FD_alGetBufferSamplesSOFT,
+            FD_alIsBufferFormatSupportedSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alBufferSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSamplesSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSamplesSOFT", Descriptors.FD_alBufferSamplesSOFT);
         /// The method handle of `alBufferSubSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubSamplesSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubSamplesSOFT", Descriptors.FD_alBufferSubSamplesSOFT);
         /// The method handle of `alGetBufferSamplesSOFT`.
-        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferSamplesSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferSamplesSOFT", Descriptors.FD_alGetBufferSamplesSOFT);
         /// The method handle of `alIsBufferFormatSupportedSOFT`.
-        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsBufferFormatSupportedSOFT", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsBufferFormatSupportedSOFT", Descriptors.FD_alIsBufferFormatSupportedSOFT);
     }
-    //endregion
 
     public static void alBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALuint") int samplerate, @CType("ALenum") int internalformat, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
         if (Handles.MH_alBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSamplesSOFT");

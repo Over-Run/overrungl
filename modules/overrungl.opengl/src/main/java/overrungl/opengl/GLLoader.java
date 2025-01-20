@@ -66,7 +66,7 @@ final class GLLoader {
 
         MemorySegment pVersion;
         try {
-            pVersion = (MemorySegment) GL10.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+            pVersion = (MemorySegment) GL10.Handles.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -102,7 +102,7 @@ final class GLLoader {
             if (!hasGL) return GetExtensions.FAIL;
             MemorySegment segment;
             try {
-                segment = (MemorySegment) GL10.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+                segment = (MemorySegment) GL10.Handles.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }
@@ -121,7 +121,7 @@ final class GLLoader {
             try (MemoryStack stack = MemoryStack.pushLocal()) {
                 var pNumExtsI = stack.ints(0);
                 try {
-                    GL10.MH_glGetIntegerv.invokeExact(glGetIntegerv, GL30.GL_NUM_EXTENSIONS, pNumExtsI);
+                    GL10.Handles.MH_glGetIntegerv.invokeExact(glGetIntegerv, GL30.GL_NUM_EXTENSIONS, pNumExtsI);
                 } catch (Throwable e) {
                     throw new RuntimeException(e);
                 }
@@ -133,7 +133,7 @@ final class GLLoader {
             if (extsI == null) return GetExtensions.FAIL;
             try {
                 for (int index = 0; index < numExtsI; index++) {
-                    extsI[index] = Unmarshal.unmarshalAsString((MemorySegment) GL30.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
+                    extsI[index] = Unmarshal.unmarshalAsString((MemorySegment) GL30.Handles.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
                 }
             } catch (Throwable e) {
                 throw new RuntimeException(e);

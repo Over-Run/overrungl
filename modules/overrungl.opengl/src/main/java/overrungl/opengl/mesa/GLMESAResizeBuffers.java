@@ -19,21 +19,35 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLMESAResizeBuffers {
-    public static final MethodHandle MH_glResizeBuffersMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glResizeBuffersMESA;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glResizeBuffersMESA = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glResizeBuffersMESA
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glResizeBuffersMESA = RuntimeHelper.downcall(Descriptors.FD_glResizeBuffersMESA);
+        public final MemorySegment PFN_glResizeBuffersMESA;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glResizeBuffersMESA = func.invoke("glResizeBuffersMESA");
+        }
+    }
 
     public GLMESAResizeBuffers(overrungl.opengl.GLLoadFunc func) {
-        PFN_glResizeBuffersMESA = func.invoke("glResizeBuffersMESA");
+        this.handles = new Handles(func);
     }
 
     public void ResizeBuffersMESA() {
-        if (Unmarshal.isNullPointer(PFN_glResizeBuffersMESA)) throw new SymbolNotFoundError("Symbol not found: glResizeBuffersMESA");
-        try { MH_glResizeBuffersMESA.invokeExact(PFN_glResizeBuffersMESA); }
+        if (Unmarshal.isNullPointer(handles.PFN_glResizeBuffersMESA)) throw new SymbolNotFoundError("Symbol not found: glResizeBuffersMESA");
+        try { Handles.MH_glResizeBuffersMESA.invokeExact(handles.PFN_glResizeBuffersMESA); }
         catch (Throwable e) { throw new RuntimeException("error in glResizeBuffersMESA", e); }
     }
 

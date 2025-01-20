@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.khr.VKKHRMaintenance3.*;
 public class VKKHRMaintenance3 {
@@ -31,16 +32,29 @@ public class VKKHRMaintenance3 {
     public static final String VK_KHR_MAINTENANCE3_EXTENSION_NAME = VK_KHR_MAINTENANCE_3_EXTENSION_NAME;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT;
-    public static final MethodHandle MH_vkGetDescriptorSetLayoutSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetDescriptorSetLayoutSupportKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutSupportKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetDescriptorSetLayoutSupportKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutSupportKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetLayoutSupportKHR);
+        public final MemorySegment PFN_vkGetDescriptorSetLayoutSupportKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetDescriptorSetLayoutSupportKHR = func.invoke(device, "vkGetDescriptorSetLayoutSupportKHR", "vkGetDescriptorSetLayoutSupport");
+        }
+    }
 
     public VKKHRMaintenance3(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetDescriptorSetLayoutSupportKHR = func.invoke(device, "vkGetDescriptorSetLayoutSupportKHR", "vkGetDescriptorSetLayoutSupport");
+        this.handles = new Handles(device, func);
     }
 
     public void GetDescriptorSetLayoutSupportKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDescriptorSetLayoutCreateInfo *") MemorySegment pCreateInfo, @CType("VkDescriptorSetLayoutSupport *") MemorySegment pSupport) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");
-        try { MH_vkGetDescriptorSetLayoutSupportKHR.invokeExact(PFN_vkGetDescriptorSetLayoutSupportKHR, device, pCreateInfo, pSupport); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");
+        try { Handles.MH_vkGetDescriptorSetLayoutSupportKHR.invokeExact(handles.PFN_vkGetDescriptorSetLayoutSupportKHR, device, pCreateInfo, pSupport); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutSupportKHR", e); }
     }
 

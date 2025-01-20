@@ -19,30 +19,46 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBClearBufferObject {
-    public static final MethodHandle MH_glClearBufferData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glClearBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glClearBufferData;
-    public final MemorySegment PFN_glClearBufferSubData;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glClearBufferData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glClearBufferSubData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glClearBufferData,
+            FD_glClearBufferSubData
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glClearBufferData = RuntimeHelper.downcall(Descriptors.FD_glClearBufferData);
+        public static final MethodHandle MH_glClearBufferSubData = RuntimeHelper.downcall(Descriptors.FD_glClearBufferSubData);
+        public final MemorySegment PFN_glClearBufferData;
+        public final MemorySegment PFN_glClearBufferSubData;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glClearBufferData = func.invoke("glClearBufferData");
+            PFN_glClearBufferSubData = func.invoke("glClearBufferSubData");
+        }
+    }
 
     public GLARBClearBufferObject(overrungl.opengl.GLLoadFunc func) {
-        PFN_glClearBufferData = func.invoke("glClearBufferData");
-        PFN_glClearBufferSubData = func.invoke("glClearBufferSubData");
+        this.handles = new Handles(func);
     }
 
     public void ClearBufferData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
-        try { MH_glClearBufferData.invokeExact(PFN_glClearBufferData, target, internalformat, format, type, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
+        try { Handles.MH_glClearBufferData.invokeExact(handles.PFN_glClearBufferData, target, internalformat, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in glClearBufferData", e); }
     }
 
     public void ClearBufferSubData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");
-        try { MH_glClearBufferSubData.invokeExact(PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");
+        try { Handles.MH_glClearBufferSubData.invokeExact(handles.PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in glClearBufferSubData", e); }
     }
 

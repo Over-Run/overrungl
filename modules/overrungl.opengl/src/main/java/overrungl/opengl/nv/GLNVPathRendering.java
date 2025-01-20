@@ -19,6 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -188,750 +189,927 @@ public final class GLNVPathRendering {
     public static final int GL_PATH_MAX_PROJECTION_STACK_DEPTH_NV = 0x0D38;
     public static final int GL_PATH_TRANSPOSE_PROJECTION_MATRIX_NV = 0x84E4;
     public static final int GL_FRAGMENT_INPUT_NV = 0x936D;
-    public static final MethodHandle MH_glGenPathsNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDeletePathsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glIsPathNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glPathCommandsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathCoordsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathSubCommandsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathSubCoordsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathStringNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathGlyphsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glPathGlyphRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glWeightPathsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCopyPathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glInterpolatePathsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glTransformPathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glPathParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathParameterfNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glPathDashArrayNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathStencilFuncNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glPathStencilDepthOffsetNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glStencilFillPathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glStencilStrokePathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glStencilFillPathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glStencilStrokePathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathCoverDepthFuncNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glCoverFillPathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glCoverStrokePathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glCoverFillPathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCoverStrokePathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathCommandsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathCoordsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathDashArrayNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathMetricsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathMetricRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathSpacingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glIsPointInFillPathNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glIsPointInStrokePathNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glGetPathLengthNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glPointAlongPathNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoad3x2fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoad3x3fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoadTranspose3x3fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMult3x2fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMult3x3fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMultTranspose3x3fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glStencilThenCoverFillPathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glStencilThenCoverStrokePathNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glStencilThenCoverFillPathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glStencilThenCoverStrokePathInstancedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathGlyphIndexRangeNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathGlyphIndexArrayNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glPathMemoryGlyphIndexArrayNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glProgramPathFragmentInputGenNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramResourcefvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathColorGenNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathTexGenNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glPathFogGenNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetPathColorGenivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathColorGenfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathTexGenivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetPathTexGenfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixFrustumEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glMatrixLoadIdentityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glMatrixLoadTransposefEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoadTransposedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoadfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixLoaddEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMultTransposefEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMultTransposedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMultfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixMultdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glMatrixOrthoEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glMatrixPopEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glMatrixPushEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glMatrixRotatefEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glMatrixRotatedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glMatrixScalefEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glMatrixScaledEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glMatrixTranslatefEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glMatrixTranslatedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public final MemorySegment PFN_glGenPathsNV;
-    public final MemorySegment PFN_glDeletePathsNV;
-    public final MemorySegment PFN_glIsPathNV;
-    public final MemorySegment PFN_glPathCommandsNV;
-    public final MemorySegment PFN_glPathCoordsNV;
-    public final MemorySegment PFN_glPathSubCommandsNV;
-    public final MemorySegment PFN_glPathSubCoordsNV;
-    public final MemorySegment PFN_glPathStringNV;
-    public final MemorySegment PFN_glPathGlyphsNV;
-    public final MemorySegment PFN_glPathGlyphRangeNV;
-    public final MemorySegment PFN_glWeightPathsNV;
-    public final MemorySegment PFN_glCopyPathNV;
-    public final MemorySegment PFN_glInterpolatePathsNV;
-    public final MemorySegment PFN_glTransformPathNV;
-    public final MemorySegment PFN_glPathParameterivNV;
-    public final MemorySegment PFN_glPathParameteriNV;
-    public final MemorySegment PFN_glPathParameterfvNV;
-    public final MemorySegment PFN_glPathParameterfNV;
-    public final MemorySegment PFN_glPathDashArrayNV;
-    public final MemorySegment PFN_glPathStencilFuncNV;
-    public final MemorySegment PFN_glPathStencilDepthOffsetNV;
-    public final MemorySegment PFN_glStencilFillPathNV;
-    public final MemorySegment PFN_glStencilStrokePathNV;
-    public final MemorySegment PFN_glStencilFillPathInstancedNV;
-    public final MemorySegment PFN_glStencilStrokePathInstancedNV;
-    public final MemorySegment PFN_glPathCoverDepthFuncNV;
-    public final MemorySegment PFN_glCoverFillPathNV;
-    public final MemorySegment PFN_glCoverStrokePathNV;
-    public final MemorySegment PFN_glCoverFillPathInstancedNV;
-    public final MemorySegment PFN_glCoverStrokePathInstancedNV;
-    public final MemorySegment PFN_glGetPathParameterivNV;
-    public final MemorySegment PFN_glGetPathParameterfvNV;
-    public final MemorySegment PFN_glGetPathCommandsNV;
-    public final MemorySegment PFN_glGetPathCoordsNV;
-    public final MemorySegment PFN_glGetPathDashArrayNV;
-    public final MemorySegment PFN_glGetPathMetricsNV;
-    public final MemorySegment PFN_glGetPathMetricRangeNV;
-    public final MemorySegment PFN_glGetPathSpacingNV;
-    public final MemorySegment PFN_glIsPointInFillPathNV;
-    public final MemorySegment PFN_glIsPointInStrokePathNV;
-    public final MemorySegment PFN_glGetPathLengthNV;
-    public final MemorySegment PFN_glPointAlongPathNV;
-    public final MemorySegment PFN_glMatrixLoad3x2fNV;
-    public final MemorySegment PFN_glMatrixLoad3x3fNV;
-    public final MemorySegment PFN_glMatrixLoadTranspose3x3fNV;
-    public final MemorySegment PFN_glMatrixMult3x2fNV;
-    public final MemorySegment PFN_glMatrixMult3x3fNV;
-    public final MemorySegment PFN_glMatrixMultTranspose3x3fNV;
-    public final MemorySegment PFN_glStencilThenCoverFillPathNV;
-    public final MemorySegment PFN_glStencilThenCoverStrokePathNV;
-    public final MemorySegment PFN_glStencilThenCoverFillPathInstancedNV;
-    public final MemorySegment PFN_glStencilThenCoverStrokePathInstancedNV;
-    public final MemorySegment PFN_glPathGlyphIndexRangeNV;
-    public final MemorySegment PFN_glPathGlyphIndexArrayNV;
-    public final MemorySegment PFN_glPathMemoryGlyphIndexArrayNV;
-    public final MemorySegment PFN_glProgramPathFragmentInputGenNV;
-    public final MemorySegment PFN_glGetProgramResourcefvNV;
-    public final MemorySegment PFN_glPathColorGenNV;
-    public final MemorySegment PFN_glPathTexGenNV;
-    public final MemorySegment PFN_glPathFogGenNV;
-    public final MemorySegment PFN_glGetPathColorGenivNV;
-    public final MemorySegment PFN_glGetPathColorGenfvNV;
-    public final MemorySegment PFN_glGetPathTexGenivNV;
-    public final MemorySegment PFN_glGetPathTexGenfvNV;
-    public final MemorySegment PFN_glMatrixFrustumEXT;
-    public final MemorySegment PFN_glMatrixLoadIdentityEXT;
-    public final MemorySegment PFN_glMatrixLoadTransposefEXT;
-    public final MemorySegment PFN_glMatrixLoadTransposedEXT;
-    public final MemorySegment PFN_glMatrixLoadfEXT;
-    public final MemorySegment PFN_glMatrixLoaddEXT;
-    public final MemorySegment PFN_glMatrixMultTransposefEXT;
-    public final MemorySegment PFN_glMatrixMultTransposedEXT;
-    public final MemorySegment PFN_glMatrixMultfEXT;
-    public final MemorySegment PFN_glMatrixMultdEXT;
-    public final MemorySegment PFN_glMatrixOrthoEXT;
-    public final MemorySegment PFN_glMatrixPopEXT;
-    public final MemorySegment PFN_glMatrixPushEXT;
-    public final MemorySegment PFN_glMatrixRotatefEXT;
-    public final MemorySegment PFN_glMatrixRotatedEXT;
-    public final MemorySegment PFN_glMatrixScalefEXT;
-    public final MemorySegment PFN_glMatrixScaledEXT;
-    public final MemorySegment PFN_glMatrixTranslatefEXT;
-    public final MemorySegment PFN_glMatrixTranslatedEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glGenPathsNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDeletePathsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glIsPathNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glPathCommandsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathCoordsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathSubCommandsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathSubCoordsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathStringNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathGlyphsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glPathGlyphRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glWeightPathsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCopyPathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glInterpolatePathsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glTransformPathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathParameteriNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glPathParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathParameterfNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glPathDashArrayNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathStencilFuncNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glPathStencilDepthOffsetNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glStencilFillPathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glStencilStrokePathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glStencilFillPathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glStencilStrokePathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathCoverDepthFuncNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glCoverFillPathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glCoverStrokePathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glCoverFillPathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCoverStrokePathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathCommandsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathCoordsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathDashArrayNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathMetricsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathMetricRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathSpacingNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glIsPointInFillPathNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glIsPointInStrokePathNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glGetPathLengthNV = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glPointAlongPathNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoad3x2fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoad3x3fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoadTranspose3x3fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMult3x2fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMult3x3fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMultTranspose3x3fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glStencilThenCoverFillPathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glStencilThenCoverStrokePathNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glStencilThenCoverFillPathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glStencilThenCoverStrokePathInstancedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathGlyphIndexRangeNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathGlyphIndexArrayNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glPathMemoryGlyphIndexArrayNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glProgramPathFragmentInputGenNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramResourcefvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathColorGenNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathTexGenNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glPathFogGenNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetPathColorGenivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathColorGenfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathTexGenivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetPathTexGenfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixFrustumEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glMatrixLoadIdentityEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glMatrixLoadTransposefEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoadTransposedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoadfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixLoaddEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMultTransposefEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMultTransposedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMultfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixMultdEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glMatrixOrthoEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glMatrixPopEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glMatrixPushEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glMatrixRotatefEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glMatrixRotatedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glMatrixScalefEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glMatrixScaledEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glMatrixTranslatefEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glMatrixTranslatedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glGenPathsNV,
+            FD_glDeletePathsNV,
+            FD_glIsPathNV,
+            FD_glPathCommandsNV,
+            FD_glPathCoordsNV,
+            FD_glPathSubCommandsNV,
+            FD_glPathSubCoordsNV,
+            FD_glPathStringNV,
+            FD_glPathGlyphsNV,
+            FD_glPathGlyphRangeNV,
+            FD_glWeightPathsNV,
+            FD_glCopyPathNV,
+            FD_glInterpolatePathsNV,
+            FD_glTransformPathNV,
+            FD_glPathParameterivNV,
+            FD_glPathParameteriNV,
+            FD_glPathParameterfvNV,
+            FD_glPathParameterfNV,
+            FD_glPathDashArrayNV,
+            FD_glPathStencilFuncNV,
+            FD_glPathStencilDepthOffsetNV,
+            FD_glStencilFillPathNV,
+            FD_glStencilStrokePathNV,
+            FD_glStencilFillPathInstancedNV,
+            FD_glStencilStrokePathInstancedNV,
+            FD_glPathCoverDepthFuncNV,
+            FD_glCoverFillPathNV,
+            FD_glCoverStrokePathNV,
+            FD_glCoverFillPathInstancedNV,
+            FD_glCoverStrokePathInstancedNV,
+            FD_glGetPathParameterivNV,
+            FD_glGetPathParameterfvNV,
+            FD_glGetPathCommandsNV,
+            FD_glGetPathCoordsNV,
+            FD_glGetPathDashArrayNV,
+            FD_glGetPathMetricsNV,
+            FD_glGetPathMetricRangeNV,
+            FD_glGetPathSpacingNV,
+            FD_glIsPointInFillPathNV,
+            FD_glIsPointInStrokePathNV,
+            FD_glGetPathLengthNV,
+            FD_glPointAlongPathNV,
+            FD_glMatrixLoad3x2fNV,
+            FD_glMatrixLoad3x3fNV,
+            FD_glMatrixLoadTranspose3x3fNV,
+            FD_glMatrixMult3x2fNV,
+            FD_glMatrixMult3x3fNV,
+            FD_glMatrixMultTranspose3x3fNV,
+            FD_glStencilThenCoverFillPathNV,
+            FD_glStencilThenCoverStrokePathNV,
+            FD_glStencilThenCoverFillPathInstancedNV,
+            FD_glStencilThenCoverStrokePathInstancedNV,
+            FD_glPathGlyphIndexRangeNV,
+            FD_glPathGlyphIndexArrayNV,
+            FD_glPathMemoryGlyphIndexArrayNV,
+            FD_glProgramPathFragmentInputGenNV,
+            FD_glGetProgramResourcefvNV,
+            FD_glPathColorGenNV,
+            FD_glPathTexGenNV,
+            FD_glPathFogGenNV,
+            FD_glGetPathColorGenivNV,
+            FD_glGetPathColorGenfvNV,
+            FD_glGetPathTexGenivNV,
+            FD_glGetPathTexGenfvNV,
+            FD_glMatrixFrustumEXT,
+            FD_glMatrixLoadIdentityEXT,
+            FD_glMatrixLoadTransposefEXT,
+            FD_glMatrixLoadTransposedEXT,
+            FD_glMatrixLoadfEXT,
+            FD_glMatrixLoaddEXT,
+            FD_glMatrixMultTransposefEXT,
+            FD_glMatrixMultTransposedEXT,
+            FD_glMatrixMultfEXT,
+            FD_glMatrixMultdEXT,
+            FD_glMatrixOrthoEXT,
+            FD_glMatrixPopEXT,
+            FD_glMatrixPushEXT,
+            FD_glMatrixRotatefEXT,
+            FD_glMatrixRotatedEXT,
+            FD_glMatrixScalefEXT,
+            FD_glMatrixScaledEXT,
+            FD_glMatrixTranslatefEXT,
+            FD_glMatrixTranslatedEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glGenPathsNV = RuntimeHelper.downcall(Descriptors.FD_glGenPathsNV);
+        public static final MethodHandle MH_glDeletePathsNV = RuntimeHelper.downcall(Descriptors.FD_glDeletePathsNV);
+        public static final MethodHandle MH_glIsPathNV = RuntimeHelper.downcall(Descriptors.FD_glIsPathNV);
+        public static final MethodHandle MH_glPathCommandsNV = RuntimeHelper.downcall(Descriptors.FD_glPathCommandsNV);
+        public static final MethodHandle MH_glPathCoordsNV = RuntimeHelper.downcall(Descriptors.FD_glPathCoordsNV);
+        public static final MethodHandle MH_glPathSubCommandsNV = RuntimeHelper.downcall(Descriptors.FD_glPathSubCommandsNV);
+        public static final MethodHandle MH_glPathSubCoordsNV = RuntimeHelper.downcall(Descriptors.FD_glPathSubCoordsNV);
+        public static final MethodHandle MH_glPathStringNV = RuntimeHelper.downcall(Descriptors.FD_glPathStringNV);
+        public static final MethodHandle MH_glPathGlyphsNV = RuntimeHelper.downcall(Descriptors.FD_glPathGlyphsNV);
+        public static final MethodHandle MH_glPathGlyphRangeNV = RuntimeHelper.downcall(Descriptors.FD_glPathGlyphRangeNV);
+        public static final MethodHandle MH_glWeightPathsNV = RuntimeHelper.downcall(Descriptors.FD_glWeightPathsNV);
+        public static final MethodHandle MH_glCopyPathNV = RuntimeHelper.downcall(Descriptors.FD_glCopyPathNV);
+        public static final MethodHandle MH_glInterpolatePathsNV = RuntimeHelper.downcall(Descriptors.FD_glInterpolatePathsNV);
+        public static final MethodHandle MH_glTransformPathNV = RuntimeHelper.downcall(Descriptors.FD_glTransformPathNV);
+        public static final MethodHandle MH_glPathParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glPathParameterivNV);
+        public static final MethodHandle MH_glPathParameteriNV = RuntimeHelper.downcall(Descriptors.FD_glPathParameteriNV);
+        public static final MethodHandle MH_glPathParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glPathParameterfvNV);
+        public static final MethodHandle MH_glPathParameterfNV = RuntimeHelper.downcall(Descriptors.FD_glPathParameterfNV);
+        public static final MethodHandle MH_glPathDashArrayNV = RuntimeHelper.downcall(Descriptors.FD_glPathDashArrayNV);
+        public static final MethodHandle MH_glPathStencilFuncNV = RuntimeHelper.downcall(Descriptors.FD_glPathStencilFuncNV);
+        public static final MethodHandle MH_glPathStencilDepthOffsetNV = RuntimeHelper.downcall(Descriptors.FD_glPathStencilDepthOffsetNV);
+        public static final MethodHandle MH_glStencilFillPathNV = RuntimeHelper.downcall(Descriptors.FD_glStencilFillPathNV);
+        public static final MethodHandle MH_glStencilStrokePathNV = RuntimeHelper.downcall(Descriptors.FD_glStencilStrokePathNV);
+        public static final MethodHandle MH_glStencilFillPathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glStencilFillPathInstancedNV);
+        public static final MethodHandle MH_glStencilStrokePathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glStencilStrokePathInstancedNV);
+        public static final MethodHandle MH_glPathCoverDepthFuncNV = RuntimeHelper.downcall(Descriptors.FD_glPathCoverDepthFuncNV);
+        public static final MethodHandle MH_glCoverFillPathNV = RuntimeHelper.downcall(Descriptors.FD_glCoverFillPathNV);
+        public static final MethodHandle MH_glCoverStrokePathNV = RuntimeHelper.downcall(Descriptors.FD_glCoverStrokePathNV);
+        public static final MethodHandle MH_glCoverFillPathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glCoverFillPathInstancedNV);
+        public static final MethodHandle MH_glCoverStrokePathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glCoverStrokePathInstancedNV);
+        public static final MethodHandle MH_glGetPathParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathParameterivNV);
+        public static final MethodHandle MH_glGetPathParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathParameterfvNV);
+        public static final MethodHandle MH_glGetPathCommandsNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathCommandsNV);
+        public static final MethodHandle MH_glGetPathCoordsNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathCoordsNV);
+        public static final MethodHandle MH_glGetPathDashArrayNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathDashArrayNV);
+        public static final MethodHandle MH_glGetPathMetricsNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathMetricsNV);
+        public static final MethodHandle MH_glGetPathMetricRangeNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathMetricRangeNV);
+        public static final MethodHandle MH_glGetPathSpacingNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathSpacingNV);
+        public static final MethodHandle MH_glIsPointInFillPathNV = RuntimeHelper.downcall(Descriptors.FD_glIsPointInFillPathNV);
+        public static final MethodHandle MH_glIsPointInStrokePathNV = RuntimeHelper.downcall(Descriptors.FD_glIsPointInStrokePathNV);
+        public static final MethodHandle MH_glGetPathLengthNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathLengthNV);
+        public static final MethodHandle MH_glPointAlongPathNV = RuntimeHelper.downcall(Descriptors.FD_glPointAlongPathNV);
+        public static final MethodHandle MH_glMatrixLoad3x2fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoad3x2fNV);
+        public static final MethodHandle MH_glMatrixLoad3x3fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoad3x3fNV);
+        public static final MethodHandle MH_glMatrixLoadTranspose3x3fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoadTranspose3x3fNV);
+        public static final MethodHandle MH_glMatrixMult3x2fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixMult3x2fNV);
+        public static final MethodHandle MH_glMatrixMult3x3fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixMult3x3fNV);
+        public static final MethodHandle MH_glMatrixMultTranspose3x3fNV = RuntimeHelper.downcall(Descriptors.FD_glMatrixMultTranspose3x3fNV);
+        public static final MethodHandle MH_glStencilThenCoverFillPathNV = RuntimeHelper.downcall(Descriptors.FD_glStencilThenCoverFillPathNV);
+        public static final MethodHandle MH_glStencilThenCoverStrokePathNV = RuntimeHelper.downcall(Descriptors.FD_glStencilThenCoverStrokePathNV);
+        public static final MethodHandle MH_glStencilThenCoverFillPathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glStencilThenCoverFillPathInstancedNV);
+        public static final MethodHandle MH_glStencilThenCoverStrokePathInstancedNV = RuntimeHelper.downcall(Descriptors.FD_glStencilThenCoverStrokePathInstancedNV);
+        public static final MethodHandle MH_glPathGlyphIndexRangeNV = RuntimeHelper.downcall(Descriptors.FD_glPathGlyphIndexRangeNV);
+        public static final MethodHandle MH_glPathGlyphIndexArrayNV = RuntimeHelper.downcall(Descriptors.FD_glPathGlyphIndexArrayNV);
+        public static final MethodHandle MH_glPathMemoryGlyphIndexArrayNV = RuntimeHelper.downcall(Descriptors.FD_glPathMemoryGlyphIndexArrayNV);
+        public static final MethodHandle MH_glProgramPathFragmentInputGenNV = RuntimeHelper.downcall(Descriptors.FD_glProgramPathFragmentInputGenNV);
+        public static final MethodHandle MH_glGetProgramResourcefvNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramResourcefvNV);
+        public static final MethodHandle MH_glPathColorGenNV = RuntimeHelper.downcall(Descriptors.FD_glPathColorGenNV);
+        public static final MethodHandle MH_glPathTexGenNV = RuntimeHelper.downcall(Descriptors.FD_glPathTexGenNV);
+        public static final MethodHandle MH_glPathFogGenNV = RuntimeHelper.downcall(Descriptors.FD_glPathFogGenNV);
+        public static final MethodHandle MH_glGetPathColorGenivNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathColorGenivNV);
+        public static final MethodHandle MH_glGetPathColorGenfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathColorGenfvNV);
+        public static final MethodHandle MH_glGetPathTexGenivNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathTexGenivNV);
+        public static final MethodHandle MH_glGetPathTexGenfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetPathTexGenfvNV);
+        public static final MethodHandle MH_glMatrixFrustumEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixFrustumEXT);
+        public static final MethodHandle MH_glMatrixLoadIdentityEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoadIdentityEXT);
+        public static final MethodHandle MH_glMatrixLoadTransposefEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoadTransposefEXT);
+        public static final MethodHandle MH_glMatrixLoadTransposedEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoadTransposedEXT);
+        public static final MethodHandle MH_glMatrixLoadfEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoadfEXT);
+        public static final MethodHandle MH_glMatrixLoaddEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixLoaddEXT);
+        public static final MethodHandle MH_glMatrixMultTransposefEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixMultTransposefEXT);
+        public static final MethodHandle MH_glMatrixMultTransposedEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixMultTransposedEXT);
+        public static final MethodHandle MH_glMatrixMultfEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixMultfEXT);
+        public static final MethodHandle MH_glMatrixMultdEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixMultdEXT);
+        public static final MethodHandle MH_glMatrixOrthoEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixOrthoEXT);
+        public static final MethodHandle MH_glMatrixPopEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixPopEXT);
+        public static final MethodHandle MH_glMatrixPushEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixPushEXT);
+        public static final MethodHandle MH_glMatrixRotatefEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixRotatefEXT);
+        public static final MethodHandle MH_glMatrixRotatedEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixRotatedEXT);
+        public static final MethodHandle MH_glMatrixScalefEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixScalefEXT);
+        public static final MethodHandle MH_glMatrixScaledEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixScaledEXT);
+        public static final MethodHandle MH_glMatrixTranslatefEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixTranslatefEXT);
+        public static final MethodHandle MH_glMatrixTranslatedEXT = RuntimeHelper.downcall(Descriptors.FD_glMatrixTranslatedEXT);
+        public final MemorySegment PFN_glGenPathsNV;
+        public final MemorySegment PFN_glDeletePathsNV;
+        public final MemorySegment PFN_glIsPathNV;
+        public final MemorySegment PFN_glPathCommandsNV;
+        public final MemorySegment PFN_glPathCoordsNV;
+        public final MemorySegment PFN_glPathSubCommandsNV;
+        public final MemorySegment PFN_glPathSubCoordsNV;
+        public final MemorySegment PFN_glPathStringNV;
+        public final MemorySegment PFN_glPathGlyphsNV;
+        public final MemorySegment PFN_glPathGlyphRangeNV;
+        public final MemorySegment PFN_glWeightPathsNV;
+        public final MemorySegment PFN_glCopyPathNV;
+        public final MemorySegment PFN_glInterpolatePathsNV;
+        public final MemorySegment PFN_glTransformPathNV;
+        public final MemorySegment PFN_glPathParameterivNV;
+        public final MemorySegment PFN_glPathParameteriNV;
+        public final MemorySegment PFN_glPathParameterfvNV;
+        public final MemorySegment PFN_glPathParameterfNV;
+        public final MemorySegment PFN_glPathDashArrayNV;
+        public final MemorySegment PFN_glPathStencilFuncNV;
+        public final MemorySegment PFN_glPathStencilDepthOffsetNV;
+        public final MemorySegment PFN_glStencilFillPathNV;
+        public final MemorySegment PFN_glStencilStrokePathNV;
+        public final MemorySegment PFN_glStencilFillPathInstancedNV;
+        public final MemorySegment PFN_glStencilStrokePathInstancedNV;
+        public final MemorySegment PFN_glPathCoverDepthFuncNV;
+        public final MemorySegment PFN_glCoverFillPathNV;
+        public final MemorySegment PFN_glCoverStrokePathNV;
+        public final MemorySegment PFN_glCoverFillPathInstancedNV;
+        public final MemorySegment PFN_glCoverStrokePathInstancedNV;
+        public final MemorySegment PFN_glGetPathParameterivNV;
+        public final MemorySegment PFN_glGetPathParameterfvNV;
+        public final MemorySegment PFN_glGetPathCommandsNV;
+        public final MemorySegment PFN_glGetPathCoordsNV;
+        public final MemorySegment PFN_glGetPathDashArrayNV;
+        public final MemorySegment PFN_glGetPathMetricsNV;
+        public final MemorySegment PFN_glGetPathMetricRangeNV;
+        public final MemorySegment PFN_glGetPathSpacingNV;
+        public final MemorySegment PFN_glIsPointInFillPathNV;
+        public final MemorySegment PFN_glIsPointInStrokePathNV;
+        public final MemorySegment PFN_glGetPathLengthNV;
+        public final MemorySegment PFN_glPointAlongPathNV;
+        public final MemorySegment PFN_glMatrixLoad3x2fNV;
+        public final MemorySegment PFN_glMatrixLoad3x3fNV;
+        public final MemorySegment PFN_glMatrixLoadTranspose3x3fNV;
+        public final MemorySegment PFN_glMatrixMult3x2fNV;
+        public final MemorySegment PFN_glMatrixMult3x3fNV;
+        public final MemorySegment PFN_glMatrixMultTranspose3x3fNV;
+        public final MemorySegment PFN_glStencilThenCoverFillPathNV;
+        public final MemorySegment PFN_glStencilThenCoverStrokePathNV;
+        public final MemorySegment PFN_glStencilThenCoverFillPathInstancedNV;
+        public final MemorySegment PFN_glStencilThenCoverStrokePathInstancedNV;
+        public final MemorySegment PFN_glPathGlyphIndexRangeNV;
+        public final MemorySegment PFN_glPathGlyphIndexArrayNV;
+        public final MemorySegment PFN_glPathMemoryGlyphIndexArrayNV;
+        public final MemorySegment PFN_glProgramPathFragmentInputGenNV;
+        public final MemorySegment PFN_glGetProgramResourcefvNV;
+        public final MemorySegment PFN_glPathColorGenNV;
+        public final MemorySegment PFN_glPathTexGenNV;
+        public final MemorySegment PFN_glPathFogGenNV;
+        public final MemorySegment PFN_glGetPathColorGenivNV;
+        public final MemorySegment PFN_glGetPathColorGenfvNV;
+        public final MemorySegment PFN_glGetPathTexGenivNV;
+        public final MemorySegment PFN_glGetPathTexGenfvNV;
+        public final MemorySegment PFN_glMatrixFrustumEXT;
+        public final MemorySegment PFN_glMatrixLoadIdentityEXT;
+        public final MemorySegment PFN_glMatrixLoadTransposefEXT;
+        public final MemorySegment PFN_glMatrixLoadTransposedEXT;
+        public final MemorySegment PFN_glMatrixLoadfEXT;
+        public final MemorySegment PFN_glMatrixLoaddEXT;
+        public final MemorySegment PFN_glMatrixMultTransposefEXT;
+        public final MemorySegment PFN_glMatrixMultTransposedEXT;
+        public final MemorySegment PFN_glMatrixMultfEXT;
+        public final MemorySegment PFN_glMatrixMultdEXT;
+        public final MemorySegment PFN_glMatrixOrthoEXT;
+        public final MemorySegment PFN_glMatrixPopEXT;
+        public final MemorySegment PFN_glMatrixPushEXT;
+        public final MemorySegment PFN_glMatrixRotatefEXT;
+        public final MemorySegment PFN_glMatrixRotatedEXT;
+        public final MemorySegment PFN_glMatrixScalefEXT;
+        public final MemorySegment PFN_glMatrixScaledEXT;
+        public final MemorySegment PFN_glMatrixTranslatefEXT;
+        public final MemorySegment PFN_glMatrixTranslatedEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glGenPathsNV = func.invoke("glGenPathsNV");
+            PFN_glDeletePathsNV = func.invoke("glDeletePathsNV");
+            PFN_glIsPathNV = func.invoke("glIsPathNV");
+            PFN_glPathCommandsNV = func.invoke("glPathCommandsNV");
+            PFN_glPathCoordsNV = func.invoke("glPathCoordsNV");
+            PFN_glPathSubCommandsNV = func.invoke("glPathSubCommandsNV");
+            PFN_glPathSubCoordsNV = func.invoke("glPathSubCoordsNV");
+            PFN_glPathStringNV = func.invoke("glPathStringNV");
+            PFN_glPathGlyphsNV = func.invoke("glPathGlyphsNV");
+            PFN_glPathGlyphRangeNV = func.invoke("glPathGlyphRangeNV");
+            PFN_glWeightPathsNV = func.invoke("glWeightPathsNV");
+            PFN_glCopyPathNV = func.invoke("glCopyPathNV");
+            PFN_glInterpolatePathsNV = func.invoke("glInterpolatePathsNV");
+            PFN_glTransformPathNV = func.invoke("glTransformPathNV");
+            PFN_glPathParameterivNV = func.invoke("glPathParameterivNV");
+            PFN_glPathParameteriNV = func.invoke("glPathParameteriNV");
+            PFN_glPathParameterfvNV = func.invoke("glPathParameterfvNV");
+            PFN_glPathParameterfNV = func.invoke("glPathParameterfNV");
+            PFN_glPathDashArrayNV = func.invoke("glPathDashArrayNV");
+            PFN_glPathStencilFuncNV = func.invoke("glPathStencilFuncNV");
+            PFN_glPathStencilDepthOffsetNV = func.invoke("glPathStencilDepthOffsetNV");
+            PFN_glStencilFillPathNV = func.invoke("glStencilFillPathNV");
+            PFN_glStencilStrokePathNV = func.invoke("glStencilStrokePathNV");
+            PFN_glStencilFillPathInstancedNV = func.invoke("glStencilFillPathInstancedNV");
+            PFN_glStencilStrokePathInstancedNV = func.invoke("glStencilStrokePathInstancedNV");
+            PFN_glPathCoverDepthFuncNV = func.invoke("glPathCoverDepthFuncNV");
+            PFN_glCoverFillPathNV = func.invoke("glCoverFillPathNV");
+            PFN_glCoverStrokePathNV = func.invoke("glCoverStrokePathNV");
+            PFN_glCoverFillPathInstancedNV = func.invoke("glCoverFillPathInstancedNV");
+            PFN_glCoverStrokePathInstancedNV = func.invoke("glCoverStrokePathInstancedNV");
+            PFN_glGetPathParameterivNV = func.invoke("glGetPathParameterivNV");
+            PFN_glGetPathParameterfvNV = func.invoke("glGetPathParameterfvNV");
+            PFN_glGetPathCommandsNV = func.invoke("glGetPathCommandsNV");
+            PFN_glGetPathCoordsNV = func.invoke("glGetPathCoordsNV");
+            PFN_glGetPathDashArrayNV = func.invoke("glGetPathDashArrayNV");
+            PFN_glGetPathMetricsNV = func.invoke("glGetPathMetricsNV");
+            PFN_glGetPathMetricRangeNV = func.invoke("glGetPathMetricRangeNV");
+            PFN_glGetPathSpacingNV = func.invoke("glGetPathSpacingNV");
+            PFN_glIsPointInFillPathNV = func.invoke("glIsPointInFillPathNV");
+            PFN_glIsPointInStrokePathNV = func.invoke("glIsPointInStrokePathNV");
+            PFN_glGetPathLengthNV = func.invoke("glGetPathLengthNV");
+            PFN_glPointAlongPathNV = func.invoke("glPointAlongPathNV");PFN_glMatrixLoad3x2fNV = func.invoke("glMatrixLoad3x2fNV");
+            PFN_glMatrixLoad3x3fNV = func.invoke("glMatrixLoad3x3fNV");
+            PFN_glMatrixLoadTranspose3x3fNV = func.invoke("glMatrixLoadTranspose3x3fNV");
+            PFN_glMatrixMult3x2fNV = func.invoke("glMatrixMult3x2fNV");
+            PFN_glMatrixMult3x3fNV = func.invoke("glMatrixMult3x3fNV");
+            PFN_glMatrixMultTranspose3x3fNV = func.invoke("glMatrixMultTranspose3x3fNV");
+            PFN_glStencilThenCoverFillPathNV = func.invoke("glStencilThenCoverFillPathNV");
+            PFN_glStencilThenCoverStrokePathNV = func.invoke("glStencilThenCoverStrokePathNV");
+            PFN_glStencilThenCoverFillPathInstancedNV = func.invoke("glStencilThenCoverFillPathInstancedNV");
+            PFN_glStencilThenCoverStrokePathInstancedNV = func.invoke("glStencilThenCoverStrokePathInstancedNV");
+            PFN_glPathGlyphIndexRangeNV = func.invoke("glPathGlyphIndexRangeNV");PFN_glPathGlyphIndexArrayNV = func.invoke("glPathGlyphIndexArrayNV");
+            PFN_glPathMemoryGlyphIndexArrayNV = func.invoke("glPathMemoryGlyphIndexArrayNV");
+            PFN_glProgramPathFragmentInputGenNV = func.invoke("glProgramPathFragmentInputGenNV");
+            PFN_glGetProgramResourcefvNV = func.invoke("glGetProgramResourcefvNV");PFN_glPathColorGenNV = func.invoke("glPathColorGenNV");
+            PFN_glPathTexGenNV = func.invoke("glPathTexGenNV");
+            PFN_glPathFogGenNV = func.invoke("glPathFogGenNV");
+            PFN_glGetPathColorGenivNV = func.invoke("glGetPathColorGenivNV");
+            PFN_glGetPathColorGenfvNV = func.invoke("glGetPathColorGenfvNV");
+            PFN_glGetPathTexGenivNV = func.invoke("glGetPathTexGenivNV");
+            PFN_glGetPathTexGenfvNV = func.invoke("glGetPathTexGenfvNV");PFN_glMatrixFrustumEXT = func.invoke("glMatrixFrustumEXT");
+            PFN_glMatrixLoadIdentityEXT = func.invoke("glMatrixLoadIdentityEXT");
+            PFN_glMatrixLoadTransposefEXT = func.invoke("glMatrixLoadTransposefEXT");
+            PFN_glMatrixLoadTransposedEXT = func.invoke("glMatrixLoadTransposedEXT");
+            PFN_glMatrixLoadfEXT = func.invoke("glMatrixLoadfEXT");
+            PFN_glMatrixLoaddEXT = func.invoke("glMatrixLoaddEXT");
+            PFN_glMatrixMultTransposefEXT = func.invoke("glMatrixMultTransposefEXT");
+            PFN_glMatrixMultTransposedEXT = func.invoke("glMatrixMultTransposedEXT");
+            PFN_glMatrixMultfEXT = func.invoke("glMatrixMultfEXT");
+            PFN_glMatrixMultdEXT = func.invoke("glMatrixMultdEXT");
+            PFN_glMatrixOrthoEXT = func.invoke("glMatrixOrthoEXT");
+            PFN_glMatrixPopEXT = func.invoke("glMatrixPopEXT");
+            PFN_glMatrixPushEXT = func.invoke("glMatrixPushEXT");
+            PFN_glMatrixRotatefEXT = func.invoke("glMatrixRotatefEXT");
+            PFN_glMatrixRotatedEXT = func.invoke("glMatrixRotatedEXT");
+            PFN_glMatrixScalefEXT = func.invoke("glMatrixScalefEXT");
+            PFN_glMatrixScaledEXT = func.invoke("glMatrixScaledEXT");
+            PFN_glMatrixTranslatefEXT = func.invoke("glMatrixTranslatefEXT");
+            PFN_glMatrixTranslatedEXT = func.invoke("glMatrixTranslatedEXT");
+        }
+    }
 
     public GLNVPathRendering(overrungl.opengl.GLLoadFunc func) {
-        PFN_glGenPathsNV = func.invoke("glGenPathsNV");
-        PFN_glDeletePathsNV = func.invoke("glDeletePathsNV");
-        PFN_glIsPathNV = func.invoke("glIsPathNV");
-        PFN_glPathCommandsNV = func.invoke("glPathCommandsNV");
-        PFN_glPathCoordsNV = func.invoke("glPathCoordsNV");
-        PFN_glPathSubCommandsNV = func.invoke("glPathSubCommandsNV");
-        PFN_glPathSubCoordsNV = func.invoke("glPathSubCoordsNV");
-        PFN_glPathStringNV = func.invoke("glPathStringNV");
-        PFN_glPathGlyphsNV = func.invoke("glPathGlyphsNV");
-        PFN_glPathGlyphRangeNV = func.invoke("glPathGlyphRangeNV");
-        PFN_glWeightPathsNV = func.invoke("glWeightPathsNV");
-        PFN_glCopyPathNV = func.invoke("glCopyPathNV");
-        PFN_glInterpolatePathsNV = func.invoke("glInterpolatePathsNV");
-        PFN_glTransformPathNV = func.invoke("glTransformPathNV");
-        PFN_glPathParameterivNV = func.invoke("glPathParameterivNV");
-        PFN_glPathParameteriNV = func.invoke("glPathParameteriNV");
-        PFN_glPathParameterfvNV = func.invoke("glPathParameterfvNV");
-        PFN_glPathParameterfNV = func.invoke("glPathParameterfNV");
-        PFN_glPathDashArrayNV = func.invoke("glPathDashArrayNV");
-        PFN_glPathStencilFuncNV = func.invoke("glPathStencilFuncNV");
-        PFN_glPathStencilDepthOffsetNV = func.invoke("glPathStencilDepthOffsetNV");
-        PFN_glStencilFillPathNV = func.invoke("glStencilFillPathNV");
-        PFN_glStencilStrokePathNV = func.invoke("glStencilStrokePathNV");
-        PFN_glStencilFillPathInstancedNV = func.invoke("glStencilFillPathInstancedNV");
-        PFN_glStencilStrokePathInstancedNV = func.invoke("glStencilStrokePathInstancedNV");
-        PFN_glPathCoverDepthFuncNV = func.invoke("glPathCoverDepthFuncNV");
-        PFN_glCoverFillPathNV = func.invoke("glCoverFillPathNV");
-        PFN_glCoverStrokePathNV = func.invoke("glCoverStrokePathNV");
-        PFN_glCoverFillPathInstancedNV = func.invoke("glCoverFillPathInstancedNV");
-        PFN_glCoverStrokePathInstancedNV = func.invoke("glCoverStrokePathInstancedNV");
-        PFN_glGetPathParameterivNV = func.invoke("glGetPathParameterivNV");
-        PFN_glGetPathParameterfvNV = func.invoke("glGetPathParameterfvNV");
-        PFN_glGetPathCommandsNV = func.invoke("glGetPathCommandsNV");
-        PFN_glGetPathCoordsNV = func.invoke("glGetPathCoordsNV");
-        PFN_glGetPathDashArrayNV = func.invoke("glGetPathDashArrayNV");
-        PFN_glGetPathMetricsNV = func.invoke("glGetPathMetricsNV");
-        PFN_glGetPathMetricRangeNV = func.invoke("glGetPathMetricRangeNV");
-        PFN_glGetPathSpacingNV = func.invoke("glGetPathSpacingNV");
-        PFN_glIsPointInFillPathNV = func.invoke("glIsPointInFillPathNV");
-        PFN_glIsPointInStrokePathNV = func.invoke("glIsPointInStrokePathNV");
-        PFN_glGetPathLengthNV = func.invoke("glGetPathLengthNV");
-        PFN_glPointAlongPathNV = func.invoke("glPointAlongPathNV");PFN_glMatrixLoad3x2fNV = func.invoke("glMatrixLoad3x2fNV");
-        PFN_glMatrixLoad3x3fNV = func.invoke("glMatrixLoad3x3fNV");
-        PFN_glMatrixLoadTranspose3x3fNV = func.invoke("glMatrixLoadTranspose3x3fNV");
-        PFN_glMatrixMult3x2fNV = func.invoke("glMatrixMult3x2fNV");
-        PFN_glMatrixMult3x3fNV = func.invoke("glMatrixMult3x3fNV");
-        PFN_glMatrixMultTranspose3x3fNV = func.invoke("glMatrixMultTranspose3x3fNV");
-        PFN_glStencilThenCoverFillPathNV = func.invoke("glStencilThenCoverFillPathNV");
-        PFN_glStencilThenCoverStrokePathNV = func.invoke("glStencilThenCoverStrokePathNV");
-        PFN_glStencilThenCoverFillPathInstancedNV = func.invoke("glStencilThenCoverFillPathInstancedNV");
-        PFN_glStencilThenCoverStrokePathInstancedNV = func.invoke("glStencilThenCoverStrokePathInstancedNV");
-        PFN_glPathGlyphIndexRangeNV = func.invoke("glPathGlyphIndexRangeNV");PFN_glPathGlyphIndexArrayNV = func.invoke("glPathGlyphIndexArrayNV");
-        PFN_glPathMemoryGlyphIndexArrayNV = func.invoke("glPathMemoryGlyphIndexArrayNV");
-        PFN_glProgramPathFragmentInputGenNV = func.invoke("glProgramPathFragmentInputGenNV");
-        PFN_glGetProgramResourcefvNV = func.invoke("glGetProgramResourcefvNV");PFN_glPathColorGenNV = func.invoke("glPathColorGenNV");
-        PFN_glPathTexGenNV = func.invoke("glPathTexGenNV");
-        PFN_glPathFogGenNV = func.invoke("glPathFogGenNV");
-        PFN_glGetPathColorGenivNV = func.invoke("glGetPathColorGenivNV");
-        PFN_glGetPathColorGenfvNV = func.invoke("glGetPathColorGenfvNV");
-        PFN_glGetPathTexGenivNV = func.invoke("glGetPathTexGenivNV");
-        PFN_glGetPathTexGenfvNV = func.invoke("glGetPathTexGenfvNV");PFN_glMatrixFrustumEXT = func.invoke("glMatrixFrustumEXT");
-        PFN_glMatrixLoadIdentityEXT = func.invoke("glMatrixLoadIdentityEXT");
-        PFN_glMatrixLoadTransposefEXT = func.invoke("glMatrixLoadTransposefEXT");
-        PFN_glMatrixLoadTransposedEXT = func.invoke("glMatrixLoadTransposedEXT");
-        PFN_glMatrixLoadfEXT = func.invoke("glMatrixLoadfEXT");
-        PFN_glMatrixLoaddEXT = func.invoke("glMatrixLoaddEXT");
-        PFN_glMatrixMultTransposefEXT = func.invoke("glMatrixMultTransposefEXT");
-        PFN_glMatrixMultTransposedEXT = func.invoke("glMatrixMultTransposedEXT");
-        PFN_glMatrixMultfEXT = func.invoke("glMatrixMultfEXT");
-        PFN_glMatrixMultdEXT = func.invoke("glMatrixMultdEXT");
-        PFN_glMatrixOrthoEXT = func.invoke("glMatrixOrthoEXT");
-        PFN_glMatrixPopEXT = func.invoke("glMatrixPopEXT");
-        PFN_glMatrixPushEXT = func.invoke("glMatrixPushEXT");
-        PFN_glMatrixRotatefEXT = func.invoke("glMatrixRotatefEXT");
-        PFN_glMatrixRotatedEXT = func.invoke("glMatrixRotatedEXT");
-        PFN_glMatrixScalefEXT = func.invoke("glMatrixScalefEXT");
-        PFN_glMatrixScaledEXT = func.invoke("glMatrixScaledEXT");
-        PFN_glMatrixTranslatefEXT = func.invoke("glMatrixTranslatefEXT");
-        PFN_glMatrixTranslatedEXT = func.invoke("glMatrixTranslatedEXT");
+        this.handles = new Handles(func);
     }
 
     public @CType("GLuint") int GenPathsNV(@CType("GLsizei") int range) {
-        if (Unmarshal.isNullPointer(PFN_glGenPathsNV)) throw new SymbolNotFoundError("Symbol not found: glGenPathsNV");
-        try { return (int) MH_glGenPathsNV.invokeExact(PFN_glGenPathsNV, range); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGenPathsNV)) throw new SymbolNotFoundError("Symbol not found: glGenPathsNV");
+        try { return (int) Handles.MH_glGenPathsNV.invokeExact(handles.PFN_glGenPathsNV, range); }
         catch (Throwable e) { throw new RuntimeException("error in glGenPathsNV", e); }
     }
 
     public void DeletePathsNV(@CType("GLuint") int path, @CType("GLsizei") int range) {
-        if (Unmarshal.isNullPointer(PFN_glDeletePathsNV)) throw new SymbolNotFoundError("Symbol not found: glDeletePathsNV");
-        try { MH_glDeletePathsNV.invokeExact(PFN_glDeletePathsNV, path, range); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDeletePathsNV)) throw new SymbolNotFoundError("Symbol not found: glDeletePathsNV");
+        try { Handles.MH_glDeletePathsNV.invokeExact(handles.PFN_glDeletePathsNV, path, range); }
         catch (Throwable e) { throw new RuntimeException("error in glDeletePathsNV", e); }
     }
 
     public @CType("GLboolean") boolean IsPathNV(@CType("GLuint") int path) {
-        if (Unmarshal.isNullPointer(PFN_glIsPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPathNV");
-        try { return (boolean) MH_glIsPathNV.invokeExact(PFN_glIsPathNV, path); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIsPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPathNV");
+        try { return (boolean) Handles.MH_glIsPathNV.invokeExact(handles.PFN_glIsPathNV, path); }
         catch (Throwable e) { throw new RuntimeException("error in glIsPathNV", e); }
     }
 
     public void PathCommandsNV(@CType("GLuint") int path, @CType("GLsizei") int numCommands, @CType("const GLubyte *") java.lang.foreign.MemorySegment commands, @CType("GLsizei") int numCoords, @CType("GLenum") int coordType, @CType("const void *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(PFN_glPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCommandsNV");
-        try { MH_glPathCommandsNV.invokeExact(PFN_glPathCommandsNV, path, numCommands, commands, numCoords, coordType, coords); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCommandsNV");
+        try { Handles.MH_glPathCommandsNV.invokeExact(handles.PFN_glPathCommandsNV, path, numCommands, commands, numCoords, coordType, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glPathCommandsNV", e); }
     }
 
     public void PathCoordsNV(@CType("GLuint") int path, @CType("GLsizei") int numCoords, @CType("GLenum") int coordType, @CType("const void *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(PFN_glPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoordsNV");
-        try { MH_glPathCoordsNV.invokeExact(PFN_glPathCoordsNV, path, numCoords, coordType, coords); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoordsNV");
+        try { Handles.MH_glPathCoordsNV.invokeExact(handles.PFN_glPathCoordsNV, path, numCoords, coordType, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glPathCoordsNV", e); }
     }
 
     public void PathSubCommandsNV(@CType("GLuint") int path, @CType("GLsizei") int commandStart, @CType("GLsizei") int commandsToDelete, @CType("GLsizei") int numCommands, @CType("const GLubyte *") java.lang.foreign.MemorySegment commands, @CType("GLsizei") int numCoords, @CType("GLenum") int coordType, @CType("const void *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(PFN_glPathSubCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCommandsNV");
-        try { MH_glPathSubCommandsNV.invokeExact(PFN_glPathSubCommandsNV, path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathSubCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCommandsNV");
+        try { Handles.MH_glPathSubCommandsNV.invokeExact(handles.PFN_glPathSubCommandsNV, path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glPathSubCommandsNV", e); }
     }
 
     public void PathSubCoordsNV(@CType("GLuint") int path, @CType("GLsizei") int coordStart, @CType("GLsizei") int numCoords, @CType("GLenum") int coordType, @CType("const void *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(PFN_glPathSubCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCoordsNV");
-        try { MH_glPathSubCoordsNV.invokeExact(PFN_glPathSubCoordsNV, path, coordStart, numCoords, coordType, coords); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathSubCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCoordsNV");
+        try { Handles.MH_glPathSubCoordsNV.invokeExact(handles.PFN_glPathSubCoordsNV, path, coordStart, numCoords, coordType, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glPathSubCoordsNV", e); }
     }
 
     public void PathStringNV(@CType("GLuint") int path, @CType("GLenum") int format, @CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pathString) {
-        if (Unmarshal.isNullPointer(PFN_glPathStringNV)) throw new SymbolNotFoundError("Symbol not found: glPathStringNV");
-        try { MH_glPathStringNV.invokeExact(PFN_glPathStringNV, path, format, length, pathString); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathStringNV)) throw new SymbolNotFoundError("Symbol not found: glPathStringNV");
+        try { Handles.MH_glPathStringNV.invokeExact(handles.PFN_glPathStringNV, path, format, length, pathString); }
         catch (Throwable e) { throw new RuntimeException("error in glPathStringNV", e); }
     }
 
     public void PathGlyphsNV(@CType("GLuint") int firstPathName, @CType("GLenum") int fontTarget, @CType("const void *") java.lang.foreign.MemorySegment fontName, @CType("GLbitfield") int fontStyle, @CType("GLsizei") int numGlyphs, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment charcodes, @CType("GLenum") int handleMissingGlyphs, @CType("GLuint") int pathParameterTemplate, @CType("GLfloat") float emScale) {
-        if (Unmarshal.isNullPointer(PFN_glPathGlyphsNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphsNV");
-        try { MH_glPathGlyphsNV.invokeExact(PFN_glPathGlyphsNV, firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathGlyphsNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphsNV");
+        try { Handles.MH_glPathGlyphsNV.invokeExact(handles.PFN_glPathGlyphsNV, firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale); }
         catch (Throwable e) { throw new RuntimeException("error in glPathGlyphsNV", e); }
     }
 
     public void PathGlyphRangeNV(@CType("GLuint") int firstPathName, @CType("GLenum") int fontTarget, @CType("const void *") java.lang.foreign.MemorySegment fontName, @CType("GLbitfield") int fontStyle, @CType("GLuint") int firstGlyph, @CType("GLsizei") int numGlyphs, @CType("GLenum") int handleMissingGlyphs, @CType("GLuint") int pathParameterTemplate, @CType("GLfloat") float emScale) {
-        if (Unmarshal.isNullPointer(PFN_glPathGlyphRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphRangeNV");
-        try { MH_glPathGlyphRangeNV.invokeExact(PFN_glPathGlyphRangeNV, firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathGlyphRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphRangeNV");
+        try { Handles.MH_glPathGlyphRangeNV.invokeExact(handles.PFN_glPathGlyphRangeNV, firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale); }
         catch (Throwable e) { throw new RuntimeException("error in glPathGlyphRangeNV", e); }
     }
 
     public void WeightPathsNV(@CType("GLuint") int resultPath, @CType("GLsizei") int numPaths, @CType("const GLuint *") java.lang.foreign.MemorySegment paths, @CType("const GLfloat *") java.lang.foreign.MemorySegment weights) {
-        if (Unmarshal.isNullPointer(PFN_glWeightPathsNV)) throw new SymbolNotFoundError("Symbol not found: glWeightPathsNV");
-        try { MH_glWeightPathsNV.invokeExact(PFN_glWeightPathsNV, resultPath, numPaths, paths, weights); }
+        if (Unmarshal.isNullPointer(handles.PFN_glWeightPathsNV)) throw new SymbolNotFoundError("Symbol not found: glWeightPathsNV");
+        try { Handles.MH_glWeightPathsNV.invokeExact(handles.PFN_glWeightPathsNV, resultPath, numPaths, paths, weights); }
         catch (Throwable e) { throw new RuntimeException("error in glWeightPathsNV", e); }
     }
 
     public void CopyPathNV(@CType("GLuint") int resultPath, @CType("GLuint") int srcPath) {
-        if (Unmarshal.isNullPointer(PFN_glCopyPathNV)) throw new SymbolNotFoundError("Symbol not found: glCopyPathNV");
-        try { MH_glCopyPathNV.invokeExact(PFN_glCopyPathNV, resultPath, srcPath); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCopyPathNV)) throw new SymbolNotFoundError("Symbol not found: glCopyPathNV");
+        try { Handles.MH_glCopyPathNV.invokeExact(handles.PFN_glCopyPathNV, resultPath, srcPath); }
         catch (Throwable e) { throw new RuntimeException("error in glCopyPathNV", e); }
     }
 
     public void InterpolatePathsNV(@CType("GLuint") int resultPath, @CType("GLuint") int pathA, @CType("GLuint") int pathB, @CType("GLfloat") float weight) {
-        if (Unmarshal.isNullPointer(PFN_glInterpolatePathsNV)) throw new SymbolNotFoundError("Symbol not found: glInterpolatePathsNV");
-        try { MH_glInterpolatePathsNV.invokeExact(PFN_glInterpolatePathsNV, resultPath, pathA, pathB, weight); }
+        if (Unmarshal.isNullPointer(handles.PFN_glInterpolatePathsNV)) throw new SymbolNotFoundError("Symbol not found: glInterpolatePathsNV");
+        try { Handles.MH_glInterpolatePathsNV.invokeExact(handles.PFN_glInterpolatePathsNV, resultPath, pathA, pathB, weight); }
         catch (Throwable e) { throw new RuntimeException("error in glInterpolatePathsNV", e); }
     }
 
     public void TransformPathNV(@CType("GLuint") int resultPath, @CType("GLuint") int srcPath, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glTransformPathNV)) throw new SymbolNotFoundError("Symbol not found: glTransformPathNV");
-        try { MH_glTransformPathNV.invokeExact(PFN_glTransformPathNV, resultPath, srcPath, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTransformPathNV)) throw new SymbolNotFoundError("Symbol not found: glTransformPathNV");
+        try { Handles.MH_glTransformPathNV.invokeExact(handles.PFN_glTransformPathNV, resultPath, srcPath, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glTransformPathNV", e); }
     }
 
     public void PathParameterivNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterivNV");
-        try { MH_glPathParameterivNV.invokeExact(PFN_glPathParameterivNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterivNV");
+        try { Handles.MH_glPathParameterivNV.invokeExact(handles.PFN_glPathParameterivNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glPathParameterivNV", e); }
     }
 
     public void PathParameteriNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("GLint") int value) {
-        if (Unmarshal.isNullPointer(PFN_glPathParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameteriNV");
-        try { MH_glPathParameteriNV.invokeExact(PFN_glPathParameteriNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameteriNV");
+        try { Handles.MH_glPathParameteriNV.invokeExact(handles.PFN_glPathParameteriNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glPathParameteriNV", e); }
     }
 
     public void PathParameterfvNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfvNV");
-        try { MH_glPathParameterfvNV.invokeExact(PFN_glPathParameterfvNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfvNV");
+        try { Handles.MH_glPathParameterfvNV.invokeExact(handles.PFN_glPathParameterfvNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glPathParameterfvNV", e); }
     }
 
     public void PathParameterfNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("GLfloat") float value) {
-        if (Unmarshal.isNullPointer(PFN_glPathParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfNV");
-        try { MH_glPathParameterfNV.invokeExact(PFN_glPathParameterfNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfNV");
+        try { Handles.MH_glPathParameterfNV.invokeExact(handles.PFN_glPathParameterfNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glPathParameterfNV", e); }
     }
 
     public void PathDashArrayNV(@CType("GLuint") int path, @CType("GLsizei") int dashCount, @CType("const GLfloat *") java.lang.foreign.MemorySegment dashArray) {
-        if (Unmarshal.isNullPointer(PFN_glPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathDashArrayNV");
-        try { MH_glPathDashArrayNV.invokeExact(PFN_glPathDashArrayNV, path, dashCount, dashArray); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathDashArrayNV");
+        try { Handles.MH_glPathDashArrayNV.invokeExact(handles.PFN_glPathDashArrayNV, path, dashCount, dashArray); }
         catch (Throwable e) { throw new RuntimeException("error in glPathDashArrayNV", e); }
     }
 
     public void PathStencilFuncNV(@CType("GLenum") int func, @CType("GLint") int ref, @CType("GLuint") int mask) {
-        if (Unmarshal.isNullPointer(PFN_glPathStencilFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilFuncNV");
-        try { MH_glPathStencilFuncNV.invokeExact(PFN_glPathStencilFuncNV, func, ref, mask); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathStencilFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilFuncNV");
+        try { Handles.MH_glPathStencilFuncNV.invokeExact(handles.PFN_glPathStencilFuncNV, func, ref, mask); }
         catch (Throwable e) { throw new RuntimeException("error in glPathStencilFuncNV", e); }
     }
 
     public void PathStencilDepthOffsetNV(@CType("GLfloat") float factor, @CType("GLfloat") float units) {
-        if (Unmarshal.isNullPointer(PFN_glPathStencilDepthOffsetNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilDepthOffsetNV");
-        try { MH_glPathStencilDepthOffsetNV.invokeExact(PFN_glPathStencilDepthOffsetNV, factor, units); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathStencilDepthOffsetNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilDepthOffsetNV");
+        try { Handles.MH_glPathStencilDepthOffsetNV.invokeExact(handles.PFN_glPathStencilDepthOffsetNV, factor, units); }
         catch (Throwable e) { throw new RuntimeException("error in glPathStencilDepthOffsetNV", e); }
     }
 
     public void StencilFillPathNV(@CType("GLuint") int path, @CType("GLenum") int fillMode, @CType("GLuint") int mask) {
-        if (Unmarshal.isNullPointer(PFN_glStencilFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathNV");
-        try { MH_glStencilFillPathNV.invokeExact(PFN_glStencilFillPathNV, path, fillMode, mask); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathNV");
+        try { Handles.MH_glStencilFillPathNV.invokeExact(handles.PFN_glStencilFillPathNV, path, fillMode, mask); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilFillPathNV", e); }
     }
 
     public void StencilStrokePathNV(@CType("GLuint") int path, @CType("GLint") int reference, @CType("GLuint") int mask) {
-        if (Unmarshal.isNullPointer(PFN_glStencilStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathNV");
-        try { MH_glStencilStrokePathNV.invokeExact(PFN_glStencilStrokePathNV, path, reference, mask); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathNV");
+        try { Handles.MH_glStencilStrokePathNV.invokeExact(handles.PFN_glStencilStrokePathNV, path, reference, mask); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilStrokePathNV", e); }
     }
 
     public void StencilFillPathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLenum") int fillMode, @CType("GLuint") int mask, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glStencilFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathInstancedNV");
-        try { MH_glStencilFillPathInstancedNV.invokeExact(PFN_glStencilFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathInstancedNV");
+        try { Handles.MH_glStencilFillPathInstancedNV.invokeExact(handles.PFN_glStencilFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilFillPathInstancedNV", e); }
     }
 
     public void StencilStrokePathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLint") int reference, @CType("GLuint") int mask, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glStencilStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathInstancedNV");
-        try { MH_glStencilStrokePathInstancedNV.invokeExact(PFN_glStencilStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathInstancedNV");
+        try { Handles.MH_glStencilStrokePathInstancedNV.invokeExact(handles.PFN_glStencilStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilStrokePathInstancedNV", e); }
     }
 
     public void PathCoverDepthFuncNV(@CType("GLenum") int func) {
-        if (Unmarshal.isNullPointer(PFN_glPathCoverDepthFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoverDepthFuncNV");
-        try { MH_glPathCoverDepthFuncNV.invokeExact(PFN_glPathCoverDepthFuncNV, func); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathCoverDepthFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoverDepthFuncNV");
+        try { Handles.MH_glPathCoverDepthFuncNV.invokeExact(handles.PFN_glPathCoverDepthFuncNV, func); }
         catch (Throwable e) { throw new RuntimeException("error in glPathCoverDepthFuncNV", e); }
     }
 
     public void CoverFillPathNV(@CType("GLuint") int path, @CType("GLenum") int coverMode) {
-        if (Unmarshal.isNullPointer(PFN_glCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathNV");
-        try { MH_glCoverFillPathNV.invokeExact(PFN_glCoverFillPathNV, path, coverMode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathNV");
+        try { Handles.MH_glCoverFillPathNV.invokeExact(handles.PFN_glCoverFillPathNV, path, coverMode); }
         catch (Throwable e) { throw new RuntimeException("error in glCoverFillPathNV", e); }
     }
 
     public void CoverStrokePathNV(@CType("GLuint") int path, @CType("GLenum") int coverMode) {
-        if (Unmarshal.isNullPointer(PFN_glCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathNV");
-        try { MH_glCoverStrokePathNV.invokeExact(PFN_glCoverStrokePathNV, path, coverMode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathNV");
+        try { Handles.MH_glCoverStrokePathNV.invokeExact(handles.PFN_glCoverStrokePathNV, path, coverMode); }
         catch (Throwable e) { throw new RuntimeException("error in glCoverStrokePathNV", e); }
     }
 
     public void CoverFillPathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLenum") int coverMode, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathInstancedNV");
-        try { MH_glCoverFillPathInstancedNV.invokeExact(PFN_glCoverFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathInstancedNV");
+        try { Handles.MH_glCoverFillPathInstancedNV.invokeExact(handles.PFN_glCoverFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glCoverFillPathInstancedNV", e); }
     }
 
     public void CoverStrokePathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLenum") int coverMode, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathInstancedNV");
-        try { MH_glCoverStrokePathInstancedNV.invokeExact(PFN_glCoverStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathInstancedNV");
+        try { Handles.MH_glCoverStrokePathInstancedNV.invokeExact(handles.PFN_glCoverStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glCoverStrokePathInstancedNV", e); }
     }
 
     public void GetPathParameterivNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterivNV");
-        try { MH_glGetPathParameterivNV.invokeExact(PFN_glGetPathParameterivNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterivNV");
+        try { Handles.MH_glGetPathParameterivNV.invokeExact(handles.PFN_glGetPathParameterivNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathParameterivNV", e); }
     }
 
     public void GetPathParameterfvNV(@CType("GLuint") int path, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterfvNV");
-        try { MH_glGetPathParameterfvNV.invokeExact(PFN_glGetPathParameterfvNV, path, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterfvNV");
+        try { Handles.MH_glGetPathParameterfvNV.invokeExact(handles.PFN_glGetPathParameterfvNV, path, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathParameterfvNV", e); }
     }
 
     public void GetPathCommandsNV(@CType("GLuint") int path, @CType("GLubyte *") java.lang.foreign.MemorySegment commands) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCommandsNV");
-        try { MH_glGetPathCommandsNV.invokeExact(PFN_glGetPathCommandsNV, path, commands); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCommandsNV");
+        try { Handles.MH_glGetPathCommandsNV.invokeExact(handles.PFN_glGetPathCommandsNV, path, commands); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathCommandsNV", e); }
     }
 
     public void GetPathCoordsNV(@CType("GLuint") int path, @CType("GLfloat *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCoordsNV");
-        try { MH_glGetPathCoordsNV.invokeExact(PFN_glGetPathCoordsNV, path, coords); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCoordsNV");
+        try { Handles.MH_glGetPathCoordsNV.invokeExact(handles.PFN_glGetPathCoordsNV, path, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathCoordsNV", e); }
     }
 
     public void GetPathDashArrayNV(@CType("GLuint") int path, @CType("GLfloat *") java.lang.foreign.MemorySegment dashArray) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathDashArrayNV");
-        try { MH_glGetPathDashArrayNV.invokeExact(PFN_glGetPathDashArrayNV, path, dashArray); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathDashArrayNV");
+        try { Handles.MH_glGetPathDashArrayNV.invokeExact(handles.PFN_glGetPathDashArrayNV, path, dashArray); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathDashArrayNV", e); }
     }
 
     public void GetPathMetricsNV(@CType("GLbitfield") int metricQueryMask, @CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLsizei") int stride, @CType("GLfloat *") java.lang.foreign.MemorySegment metrics) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathMetricsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricsNV");
-        try { MH_glGetPathMetricsNV.invokeExact(PFN_glGetPathMetricsNV, metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathMetricsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricsNV");
+        try { Handles.MH_glGetPathMetricsNV.invokeExact(handles.PFN_glGetPathMetricsNV, metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathMetricsNV", e); }
     }
 
     public void GetPathMetricRangeNV(@CType("GLbitfield") int metricQueryMask, @CType("GLuint") int firstPathName, @CType("GLsizei") int numPaths, @CType("GLsizei") int stride, @CType("GLfloat *") java.lang.foreign.MemorySegment metrics) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathMetricRangeNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricRangeNV");
-        try { MH_glGetPathMetricRangeNV.invokeExact(PFN_glGetPathMetricRangeNV, metricQueryMask, firstPathName, numPaths, stride, metrics); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathMetricRangeNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricRangeNV");
+        try { Handles.MH_glGetPathMetricRangeNV.invokeExact(handles.PFN_glGetPathMetricRangeNV, metricQueryMask, firstPathName, numPaths, stride, metrics); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathMetricRangeNV", e); }
     }
 
     public void GetPathSpacingNV(@CType("GLenum") int pathListMode, @CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLfloat") float advanceScale, @CType("GLfloat") float kerningScale, @CType("GLenum") int transformType, @CType("GLfloat *") java.lang.foreign.MemorySegment returnedSpacing) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathSpacingNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathSpacingNV");
-        try { MH_glGetPathSpacingNV.invokeExact(PFN_glGetPathSpacingNV, pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathSpacingNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathSpacingNV");
+        try { Handles.MH_glGetPathSpacingNV.invokeExact(handles.PFN_glGetPathSpacingNV, pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathSpacingNV", e); }
     }
 
     public @CType("GLboolean") boolean IsPointInFillPathNV(@CType("GLuint") int path, @CType("GLuint") int mask, @CType("GLfloat") float x, @CType("GLfloat") float y) {
-        if (Unmarshal.isNullPointer(PFN_glIsPointInFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInFillPathNV");
-        try { return (boolean) MH_glIsPointInFillPathNV.invokeExact(PFN_glIsPointInFillPathNV, path, mask, x, y); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIsPointInFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInFillPathNV");
+        try { return (boolean) Handles.MH_glIsPointInFillPathNV.invokeExact(handles.PFN_glIsPointInFillPathNV, path, mask, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in glIsPointInFillPathNV", e); }
     }
 
     public @CType("GLboolean") boolean IsPointInStrokePathNV(@CType("GLuint") int path, @CType("GLfloat") float x, @CType("GLfloat") float y) {
-        if (Unmarshal.isNullPointer(PFN_glIsPointInStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInStrokePathNV");
-        try { return (boolean) MH_glIsPointInStrokePathNV.invokeExact(PFN_glIsPointInStrokePathNV, path, x, y); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIsPointInStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInStrokePathNV");
+        try { return (boolean) Handles.MH_glIsPointInStrokePathNV.invokeExact(handles.PFN_glIsPointInStrokePathNV, path, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in glIsPointInStrokePathNV", e); }
     }
 
     public @CType("GLfloat") float GetPathLengthNV(@CType("GLuint") int path, @CType("GLsizei") int startSegment, @CType("GLsizei") int numSegments) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathLengthNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathLengthNV");
-        try { return (float) MH_glGetPathLengthNV.invokeExact(PFN_glGetPathLengthNV, path, startSegment, numSegments); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathLengthNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathLengthNV");
+        try { return (float) Handles.MH_glGetPathLengthNV.invokeExact(handles.PFN_glGetPathLengthNV, path, startSegment, numSegments); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathLengthNV", e); }
     }
 
     public @CType("GLboolean") boolean PointAlongPathNV(@CType("GLuint") int path, @CType("GLsizei") int startSegment, @CType("GLsizei") int numSegments, @CType("GLfloat") float distance, @CType("GLfloat *") java.lang.foreign.MemorySegment x, @CType("GLfloat *") java.lang.foreign.MemorySegment y, @CType("GLfloat *") java.lang.foreign.MemorySegment tangentX, @CType("GLfloat *") java.lang.foreign.MemorySegment tangentY) {
-        if (Unmarshal.isNullPointer(PFN_glPointAlongPathNV)) throw new SymbolNotFoundError("Symbol not found: glPointAlongPathNV");
-        try { return (boolean) MH_glPointAlongPathNV.invokeExact(PFN_glPointAlongPathNV, path, startSegment, numSegments, distance, x, y, tangentX, tangentY); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPointAlongPathNV)) throw new SymbolNotFoundError("Symbol not found: glPointAlongPathNV");
+        try { return (boolean) Handles.MH_glPointAlongPathNV.invokeExact(handles.PFN_glPointAlongPathNV, path, startSegment, numSegments, distance, x, y, tangentX, tangentY); }
         catch (Throwable e) { throw new RuntimeException("error in glPointAlongPathNV", e); }
     }
 
     public void MatrixLoad3x2fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoad3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x2fNV");
-        try { MH_glMatrixLoad3x2fNV.invokeExact(PFN_glMatrixLoad3x2fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoad3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x2fNV");
+        try { Handles.MH_glMatrixLoad3x2fNV.invokeExact(handles.PFN_glMatrixLoad3x2fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoad3x2fNV", e); }
     }
 
     public void MatrixLoad3x3fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoad3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x3fNV");
-        try { MH_glMatrixLoad3x3fNV.invokeExact(PFN_glMatrixLoad3x3fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoad3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x3fNV");
+        try { Handles.MH_glMatrixLoad3x3fNV.invokeExact(handles.PFN_glMatrixLoad3x3fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoad3x3fNV", e); }
     }
 
     public void MatrixLoadTranspose3x3fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoadTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTranspose3x3fNV");
-        try { MH_glMatrixLoadTranspose3x3fNV.invokeExact(PFN_glMatrixLoadTranspose3x3fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoadTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTranspose3x3fNV");
+        try { Handles.MH_glMatrixLoadTranspose3x3fNV.invokeExact(handles.PFN_glMatrixLoadTranspose3x3fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoadTranspose3x3fNV", e); }
     }
 
     public void MatrixMult3x2fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMult3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x2fNV");
-        try { MH_glMatrixMult3x2fNV.invokeExact(PFN_glMatrixMult3x2fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMult3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x2fNV");
+        try { Handles.MH_glMatrixMult3x2fNV.invokeExact(handles.PFN_glMatrixMult3x2fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMult3x2fNV", e); }
     }
 
     public void MatrixMult3x3fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMult3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x3fNV");
-        try { MH_glMatrixMult3x3fNV.invokeExact(PFN_glMatrixMult3x3fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMult3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x3fNV");
+        try { Handles.MH_glMatrixMult3x3fNV.invokeExact(handles.PFN_glMatrixMult3x3fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMult3x3fNV", e); }
     }
 
     public void MatrixMultTranspose3x3fNV(@CType("GLenum") int matrixMode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMultTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTranspose3x3fNV");
-        try { MH_glMatrixMultTranspose3x3fNV.invokeExact(PFN_glMatrixMultTranspose3x3fNV, matrixMode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMultTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTranspose3x3fNV");
+        try { Handles.MH_glMatrixMultTranspose3x3fNV.invokeExact(handles.PFN_glMatrixMultTranspose3x3fNV, matrixMode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMultTranspose3x3fNV", e); }
     }
 
     public void StencilThenCoverFillPathNV(@CType("GLuint") int path, @CType("GLenum") int fillMode, @CType("GLuint") int mask, @CType("GLenum") int coverMode) {
-        if (Unmarshal.isNullPointer(PFN_glStencilThenCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathNV");
-        try { MH_glStencilThenCoverFillPathNV.invokeExact(PFN_glStencilThenCoverFillPathNV, path, fillMode, mask, coverMode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilThenCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathNV");
+        try { Handles.MH_glStencilThenCoverFillPathNV.invokeExact(handles.PFN_glStencilThenCoverFillPathNV, path, fillMode, mask, coverMode); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilThenCoverFillPathNV", e); }
     }
 
     public void StencilThenCoverStrokePathNV(@CType("GLuint") int path, @CType("GLint") int reference, @CType("GLuint") int mask, @CType("GLenum") int coverMode) {
-        if (Unmarshal.isNullPointer(PFN_glStencilThenCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathNV");
-        try { MH_glStencilThenCoverStrokePathNV.invokeExact(PFN_glStencilThenCoverStrokePathNV, path, reference, mask, coverMode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilThenCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathNV");
+        try { Handles.MH_glStencilThenCoverStrokePathNV.invokeExact(handles.PFN_glStencilThenCoverStrokePathNV, path, reference, mask, coverMode); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilThenCoverStrokePathNV", e); }
     }
 
     public void StencilThenCoverFillPathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLenum") int fillMode, @CType("GLuint") int mask, @CType("GLenum") int coverMode, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glStencilThenCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathInstancedNV");
-        try { MH_glStencilThenCoverFillPathInstancedNV.invokeExact(PFN_glStencilThenCoverFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilThenCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathInstancedNV");
+        try { Handles.MH_glStencilThenCoverFillPathInstancedNV.invokeExact(handles.PFN_glStencilThenCoverFillPathInstancedNV, numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilThenCoverFillPathInstancedNV", e); }
     }
 
     public void StencilThenCoverStrokePathInstancedNV(@CType("GLsizei") int numPaths, @CType("GLenum") int pathNameType, @CType("const void *") java.lang.foreign.MemorySegment paths, @CType("GLuint") int pathBase, @CType("GLint") int reference, @CType("GLuint") int mask, @CType("GLenum") int coverMode, @CType("GLenum") int transformType, @CType("const GLfloat *") java.lang.foreign.MemorySegment transformValues) {
-        if (Unmarshal.isNullPointer(PFN_glStencilThenCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathInstancedNV");
-        try { MH_glStencilThenCoverStrokePathInstancedNV.invokeExact(PFN_glStencilThenCoverStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilThenCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathInstancedNV");
+        try { Handles.MH_glStencilThenCoverStrokePathInstancedNV.invokeExact(handles.PFN_glStencilThenCoverStrokePathInstancedNV, numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilThenCoverStrokePathInstancedNV", e); }
     }
 
     public @CType("GLenum") int PathGlyphIndexRangeNV(@CType("GLenum") int fontTarget, @CType("const void *") java.lang.foreign.MemorySegment fontName, @CType("GLbitfield") int fontStyle, @CType("GLuint") int pathParameterTemplate, @CType("GLfloat") float emScale, @CType("GLuint *") java.lang.foreign.MemorySegment baseAndCount) {
-        if (Unmarshal.isNullPointer(PFN_glPathGlyphIndexRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexRangeNV");
-        try { return (int) MH_glPathGlyphIndexRangeNV.invokeExact(PFN_glPathGlyphIndexRangeNV, fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathGlyphIndexRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexRangeNV");
+        try { return (int) Handles.MH_glPathGlyphIndexRangeNV.invokeExact(handles.PFN_glPathGlyphIndexRangeNV, fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount); }
         catch (Throwable e) { throw new RuntimeException("error in glPathGlyphIndexRangeNV", e); }
     }
 
     public @CType("GLenum") int PathGlyphIndexArrayNV(@CType("GLuint") int firstPathName, @CType("GLenum") int fontTarget, @CType("const void *") java.lang.foreign.MemorySegment fontName, @CType("GLbitfield") int fontStyle, @CType("GLuint") int firstGlyphIndex, @CType("GLsizei") int numGlyphs, @CType("GLuint") int pathParameterTemplate, @CType("GLfloat") float emScale) {
-        if (Unmarshal.isNullPointer(PFN_glPathGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexArrayNV");
-        try { return (int) MH_glPathGlyphIndexArrayNV.invokeExact(PFN_glPathGlyphIndexArrayNV, firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexArrayNV");
+        try { return (int) Handles.MH_glPathGlyphIndexArrayNV.invokeExact(handles.PFN_glPathGlyphIndexArrayNV, firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale); }
         catch (Throwable e) { throw new RuntimeException("error in glPathGlyphIndexArrayNV", e); }
     }
 
     public @CType("GLenum") int PathMemoryGlyphIndexArrayNV(@CType("GLuint") int firstPathName, @CType("GLenum") int fontTarget, @CType("GLsizeiptr") long fontSize, @CType("const void *") java.lang.foreign.MemorySegment fontData, @CType("GLsizei") int faceIndex, @CType("GLuint") int firstGlyphIndex, @CType("GLsizei") int numGlyphs, @CType("GLuint") int pathParameterTemplate, @CType("GLfloat") float emScale) {
-        if (Unmarshal.isNullPointer(PFN_glPathMemoryGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathMemoryGlyphIndexArrayNV");
-        try { return (int) MH_glPathMemoryGlyphIndexArrayNV.invokeExact(PFN_glPathMemoryGlyphIndexArrayNV, firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathMemoryGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathMemoryGlyphIndexArrayNV");
+        try { return (int) Handles.MH_glPathMemoryGlyphIndexArrayNV.invokeExact(handles.PFN_glPathMemoryGlyphIndexArrayNV, firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale); }
         catch (Throwable e) { throw new RuntimeException("error in glPathMemoryGlyphIndexArrayNV", e); }
     }
 
     public void ProgramPathFragmentInputGenNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLenum") int genMode, @CType("GLint") int components, @CType("const GLfloat *") java.lang.foreign.MemorySegment coeffs) {
-        if (Unmarshal.isNullPointer(PFN_glProgramPathFragmentInputGenNV)) throw new SymbolNotFoundError("Symbol not found: glProgramPathFragmentInputGenNV");
-        try { MH_glProgramPathFragmentInputGenNV.invokeExact(PFN_glProgramPathFragmentInputGenNV, program, location, genMode, components, coeffs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramPathFragmentInputGenNV)) throw new SymbolNotFoundError("Symbol not found: glProgramPathFragmentInputGenNV");
+        try { Handles.MH_glProgramPathFragmentInputGenNV.invokeExact(handles.PFN_glProgramPathFragmentInputGenNV, program, location, genMode, components, coeffs); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramPathFragmentInputGenNV", e); }
     }
 
     public void GetProgramResourcefvNV(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("GLuint") int index, @CType("GLsizei") int propCount, @CType("const GLenum *") java.lang.foreign.MemorySegment props, @CType("GLsizei") int count, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramResourcefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourcefvNV");
-        try { MH_glGetProgramResourcefvNV.invokeExact(PFN_glGetProgramResourcefvNV, program, programInterface, index, propCount, props, count, length, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramResourcefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourcefvNV");
+        try { Handles.MH_glGetProgramResourcefvNV.invokeExact(handles.PFN_glGetProgramResourcefvNV, program, programInterface, index, propCount, props, count, length, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourcefvNV", e); }
     }
 
     public void PathColorGenNV(@CType("GLenum") int color, @CType("GLenum") int genMode, @CType("GLenum") int colorFormat, @CType("const GLfloat *") java.lang.foreign.MemorySegment coeffs) {
-        if (Unmarshal.isNullPointer(PFN_glPathColorGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathColorGenNV");
-        try { MH_glPathColorGenNV.invokeExact(PFN_glPathColorGenNV, color, genMode, colorFormat, coeffs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathColorGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathColorGenNV");
+        try { Handles.MH_glPathColorGenNV.invokeExact(handles.PFN_glPathColorGenNV, color, genMode, colorFormat, coeffs); }
         catch (Throwable e) { throw new RuntimeException("error in glPathColorGenNV", e); }
     }
 
     public void PathTexGenNV(@CType("GLenum") int texCoordSet, @CType("GLenum") int genMode, @CType("GLint") int components, @CType("const GLfloat *") java.lang.foreign.MemorySegment coeffs) {
-        if (Unmarshal.isNullPointer(PFN_glPathTexGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathTexGenNV");
-        try { MH_glPathTexGenNV.invokeExact(PFN_glPathTexGenNV, texCoordSet, genMode, components, coeffs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathTexGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathTexGenNV");
+        try { Handles.MH_glPathTexGenNV.invokeExact(handles.PFN_glPathTexGenNV, texCoordSet, genMode, components, coeffs); }
         catch (Throwable e) { throw new RuntimeException("error in glPathTexGenNV", e); }
     }
 
     public void PathFogGenNV(@CType("GLenum") int genMode) {
-        if (Unmarshal.isNullPointer(PFN_glPathFogGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathFogGenNV");
-        try { MH_glPathFogGenNV.invokeExact(PFN_glPathFogGenNV, genMode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glPathFogGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathFogGenNV");
+        try { Handles.MH_glPathFogGenNV.invokeExact(handles.PFN_glPathFogGenNV, genMode); }
         catch (Throwable e) { throw new RuntimeException("error in glPathFogGenNV", e); }
     }
 
     public void GetPathColorGenivNV(@CType("GLenum") int color, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathColorGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenivNV");
-        try { MH_glGetPathColorGenivNV.invokeExact(PFN_glGetPathColorGenivNV, color, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathColorGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenivNV");
+        try { Handles.MH_glGetPathColorGenivNV.invokeExact(handles.PFN_glGetPathColorGenivNV, color, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathColorGenivNV", e); }
     }
 
     public void GetPathColorGenfvNV(@CType("GLenum") int color, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathColorGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenfvNV");
-        try { MH_glGetPathColorGenfvNV.invokeExact(PFN_glGetPathColorGenfvNV, color, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathColorGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenfvNV");
+        try { Handles.MH_glGetPathColorGenfvNV.invokeExact(handles.PFN_glGetPathColorGenfvNV, color, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathColorGenfvNV", e); }
     }
 
     public void GetPathTexGenivNV(@CType("GLenum") int texCoordSet, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathTexGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenivNV");
-        try { MH_glGetPathTexGenivNV.invokeExact(PFN_glGetPathTexGenivNV, texCoordSet, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathTexGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenivNV");
+        try { Handles.MH_glGetPathTexGenivNV.invokeExact(handles.PFN_glGetPathTexGenivNV, texCoordSet, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathTexGenivNV", e); }
     }
 
     public void GetPathTexGenfvNV(@CType("GLenum") int texCoordSet, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glGetPathTexGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenfvNV");
-        try { MH_glGetPathTexGenfvNV.invokeExact(PFN_glGetPathTexGenfvNV, texCoordSet, pname, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetPathTexGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenfvNV");
+        try { Handles.MH_glGetPathTexGenfvNV.invokeExact(handles.PFN_glGetPathTexGenfvNV, texCoordSet, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPathTexGenfvNV", e); }
     }
 
     public void MatrixFrustumEXT(@CType("GLenum") int mode, @CType("GLdouble") double left, @CType("GLdouble") double right, @CType("GLdouble") double bottom, @CType("GLdouble") double top, @CType("GLdouble") double zNear, @CType("GLdouble") double zFar) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixFrustumEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixFrustumEXT");
-        try { MH_glMatrixFrustumEXT.invokeExact(PFN_glMatrixFrustumEXT, mode, left, right, bottom, top, zNear, zFar); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixFrustumEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixFrustumEXT");
+        try { Handles.MH_glMatrixFrustumEXT.invokeExact(handles.PFN_glMatrixFrustumEXT, mode, left, right, bottom, top, zNear, zFar); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixFrustumEXT", e); }
     }
 
     public void MatrixLoadIdentityEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoadIdentityEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadIdentityEXT");
-        try { MH_glMatrixLoadIdentityEXT.invokeExact(PFN_glMatrixLoadIdentityEXT, mode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoadIdentityEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadIdentityEXT");
+        try { Handles.MH_glMatrixLoadIdentityEXT.invokeExact(handles.PFN_glMatrixLoadIdentityEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoadIdentityEXT", e); }
     }
 
     public void MatrixLoadTransposefEXT(@CType("GLenum") int mode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoadTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
-        try { MH_glMatrixLoadTransposefEXT.invokeExact(PFN_glMatrixLoadTransposefEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoadTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
+        try { Handles.MH_glMatrixLoadTransposefEXT.invokeExact(handles.PFN_glMatrixLoadTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoadTransposefEXT", e); }
     }
 
     public void MatrixLoadTransposedEXT(@CType("GLenum") int mode, @CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoadTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
-        try { MH_glMatrixLoadTransposedEXT.invokeExact(PFN_glMatrixLoadTransposedEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoadTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
+        try { Handles.MH_glMatrixLoadTransposedEXT.invokeExact(handles.PFN_glMatrixLoadTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoadTransposedEXT", e); }
     }
 
     public void MatrixLoadfEXT(@CType("GLenum") int mode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoadfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
-        try { MH_glMatrixLoadfEXT.invokeExact(PFN_glMatrixLoadfEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoadfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
+        try { Handles.MH_glMatrixLoadfEXT.invokeExact(handles.PFN_glMatrixLoadfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoadfEXT", e); }
     }
 
     public void MatrixLoaddEXT(@CType("GLenum") int mode, @CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixLoaddEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
-        try { MH_glMatrixLoaddEXT.invokeExact(PFN_glMatrixLoaddEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixLoaddEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
+        try { Handles.MH_glMatrixLoaddEXT.invokeExact(handles.PFN_glMatrixLoaddEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixLoaddEXT", e); }
     }
 
     public void MatrixMultTransposefEXT(@CType("GLenum") int mode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMultTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
-        try { MH_glMatrixMultTransposefEXT.invokeExact(PFN_glMatrixMultTransposefEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMultTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
+        try { Handles.MH_glMatrixMultTransposefEXT.invokeExact(handles.PFN_glMatrixMultTransposefEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMultTransposefEXT", e); }
     }
 
     public void MatrixMultTransposedEXT(@CType("GLenum") int mode, @CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMultTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
-        try { MH_glMatrixMultTransposedEXT.invokeExact(PFN_glMatrixMultTransposedEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMultTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
+        try { Handles.MH_glMatrixMultTransposedEXT.invokeExact(handles.PFN_glMatrixMultTransposedEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMultTransposedEXT", e); }
     }
 
     public void MatrixMultfEXT(@CType("GLenum") int mode, @CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMultfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
-        try { MH_glMatrixMultfEXT.invokeExact(PFN_glMatrixMultfEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMultfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
+        try { Handles.MH_glMatrixMultfEXT.invokeExact(handles.PFN_glMatrixMultfEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMultfEXT", e); }
     }
 
     public void MatrixMultdEXT(@CType("GLenum") int mode, @CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixMultdEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
-        try { MH_glMatrixMultdEXT.invokeExact(PFN_glMatrixMultdEXT, mode, m); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixMultdEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
+        try { Handles.MH_glMatrixMultdEXT.invokeExact(handles.PFN_glMatrixMultdEXT, mode, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixMultdEXT", e); }
     }
 
     public void MatrixOrthoEXT(@CType("GLenum") int mode, @CType("GLdouble") double left, @CType("GLdouble") double right, @CType("GLdouble") double bottom, @CType("GLdouble") double top, @CType("GLdouble") double zNear, @CType("GLdouble") double zFar) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixOrthoEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixOrthoEXT");
-        try { MH_glMatrixOrthoEXT.invokeExact(PFN_glMatrixOrthoEXT, mode, left, right, bottom, top, zNear, zFar); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixOrthoEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixOrthoEXT");
+        try { Handles.MH_glMatrixOrthoEXT.invokeExact(handles.PFN_glMatrixOrthoEXT, mode, left, right, bottom, top, zNear, zFar); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixOrthoEXT", e); }
     }
 
     public void MatrixPopEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixPopEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPopEXT");
-        try { MH_glMatrixPopEXT.invokeExact(PFN_glMatrixPopEXT, mode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixPopEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPopEXT");
+        try { Handles.MH_glMatrixPopEXT.invokeExact(handles.PFN_glMatrixPopEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixPopEXT", e); }
     }
 
     public void MatrixPushEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixPushEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPushEXT");
-        try { MH_glMatrixPushEXT.invokeExact(PFN_glMatrixPushEXT, mode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixPushEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPushEXT");
+        try { Handles.MH_glMatrixPushEXT.invokeExact(handles.PFN_glMatrixPushEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixPushEXT", e); }
     }
 
     public void MatrixRotatefEXT(@CType("GLenum") int mode, @CType("GLfloat") float angle, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixRotatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatefEXT");
-        try { MH_glMatrixRotatefEXT.invokeExact(PFN_glMatrixRotatefEXT, mode, angle, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixRotatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatefEXT");
+        try { Handles.MH_glMatrixRotatefEXT.invokeExact(handles.PFN_glMatrixRotatefEXT, mode, angle, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixRotatefEXT", e); }
     }
 
     public void MatrixRotatedEXT(@CType("GLenum") int mode, @CType("GLdouble") double angle, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixRotatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatedEXT");
-        try { MH_glMatrixRotatedEXT.invokeExact(PFN_glMatrixRotatedEXT, mode, angle, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixRotatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatedEXT");
+        try { Handles.MH_glMatrixRotatedEXT.invokeExact(handles.PFN_glMatrixRotatedEXT, mode, angle, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixRotatedEXT", e); }
     }
 
     public void MatrixScalefEXT(@CType("GLenum") int mode, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixScalefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScalefEXT");
-        try { MH_glMatrixScalefEXT.invokeExact(PFN_glMatrixScalefEXT, mode, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixScalefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScalefEXT");
+        try { Handles.MH_glMatrixScalefEXT.invokeExact(handles.PFN_glMatrixScalefEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixScalefEXT", e); }
     }
 
     public void MatrixScaledEXT(@CType("GLenum") int mode, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixScaledEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScaledEXT");
-        try { MH_glMatrixScaledEXT.invokeExact(PFN_glMatrixScaledEXT, mode, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixScaledEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScaledEXT");
+        try { Handles.MH_glMatrixScaledEXT.invokeExact(handles.PFN_glMatrixScaledEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixScaledEXT", e); }
     }
 
     public void MatrixTranslatefEXT(@CType("GLenum") int mode, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixTranslatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatefEXT");
-        try { MH_glMatrixTranslatefEXT.invokeExact(PFN_glMatrixTranslatefEXT, mode, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixTranslatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatefEXT");
+        try { Handles.MH_glMatrixTranslatefEXT.invokeExact(handles.PFN_glMatrixTranslatefEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixTranslatefEXT", e); }
     }
 
     public void MatrixTranslatedEXT(@CType("GLenum") int mode, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        if (Unmarshal.isNullPointer(PFN_glMatrixTranslatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatedEXT");
-        try { MH_glMatrixTranslatedEXT.invokeExact(PFN_glMatrixTranslatedEXT, mode, x, y, z); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMatrixTranslatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatedEXT");
+        try { Handles.MH_glMatrixTranslatedEXT.invokeExact(handles.PFN_glMatrixTranslatedEXT, mode, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in glMatrixTranslatedEXT", e); }
     }
 

@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,16 +28,29 @@ public final class GLEXTIndexMaterial {
     public static final int GL_INDEX_MATERIAL_EXT = 0x81B8;
     public static final int GL_INDEX_MATERIAL_PARAMETER_EXT = 0x81B9;
     public static final int GL_INDEX_MATERIAL_FACE_EXT = 0x81BA;
-    public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glIndexMaterialEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glIndexMaterialEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glIndexMaterialEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(Descriptors.FD_glIndexMaterialEXT);
+        public final MemorySegment PFN_glIndexMaterialEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glIndexMaterialEXT = func.invoke("glIndexMaterialEXT");
+        }
+    }
 
     public GLEXTIndexMaterial(overrungl.opengl.GLLoadFunc func) {
-        PFN_glIndexMaterialEXT = func.invoke("glIndexMaterialEXT");
+        this.handles = new Handles(func);
     }
 
     public void IndexMaterialEXT(@CType("GLenum") int face, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(PFN_glIndexMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexMaterialEXT");
-        try { MH_glIndexMaterialEXT.invokeExact(PFN_glIndexMaterialEXT, face, mode); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIndexMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexMaterialEXT");
+        try { Handles.MH_glIndexMaterialEXT.invokeExact(handles.PFN_glIndexMaterialEXT, face, mode); }
         catch (Throwable e) { throw new RuntimeException("error in glIndexMaterialEXT", e); }
     }
 

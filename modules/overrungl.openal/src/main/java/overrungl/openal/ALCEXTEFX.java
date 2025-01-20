@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -503,78 +504,182 @@ public final class ALCEXTEFX {
     public static final float AL_MAX_METERS_PER_UNIT = Float.MAX_VALUE;
     public static final float AL_DEFAULT_METERS_PER_UNIT = 1.0f;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alGenEffects`.
+        public static final FunctionDescriptor FD_alGenEffects = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteEffects`.
+        public static final FunctionDescriptor FD_alDeleteEffects = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsEffect`.
+        public static final FunctionDescriptor FD_alIsEffect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alEffecti`.
+        public static final FunctionDescriptor FD_alEffecti = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alEffectiv`.
+        public static final FunctionDescriptor FD_alEffectiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alEffectf`.
+        public static final FunctionDescriptor FD_alEffectf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alEffectfv`.
+        public static final FunctionDescriptor FD_alEffectfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffecti`.
+        public static final FunctionDescriptor FD_alGetEffecti = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectiv`.
+        public static final FunctionDescriptor FD_alGetEffectiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectf`.
+        public static final FunctionDescriptor FD_alGetEffectf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectfv`.
+        public static final FunctionDescriptor FD_alGetEffectfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenFilters`.
+        public static final FunctionDescriptor FD_alGenFilters = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteFilters`.
+        public static final FunctionDescriptor FD_alDeleteFilters = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsFilter`.
+        public static final FunctionDescriptor FD_alIsFilter = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alFilteri`.
+        public static final FunctionDescriptor FD_alFilteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alFilteriv`.
+        public static final FunctionDescriptor FD_alFilteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alFilterf`.
+        public static final FunctionDescriptor FD_alFilterf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alFilterfv`.
+        public static final FunctionDescriptor FD_alFilterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilteri`.
+        public static final FunctionDescriptor FD_alGetFilteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilteriv`.
+        public static final FunctionDescriptor FD_alGetFilteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilterf`.
+        public static final FunctionDescriptor FD_alGetFilterf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilterfv`.
+        public static final FunctionDescriptor FD_alGetFilterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenAuxiliaryEffectSlots`.
+        public static final FunctionDescriptor FD_alGenAuxiliaryEffectSlots = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteAuxiliaryEffectSlots`.
+        public static final FunctionDescriptor FD_alDeleteAuxiliaryEffectSlots = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsAuxiliaryEffectSlot`.
+        public static final FunctionDescriptor FD_alIsAuxiliaryEffectSlot = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alAuxiliaryEffectSloti`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSloti = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alAuxiliaryEffectSlotiv`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alAuxiliaryEffectSlotf`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alAuxiliaryEffectSlotfv`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSloti`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSloti = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotiv`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotf`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotfv`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alGenEffects,
+            FD_alDeleteEffects,
+            FD_alIsEffect,
+            FD_alEffecti,
+            FD_alEffectiv,
+            FD_alEffectf,
+            FD_alEffectfv,
+            FD_alGetEffecti,
+            FD_alGetEffectiv,
+            FD_alGetEffectf,
+            FD_alGetEffectfv,
+            FD_alGenFilters,
+            FD_alDeleteFilters,
+            FD_alIsFilter,
+            FD_alFilteri,
+            FD_alFilteriv,
+            FD_alFilterf,
+            FD_alFilterfv,
+            FD_alGetFilteri,
+            FD_alGetFilteriv,
+            FD_alGetFilterf,
+            FD_alGetFilterfv,
+            FD_alGenAuxiliaryEffectSlots,
+            FD_alDeleteAuxiliaryEffectSlots,
+            FD_alIsAuxiliaryEffectSlot,
+            FD_alAuxiliaryEffectSloti,
+            FD_alAuxiliaryEffectSlotiv,
+            FD_alAuxiliaryEffectSlotf,
+            FD_alAuxiliaryEffectSlotfv,
+            FD_alGetAuxiliaryEffectSloti,
+            FD_alGetAuxiliaryEffectSlotiv,
+            FD_alGetAuxiliaryEffectSlotf,
+            FD_alGetAuxiliaryEffectSlotfv
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alGenEffects`.
-        public static final MethodHandle MH_alGenEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenEffects", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenEffects", Descriptors.FD_alGenEffects);
         /// The method handle of `alDeleteEffects`.
-        public static final MethodHandle MH_alDeleteEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteEffects", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteEffects", Descriptors.FD_alDeleteEffects);
         /// The method handle of `alIsEffect`.
-        public static final MethodHandle MH_alIsEffect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEffect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsEffect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEffect", Descriptors.FD_alIsEffect);
         /// The method handle of `alEffecti`.
-        public static final MethodHandle MH_alEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffecti", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffecti", Descriptors.FD_alEffecti);
         /// The method handle of `alEffectiv`.
-        public static final MethodHandle MH_alEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectiv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectiv", Descriptors.FD_alEffectiv);
         /// The method handle of `alEffectf`.
-        public static final MethodHandle MH_alEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectf", Descriptors.FD_alEffectf);
         /// The method handle of `alEffectfv`.
-        public static final MethodHandle MH_alEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfv", Descriptors.FD_alEffectfv);
         /// The method handle of `alGetEffecti`.
-        public static final MethodHandle MH_alGetEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffecti", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffecti", Descriptors.FD_alGetEffecti);
         /// The method handle of `alGetEffectiv`.
-        public static final MethodHandle MH_alGetEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectiv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectiv", Descriptors.FD_alGetEffectiv);
         /// The method handle of `alGetEffectf`.
-        public static final MethodHandle MH_alGetEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectf", Descriptors.FD_alGetEffectf);
         /// The method handle of `alGetEffectfv`.
-        public static final MethodHandle MH_alGetEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfv", Descriptors.FD_alGetEffectfv);
         /// The method handle of `alGenFilters`.
-        public static final MethodHandle MH_alGenFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenFilters", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenFilters", Descriptors.FD_alGenFilters);
         /// The method handle of `alDeleteFilters`.
-        public static final MethodHandle MH_alDeleteFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteFilters", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteFilters", Descriptors.FD_alDeleteFilters);
         /// The method handle of `alIsFilter`.
-        public static final MethodHandle MH_alIsFilter = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsFilter", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsFilter = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsFilter", Descriptors.FD_alIsFilter);
         /// The method handle of `alFilteri`.
-        public static final MethodHandle MH_alFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteri", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteri", Descriptors.FD_alFilteri);
         /// The method handle of `alFilteriv`.
-        public static final MethodHandle MH_alFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteriv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteriv", Descriptors.FD_alFilteriv);
         /// The method handle of `alFilterf`.
-        public static final MethodHandle MH_alFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterf", Descriptors.FD_alFilterf);
         /// The method handle of `alFilterfv`.
-        public static final MethodHandle MH_alFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfv", Descriptors.FD_alFilterfv);
         /// The method handle of `alGetFilteri`.
-        public static final MethodHandle MH_alGetFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteri", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteri", Descriptors.FD_alGetFilteri);
         /// The method handle of `alGetFilteriv`.
-        public static final MethodHandle MH_alGetFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteriv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteriv", Descriptors.FD_alGetFilteriv);
         /// The method handle of `alGetFilterf`.
-        public static final MethodHandle MH_alGetFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterf", Descriptors.FD_alGetFilterf);
         /// The method handle of `alGetFilterfv`.
-        public static final MethodHandle MH_alGetFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfv", Descriptors.FD_alGetFilterfv);
         /// The method handle of `alGenAuxiliaryEffectSlots`.
-        public static final MethodHandle MH_alGenAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenAuxiliaryEffectSlots", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenAuxiliaryEffectSlots", Descriptors.FD_alGenAuxiliaryEffectSlots);
         /// The method handle of `alDeleteAuxiliaryEffectSlots`.
-        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteAuxiliaryEffectSlots", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteAuxiliaryEffectSlots", Descriptors.FD_alDeleteAuxiliaryEffectSlots);
         /// The method handle of `alIsAuxiliaryEffectSlot`.
-        public static final MethodHandle MH_alIsAuxiliaryEffectSlot = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsAuxiliaryEffectSlot", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsAuxiliaryEffectSlot = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsAuxiliaryEffectSlot", Descriptors.FD_alIsAuxiliaryEffectSlot);
         /// The method handle of `alAuxiliaryEffectSloti`.
-        public static final MethodHandle MH_alAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSloti", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSloti", Descriptors.FD_alAuxiliaryEffectSloti);
         /// The method handle of `alAuxiliaryEffectSlotiv`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotiv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotiv", Descriptors.FD_alAuxiliaryEffectSlotiv);
         /// The method handle of `alAuxiliaryEffectSlotf`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotf", Descriptors.FD_alAuxiliaryEffectSlotf);
         /// The method handle of `alAuxiliaryEffectSlotfv`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfv", Descriptors.FD_alAuxiliaryEffectSlotfv);
         /// The method handle of `alGetAuxiliaryEffectSloti`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSloti", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSloti", Descriptors.FD_alGetAuxiliaryEffectSloti);
         /// The method handle of `alGetAuxiliaryEffectSlotiv`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotiv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotiv", Descriptors.FD_alGetAuxiliaryEffectSlotiv);
         /// The method handle of `alGetAuxiliaryEffectSlotf`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotf", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotf", Descriptors.FD_alGetAuxiliaryEffectSlotf);
         /// The method handle of `alGetAuxiliaryEffectSlotfv`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfv", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfv", Descriptors.FD_alGetAuxiliaryEffectSlotfv);
     }
-    //endregion
 
     public static void alGenEffects(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment effects) {
         if (Handles.MH_alGenEffects == null) throw new SymbolNotFoundError("Symbol not found: alGenEffects");

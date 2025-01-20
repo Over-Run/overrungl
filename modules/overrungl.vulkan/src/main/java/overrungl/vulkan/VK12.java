@@ -21,6 +21,7 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import java.util.*;
 public class VK12 extends VK11 {
     public static final int VK_DRIVER_ID_AMD_PROPRIETARY = 1;
     public static final int VK_DRIVER_ID_AMD_OPEN_SOURCE = 2;
@@ -134,125 +135,162 @@ public class VK12 extends VK11 {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT = 0x00000002;
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT = 0x00000004;
     public static final int VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS = -1000257000;
-    public static final MethodHandle MH_vkCmdDrawIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCmdDrawIndexedIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCreateRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdBeginRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdNextSubpass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdEndRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkResetQueryPool = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkGetSemaphoreCounterValue = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkWaitSemaphores = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-    public static final MethodHandle MH_vkSignalSemaphore = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetBufferDeviceAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdDrawIndirectCount;
-    public final MemorySegment PFN_vkCmdDrawIndexedIndirectCount;
-    public final MemorySegment PFN_vkCreateRenderPass2;
-    public final MemorySegment PFN_vkCmdBeginRenderPass2;
-    public final MemorySegment PFN_vkCmdNextSubpass2;
-    public final MemorySegment PFN_vkCmdEndRenderPass2;
-    public final MemorySegment PFN_vkResetQueryPool;
-    public final MemorySegment PFN_vkGetSemaphoreCounterValue;
-    public final MemorySegment PFN_vkWaitSemaphores;
-    public final MemorySegment PFN_vkSignalSemaphore;
-    public final MemorySegment PFN_vkGetBufferDeviceAddress;
-    public final MemorySegment PFN_vkGetBufferOpaqueCaptureAddress;
-    public final MemorySegment PFN_vkGetDeviceMemoryOpaqueCaptureAddress;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdDrawIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCmdDrawIndexedIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCreateRenderPass2 = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdBeginRenderPass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdNextSubpass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdEndRenderPass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkResetQueryPool = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkGetSemaphoreCounterValue = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkWaitSemaphores = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
+        public static final FunctionDescriptor FD_vkSignalSemaphore = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetBufferDeviceAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdDrawIndirectCount,
+            FD_vkCmdDrawIndexedIndirectCount,
+            FD_vkCreateRenderPass2,
+            FD_vkCmdBeginRenderPass2,
+            FD_vkCmdNextSubpass2,
+            FD_vkCmdEndRenderPass2,
+            FD_vkResetQueryPool,
+            FD_vkGetSemaphoreCounterValue,
+            FD_vkWaitSemaphores,
+            FD_vkSignalSemaphore,
+            FD_vkGetBufferDeviceAddress,
+            FD_vkGetBufferOpaqueCaptureAddress,
+            FD_vkGetDeviceMemoryOpaqueCaptureAddress
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdDrawIndirectCount = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndirectCount);
+        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCount = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndexedIndirectCount);
+        public static final MethodHandle MH_vkCreateRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCreateRenderPass2);
+        public static final MethodHandle MH_vkCmdBeginRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderPass2);
+        public static final MethodHandle MH_vkCmdNextSubpass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdNextSubpass2);
+        public static final MethodHandle MH_vkCmdEndRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderPass2);
+        public static final MethodHandle MH_vkResetQueryPool = RuntimeHelper.downcall(Descriptors.FD_vkResetQueryPool);
+        public static final MethodHandle MH_vkGetSemaphoreCounterValue = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreCounterValue);
+        public static final MethodHandle MH_vkWaitSemaphores = RuntimeHelper.downcall(Descriptors.FD_vkWaitSemaphores);
+        public static final MethodHandle MH_vkSignalSemaphore = RuntimeHelper.downcall(Descriptors.FD_vkSignalSemaphore);
+        public static final MethodHandle MH_vkGetBufferDeviceAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddress);
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferOpaqueCaptureAddress);
+        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceMemoryOpaqueCaptureAddress);
+        public final MemorySegment PFN_vkCmdDrawIndirectCount;
+        public final MemorySegment PFN_vkCmdDrawIndexedIndirectCount;
+        public final MemorySegment PFN_vkCreateRenderPass2;
+        public final MemorySegment PFN_vkCmdBeginRenderPass2;
+        public final MemorySegment PFN_vkCmdNextSubpass2;
+        public final MemorySegment PFN_vkCmdEndRenderPass2;
+        public final MemorySegment PFN_vkResetQueryPool;
+        public final MemorySegment PFN_vkGetSemaphoreCounterValue;
+        public final MemorySegment PFN_vkWaitSemaphores;
+        public final MemorySegment PFN_vkSignalSemaphore;
+        public final MemorySegment PFN_vkGetBufferDeviceAddress;
+        public final MemorySegment PFN_vkGetBufferOpaqueCaptureAddress;
+        public final MemorySegment PFN_vkGetDeviceMemoryOpaqueCaptureAddress;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkCmdDrawIndirectCount = func.invoke(instance, "vkCmdDrawIndirectCount", "vkCmdDrawIndirectCountKHR", "vkCmdDrawIndirectCountAMD");
+            PFN_vkCmdDrawIndexedIndirectCount = func.invoke(instance, "vkCmdDrawIndexedIndirectCount", "vkCmdDrawIndexedIndirectCountKHR", "vkCmdDrawIndexedIndirectCountAMD");
+            PFN_vkCreateRenderPass2 = func.invoke(instance, "vkCreateRenderPass2", "vkCreateRenderPass2KHR");
+            PFN_vkCmdBeginRenderPass2 = func.invoke(instance, "vkCmdBeginRenderPass2", "vkCmdBeginRenderPass2KHR");
+            PFN_vkCmdNextSubpass2 = func.invoke(instance, "vkCmdNextSubpass2", "vkCmdNextSubpass2KHR");
+            PFN_vkCmdEndRenderPass2 = func.invoke(instance, "vkCmdEndRenderPass2", "vkCmdEndRenderPass2KHR");
+            PFN_vkResetQueryPool = func.invoke(instance, "vkResetQueryPool", "vkResetQueryPoolEXT");
+            PFN_vkGetSemaphoreCounterValue = func.invoke(instance, "vkGetSemaphoreCounterValue", "vkGetSemaphoreCounterValueKHR");
+            PFN_vkWaitSemaphores = func.invoke(instance, "vkWaitSemaphores", "vkWaitSemaphoresKHR");
+            PFN_vkSignalSemaphore = func.invoke(instance, "vkSignalSemaphore", "vkSignalSemaphoreKHR");
+            PFN_vkGetBufferDeviceAddress = func.invoke(instance, "vkGetBufferDeviceAddress", "vkGetBufferDeviceAddressKHR", "vkGetBufferDeviceAddressEXT");
+            PFN_vkGetBufferOpaqueCaptureAddress = func.invoke(instance, "vkGetBufferOpaqueCaptureAddress", "vkGetBufferOpaqueCaptureAddressKHR");
+            PFN_vkGetDeviceMemoryOpaqueCaptureAddress = func.invoke(instance, "vkGetDeviceMemoryOpaqueCaptureAddress", "vkGetDeviceMemoryOpaqueCaptureAddressKHR");
+        }
+    }
 
     public VK12(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
         super(instance, func);
-        PFN_vkCmdDrawIndirectCount = func.invoke(instance, "vkCmdDrawIndirectCount", "vkCmdDrawIndirectCountKHR", "vkCmdDrawIndirectCountAMD");
-        PFN_vkCmdDrawIndexedIndirectCount = func.invoke(instance, "vkCmdDrawIndexedIndirectCount", "vkCmdDrawIndexedIndirectCountKHR", "vkCmdDrawIndexedIndirectCountAMD");
-        PFN_vkCreateRenderPass2 = func.invoke(instance, "vkCreateRenderPass2", "vkCreateRenderPass2KHR");
-        PFN_vkCmdBeginRenderPass2 = func.invoke(instance, "vkCmdBeginRenderPass2", "vkCmdBeginRenderPass2KHR");
-        PFN_vkCmdNextSubpass2 = func.invoke(instance, "vkCmdNextSubpass2", "vkCmdNextSubpass2KHR");
-        PFN_vkCmdEndRenderPass2 = func.invoke(instance, "vkCmdEndRenderPass2", "vkCmdEndRenderPass2KHR");
-        PFN_vkResetQueryPool = func.invoke(instance, "vkResetQueryPool", "vkResetQueryPoolEXT");
-        PFN_vkGetSemaphoreCounterValue = func.invoke(instance, "vkGetSemaphoreCounterValue", "vkGetSemaphoreCounterValueKHR");
-        PFN_vkWaitSemaphores = func.invoke(instance, "vkWaitSemaphores", "vkWaitSemaphoresKHR");
-        PFN_vkSignalSemaphore = func.invoke(instance, "vkSignalSemaphore", "vkSignalSemaphoreKHR");
-        PFN_vkGetBufferDeviceAddress = func.invoke(instance, "vkGetBufferDeviceAddress", "vkGetBufferDeviceAddressKHR", "vkGetBufferDeviceAddressEXT");
-        PFN_vkGetBufferOpaqueCaptureAddress = func.invoke(instance, "vkGetBufferOpaqueCaptureAddress", "vkGetBufferOpaqueCaptureAddressKHR");
-        PFN_vkGetDeviceMemoryOpaqueCaptureAddress = func.invoke(instance, "vkGetDeviceMemoryOpaqueCaptureAddress", "vkGetDeviceMemoryOpaqueCaptureAddressKHR");
+        this.handles = new Handles(instance, func);
     }
 
     public void CmdDrawIndirectCount(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkBuffer") MemorySegment countBuffer, @CType("VkDeviceSize") long countBufferOffset, @CType("uint32_t") int maxDrawCount, @CType("uint32_t") int stride) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDrawIndirectCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCount");
-        try { MH_vkCmdDrawIndirectCount.invokeExact(PFN_vkCmdDrawIndirectCount, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawIndirectCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCount");
+        try { Handles.MH_vkCmdDrawIndirectCount.invokeExact(handles.PFN_vkCmdDrawIndirectCount, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectCount", e); }
     }
 
     public void CmdDrawIndexedIndirectCount(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkBuffer") MemorySegment countBuffer, @CType("VkDeviceSize") long countBufferOffset, @CType("uint32_t") int maxDrawCount, @CType("uint32_t") int stride) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDrawIndexedIndirectCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCount");
-        try { MH_vkCmdDrawIndexedIndirectCount.invokeExact(PFN_vkCmdDrawIndexedIndirectCount, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawIndexedIndirectCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCount");
+        try { Handles.MH_vkCmdDrawIndexedIndirectCount.invokeExact(handles.PFN_vkCmdDrawIndexedIndirectCount, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndexedIndirectCount", e); }
     }
 
     public @CType("VkResult") int CreateRenderPass2(@CType("VkDevice") MemorySegment device, @CType("const VkRenderPassCreateInfo2 *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkRenderPass *") MemorySegment pRenderPass) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCreateRenderPass2");
-        try { return (int) MH_vkCreateRenderPass2.invokeExact(PFN_vkCreateRenderPass2, device, pCreateInfo, pAllocator, pRenderPass); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCreateRenderPass2");
+        try { return (int) Handles.MH_vkCreateRenderPass2.invokeExact(handles.PFN_vkCreateRenderPass2, device, pCreateInfo, pAllocator, pRenderPass); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRenderPass2", e); }
     }
 
     public void CmdBeginRenderPass2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderPassBeginInfo *") MemorySegment pRenderPassBegin, @CType("const VkSubpassBeginInfo *") MemorySegment pSubpassBeginInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdBeginRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2");
-        try { MH_vkCmdBeginRenderPass2.invokeExact(PFN_vkCmdBeginRenderPass2, commandBuffer, pRenderPassBegin, pSubpassBeginInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBeginRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2");
+        try { Handles.MH_vkCmdBeginRenderPass2.invokeExact(handles.PFN_vkCmdBeginRenderPass2, commandBuffer, pRenderPassBegin, pSubpassBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderPass2", e); }
     }
 
     public void CmdNextSubpass2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkSubpassBeginInfo *") MemorySegment pSubpassBeginInfo, @CType("const VkSubpassEndInfo *") MemorySegment pSubpassEndInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdNextSubpass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdNextSubpass2");
-        try { MH_vkCmdNextSubpass2.invokeExact(PFN_vkCmdNextSubpass2, commandBuffer, pSubpassBeginInfo, pSubpassEndInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdNextSubpass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdNextSubpass2");
+        try { Handles.MH_vkCmdNextSubpass2.invokeExact(handles.PFN_vkCmdNextSubpass2, commandBuffer, pSubpassBeginInfo, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdNextSubpass2", e); }
     }
 
     public void CmdEndRenderPass2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkSubpassEndInfo *") MemorySegment pSubpassEndInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdEndRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2");
-        try { MH_vkCmdEndRenderPass2.invokeExact(PFN_vkCmdEndRenderPass2, commandBuffer, pSubpassEndInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdEndRenderPass2)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2");
+        try { Handles.MH_vkCmdEndRenderPass2.invokeExact(handles.PFN_vkCmdEndRenderPass2, commandBuffer, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderPass2", e); }
     }
 
     public void ResetQueryPool(@CType("VkDevice") MemorySegment device, @CType("VkQueryPool") MemorySegment queryPool, @CType("uint32_t") int firstQuery, @CType("uint32_t") int queryCount) {
-        if (Unmarshal.isNullPointer(PFN_vkResetQueryPool)) throw new SymbolNotFoundError("Symbol not found: vkResetQueryPool");
-        try { MH_vkResetQueryPool.invokeExact(PFN_vkResetQueryPool, device, queryPool, firstQuery, queryCount); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkResetQueryPool)) throw new SymbolNotFoundError("Symbol not found: vkResetQueryPool");
+        try { Handles.MH_vkResetQueryPool.invokeExact(handles.PFN_vkResetQueryPool, device, queryPool, firstQuery, queryCount); }
         catch (Throwable e) { throw new RuntimeException("error in vkResetQueryPool", e); }
     }
 
     public @CType("VkResult") int GetSemaphoreCounterValue(@CType("VkDevice") MemorySegment device, @CType("VkSemaphore") MemorySegment semaphore, @CType("uint64_t *") MemorySegment pValue) {
-        if (Unmarshal.isNullPointer(PFN_vkGetSemaphoreCounterValue)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValue");
-        try { return (int) MH_vkGetSemaphoreCounterValue.invokeExact(PFN_vkGetSemaphoreCounterValue, device, semaphore, pValue); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetSemaphoreCounterValue)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValue");
+        try { return (int) Handles.MH_vkGetSemaphoreCounterValue.invokeExact(handles.PFN_vkGetSemaphoreCounterValue, device, semaphore, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreCounterValue", e); }
     }
 
     public @CType("VkResult") int WaitSemaphores(@CType("VkDevice") MemorySegment device, @CType("const VkSemaphoreWaitInfo *") MemorySegment pWaitInfo, @CType("uint64_t") long timeout) {
-        if (Unmarshal.isNullPointer(PFN_vkWaitSemaphores)) throw new SymbolNotFoundError("Symbol not found: vkWaitSemaphores");
-        try { return (int) MH_vkWaitSemaphores.invokeExact(PFN_vkWaitSemaphores, device, pWaitInfo, timeout); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkWaitSemaphores)) throw new SymbolNotFoundError("Symbol not found: vkWaitSemaphores");
+        try { return (int) Handles.MH_vkWaitSemaphores.invokeExact(handles.PFN_vkWaitSemaphores, device, pWaitInfo, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitSemaphores", e); }
     }
 
     public @CType("VkResult") int SignalSemaphore(@CType("VkDevice") MemorySegment device, @CType("const VkSemaphoreSignalInfo *") MemorySegment pSignalInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkSignalSemaphore)) throw new SymbolNotFoundError("Symbol not found: vkSignalSemaphore");
-        try { return (int) MH_vkSignalSemaphore.invokeExact(PFN_vkSignalSemaphore, device, pSignalInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkSignalSemaphore)) throw new SymbolNotFoundError("Symbol not found: vkSignalSemaphore");
+        try { return (int) Handles.MH_vkSignalSemaphore.invokeExact(handles.PFN_vkSignalSemaphore, device, pSignalInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSignalSemaphore", e); }
     }
 
     public @CType("VkDeviceAddress") long GetBufferDeviceAddress(@CType("VkDevice") MemorySegment device, @CType("const VkBufferDeviceAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetBufferDeviceAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddress");
-        try { return (long) MH_vkGetBufferDeviceAddress.invokeExact(PFN_vkGetBufferDeviceAddress, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferDeviceAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddress");
+        try { return (long) Handles.MH_vkGetBufferDeviceAddress.invokeExact(handles.PFN_vkGetBufferDeviceAddress, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddress", e); }
     }
 
     public @CType("uint64_t") long GetBufferOpaqueCaptureAddress(@CType("VkDevice") MemorySegment device, @CType("const VkBufferDeviceAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetBufferOpaqueCaptureAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddress");
-        try { return (long) MH_vkGetBufferOpaqueCaptureAddress.invokeExact(PFN_vkGetBufferOpaqueCaptureAddress, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferOpaqueCaptureAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureAddress");
+        try { return (long) Handles.MH_vkGetBufferOpaqueCaptureAddress.invokeExact(handles.PFN_vkGetBufferOpaqueCaptureAddress, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferOpaqueCaptureAddress", e); }
     }
 
     public @CType("uint64_t") long GetDeviceMemoryOpaqueCaptureAddress(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceMemoryOpaqueCaptureAddressInfo *") MemorySegment pInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceMemoryOpaqueCaptureAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddress");
-        try { return (long) MH_vkGetDeviceMemoryOpaqueCaptureAddress.invokeExact(PFN_vkGetDeviceMemoryOpaqueCaptureAddress, device, pInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceMemoryOpaqueCaptureAddress)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceMemoryOpaqueCaptureAddress");
+        try { return (long) Handles.MH_vkGetDeviceMemoryOpaqueCaptureAddress.invokeExact(handles.PFN_vkGetDeviceMemoryOpaqueCaptureAddress, device, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceMemoryOpaqueCaptureAddress", e); }
     }
 

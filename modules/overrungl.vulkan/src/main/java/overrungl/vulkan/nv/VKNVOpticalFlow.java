@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
 public class VKNVOpticalFlow {
     public static final int VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV = 0;
@@ -73,52 +74,73 @@ public class VKNVOpticalFlow {
     public static final long VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV = 0x20000000000L;
     public static final long VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV = 0x40000000000L;
     public static final int VK_FORMAT_R16G16_S10_5_NV = VK_FORMAT_R16G16_SFIXED5_NV;
-    public static final MethodHandle MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCreateOpticalFlowSessionNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkDestroyOpticalFlowSessionNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkBindOpticalFlowSessionImageNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCmdOpticalFlowExecuteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
-    public final MemorySegment PFN_vkCreateOpticalFlowSessionNV;
-    public final MemorySegment PFN_vkDestroyOpticalFlowSessionNV;
-    public final MemorySegment PFN_vkBindOpticalFlowSessionImageNV;
-    public final MemorySegment PFN_vkCmdOpticalFlowExecuteNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCreateOpticalFlowSessionNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkDestroyOpticalFlowSessionNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkBindOpticalFlowSessionImageNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCmdOpticalFlowExecuteNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV,
+            FD_vkCreateOpticalFlowSessionNV,
+            FD_vkDestroyOpticalFlowSessionNV,
+            FD_vkBindOpticalFlowSessionImageNV,
+            FD_vkCmdOpticalFlowExecuteNV
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV);
+        public static final MethodHandle MH_vkCreateOpticalFlowSessionNV = RuntimeHelper.downcall(Descriptors.FD_vkCreateOpticalFlowSessionNV);
+        public static final MethodHandle MH_vkDestroyOpticalFlowSessionNV = RuntimeHelper.downcall(Descriptors.FD_vkDestroyOpticalFlowSessionNV);
+        public static final MethodHandle MH_vkBindOpticalFlowSessionImageNV = RuntimeHelper.downcall(Descriptors.FD_vkBindOpticalFlowSessionImageNV);
+        public static final MethodHandle MH_vkCmdOpticalFlowExecuteNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdOpticalFlowExecuteNV);
+        public final MemorySegment PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
+        public final MemorySegment PFN_vkCreateOpticalFlowSessionNV;
+        public final MemorySegment PFN_vkDestroyOpticalFlowSessionNV;
+        public final MemorySegment PFN_vkBindOpticalFlowSessionImageNV;
+        public final MemorySegment PFN_vkCmdOpticalFlowExecuteNV;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = func.invoke(device, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
+            PFN_vkCreateOpticalFlowSessionNV = func.invoke(device, "vkCreateOpticalFlowSessionNV");
+            PFN_vkDestroyOpticalFlowSessionNV = func.invoke(device, "vkDestroyOpticalFlowSessionNV");
+            PFN_vkBindOpticalFlowSessionImageNV = func.invoke(device, "vkBindOpticalFlowSessionImageNV");
+            PFN_vkCmdOpticalFlowExecuteNV = func.invoke(device, "vkCmdOpticalFlowExecuteNV");
+        }
+    }
 
     public VKNVOpticalFlow(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = func.invoke(device, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
-        PFN_vkCreateOpticalFlowSessionNV = func.invoke(device, "vkCreateOpticalFlowSessionNV");
-        PFN_vkDestroyOpticalFlowSessionNV = func.invoke(device, "vkDestroyOpticalFlowSessionNV");
-        PFN_vkBindOpticalFlowSessionImageNV = func.invoke(device, "vkBindOpticalFlowSessionImageNV");
-        PFN_vkCmdOpticalFlowExecuteNV = func.invoke(device, "vkCmdOpticalFlowExecuteNV");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int GetPhysicalDeviceOpticalFlowImageFormatsNV(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkOpticalFlowImageFormatInfoNV *") MemorySegment pOpticalFlowImageFormatInfo, @CType("uint32_t *") MemorySegment pFormatCount, @CType("VkOpticalFlowImageFormatPropertiesNV *") MemorySegment pImageFormatProperties) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
-        try { return (int) MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV.invokeExact(PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV, physicalDevice, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV.invokeExact(handles.PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV, physicalDevice, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceOpticalFlowImageFormatsNV", e); }
     }
 
     public @CType("VkResult") int CreateOpticalFlowSessionNV(@CType("VkDevice") MemorySegment device, @CType("const VkOpticalFlowSessionCreateInfoNV *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkOpticalFlowSessionNV *") MemorySegment pSession) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateOpticalFlowSessionNV)) throw new SymbolNotFoundError("Symbol not found: vkCreateOpticalFlowSessionNV");
-        try { return (int) MH_vkCreateOpticalFlowSessionNV.invokeExact(PFN_vkCreateOpticalFlowSessionNV, device, pCreateInfo, pAllocator, pSession); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateOpticalFlowSessionNV)) throw new SymbolNotFoundError("Symbol not found: vkCreateOpticalFlowSessionNV");
+        try { return (int) Handles.MH_vkCreateOpticalFlowSessionNV.invokeExact(handles.PFN_vkCreateOpticalFlowSessionNV, device, pCreateInfo, pAllocator, pSession); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateOpticalFlowSessionNV", e); }
     }
 
     public void DestroyOpticalFlowSessionNV(@CType("VkDevice") MemorySegment device, @CType("VkOpticalFlowSessionNV") MemorySegment session, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(PFN_vkDestroyOpticalFlowSessionNV)) throw new SymbolNotFoundError("Symbol not found: vkDestroyOpticalFlowSessionNV");
-        try { MH_vkDestroyOpticalFlowSessionNV.invokeExact(PFN_vkDestroyOpticalFlowSessionNV, device, session, pAllocator); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyOpticalFlowSessionNV)) throw new SymbolNotFoundError("Symbol not found: vkDestroyOpticalFlowSessionNV");
+        try { Handles.MH_vkDestroyOpticalFlowSessionNV.invokeExact(handles.PFN_vkDestroyOpticalFlowSessionNV, device, session, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyOpticalFlowSessionNV", e); }
     }
 
     public @CType("VkResult") int BindOpticalFlowSessionImageNV(@CType("VkDevice") MemorySegment device, @CType("VkOpticalFlowSessionNV") MemorySegment session, @CType("VkOpticalFlowSessionBindingPointNV") int bindingPoint, @CType("VkImageView") MemorySegment view, @CType("VkImageLayout") int layout) {
-        if (Unmarshal.isNullPointer(PFN_vkBindOpticalFlowSessionImageNV)) throw new SymbolNotFoundError("Symbol not found: vkBindOpticalFlowSessionImageNV");
-        try { return (int) MH_vkBindOpticalFlowSessionImageNV.invokeExact(PFN_vkBindOpticalFlowSessionImageNV, device, session, bindingPoint, view, layout); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkBindOpticalFlowSessionImageNV)) throw new SymbolNotFoundError("Symbol not found: vkBindOpticalFlowSessionImageNV");
+        try { return (int) Handles.MH_vkBindOpticalFlowSessionImageNV.invokeExact(handles.PFN_vkBindOpticalFlowSessionImageNV, device, session, bindingPoint, view, layout); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindOpticalFlowSessionImageNV", e); }
     }
 
     public void CmdOpticalFlowExecuteNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkOpticalFlowSessionNV") MemorySegment session, @CType("const VkOpticalFlowExecuteInfoNV *") MemorySegment pExecuteInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdOpticalFlowExecuteNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdOpticalFlowExecuteNV");
-        try { MH_vkCmdOpticalFlowExecuteNV.invokeExact(PFN_vkCmdOpticalFlowExecuteNV, commandBuffer, session, pExecuteInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdOpticalFlowExecuteNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdOpticalFlowExecuteNV");
+        try { Handles.MH_vkCmdOpticalFlowExecuteNV.invokeExact(handles.PFN_vkCmdOpticalFlowExecuteNV, commandBuffer, session, pExecuteInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdOpticalFlowExecuteNV", e); }
     }
 

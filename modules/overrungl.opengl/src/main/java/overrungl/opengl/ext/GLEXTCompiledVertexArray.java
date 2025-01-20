@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,25 +27,40 @@ import overrungl.util.*;
 public final class GLEXTCompiledVertexArray {
     public static final int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     public static final int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
-    public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glUnlockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glLockArraysEXT;
-    public final MemorySegment PFN_glUnlockArraysEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glLockArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glUnlockArraysEXT = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glLockArraysEXT,
+            FD_glUnlockArraysEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glLockArraysEXT);
+        public static final MethodHandle MH_glUnlockArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glUnlockArraysEXT);
+        public final MemorySegment PFN_glLockArraysEXT;
+        public final MemorySegment PFN_glUnlockArraysEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glLockArraysEXT = func.invoke("glLockArraysEXT");
+            PFN_glUnlockArraysEXT = func.invoke("glUnlockArraysEXT");
+        }
+    }
 
     public GLEXTCompiledVertexArray(overrungl.opengl.GLLoadFunc func) {
-        PFN_glLockArraysEXT = func.invoke("glLockArraysEXT");
-        PFN_glUnlockArraysEXT = func.invoke("glUnlockArraysEXT");
+        this.handles = new Handles(func);
     }
 
     public void LockArraysEXT(@CType("GLint") int first, @CType("GLsizei") int count) {
-        if (Unmarshal.isNullPointer(PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");
-        try { MH_glLockArraysEXT.invokeExact(PFN_glLockArraysEXT, first, count); }
+        if (Unmarshal.isNullPointer(handles.PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");
+        try { Handles.MH_glLockArraysEXT.invokeExact(handles.PFN_glLockArraysEXT, first, count); }
         catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
     }
 
     public void UnlockArraysEXT() {
-        if (Unmarshal.isNullPointer(PFN_glUnlockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
-        try { MH_glUnlockArraysEXT.invokeExact(PFN_glUnlockArraysEXT); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUnlockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
+        try { Handles.MH_glUnlockArraysEXT.invokeExact(handles.PFN_glUnlockArraysEXT); }
         catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
     }
 

@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -27,16 +28,29 @@ public final class GLEXTIndexFunc {
     public static final int GL_INDEX_TEST_EXT = 0x81B5;
     public static final int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
     public static final int GL_INDEX_TEST_REF_EXT = 0x81B7;
-    public static final MethodHandle MH_glIndexFuncEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glIndexFuncEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glIndexFuncEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glIndexFuncEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glIndexFuncEXT = RuntimeHelper.downcall(Descriptors.FD_glIndexFuncEXT);
+        public final MemorySegment PFN_glIndexFuncEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glIndexFuncEXT = func.invoke("glIndexFuncEXT");
+        }
+    }
 
     public GLEXTIndexFunc(overrungl.opengl.GLLoadFunc func) {
-        PFN_glIndexFuncEXT = func.invoke("glIndexFuncEXT");
+        this.handles = new Handles(func);
     }
 
     public void IndexFuncEXT(@CType("GLenum") int func, @CType("GLclampf") float ref) {
-        if (Unmarshal.isNullPointer(PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
-        try { MH_glIndexFuncEXT.invokeExact(PFN_glIndexFuncEXT, func, ref); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
+        try { Handles.MH_glIndexFuncEXT.invokeExact(handles.PFN_glIndexFuncEXT, func, ref); }
         catch (Throwable e) { throw new RuntimeException("error in glIndexFuncEXT", e); }
     }
 

@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLARBSampleShading {
     public static final int GL_SAMPLE_SHADING_ARB = 0x8C36;
     public static final int GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37;
-    public static final MethodHandle MH_glMinSampleShadingARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glMinSampleShadingARB;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glMinSampleShadingARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glMinSampleShadingARB
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glMinSampleShadingARB = RuntimeHelper.downcall(Descriptors.FD_glMinSampleShadingARB);
+        public final MemorySegment PFN_glMinSampleShadingARB;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glMinSampleShadingARB = func.invoke("glMinSampleShadingARB", "glMinSampleShading");
+        }
+    }
 
     public GLARBSampleShading(overrungl.opengl.GLLoadFunc func) {
-        PFN_glMinSampleShadingARB = func.invoke("glMinSampleShadingARB", "glMinSampleShading");
+        this.handles = new Handles(func);
     }
 
     public void MinSampleShadingARB(@CType("GLfloat") float value) {
-        if (Unmarshal.isNullPointer(PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
-        try { MH_glMinSampleShadingARB.invokeExact(PFN_glMinSampleShadingARB, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
+        try { Handles.MH_glMinSampleShadingARB.invokeExact(handles.PFN_glMinSampleShadingARB, value); }
         catch (Throwable e) { throw new RuntimeException("error in glMinSampleShadingARB", e); }
     }
 

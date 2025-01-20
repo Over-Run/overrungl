@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -102,178 +103,227 @@ public final class GLARBFragmentProgram {
     public static final int GL_MATRIX29_ARB = 0x88DD;
     public static final int GL_MATRIX30_ARB = 0x88DE;
     public static final int GL_MATRIX31_ARB = 0x88DF;
-    public static final MethodHandle MH_glProgramStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glBindProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDeleteProgramsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGenProgramsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glProgramEnvParameter4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glProgramEnvParameter4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glProgramEnvParameter4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glProgramEnvParameter4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glProgramLocalParameter4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public static final MethodHandle MH_glProgramLocalParameter4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glProgramLocalParameter4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public static final MethodHandle MH_glProgramLocalParameter4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramEnvParameterdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramEnvParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramLocalParameterdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramLocalParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetProgramStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glIsProgramARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glProgramStringARB;
-    public final MemorySegment PFN_glBindProgramARB;
-    public final MemorySegment PFN_glDeleteProgramsARB;
-    public final MemorySegment PFN_glGenProgramsARB;
-    public final MemorySegment PFN_glProgramEnvParameter4dARB;
-    public final MemorySegment PFN_glProgramEnvParameter4dvARB;
-    public final MemorySegment PFN_glProgramEnvParameter4fARB;
-    public final MemorySegment PFN_glProgramEnvParameter4fvARB;
-    public final MemorySegment PFN_glProgramLocalParameter4dARB;
-    public final MemorySegment PFN_glProgramLocalParameter4dvARB;
-    public final MemorySegment PFN_glProgramLocalParameter4fARB;
-    public final MemorySegment PFN_glProgramLocalParameter4fvARB;
-    public final MemorySegment PFN_glGetProgramEnvParameterdvARB;
-    public final MemorySegment PFN_glGetProgramEnvParameterfvARB;
-    public final MemorySegment PFN_glGetProgramLocalParameterdvARB;
-    public final MemorySegment PFN_glGetProgramLocalParameterfvARB;
-    public final MemorySegment PFN_glGetProgramivARB;
-    public final MemorySegment PFN_glGetProgramStringARB;
-    public final MemorySegment PFN_glIsProgramARB;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glProgramStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glBindProgramARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDeleteProgramsARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGenProgramsARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glProgramEnvParameter4dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glProgramEnvParameter4dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glProgramEnvParameter4fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glProgramEnvParameter4fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glProgramLocalParameter4dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        public static final FunctionDescriptor FD_glProgramLocalParameter4dvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glProgramLocalParameter4fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        public static final FunctionDescriptor FD_glProgramLocalParameter4fvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramEnvParameterdvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramEnvParameterfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramLocalParameterdvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramLocalParameterfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetProgramStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glIsProgramARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glProgramStringARB,
+            FD_glBindProgramARB,
+            FD_glDeleteProgramsARB,
+            FD_glGenProgramsARB,
+            FD_glProgramEnvParameter4dARB,
+            FD_glProgramEnvParameter4dvARB,
+            FD_glProgramEnvParameter4fARB,
+            FD_glProgramEnvParameter4fvARB,
+            FD_glProgramLocalParameter4dARB,
+            FD_glProgramLocalParameter4dvARB,
+            FD_glProgramLocalParameter4fARB,
+            FD_glProgramLocalParameter4fvARB,
+            FD_glGetProgramEnvParameterdvARB,
+            FD_glGetProgramEnvParameterfvARB,
+            FD_glGetProgramLocalParameterdvARB,
+            FD_glGetProgramLocalParameterfvARB,
+            FD_glGetProgramivARB,
+            FD_glGetProgramStringARB,
+            FD_glIsProgramARB
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glProgramStringARB = RuntimeHelper.downcall(Descriptors.FD_glProgramStringARB);
+        public static final MethodHandle MH_glBindProgramARB = RuntimeHelper.downcall(Descriptors.FD_glBindProgramARB);
+        public static final MethodHandle MH_glDeleteProgramsARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteProgramsARB);
+        public static final MethodHandle MH_glGenProgramsARB = RuntimeHelper.downcall(Descriptors.FD_glGenProgramsARB);
+        public static final MethodHandle MH_glProgramEnvParameter4dARB = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameter4dARB);
+        public static final MethodHandle MH_glProgramEnvParameter4dvARB = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameter4dvARB);
+        public static final MethodHandle MH_glProgramEnvParameter4fARB = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameter4fARB);
+        public static final MethodHandle MH_glProgramEnvParameter4fvARB = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameter4fvARB);
+        public static final MethodHandle MH_glProgramLocalParameter4dARB = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameter4dARB);
+        public static final MethodHandle MH_glProgramLocalParameter4dvARB = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameter4dvARB);
+        public static final MethodHandle MH_glProgramLocalParameter4fARB = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameter4fARB);
+        public static final MethodHandle MH_glProgramLocalParameter4fvARB = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameter4fvARB);
+        public static final MethodHandle MH_glGetProgramEnvParameterdvARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterdvARB);
+        public static final MethodHandle MH_glGetProgramEnvParameterfvARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterfvARB);
+        public static final MethodHandle MH_glGetProgramLocalParameterdvARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterdvARB);
+        public static final MethodHandle MH_glGetProgramLocalParameterfvARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterfvARB);
+        public static final MethodHandle MH_glGetProgramivARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramivARB);
+        public static final MethodHandle MH_glGetProgramStringARB = RuntimeHelper.downcall(Descriptors.FD_glGetProgramStringARB);
+        public static final MethodHandle MH_glIsProgramARB = RuntimeHelper.downcall(Descriptors.FD_glIsProgramARB);
+        public final MemorySegment PFN_glProgramStringARB;
+        public final MemorySegment PFN_glBindProgramARB;
+        public final MemorySegment PFN_glDeleteProgramsARB;
+        public final MemorySegment PFN_glGenProgramsARB;
+        public final MemorySegment PFN_glProgramEnvParameter4dARB;
+        public final MemorySegment PFN_glProgramEnvParameter4dvARB;
+        public final MemorySegment PFN_glProgramEnvParameter4fARB;
+        public final MemorySegment PFN_glProgramEnvParameter4fvARB;
+        public final MemorySegment PFN_glProgramLocalParameter4dARB;
+        public final MemorySegment PFN_glProgramLocalParameter4dvARB;
+        public final MemorySegment PFN_glProgramLocalParameter4fARB;
+        public final MemorySegment PFN_glProgramLocalParameter4fvARB;
+        public final MemorySegment PFN_glGetProgramEnvParameterdvARB;
+        public final MemorySegment PFN_glGetProgramEnvParameterfvARB;
+        public final MemorySegment PFN_glGetProgramLocalParameterdvARB;
+        public final MemorySegment PFN_glGetProgramLocalParameterfvARB;
+        public final MemorySegment PFN_glGetProgramivARB;
+        public final MemorySegment PFN_glGetProgramStringARB;
+        public final MemorySegment PFN_glIsProgramARB;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glProgramStringARB = func.invoke("glProgramStringARB");
+            PFN_glBindProgramARB = func.invoke("glBindProgramARB");
+            PFN_glDeleteProgramsARB = func.invoke("glDeleteProgramsARB");
+            PFN_glGenProgramsARB = func.invoke("glGenProgramsARB");
+            PFN_glProgramEnvParameter4dARB = func.invoke("glProgramEnvParameter4dARB");
+            PFN_glProgramEnvParameter4dvARB = func.invoke("glProgramEnvParameter4dvARB");
+            PFN_glProgramEnvParameter4fARB = func.invoke("glProgramEnvParameter4fARB");
+            PFN_glProgramEnvParameter4fvARB = func.invoke("glProgramEnvParameter4fvARB");
+            PFN_glProgramLocalParameter4dARB = func.invoke("glProgramLocalParameter4dARB");
+            PFN_glProgramLocalParameter4dvARB = func.invoke("glProgramLocalParameter4dvARB");
+            PFN_glProgramLocalParameter4fARB = func.invoke("glProgramLocalParameter4fARB");
+            PFN_glProgramLocalParameter4fvARB = func.invoke("glProgramLocalParameter4fvARB");
+            PFN_glGetProgramEnvParameterdvARB = func.invoke("glGetProgramEnvParameterdvARB");
+            PFN_glGetProgramEnvParameterfvARB = func.invoke("glGetProgramEnvParameterfvARB");
+            PFN_glGetProgramLocalParameterdvARB = func.invoke("glGetProgramLocalParameterdvARB");
+            PFN_glGetProgramLocalParameterfvARB = func.invoke("glGetProgramLocalParameterfvARB");
+            PFN_glGetProgramivARB = func.invoke("glGetProgramivARB");
+            PFN_glGetProgramStringARB = func.invoke("glGetProgramStringARB");
+            PFN_glIsProgramARB = func.invoke("glIsProgramARB");
+        }
+    }
 
     public GLARBFragmentProgram(overrungl.opengl.GLLoadFunc func) {
-        PFN_glProgramStringARB = func.invoke("glProgramStringARB");
-        PFN_glBindProgramARB = func.invoke("glBindProgramARB");
-        PFN_glDeleteProgramsARB = func.invoke("glDeleteProgramsARB");
-        PFN_glGenProgramsARB = func.invoke("glGenProgramsARB");
-        PFN_glProgramEnvParameter4dARB = func.invoke("glProgramEnvParameter4dARB");
-        PFN_glProgramEnvParameter4dvARB = func.invoke("glProgramEnvParameter4dvARB");
-        PFN_glProgramEnvParameter4fARB = func.invoke("glProgramEnvParameter4fARB");
-        PFN_glProgramEnvParameter4fvARB = func.invoke("glProgramEnvParameter4fvARB");
-        PFN_glProgramLocalParameter4dARB = func.invoke("glProgramLocalParameter4dARB");
-        PFN_glProgramLocalParameter4dvARB = func.invoke("glProgramLocalParameter4dvARB");
-        PFN_glProgramLocalParameter4fARB = func.invoke("glProgramLocalParameter4fARB");
-        PFN_glProgramLocalParameter4fvARB = func.invoke("glProgramLocalParameter4fvARB");
-        PFN_glGetProgramEnvParameterdvARB = func.invoke("glGetProgramEnvParameterdvARB");
-        PFN_glGetProgramEnvParameterfvARB = func.invoke("glGetProgramEnvParameterfvARB");
-        PFN_glGetProgramLocalParameterdvARB = func.invoke("glGetProgramLocalParameterdvARB");
-        PFN_glGetProgramLocalParameterfvARB = func.invoke("glGetProgramLocalParameterfvARB");
-        PFN_glGetProgramivARB = func.invoke("glGetProgramivARB");
-        PFN_glGetProgramStringARB = func.invoke("glGetProgramStringARB");
-        PFN_glIsProgramARB = func.invoke("glIsProgramARB");
+        this.handles = new Handles(func);
     }
 
     public void ProgramStringARB(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLsizei") int len, @CType("const void *") java.lang.foreign.MemorySegment string) {
-        if (Unmarshal.isNullPointer(PFN_glProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glProgramStringARB");
-        try { MH_glProgramStringARB.invokeExact(PFN_glProgramStringARB, target, format, len, string); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glProgramStringARB");
+        try { Handles.MH_glProgramStringARB.invokeExact(handles.PFN_glProgramStringARB, target, format, len, string); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramStringARB", e); }
     }
 
     public void BindProgramARB(@CType("GLenum") int target, @CType("GLuint") int program) {
-        if (Unmarshal.isNullPointer(PFN_glBindProgramARB)) throw new SymbolNotFoundError("Symbol not found: glBindProgramARB");
-        try { MH_glBindProgramARB.invokeExact(PFN_glBindProgramARB, target, program); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindProgramARB)) throw new SymbolNotFoundError("Symbol not found: glBindProgramARB");
+        try { Handles.MH_glBindProgramARB.invokeExact(handles.PFN_glBindProgramARB, target, program); }
         catch (Throwable e) { throw new RuntimeException("error in glBindProgramARB", e); }
     }
 
     public void DeleteProgramsARB(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment programs) {
-        if (Unmarshal.isNullPointer(PFN_glDeleteProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteProgramsARB");
-        try { MH_glDeleteProgramsARB.invokeExact(PFN_glDeleteProgramsARB, n, programs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDeleteProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteProgramsARB");
+        try { Handles.MH_glDeleteProgramsARB.invokeExact(handles.PFN_glDeleteProgramsARB, n, programs); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteProgramsARB", e); }
     }
 
     public void GenProgramsARB(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment programs) {
-        if (Unmarshal.isNullPointer(PFN_glGenProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glGenProgramsARB");
-        try { MH_glGenProgramsARB.invokeExact(PFN_glGenProgramsARB, n, programs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGenProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glGenProgramsARB");
+        try { Handles.MH_glGenProgramsARB.invokeExact(handles.PFN_glGenProgramsARB, n, programs); }
         catch (Throwable e) { throw new RuntimeException("error in glGenProgramsARB", e); }
     }
 
     public void ProgramEnvParameter4dARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z, @CType("GLdouble") double w) {
-        if (Unmarshal.isNullPointer(PFN_glProgramEnvParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dARB");
-        try { MH_glProgramEnvParameter4dARB.invokeExact(PFN_glProgramEnvParameter4dARB, target, index, x, y, z, w); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dARB");
+        try { Handles.MH_glProgramEnvParameter4dARB.invokeExact(handles.PFN_glProgramEnvParameter4dARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameter4dARB", e); }
     }
 
     public void ProgramEnvParameter4dvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glProgramEnvParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dvARB");
-        try { MH_glProgramEnvParameter4dvARB.invokeExact(PFN_glProgramEnvParameter4dvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dvARB");
+        try { Handles.MH_glProgramEnvParameter4dvARB.invokeExact(handles.PFN_glProgramEnvParameter4dvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameter4dvARB", e); }
     }
 
     public void ProgramEnvParameter4fARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z, @CType("GLfloat") float w) {
-        if (Unmarshal.isNullPointer(PFN_glProgramEnvParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fARB");
-        try { MH_glProgramEnvParameter4fARB.invokeExact(PFN_glProgramEnvParameter4fARB, target, index, x, y, z, w); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fARB");
+        try { Handles.MH_glProgramEnvParameter4fARB.invokeExact(handles.PFN_glProgramEnvParameter4fARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameter4fARB", e); }
     }
 
     public void ProgramEnvParameter4fvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glProgramEnvParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fvARB");
-        try { MH_glProgramEnvParameter4fvARB.invokeExact(PFN_glProgramEnvParameter4fvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fvARB");
+        try { Handles.MH_glProgramEnvParameter4fvARB.invokeExact(handles.PFN_glProgramEnvParameter4fvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameter4fvARB", e); }
     }
 
     public void ProgramLocalParameter4dARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z, @CType("GLdouble") double w) {
-        if (Unmarshal.isNullPointer(PFN_glProgramLocalParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dARB");
-        try { MH_glProgramLocalParameter4dARB.invokeExact(PFN_glProgramLocalParameter4dARB, target, index, x, y, z, w); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dARB");
+        try { Handles.MH_glProgramLocalParameter4dARB.invokeExact(handles.PFN_glProgramLocalParameter4dARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameter4dARB", e); }
     }
 
     public void ProgramLocalParameter4dvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLdouble *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glProgramLocalParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dvARB");
-        try { MH_glProgramLocalParameter4dvARB.invokeExact(PFN_glProgramLocalParameter4dvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dvARB");
+        try { Handles.MH_glProgramLocalParameter4dvARB.invokeExact(handles.PFN_glProgramLocalParameter4dvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameter4dvARB", e); }
     }
 
     public void ProgramLocalParameter4fARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z, @CType("GLfloat") float w) {
-        if (Unmarshal.isNullPointer(PFN_glProgramLocalParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fARB");
-        try { MH_glProgramLocalParameter4fARB.invokeExact(PFN_glProgramLocalParameter4fARB, target, index, x, y, z, w); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fARB");
+        try { Handles.MH_glProgramLocalParameter4fARB.invokeExact(handles.PFN_glProgramLocalParameter4fARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameter4fARB", e); }
     }
 
     public void ProgramLocalParameter4fvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glProgramLocalParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fvARB");
-        try { MH_glProgramLocalParameter4fvARB.invokeExact(PFN_glProgramLocalParameter4fvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fvARB");
+        try { Handles.MH_glProgramLocalParameter4fvARB.invokeExact(handles.PFN_glProgramLocalParameter4fvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameter4fvARB", e); }
     }
 
     public void GetProgramEnvParameterdvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramEnvParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterdvARB");
-        try { MH_glGetProgramEnvParameterdvARB.invokeExact(PFN_glGetProgramEnvParameterdvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramEnvParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterdvARB");
+        try { Handles.MH_glGetProgramEnvParameterdvARB.invokeExact(handles.PFN_glGetProgramEnvParameterdvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramEnvParameterdvARB", e); }
     }
 
     public void GetProgramEnvParameterfvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramEnvParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterfvARB");
-        try { MH_glGetProgramEnvParameterfvARB.invokeExact(PFN_glGetProgramEnvParameterfvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramEnvParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterfvARB");
+        try { Handles.MH_glGetProgramEnvParameterfvARB.invokeExact(handles.PFN_glGetProgramEnvParameterfvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramEnvParameterfvARB", e); }
     }
 
     public void GetProgramLocalParameterdvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramLocalParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterdvARB");
-        try { MH_glGetProgramLocalParameterdvARB.invokeExact(PFN_glGetProgramLocalParameterdvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramLocalParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterdvARB");
+        try { Handles.MH_glGetProgramLocalParameterdvARB.invokeExact(handles.PFN_glGetProgramLocalParameterdvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramLocalParameterdvARB", e); }
     }
 
     public void GetProgramLocalParameterfvARB(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramLocalParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterfvARB");
-        try { MH_glGetProgramLocalParameterfvARB.invokeExact(PFN_glGetProgramLocalParameterfvARB, target, index, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramLocalParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterfvARB");
+        try { Handles.MH_glGetProgramLocalParameterfvARB.invokeExact(handles.PFN_glGetProgramLocalParameterfvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramLocalParameterfvARB", e); }
     }
 
     public void GetProgramivARB(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramivARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramivARB");
-        try { MH_glGetProgramivARB.invokeExact(PFN_glGetProgramivARB, target, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramivARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramivARB");
+        try { Handles.MH_glGetProgramivARB.invokeExact(handles.PFN_glGetProgramivARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramivARB", e); }
     }
 
     public void GetProgramStringARB(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void*") java.lang.foreign.MemorySegment string) {
-        if (Unmarshal.isNullPointer(PFN_glGetProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStringARB");
-        try { MH_glGetProgramStringARB.invokeExact(PFN_glGetProgramStringARB, target, pname, string); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStringARB");
+        try { Handles.MH_glGetProgramStringARB.invokeExact(handles.PFN_glGetProgramStringARB, target, pname, string); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramStringARB", e); }
     }
 
     public @CType("GLboolean") boolean IsProgramARB(@CType("GLuint") int program) {
-        if (Unmarshal.isNullPointer(PFN_glIsProgramARB)) throw new SymbolNotFoundError("Symbol not found: glIsProgramARB");
-        try { return (boolean) MH_glIsProgramARB.invokeExact(PFN_glIsProgramARB, program); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIsProgramARB)) throw new SymbolNotFoundError("Symbol not found: glIsProgramARB");
+        try { return (boolean) Handles.MH_glIsProgramARB.invokeExact(handles.PFN_glIsProgramARB, program); }
         catch (Throwable e) { throw new RuntimeException("error in glIsProgramARB", e); }
     }
 

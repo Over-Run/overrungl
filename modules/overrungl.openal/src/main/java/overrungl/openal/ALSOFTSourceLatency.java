@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -28,36 +29,77 @@ public final class ALSOFTSourceLatency {
     public static final int AL_SAMPLE_OFFSET_LATENCY_SOFT = 0x1200;
     public static final int AL_SEC_OFFSET_LATENCY_SOFT = 0x1201;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alSourcedSOFT`.
+        public static final FunctionDescriptor FD_alSourcedSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE);
+        /// The function descriptor of `alSource3dSOFT`.
+        public static final FunctionDescriptor FD_alSource3dSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        /// The function descriptor of `alSourcedvSOFT`.
+        public static final FunctionDescriptor FD_alSourcedvSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcedSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcedSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3dSOFT`.
+        public static final FunctionDescriptor FD_alGetSource3dSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcedvSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcedvSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourcei64SOFT`.
+        public static final FunctionDescriptor FD_alSourcei64SOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `alSource3i64SOFT`.
+        public static final FunctionDescriptor FD_alSource3i64SOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `alSourcei64vSOFT`.
+        public static final FunctionDescriptor FD_alSourcei64vSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcei64SOFT`.
+        public static final FunctionDescriptor FD_alGetSourcei64SOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3i64SOFT`.
+        public static final FunctionDescriptor FD_alGetSource3i64SOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcei64vSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcei64vSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alSourcedSOFT,
+            FD_alSource3dSOFT,
+            FD_alSourcedvSOFT,
+            FD_alGetSourcedSOFT,
+            FD_alGetSource3dSOFT,
+            FD_alGetSourcedvSOFT,
+            FD_alSourcei64SOFT,
+            FD_alSource3i64SOFT,
+            FD_alSourcei64vSOFT,
+            FD_alGetSourcei64SOFT,
+            FD_alGetSource3i64SOFT,
+            FD_alGetSourcei64vSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alSourcedSOFT`.
-        public static final MethodHandle MH_alSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_alSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedSOFT", Descriptors.FD_alSourcedSOFT);
         /// The method handle of `alSource3dSOFT`.
-        public static final MethodHandle MH_alSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3dSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_alSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3dSOFT", Descriptors.FD_alSource3dSOFT);
         /// The method handle of `alSourcedvSOFT`.
-        public static final MethodHandle MH_alSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedvSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedvSOFT", Descriptors.FD_alSourcedvSOFT);
         /// The method handle of `alGetSourcedSOFT`.
-        public static final MethodHandle MH_alGetSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedSOFT", Descriptors.FD_alGetSourcedSOFT);
         /// The method handle of `alGetSource3dSOFT`.
-        public static final MethodHandle MH_alGetSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3dSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3dSOFT", Descriptors.FD_alGetSource3dSOFT);
         /// The method handle of `alGetSourcedvSOFT`.
-        public static final MethodHandle MH_alGetSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedvSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedvSOFT", Descriptors.FD_alGetSourcedvSOFT);
         /// The method handle of `alSourcei64SOFT`.
-        public static final MethodHandle MH_alSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64SOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64SOFT", Descriptors.FD_alSourcei64SOFT);
         /// The method handle of `alSource3i64SOFT`.
-        public static final MethodHandle MH_alSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3i64SOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3i64SOFT", Descriptors.FD_alSource3i64SOFT);
         /// The method handle of `alSourcei64vSOFT`.
-        public static final MethodHandle MH_alSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64vSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64vSOFT", Descriptors.FD_alSourcei64vSOFT);
         /// The method handle of `alGetSourcei64SOFT`.
-        public static final MethodHandle MH_alGetSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64SOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64SOFT", Descriptors.FD_alGetSourcei64SOFT);
         /// The method handle of `alGetSource3i64SOFT`.
-        public static final MethodHandle MH_alGetSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3i64SOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3i64SOFT", Descriptors.FD_alGetSource3i64SOFT);
         /// The method handle of `alGetSourcei64vSOFT`.
-        public static final MethodHandle MH_alGetSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64vSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64vSOFT", Descriptors.FD_alGetSourcei64vSOFT);
     }
-    //endregion
 
     public static void alSourcedSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble") double value) {
         if (Handles.MH_alSourcedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcedSOFT");

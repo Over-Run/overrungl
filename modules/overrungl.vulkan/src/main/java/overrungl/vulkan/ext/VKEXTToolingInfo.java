@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTToolingInfo {
     public static final int VK_EXT_TOOLING_INFO_SPEC_VERSION = 1;
@@ -34,16 +35,29 @@ public class VKEXTToolingInfo {
     public static final int VK_TOOL_PURPOSE_TRACING_BIT_EXT = VK_TOOL_PURPOSE_TRACING_BIT;
     public static final int VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT = VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT;
     public static final int VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT = VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT;
-    public static final MethodHandle MH_vkGetPhysicalDeviceToolPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkGetPhysicalDeviceToolPropertiesEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkGetPhysicalDeviceToolPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkGetPhysicalDeviceToolPropertiesEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkGetPhysicalDeviceToolPropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceToolPropertiesEXT);
+        public final MemorySegment PFN_vkGetPhysicalDeviceToolPropertiesEXT;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkGetPhysicalDeviceToolPropertiesEXT = func.invoke(device, "vkGetPhysicalDeviceToolPropertiesEXT", "vkGetPhysicalDeviceToolProperties");
+        }
+    }
 
     public VKEXTToolingInfo(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkGetPhysicalDeviceToolPropertiesEXT = func.invoke(device, "vkGetPhysicalDeviceToolPropertiesEXT", "vkGetPhysicalDeviceToolProperties");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int GetPhysicalDeviceToolPropertiesEXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pToolCount, @CType("VkPhysicalDeviceToolProperties *") MemorySegment pToolProperties) {
-        if (Unmarshal.isNullPointer(PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
-        try { return (int) MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice, pToolCount, pToolProperties); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(handles.PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice, pToolCount, pToolProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceToolPropertiesEXT", e); }
     }
 

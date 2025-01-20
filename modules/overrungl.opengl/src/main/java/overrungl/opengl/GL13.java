@@ -19,6 +19,7 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -83,89 +84,118 @@ public class GL13 extends GL12 {
     public static final int GL_NUM_COMPRESSED_TEXTURE_FORMATS = 0x86A2;
     public static final int GL_COMPRESSED_TEXTURE_FORMATS = 0x86A3;
     public static final int GL_CLAMP_TO_BORDER = 0x812D;
-    public static final MethodHandle MH_glActiveTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glSampleCoverage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glCompressedTexImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCompressedTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCompressedTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCompressedTexSubImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCompressedTexSubImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glCompressedTexSubImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetCompressedTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glActiveTexture;
-    public final MemorySegment PFN_glSampleCoverage;
-    public final MemorySegment PFN_glCompressedTexImage3D;
-    public final MemorySegment PFN_glCompressedTexImage2D;
-    public final MemorySegment PFN_glCompressedTexImage1D;
-    public final MemorySegment PFN_glCompressedTexSubImage3D;
-    public final MemorySegment PFN_glCompressedTexSubImage2D;
-    public final MemorySegment PFN_glCompressedTexSubImage1D;
-    public final MemorySegment PFN_glGetCompressedTexImage;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glActiveTexture = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glSampleCoverage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glCompressedTexImage3D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCompressedTexImage2D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCompressedTexImage1D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCompressedTexSubImage3D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCompressedTexSubImage2D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glCompressedTexSubImage1D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetCompressedTexImage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glActiveTexture,
+            FD_glSampleCoverage,
+            FD_glCompressedTexImage3D,
+            FD_glCompressedTexImage2D,
+            FD_glCompressedTexImage1D,
+            FD_glCompressedTexSubImage3D,
+            FD_glCompressedTexSubImage2D,
+            FD_glCompressedTexSubImage1D,
+            FD_glGetCompressedTexImage
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glActiveTexture = RuntimeHelper.downcall(Descriptors.FD_glActiveTexture);
+        public static final MethodHandle MH_glSampleCoverage = RuntimeHelper.downcall(Descriptors.FD_glSampleCoverage);
+        public static final MethodHandle MH_glCompressedTexImage3D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexImage3D);
+        public static final MethodHandle MH_glCompressedTexImage2D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexImage2D);
+        public static final MethodHandle MH_glCompressedTexImage1D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexImage1D);
+        public static final MethodHandle MH_glCompressedTexSubImage3D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexSubImage3D);
+        public static final MethodHandle MH_glCompressedTexSubImage2D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexSubImage2D);
+        public static final MethodHandle MH_glCompressedTexSubImage1D = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexSubImage1D);
+        public static final MethodHandle MH_glGetCompressedTexImage = RuntimeHelper.downcall(Descriptors.FD_glGetCompressedTexImage);
+        public final MemorySegment PFN_glActiveTexture;
+        public final MemorySegment PFN_glSampleCoverage;
+        public final MemorySegment PFN_glCompressedTexImage3D;
+        public final MemorySegment PFN_glCompressedTexImage2D;
+        public final MemorySegment PFN_glCompressedTexImage1D;
+        public final MemorySegment PFN_glCompressedTexSubImage3D;
+        public final MemorySegment PFN_glCompressedTexSubImage2D;
+        public final MemorySegment PFN_glCompressedTexSubImage1D;
+        public final MemorySegment PFN_glGetCompressedTexImage;
+        private Handles(GLLoadFunc func) {
+            PFN_glActiveTexture = func.invoke("glActiveTexture", "glActiveTextureARB");
+            PFN_glSampleCoverage = func.invoke("glSampleCoverage", "glSampleCoverageARB");
+            PFN_glCompressedTexImage3D = func.invoke("glCompressedTexImage3D", "glCompressedTexImage3DARB");
+            PFN_glCompressedTexImage2D = func.invoke("glCompressedTexImage2D", "glCompressedTexImage2DARB");
+            PFN_glCompressedTexImage1D = func.invoke("glCompressedTexImage1D", "glCompressedTexImage1DARB");
+            PFN_glCompressedTexSubImage3D = func.invoke("glCompressedTexSubImage3D", "glCompressedTexSubImage3DARB");
+            PFN_glCompressedTexSubImage2D = func.invoke("glCompressedTexSubImage2D", "glCompressedTexSubImage2DARB");
+            PFN_glCompressedTexSubImage1D = func.invoke("glCompressedTexSubImage1D", "glCompressedTexSubImage1DARB");
+            PFN_glGetCompressedTexImage = func.invoke("glGetCompressedTexImage", "glGetCompressedTexImageARB");
+        }
+    }
 
     public GL13(GLLoadFunc func) {
         super(func);
-        PFN_glActiveTexture = func.invoke("glActiveTexture", "glActiveTextureARB");
-        PFN_glSampleCoverage = func.invoke("glSampleCoverage", "glSampleCoverageARB");
-        PFN_glCompressedTexImage3D = func.invoke("glCompressedTexImage3D", "glCompressedTexImage3DARB");
-        PFN_glCompressedTexImage2D = func.invoke("glCompressedTexImage2D", "glCompressedTexImage2DARB");
-        PFN_glCompressedTexImage1D = func.invoke("glCompressedTexImage1D", "glCompressedTexImage1DARB");
-        PFN_glCompressedTexSubImage3D = func.invoke("glCompressedTexSubImage3D", "glCompressedTexSubImage3DARB");
-        PFN_glCompressedTexSubImage2D = func.invoke("glCompressedTexSubImage2D", "glCompressedTexSubImage2DARB");
-        PFN_glCompressedTexSubImage1D = func.invoke("glCompressedTexSubImage1D", "glCompressedTexSubImage1DARB");
-        PFN_glGetCompressedTexImage = func.invoke("glGetCompressedTexImage", "glGetCompressedTexImageARB");
+        this.handles = new Handles(func);
     }
 
     public void ActiveTexture(@CType("GLenum") int texture) {
-        if (Unmarshal.isNullPointer(PFN_glActiveTexture)) throw new SymbolNotFoundError("Symbol not found: glActiveTexture");
-        try { MH_glActiveTexture.invokeExact(PFN_glActiveTexture, texture); }
+        if (Unmarshal.isNullPointer(handles.PFN_glActiveTexture)) throw new SymbolNotFoundError("Symbol not found: glActiveTexture");
+        try { Handles.MH_glActiveTexture.invokeExact(handles.PFN_glActiveTexture, texture); }
         catch (Throwable e) { throw new RuntimeException("error in glActiveTexture", e); }
     }
 
     public void SampleCoverage(@CType("GLfloat") float value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(PFN_glSampleCoverage)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverage");
-        try { MH_glSampleCoverage.invokeExact(PFN_glSampleCoverage, value, invert); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSampleCoverage)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverage");
+        try { Handles.MH_glSampleCoverage.invokeExact(handles.PFN_glSampleCoverage, value, invert); }
         catch (Throwable e) { throw new RuntimeException("error in glSampleCoverage", e); }
     }
 
     public void CompressedTexImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage3D");
-        try { MH_glCompressedTexImage3D.invokeExact(PFN_glCompressedTexImage3D, target, level, internalformat, width, height, depth, border, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage3D");
+        try { Handles.MH_glCompressedTexImage3D.invokeExact(handles.PFN_glCompressedTexImage3D, target, level, internalformat, width, height, depth, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage3D", e); }
     }
 
     public void CompressedTexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage2D");
-        try { MH_glCompressedTexImage2D.invokeExact(PFN_glCompressedTexImage2D, target, level, internalformat, width, height, border, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage2D");
+        try { Handles.MH_glCompressedTexImage2D.invokeExact(handles.PFN_glCompressedTexImage2D, target, level, internalformat, width, height, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage2D", e); }
     }
 
     public void CompressedTexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage1D");
-        try { MH_glCompressedTexImage1D.invokeExact(PFN_glCompressedTexImage1D, target, level, internalformat, width, border, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage1D");
+        try { Handles.MH_glCompressedTexImage1D.invokeExact(handles.PFN_glCompressedTexImage1D, target, level, internalformat, width, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage1D", e); }
     }
 
     public void CompressedTexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage3D");
-        try { MH_glCompressedTexSubImage3D.invokeExact(PFN_glCompressedTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage3D");
+        try { Handles.MH_glCompressedTexSubImage3D.invokeExact(handles.PFN_glCompressedTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage3D", e); }
     }
 
     public void CompressedTexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage2D");
-        try { MH_glCompressedTexSubImage2D.invokeExact(PFN_glCompressedTexSubImage2D, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage2D");
+        try { Handles.MH_glCompressedTexSubImage2D.invokeExact(handles.PFN_glCompressedTexSubImage2D, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage2D", e); }
     }
 
     public void CompressedTexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glCompressedTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage1D");
-        try { MH_glCompressedTexSubImage1D.invokeExact(PFN_glCompressedTexSubImage1D, target, level, xoffset, width, format, imageSize, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage1D");
+        try { Handles.MH_glCompressedTexSubImage1D.invokeExact(handles.PFN_glCompressedTexSubImage1D, target, level, xoffset, width, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage1D", e); }
     }
 
     public void GetCompressedTexImage(@CType("GLenum") int target, @CType("GLint") int level, @CType("void*") java.lang.foreign.MemorySegment img) {
-        if (Unmarshal.isNullPointer(PFN_glGetCompressedTexImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTexImage");
-        try { MH_glGetCompressedTexImage.invokeExact(PFN_glGetCompressedTexImage, target, level, img); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetCompressedTexImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTexImage");
+        try { Handles.MH_glGetCompressedTexImage.invokeExact(handles.PFN_glGetCompressedTexImage, target, level, img); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTexImage", e); }
     }
 

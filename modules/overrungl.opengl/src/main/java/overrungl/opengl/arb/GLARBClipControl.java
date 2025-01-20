@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,16 +31,29 @@ public final class GLARBClipControl {
     public static final int GL_ZERO_TO_ONE = 0x935F;
     public static final int GL_CLIP_ORIGIN = 0x935C;
     public static final int GL_CLIP_DEPTH_MODE = 0x935D;
-    public static final MethodHandle MH_glClipControl = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glClipControl;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glClipControl = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glClipControl
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glClipControl = RuntimeHelper.downcall(Descriptors.FD_glClipControl);
+        public final MemorySegment PFN_glClipControl;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glClipControl = func.invoke("glClipControl");
+        }
+    }
 
     public GLARBClipControl(overrungl.opengl.GLLoadFunc func) {
-        PFN_glClipControl = func.invoke("glClipControl");
+        this.handles = new Handles(func);
     }
 
     public void ClipControl(@CType("GLenum") int origin, @CType("GLenum") int depth) {
-        if (Unmarshal.isNullPointer(PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
-        try { MH_glClipControl.invokeExact(PFN_glClipControl, origin, depth); }
+        if (Unmarshal.isNullPointer(handles.PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
+        try { Handles.MH_glClipControl.invokeExact(handles.PFN_glClipControl, origin, depth); }
         catch (Throwable e) { throw new RuntimeException("error in glClipControl", e); }
     }
 

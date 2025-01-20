@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -28,20 +29,37 @@ public final class ALSOFTCallbackBuffer {
     public static final int AL_BUFFER_CALLBACK_FUNCTION_SOFT = 0x19A0;
     public static final int AL_BUFFER_CALLBACK_USER_PARAM_SOFT = 0x19A1;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alBufferCallbackSOFT`.
+        public static final FunctionDescriptor FD_alBufferCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferPtrSOFT`.
+        public static final FunctionDescriptor FD_alGetBufferPtrSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBuffer3PtrSOFT`.
+        public static final FunctionDescriptor FD_alGetBuffer3PtrSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferPtrvSOFT`.
+        public static final FunctionDescriptor FD_alGetBufferPtrvSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alBufferCallbackSOFT,
+            FD_alGetBufferPtrSOFT,
+            FD_alGetBuffer3PtrSOFT,
+            FD_alGetBufferPtrvSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alBufferCallbackSOFT`.
-        public static final MethodHandle MH_alBufferCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferCallbackSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferCallbackSOFT", Descriptors.FD_alBufferCallbackSOFT);
         /// The method handle of `alGetBufferPtrSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferPtrSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrSOFT", Descriptors.FD_alGetBufferPtrSOFT);
         /// The method handle of `alGetBuffer3PtrSOFT`.
-        public static final MethodHandle MH_alGetBuffer3PtrSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3PtrSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBuffer3PtrSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3PtrSOFT", Descriptors.FD_alGetBuffer3PtrSOFT);
         /// The method handle of `alGetBufferPtrvSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrvSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferPtrvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrvSOFT", Descriptors.FD_alGetBufferPtrvSOFT);
     }
-    //endregion
 
     public static void alBufferCallbackSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("ALsizei") int freq, @CType("ALBUFFERCALLBACKTYPESOFT") java.lang.foreign.MemorySegment callback, @CType("ALvoid *") java.lang.foreign.MemorySegment userptr) {
         if (Handles.MH_alBufferCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferCallbackSOFT");

@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -158,16 +159,29 @@ public final class GLARBInternalformatQuery2 {
     public static final int GL_VIEW_CLASS_ASTC_10x10_RGBA = 0x9393;
     public static final int GL_VIEW_CLASS_ASTC_12x10_RGBA = 0x9394;
     public static final int GL_VIEW_CLASS_ASTC_12x12_RGBA = 0x9395;
-    public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetInternalformati64v;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glGetInternalformati64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glGetInternalformati64v
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformati64v);
+        public final MemorySegment PFN_glGetInternalformati64v;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");
+        }
+    }
 
     public GLARBInternalformatQuery2(overrungl.opengl.GLLoadFunc func) {
-        PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");
+        this.handles = new Handles(func);
     }
 
     public void GetInternalformati64v(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
-        try { MH_glGetInternalformati64v.invokeExact(PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
+        try { Handles.MH_glGetInternalformati64v.invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInternalformati64v", e); }
     }
 

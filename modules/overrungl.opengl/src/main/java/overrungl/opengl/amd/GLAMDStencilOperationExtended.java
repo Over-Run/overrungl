@@ -19,6 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -28,16 +29,29 @@ public final class GLAMDStencilOperationExtended {
     public static final int GL_REPLACE_VALUE_AMD = 0x874B;
     public static final int GL_STENCIL_OP_VALUE_AMD = 0x874C;
     public static final int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
-    public static final MethodHandle MH_glStencilOpValueAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glStencilOpValueAMD;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glStencilOpValueAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glStencilOpValueAMD
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glStencilOpValueAMD = RuntimeHelper.downcall(Descriptors.FD_glStencilOpValueAMD);
+        public final MemorySegment PFN_glStencilOpValueAMD;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glStencilOpValueAMD = func.invoke("glStencilOpValueAMD");
+        }
+    }
 
     public GLAMDStencilOperationExtended(overrungl.opengl.GLLoadFunc func) {
-        PFN_glStencilOpValueAMD = func.invoke("glStencilOpValueAMD");
+        this.handles = new Handles(func);
     }
 
     public void StencilOpValueAMD(@CType("GLenum") int face, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(PFN_glStencilOpValueAMD)) throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD");
-        try { MH_glStencilOpValueAMD.invokeExact(PFN_glStencilOpValueAMD, face, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glStencilOpValueAMD)) throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD");
+        try { Handles.MH_glStencilOpValueAMD.invokeExact(handles.PFN_glStencilOpValueAMD, face, value); }
         catch (Throwable e) { throw new RuntimeException("error in glStencilOpValueAMD", e); }
     }
 

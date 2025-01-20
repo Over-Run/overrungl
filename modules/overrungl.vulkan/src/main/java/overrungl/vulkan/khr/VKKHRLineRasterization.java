@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRLineRasterization {
     public static final int VK_KHR_LINE_RASTERIZATION_SPEC_VERSION = 1;
@@ -34,16 +35,29 @@ public class VKKHRLineRasterization {
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR = VK_LINE_RASTERIZATION_MODE_RECTANGULAR;
     public static final int VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR = VK_LINE_RASTERIZATION_MODE_BRESENHAM;
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR = VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH;
-    public static final MethodHandle MH_vkCmdSetLineStippleKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
-    public final MemorySegment PFN_vkCmdSetLineStippleKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdSetLineStippleKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdSetLineStippleKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdSetLineStippleKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetLineStippleKHR);
+        public final MemorySegment PFN_vkCmdSetLineStippleKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdSetLineStippleKHR = func.invoke(device, "vkCmdSetLineStippleKHR", "vkCmdSetLineStipple");
+        }
+    }
 
     public VKKHRLineRasterization(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdSetLineStippleKHR = func.invoke(device, "vkCmdSetLineStippleKHR", "vkCmdSetLineStipple");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdSetLineStippleKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int lineStippleFactor, @CType("uint16_t") short lineStipplePattern) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdSetLineStippleKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
-        try { MH_vkCmdSetLineStippleKHR.invokeExact(PFN_vkCmdSetLineStippleKHR, commandBuffer, lineStippleFactor, lineStipplePattern); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetLineStippleKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
+        try { Handles.MH_vkCmdSetLineStippleKHR.invokeExact(handles.PFN_vkCmdSetLineStippleKHR, commandBuffer, lineStippleFactor, lineStipplePattern); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStippleKHR", e); }
     }
 

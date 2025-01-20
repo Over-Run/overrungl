@@ -22,21 +22,35 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKKHRDisplaySwapchain {
     public static final int VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10;
     public static final String VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
     public static final int VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR = 1000003000;
     public static final int VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = -1000003001;
-    public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCreateSharedSwapchainsKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCreateSharedSwapchainsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCreateSharedSwapchainsKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateSharedSwapchainsKHR);
+        public final MemorySegment PFN_vkCreateSharedSwapchainsKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCreateSharedSwapchainsKHR = func.invoke(device, "vkCreateSharedSwapchainsKHR");
+        }
+    }
 
     public VKKHRDisplaySwapchain(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCreateSharedSwapchainsKHR = func.invoke(device, "vkCreateSharedSwapchainsKHR");
+        this.handles = new Handles(device, func);
     }
 
     public @CType("VkResult") int CreateSharedSwapchainsKHR(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int swapchainCount, @CType("const VkSwapchainCreateInfoKHR *") MemorySegment pCreateInfos, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSwapchainKHR *") MemorySegment pSwapchains) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateSharedSwapchainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
-        try { return (int) MH_vkCreateSharedSwapchainsKHR.invokeExact(PFN_vkCreateSharedSwapchainsKHR, device, swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateSharedSwapchainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
+        try { return (int) Handles.MH_vkCreateSharedSwapchainsKHR.invokeExact(handles.PFN_vkCreateSharedSwapchainsKHR, device, swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSharedSwapchainsKHR", e); }
     }
 

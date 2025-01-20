@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -26,310 +27,762 @@ public final class ALEXTDirectContext {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcGetProcAddress2`.
+        public static final FunctionDescriptor FD_alcGetProcAddress2 = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alEnableDirect`.
+        public static final FunctionDescriptor FD_alEnableDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alDisableDirect`.
+        public static final FunctionDescriptor FD_alDisableDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alIsEnabledDirect`.
+        public static final FunctionDescriptor FD_alIsEnabledDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alDopplerFactorDirect`.
+        public static final FunctionDescriptor FD_alDopplerFactorDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alSpeedOfSoundDirect`.
+        public static final FunctionDescriptor FD_alSpeedOfSoundDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alDistanceModelDirect`.
+        public static final FunctionDescriptor FD_alDistanceModelDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetStringDirect`.
+        public static final FunctionDescriptor FD_alGetStringDirect = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetBooleanvDirect`.
+        public static final FunctionDescriptor FD_alGetBooleanvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetIntegervDirect`.
+        public static final FunctionDescriptor FD_alGetIntegervDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFloatvDirect`.
+        public static final FunctionDescriptor FD_alGetFloatvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetDoublevDirect`.
+        public static final FunctionDescriptor FD_alGetDoublevDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBooleanDirect`.
+        public static final FunctionDescriptor FD_alGetBooleanDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetIntegerDirect`.
+        public static final FunctionDescriptor FD_alGetIntegerDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetFloatDirect`.
+        public static final FunctionDescriptor FD_alGetFloatDirect = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetDoubleDirect`.
+        public static final FunctionDescriptor FD_alGetDoubleDirect = FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetErrorDirect`.
+        public static final FunctionDescriptor FD_alGetErrorDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsExtensionPresentDirect`.
+        public static final FunctionDescriptor FD_alIsExtensionPresentDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alGetProcAddressDirect`.
+        public static final FunctionDescriptor FD_alGetProcAddressDirect = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alGetEnumValueDirect`.
+        public static final FunctionDescriptor FD_alGetEnumValueDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alListenerfDirect`.
+        public static final FunctionDescriptor FD_alListenerfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alListener3fDirect`.
+        public static final FunctionDescriptor FD_alListener3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alListenerfvDirect`.
+        public static final FunctionDescriptor FD_alListenerfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alListeneriDirect`.
+        public static final FunctionDescriptor FD_alListeneriDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alListener3iDirect`.
+        public static final FunctionDescriptor FD_alListener3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alListenerivDirect`.
+        public static final FunctionDescriptor FD_alListenerivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListenerfDirect`.
+        public static final FunctionDescriptor FD_alGetListenerfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListener3fDirect`.
+        public static final FunctionDescriptor FD_alGetListener3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListenerfvDirect`.
+        public static final FunctionDescriptor FD_alGetListenerfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListeneriDirect`.
+        public static final FunctionDescriptor FD_alGetListeneriDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListener3iDirect`.
+        public static final FunctionDescriptor FD_alGetListener3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetListenerivDirect`.
+        public static final FunctionDescriptor FD_alGetListenerivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenSourcesDirect`.
+        public static final FunctionDescriptor FD_alGenSourcesDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteSourcesDirect`.
+        public static final FunctionDescriptor FD_alDeleteSourcesDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsSourceDirect`.
+        public static final FunctionDescriptor FD_alIsSourceDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourcefDirect`.
+        public static final FunctionDescriptor FD_alSourcefDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alSource3fDirect`.
+        public static final FunctionDescriptor FD_alSource3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alSourcefvDirect`.
+        public static final FunctionDescriptor FD_alSourcefvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourceiDirect`.
+        public static final FunctionDescriptor FD_alSourceiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSource3iDirect`.
+        public static final FunctionDescriptor FD_alSource3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourceivDirect`.
+        public static final FunctionDescriptor FD_alSourceivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcefDirect`.
+        public static final FunctionDescriptor FD_alGetSourcefDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3fDirect`.
+        public static final FunctionDescriptor FD_alGetSource3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcefvDirect`.
+        public static final FunctionDescriptor FD_alGetSourcefvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourceiDirect`.
+        public static final FunctionDescriptor FD_alGetSourceiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3iDirect`.
+        public static final FunctionDescriptor FD_alGetSource3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourceivDirect`.
+        public static final FunctionDescriptor FD_alGetSourceivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourcePlayDirect`.
+        public static final FunctionDescriptor FD_alSourcePlayDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourceStopDirect`.
+        public static final FunctionDescriptor FD_alSourceStopDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourceRewindDirect`.
+        public static final FunctionDescriptor FD_alSourceRewindDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourcePauseDirect`.
+        public static final FunctionDescriptor FD_alSourcePauseDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourcePlayvDirect`.
+        public static final FunctionDescriptor FD_alSourcePlayvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourceStopvDirect`.
+        public static final FunctionDescriptor FD_alSourceStopvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourceRewindvDirect`.
+        public static final FunctionDescriptor FD_alSourceRewindvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourcePausevDirect`.
+        public static final FunctionDescriptor FD_alSourcePausevDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourceQueueBuffersDirect`.
+        public static final FunctionDescriptor FD_alSourceQueueBuffersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourceUnqueueBuffersDirect`.
+        public static final FunctionDescriptor FD_alSourceUnqueueBuffersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenBuffersDirect`.
+        public static final FunctionDescriptor FD_alGenBuffersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteBuffersDirect`.
+        public static final FunctionDescriptor FD_alDeleteBuffersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsBufferDirect`.
+        public static final FunctionDescriptor FD_alIsBufferDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alBufferDataDirect`.
+        public static final FunctionDescriptor FD_alBufferDataDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alBufferfDirect`.
+        public static final FunctionDescriptor FD_alBufferfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alBuffer3fDirect`.
+        public static final FunctionDescriptor FD_alBuffer3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alBufferfvDirect`.
+        public static final FunctionDescriptor FD_alBufferfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alBufferiDirect`.
+        public static final FunctionDescriptor FD_alBufferiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alBuffer3iDirect`.
+        public static final FunctionDescriptor FD_alBuffer3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alBufferivDirect`.
+        public static final FunctionDescriptor FD_alBufferivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferfDirect`.
+        public static final FunctionDescriptor FD_alGetBufferfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBuffer3fDirect`.
+        public static final FunctionDescriptor FD_alGetBuffer3fDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferfvDirect`.
+        public static final FunctionDescriptor FD_alGetBufferfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferiDirect`.
+        public static final FunctionDescriptor FD_alGetBufferiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBuffer3iDirect`.
+        public static final FunctionDescriptor FD_alGetBuffer3iDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferivDirect`.
+        public static final FunctionDescriptor FD_alGetBufferivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenEffectsDirect`.
+        public static final FunctionDescriptor FD_alGenEffectsDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteEffectsDirect`.
+        public static final FunctionDescriptor FD_alDeleteEffectsDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsEffectDirect`.
+        public static final FunctionDescriptor FD_alIsEffectDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alEffectiDirect`.
+        public static final FunctionDescriptor FD_alEffectiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alEffectivDirect`.
+        public static final FunctionDescriptor FD_alEffectivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alEffectfDirect`.
+        public static final FunctionDescriptor FD_alEffectfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alEffectfvDirect`.
+        public static final FunctionDescriptor FD_alEffectfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectiDirect`.
+        public static final FunctionDescriptor FD_alGetEffectiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectivDirect`.
+        public static final FunctionDescriptor FD_alGetEffectivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectfDirect`.
+        public static final FunctionDescriptor FD_alGetEffectfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetEffectfvDirect`.
+        public static final FunctionDescriptor FD_alGetEffectfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenFiltersDirect`.
+        public static final FunctionDescriptor FD_alGenFiltersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteFiltersDirect`.
+        public static final FunctionDescriptor FD_alDeleteFiltersDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsFilterDirect`.
+        public static final FunctionDescriptor FD_alIsFilterDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alFilteriDirect`.
+        public static final FunctionDescriptor FD_alFilteriDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alFilterivDirect`.
+        public static final FunctionDescriptor FD_alFilterivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alFilterfDirect`.
+        public static final FunctionDescriptor FD_alFilterfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alFilterfvDirect`.
+        public static final FunctionDescriptor FD_alFilterfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilteriDirect`.
+        public static final FunctionDescriptor FD_alGetFilteriDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilterivDirect`.
+        public static final FunctionDescriptor FD_alGetFilterivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilterfDirect`.
+        public static final FunctionDescriptor FD_alGetFilterfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetFilterfvDirect`.
+        public static final FunctionDescriptor FD_alGetFilterfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGenAuxiliaryEffectSlotsDirect`.
+        public static final FunctionDescriptor FD_alGenAuxiliaryEffectSlotsDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeleteAuxiliaryEffectSlotsDirect`.
+        public static final FunctionDescriptor FD_alDeleteAuxiliaryEffectSlotsDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alIsAuxiliaryEffectSlotDirect`.
+        public static final FunctionDescriptor FD_alIsAuxiliaryEffectSlotDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alAuxiliaryEffectSlotiDirect`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alAuxiliaryEffectSlotivDirect`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alAuxiliaryEffectSlotfDirect`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
+        /// The function descriptor of `alAuxiliaryEffectSlotfvDirect`.
+        public static final FunctionDescriptor FD_alAuxiliaryEffectSlotfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotiDirect`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotiDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotivDirect`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotivDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotfDirect`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotfDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetAuxiliaryEffectSlotfvDirect`.
+        public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotfvDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alBufferDataStaticDirect`.
+        public static final FunctionDescriptor FD_alBufferDataStaticDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alDebugMessageCallbackDirectEXT`.
+        public static final FunctionDescriptor FD_alDebugMessageCallbackDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDebugMessageInsertDirectEXT`.
+        public static final FunctionDescriptor FD_alDebugMessageInsertDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alDebugMessageControlDirectEXT`.
+        public static final FunctionDescriptor FD_alDebugMessageControlDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `alPushDebugGroupDirectEXT`.
+        public static final FunctionDescriptor FD_alPushDebugGroupDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alPopDebugGroupDirectEXT`.
+        public static final FunctionDescriptor FD_alPopDebugGroupDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetDebugMessageLogDirectEXT`.
+        public static final FunctionDescriptor FD_alGetDebugMessageLogDirectEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alObjectLabelDirectEXT`.
+        public static final FunctionDescriptor FD_alObjectLabelDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alGetObjectLabelDirectEXT`.
+        public static final FunctionDescriptor FD_alGetObjectLabelDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
+        /// The function descriptor of `alGetPointerDirectEXT`.
+        public static final FunctionDescriptor FD_alGetPointerDirectEXT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetPointervDirectEXT`.
+        public static final FunctionDescriptor FD_alGetPointervDirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alRequestFoldbackStartDirect`.
+        public static final FunctionDescriptor FD_alRequestFoldbackStartDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alRequestFoldbackStopDirect`.
+        public static final FunctionDescriptor FD_alRequestFoldbackStopDirect = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alBufferSubDataDirectSOFT`.
+        public static final FunctionDescriptor FD_alBufferSubDataDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alSourcedDirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcedDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE);
+        /// The function descriptor of `alSource3dDirectSOFT`.
+        public static final FunctionDescriptor FD_alSource3dDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
+        /// The function descriptor of `alSourcedvDirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcedvDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcedDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcedDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3dDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSource3dDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcedvDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcedvDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourcei64DirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcei64DirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `alSource3i64DirectSOFT`.
+        public static final FunctionDescriptor FD_alSource3i64DirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `alSourcei64vDirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcei64vDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcei64DirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcei64DirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSource3i64DirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSource3i64DirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetSourcei64vDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetSourcei64vDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alDeferUpdatesDirectSOFT`.
+        public static final FunctionDescriptor FD_alDeferUpdatesDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alProcessUpdatesDirectSOFT`.
+        public static final FunctionDescriptor FD_alProcessUpdatesDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetStringiDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetStringiDirectSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alEventControlDirectSOFT`.
+        public static final FunctionDescriptor FD_alEventControlDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
+        /// The function descriptor of `alEventCallbackDirectSOFT`.
+        public static final FunctionDescriptor FD_alEventCallbackDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetPointerDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetPointerDirectSOFT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `alGetPointervDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetPointervDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alBufferCallbackDirectSOFT`.
+        public static final FunctionDescriptor FD_alBufferCallbackDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferPtrDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetBufferPtrDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBuffer3PtrDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetBuffer3PtrDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alGetBufferPtrvDirectSOFT`.
+        public static final FunctionDescriptor FD_alGetBufferPtrvDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `alSourcePlayAtTimeDirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcePlayAtTimeDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `alSourcePlayAtTimevDirectSOFT`.
+        public static final FunctionDescriptor FD_alSourcePlayAtTimevDirectSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
+        /// The function descriptor of `EAXSetDirect`.
+        public static final FunctionDescriptor FD_EAXSetDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `EAXGetDirect`.
+        public static final FunctionDescriptor FD_EAXGetDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `EAXSetBufferModeDirect`.
+        public static final FunctionDescriptor FD_EAXSetBufferModeDirect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `EAXGetBufferModeDirect`.
+        public static final FunctionDescriptor FD_EAXGetBufferModeDirect = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcGetProcAddress2,
+            FD_alEnableDirect,
+            FD_alDisableDirect,
+            FD_alIsEnabledDirect,
+            FD_alDopplerFactorDirect,
+            FD_alSpeedOfSoundDirect,
+            FD_alDistanceModelDirect,
+            FD_alGetStringDirect,
+            FD_alGetBooleanvDirect,
+            FD_alGetIntegervDirect,
+            FD_alGetFloatvDirect,
+            FD_alGetDoublevDirect,
+            FD_alGetBooleanDirect,
+            FD_alGetIntegerDirect,
+            FD_alGetFloatDirect,
+            FD_alGetDoubleDirect,
+            FD_alGetErrorDirect,
+            FD_alIsExtensionPresentDirect,
+            FD_alGetProcAddressDirect,
+            FD_alGetEnumValueDirect,
+            FD_alListenerfDirect,
+            FD_alListener3fDirect,
+            FD_alListenerfvDirect,
+            FD_alListeneriDirect,
+            FD_alListener3iDirect,
+            FD_alListenerivDirect,
+            FD_alGetListenerfDirect,
+            FD_alGetListener3fDirect,
+            FD_alGetListenerfvDirect,
+            FD_alGetListeneriDirect,
+            FD_alGetListener3iDirect,
+            FD_alGetListenerivDirect,
+            FD_alGenSourcesDirect,
+            FD_alDeleteSourcesDirect,
+            FD_alIsSourceDirect,
+            FD_alSourcefDirect,
+            FD_alSource3fDirect,
+            FD_alSourcefvDirect,
+            FD_alSourceiDirect,
+            FD_alSource3iDirect,
+            FD_alSourceivDirect,
+            FD_alGetSourcefDirect,
+            FD_alGetSource3fDirect,
+            FD_alGetSourcefvDirect,
+            FD_alGetSourceiDirect,
+            FD_alGetSource3iDirect,
+            FD_alGetSourceivDirect,
+            FD_alSourcePlayDirect,
+            FD_alSourceStopDirect,
+            FD_alSourceRewindDirect,
+            FD_alSourcePauseDirect,
+            FD_alSourcePlayvDirect,
+            FD_alSourceStopvDirect,
+            FD_alSourceRewindvDirect,
+            FD_alSourcePausevDirect,
+            FD_alSourceQueueBuffersDirect,
+            FD_alSourceUnqueueBuffersDirect,
+            FD_alGenBuffersDirect,
+            FD_alDeleteBuffersDirect,
+            FD_alIsBufferDirect,
+            FD_alBufferDataDirect,
+            FD_alBufferfDirect,
+            FD_alBuffer3fDirect,
+            FD_alBufferfvDirect,
+            FD_alBufferiDirect,
+            FD_alBuffer3iDirect,
+            FD_alBufferivDirect,
+            FD_alGetBufferfDirect,
+            FD_alGetBuffer3fDirect,
+            FD_alGetBufferfvDirect,
+            FD_alGetBufferiDirect,
+            FD_alGetBuffer3iDirect,
+            FD_alGetBufferivDirect,
+            FD_alGenEffectsDirect,
+            FD_alDeleteEffectsDirect,
+            FD_alIsEffectDirect,
+            FD_alEffectiDirect,
+            FD_alEffectivDirect,
+            FD_alEffectfDirect,
+            FD_alEffectfvDirect,
+            FD_alGetEffectiDirect,
+            FD_alGetEffectivDirect,
+            FD_alGetEffectfDirect,
+            FD_alGetEffectfvDirect,
+            FD_alGenFiltersDirect,
+            FD_alDeleteFiltersDirect,
+            FD_alIsFilterDirect,
+            FD_alFilteriDirect,
+            FD_alFilterivDirect,
+            FD_alFilterfDirect,
+            FD_alFilterfvDirect,
+            FD_alGetFilteriDirect,
+            FD_alGetFilterivDirect,
+            FD_alGetFilterfDirect,
+            FD_alGetFilterfvDirect,
+            FD_alGenAuxiliaryEffectSlotsDirect,
+            FD_alDeleteAuxiliaryEffectSlotsDirect,
+            FD_alIsAuxiliaryEffectSlotDirect,
+            FD_alAuxiliaryEffectSlotiDirect,
+            FD_alAuxiliaryEffectSlotivDirect,
+            FD_alAuxiliaryEffectSlotfDirect,
+            FD_alAuxiliaryEffectSlotfvDirect,
+            FD_alGetAuxiliaryEffectSlotiDirect,
+            FD_alGetAuxiliaryEffectSlotivDirect,
+            FD_alGetAuxiliaryEffectSlotfDirect,
+            FD_alGetAuxiliaryEffectSlotfvDirect,
+            FD_alBufferDataStaticDirect,
+            FD_alDebugMessageCallbackDirectEXT,
+            FD_alDebugMessageInsertDirectEXT,
+            FD_alDebugMessageControlDirectEXT,
+            FD_alPushDebugGroupDirectEXT,
+            FD_alPopDebugGroupDirectEXT,
+            FD_alGetDebugMessageLogDirectEXT,
+            FD_alObjectLabelDirectEXT,
+            FD_alGetObjectLabelDirectEXT,
+            FD_alGetPointerDirectEXT,
+            FD_alGetPointervDirectEXT,
+            FD_alRequestFoldbackStartDirect,
+            FD_alRequestFoldbackStopDirect,
+            FD_alBufferSubDataDirectSOFT,
+            FD_alSourcedDirectSOFT,
+            FD_alSource3dDirectSOFT,
+            FD_alSourcedvDirectSOFT,
+            FD_alGetSourcedDirectSOFT,
+            FD_alGetSource3dDirectSOFT,
+            FD_alGetSourcedvDirectSOFT,
+            FD_alSourcei64DirectSOFT,
+            FD_alSource3i64DirectSOFT,
+            FD_alSourcei64vDirectSOFT,
+            FD_alGetSourcei64DirectSOFT,
+            FD_alGetSource3i64DirectSOFT,
+            FD_alGetSourcei64vDirectSOFT,
+            FD_alDeferUpdatesDirectSOFT,
+            FD_alProcessUpdatesDirectSOFT,
+            FD_alGetStringiDirectSOFT,
+            FD_alEventControlDirectSOFT,
+            FD_alEventCallbackDirectSOFT,
+            FD_alGetPointerDirectSOFT,
+            FD_alGetPointervDirectSOFT,
+            FD_alBufferCallbackDirectSOFT,
+            FD_alGetBufferPtrDirectSOFT,
+            FD_alGetBuffer3PtrDirectSOFT,
+            FD_alGetBufferPtrvDirectSOFT,
+            FD_alSourcePlayAtTimeDirectSOFT,
+            FD_alSourcePlayAtTimevDirectSOFT,
+            FD_EAXSetDirect,
+            FD_EAXGetDirect,
+            FD_EAXSetBufferModeDirect,
+            FD_EAXGetBufferModeDirect
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcGetProcAddress2`.
-        public static final MethodHandle MH_alcGetProcAddress2 = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetProcAddress2", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alcGetProcAddress2 = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetProcAddress2", Descriptors.FD_alcGetProcAddress2);
         /// The method handle of `alEnableDirect`.
-        public static final MethodHandle MH_alEnableDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEnableDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alEnableDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEnableDirect", Descriptors.FD_alEnableDirect);
         /// The method handle of `alDisableDirect`.
-        public static final MethodHandle MH_alDisableDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDisableDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alDisableDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDisableDirect", Descriptors.FD_alDisableDirect);
         /// The method handle of `alIsEnabledDirect`.
-        public static final MethodHandle MH_alIsEnabledDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEnabledDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsEnabledDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEnabledDirect", Descriptors.FD_alIsEnabledDirect);
         /// The method handle of `alDopplerFactorDirect`.
-        public static final MethodHandle MH_alDopplerFactorDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDopplerFactorDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alDopplerFactorDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDopplerFactorDirect", Descriptors.FD_alDopplerFactorDirect);
         /// The method handle of `alSpeedOfSoundDirect`.
-        public static final MethodHandle MH_alSpeedOfSoundDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSpeedOfSoundDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alSpeedOfSoundDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSpeedOfSoundDirect", Descriptors.FD_alSpeedOfSoundDirect);
         /// The method handle of `alDistanceModelDirect`.
-        public static final MethodHandle MH_alDistanceModelDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDistanceModelDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alDistanceModelDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDistanceModelDirect", Descriptors.FD_alDistanceModelDirect);
         /// The method handle of `alGetStringDirect`.
-        public static final MethodHandle MH_alGetStringDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringDirect", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetStringDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringDirect", Descriptors.FD_alGetStringDirect);
         /// The method handle of `alGetBooleanvDirect`.
-        public static final MethodHandle MH_alGetBooleanvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBooleanvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBooleanvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBooleanvDirect", Descriptors.FD_alGetBooleanvDirect);
         /// The method handle of `alGetIntegervDirect`.
-        public static final MethodHandle MH_alGetIntegervDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetIntegervDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetIntegervDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetIntegervDirect", Descriptors.FD_alGetIntegervDirect);
         /// The method handle of `alGetFloatvDirect`.
-        public static final MethodHandle MH_alGetFloatvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFloatvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFloatvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFloatvDirect", Descriptors.FD_alGetFloatvDirect);
         /// The method handle of `alGetDoublevDirect`.
-        public static final MethodHandle MH_alGetDoublevDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDoublevDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetDoublevDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDoublevDirect", Descriptors.FD_alGetDoublevDirect);
         /// The method handle of `alGetBooleanDirect`.
-        public static final MethodHandle MH_alGetBooleanDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBooleanDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetBooleanDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBooleanDirect", Descriptors.FD_alGetBooleanDirect);
         /// The method handle of `alGetIntegerDirect`.
-        public static final MethodHandle MH_alGetIntegerDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetIntegerDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetIntegerDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetIntegerDirect", Descriptors.FD_alGetIntegerDirect);
         /// The method handle of `alGetFloatDirect`.
-        public static final MethodHandle MH_alGetFloatDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFloatDirect", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetFloatDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFloatDirect", Descriptors.FD_alGetFloatDirect);
         /// The method handle of `alGetDoubleDirect`.
-        public static final MethodHandle MH_alGetDoubleDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDoubleDirect", FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetDoubleDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDoubleDirect", Descriptors.FD_alGetDoubleDirect);
         /// The method handle of `alGetErrorDirect`.
-        public static final MethodHandle MH_alGetErrorDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetErrorDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetErrorDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetErrorDirect", Descriptors.FD_alGetErrorDirect);
         /// The method handle of `alIsExtensionPresentDirect`.
-        public static final MethodHandle MH_alIsExtensionPresentDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsExtensionPresentDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alIsExtensionPresentDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsExtensionPresentDirect", Descriptors.FD_alIsExtensionPresentDirect);
         /// The method handle of `alGetProcAddressDirect`.
-        public static final MethodHandle MH_alGetProcAddressDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetProcAddressDirect", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetProcAddressDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetProcAddressDirect", Descriptors.FD_alGetProcAddressDirect);
         /// The method handle of `alGetEnumValueDirect`.
-        public static final MethodHandle MH_alGetEnumValueDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEnumValueDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetEnumValueDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEnumValueDirect", Descriptors.FD_alGetEnumValueDirect);
         /// The method handle of `alListenerfDirect`.
-        public static final MethodHandle MH_alListenerfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alListenerfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerfDirect", Descriptors.FD_alListenerfDirect);
         /// The method handle of `alListener3fDirect`.
-        public static final MethodHandle MH_alListener3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListener3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alListener3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListener3fDirect", Descriptors.FD_alListener3fDirect);
         /// The method handle of `alListenerfvDirect`.
-        public static final MethodHandle MH_alListenerfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alListenerfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerfvDirect", Descriptors.FD_alListenerfvDirect);
         /// The method handle of `alListeneriDirect`.
-        public static final MethodHandle MH_alListeneriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListeneriDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alListeneriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListeneriDirect", Descriptors.FD_alListeneriDirect);
         /// The method handle of `alListener3iDirect`.
-        public static final MethodHandle MH_alListener3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListener3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alListener3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListener3iDirect", Descriptors.FD_alListener3iDirect);
         /// The method handle of `alListenerivDirect`.
-        public static final MethodHandle MH_alListenerivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alListenerivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alListenerivDirect", Descriptors.FD_alListenerivDirect);
         /// The method handle of `alGetListenerfDirect`.
-        public static final MethodHandle MH_alGetListenerfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListenerfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerfDirect", Descriptors.FD_alGetListenerfDirect);
         /// The method handle of `alGetListener3fDirect`.
-        public static final MethodHandle MH_alGetListener3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListener3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListener3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListener3fDirect", Descriptors.FD_alGetListener3fDirect);
         /// The method handle of `alGetListenerfvDirect`.
-        public static final MethodHandle MH_alGetListenerfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListenerfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerfvDirect", Descriptors.FD_alGetListenerfvDirect);
         /// The method handle of `alGetListeneriDirect`.
-        public static final MethodHandle MH_alGetListeneriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListeneriDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListeneriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListeneriDirect", Descriptors.FD_alGetListeneriDirect);
         /// The method handle of `alGetListener3iDirect`.
-        public static final MethodHandle MH_alGetListener3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListener3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListener3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListener3iDirect", Descriptors.FD_alGetListener3iDirect);
         /// The method handle of `alGetListenerivDirect`.
-        public static final MethodHandle MH_alGetListenerivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetListenerivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetListenerivDirect", Descriptors.FD_alGetListenerivDirect);
         /// The method handle of `alGenSourcesDirect`.
-        public static final MethodHandle MH_alGenSourcesDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenSourcesDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenSourcesDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenSourcesDirect", Descriptors.FD_alGenSourcesDirect);
         /// The method handle of `alDeleteSourcesDirect`.
-        public static final MethodHandle MH_alDeleteSourcesDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteSourcesDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteSourcesDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteSourcesDirect", Descriptors.FD_alDeleteSourcesDirect);
         /// The method handle of `alIsSourceDirect`.
-        public static final MethodHandle MH_alIsSourceDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsSourceDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsSourceDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsSourceDirect", Descriptors.FD_alIsSourceDirect);
         /// The method handle of `alSourcefDirect`.
-        public static final MethodHandle MH_alSourcefDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcefDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alSourcefDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcefDirect", Descriptors.FD_alSourcefDirect);
         /// The method handle of `alSource3fDirect`.
-        public static final MethodHandle MH_alSource3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alSource3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3fDirect", Descriptors.FD_alSource3fDirect);
         /// The method handle of `alSourcefvDirect`.
-        public static final MethodHandle MH_alSourcefvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcefvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcefvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcefvDirect", Descriptors.FD_alSourcefvDirect);
         /// The method handle of `alSourceiDirect`.
-        public static final MethodHandle MH_alSourceiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSourceiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceiDirect", Descriptors.FD_alSourceiDirect);
         /// The method handle of `alSource3iDirect`.
-        public static final MethodHandle MH_alSource3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSource3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3iDirect", Descriptors.FD_alSource3iDirect);
         /// The method handle of `alSourceivDirect`.
-        public static final MethodHandle MH_alSourceivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourceivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceivDirect", Descriptors.FD_alSourceivDirect);
         /// The method handle of `alGetSourcefDirect`.
-        public static final MethodHandle MH_alGetSourcefDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcefDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcefDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcefDirect", Descriptors.FD_alGetSourcefDirect);
         /// The method handle of `alGetSource3fDirect`.
-        public static final MethodHandle MH_alGetSource3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3fDirect", Descriptors.FD_alGetSource3fDirect);
         /// The method handle of `alGetSourcefvDirect`.
-        public static final MethodHandle MH_alGetSourcefvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcefvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcefvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcefvDirect", Descriptors.FD_alGetSourcefvDirect);
         /// The method handle of `alGetSourceiDirect`.
-        public static final MethodHandle MH_alGetSourceiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourceiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourceiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourceiDirect", Descriptors.FD_alGetSourceiDirect);
         /// The method handle of `alGetSource3iDirect`.
-        public static final MethodHandle MH_alGetSource3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3iDirect", Descriptors.FD_alGetSource3iDirect);
         /// The method handle of `alGetSourceivDirect`.
-        public static final MethodHandle MH_alGetSourceivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourceivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourceivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourceivDirect", Descriptors.FD_alGetSourceivDirect);
         /// The method handle of `alSourcePlayDirect`.
-        public static final MethodHandle MH_alSourcePlayDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSourcePlayDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayDirect", Descriptors.FD_alSourcePlayDirect);
         /// The method handle of `alSourceStopDirect`.
-        public static final MethodHandle MH_alSourceStopDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceStopDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSourceStopDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceStopDirect", Descriptors.FD_alSourceStopDirect);
         /// The method handle of `alSourceRewindDirect`.
-        public static final MethodHandle MH_alSourceRewindDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceRewindDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSourceRewindDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceRewindDirect", Descriptors.FD_alSourceRewindDirect);
         /// The method handle of `alSourcePauseDirect`.
-        public static final MethodHandle MH_alSourcePauseDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePauseDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alSourcePauseDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePauseDirect", Descriptors.FD_alSourcePauseDirect);
         /// The method handle of `alSourcePlayvDirect`.
-        public static final MethodHandle MH_alSourcePlayvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcePlayvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayvDirect", Descriptors.FD_alSourcePlayvDirect);
         /// The method handle of `alSourceStopvDirect`.
-        public static final MethodHandle MH_alSourceStopvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceStopvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourceStopvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceStopvDirect", Descriptors.FD_alSourceStopvDirect);
         /// The method handle of `alSourceRewindvDirect`.
-        public static final MethodHandle MH_alSourceRewindvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceRewindvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourceRewindvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceRewindvDirect", Descriptors.FD_alSourceRewindvDirect);
         /// The method handle of `alSourcePausevDirect`.
-        public static final MethodHandle MH_alSourcePausevDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePausevDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcePausevDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePausevDirect", Descriptors.FD_alSourcePausevDirect);
         /// The method handle of `alSourceQueueBuffersDirect`.
-        public static final MethodHandle MH_alSourceQueueBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceQueueBuffersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourceQueueBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceQueueBuffersDirect", Descriptors.FD_alSourceQueueBuffersDirect);
         /// The method handle of `alSourceUnqueueBuffersDirect`.
-        public static final MethodHandle MH_alSourceUnqueueBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceUnqueueBuffersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourceUnqueueBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourceUnqueueBuffersDirect", Descriptors.FD_alSourceUnqueueBuffersDirect);
         /// The method handle of `alGenBuffersDirect`.
-        public static final MethodHandle MH_alGenBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenBuffersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenBuffersDirect", Descriptors.FD_alGenBuffersDirect);
         /// The method handle of `alDeleteBuffersDirect`.
-        public static final MethodHandle MH_alDeleteBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteBuffersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteBuffersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteBuffersDirect", Descriptors.FD_alDeleteBuffersDirect);
         /// The method handle of `alIsBufferDirect`.
-        public static final MethodHandle MH_alIsBufferDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsBufferDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsBufferDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsBufferDirect", Descriptors.FD_alIsBufferDirect);
         /// The method handle of `alBufferDataDirect`.
-        public static final MethodHandle MH_alBufferDataDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferDataDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataDirect", Descriptors.FD_alBufferDataDirect);
         /// The method handle of `alBufferfDirect`.
-        public static final MethodHandle MH_alBufferfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alBufferfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferfDirect", Descriptors.FD_alBufferfDirect);
         /// The method handle of `alBuffer3fDirect`.
-        public static final MethodHandle MH_alBuffer3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBuffer3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alBuffer3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBuffer3fDirect", Descriptors.FD_alBuffer3fDirect);
         /// The method handle of `alBufferfvDirect`.
-        public static final MethodHandle MH_alBufferfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferfvDirect", Descriptors.FD_alBufferfvDirect);
         /// The method handle of `alBufferiDirect`.
-        public static final MethodHandle MH_alBufferiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferiDirect", Descriptors.FD_alBufferiDirect);
         /// The method handle of `alBuffer3iDirect`.
-        public static final MethodHandle MH_alBuffer3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBuffer3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBuffer3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBuffer3iDirect", Descriptors.FD_alBuffer3iDirect);
         /// The method handle of `alBufferivDirect`.
-        public static final MethodHandle MH_alBufferivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferivDirect", Descriptors.FD_alBufferivDirect);
         /// The method handle of `alGetBufferfDirect`.
-        public static final MethodHandle MH_alGetBufferfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferfDirect", Descriptors.FD_alGetBufferfDirect);
         /// The method handle of `alGetBuffer3fDirect`.
-        public static final MethodHandle MH_alGetBuffer3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3fDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBuffer3fDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3fDirect", Descriptors.FD_alGetBuffer3fDirect);
         /// The method handle of `alGetBufferfvDirect`.
-        public static final MethodHandle MH_alGetBufferfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferfvDirect", Descriptors.FD_alGetBufferfvDirect);
         /// The method handle of `alGetBufferiDirect`.
-        public static final MethodHandle MH_alGetBufferiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferiDirect", Descriptors.FD_alGetBufferiDirect);
         /// The method handle of `alGetBuffer3iDirect`.
-        public static final MethodHandle MH_alGetBuffer3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3iDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBuffer3iDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3iDirect", Descriptors.FD_alGetBuffer3iDirect);
         /// The method handle of `alGetBufferivDirect`.
-        public static final MethodHandle MH_alGetBufferivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferivDirect", Descriptors.FD_alGetBufferivDirect);
         /// The method handle of `alGenEffectsDirect`.
-        public static final MethodHandle MH_alGenEffectsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenEffectsDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenEffectsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenEffectsDirect", Descriptors.FD_alGenEffectsDirect);
         /// The method handle of `alDeleteEffectsDirect`.
-        public static final MethodHandle MH_alDeleteEffectsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteEffectsDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteEffectsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteEffectsDirect", Descriptors.FD_alDeleteEffectsDirect);
         /// The method handle of `alIsEffectDirect`.
-        public static final MethodHandle MH_alIsEffectDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEffectDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsEffectDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEffectDirect", Descriptors.FD_alIsEffectDirect);
         /// The method handle of `alEffectiDirect`.
-        public static final MethodHandle MH_alEffectiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alEffectiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectiDirect", Descriptors.FD_alEffectiDirect);
         /// The method handle of `alEffectivDirect`.
-        public static final MethodHandle MH_alEffectivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alEffectivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectivDirect", Descriptors.FD_alEffectivDirect);
         /// The method handle of `alEffectfDirect`.
-        public static final MethodHandle MH_alEffectfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alEffectfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfDirect", Descriptors.FD_alEffectfDirect);
         /// The method handle of `alEffectfvDirect`.
-        public static final MethodHandle MH_alEffectfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alEffectfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfvDirect", Descriptors.FD_alEffectfvDirect);
         /// The method handle of `alGetEffectiDirect`.
-        public static final MethodHandle MH_alGetEffectiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectiDirect", Descriptors.FD_alGetEffectiDirect);
         /// The method handle of `alGetEffectivDirect`.
-        public static final MethodHandle MH_alGetEffectivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectivDirect", Descriptors.FD_alGetEffectivDirect);
         /// The method handle of `alGetEffectfDirect`.
-        public static final MethodHandle MH_alGetEffectfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfDirect", Descriptors.FD_alGetEffectfDirect);
         /// The method handle of `alGetEffectfvDirect`.
-        public static final MethodHandle MH_alGetEffectfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetEffectfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfvDirect", Descriptors.FD_alGetEffectfvDirect);
         /// The method handle of `alGenFiltersDirect`.
-        public static final MethodHandle MH_alGenFiltersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenFiltersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenFiltersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenFiltersDirect", Descriptors.FD_alGenFiltersDirect);
         /// The method handle of `alDeleteFiltersDirect`.
-        public static final MethodHandle MH_alDeleteFiltersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteFiltersDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteFiltersDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteFiltersDirect", Descriptors.FD_alDeleteFiltersDirect);
         /// The method handle of `alIsFilterDirect`.
-        public static final MethodHandle MH_alIsFilterDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsFilterDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsFilterDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsFilterDirect", Descriptors.FD_alIsFilterDirect);
         /// The method handle of `alFilteriDirect`.
-        public static final MethodHandle MH_alFilteriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteriDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alFilteriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteriDirect", Descriptors.FD_alFilteriDirect);
         /// The method handle of `alFilterivDirect`.
-        public static final MethodHandle MH_alFilterivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alFilterivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterivDirect", Descriptors.FD_alFilterivDirect);
         /// The method handle of `alFilterfDirect`.
-        public static final MethodHandle MH_alFilterfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alFilterfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfDirect", Descriptors.FD_alFilterfDirect);
         /// The method handle of `alFilterfvDirect`.
-        public static final MethodHandle MH_alFilterfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alFilterfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfvDirect", Descriptors.FD_alFilterfvDirect);
         /// The method handle of `alGetFilteriDirect`.
-        public static final MethodHandle MH_alGetFilteriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteriDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilteriDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteriDirect", Descriptors.FD_alGetFilteriDirect);
         /// The method handle of `alGetFilterivDirect`.
-        public static final MethodHandle MH_alGetFilterivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilterivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterivDirect", Descriptors.FD_alGetFilterivDirect);
         /// The method handle of `alGetFilterfDirect`.
-        public static final MethodHandle MH_alGetFilterfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilterfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfDirect", Descriptors.FD_alGetFilterfDirect);
         /// The method handle of `alGetFilterfvDirect`.
-        public static final MethodHandle MH_alGetFilterfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetFilterfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfvDirect", Descriptors.FD_alGetFilterfvDirect);
         /// The method handle of `alGenAuxiliaryEffectSlotsDirect`.
-        public static final MethodHandle MH_alGenAuxiliaryEffectSlotsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenAuxiliaryEffectSlotsDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGenAuxiliaryEffectSlotsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenAuxiliaryEffectSlotsDirect", Descriptors.FD_alGenAuxiliaryEffectSlotsDirect);
         /// The method handle of `alDeleteAuxiliaryEffectSlotsDirect`.
-        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlotsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteAuxiliaryEffectSlotsDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlotsDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteAuxiliaryEffectSlotsDirect", Descriptors.FD_alDeleteAuxiliaryEffectSlotsDirect);
         /// The method handle of `alIsAuxiliaryEffectSlotDirect`.
-        public static final MethodHandle MH_alIsAuxiliaryEffectSlotDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsAuxiliaryEffectSlotDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsAuxiliaryEffectSlotDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsAuxiliaryEffectSlotDirect", Descriptors.FD_alIsAuxiliaryEffectSlotDirect);
         /// The method handle of `alAuxiliaryEffectSlotiDirect`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotiDirect", Descriptors.FD_alAuxiliaryEffectSlotiDirect);
         /// The method handle of `alAuxiliaryEffectSlotivDirect`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotivDirect", Descriptors.FD_alAuxiliaryEffectSlotivDirect);
         /// The method handle of `alAuxiliaryEffectSlotfDirect`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfDirect", Descriptors.FD_alAuxiliaryEffectSlotfDirect);
         /// The method handle of `alAuxiliaryEffectSlotfvDirect`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alAuxiliaryEffectSlotfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfvDirect", Descriptors.FD_alAuxiliaryEffectSlotfvDirect);
         /// The method handle of `alGetAuxiliaryEffectSlotiDirect`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotiDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotiDirect", Descriptors.FD_alGetAuxiliaryEffectSlotiDirect);
         /// The method handle of `alGetAuxiliaryEffectSlotivDirect`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotivDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotivDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotivDirect", Descriptors.FD_alGetAuxiliaryEffectSlotivDirect);
         /// The method handle of `alGetAuxiliaryEffectSlotfDirect`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfDirect", Descriptors.FD_alGetAuxiliaryEffectSlotfDirect);
         /// The method handle of `alGetAuxiliaryEffectSlotfvDirect`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfvDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfvDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfvDirect", Descriptors.FD_alGetAuxiliaryEffectSlotfvDirect);
         /// The method handle of `alBufferDataStaticDirect`.
-        public static final MethodHandle MH_alBufferDataStaticDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataStaticDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferDataStaticDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataStaticDirect", Descriptors.FD_alBufferDataStaticDirect);
         /// The method handle of `alDebugMessageCallbackDirectEXT`.
-        public static final MethodHandle MH_alDebugMessageCallbackDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageCallbackDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDebugMessageCallbackDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageCallbackDirectEXT", Descriptors.FD_alDebugMessageCallbackDirectEXT);
         /// The method handle of `alDebugMessageInsertDirectEXT`.
-        public static final MethodHandle MH_alDebugMessageInsertDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageInsertDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alDebugMessageInsertDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageInsertDirectEXT", Descriptors.FD_alDebugMessageInsertDirectEXT);
         /// The method handle of `alDebugMessageControlDirectEXT`.
-        public static final MethodHandle MH_alDebugMessageControlDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageControlDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_alDebugMessageControlDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageControlDirectEXT", Descriptors.FD_alDebugMessageControlDirectEXT);
         /// The method handle of `alPushDebugGroupDirectEXT`.
-        public static final MethodHandle MH_alPushDebugGroupDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPushDebugGroupDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alPushDebugGroupDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPushDebugGroupDirectEXT", Descriptors.FD_alPushDebugGroupDirectEXT);
         /// The method handle of `alPopDebugGroupDirectEXT`.
-        public static final MethodHandle MH_alPopDebugGroupDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPopDebugGroupDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alPopDebugGroupDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPopDebugGroupDirectEXT", Descriptors.FD_alPopDebugGroupDirectEXT);
         /// The method handle of `alGetDebugMessageLogDirectEXT`.
-        public static final MethodHandle MH_alGetDebugMessageLogDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDebugMessageLogDirectEXT", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetDebugMessageLogDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDebugMessageLogDirectEXT", Descriptors.FD_alGetDebugMessageLogDirectEXT);
         /// The method handle of `alObjectLabelDirectEXT`.
-        public static final MethodHandle MH_alObjectLabelDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alObjectLabelDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alObjectLabelDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alObjectLabelDirectEXT", Descriptors.FD_alObjectLabelDirectEXT);
         /// The method handle of `alGetObjectLabelDirectEXT`.
-        public static final MethodHandle MH_alGetObjectLabelDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetObjectLabelDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetObjectLabelDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetObjectLabelDirectEXT", Descriptors.FD_alGetObjectLabelDirectEXT);
         /// The method handle of `alGetPointerDirectEXT`.
-        public static final MethodHandle MH_alGetPointerDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerDirectEXT", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetPointerDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerDirectEXT", Descriptors.FD_alGetPointerDirectEXT);
         /// The method handle of `alGetPointervDirectEXT`.
-        public static final MethodHandle MH_alGetPointervDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervDirectEXT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetPointervDirectEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervDirectEXT", Descriptors.FD_alGetPointervDirectEXT);
         /// The method handle of `alRequestFoldbackStartDirect`.
-        public static final MethodHandle MH_alRequestFoldbackStartDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStartDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alRequestFoldbackStartDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStartDirect", Descriptors.FD_alRequestFoldbackStartDirect);
         /// The method handle of `alRequestFoldbackStopDirect`.
-        public static final MethodHandle MH_alRequestFoldbackStopDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStopDirect", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alRequestFoldbackStopDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStopDirect", Descriptors.FD_alRequestFoldbackStopDirect);
         /// The method handle of `alBufferSubDataDirectSOFT`.
-        public static final MethodHandle MH_alBufferSubDataDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubDataDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferSubDataDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubDataDirectSOFT", Descriptors.FD_alBufferSubDataDirectSOFT);
         /// The method handle of `alSourcedDirectSOFT`.
-        public static final MethodHandle MH_alSourcedDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_alSourcedDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedDirectSOFT", Descriptors.FD_alSourcedDirectSOFT);
         /// The method handle of `alSource3dDirectSOFT`.
-        public static final MethodHandle MH_alSource3dDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3dDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_alSource3dDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3dDirectSOFT", Descriptors.FD_alSource3dDirectSOFT);
         /// The method handle of `alSourcedvDirectSOFT`.
-        public static final MethodHandle MH_alSourcedvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedvDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcedvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedvDirectSOFT", Descriptors.FD_alSourcedvDirectSOFT);
         /// The method handle of `alGetSourcedDirectSOFT`.
-        public static final MethodHandle MH_alGetSourcedDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcedDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedDirectSOFT", Descriptors.FD_alGetSourcedDirectSOFT);
         /// The method handle of `alGetSource3dDirectSOFT`.
-        public static final MethodHandle MH_alGetSource3dDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3dDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3dDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3dDirectSOFT", Descriptors.FD_alGetSource3dDirectSOFT);
         /// The method handle of `alGetSourcedvDirectSOFT`.
-        public static final MethodHandle MH_alGetSourcedvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedvDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcedvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedvDirectSOFT", Descriptors.FD_alGetSourcedvDirectSOFT);
         /// The method handle of `alSourcei64DirectSOFT`.
-        public static final MethodHandle MH_alSourcei64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64DirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSourcei64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64DirectSOFT", Descriptors.FD_alSourcei64DirectSOFT);
         /// The method handle of `alSource3i64DirectSOFT`.
-        public static final MethodHandle MH_alSource3i64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3i64DirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSource3i64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3i64DirectSOFT", Descriptors.FD_alSource3i64DirectSOFT);
         /// The method handle of `alSourcei64vDirectSOFT`.
-        public static final MethodHandle MH_alSourcei64vDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64vDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alSourcei64vDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64vDirectSOFT", Descriptors.FD_alSourcei64vDirectSOFT);
         /// The method handle of `alGetSourcei64DirectSOFT`.
-        public static final MethodHandle MH_alGetSourcei64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64DirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcei64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64DirectSOFT", Descriptors.FD_alGetSourcei64DirectSOFT);
         /// The method handle of `alGetSource3i64DirectSOFT`.
-        public static final MethodHandle MH_alGetSource3i64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3i64DirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSource3i64DirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3i64DirectSOFT", Descriptors.FD_alGetSource3i64DirectSOFT);
         /// The method handle of `alGetSourcei64vDirectSOFT`.
-        public static final MethodHandle MH_alGetSourcei64vDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64vDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetSourcei64vDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64vDirectSOFT", Descriptors.FD_alGetSourcei64vDirectSOFT);
         /// The method handle of `alDeferUpdatesDirectSOFT`.
-        public static final MethodHandle MH_alDeferUpdatesDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeferUpdatesDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alDeferUpdatesDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeferUpdatesDirectSOFT", Descriptors.FD_alDeferUpdatesDirectSOFT);
         /// The method handle of `alProcessUpdatesDirectSOFT`.
-        public static final MethodHandle MH_alProcessUpdatesDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alProcessUpdatesDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alProcessUpdatesDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alProcessUpdatesDirectSOFT", Descriptors.FD_alProcessUpdatesDirectSOFT);
         /// The method handle of `alGetStringiDirectSOFT`.
-        public static final MethodHandle MH_alGetStringiDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringiDirectSOFT", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetStringiDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringiDirectSOFT", Descriptors.FD_alGetStringiDirectSOFT);
         /// The method handle of `alEventControlDirectSOFT`.
-        public static final MethodHandle MH_alEventControlDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventControlDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_alEventControlDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventControlDirectSOFT", Descriptors.FD_alEventControlDirectSOFT);
         /// The method handle of `alEventCallbackDirectSOFT`.
-        public static final MethodHandle MH_alEventCallbackDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventCallbackDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alEventCallbackDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventCallbackDirectSOFT", Descriptors.FD_alEventCallbackDirectSOFT);
         /// The method handle of `alGetPointerDirectSOFT`.
-        public static final MethodHandle MH_alGetPointerDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerDirectSOFT", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetPointerDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerDirectSOFT", Descriptors.FD_alGetPointerDirectSOFT);
         /// The method handle of `alGetPointervDirectSOFT`.
-        public static final MethodHandle MH_alGetPointervDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetPointervDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervDirectSOFT", Descriptors.FD_alGetPointervDirectSOFT);
         /// The method handle of `alBufferCallbackDirectSOFT`.
-        public static final MethodHandle MH_alBufferCallbackDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferCallbackDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alBufferCallbackDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferCallbackDirectSOFT", Descriptors.FD_alBufferCallbackDirectSOFT);
         /// The method handle of `alGetBufferPtrDirectSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferPtrDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrDirectSOFT", Descriptors.FD_alGetBufferPtrDirectSOFT);
         /// The method handle of `alGetBuffer3PtrDirectSOFT`.
-        public static final MethodHandle MH_alGetBuffer3PtrDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3PtrDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBuffer3PtrDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBuffer3PtrDirectSOFT", Descriptors.FD_alGetBuffer3PtrDirectSOFT);
         /// The method handle of `alGetBufferPtrvDirectSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrvDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alGetBufferPtrvDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferPtrvDirectSOFT", Descriptors.FD_alGetBufferPtrvDirectSOFT);
         /// The method handle of `alSourcePlayAtTimeDirectSOFT`.
-        public static final MethodHandle MH_alSourcePlayAtTimeDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayAtTimeDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSourcePlayAtTimeDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayAtTimeDirectSOFT", Descriptors.FD_alSourcePlayAtTimeDirectSOFT);
         /// The method handle of `alSourcePlayAtTimevDirectSOFT`.
-        public static final MethodHandle MH_alSourcePlayAtTimevDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayAtTimevDirectSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_alSourcePlayAtTimevDirectSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcePlayAtTimevDirectSOFT", Descriptors.FD_alSourcePlayAtTimevDirectSOFT);
         /// The method handle of `EAXSetDirect`.
-        public static final MethodHandle MH_EAXSetDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXSetDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_EAXSetDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXSetDirect", Descriptors.FD_EAXSetDirect);
         /// The method handle of `EAXGetDirect`.
-        public static final MethodHandle MH_EAXGetDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXGetDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_EAXGetDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXGetDirect", Descriptors.FD_EAXGetDirect);
         /// The method handle of `EAXSetBufferModeDirect`.
-        public static final MethodHandle MH_EAXSetBufferModeDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXSetBufferModeDirect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_EAXSetBufferModeDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXSetBufferModeDirect", Descriptors.FD_EAXSetBufferModeDirect);
         /// The method handle of `EAXGetBufferModeDirect`.
-        public static final MethodHandle MH_EAXGetBufferModeDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXGetBufferModeDirect", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_EAXGetBufferModeDirect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "EAXGetBufferModeDirect", Descriptors.FD_EAXGetBufferModeDirect);
     }
-    //endregion
 
     public static @CType("ALCvoid *") java.lang.foreign.MemorySegment alcGetProcAddress2(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCchar*") java.lang.foreign.MemorySegment funcName) {
         if (Handles.MH_alcGetProcAddress2 == null) throw new SymbolNotFoundError("Symbol not found: alcGetProcAddress2");

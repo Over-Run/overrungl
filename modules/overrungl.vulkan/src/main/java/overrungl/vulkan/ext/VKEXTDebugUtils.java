@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKEXTDebugUtils {
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = 0x00000001;
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT = 0x00000010;
@@ -38,106 +39,139 @@ public class VKEXTDebugUtils {
     public static final int VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT = 1000128003;
     public static final int VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT = 1000128004;
     public static final int VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT = 1000128000;
-    public static final MethodHandle MH_vkSetDebugUtilsObjectNameEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkSetDebugUtilsObjectTagEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkQueueBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkQueueEndDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkQueueInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdEndDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCmdInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkCreateDebugUtilsMessengerEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkDestroyDebugUtilsMessengerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkSubmitDebugUtilsMessageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkSetDebugUtilsObjectNameEXT;
-    public final MemorySegment PFN_vkSetDebugUtilsObjectTagEXT;
-    public final MemorySegment PFN_vkQueueBeginDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkQueueEndDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkQueueInsertDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkCmdBeginDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkCmdEndDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkCmdInsertDebugUtilsLabelEXT;
-    public final MemorySegment PFN_vkCreateDebugUtilsMessengerEXT;
-    public final MemorySegment PFN_vkDestroyDebugUtilsMessengerEXT;
-    public final MemorySegment PFN_vkSubmitDebugUtilsMessageEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkSetDebugUtilsObjectNameEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkSetDebugUtilsObjectTagEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkQueueBeginDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkQueueEndDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkQueueInsertDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdBeginDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdEndDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCmdInsertDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkCreateDebugUtilsMessengerEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkDestroyDebugUtilsMessengerEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkSubmitDebugUtilsMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkSetDebugUtilsObjectNameEXT,
+            FD_vkSetDebugUtilsObjectTagEXT,
+            FD_vkQueueBeginDebugUtilsLabelEXT,
+            FD_vkQueueEndDebugUtilsLabelEXT,
+            FD_vkQueueInsertDebugUtilsLabelEXT,
+            FD_vkCmdBeginDebugUtilsLabelEXT,
+            FD_vkCmdEndDebugUtilsLabelEXT,
+            FD_vkCmdInsertDebugUtilsLabelEXT,
+            FD_vkCreateDebugUtilsMessengerEXT,
+            FD_vkDestroyDebugUtilsMessengerEXT,
+            FD_vkSubmitDebugUtilsMessageEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkSetDebugUtilsObjectNameEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetDebugUtilsObjectNameEXT);
+        public static final MethodHandle MH_vkSetDebugUtilsObjectTagEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetDebugUtilsObjectTagEXT);
+        public static final MethodHandle MH_vkQueueBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueBeginDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkQueueEndDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueEndDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkQueueInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueInsertDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkCmdBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkCmdEndDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkCmdInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdInsertDebugUtilsLabelEXT);
+        public static final MethodHandle MH_vkCreateDebugUtilsMessengerEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateDebugUtilsMessengerEXT);
+        public static final MethodHandle MH_vkDestroyDebugUtilsMessengerEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDebugUtilsMessengerEXT);
+        public static final MethodHandle MH_vkSubmitDebugUtilsMessageEXT = RuntimeHelper.downcall(Descriptors.FD_vkSubmitDebugUtilsMessageEXT);
+        public final MemorySegment PFN_vkSetDebugUtilsObjectNameEXT;
+        public final MemorySegment PFN_vkSetDebugUtilsObjectTagEXT;
+        public final MemorySegment PFN_vkQueueBeginDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkQueueEndDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkQueueInsertDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkCmdBeginDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkCmdEndDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkCmdInsertDebugUtilsLabelEXT;
+        public final MemorySegment PFN_vkCreateDebugUtilsMessengerEXT;
+        public final MemorySegment PFN_vkDestroyDebugUtilsMessengerEXT;
+        public final MemorySegment PFN_vkSubmitDebugUtilsMessageEXT;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkSetDebugUtilsObjectNameEXT = func.invoke(instance, "vkSetDebugUtilsObjectNameEXT");
+            PFN_vkSetDebugUtilsObjectTagEXT = func.invoke(instance, "vkSetDebugUtilsObjectTagEXT");
+            PFN_vkQueueBeginDebugUtilsLabelEXT = func.invoke(instance, "vkQueueBeginDebugUtilsLabelEXT");
+            PFN_vkQueueEndDebugUtilsLabelEXT = func.invoke(instance, "vkQueueEndDebugUtilsLabelEXT");
+            PFN_vkQueueInsertDebugUtilsLabelEXT = func.invoke(instance, "vkQueueInsertDebugUtilsLabelEXT");
+            PFN_vkCmdBeginDebugUtilsLabelEXT = func.invoke(instance, "vkCmdBeginDebugUtilsLabelEXT");
+            PFN_vkCmdEndDebugUtilsLabelEXT = func.invoke(instance, "vkCmdEndDebugUtilsLabelEXT");
+            PFN_vkCmdInsertDebugUtilsLabelEXT = func.invoke(instance, "vkCmdInsertDebugUtilsLabelEXT");
+            PFN_vkCreateDebugUtilsMessengerEXT = func.invoke(instance, "vkCreateDebugUtilsMessengerEXT");
+            PFN_vkDestroyDebugUtilsMessengerEXT = func.invoke(instance, "vkDestroyDebugUtilsMessengerEXT");
+            PFN_vkSubmitDebugUtilsMessageEXT = func.invoke(instance, "vkSubmitDebugUtilsMessageEXT");
+        }
+    }
 
     public VKEXTDebugUtils(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkSetDebugUtilsObjectNameEXT = func.invoke(instance, "vkSetDebugUtilsObjectNameEXT");
-        PFN_vkSetDebugUtilsObjectTagEXT = func.invoke(instance, "vkSetDebugUtilsObjectTagEXT");
-        PFN_vkQueueBeginDebugUtilsLabelEXT = func.invoke(instance, "vkQueueBeginDebugUtilsLabelEXT");
-        PFN_vkQueueEndDebugUtilsLabelEXT = func.invoke(instance, "vkQueueEndDebugUtilsLabelEXT");
-        PFN_vkQueueInsertDebugUtilsLabelEXT = func.invoke(instance, "vkQueueInsertDebugUtilsLabelEXT");
-        PFN_vkCmdBeginDebugUtilsLabelEXT = func.invoke(instance, "vkCmdBeginDebugUtilsLabelEXT");
-        PFN_vkCmdEndDebugUtilsLabelEXT = func.invoke(instance, "vkCmdEndDebugUtilsLabelEXT");
-        PFN_vkCmdInsertDebugUtilsLabelEXT = func.invoke(instance, "vkCmdInsertDebugUtilsLabelEXT");
-        PFN_vkCreateDebugUtilsMessengerEXT = func.invoke(instance, "vkCreateDebugUtilsMessengerEXT");
-        PFN_vkDestroyDebugUtilsMessengerEXT = func.invoke(instance, "vkDestroyDebugUtilsMessengerEXT");
-        PFN_vkSubmitDebugUtilsMessageEXT = func.invoke(instance, "vkSubmitDebugUtilsMessageEXT");
+        this.handles = new Handles(instance, func);
     }
 
     public @CType("VkResult") int SetDebugUtilsObjectNameEXT(@CType("VkDevice") MemorySegment device, @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment pNameInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkSetDebugUtilsObjectNameEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectNameEXT");
-        try { return (int) MH_vkSetDebugUtilsObjectNameEXT.invokeExact(PFN_vkSetDebugUtilsObjectNameEXT, device, pNameInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkSetDebugUtilsObjectNameEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectNameEXT");
+        try { return (int) Handles.MH_vkSetDebugUtilsObjectNameEXT.invokeExact(handles.PFN_vkSetDebugUtilsObjectNameEXT, device, pNameInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectNameEXT", e); }
     }
 
     public @CType("VkResult") int SetDebugUtilsObjectTagEXT(@CType("VkDevice") MemorySegment device, @CType("const VkDebugUtilsObjectTagInfoEXT *") MemorySegment pTagInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkSetDebugUtilsObjectTagEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectTagEXT");
-        try { return (int) MH_vkSetDebugUtilsObjectTagEXT.invokeExact(PFN_vkSetDebugUtilsObjectTagEXT, device, pTagInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkSetDebugUtilsObjectTagEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectTagEXT");
+        try { return (int) Handles.MH_vkSetDebugUtilsObjectTagEXT.invokeExact(handles.PFN_vkSetDebugUtilsObjectTagEXT, device, pTagInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectTagEXT", e); }
     }
 
     public void QueueBeginDebugUtilsLabelEXT(@CType("VkQueue") MemorySegment queue, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pLabelInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkQueueBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueBeginDebugUtilsLabelEXT");
-        try { MH_vkQueueBeginDebugUtilsLabelEXT.invokeExact(PFN_vkQueueBeginDebugUtilsLabelEXT, queue, pLabelInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkQueueBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueBeginDebugUtilsLabelEXT");
+        try { Handles.MH_vkQueueBeginDebugUtilsLabelEXT.invokeExact(handles.PFN_vkQueueBeginDebugUtilsLabelEXT, queue, pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueBeginDebugUtilsLabelEXT", e); }
     }
 
     public void QueueEndDebugUtilsLabelEXT(@CType("VkQueue") MemorySegment queue) {
-        if (Unmarshal.isNullPointer(PFN_vkQueueEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueEndDebugUtilsLabelEXT");
-        try { MH_vkQueueEndDebugUtilsLabelEXT.invokeExact(PFN_vkQueueEndDebugUtilsLabelEXT, queue); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkQueueEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueEndDebugUtilsLabelEXT");
+        try { Handles.MH_vkQueueEndDebugUtilsLabelEXT.invokeExact(handles.PFN_vkQueueEndDebugUtilsLabelEXT, queue); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueEndDebugUtilsLabelEXT", e); }
     }
 
     public void QueueInsertDebugUtilsLabelEXT(@CType("VkQueue") MemorySegment queue, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pLabelInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkQueueInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueInsertDebugUtilsLabelEXT");
-        try { MH_vkQueueInsertDebugUtilsLabelEXT.invokeExact(PFN_vkQueueInsertDebugUtilsLabelEXT, queue, pLabelInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkQueueInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueInsertDebugUtilsLabelEXT");
+        try { Handles.MH_vkQueueInsertDebugUtilsLabelEXT.invokeExact(handles.PFN_vkQueueInsertDebugUtilsLabelEXT, queue, pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueInsertDebugUtilsLabelEXT", e); }
     }
 
     public void CmdBeginDebugUtilsLabelEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pLabelInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginDebugUtilsLabelEXT");
-        try { MH_vkCmdBeginDebugUtilsLabelEXT.invokeExact(PFN_vkCmdBeginDebugUtilsLabelEXT, commandBuffer, pLabelInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginDebugUtilsLabelEXT");
+        try { Handles.MH_vkCmdBeginDebugUtilsLabelEXT.invokeExact(handles.PFN_vkCmdBeginDebugUtilsLabelEXT, commandBuffer, pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginDebugUtilsLabelEXT", e); }
     }
 
     public void CmdEndDebugUtilsLabelEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndDebugUtilsLabelEXT");
-        try { MH_vkCmdEndDebugUtilsLabelEXT.invokeExact(PFN_vkCmdEndDebugUtilsLabelEXT, commandBuffer); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndDebugUtilsLabelEXT");
+        try { Handles.MH_vkCmdEndDebugUtilsLabelEXT.invokeExact(handles.PFN_vkCmdEndDebugUtilsLabelEXT, commandBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndDebugUtilsLabelEXT", e); }
     }
 
     public void CmdInsertDebugUtilsLabelEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pLabelInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdInsertDebugUtilsLabelEXT");
-        try { MH_vkCmdInsertDebugUtilsLabelEXT.invokeExact(PFN_vkCmdInsertDebugUtilsLabelEXT, commandBuffer, pLabelInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdInsertDebugUtilsLabelEXT");
+        try { Handles.MH_vkCmdInsertDebugUtilsLabelEXT.invokeExact(handles.PFN_vkCmdInsertDebugUtilsLabelEXT, commandBuffer, pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdInsertDebugUtilsLabelEXT", e); }
     }
 
     public @CType("VkResult") int CreateDebugUtilsMessengerEXT(@CType("VkInstance") MemorySegment instance, @CType("const VkDebugUtilsMessengerCreateInfoEXT *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkDebugUtilsMessengerEXT *") MemorySegment pMessenger) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugUtilsMessengerEXT");
-        try { return (int) MH_vkCreateDebugUtilsMessengerEXT.invokeExact(PFN_vkCreateDebugUtilsMessengerEXT, instance, pCreateInfo, pAllocator, pMessenger); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugUtilsMessengerEXT");
+        try { return (int) Handles.MH_vkCreateDebugUtilsMessengerEXT.invokeExact(handles.PFN_vkCreateDebugUtilsMessengerEXT, instance, pCreateInfo, pAllocator, pMessenger); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugUtilsMessengerEXT", e); }
     }
 
     public void DestroyDebugUtilsMessengerEXT(@CType("VkInstance") MemorySegment instance, @CType("VkDebugUtilsMessengerEXT") MemorySegment messenger, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(PFN_vkDestroyDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugUtilsMessengerEXT");
-        try { MH_vkDestroyDebugUtilsMessengerEXT.invokeExact(PFN_vkDestroyDebugUtilsMessengerEXT, instance, messenger, pAllocator); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugUtilsMessengerEXT");
+        try { Handles.MH_vkDestroyDebugUtilsMessengerEXT.invokeExact(handles.PFN_vkDestroyDebugUtilsMessengerEXT, instance, messenger, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugUtilsMessengerEXT", e); }
     }
 
     public void SubmitDebugUtilsMessageEXT(@CType("VkInstance") MemorySegment instance, @CType("VkDebugUtilsMessageSeverityFlagBitsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypes, @CType("const VkDebugUtilsMessengerCallbackDataEXT *") MemorySegment pCallbackData) {
-        if (Unmarshal.isNullPointer(PFN_vkSubmitDebugUtilsMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkSubmitDebugUtilsMessageEXT");
-        try { MH_vkSubmitDebugUtilsMessageEXT.invokeExact(PFN_vkSubmitDebugUtilsMessageEXT, instance, messageSeverity, messageTypes, pCallbackData); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkSubmitDebugUtilsMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkSubmitDebugUtilsMessageEXT");
+        try { Handles.MH_vkSubmitDebugUtilsMessageEXT.invokeExact(handles.PFN_vkSubmitDebugUtilsMessageEXT, instance, messageSeverity, messageTypes, pCallbackData); }
         catch (Throwable e) { throw new RuntimeException("error in vkSubmitDebugUtilsMessageEXT", e); }
     }
 

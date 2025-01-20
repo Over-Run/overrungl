@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -26,14 +27,22 @@ public final class ALEXTSTATICBUFFER {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alBufferDataStatic`.
+        public static final FunctionDescriptor FD_alBufferDataStatic = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alBufferDataStatic
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alBufferDataStatic`.
-        public static final MethodHandle MH_alBufferDataStatic = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataStatic", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferDataStatic = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferDataStatic", Descriptors.FD_alBufferDataStatic);
     }
-    //endregion
 
     public static void alBufferDataStatic(@CType("const ALuint") int buffer, @CType("ALenum") int format, @CType("ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int freq) {
         if (Handles.MH_alBufferDataStatic == null) throw new SymbolNotFoundError("Symbol not found: alBufferDataStatic");

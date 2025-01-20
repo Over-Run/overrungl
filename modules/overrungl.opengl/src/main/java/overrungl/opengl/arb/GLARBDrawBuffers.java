@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,16 +42,29 @@ public final class GLARBDrawBuffers {
     public static final int GL_DRAW_BUFFER13_ARB = 0x8832;
     public static final int GL_DRAW_BUFFER14_ARB = 0x8833;
     public static final int GL_DRAW_BUFFER15_ARB = 0x8834;
-    public static final MethodHandle MH_glDrawBuffersARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDrawBuffersARB;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glDrawBuffersARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glDrawBuffersARB
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glDrawBuffersARB = RuntimeHelper.downcall(Descriptors.FD_glDrawBuffersARB);
+        public final MemorySegment PFN_glDrawBuffersARB;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glDrawBuffersARB = func.invoke("glDrawBuffersARB", "glDrawBuffers");
+        }
+    }
 
     public GLARBDrawBuffers(overrungl.opengl.GLLoadFunc func) {
-        PFN_glDrawBuffersARB = func.invoke("glDrawBuffersARB", "glDrawBuffers");
+        this.handles = new Handles(func);
     }
 
     public void DrawBuffersARB(@CType("GLsizei") int n, @CType("const GLenum *") java.lang.foreign.MemorySegment bufs) {
-        if (Unmarshal.isNullPointer(PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
-        try { MH_glDrawBuffersARB.invokeExact(PFN_glDrawBuffersARB, n, bufs); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
+        try { Handles.MH_glDrawBuffersARB.invokeExact(handles.PFN_glDrawBuffersARB, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersARB", e); }
     }
 

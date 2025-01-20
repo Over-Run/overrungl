@@ -131,7 +131,6 @@ public final class RuntimeHelper {
         return LINKER.downcallHandle(lookup.findOrThrow(name), descriptor);
     }
 
-
     /// Finds the address of the symbol with the given symbol lookup and name.
     ///
     /// @param lookup     the symbol lookup

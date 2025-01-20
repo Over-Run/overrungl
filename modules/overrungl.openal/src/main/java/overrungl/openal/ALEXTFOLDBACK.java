@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -32,16 +33,27 @@ public final class ALEXTFOLDBACK {
     public static final int AL_FOLDBACK_MODE_MONO = 0x4101;
     public static final int AL_FOLDBACK_MODE_STEREO = 0x4102;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alRequestFoldbackStart`.
+        public static final FunctionDescriptor FD_alRequestFoldbackStart = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `alRequestFoldbackStop`.
+        public static final FunctionDescriptor FD_alRequestFoldbackStop = FunctionDescriptor.ofVoid();
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alRequestFoldbackStart,
+            FD_alRequestFoldbackStop
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alRequestFoldbackStart`.
-        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStart", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStart", Descriptors.FD_alRequestFoldbackStart);
         /// The method handle of `alRequestFoldbackStop`.
-        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStop", FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStop", Descriptors.FD_alRequestFoldbackStop);
     }
-    //endregion
 
     public static void alRequestFoldbackStart(@CType("ALenum") int mode, @CType("ALsizei") int count, @CType("ALsizei") int length, @CType("ALfloat *") java.lang.foreign.MemorySegment mem, @CType("LPALFOLDBACKCALLBACK") java.lang.foreign.MemorySegment callback) {
         if (Handles.MH_alRequestFoldbackStart == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStart");

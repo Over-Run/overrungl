@@ -19,30 +19,46 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTMultiDrawArrays {
-    public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glMultiDrawElementsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiDrawArraysEXT;
-    public final MemorySegment PFN_glMultiDrawElementsEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glMultiDrawArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glMultiDrawElementsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glMultiDrawArraysEXT,
+            FD_glMultiDrawElementsEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysEXT);
+        public static final MethodHandle MH_glMultiDrawElementsEXT = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsEXT);
+        public final MemorySegment PFN_glMultiDrawArraysEXT;
+        public final MemorySegment PFN_glMultiDrawElementsEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glMultiDrawArraysEXT = func.invoke("glMultiDrawArraysEXT", "glMultiDrawArrays");
+            PFN_glMultiDrawElementsEXT = func.invoke("glMultiDrawElementsEXT", "glMultiDrawElements");
+        }
+    }
 
     public GLEXTMultiDrawArrays(overrungl.opengl.GLLoadFunc func) {
-        PFN_glMultiDrawArraysEXT = func.invoke("glMultiDrawArraysEXT", "glMultiDrawArrays");
-        PFN_glMultiDrawElementsEXT = func.invoke("glMultiDrawElementsEXT", "glMultiDrawElements");
+        this.handles = new Handles(func);
     }
 
     public void MultiDrawArraysEXT(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
-        try { MH_glMultiDrawArraysEXT.invokeExact(PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
+        try { Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysEXT", e); }
     }
 
     public void MultiDrawElementsEXT(@CType("GLenum") int mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
-        try { MH_glMultiDrawElementsEXT.invokeExact(PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
+        try { Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsEXT", e); }
     }
 

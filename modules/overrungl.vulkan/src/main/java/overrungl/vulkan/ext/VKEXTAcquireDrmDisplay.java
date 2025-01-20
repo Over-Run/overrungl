@@ -22,28 +22,44 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKEXTAcquireDrmDisplay {
     public static final int VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
-    public static final MethodHandle MH_vkAcquireDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkAcquireDrmDisplayEXT;
-    public final MemorySegment PFN_vkGetDrmDisplayEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkAcquireDrmDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetDrmDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkAcquireDrmDisplayEXT,
+            FD_vkGetDrmDisplayEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkAcquireDrmDisplayEXT = RuntimeHelper.downcall(Descriptors.FD_vkAcquireDrmDisplayEXT);
+        public static final MethodHandle MH_vkGetDrmDisplayEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDrmDisplayEXT);
+        public final MemorySegment PFN_vkAcquireDrmDisplayEXT;
+        public final MemorySegment PFN_vkGetDrmDisplayEXT;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkAcquireDrmDisplayEXT = func.invoke(instance, "vkAcquireDrmDisplayEXT");
+            PFN_vkGetDrmDisplayEXT = func.invoke(instance, "vkGetDrmDisplayEXT");
+        }
+    }
 
     public VKEXTAcquireDrmDisplay(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkAcquireDrmDisplayEXT = func.invoke(instance, "vkAcquireDrmDisplayEXT");
-        PFN_vkGetDrmDisplayEXT = func.invoke(instance, "vkGetDrmDisplayEXT");
+        this.handles = new Handles(instance, func);
     }
 
     public @CType("VkResult") int AcquireDrmDisplayEXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("int32_t") int drmFd, @CType("VkDisplayKHR") MemorySegment display) {
-        if (Unmarshal.isNullPointer(PFN_vkAcquireDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
-        try { return (int) MH_vkAcquireDrmDisplayEXT.invokeExact(PFN_vkAcquireDrmDisplayEXT, physicalDevice, drmFd, display); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkAcquireDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
+        try { return (int) Handles.MH_vkAcquireDrmDisplayEXT.invokeExact(handles.PFN_vkAcquireDrmDisplayEXT, physicalDevice, drmFd, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireDrmDisplayEXT", e); }
     }
 
     public @CType("VkResult") int GetDrmDisplayEXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("int32_t") int drmFd, @CType("uint32_t") int connectorId, @CType("VkDisplayKHR *") MemorySegment display) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
-        try { return (int) MH_vkGetDrmDisplayEXT.invokeExact(PFN_vkGetDrmDisplayEXT, physicalDevice, drmFd, connectorId, display); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
+        try { return (int) Handles.MH_vkGetDrmDisplayEXT.invokeExact(handles.PFN_vkGetDrmDisplayEXT, physicalDevice, drmFd, connectorId, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDrmDisplayEXT", e); }
     }
 

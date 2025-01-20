@@ -19,6 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -45,43 +46,62 @@ public final class GLARBTextureMultisample {
     public static final int GL_MAX_COLOR_TEXTURE_SAMPLES = 0x910E;
     public static final int GL_MAX_DEPTH_TEXTURE_SAMPLES = 0x910F;
     public static final int GL_MAX_INTEGER_SAMPLES = 0x9110;
-    public static final MethodHandle MH_glTexImage2DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glTexImage3DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glGetMultisamplefv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glSampleMaski = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glTexImage2DMultisample;
-    public final MemorySegment PFN_glTexImage3DMultisample;
-    public final MemorySegment PFN_glGetMultisamplefv;
-    public final MemorySegment PFN_glSampleMaski;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glTexImage2DMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glTexImage3DMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glGetMultisamplefv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glSampleMaski = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glTexImage2DMultisample,
+            FD_glTexImage3DMultisample,
+            FD_glGetMultisamplefv,
+            FD_glSampleMaski
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glTexImage2DMultisample = RuntimeHelper.downcall(Descriptors.FD_glTexImage2DMultisample);
+        public static final MethodHandle MH_glTexImage3DMultisample = RuntimeHelper.downcall(Descriptors.FD_glTexImage3DMultisample);
+        public static final MethodHandle MH_glGetMultisamplefv = RuntimeHelper.downcall(Descriptors.FD_glGetMultisamplefv);
+        public static final MethodHandle MH_glSampleMaski = RuntimeHelper.downcall(Descriptors.FD_glSampleMaski);
+        public final MemorySegment PFN_glTexImage2DMultisample;
+        public final MemorySegment PFN_glTexImage3DMultisample;
+        public final MemorySegment PFN_glGetMultisamplefv;
+        public final MemorySegment PFN_glSampleMaski;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glTexImage2DMultisample = func.invoke("glTexImage2DMultisample");
+            PFN_glTexImage3DMultisample = func.invoke("glTexImage3DMultisample");
+            PFN_glGetMultisamplefv = func.invoke("glGetMultisamplefv");
+            PFN_glSampleMaski = func.invoke("glSampleMaski");
+        }
+    }
 
     public GLARBTextureMultisample(overrungl.opengl.GLLoadFunc func) {
-        PFN_glTexImage2DMultisample = func.invoke("glTexImage2DMultisample");
-        PFN_glTexImage3DMultisample = func.invoke("glTexImage3DMultisample");
-        PFN_glGetMultisamplefv = func.invoke("glGetMultisamplefv");
-        PFN_glSampleMaski = func.invoke("glSampleMaski");
+        this.handles = new Handles(func);
     }
 
     public void TexImage2DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedsamplelocations) {
-        if (Unmarshal.isNullPointer(PFN_glTexImage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisample");
-        try { MH_glTexImage2DMultisample.invokeExact(PFN_glTexImage2DMultisample, target, samples, internalformat, width, height, fixedsamplelocations); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexImage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisample");
+        try { Handles.MH_glTexImage2DMultisample.invokeExact(handles.PFN_glTexImage2DMultisample, target, samples, internalformat, width, height, fixedsamplelocations); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage2DMultisample", e); }
     }
 
     public void TexImage3DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedsamplelocations) {
-        if (Unmarshal.isNullPointer(PFN_glTexImage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisample");
-        try { MH_glTexImage3DMultisample.invokeExact(PFN_glTexImage3DMultisample, target, samples, internalformat, width, height, depth, fixedsamplelocations); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexImage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisample");
+        try { Handles.MH_glTexImage3DMultisample.invokeExact(handles.PFN_glTexImage3DMultisample, target, samples, internalformat, width, height, depth, fixedsamplelocations); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisample", e); }
     }
 
     public void GetMultisamplefv(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
-        if (Unmarshal.isNullPointer(PFN_glGetMultisamplefv)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv");
-        try { MH_glGetMultisamplefv.invokeExact(PFN_glGetMultisamplefv, pname, index, val); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv");
+        try { Handles.MH_glGetMultisamplefv.invokeExact(handles.PFN_glGetMultisamplefv, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefv", e); }
     }
 
     public void SampleMaski(@CType("GLuint") int maskNumber, @CType("GLbitfield") int mask) {
-        if (Unmarshal.isNullPointer(PFN_glSampleMaski)) throw new SymbolNotFoundError("Symbol not found: glSampleMaski");
-        try { MH_glSampleMaski.invokeExact(PFN_glSampleMaski, maskNumber, mask); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSampleMaski)) throw new SymbolNotFoundError("Symbol not found: glSampleMaski");
+        try { Handles.MH_glSampleMaski.invokeExact(handles.PFN_glSampleMaski, maskNumber, mask); }
         catch (Throwable e) { throw new RuntimeException("error in glSampleMaski", e); }
     }
 

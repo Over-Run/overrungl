@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.ext.VKEXTDebugReport.*;
 public class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001;
@@ -71,34 +72,51 @@ public class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
     public static final int VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
-    public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkDebugReportMessageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCreateDebugReportCallbackEXT;
-    public final MemorySegment PFN_vkDestroyDebugReportCallbackEXT;
-    public final MemorySegment PFN_vkDebugReportMessageEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCreateDebugReportCallbackEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkDestroyDebugReportCallbackEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkDebugReportMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCreateDebugReportCallbackEXT,
+            FD_vkDestroyDebugReportCallbackEXT,
+            FD_vkDebugReportMessageEXT
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateDebugReportCallbackEXT);
+        public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDebugReportCallbackEXT);
+        public static final MethodHandle MH_vkDebugReportMessageEXT = RuntimeHelper.downcall(Descriptors.FD_vkDebugReportMessageEXT);
+        public final MemorySegment PFN_vkCreateDebugReportCallbackEXT;
+        public final MemorySegment PFN_vkDestroyDebugReportCallbackEXT;
+        public final MemorySegment PFN_vkDebugReportMessageEXT;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkCreateDebugReportCallbackEXT = func.invoke(instance, "vkCreateDebugReportCallbackEXT");
+            PFN_vkDestroyDebugReportCallbackEXT = func.invoke(instance, "vkDestroyDebugReportCallbackEXT");
+            PFN_vkDebugReportMessageEXT = func.invoke(instance, "vkDebugReportMessageEXT");
+        }
+    }
 
     public VKEXTDebugReport(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkCreateDebugReportCallbackEXT = func.invoke(instance, "vkCreateDebugReportCallbackEXT");
-        PFN_vkDestroyDebugReportCallbackEXT = func.invoke(instance, "vkDestroyDebugReportCallbackEXT");
-        PFN_vkDebugReportMessageEXT = func.invoke(instance, "vkDebugReportMessageEXT");
+        this.handles = new Handles(instance, func);
     }
 
     public @CType("VkResult") int CreateDebugReportCallbackEXT(@CType("VkInstance") MemorySegment instance, @CType("const VkDebugReportCallbackCreateInfoEXT *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkDebugReportCallbackEXT *") MemorySegment pCallback) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
-        try { return (int) MH_vkCreateDebugReportCallbackEXT.invokeExact(PFN_vkCreateDebugReportCallbackEXT, instance, pCreateInfo, pAllocator, pCallback); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
+        try { return (int) Handles.MH_vkCreateDebugReportCallbackEXT.invokeExact(handles.PFN_vkCreateDebugReportCallbackEXT, instance, pCreateInfo, pAllocator, pCallback); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugReportCallbackEXT", e); }
     }
 
     public void DestroyDebugReportCallbackEXT(@CType("VkInstance") MemorySegment instance, @CType("VkDebugReportCallbackEXT") MemorySegment callback, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(PFN_vkDestroyDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
-        try { MH_vkDestroyDebugReportCallbackEXT.invokeExact(PFN_vkDestroyDebugReportCallbackEXT, instance, callback, pAllocator); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
+        try { Handles.MH_vkDestroyDebugReportCallbackEXT.invokeExact(handles.PFN_vkDestroyDebugReportCallbackEXT, instance, callback, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugReportCallbackEXT", e); }
     }
 
     public void DebugReportMessageEXT(@CType("VkInstance") MemorySegment instance, @CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") MemorySegment pLayerPrefix, @CType("const char *") MemorySegment pMessage) {
-        if (Unmarshal.isNullPointer(PFN_vkDebugReportMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");
-        try { MH_vkDebugReportMessageEXT.invokeExact(PFN_vkDebugReportMessageEXT, instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkDebugReportMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");
+        try { Handles.MH_vkDebugReportMessageEXT.invokeExact(handles.PFN_vkDebugReportMessageEXT, instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage); }
         catch (Throwable e) { throw new RuntimeException("error in vkDebugReportMessageEXT", e); }
     }
 

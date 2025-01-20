@@ -19,6 +19,7 @@ package overrungl.opengl.sunx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,16 +27,29 @@ import overrungl.util.*;
 public final class GLSUNXConstantData {
     public static final int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
-    public static final MethodHandle MH_glFinishTextureSUNX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glFinishTextureSUNX;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glFinishTextureSUNX = FunctionDescriptor.ofVoid();
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glFinishTextureSUNX
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glFinishTextureSUNX = RuntimeHelper.downcall(Descriptors.FD_glFinishTextureSUNX);
+        public final MemorySegment PFN_glFinishTextureSUNX;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glFinishTextureSUNX = func.invoke("glFinishTextureSUNX");
+        }
+    }
 
     public GLSUNXConstantData(overrungl.opengl.GLLoadFunc func) {
-        PFN_glFinishTextureSUNX = func.invoke("glFinishTextureSUNX");
+        this.handles = new Handles(func);
     }
 
     public void FinishTextureSUNX() {
-        if (Unmarshal.isNullPointer(PFN_glFinishTextureSUNX)) throw new SymbolNotFoundError("Symbol not found: glFinishTextureSUNX");
-        try { MH_glFinishTextureSUNX.invokeExact(PFN_glFinishTextureSUNX); }
+        if (Unmarshal.isNullPointer(handles.PFN_glFinishTextureSUNX)) throw new SymbolNotFoundError("Symbol not found: glFinishTextureSUNX");
+        try { Handles.MH_glFinishTextureSUNX.invokeExact(handles.PFN_glFinishTextureSUNX); }
         catch (Throwable e) { throw new RuntimeException("error in glFinishTextureSUNX", e); }
     }
 

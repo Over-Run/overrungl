@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -26,16 +27,27 @@ public final class ALCEXTThreadLocalContext {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcSetThreadContext`.
+        public static final FunctionDescriptor FD_alcSetThreadContext = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        /// The function descriptor of `alcGetThreadContext`.
+        public static final FunctionDescriptor FD_alcGetThreadContext = FunctionDescriptor.of(ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcSetThreadContext,
+            FD_alcGetThreadContext
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcSetThreadContext`.
-        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcSetThreadContext", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcSetThreadContext", Descriptors.FD_alcSetThreadContext);
         /// The method handle of `alcGetThreadContext`.
-        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetThreadContext", FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetThreadContext", Descriptors.FD_alcGetThreadContext);
     }
-    //endregion
 
     public static @CType("ALCboolean") boolean alcSetThreadContext(@CType("ALCcontext *") java.lang.foreign.MemorySegment context) {
         if (Handles.MH_alcSetThreadContext == null) throw new SymbolNotFoundError("Symbol not found: alcSetThreadContext");

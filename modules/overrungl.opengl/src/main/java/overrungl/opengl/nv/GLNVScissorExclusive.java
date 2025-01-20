@@ -19,6 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -26,25 +27,40 @@ import overrungl.util.*;
 public final class GLNVScissorExclusive {
     public static final int GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555;
     public static final int GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556;
-    public static final MethodHandle MH_glScissorExclusiveNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glScissorExclusiveArrayvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glScissorExclusiveNV;
-    public final MemorySegment PFN_glScissorExclusiveArrayvNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glScissorExclusiveNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glScissorExclusiveArrayvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glScissorExclusiveNV,
+            FD_glScissorExclusiveArrayvNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glScissorExclusiveNV = RuntimeHelper.downcall(Descriptors.FD_glScissorExclusiveNV);
+        public static final MethodHandle MH_glScissorExclusiveArrayvNV = RuntimeHelper.downcall(Descriptors.FD_glScissorExclusiveArrayvNV);
+        public final MemorySegment PFN_glScissorExclusiveNV;
+        public final MemorySegment PFN_glScissorExclusiveArrayvNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glScissorExclusiveNV = func.invoke("glScissorExclusiveNV");
+            PFN_glScissorExclusiveArrayvNV = func.invoke("glScissorExclusiveArrayvNV");
+        }
+    }
 
     public GLNVScissorExclusive(overrungl.opengl.GLLoadFunc func) {
-        PFN_glScissorExclusiveNV = func.invoke("glScissorExclusiveNV");
-        PFN_glScissorExclusiveArrayvNV = func.invoke("glScissorExclusiveArrayvNV");
+        this.handles = new Handles(func);
     }
 
     public void ScissorExclusiveNV(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
-        try { MH_glScissorExclusiveNV.invokeExact(PFN_glScissorExclusiveNV, x, y, width, height); }
+        if (Unmarshal.isNullPointer(handles.PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
+        try { Handles.MH_glScissorExclusiveNV.invokeExact(handles.PFN_glScissorExclusiveNV, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
     }
 
     public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        if (Unmarshal.isNullPointer(PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
-        try { MH_glScissorExclusiveArrayvNV.invokeExact(PFN_glScissorExclusiveArrayvNV, first, count, v); }
+        if (Unmarshal.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
+        try { Handles.MH_glScissorExclusiveArrayvNV.invokeExact(handles.PFN_glScissorExclusiveArrayvNV, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
     }
 

@@ -19,39 +19,57 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLATIVertexAttribArrayObject {
-    public static final MethodHandle MH_glVertexAttribArrayObjectATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetVertexAttribArrayObjectfvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetVertexAttribArrayObjectivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glVertexAttribArrayObjectATI;
-    public final MemorySegment PFN_glGetVertexAttribArrayObjectfvATI;
-    public final MemorySegment PFN_glGetVertexAttribArrayObjectivATI;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glVertexAttribArrayObjectATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetVertexAttribArrayObjectfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetVertexAttribArrayObjectivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glVertexAttribArrayObjectATI,
+            FD_glGetVertexAttribArrayObjectfvATI,
+            FD_glGetVertexAttribArrayObjectivATI
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glVertexAttribArrayObjectATI = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribArrayObjectATI);
+        public static final MethodHandle MH_glGetVertexAttribArrayObjectfvATI = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribArrayObjectfvATI);
+        public static final MethodHandle MH_glGetVertexAttribArrayObjectivATI = RuntimeHelper.downcall(Descriptors.FD_glGetVertexAttribArrayObjectivATI);
+        public final MemorySegment PFN_glVertexAttribArrayObjectATI;
+        public final MemorySegment PFN_glGetVertexAttribArrayObjectfvATI;
+        public final MemorySegment PFN_glGetVertexAttribArrayObjectivATI;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glVertexAttribArrayObjectATI = func.invoke("glVertexAttribArrayObjectATI");
+            PFN_glGetVertexAttribArrayObjectfvATI = func.invoke("glGetVertexAttribArrayObjectfvATI");
+            PFN_glGetVertexAttribArrayObjectivATI = func.invoke("glGetVertexAttribArrayObjectivATI");
+        }
+    }
 
     public GLATIVertexAttribArrayObject(overrungl.opengl.GLLoadFunc func) {
-        PFN_glVertexAttribArrayObjectATI = func.invoke("glVertexAttribArrayObjectATI");
-        PFN_glGetVertexAttribArrayObjectfvATI = func.invoke("glGetVertexAttribArrayObjectfvATI");
-        PFN_glGetVertexAttribArrayObjectivATI = func.invoke("glGetVertexAttribArrayObjectivATI");
+        this.handles = new Handles(func);
     }
 
     public void VertexAttribArrayObjectATI(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLsizei") int stride, @CType("GLuint") int buffer, @CType("GLuint") int offset) {
-        if (Unmarshal.isNullPointer(PFN_glVertexAttribArrayObjectATI)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribArrayObjectATI");
-        try { MH_glVertexAttribArrayObjectATI.invokeExact(PFN_glVertexAttribArrayObjectATI, index, size, type, normalized, stride, buffer, offset); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribArrayObjectATI)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribArrayObjectATI");
+        try { Handles.MH_glVertexAttribArrayObjectATI.invokeExact(handles.PFN_glVertexAttribArrayObjectATI, index, size, type, normalized, stride, buffer, offset); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribArrayObjectATI", e); }
     }
 
     public void GetVertexAttribArrayObjectfvATI(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectfvATI");
-        try { MH_glGetVertexAttribArrayObjectfvATI.invokeExact(PFN_glGetVertexAttribArrayObjectfvATI, index, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectfvATI");
+        try { Handles.MH_glGetVertexAttribArrayObjectfvATI.invokeExact(handles.PFN_glGetVertexAttribArrayObjectfvATI, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectfvATI", e); }
     }
 
     public void GetVertexAttribArrayObjectivATI(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectivATI");
-        try { MH_glGetVertexAttribArrayObjectivATI.invokeExact(PFN_glGetVertexAttribArrayObjectivATI, index, pname, params); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectivATI");
+        try { Handles.MH_glGetVertexAttribArrayObjectivATI.invokeExact(handles.PFN_glGetVertexAttribArrayObjectivATI, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectivATI", e); }
     }
 

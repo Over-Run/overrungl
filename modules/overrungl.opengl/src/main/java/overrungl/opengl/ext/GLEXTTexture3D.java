@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,25 +34,40 @@ public final class GLEXTTexture3D {
     public static final int GL_TEXTURE_DEPTH_EXT = 0x8071;
     public static final int GL_TEXTURE_WRAP_R_EXT = 0x8072;
     public static final int GL_MAX_3D_TEXTURE_SIZE_EXT = 0x8073;
-    public static final MethodHandle MH_glTexImage3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glTexSubImage3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glTexImage3DEXT;
-    public final MemorySegment PFN_glTexSubImage3DEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glTexImage3DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glTexSubImage3DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glTexImage3DEXT,
+            FD_glTexSubImage3DEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glTexImage3DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexImage3DEXT);
+        public static final MethodHandle MH_glTexSubImage3DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexSubImage3DEXT);
+        public final MemorySegment PFN_glTexImage3DEXT;
+        public final MemorySegment PFN_glTexSubImage3DEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glTexImage3DEXT = func.invoke("glTexImage3DEXT", "glTexImage3D");
+            PFN_glTexSubImage3DEXT = func.invoke("glTexSubImage3DEXT", "glTexSubImage3D");
+        }
+    }
 
     public GLEXTTexture3D(overrungl.opengl.GLLoadFunc func) {
-        PFN_glTexImage3DEXT = func.invoke("glTexImage3DEXT", "glTexImage3D");
-        PFN_glTexSubImage3DEXT = func.invoke("glTexSubImage3DEXT", "glTexSubImage3D");
+        this.handles = new Handles(func);
     }
 
     public void TexImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(PFN_glTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT");
-        try { MH_glTexImage3DEXT.invokeExact(PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT");
+        try { Handles.MH_glTexImage3DEXT.invokeExact(handles.PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexImage3DEXT", e); }
     }
 
     public void TexSubImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(PFN_glTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");
-        try { MH_glTexSubImage3DEXT.invokeExact(PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");
+        try { Handles.MH_glTexSubImage3DEXT.invokeExact(handles.PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3DEXT", e); }
     }
 

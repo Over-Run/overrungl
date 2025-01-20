@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -28,14 +29,22 @@ public final class ALSOFTBufferSubData {
     public static final int AL_BYTE_RW_OFFSETS_SOFT = 0x1031;
     public static final int AL_SAMPLE_RW_OFFSETS_SOFT = 0x1032;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alBufferSubDataSOFT`.
+        public static final FunctionDescriptor FD_alBufferSubDataSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alBufferSubDataSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alBufferSubDataSOFT`.
-        public static final MethodHandle MH_alBufferSubDataSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubDataSOFT", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alBufferSubDataSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubDataSOFT", Descriptors.FD_alBufferSubDataSOFT);
     }
-    //endregion
 
     public static void alBufferSubDataSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int offset, @CType("ALsizei") int length) {
         if (Handles.MH_alBufferSubDataSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubDataSOFT");

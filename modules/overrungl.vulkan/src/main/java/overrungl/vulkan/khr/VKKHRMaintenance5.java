@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.VK14.*;
 import static overrungl.vulkan.khr.VKKHRMaintenance5.*;
 public class VKKHRMaintenance5 {
@@ -94,43 +95,62 @@ public class VKKHRMaintenance5 {
     public static final long VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT = VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT;
     public static final long VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV = VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR;
     public static final long VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR = VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT;
-    public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdBindIndexBuffer2KHR;
-    public final MemorySegment PFN_vkGetRenderingAreaGranularityKHR;
-    public final MemorySegment PFN_vkGetDeviceImageSubresourceLayoutKHR;
-    public final MemorySegment PFN_vkGetImageSubresourceLayout2KHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdBindIndexBuffer2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkGetRenderingAreaGranularityKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetDeviceImageSubresourceLayoutKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_vkGetImageSubresourceLayout2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdBindIndexBuffer2KHR,
+            FD_vkGetRenderingAreaGranularityKHR,
+            FD_vkGetDeviceImageSubresourceLayoutKHR,
+            FD_vkGetImageSubresourceLayout2KHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindIndexBuffer2KHR);
+        public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetRenderingAreaGranularityKHR);
+        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageSubresourceLayoutKHR);
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetImageSubresourceLayout2KHR);
+        public final MemorySegment PFN_vkCmdBindIndexBuffer2KHR;
+        public final MemorySegment PFN_vkGetRenderingAreaGranularityKHR;
+        public final MemorySegment PFN_vkGetDeviceImageSubresourceLayoutKHR;
+        public final MemorySegment PFN_vkGetImageSubresourceLayout2KHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdBindIndexBuffer2KHR = func.invoke(device, "vkCmdBindIndexBuffer2KHR", "vkCmdBindIndexBuffer2");
+            PFN_vkGetRenderingAreaGranularityKHR = func.invoke(device, "vkGetRenderingAreaGranularityKHR", "vkGetRenderingAreaGranularity");
+            PFN_vkGetDeviceImageSubresourceLayoutKHR = func.invoke(device, "vkGetDeviceImageSubresourceLayoutKHR", "vkGetDeviceImageSubresourceLayout");
+            PFN_vkGetImageSubresourceLayout2KHR = func.invoke(device, "vkGetImageSubresourceLayout2KHR", "vkGetImageSubresourceLayout2");
+        }
+    }
 
     public VKKHRMaintenance5(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdBindIndexBuffer2KHR = func.invoke(device, "vkCmdBindIndexBuffer2KHR", "vkCmdBindIndexBuffer2");
-        PFN_vkGetRenderingAreaGranularityKHR = func.invoke(device, "vkGetRenderingAreaGranularityKHR", "vkGetRenderingAreaGranularity");
-        PFN_vkGetDeviceImageSubresourceLayoutKHR = func.invoke(device, "vkGetDeviceImageSubresourceLayoutKHR", "vkGetDeviceImageSubresourceLayout");
-        PFN_vkGetImageSubresourceLayout2KHR = func.invoke(device, "vkGetImageSubresourceLayout2KHR", "vkGetImageSubresourceLayout2");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdBindIndexBuffer2KHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long size, @CType("VkIndexType") int indexType) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdBindIndexBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2KHR");
-        try { MH_vkCmdBindIndexBuffer2KHR.invokeExact(PFN_vkCmdBindIndexBuffer2KHR, commandBuffer, buffer, offset, size, indexType); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBindIndexBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2KHR");
+        try { Handles.MH_vkCmdBindIndexBuffer2KHR.invokeExact(handles.PFN_vkCmdBindIndexBuffer2KHR, commandBuffer, buffer, offset, size, indexType); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindIndexBuffer2KHR", e); }
     }
 
     public void GetRenderingAreaGranularityKHR(@CType("VkDevice") MemorySegment device, @CType("const VkRenderingAreaInfo *") MemorySegment pRenderingAreaInfo, @CType("VkExtent2D *") MemorySegment pGranularity) {
-        if (Unmarshal.isNullPointer(PFN_vkGetRenderingAreaGranularityKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularityKHR");
-        try { MH_vkGetRenderingAreaGranularityKHR.invokeExact(PFN_vkGetRenderingAreaGranularityKHR, device, pRenderingAreaInfo, pGranularity); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetRenderingAreaGranularityKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularityKHR");
+        try { Handles.MH_vkGetRenderingAreaGranularityKHR.invokeExact(handles.PFN_vkGetRenderingAreaGranularityKHR, device, pRenderingAreaInfo, pGranularity); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRenderingAreaGranularityKHR", e); }
     }
 
     public void GetDeviceImageSubresourceLayoutKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceImageSubresourceInfo *") MemorySegment pInfo, @CType("VkSubresourceLayout2 *") MemorySegment pLayout) {
-        if (Unmarshal.isNullPointer(PFN_vkGetDeviceImageSubresourceLayoutKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayoutKHR");
-        try { MH_vkGetDeviceImageSubresourceLayoutKHR.invokeExact(PFN_vkGetDeviceImageSubresourceLayoutKHR, device, pInfo, pLayout); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceImageSubresourceLayoutKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayoutKHR");
+        try { Handles.MH_vkGetDeviceImageSubresourceLayoutKHR.invokeExact(handles.PFN_vkGetDeviceImageSubresourceLayoutKHR, device, pInfo, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSubresourceLayoutKHR", e); }
     }
 
     public void GetImageSubresourceLayout2KHR(@CType("VkDevice") MemorySegment device, @CType("VkImage") MemorySegment image, @CType("const VkImageSubresource2 *") MemorySegment pSubresource, @CType("VkSubresourceLayout2 *") MemorySegment pLayout) {
-        if (Unmarshal.isNullPointer(PFN_vkGetImageSubresourceLayout2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2KHR");
-        try { MH_vkGetImageSubresourceLayout2KHR.invokeExact(PFN_vkGetImageSubresourceLayout2KHR, device, image, pSubresource, pLayout); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageSubresourceLayout2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2KHR");
+        try { Handles.MH_vkGetImageSubresourceLayout2KHR.invokeExact(handles.PFN_vkGetImageSubresourceLayout2KHR, device, image, pSubresource, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2KHR", e); }
     }
 

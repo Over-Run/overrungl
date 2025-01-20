@@ -22,20 +22,34 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKNNViSurface {
     public static final int VK_NN_VI_SURFACE_SPEC_VERSION = 1;
     public static final String VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
     public static final int VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN = 1000062000;
-    public static final MethodHandle MH_vkCreateViSurfaceNN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCreateViSurfaceNN;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCreateViSurfaceNN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCreateViSurfaceNN
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCreateViSurfaceNN = RuntimeHelper.downcall(Descriptors.FD_vkCreateViSurfaceNN);
+        public final MemorySegment PFN_vkCreateViSurfaceNN;
+        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+            PFN_vkCreateViSurfaceNN = func.invoke(instance, "vkCreateViSurfaceNN");
+        }
+    }
 
     public VKNNViSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        PFN_vkCreateViSurfaceNN = func.invoke(instance, "vkCreateViSurfaceNN");
+        this.handles = new Handles(instance, func);
     }
 
     public @CType("VkResult") int CreateViSurfaceNN(@CType("VkInstance") MemorySegment instance, @CType("const VkViSurfaceCreateInfoNN *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(PFN_vkCreateViSurfaceNN)) throw new SymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
-        try { return (int) MH_vkCreateViSurfaceNN.invokeExact(PFN_vkCreateViSurfaceNN, instance, pCreateInfo, pAllocator, pSurface); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCreateViSurfaceNN)) throw new SymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
+        try { return (int) Handles.MH_vkCreateViSurfaceNN.invokeExact(handles.PFN_vkCreateViSurfaceNN, instance, pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateViSurfaceNN", e); }
     }
 

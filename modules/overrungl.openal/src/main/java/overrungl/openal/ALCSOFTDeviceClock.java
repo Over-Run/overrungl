@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -31,14 +32,22 @@ public final class ALCSOFTDeviceClock {
     public static final int AL_SAMPLE_OFFSET_CLOCK_SOFT = 0x1202;
     public static final int AL_SEC_OFFSET_CLOCK_SOFT = 0x1203;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcGetInteger64vSOFT`.
+        public static final FunctionDescriptor FD_alcGetInteger64vSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcGetInteger64vSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcGetInteger64vSOFT`.
-        public static final MethodHandle MH_alcGetInteger64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetInteger64vSOFT", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetInteger64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetInteger64vSOFT", Descriptors.FD_alcGetInteger64vSOFT);
     }
-    //endregion
 
     public static void alcGetInteger64vSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCenum") int pname, @CType("ALsizei") int size, @CType("ALCint64SOFT *") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alcGetInteger64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcGetInteger64vSOFT");

@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -79,25 +80,40 @@ public final class GLEXTShaderImageLoadStore {
     public static final int GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT = 0x00000800;
     public static final int GL_ATOMIC_COUNTER_BARRIER_BIT_EXT = 0x00001000;
     public static final int GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
-    public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBindImageTextureEXT;
-    public final MemorySegment PFN_glMemoryBarrierEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBindImageTextureEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glMemoryBarrierEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBindImageTextureEXT,
+            FD_glMemoryBarrierEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glBindImageTextureEXT);
+        public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(Descriptors.FD_glMemoryBarrierEXT);
+        public final MemorySegment PFN_glBindImageTextureEXT;
+        public final MemorySegment PFN_glMemoryBarrierEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBindImageTextureEXT = func.invoke("glBindImageTextureEXT");
+            PFN_glMemoryBarrierEXT = func.invoke("glMemoryBarrierEXT", "glMemoryBarrier");
+        }
+    }
 
     public GLEXTShaderImageLoadStore(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBindImageTextureEXT = func.invoke("glBindImageTextureEXT");
-        PFN_glMemoryBarrierEXT = func.invoke("glMemoryBarrierEXT", "glMemoryBarrier");
+        this.handles = new Handles(func);
     }
 
     public void BindImageTextureEXT(@CType("GLuint") int index, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLint") int format) {
-        if (Unmarshal.isNullPointer(PFN_glBindImageTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT");
-        try { MH_glBindImageTextureEXT.invokeExact(PFN_glBindImageTextureEXT, index, texture, level, layered, layer, access, format); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindImageTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT");
+        try { Handles.MH_glBindImageTextureEXT.invokeExact(handles.PFN_glBindImageTextureEXT, index, texture, level, layered, layer, access, format); }
         catch (Throwable e) { throw new RuntimeException("error in glBindImageTextureEXT", e); }
     }
 
     public void MemoryBarrierEXT(@CType("GLbitfield") int barriers) {
-        if (Unmarshal.isNullPointer(PFN_glMemoryBarrierEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT");
-        try { MH_glMemoryBarrierEXT.invokeExact(PFN_glMemoryBarrierEXT, barriers); }
+        if (Unmarshal.isNullPointer(handles.PFN_glMemoryBarrierEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT");
+        try { Handles.MH_glMemoryBarrierEXT.invokeExact(handles.PFN_glMemoryBarrierEXT, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierEXT", e); }
     }
 

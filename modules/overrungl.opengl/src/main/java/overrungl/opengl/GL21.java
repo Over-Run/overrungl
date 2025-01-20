@@ -19,6 +19,7 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,62 +41,85 @@ public class GL21 extends GL20 {
     public static final int GL_SRGB8_ALPHA8 = 0x8C43;
     public static final int GL_COMPRESSED_SRGB = 0x8C48;
     public static final int GL_COMPRESSED_SRGB_ALPHA = 0x8C49;
-    public static final MethodHandle MH_glUniformMatrix2x3fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glUniformMatrix3x2fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glUniformMatrix2x4fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glUniformMatrix4x2fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glUniformMatrix3x4fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glUniformMatrix4x3fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glUniformMatrix2x3fv;
-    public final MemorySegment PFN_glUniformMatrix3x2fv;
-    public final MemorySegment PFN_glUniformMatrix2x4fv;
-    public final MemorySegment PFN_glUniformMatrix4x2fv;
-    public final MemorySegment PFN_glUniformMatrix3x4fv;
-    public final MemorySegment PFN_glUniformMatrix4x3fv;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glUniformMatrix2x3fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glUniformMatrix3x2fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glUniformMatrix2x4fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glUniformMatrix4x2fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glUniformMatrix3x4fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glUniformMatrix4x3fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glUniformMatrix2x3fv,
+            FD_glUniformMatrix3x2fv,
+            FD_glUniformMatrix2x4fv,
+            FD_glUniformMatrix4x2fv,
+            FD_glUniformMatrix3x4fv,
+            FD_glUniformMatrix4x3fv
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glUniformMatrix2x3fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2x3fv);
+        public static final MethodHandle MH_glUniformMatrix3x2fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix3x2fv);
+        public static final MethodHandle MH_glUniformMatrix2x4fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2x4fv);
+        public static final MethodHandle MH_glUniformMatrix4x2fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix4x2fv);
+        public static final MethodHandle MH_glUniformMatrix3x4fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix3x4fv);
+        public static final MethodHandle MH_glUniformMatrix4x3fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix4x3fv);
+        public final MemorySegment PFN_glUniformMatrix2x3fv;
+        public final MemorySegment PFN_glUniformMatrix3x2fv;
+        public final MemorySegment PFN_glUniformMatrix2x4fv;
+        public final MemorySegment PFN_glUniformMatrix4x2fv;
+        public final MemorySegment PFN_glUniformMatrix3x4fv;
+        public final MemorySegment PFN_glUniformMatrix4x3fv;
+        private Handles(GLLoadFunc func) {
+            PFN_glUniformMatrix2x3fv = func.invoke("glUniformMatrix2x3fv", "glUniformMatrix2x3fvNV");
+            PFN_glUniformMatrix3x2fv = func.invoke("glUniformMatrix3x2fv", "glUniformMatrix3x2fvNV");
+            PFN_glUniformMatrix2x4fv = func.invoke("glUniformMatrix2x4fv", "glUniformMatrix2x4fvNV");
+            PFN_glUniformMatrix4x2fv = func.invoke("glUniformMatrix4x2fv", "glUniformMatrix4x2fvNV");
+            PFN_glUniformMatrix3x4fv = func.invoke("glUniformMatrix3x4fv", "glUniformMatrix3x4fvNV");
+            PFN_glUniformMatrix4x3fv = func.invoke("glUniformMatrix4x3fv", "glUniformMatrix4x3fvNV");
+        }
+    }
 
     public GL21(GLLoadFunc func) {
         super(func);
-        PFN_glUniformMatrix2x3fv = func.invoke("glUniformMatrix2x3fv", "glUniformMatrix2x3fvNV");
-        PFN_glUniformMatrix3x2fv = func.invoke("glUniformMatrix3x2fv", "glUniformMatrix3x2fvNV");
-        PFN_glUniformMatrix2x4fv = func.invoke("glUniformMatrix2x4fv", "glUniformMatrix2x4fvNV");
-        PFN_glUniformMatrix4x2fv = func.invoke("glUniformMatrix4x2fv", "glUniformMatrix4x2fvNV");
-        PFN_glUniformMatrix3x4fv = func.invoke("glUniformMatrix3x4fv", "glUniformMatrix3x4fvNV");
-        PFN_glUniformMatrix4x3fv = func.invoke("glUniformMatrix4x3fv", "glUniformMatrix4x3fvNV");
+        this.handles = new Handles(func);
     }
 
     public void UniformMatrix2x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix2x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x3fv");
-        try { MH_glUniformMatrix2x3fv.invokeExact(PFN_glUniformMatrix2x3fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix2x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x3fv");
+        try { Handles.MH_glUniformMatrix2x3fv.invokeExact(handles.PFN_glUniformMatrix2x3fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2x3fv", e); }
     }
 
     public void UniformMatrix3x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix3x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x2fv");
-        try { MH_glUniformMatrix3x2fv.invokeExact(PFN_glUniformMatrix3x2fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix3x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x2fv");
+        try { Handles.MH_glUniformMatrix3x2fv.invokeExact(handles.PFN_glUniformMatrix3x2fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3x2fv", e); }
     }
 
     public void UniformMatrix2x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix2x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x4fv");
-        try { MH_glUniformMatrix2x4fv.invokeExact(PFN_glUniformMatrix2x4fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix2x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x4fv");
+        try { Handles.MH_glUniformMatrix2x4fv.invokeExact(handles.PFN_glUniformMatrix2x4fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2x4fv", e); }
     }
 
     public void UniformMatrix4x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix4x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x2fv");
-        try { MH_glUniformMatrix4x2fv.invokeExact(PFN_glUniformMatrix4x2fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix4x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x2fv");
+        try { Handles.MH_glUniformMatrix4x2fv.invokeExact(handles.PFN_glUniformMatrix4x2fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4x2fv", e); }
     }
 
     public void UniformMatrix3x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix3x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x4fv");
-        try { MH_glUniformMatrix3x4fv.invokeExact(PFN_glUniformMatrix3x4fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix3x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x4fv");
+        try { Handles.MH_glUniformMatrix3x4fv.invokeExact(handles.PFN_glUniformMatrix3x4fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3x4fv", e); }
     }
 
     public void UniformMatrix4x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        if (Unmarshal.isNullPointer(PFN_glUniformMatrix4x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x3fv");
-        try { MH_glUniformMatrix4x3fv.invokeExact(PFN_glUniformMatrix4x3fv, location, count, transpose, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix4x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x3fv");
+        try { Handles.MH_glUniformMatrix4x3fv.invokeExact(handles.PFN_glUniformMatrix4x3fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4x3fv", e); }
     }
 

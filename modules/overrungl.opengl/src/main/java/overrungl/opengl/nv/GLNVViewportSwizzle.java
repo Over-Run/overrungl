@@ -19,6 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,16 +37,29 @@ public final class GLNVViewportSwizzle {
     public static final int GL_VIEWPORT_SWIZZLE_Y_NV = 0x9359;
     public static final int GL_VIEWPORT_SWIZZLE_Z_NV = 0x935A;
     public static final int GL_VIEWPORT_SWIZZLE_W_NV = 0x935B;
-    public static final MethodHandle MH_glViewportSwizzleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glViewportSwizzleNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glViewportSwizzleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glViewportSwizzleNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glViewportSwizzleNV = RuntimeHelper.downcall(Descriptors.FD_glViewportSwizzleNV);
+        public final MemorySegment PFN_glViewportSwizzleNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glViewportSwizzleNV = func.invoke("glViewportSwizzleNV");
+        }
+    }
 
     public GLNVViewportSwizzle(overrungl.opengl.GLLoadFunc func) {
-        PFN_glViewportSwizzleNV = func.invoke("glViewportSwizzleNV");
+        this.handles = new Handles(func);
     }
 
     public void ViewportSwizzleNV(@CType("GLuint") int index, @CType("GLenum") int swizzlex, @CType("GLenum") int swizzley, @CType("GLenum") int swizzlez, @CType("GLenum") int swizzlew) {
-        if (Unmarshal.isNullPointer(PFN_glViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
-        try { MH_glViewportSwizzleNV.invokeExact(PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
+        if (Unmarshal.isNullPointer(handles.PFN_glViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
+        try { Handles.MH_glViewportSwizzleNV.invokeExact(handles.PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
         catch (Throwable e) { throw new RuntimeException("error in glViewportSwizzleNV", e); }
     }
 

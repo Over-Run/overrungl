@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 public class VKKHRVideoDecodeQueue {
     public static final int VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR = 0x00000002;
@@ -50,16 +51,29 @@ public class VKKHRVideoDecodeQueue {
     public static final int VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR = 1000024002;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR = 0x02000000L;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR = 0x04000000L;
-    public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_vkCmdDecodeVideoKHR;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdDecodeVideoKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdDecodeVideoKHR
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdDecodeVideoKHR);
+        public final MemorySegment PFN_vkCmdDecodeVideoKHR;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdDecodeVideoKHR = func.invoke(device, "vkCmdDecodeVideoKHR");
+        }
+    }
 
     public VKKHRVideoDecodeQueue(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdDecodeVideoKHR = func.invoke(device, "vkCmdDecodeVideoKHR");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdDecodeVideoKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkVideoDecodeInfoKHR *") MemorySegment pDecodeInfo) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDecodeVideoKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
-        try { MH_vkCmdDecodeVideoKHR.invokeExact(PFN_vkCmdDecodeVideoKHR, commandBuffer, pDecodeInfo); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDecodeVideoKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
+        try { Handles.MH_vkCmdDecodeVideoKHR.invokeExact(handles.PFN_vkCmdDecodeVideoKHR, commandBuffer, pDecodeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecodeVideoKHR", e); }
     }
 

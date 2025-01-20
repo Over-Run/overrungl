@@ -19,6 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -134,385 +135,480 @@ public final class GLEXTVertexShader {
     public static final int GL_INVARIANT_DATATYPE_EXT = 0x87EB;
     public static final int GL_LOCAL_CONSTANT_VALUE_EXT = 0x87EC;
     public static final int GL_LOCAL_CONSTANT_DATATYPE_EXT = 0x87ED;
-    public static final MethodHandle MH_glBeginVertexShaderEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public static final MethodHandle MH_glEndVertexShaderEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public static final MethodHandle MH_glBindVertexShaderEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGenVertexShadersEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDeleteVertexShaderEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glShaderOp1EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glShaderOp2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glShaderOp3EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glSwizzleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glWriteMaskEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glInsertComponentEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glExtractComponentEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGenSymbolsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glSetInvariantEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glSetLocalConstantEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantbvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantsvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantdvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantubvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantusvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantuivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glVariantPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glEnableVariantClientStateEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glDisableVariantClientStateEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBindLightParameterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBindMaterialParameterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBindTexGenParameterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBindTextureUnitParameterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glBindParameterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glIsVariantEnabledEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_glGetVariantBooleanvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetVariantIntegervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetVariantFloatvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetVariantPointervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetInvariantBooleanvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetInvariantIntegervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetInvariantFloatvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetLocalConstantBooleanvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetLocalConstantIntegervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public static final MethodHandle MH_glGetLocalConstantFloatvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBeginVertexShaderEXT;
-    public final MemorySegment PFN_glEndVertexShaderEXT;
-    public final MemorySegment PFN_glBindVertexShaderEXT;
-    public final MemorySegment PFN_glGenVertexShadersEXT;
-    public final MemorySegment PFN_glDeleteVertexShaderEXT;
-    public final MemorySegment PFN_glShaderOp1EXT;
-    public final MemorySegment PFN_glShaderOp2EXT;
-    public final MemorySegment PFN_glShaderOp3EXT;
-    public final MemorySegment PFN_glSwizzleEXT;
-    public final MemorySegment PFN_glWriteMaskEXT;
-    public final MemorySegment PFN_glInsertComponentEXT;
-    public final MemorySegment PFN_glExtractComponentEXT;
-    public final MemorySegment PFN_glGenSymbolsEXT;
-    public final MemorySegment PFN_glSetInvariantEXT;
-    public final MemorySegment PFN_glSetLocalConstantEXT;
-    public final MemorySegment PFN_glVariantbvEXT;
-    public final MemorySegment PFN_glVariantsvEXT;
-    public final MemorySegment PFN_glVariantivEXT;
-    public final MemorySegment PFN_glVariantfvEXT;
-    public final MemorySegment PFN_glVariantdvEXT;
-    public final MemorySegment PFN_glVariantubvEXT;
-    public final MemorySegment PFN_glVariantusvEXT;
-    public final MemorySegment PFN_glVariantuivEXT;
-    public final MemorySegment PFN_glVariantPointerEXT;
-    public final MemorySegment PFN_glEnableVariantClientStateEXT;
-    public final MemorySegment PFN_glDisableVariantClientStateEXT;
-    public final MemorySegment PFN_glBindLightParameterEXT;
-    public final MemorySegment PFN_glBindMaterialParameterEXT;
-    public final MemorySegment PFN_glBindTexGenParameterEXT;
-    public final MemorySegment PFN_glBindTextureUnitParameterEXT;
-    public final MemorySegment PFN_glBindParameterEXT;
-    public final MemorySegment PFN_glIsVariantEnabledEXT;
-    public final MemorySegment PFN_glGetVariantBooleanvEXT;
-    public final MemorySegment PFN_glGetVariantIntegervEXT;
-    public final MemorySegment PFN_glGetVariantFloatvEXT;
-    public final MemorySegment PFN_glGetVariantPointervEXT;
-    public final MemorySegment PFN_glGetInvariantBooleanvEXT;
-    public final MemorySegment PFN_glGetInvariantIntegervEXT;
-    public final MemorySegment PFN_glGetInvariantFloatvEXT;
-    public final MemorySegment PFN_glGetLocalConstantBooleanvEXT;
-    public final MemorySegment PFN_glGetLocalConstantIntegervEXT;
-    public final MemorySegment PFN_glGetLocalConstantFloatvEXT;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBeginVertexShaderEXT = FunctionDescriptor.ofVoid();
+        public static final FunctionDescriptor FD_glEndVertexShaderEXT = FunctionDescriptor.ofVoid();
+        public static final FunctionDescriptor FD_glBindVertexShaderEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGenVertexShadersEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDeleteVertexShaderEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glShaderOp1EXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glShaderOp2EXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glShaderOp3EXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glSwizzleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glWriteMaskEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glInsertComponentEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glExtractComponentEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGenSymbolsEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glSetInvariantEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glSetLocalConstantEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantbvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantsvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantdvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantubvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantusvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantuivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glVariantPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glEnableVariantClientStateEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glDisableVariantClientStateEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBindLightParameterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBindMaterialParameterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBindTexGenParameterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBindTextureUnitParameterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glBindParameterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glIsVariantEnabledEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_glGetVariantBooleanvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetVariantIntegervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetVariantFloatvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetVariantPointervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetInvariantBooleanvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetInvariantIntegervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetInvariantFloatvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetLocalConstantBooleanvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetLocalConstantIntegervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final FunctionDescriptor FD_glGetLocalConstantFloatvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBeginVertexShaderEXT,
+            FD_glEndVertexShaderEXT,
+            FD_glBindVertexShaderEXT,
+            FD_glGenVertexShadersEXT,
+            FD_glDeleteVertexShaderEXT,
+            FD_glShaderOp1EXT,
+            FD_glShaderOp2EXT,
+            FD_glShaderOp3EXT,
+            FD_glSwizzleEXT,
+            FD_glWriteMaskEXT,
+            FD_glInsertComponentEXT,
+            FD_glExtractComponentEXT,
+            FD_glGenSymbolsEXT,
+            FD_glSetInvariantEXT,
+            FD_glSetLocalConstantEXT,
+            FD_glVariantbvEXT,
+            FD_glVariantsvEXT,
+            FD_glVariantivEXT,
+            FD_glVariantfvEXT,
+            FD_glVariantdvEXT,
+            FD_glVariantubvEXT,
+            FD_glVariantusvEXT,
+            FD_glVariantuivEXT,
+            FD_glVariantPointerEXT,
+            FD_glEnableVariantClientStateEXT,
+            FD_glDisableVariantClientStateEXT,
+            FD_glBindLightParameterEXT,
+            FD_glBindMaterialParameterEXT,
+            FD_glBindTexGenParameterEXT,
+            FD_glBindTextureUnitParameterEXT,
+            FD_glBindParameterEXT,
+            FD_glIsVariantEnabledEXT,
+            FD_glGetVariantBooleanvEXT,
+            FD_glGetVariantIntegervEXT,
+            FD_glGetVariantFloatvEXT,
+            FD_glGetVariantPointervEXT,
+            FD_glGetInvariantBooleanvEXT,
+            FD_glGetInvariantIntegervEXT,
+            FD_glGetInvariantFloatvEXT,
+            FD_glGetLocalConstantBooleanvEXT,
+            FD_glGetLocalConstantIntegervEXT,
+            FD_glGetLocalConstantFloatvEXT
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBeginVertexShaderEXT = RuntimeHelper.downcall(Descriptors.FD_glBeginVertexShaderEXT);
+        public static final MethodHandle MH_glEndVertexShaderEXT = RuntimeHelper.downcall(Descriptors.FD_glEndVertexShaderEXT);
+        public static final MethodHandle MH_glBindVertexShaderEXT = RuntimeHelper.downcall(Descriptors.FD_glBindVertexShaderEXT);
+        public static final MethodHandle MH_glGenVertexShadersEXT = RuntimeHelper.downcall(Descriptors.FD_glGenVertexShadersEXT);
+        public static final MethodHandle MH_glDeleteVertexShaderEXT = RuntimeHelper.downcall(Descriptors.FD_glDeleteVertexShaderEXT);
+        public static final MethodHandle MH_glShaderOp1EXT = RuntimeHelper.downcall(Descriptors.FD_glShaderOp1EXT);
+        public static final MethodHandle MH_glShaderOp2EXT = RuntimeHelper.downcall(Descriptors.FD_glShaderOp2EXT);
+        public static final MethodHandle MH_glShaderOp3EXT = RuntimeHelper.downcall(Descriptors.FD_glShaderOp3EXT);
+        public static final MethodHandle MH_glSwizzleEXT = RuntimeHelper.downcall(Descriptors.FD_glSwizzleEXT);
+        public static final MethodHandle MH_glWriteMaskEXT = RuntimeHelper.downcall(Descriptors.FD_glWriteMaskEXT);
+        public static final MethodHandle MH_glInsertComponentEXT = RuntimeHelper.downcall(Descriptors.FD_glInsertComponentEXT);
+        public static final MethodHandle MH_glExtractComponentEXT = RuntimeHelper.downcall(Descriptors.FD_glExtractComponentEXT);
+        public static final MethodHandle MH_glGenSymbolsEXT = RuntimeHelper.downcall(Descriptors.FD_glGenSymbolsEXT);
+        public static final MethodHandle MH_glSetInvariantEXT = RuntimeHelper.downcall(Descriptors.FD_glSetInvariantEXT);
+        public static final MethodHandle MH_glSetLocalConstantEXT = RuntimeHelper.downcall(Descriptors.FD_glSetLocalConstantEXT);
+        public static final MethodHandle MH_glVariantbvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantbvEXT);
+        public static final MethodHandle MH_glVariantsvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantsvEXT);
+        public static final MethodHandle MH_glVariantivEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantivEXT);
+        public static final MethodHandle MH_glVariantfvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantfvEXT);
+        public static final MethodHandle MH_glVariantdvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantdvEXT);
+        public static final MethodHandle MH_glVariantubvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantubvEXT);
+        public static final MethodHandle MH_glVariantusvEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantusvEXT);
+        public static final MethodHandle MH_glVariantuivEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantuivEXT);
+        public static final MethodHandle MH_glVariantPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glVariantPointerEXT);
+        public static final MethodHandle MH_glEnableVariantClientStateEXT = RuntimeHelper.downcall(Descriptors.FD_glEnableVariantClientStateEXT);
+        public static final MethodHandle MH_glDisableVariantClientStateEXT = RuntimeHelper.downcall(Descriptors.FD_glDisableVariantClientStateEXT);
+        public static final MethodHandle MH_glBindLightParameterEXT = RuntimeHelper.downcall(Descriptors.FD_glBindLightParameterEXT);
+        public static final MethodHandle MH_glBindMaterialParameterEXT = RuntimeHelper.downcall(Descriptors.FD_glBindMaterialParameterEXT);
+        public static final MethodHandle MH_glBindTexGenParameterEXT = RuntimeHelper.downcall(Descriptors.FD_glBindTexGenParameterEXT);
+        public static final MethodHandle MH_glBindTextureUnitParameterEXT = RuntimeHelper.downcall(Descriptors.FD_glBindTextureUnitParameterEXT);
+        public static final MethodHandle MH_glBindParameterEXT = RuntimeHelper.downcall(Descriptors.FD_glBindParameterEXT);
+        public static final MethodHandle MH_glIsVariantEnabledEXT = RuntimeHelper.downcall(Descriptors.FD_glIsVariantEnabledEXT);
+        public static final MethodHandle MH_glGetVariantBooleanvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetVariantBooleanvEXT);
+        public static final MethodHandle MH_glGetVariantIntegervEXT = RuntimeHelper.downcall(Descriptors.FD_glGetVariantIntegervEXT);
+        public static final MethodHandle MH_glGetVariantFloatvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetVariantFloatvEXT);
+        public static final MethodHandle MH_glGetVariantPointervEXT = RuntimeHelper.downcall(Descriptors.FD_glGetVariantPointervEXT);
+        public static final MethodHandle MH_glGetInvariantBooleanvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetInvariantBooleanvEXT);
+        public static final MethodHandle MH_glGetInvariantIntegervEXT = RuntimeHelper.downcall(Descriptors.FD_glGetInvariantIntegervEXT);
+        public static final MethodHandle MH_glGetInvariantFloatvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetInvariantFloatvEXT);
+        public static final MethodHandle MH_glGetLocalConstantBooleanvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetLocalConstantBooleanvEXT);
+        public static final MethodHandle MH_glGetLocalConstantIntegervEXT = RuntimeHelper.downcall(Descriptors.FD_glGetLocalConstantIntegervEXT);
+        public static final MethodHandle MH_glGetLocalConstantFloatvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetLocalConstantFloatvEXT);
+        public final MemorySegment PFN_glBeginVertexShaderEXT;
+        public final MemorySegment PFN_glEndVertexShaderEXT;
+        public final MemorySegment PFN_glBindVertexShaderEXT;
+        public final MemorySegment PFN_glGenVertexShadersEXT;
+        public final MemorySegment PFN_glDeleteVertexShaderEXT;
+        public final MemorySegment PFN_glShaderOp1EXT;
+        public final MemorySegment PFN_glShaderOp2EXT;
+        public final MemorySegment PFN_glShaderOp3EXT;
+        public final MemorySegment PFN_glSwizzleEXT;
+        public final MemorySegment PFN_glWriteMaskEXT;
+        public final MemorySegment PFN_glInsertComponentEXT;
+        public final MemorySegment PFN_glExtractComponentEXT;
+        public final MemorySegment PFN_glGenSymbolsEXT;
+        public final MemorySegment PFN_glSetInvariantEXT;
+        public final MemorySegment PFN_glSetLocalConstantEXT;
+        public final MemorySegment PFN_glVariantbvEXT;
+        public final MemorySegment PFN_glVariantsvEXT;
+        public final MemorySegment PFN_glVariantivEXT;
+        public final MemorySegment PFN_glVariantfvEXT;
+        public final MemorySegment PFN_glVariantdvEXT;
+        public final MemorySegment PFN_glVariantubvEXT;
+        public final MemorySegment PFN_glVariantusvEXT;
+        public final MemorySegment PFN_glVariantuivEXT;
+        public final MemorySegment PFN_glVariantPointerEXT;
+        public final MemorySegment PFN_glEnableVariantClientStateEXT;
+        public final MemorySegment PFN_glDisableVariantClientStateEXT;
+        public final MemorySegment PFN_glBindLightParameterEXT;
+        public final MemorySegment PFN_glBindMaterialParameterEXT;
+        public final MemorySegment PFN_glBindTexGenParameterEXT;
+        public final MemorySegment PFN_glBindTextureUnitParameterEXT;
+        public final MemorySegment PFN_glBindParameterEXT;
+        public final MemorySegment PFN_glIsVariantEnabledEXT;
+        public final MemorySegment PFN_glGetVariantBooleanvEXT;
+        public final MemorySegment PFN_glGetVariantIntegervEXT;
+        public final MemorySegment PFN_glGetVariantFloatvEXT;
+        public final MemorySegment PFN_glGetVariantPointervEXT;
+        public final MemorySegment PFN_glGetInvariantBooleanvEXT;
+        public final MemorySegment PFN_glGetInvariantIntegervEXT;
+        public final MemorySegment PFN_glGetInvariantFloatvEXT;
+        public final MemorySegment PFN_glGetLocalConstantBooleanvEXT;
+        public final MemorySegment PFN_glGetLocalConstantIntegervEXT;
+        public final MemorySegment PFN_glGetLocalConstantFloatvEXT;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBeginVertexShaderEXT = func.invoke("glBeginVertexShaderEXT");
+            PFN_glEndVertexShaderEXT = func.invoke("glEndVertexShaderEXT");
+            PFN_glBindVertexShaderEXT = func.invoke("glBindVertexShaderEXT");
+            PFN_glGenVertexShadersEXT = func.invoke("glGenVertexShadersEXT");
+            PFN_glDeleteVertexShaderEXT = func.invoke("glDeleteVertexShaderEXT");
+            PFN_glShaderOp1EXT = func.invoke("glShaderOp1EXT");
+            PFN_glShaderOp2EXT = func.invoke("glShaderOp2EXT");
+            PFN_glShaderOp3EXT = func.invoke("glShaderOp3EXT");
+            PFN_glSwizzleEXT = func.invoke("glSwizzleEXT");
+            PFN_glWriteMaskEXT = func.invoke("glWriteMaskEXT");
+            PFN_glInsertComponentEXT = func.invoke("glInsertComponentEXT");
+            PFN_glExtractComponentEXT = func.invoke("glExtractComponentEXT");
+            PFN_glGenSymbolsEXT = func.invoke("glGenSymbolsEXT");
+            PFN_glSetInvariantEXT = func.invoke("glSetInvariantEXT");
+            PFN_glSetLocalConstantEXT = func.invoke("glSetLocalConstantEXT");
+            PFN_glVariantbvEXT = func.invoke("glVariantbvEXT");
+            PFN_glVariantsvEXT = func.invoke("glVariantsvEXT");
+            PFN_glVariantivEXT = func.invoke("glVariantivEXT");
+            PFN_glVariantfvEXT = func.invoke("glVariantfvEXT");
+            PFN_glVariantdvEXT = func.invoke("glVariantdvEXT");
+            PFN_glVariantubvEXT = func.invoke("glVariantubvEXT");
+            PFN_glVariantusvEXT = func.invoke("glVariantusvEXT");
+            PFN_glVariantuivEXT = func.invoke("glVariantuivEXT");
+            PFN_glVariantPointerEXT = func.invoke("glVariantPointerEXT");
+            PFN_glEnableVariantClientStateEXT = func.invoke("glEnableVariantClientStateEXT");
+            PFN_glDisableVariantClientStateEXT = func.invoke("glDisableVariantClientStateEXT");
+            PFN_glBindLightParameterEXT = func.invoke("glBindLightParameterEXT");
+            PFN_glBindMaterialParameterEXT = func.invoke("glBindMaterialParameterEXT");
+            PFN_glBindTexGenParameterEXT = func.invoke("glBindTexGenParameterEXT");
+            PFN_glBindTextureUnitParameterEXT = func.invoke("glBindTextureUnitParameterEXT");
+            PFN_glBindParameterEXT = func.invoke("glBindParameterEXT");
+            PFN_glIsVariantEnabledEXT = func.invoke("glIsVariantEnabledEXT");
+            PFN_glGetVariantBooleanvEXT = func.invoke("glGetVariantBooleanvEXT");
+            PFN_glGetVariantIntegervEXT = func.invoke("glGetVariantIntegervEXT");
+            PFN_glGetVariantFloatvEXT = func.invoke("glGetVariantFloatvEXT");
+            PFN_glGetVariantPointervEXT = func.invoke("glGetVariantPointervEXT");
+            PFN_glGetInvariantBooleanvEXT = func.invoke("glGetInvariantBooleanvEXT");
+            PFN_glGetInvariantIntegervEXT = func.invoke("glGetInvariantIntegervEXT");
+            PFN_glGetInvariantFloatvEXT = func.invoke("glGetInvariantFloatvEXT");
+            PFN_glGetLocalConstantBooleanvEXT = func.invoke("glGetLocalConstantBooleanvEXT");
+            PFN_glGetLocalConstantIntegervEXT = func.invoke("glGetLocalConstantIntegervEXT");
+            PFN_glGetLocalConstantFloatvEXT = func.invoke("glGetLocalConstantFloatvEXT");
+        }
+    }
 
     public GLEXTVertexShader(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBeginVertexShaderEXT = func.invoke("glBeginVertexShaderEXT");
-        PFN_glEndVertexShaderEXT = func.invoke("glEndVertexShaderEXT");
-        PFN_glBindVertexShaderEXT = func.invoke("glBindVertexShaderEXT");
-        PFN_glGenVertexShadersEXT = func.invoke("glGenVertexShadersEXT");
-        PFN_glDeleteVertexShaderEXT = func.invoke("glDeleteVertexShaderEXT");
-        PFN_glShaderOp1EXT = func.invoke("glShaderOp1EXT");
-        PFN_glShaderOp2EXT = func.invoke("glShaderOp2EXT");
-        PFN_glShaderOp3EXT = func.invoke("glShaderOp3EXT");
-        PFN_glSwizzleEXT = func.invoke("glSwizzleEXT");
-        PFN_glWriteMaskEXT = func.invoke("glWriteMaskEXT");
-        PFN_glInsertComponentEXT = func.invoke("glInsertComponentEXT");
-        PFN_glExtractComponentEXT = func.invoke("glExtractComponentEXT");
-        PFN_glGenSymbolsEXT = func.invoke("glGenSymbolsEXT");
-        PFN_glSetInvariantEXT = func.invoke("glSetInvariantEXT");
-        PFN_glSetLocalConstantEXT = func.invoke("glSetLocalConstantEXT");
-        PFN_glVariantbvEXT = func.invoke("glVariantbvEXT");
-        PFN_glVariantsvEXT = func.invoke("glVariantsvEXT");
-        PFN_glVariantivEXT = func.invoke("glVariantivEXT");
-        PFN_glVariantfvEXT = func.invoke("glVariantfvEXT");
-        PFN_glVariantdvEXT = func.invoke("glVariantdvEXT");
-        PFN_glVariantubvEXT = func.invoke("glVariantubvEXT");
-        PFN_glVariantusvEXT = func.invoke("glVariantusvEXT");
-        PFN_glVariantuivEXT = func.invoke("glVariantuivEXT");
-        PFN_glVariantPointerEXT = func.invoke("glVariantPointerEXT");
-        PFN_glEnableVariantClientStateEXT = func.invoke("glEnableVariantClientStateEXT");
-        PFN_glDisableVariantClientStateEXT = func.invoke("glDisableVariantClientStateEXT");
-        PFN_glBindLightParameterEXT = func.invoke("glBindLightParameterEXT");
-        PFN_glBindMaterialParameterEXT = func.invoke("glBindMaterialParameterEXT");
-        PFN_glBindTexGenParameterEXT = func.invoke("glBindTexGenParameterEXT");
-        PFN_glBindTextureUnitParameterEXT = func.invoke("glBindTextureUnitParameterEXT");
-        PFN_glBindParameterEXT = func.invoke("glBindParameterEXT");
-        PFN_glIsVariantEnabledEXT = func.invoke("glIsVariantEnabledEXT");
-        PFN_glGetVariantBooleanvEXT = func.invoke("glGetVariantBooleanvEXT");
-        PFN_glGetVariantIntegervEXT = func.invoke("glGetVariantIntegervEXT");
-        PFN_glGetVariantFloatvEXT = func.invoke("glGetVariantFloatvEXT");
-        PFN_glGetVariantPointervEXT = func.invoke("glGetVariantPointervEXT");
-        PFN_glGetInvariantBooleanvEXT = func.invoke("glGetInvariantBooleanvEXT");
-        PFN_glGetInvariantIntegervEXT = func.invoke("glGetInvariantIntegervEXT");
-        PFN_glGetInvariantFloatvEXT = func.invoke("glGetInvariantFloatvEXT");
-        PFN_glGetLocalConstantBooleanvEXT = func.invoke("glGetLocalConstantBooleanvEXT");
-        PFN_glGetLocalConstantIntegervEXT = func.invoke("glGetLocalConstantIntegervEXT");
-        PFN_glGetLocalConstantFloatvEXT = func.invoke("glGetLocalConstantFloatvEXT");
+        this.handles = new Handles(func);
     }
 
     public void BeginVertexShaderEXT() {
-        if (Unmarshal.isNullPointer(PFN_glBeginVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glBeginVertexShaderEXT");
-        try { MH_glBeginVertexShaderEXT.invokeExact(PFN_glBeginVertexShaderEXT); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBeginVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glBeginVertexShaderEXT");
+        try { Handles.MH_glBeginVertexShaderEXT.invokeExact(handles.PFN_glBeginVertexShaderEXT); }
         catch (Throwable e) { throw new RuntimeException("error in glBeginVertexShaderEXT", e); }
     }
 
     public void EndVertexShaderEXT() {
-        if (Unmarshal.isNullPointer(PFN_glEndVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glEndVertexShaderEXT");
-        try { MH_glEndVertexShaderEXT.invokeExact(PFN_glEndVertexShaderEXT); }
+        if (Unmarshal.isNullPointer(handles.PFN_glEndVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glEndVertexShaderEXT");
+        try { Handles.MH_glEndVertexShaderEXT.invokeExact(handles.PFN_glEndVertexShaderEXT); }
         catch (Throwable e) { throw new RuntimeException("error in glEndVertexShaderEXT", e); }
     }
 
     public void BindVertexShaderEXT(@CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glBindVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glBindVertexShaderEXT");
-        try { MH_glBindVertexShaderEXT.invokeExact(PFN_glBindVertexShaderEXT, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glBindVertexShaderEXT");
+        try { Handles.MH_glBindVertexShaderEXT.invokeExact(handles.PFN_glBindVertexShaderEXT, id); }
         catch (Throwable e) { throw new RuntimeException("error in glBindVertexShaderEXT", e); }
     }
 
     public @CType("GLuint") int GenVertexShadersEXT(@CType("GLuint") int range) {
-        if (Unmarshal.isNullPointer(PFN_glGenVertexShadersEXT)) throw new SymbolNotFoundError("Symbol not found: glGenVertexShadersEXT");
-        try { return (int) MH_glGenVertexShadersEXT.invokeExact(PFN_glGenVertexShadersEXT, range); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGenVertexShadersEXT)) throw new SymbolNotFoundError("Symbol not found: glGenVertexShadersEXT");
+        try { return (int) Handles.MH_glGenVertexShadersEXT.invokeExact(handles.PFN_glGenVertexShadersEXT, range); }
         catch (Throwable e) { throw new RuntimeException("error in glGenVertexShadersEXT", e); }
     }
 
     public void DeleteVertexShaderEXT(@CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glDeleteVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexShaderEXT");
-        try { MH_glDeleteVertexShaderEXT.invokeExact(PFN_glDeleteVertexShaderEXT, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDeleteVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexShaderEXT");
+        try { Handles.MH_glDeleteVertexShaderEXT.invokeExact(handles.PFN_glDeleteVertexShaderEXT, id); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexShaderEXT", e); }
     }
 
     public void ShaderOp1EXT(@CType("GLenum") int op, @CType("GLuint") int res, @CType("GLuint") int arg1) {
-        if (Unmarshal.isNullPointer(PFN_glShaderOp1EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp1EXT");
-        try { MH_glShaderOp1EXT.invokeExact(PFN_glShaderOp1EXT, op, res, arg1); }
+        if (Unmarshal.isNullPointer(handles.PFN_glShaderOp1EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp1EXT");
+        try { Handles.MH_glShaderOp1EXT.invokeExact(handles.PFN_glShaderOp1EXT, op, res, arg1); }
         catch (Throwable e) { throw new RuntimeException("error in glShaderOp1EXT", e); }
     }
 
     public void ShaderOp2EXT(@CType("GLenum") int op, @CType("GLuint") int res, @CType("GLuint") int arg1, @CType("GLuint") int arg2) {
-        if (Unmarshal.isNullPointer(PFN_glShaderOp2EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp2EXT");
-        try { MH_glShaderOp2EXT.invokeExact(PFN_glShaderOp2EXT, op, res, arg1, arg2); }
+        if (Unmarshal.isNullPointer(handles.PFN_glShaderOp2EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp2EXT");
+        try { Handles.MH_glShaderOp2EXT.invokeExact(handles.PFN_glShaderOp2EXT, op, res, arg1, arg2); }
         catch (Throwable e) { throw new RuntimeException("error in glShaderOp2EXT", e); }
     }
 
     public void ShaderOp3EXT(@CType("GLenum") int op, @CType("GLuint") int res, @CType("GLuint") int arg1, @CType("GLuint") int arg2, @CType("GLuint") int arg3) {
-        if (Unmarshal.isNullPointer(PFN_glShaderOp3EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp3EXT");
-        try { MH_glShaderOp3EXT.invokeExact(PFN_glShaderOp3EXT, op, res, arg1, arg2, arg3); }
+        if (Unmarshal.isNullPointer(handles.PFN_glShaderOp3EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp3EXT");
+        try { Handles.MH_glShaderOp3EXT.invokeExact(handles.PFN_glShaderOp3EXT, op, res, arg1, arg2, arg3); }
         catch (Throwable e) { throw new RuntimeException("error in glShaderOp3EXT", e); }
     }
 
     public void SwizzleEXT(@CType("GLuint") int res, @CType("GLuint") int in, @CType("GLenum") int outX, @CType("GLenum") int outY, @CType("GLenum") int outZ, @CType("GLenum") int outW) {
-        if (Unmarshal.isNullPointer(PFN_glSwizzleEXT)) throw new SymbolNotFoundError("Symbol not found: glSwizzleEXT");
-        try { MH_glSwizzleEXT.invokeExact(PFN_glSwizzleEXT, res, in, outX, outY, outZ, outW); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSwizzleEXT)) throw new SymbolNotFoundError("Symbol not found: glSwizzleEXT");
+        try { Handles.MH_glSwizzleEXT.invokeExact(handles.PFN_glSwizzleEXT, res, in, outX, outY, outZ, outW); }
         catch (Throwable e) { throw new RuntimeException("error in glSwizzleEXT", e); }
     }
 
     public void WriteMaskEXT(@CType("GLuint") int res, @CType("GLuint") int in, @CType("GLenum") int outX, @CType("GLenum") int outY, @CType("GLenum") int outZ, @CType("GLenum") int outW) {
-        if (Unmarshal.isNullPointer(PFN_glWriteMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glWriteMaskEXT");
-        try { MH_glWriteMaskEXT.invokeExact(PFN_glWriteMaskEXT, res, in, outX, outY, outZ, outW); }
+        if (Unmarshal.isNullPointer(handles.PFN_glWriteMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glWriteMaskEXT");
+        try { Handles.MH_glWriteMaskEXT.invokeExact(handles.PFN_glWriteMaskEXT, res, in, outX, outY, outZ, outW); }
         catch (Throwable e) { throw new RuntimeException("error in glWriteMaskEXT", e); }
     }
 
     public void InsertComponentEXT(@CType("GLuint") int res, @CType("GLuint") int src, @CType("GLuint") int num) {
-        if (Unmarshal.isNullPointer(PFN_glInsertComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertComponentEXT");
-        try { MH_glInsertComponentEXT.invokeExact(PFN_glInsertComponentEXT, res, src, num); }
+        if (Unmarshal.isNullPointer(handles.PFN_glInsertComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertComponentEXT");
+        try { Handles.MH_glInsertComponentEXT.invokeExact(handles.PFN_glInsertComponentEXT, res, src, num); }
         catch (Throwable e) { throw new RuntimeException("error in glInsertComponentEXT", e); }
     }
 
     public void ExtractComponentEXT(@CType("GLuint") int res, @CType("GLuint") int src, @CType("GLuint") int num) {
-        if (Unmarshal.isNullPointer(PFN_glExtractComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glExtractComponentEXT");
-        try { MH_glExtractComponentEXT.invokeExact(PFN_glExtractComponentEXT, res, src, num); }
+        if (Unmarshal.isNullPointer(handles.PFN_glExtractComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glExtractComponentEXT");
+        try { Handles.MH_glExtractComponentEXT.invokeExact(handles.PFN_glExtractComponentEXT, res, src, num); }
         catch (Throwable e) { throw new RuntimeException("error in glExtractComponentEXT", e); }
     }
 
     public @CType("GLuint") int GenSymbolsEXT(@CType("GLenum") int datatype, @CType("GLenum") int storagetype, @CType("GLenum") int range, @CType("GLuint") int components) {
-        if (Unmarshal.isNullPointer(PFN_glGenSymbolsEXT)) throw new SymbolNotFoundError("Symbol not found: glGenSymbolsEXT");
-        try { return (int) MH_glGenSymbolsEXT.invokeExact(PFN_glGenSymbolsEXT, datatype, storagetype, range, components); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGenSymbolsEXT)) throw new SymbolNotFoundError("Symbol not found: glGenSymbolsEXT");
+        try { return (int) Handles.MH_glGenSymbolsEXT.invokeExact(handles.PFN_glGenSymbolsEXT, datatype, storagetype, range, components); }
         catch (Throwable e) { throw new RuntimeException("error in glGenSymbolsEXT", e); }
     }
 
     public void SetInvariantEXT(@CType("GLuint") int id, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glSetInvariantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetInvariantEXT");
-        try { MH_glSetInvariantEXT.invokeExact(PFN_glSetInvariantEXT, id, type, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSetInvariantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetInvariantEXT");
+        try { Handles.MH_glSetInvariantEXT.invokeExact(handles.PFN_glSetInvariantEXT, id, type, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glSetInvariantEXT", e); }
     }
 
     public void SetLocalConstantEXT(@CType("GLuint") int id, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glSetLocalConstantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetLocalConstantEXT");
-        try { MH_glSetLocalConstantEXT.invokeExact(PFN_glSetLocalConstantEXT, id, type, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSetLocalConstantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetLocalConstantEXT");
+        try { Handles.MH_glSetLocalConstantEXT.invokeExact(handles.PFN_glSetLocalConstantEXT, id, type, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glSetLocalConstantEXT", e); }
     }
 
     public void VariantbvEXT(@CType("GLuint") int id, @CType("const GLbyte *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantbvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantbvEXT");
-        try { MH_glVariantbvEXT.invokeExact(PFN_glVariantbvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantbvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantbvEXT");
+        try { Handles.MH_glVariantbvEXT.invokeExact(handles.PFN_glVariantbvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantbvEXT", e); }
     }
 
     public void VariantsvEXT(@CType("GLuint") int id, @CType("const GLshort *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantsvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantsvEXT");
-        try { MH_glVariantsvEXT.invokeExact(PFN_glVariantsvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantsvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantsvEXT");
+        try { Handles.MH_glVariantsvEXT.invokeExact(handles.PFN_glVariantsvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantsvEXT", e); }
     }
 
     public void VariantivEXT(@CType("GLuint") int id, @CType("const GLint *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantivEXT");
-        try { MH_glVariantivEXT.invokeExact(PFN_glVariantivEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantivEXT");
+        try { Handles.MH_glVariantivEXT.invokeExact(handles.PFN_glVariantivEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantivEXT", e); }
     }
 
     public void VariantfvEXT(@CType("GLuint") int id, @CType("const GLfloat *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantfvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantfvEXT");
-        try { MH_glVariantfvEXT.invokeExact(PFN_glVariantfvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantfvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantfvEXT");
+        try { Handles.MH_glVariantfvEXT.invokeExact(handles.PFN_glVariantfvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantfvEXT", e); }
     }
 
     public void VariantdvEXT(@CType("GLuint") int id, @CType("const GLdouble *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantdvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantdvEXT");
-        try { MH_glVariantdvEXT.invokeExact(PFN_glVariantdvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantdvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantdvEXT");
+        try { Handles.MH_glVariantdvEXT.invokeExact(handles.PFN_glVariantdvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantdvEXT", e); }
     }
 
     public void VariantubvEXT(@CType("GLuint") int id, @CType("const GLubyte *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantubvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantubvEXT");
-        try { MH_glVariantubvEXT.invokeExact(PFN_glVariantubvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantubvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantubvEXT");
+        try { Handles.MH_glVariantubvEXT.invokeExact(handles.PFN_glVariantubvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantubvEXT", e); }
     }
 
     public void VariantusvEXT(@CType("GLuint") int id, @CType("const GLushort *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantusvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantusvEXT");
-        try { MH_glVariantusvEXT.invokeExact(PFN_glVariantusvEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantusvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantusvEXT");
+        try { Handles.MH_glVariantusvEXT.invokeExact(handles.PFN_glVariantusvEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantusvEXT", e); }
     }
 
     public void VariantuivEXT(@CType("GLuint") int id, @CType("const GLuint *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantuivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantuivEXT");
-        try { MH_glVariantuivEXT.invokeExact(PFN_glVariantuivEXT, id, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantuivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantuivEXT");
+        try { Handles.MH_glVariantuivEXT.invokeExact(handles.PFN_glVariantuivEXT, id, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantuivEXT", e); }
     }
 
     public void VariantPointerEXT(@CType("GLuint") int id, @CType("GLenum") int type, @CType("GLuint") int stride, @CType("const void *") java.lang.foreign.MemorySegment addr) {
-        if (Unmarshal.isNullPointer(PFN_glVariantPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantPointerEXT");
-        try { MH_glVariantPointerEXT.invokeExact(PFN_glVariantPointerEXT, id, type, stride, addr); }
+        if (Unmarshal.isNullPointer(handles.PFN_glVariantPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantPointerEXT");
+        try { Handles.MH_glVariantPointerEXT.invokeExact(handles.PFN_glVariantPointerEXT, id, type, stride, addr); }
         catch (Throwable e) { throw new RuntimeException("error in glVariantPointerEXT", e); }
     }
 
     public void EnableVariantClientStateEXT(@CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glEnableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableVariantClientStateEXT");
-        try { MH_glEnableVariantClientStateEXT.invokeExact(PFN_glEnableVariantClientStateEXT, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glEnableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableVariantClientStateEXT");
+        try { Handles.MH_glEnableVariantClientStateEXT.invokeExact(handles.PFN_glEnableVariantClientStateEXT, id); }
         catch (Throwable e) { throw new RuntimeException("error in glEnableVariantClientStateEXT", e); }
     }
 
     public void DisableVariantClientStateEXT(@CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(PFN_glDisableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableVariantClientStateEXT");
-        try { MH_glDisableVariantClientStateEXT.invokeExact(PFN_glDisableVariantClientStateEXT, id); }
+        if (Unmarshal.isNullPointer(handles.PFN_glDisableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableVariantClientStateEXT");
+        try { Handles.MH_glDisableVariantClientStateEXT.invokeExact(handles.PFN_glDisableVariantClientStateEXT, id); }
         catch (Throwable e) { throw new RuntimeException("error in glDisableVariantClientStateEXT", e); }
     }
 
     public @CType("GLuint") int BindLightParameterEXT(@CType("GLenum") int light, @CType("GLenum") int value) {
-        if (Unmarshal.isNullPointer(PFN_glBindLightParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindLightParameterEXT");
-        try { return (int) MH_glBindLightParameterEXT.invokeExact(PFN_glBindLightParameterEXT, light, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindLightParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindLightParameterEXT");
+        try { return (int) Handles.MH_glBindLightParameterEXT.invokeExact(handles.PFN_glBindLightParameterEXT, light, value); }
         catch (Throwable e) { throw new RuntimeException("error in glBindLightParameterEXT", e); }
     }
 
     public @CType("GLuint") int BindMaterialParameterEXT(@CType("GLenum") int face, @CType("GLenum") int value) {
-        if (Unmarshal.isNullPointer(PFN_glBindMaterialParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindMaterialParameterEXT");
-        try { return (int) MH_glBindMaterialParameterEXT.invokeExact(PFN_glBindMaterialParameterEXT, face, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindMaterialParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindMaterialParameterEXT");
+        try { return (int) Handles.MH_glBindMaterialParameterEXT.invokeExact(handles.PFN_glBindMaterialParameterEXT, face, value); }
         catch (Throwable e) { throw new RuntimeException("error in glBindMaterialParameterEXT", e); }
     }
 
     public @CType("GLuint") int BindTexGenParameterEXT(@CType("GLenum") int unit, @CType("GLenum") int coord, @CType("GLenum") int value) {
-        if (Unmarshal.isNullPointer(PFN_glBindTexGenParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTexGenParameterEXT");
-        try { return (int) MH_glBindTexGenParameterEXT.invokeExact(PFN_glBindTexGenParameterEXT, unit, coord, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindTexGenParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTexGenParameterEXT");
+        try { return (int) Handles.MH_glBindTexGenParameterEXT.invokeExact(handles.PFN_glBindTexGenParameterEXT, unit, coord, value); }
         catch (Throwable e) { throw new RuntimeException("error in glBindTexGenParameterEXT", e); }
     }
 
     public @CType("GLuint") int BindTextureUnitParameterEXT(@CType("GLenum") int unit, @CType("GLenum") int value) {
-        if (Unmarshal.isNullPointer(PFN_glBindTextureUnitParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTextureUnitParameterEXT");
-        try { return (int) MH_glBindTextureUnitParameterEXT.invokeExact(PFN_glBindTextureUnitParameterEXT, unit, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindTextureUnitParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTextureUnitParameterEXT");
+        try { return (int) Handles.MH_glBindTextureUnitParameterEXT.invokeExact(handles.PFN_glBindTextureUnitParameterEXT, unit, value); }
         catch (Throwable e) { throw new RuntimeException("error in glBindTextureUnitParameterEXT", e); }
     }
 
     public @CType("GLuint") int BindParameterEXT(@CType("GLenum") int value) {
-        if (Unmarshal.isNullPointer(PFN_glBindParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindParameterEXT");
-        try { return (int) MH_glBindParameterEXT.invokeExact(PFN_glBindParameterEXT, value); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBindParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindParameterEXT");
+        try { return (int) Handles.MH_glBindParameterEXT.invokeExact(handles.PFN_glBindParameterEXT, value); }
         catch (Throwable e) { throw new RuntimeException("error in glBindParameterEXT", e); }
     }
 
     public @CType("GLboolean") boolean IsVariantEnabledEXT(@CType("GLuint") int id, @CType("GLenum") int cap) {
-        if (Unmarshal.isNullPointer(PFN_glIsVariantEnabledEXT)) throw new SymbolNotFoundError("Symbol not found: glIsVariantEnabledEXT");
-        try { return (boolean) MH_glIsVariantEnabledEXT.invokeExact(PFN_glIsVariantEnabledEXT, id, cap); }
+        if (Unmarshal.isNullPointer(handles.PFN_glIsVariantEnabledEXT)) throw new SymbolNotFoundError("Symbol not found: glIsVariantEnabledEXT");
+        try { return (boolean) Handles.MH_glIsVariantEnabledEXT.invokeExact(handles.PFN_glIsVariantEnabledEXT, id, cap); }
         catch (Throwable e) { throw new RuntimeException("error in glIsVariantEnabledEXT", e); }
     }
 
     public void GetVariantBooleanvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetVariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantBooleanvEXT");
-        try { MH_glGetVariantBooleanvEXT.invokeExact(PFN_glGetVariantBooleanvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantBooleanvEXT");
+        try { Handles.MH_glGetVariantBooleanvEXT.invokeExact(handles.PFN_glGetVariantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantBooleanvEXT", e); }
     }
 
     public void GetVariantIntegervEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLint *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetVariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantIntegervEXT");
-        try { MH_glGetVariantIntegervEXT.invokeExact(PFN_glGetVariantIntegervEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantIntegervEXT");
+        try { Handles.MH_glGetVariantIntegervEXT.invokeExact(handles.PFN_glGetVariantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantIntegervEXT", e); }
     }
 
     public void GetVariantFloatvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetVariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantFloatvEXT");
-        try { MH_glGetVariantFloatvEXT.invokeExact(PFN_glGetVariantFloatvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantFloatvEXT");
+        try { Handles.MH_glGetVariantFloatvEXT.invokeExact(handles.PFN_glGetVariantFloatvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantFloatvEXT", e); }
     }
 
     public void GetVariantPointervEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("void **") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetVariantPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantPointervEXT");
-        try { MH_glGetVariantPointervEXT.invokeExact(PFN_glGetVariantPointervEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetVariantPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantPointervEXT");
+        try { Handles.MH_glGetVariantPointervEXT.invokeExact(handles.PFN_glGetVariantPointervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantPointervEXT", e); }
     }
 
     public void GetInvariantBooleanvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetInvariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantBooleanvEXT");
-        try { MH_glGetInvariantBooleanvEXT.invokeExact(PFN_glGetInvariantBooleanvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetInvariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantBooleanvEXT");
+        try { Handles.MH_glGetInvariantBooleanvEXT.invokeExact(handles.PFN_glGetInvariantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInvariantBooleanvEXT", e); }
     }
 
     public void GetInvariantIntegervEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLint *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetInvariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantIntegervEXT");
-        try { MH_glGetInvariantIntegervEXT.invokeExact(PFN_glGetInvariantIntegervEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetInvariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantIntegervEXT");
+        try { Handles.MH_glGetInvariantIntegervEXT.invokeExact(handles.PFN_glGetInvariantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInvariantIntegervEXT", e); }
     }
 
     public void GetInvariantFloatvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetInvariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantFloatvEXT");
-        try { MH_glGetInvariantFloatvEXT.invokeExact(PFN_glGetInvariantFloatvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetInvariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantFloatvEXT");
+        try { Handles.MH_glGetInvariantFloatvEXT.invokeExact(handles.PFN_glGetInvariantFloatvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInvariantFloatvEXT", e); }
     }
 
     public void GetLocalConstantBooleanvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetLocalConstantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantBooleanvEXT");
-        try { MH_glGetLocalConstantBooleanvEXT.invokeExact(PFN_glGetLocalConstantBooleanvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetLocalConstantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantBooleanvEXT");
+        try { Handles.MH_glGetLocalConstantBooleanvEXT.invokeExact(handles.PFN_glGetLocalConstantBooleanvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetLocalConstantBooleanvEXT", e); }
     }
 
     public void GetLocalConstantIntegervEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLint *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetLocalConstantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantIntegervEXT");
-        try { MH_glGetLocalConstantIntegervEXT.invokeExact(PFN_glGetLocalConstantIntegervEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetLocalConstantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantIntegervEXT");
+        try { Handles.MH_glGetLocalConstantIntegervEXT.invokeExact(handles.PFN_glGetLocalConstantIntegervEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetLocalConstantIntegervEXT", e); }
     }
 
     public void GetLocalConstantFloatvEXT(@CType("GLuint") int id, @CType("GLenum") int value, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(PFN_glGetLocalConstantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantFloatvEXT");
-        try { MH_glGetLocalConstantFloatvEXT.invokeExact(PFN_glGetLocalConstantFloatvEXT, id, value, data); }
+        if (Unmarshal.isNullPointer(handles.PFN_glGetLocalConstantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantFloatvEXT");
+        try { Handles.MH_glGetLocalConstantFloatvEXT.invokeExact(handles.PFN_glGetLocalConstantFloatvEXT, id, value, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetLocalConstantFloatvEXT", e); }
     }
 

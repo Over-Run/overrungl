@@ -19,47 +19,67 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVMemoryObjectSparse {
-    public static final MethodHandle MH_glBufferPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glTexPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glNamedBufferPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glTexturePageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glBufferPageCommitmentMemNV;
-    public final MemorySegment PFN_glTexPageCommitmentMemNV;
-    public final MemorySegment PFN_glNamedBufferPageCommitmentMemNV;
-    public final MemorySegment PFN_glTexturePageCommitmentMemNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glBufferPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glTexPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glNamedBufferPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glTexturePageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glBufferPageCommitmentMemNV,
+            FD_glTexPageCommitmentMemNV,
+            FD_glNamedBufferPageCommitmentMemNV,
+            FD_glTexturePageCommitmentMemNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glBufferPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glBufferPageCommitmentMemNV);
+        public static final MethodHandle MH_glTexPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glTexPageCommitmentMemNV);
+        public static final MethodHandle MH_glNamedBufferPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferPageCommitmentMemNV);
+        public static final MethodHandle MH_glTexturePageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glTexturePageCommitmentMemNV);
+        public final MemorySegment PFN_glBufferPageCommitmentMemNV;
+        public final MemorySegment PFN_glTexPageCommitmentMemNV;
+        public final MemorySegment PFN_glNamedBufferPageCommitmentMemNV;
+        public final MemorySegment PFN_glTexturePageCommitmentMemNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glBufferPageCommitmentMemNV = func.invoke("glBufferPageCommitmentMemNV");
+            PFN_glTexPageCommitmentMemNV = func.invoke("glTexPageCommitmentMemNV");PFN_glNamedBufferPageCommitmentMemNV = func.invoke("glNamedBufferPageCommitmentMemNV");
+            PFN_glTexturePageCommitmentMemNV = func.invoke("glTexturePageCommitmentMemNV");
+        }
+    }
 
     public GLNVMemoryObjectSparse(overrungl.opengl.GLLoadFunc func) {
-        PFN_glBufferPageCommitmentMemNV = func.invoke("glBufferPageCommitmentMemNV");
-        PFN_glTexPageCommitmentMemNV = func.invoke("glTexPageCommitmentMemNV");PFN_glNamedBufferPageCommitmentMemNV = func.invoke("glNamedBufferPageCommitmentMemNV");
-        PFN_glTexturePageCommitmentMemNV = func.invoke("glTexturePageCommitmentMemNV");
+        this.handles = new Handles(func);
     }
 
     public void BufferPageCommitmentMemNV(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLuint") int memory, @CType("GLuint64") long memOffset, @CType("GLboolean") boolean commit) {
-        if (Unmarshal.isNullPointer(PFN_glBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentMemNV");
-        try { MH_glBufferPageCommitmentMemNV.invokeExact(PFN_glBufferPageCommitmentMemNV, target, offset, size, memory, memOffset, commit); }
+        if (Unmarshal.isNullPointer(handles.PFN_glBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentMemNV");
+        try { Handles.MH_glBufferPageCommitmentMemNV.invokeExact(handles.PFN_glBufferPageCommitmentMemNV, target, offset, size, memory, memOffset, commit); }
         catch (Throwable e) { throw new RuntimeException("error in glBufferPageCommitmentMemNV", e); }
     }
 
     public void TexPageCommitmentMemNV(@CType("GLenum") int target, @CType("GLint") int layer, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLuint") int memory, @CType("GLuint64") long offset, @CType("GLboolean") boolean commit) {
-        if (Unmarshal.isNullPointer(PFN_glTexPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentMemNV");
-        try { MH_glTexPageCommitmentMemNV.invokeExact(PFN_glTexPageCommitmentMemNV, target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentMemNV");
+        try { Handles.MH_glTexPageCommitmentMemNV.invokeExact(handles.PFN_glTexPageCommitmentMemNV, target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit); }
         catch (Throwable e) { throw new RuntimeException("error in glTexPageCommitmentMemNV", e); }
     }
 
     public void NamedBufferPageCommitmentMemNV(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLuint") int memory, @CType("GLuint64") long memOffset, @CType("GLboolean") boolean commit) {
-        if (Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentMemNV");
-        try { MH_glNamedBufferPageCommitmentMemNV.invokeExact(PFN_glNamedBufferPageCommitmentMemNV, buffer, offset, size, memory, memOffset, commit); }
+        if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentMemNV");
+        try { Handles.MH_glNamedBufferPageCommitmentMemNV.invokeExact(handles.PFN_glNamedBufferPageCommitmentMemNV, buffer, offset, size, memory, memOffset, commit); }
         catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentMemNV", e); }
     }
 
     public void TexturePageCommitmentMemNV(@CType("GLuint") int texture, @CType("GLint") int layer, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLuint") int memory, @CType("GLuint64") long offset, @CType("GLboolean") boolean commit) {
-        if (Unmarshal.isNullPointer(PFN_glTexturePageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexturePageCommitmentMemNV");
-        try { MH_glTexturePageCommitmentMemNV.invokeExact(PFN_glTexturePageCommitmentMemNV, texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit); }
+        if (Unmarshal.isNullPointer(handles.PFN_glTexturePageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexturePageCommitmentMemNV");
+        try { Handles.MH_glTexturePageCommitmentMemNV.invokeExact(handles.PFN_glTexturePageCommitmentMemNV, texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit); }
         catch (Throwable e) { throw new RuntimeException("error in glTexturePageCommitmentMemNV", e); }
     }
 

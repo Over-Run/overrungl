@@ -24,6 +24,7 @@ import overrungl.util.Unmarshal;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// [stb_image_write.h](https://github.com/nothings/stb/blob/master/stb_image_write.h)
 ///
@@ -34,34 +35,72 @@ public final class STBImageWrite {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stbi_write_png`.
+        public static final FunctionDescriptor FD_stbi_write_png = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbi_write_bmp`.
+        public static final FunctionDescriptor FD_stbi_write_bmp = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_tga`.
+        public static final FunctionDescriptor FD_stbi_write_tga = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_hdr`.
+        public static final FunctionDescriptor FD_stbi_write_hdr = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_jpg`.
+        public static final FunctionDescriptor FD_stbi_write_jpg = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbi_write_png_to_func`.
+        public static final FunctionDescriptor FD_stbi_write_png_to_func = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbi_write_bmp_to_func`.
+        public static final FunctionDescriptor FD_stbi_write_bmp_to_func = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_tga_to_func`.
+        public static final FunctionDescriptor FD_stbi_write_tga_to_func = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_hdr_to_func`.
+        public static final FunctionDescriptor FD_stbi_write_hdr_to_func = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stbi_write_jpg_to_func`.
+        public static final FunctionDescriptor FD_stbi_write_jpg_to_func = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stbi_flip_vertically_on_write`.
+        public static final FunctionDescriptor FD_stbi_flip_vertically_on_write = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stbi_write_png,
+            FD_stbi_write_bmp,
+            FD_stbi_write_tga,
+            FD_stbi_write_hdr,
+            FD_stbi_write_jpg,
+            FD_stbi_write_png_to_func,
+            FD_stbi_write_bmp_to_func,
+            FD_stbi_write_tga_to_func,
+            FD_stbi_write_hdr_to_func,
+            FD_stbi_write_jpg_to_func,
+            FD_stbi_flip_vertically_on_write
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stbi_write_png`.
-        public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png", Descriptors.FD_stbi_write_png);
         /// The method handle of `stbi_write_bmp`.
-        public static final MethodHandle MH_stbi_write_bmp = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp", Descriptors.FD_stbi_write_bmp);
         /// The method handle of `stbi_write_tga`.
-        public static final MethodHandle MH_stbi_write_tga = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga", Descriptors.FD_stbi_write_tga);
         /// The method handle of `stbi_write_hdr`.
-        public static final MethodHandle MH_stbi_write_hdr = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr", Descriptors.FD_stbi_write_hdr);
         /// The method handle of `stbi_write_jpg`.
-        public static final MethodHandle MH_stbi_write_jpg = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg", Descriptors.FD_stbi_write_jpg);
         /// The method handle of `stbi_write_png_to_func`.
-        public static final MethodHandle MH_stbi_write_png_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png_to_func", Descriptors.FD_stbi_write_png_to_func);
         /// The method handle of `stbi_write_bmp_to_func`.
-        public static final MethodHandle MH_stbi_write_bmp_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp_to_func", Descriptors.FD_stbi_write_bmp_to_func);
         /// The method handle of `stbi_write_tga_to_func`.
-        public static final MethodHandle MH_stbi_write_tga_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga_to_func", Descriptors.FD_stbi_write_tga_to_func);
         /// The method handle of `stbi_write_hdr_to_func`.
-        public static final MethodHandle MH_stbi_write_hdr_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr_to_func", Descriptors.FD_stbi_write_hdr_to_func);
         /// The method handle of `stbi_write_jpg_to_func`.
-        public static final MethodHandle MH_stbi_write_jpg_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg_to_func", Descriptors.FD_stbi_write_jpg_to_func);
         /// The method handle of `stbi_flip_vertically_on_write`.
-        public static final MethodHandle MH_stbi_flip_vertically_on_write = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_flip_vertically_on_write", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbi_flip_vertically_on_write = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_flip_vertically_on_write", Descriptors.FD_stbi_flip_vertically_on_write);
     }
-    //endregion
 
     public static @CType("int") boolean stbi_write_png(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int stride_in_bytes) {
         try {

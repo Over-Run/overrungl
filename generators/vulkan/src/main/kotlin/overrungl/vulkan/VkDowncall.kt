@@ -31,11 +31,13 @@ class VkDowncall(
     val extends = mutableListOf<String>()
     val fields = mutableListOf<VkDowncallField>()
     val aliasFields = mutableListOf<VkDowncallField>()
+    val descriptorFields = mutableListOf<VkDowncallField>()
     val handleFields = mutableListOf<VkDowncallField>()
     val pfnFields = mutableListOf<VkDowncallField>()
     val addedField = mutableSetOf<String>()
     val methods = mutableListOf<VkDowncallMethod>()
     var constructor: String? = null
+    var handlesConstructor: String? = null
     var customCode: String? = null
 
     init {
@@ -138,12 +140,12 @@ class VkDowncall(
             val cmd = commandMap[reqCommand]
                 ?: commandMap[(commandAliasMap[reqCommand] ?: error(reqCommand)).find(commandMap::containsKey)]
                 ?: error(reqCommand)
-            handleFields.add(
+            descriptorFields.add(
                 VkDowncallField(
-                    "MethodHandle",
-                    "MH_${reqCommand}",
+                    "FunctionDescriptor",
+                    "FD_$reqCommand",
                     buildString {
-                        append("RuntimeHelper.downcall(FunctionDescriptor.of")
+                        append("FunctionDescriptor.of")
                         if (cmd.type.javaName == "void") {
                             append("Void")
                         }
@@ -155,8 +157,15 @@ class VkDowncall(
                             }
                         }
                         append(cmd.params.joinToString(", ") { it.type.layout.toString() })
-                        append("))")
+                        append(")")
                     }
+                )
+            )
+            handleFields.add(
+                VkDowncallField(
+                    "MethodHandle",
+                    "MH_${reqCommand}",
+                    "RuntimeHelper.downcall(Descriptors.FD_$reqCommand)"
                 )
             )
             pfnFields.add(
@@ -192,6 +201,7 @@ class VkDowncall(
             """.trimIndent()
         )
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
+        if (descriptorFields.isNotEmpty()) sb.appendLine("import java.util.*;")
         imports.sorted().forEach { sb.appendLine("import $it;") }
         sb.append("public ")
         if (modifier != null) {
@@ -203,9 +213,10 @@ class VkDowncall(
         }
         sb.appendLine(" {")
 
-        fun writeFields(list: List<VkDowncallField>) {
+        fun writeFields(list: List<VkDowncallField>, indent: Int) {
             list.forEach {
-                sb.append("    ${it.modifier} ${it.type} ${it.name}")
+                sb.append(" ".repeat(indent))
+                sb.append("${it.modifier} ${it.type} ${it.name}")
                 if (it.value != null) {
                     sb.append(" = ")
                     sb.append(it.value)
@@ -213,11 +224,34 @@ class VkDowncall(
                 sb.appendLine(";")
             }
         }
-        writeFields(fields)
+        writeFields(fields, 4)
         // write aliases later to avoid forward declaration
-        writeFields(aliasFields)
-        writeFields(handleFields)
-        writeFields(pfnFields)
+        writeFields(aliasFields, 4)
+        if (handleFields.isNotEmpty()) {
+            sb.appendLine("    private final Handles handles;")
+            sb.appendLine("    public static final class Descriptors {")
+            writeFields(descriptorFields, 8)
+            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
+            descriptorFields.forEachIndexed { index, it ->
+                sb.append("            ${it.name}")
+                if (index + 1 == descriptorFields.size) {
+                    sb.appendLine()
+                } else {
+                    sb.appendLine(",")
+                }
+            }
+            sb.appendLine("        );")
+            sb.appendLine("        private Descriptors() {}")
+            sb.appendLine("    }")
+
+            sb.appendLine("    public static final class Handles {")
+            writeFields(handleFields, 8)
+            writeFields(pfnFields, 8)
+            if (handlesConstructor != null) {
+                sb.appendLine(handlesConstructor!!.prependIndent("        "))
+            }
+            sb.appendLine("    }")
+        }
         sb.appendLine()
 
         if (constructor != null) {
@@ -229,12 +263,12 @@ class VkDowncall(
             sb.append("    public ${m.type.annotatedTypeName()} ${m.name.substring(2)}(")
             sb.append(m.parameters.joinToString(", ") { "${it.type.annotatedTypeName()} ${it.name}" })
             sb.appendLine(") {")
-            sb.appendLine("""        if (Unmarshal.isNullPointer(PFN_${m.name})) throw new SymbolNotFoundError("Symbol not found: ${m.name}");""")
+            sb.appendLine("""        if (Unmarshal.isNullPointer(handles.PFN_${m.name})) throw new SymbolNotFoundError("Symbol not found: ${m.name}");""")
             sb.append("        try { ")
             if (m.type.javaName != "void") {
                 sb.append("return (${m.type.javaName}) ")
             }
-            sb.appendLine("MH_${m.name}.invokeExact(PFN_${m.name}, ${m.parameters.joinToString(", ") { it.name }}); }")
+            sb.appendLine("Handles.MH_${m.name}.invokeExact(handles.PFN_${m.name}, ${m.parameters.joinToString(", ") { it.name }}); }")
             sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${m.name}", e); }""")
             sb.appendLine("    }")
             sb.appendLine()

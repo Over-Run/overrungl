@@ -24,8 +24,10 @@ import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 /// [stb_vorbis.c](https://github.com/nothings/stb/blob/master/stb_vorbis.c)
 ///
@@ -58,62 +60,142 @@ public final class STBVorbis {
         VORBIS_seek_failed = 37,
         VORBIS_ogg_skeleton_not_supported = 38;
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `stb_vorbis_get_info`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_info = FunctionDescriptor.of(overrungl.stb.STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_comment`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_comment = FunctionDescriptor.of(overrungl.stb.STBVorbisComment.LAYOUT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_error`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_error = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_close`.
+        public static final FunctionDescriptor FD_stb_vorbis_close = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_sample_offset`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_sample_offset = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_file_offset`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_file_offset = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_open_pushdata`.
+        public static final FunctionDescriptor FD_stb_vorbis_open_pushdata = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT));
+        /// The function descriptor of `stb_vorbis_decode_frame_pushdata`.
+        public static final FunctionDescriptor FD_stb_vorbis_decode_frame_pushdata = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_flush_pushdata`.
+        public static final FunctionDescriptor FD_stb_vorbis_flush_pushdata = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_decode_filename`.
+        public static final FunctionDescriptor FD_stb_vorbis_decode_filename = FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_decode_memory`.
+        public static final FunctionDescriptor FD_stb_vorbis_decode_memory = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_open_memory`.
+        public static final FunctionDescriptor FD_stb_vorbis_open_memory = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT));
+        /// The function descriptor of `stb_vorbis_open_filename`.
+        public static final FunctionDescriptor FD_stb_vorbis_open_filename = FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT));
+        /// The function descriptor of `stb_vorbis_seek_frame`.
+        public static final FunctionDescriptor FD_stb_vorbis_seek_frame = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_seek`.
+        public static final FunctionDescriptor FD_stb_vorbis_seek = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_seek_start`.
+        public static final FunctionDescriptor FD_stb_vorbis_seek_start = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_stream_length_in_samples`.
+        public static final FunctionDescriptor FD_stb_vorbis_stream_length_in_samples = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_stream_length_in_seconds`.
+        public static final FunctionDescriptor FD_stb_vorbis_stream_length_in_seconds = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_frame_float`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_frame_float = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+        /// The function descriptor of `stb_vorbis_get_frame_short_interleaved`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_frame_short_interleaved = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_get_frame_short`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_frame_short = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_get_samples_float_interleaved`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_samples_float_interleaved = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_get_samples_float`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_samples_float = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_get_samples_short_interleaved`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_samples_short_interleaved = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// The function descriptor of `stb_vorbis_get_samples_short`.
+        public static final FunctionDescriptor FD_stb_vorbis_get_samples_short = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_stb_vorbis_get_info,
+            FD_stb_vorbis_get_comment,
+            FD_stb_vorbis_get_error,
+            FD_stb_vorbis_close,
+            FD_stb_vorbis_get_sample_offset,
+            FD_stb_vorbis_get_file_offset,
+            FD_stb_vorbis_open_pushdata,
+            FD_stb_vorbis_decode_frame_pushdata,
+            FD_stb_vorbis_flush_pushdata,
+            FD_stb_vorbis_decode_filename,
+            FD_stb_vorbis_decode_memory,
+            FD_stb_vorbis_open_memory,
+            FD_stb_vorbis_open_filename,
+            FD_stb_vorbis_seek_frame,
+            FD_stb_vorbis_seek,
+            FD_stb_vorbis_seek_start,
+            FD_stb_vorbis_stream_length_in_samples,
+            FD_stb_vorbis_stream_length_in_seconds,
+            FD_stb_vorbis_get_frame_float,
+            FD_stb_vorbis_get_frame_short_interleaved,
+            FD_stb_vorbis_get_frame_short,
+            FD_stb_vorbis_get_samples_float_interleaved,
+            FD_stb_vorbis_get_samples_float,
+            FD_stb_vorbis_get_samples_short_interleaved,
+            FD_stb_vorbis_get_samples_short
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `stb_vorbis_get_info`.
-        public static final MethodHandle MH_stb_vorbis_get_info = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_info", FunctionDescriptor.of(overrungl.stb.STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_info = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_info", Descriptors.FD_stb_vorbis_get_info);
         /// The method handle of `stb_vorbis_get_comment`.
-        public static final MethodHandle MH_stb_vorbis_get_comment = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_comment", FunctionDescriptor.of(overrungl.stb.STBVorbisComment.LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_comment = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_comment", Descriptors.FD_stb_vorbis_get_comment);
         /// The method handle of `stb_vorbis_get_error`.
-        public static final MethodHandle MH_stb_vorbis_get_error = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_error", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_error = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_error", Descriptors.FD_stb_vorbis_get_error);
         /// The method handle of `stb_vorbis_close`.
-        public static final MethodHandle MH_stb_vorbis_close = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_close", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_close = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_close", Descriptors.FD_stb_vorbis_close);
         /// The method handle of `stb_vorbis_get_sample_offset`.
-        public static final MethodHandle MH_stb_vorbis_get_sample_offset = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_sample_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_sample_offset = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_sample_offset", Descriptors.FD_stb_vorbis_get_sample_offset);
         /// The method handle of `stb_vorbis_get_file_offset`.
-        public static final MethodHandle MH_stb_vorbis_get_file_offset = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_file_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_file_offset = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_file_offset", Descriptors.FD_stb_vorbis_get_file_offset);
         /// The method handle of `stb_vorbis_open_pushdata`.
-        public static final MethodHandle MH_stb_vorbis_open_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_pushdata", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        public static final MethodHandle MH_stb_vorbis_open_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_pushdata", Descriptors.FD_stb_vorbis_open_pushdata);
         /// The method handle of `stb_vorbis_decode_frame_pushdata`.
-        public static final MethodHandle MH_stb_vorbis_decode_frame_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_frame_pushdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_decode_frame_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_frame_pushdata", Descriptors.FD_stb_vorbis_decode_frame_pushdata);
         /// The method handle of `stb_vorbis_flush_pushdata`.
-        public static final MethodHandle MH_stb_vorbis_flush_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_flush_pushdata", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_flush_pushdata = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_flush_pushdata", Descriptors.FD_stb_vorbis_flush_pushdata);
         /// The method handle of `stb_vorbis_decode_filename`.
-        public static final MethodHandle MH_stb_vorbis_decode_filename = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_filename", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_decode_filename = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_filename", Descriptors.FD_stb_vorbis_decode_filename);
         /// The method handle of `stb_vorbis_decode_memory`.
-        public static final MethodHandle MH_stb_vorbis_decode_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_memory", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_decode_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_decode_memory", Descriptors.FD_stb_vorbis_decode_memory);
         /// The method handle of `stb_vorbis_open_memory`.
-        public static final MethodHandle MH_stb_vorbis_open_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        public static final MethodHandle MH_stb_vorbis_open_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_memory", Descriptors.FD_stb_vorbis_open_memory);
         /// The method handle of `stb_vorbis_open_filename`.
-        public static final MethodHandle MH_stb_vorbis_open_filename = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_filename", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        public static final MethodHandle MH_stb_vorbis_open_filename = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_open_filename", Descriptors.FD_stb_vorbis_open_filename);
         /// The method handle of `stb_vorbis_seek_frame`.
-        public static final MethodHandle MH_stb_vorbis_seek_frame = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek_frame", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_seek_frame = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek_frame", Descriptors.FD_stb_vorbis_seek_frame);
         /// The method handle of `stb_vorbis_seek`.
-        public static final MethodHandle MH_stb_vorbis_seek = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_seek = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek", Descriptors.FD_stb_vorbis_seek);
         /// The method handle of `stb_vorbis_seek_start`.
-        public static final MethodHandle MH_stb_vorbis_seek_start = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek_start", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_seek_start = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_seek_start", Descriptors.FD_stb_vorbis_seek_start);
         /// The method handle of `stb_vorbis_stream_length_in_samples`.
-        public static final MethodHandle MH_stb_vorbis_stream_length_in_samples = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_stream_length_in_samples", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_stream_length_in_samples = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_stream_length_in_samples", Descriptors.FD_stb_vorbis_stream_length_in_samples);
         /// The method handle of `stb_vorbis_stream_length_in_seconds`.
-        public static final MethodHandle MH_stb_vorbis_stream_length_in_seconds = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_stream_length_in_seconds", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_stream_length_in_seconds = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_stream_length_in_seconds", Descriptors.FD_stb_vorbis_stream_length_in_seconds);
         /// The method handle of `stb_vorbis_get_frame_float`.
-        public static final MethodHandle MH_stb_vorbis_get_frame_float = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stb_vorbis_get_frame_float = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_float", Descriptors.FD_stb_vorbis_get_frame_float);
         /// The method handle of `stb_vorbis_get_frame_short_interleaved`.
-        public static final MethodHandle MH_stb_vorbis_get_frame_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_frame_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_short_interleaved", Descriptors.FD_stb_vorbis_get_frame_short_interleaved);
         /// The method handle of `stb_vorbis_get_frame_short`.
-        public static final MethodHandle MH_stb_vorbis_get_frame_short = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_frame_short = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_frame_short", Descriptors.FD_stb_vorbis_get_frame_short);
         /// The method handle of `stb_vorbis_get_samples_float_interleaved`.
-        public static final MethodHandle MH_stb_vorbis_get_samples_float_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_float_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_samples_float_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_float_interleaved", Descriptors.FD_stb_vorbis_get_samples_float_interleaved);
         /// The method handle of `stb_vorbis_get_samples_float`.
-        public static final MethodHandle MH_stb_vorbis_get_samples_float = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_samples_float = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_float", Descriptors.FD_stb_vorbis_get_samples_float);
         /// The method handle of `stb_vorbis_get_samples_short_interleaved`.
-        public static final MethodHandle MH_stb_vorbis_get_samples_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_samples_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_short_interleaved", Descriptors.FD_stb_vorbis_get_samples_short_interleaved);
         /// The method handle of `stb_vorbis_get_samples_short`.
-        public static final MethodHandle MH_stb_vorbis_get_samples_short = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_vorbis_get_samples_short = RuntimeHelper.downcall(STBInternal.lookup(), "stb_vorbis_get_samples_short", Descriptors.FD_stb_vorbis_get_samples_short);
     }
-    //endregion
 
     public static @CType("stb_vorbis_info") java.lang.foreign.MemorySegment stb_vorbis_get_info_(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {

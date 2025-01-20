@@ -19,6 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,16 +31,29 @@ public final class GLNVQueryResource {
     public static final int GL_QUERY_RESOURCE_TEXTURE_NV = 0x9545;
     public static final int GL_QUERY_RESOURCE_RENDERBUFFER_NV = 0x9546;
     public static final int GL_QUERY_RESOURCE_BUFFEROBJECT_NV = 0x9547;
-    public static final MethodHandle MH_glQueryResourceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glQueryResourceNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glQueryResourceNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glQueryResourceNV
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glQueryResourceNV = RuntimeHelper.downcall(Descriptors.FD_glQueryResourceNV);
+        public final MemorySegment PFN_glQueryResourceNV;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glQueryResourceNV = func.invoke("glQueryResourceNV");
+        }
+    }
 
     public GLNVQueryResource(overrungl.opengl.GLLoadFunc func) {
-        PFN_glQueryResourceNV = func.invoke("glQueryResourceNV");
+        this.handles = new Handles(func);
     }
 
     public @CType("GLint") int QueryResourceNV(@CType("GLenum") int queryType, @CType("GLint") int tagId, @CType("GLuint") int count, @CType("GLint *") java.lang.foreign.MemorySegment buffer) {
-        if (Unmarshal.isNullPointer(PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
-        try { return (int) MH_glQueryResourceNV.invokeExact(PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
+        if (Unmarshal.isNullPointer(handles.PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
+        try { return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glQueryResourceNV", e); }
     }
 

@@ -19,6 +19,7 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,25 +41,40 @@ public final class GLSGISMultisample {
     public static final int GL_SAMPLE_MASK_VALUE_SGIS = 0x80AA;
     public static final int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
     public static final int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
-    public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
-    public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSampleMaskSGIS;
-    public final MemorySegment PFN_glSamplePatternSGIS;
+    private final Handles handles;
+    public static final class Descriptors {
+        private Descriptors() {}
+        public static final FunctionDescriptor FD_glSampleMaskSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
+        public static final FunctionDescriptor FD_glSamplePatternSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_glSampleMaskSGIS,
+            FD_glSamplePatternSGIS
+        );
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskSGIS);
+        public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(Descriptors.FD_glSamplePatternSGIS);
+        public final MemorySegment PFN_glSampleMaskSGIS;
+        public final MemorySegment PFN_glSamplePatternSGIS;
+        private Handles(overrungl.opengl.GLLoadFunc func) {
+            PFN_glSampleMaskSGIS = func.invoke("glSampleMaskSGIS", "glSampleMaskEXT");
+            PFN_glSamplePatternSGIS = func.invoke("glSamplePatternSGIS", "glSamplePatternEXT");
+        }
+    }
 
     public GLSGISMultisample(overrungl.opengl.GLLoadFunc func) {
-        PFN_glSampleMaskSGIS = func.invoke("glSampleMaskSGIS", "glSampleMaskEXT");
-        PFN_glSamplePatternSGIS = func.invoke("glSamplePatternSGIS", "glSamplePatternEXT");
+        this.handles = new Handles(func);
     }
 
     public void SampleMaskSGIS(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
-        try { MH_glSampleMaskSGIS.invokeExact(PFN_glSampleMaskSGIS, value, invert); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
+        try { Handles.MH_glSampleMaskSGIS.invokeExact(handles.PFN_glSampleMaskSGIS, value, invert); }
         catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
     }
 
     public void SamplePatternSGIS(@CType("GLenum") int pattern) {
-        if (Unmarshal.isNullPointer(PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
-        try { MH_glSamplePatternSGIS.invokeExact(PFN_glSamplePatternSGIS, pattern); }
+        if (Unmarshal.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
+        try { Handles.MH_glSamplePatternSGIS.invokeExact(handles.PFN_glSamplePatternSGIS, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
     }
 

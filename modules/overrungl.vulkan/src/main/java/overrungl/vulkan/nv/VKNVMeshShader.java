@@ -22,6 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
+import java.util.*;
 import static overrungl.vulkan.ext.VKEXTMeshShader.*;
 public class VKNVMeshShader {
     public static final int VK_NV_MESH_SHADER_SPEC_VERSION = 1;
@@ -34,34 +35,51 @@ public class VKNVMeshShader {
     public static final int VK_SHADER_STAGE_MESH_BIT_NV = VK_SHADER_STAGE_MESH_BIT_EXT;
     public static final int VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV = VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT;
     public static final int VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT;
-    public static final MethodHandle MH_vkCmdDrawMeshTasksNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_vkCmdDrawMeshTasksNV;
-    public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectNV;
-    public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectCountNV;
+    private final Handles handles;
+    public static final class Descriptors {
+        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectCountNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_vkCmdDrawMeshTasksNV,
+            FD_vkCmdDrawMeshTasksIndirectNV,
+            FD_vkCmdDrawMeshTasksIndirectCountNV
+        );
+        private Descriptors() {}
+    }
+    public static final class Handles {
+        public static final MethodHandle MH_vkCmdDrawMeshTasksNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksNV);
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectNV);
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectCountNV);
+        public final MemorySegment PFN_vkCmdDrawMeshTasksNV;
+        public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectNV;
+        public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectCountNV;
+        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+            PFN_vkCmdDrawMeshTasksNV = func.invoke(device, "vkCmdDrawMeshTasksNV");
+            PFN_vkCmdDrawMeshTasksIndirectNV = func.invoke(device, "vkCmdDrawMeshTasksIndirectNV");
+            PFN_vkCmdDrawMeshTasksIndirectCountNV = func.invoke(device, "vkCmdDrawMeshTasksIndirectCountNV");
+        }
+    }
 
     public VKNVMeshShader(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        PFN_vkCmdDrawMeshTasksNV = func.invoke(device, "vkCmdDrawMeshTasksNV");
-        PFN_vkCmdDrawMeshTasksIndirectNV = func.invoke(device, "vkCmdDrawMeshTasksIndirectNV");
-        PFN_vkCmdDrawMeshTasksIndirectCountNV = func.invoke(device, "vkCmdDrawMeshTasksIndirectCountNV");
+        this.handles = new Handles(device, func);
     }
 
     public void CmdDrawMeshTasksNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int taskCount, @CType("uint32_t") int firstTask) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksNV");
-        try { MH_vkCmdDrawMeshTasksNV.invokeExact(PFN_vkCmdDrawMeshTasksNV, commandBuffer, taskCount, firstTask); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksNV");
+        try { Handles.MH_vkCmdDrawMeshTasksNV.invokeExact(handles.PFN_vkCmdDrawMeshTasksNV, commandBuffer, taskCount, firstTask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksNV", e); }
     }
 
     public void CmdDrawMeshTasksIndirectNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("uint32_t") int drawCount, @CType("uint32_t") int stride) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectNV");
-        try { MH_vkCmdDrawMeshTasksIndirectNV.invokeExact(PFN_vkCmdDrawMeshTasksIndirectNV, commandBuffer, buffer, offset, drawCount, stride); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectNV");
+        try { Handles.MH_vkCmdDrawMeshTasksIndirectNV.invokeExact(handles.PFN_vkCmdDrawMeshTasksIndirectNV, commandBuffer, buffer, offset, drawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksIndirectNV", e); }
     }
 
     public void CmdDrawMeshTasksIndirectCountNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkBuffer") MemorySegment countBuffer, @CType("VkDeviceSize") long countBufferOffset, @CType("uint32_t") int maxDrawCount, @CType("uint32_t") int stride) {
-        if (Unmarshal.isNullPointer(PFN_vkCmdDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectCountNV");
-        try { MH_vkCmdDrawMeshTasksIndirectCountNV.invokeExact(PFN_vkCmdDrawMeshTasksIndirectCountNV, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
+        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectCountNV");
+        try { Handles.MH_vkCmdDrawMeshTasksIndirectCountNV.invokeExact(handles.PFN_vkCmdDrawMeshTasksIndirectCountNV, commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksIndirectCountNV", e); }
     }
 

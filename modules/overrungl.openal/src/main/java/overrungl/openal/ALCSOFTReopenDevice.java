@@ -18,6 +18,7 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
+import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -26,14 +27,22 @@ public final class ALCSOFTReopenDevice {
     //@formatter:off
     //region Fields
     //endregion
-    //region Method handles
+    /// Function descriptors.
+    public static final class Descriptors {
+        private Descriptors() { }
+        /// The function descriptor of `alcReopenDeviceSOFT`.
+        public static final FunctionDescriptor FD_alcReopenDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
+        /// Function descriptors.
+        public static final List<FunctionDescriptor> LIST = List.of(
+            FD_alcReopenDeviceSOFT
+        );
+    }
     /// Method handles.
     public static final class Handles {
         private Handles() { }
         /// The method handle of `alcReopenDeviceSOFT`.
-        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcReopenDeviceSOFT", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcReopenDeviceSOFT", Descriptors.FD_alcReopenDeviceSOFT);
     }
-    //endregion
 
     public static @CType("ALCboolean") boolean alcReopenDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
         if (Handles.MH_alcReopenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcReopenDeviceSOFT");
