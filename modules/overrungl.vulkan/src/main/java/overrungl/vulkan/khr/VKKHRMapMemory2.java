@@ -29,14 +29,9 @@ public class VKKHRMapMemory2 {
     public static final int VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR = VK_STRUCTURE_TYPE_MEMORY_MAP_INFO;
     public static final int VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR = VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkMapMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUnmapMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkMapMemory2KHR = RuntimeHelper.downcall(Descriptors.FD_vkMapMemory2KHR);
-        public static final MethodHandle MH_vkUnmapMemory2KHR = RuntimeHelper.downcall(Descriptors.FD_vkUnmapMemory2KHR);
+        public static final MethodHandle MH_vkMapMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUnmapMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkMapMemory2KHR;
         public final MemorySegment PFN_vkUnmapMemory2KHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

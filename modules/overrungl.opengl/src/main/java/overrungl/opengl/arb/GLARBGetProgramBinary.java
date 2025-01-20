@@ -29,16 +29,10 @@ public final class GLARBGetProgramBinary {
     public static final int GL_NUM_PROGRAM_BINARY_FORMATS = 0x87FE;
     public static final int GL_PROGRAM_BINARY_FORMATS = 0x87FF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetProgramBinary = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramBinary = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetProgramBinary = RuntimeHelper.downcall(Descriptors.FD_glGetProgramBinary);
-        public static final MethodHandle MH_glProgramBinary = RuntimeHelper.downcall(Descriptors.FD_glProgramBinary);
-        public static final MethodHandle MH_glProgramParameteri = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteri);
+        public static final MethodHandle MH_glGetProgramBinary = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramBinary = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGetProgramBinary;
         public final MemorySegment PFN_glProgramBinary;
         public final MemorySegment PFN_glProgramParameteri;

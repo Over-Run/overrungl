@@ -32,14 +32,9 @@ public final class GLAMDVertexShaderTessellator {
     public static final int GL_DISCRETE_AMD = 0x9006;
     public static final int GL_CONTINUOUS_AMD = 0x9007;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTessellationFactorAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glTessellationModeAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(Descriptors.FD_glTessellationFactorAMD);
-        public static final MethodHandle MH_glTessellationModeAMD = RuntimeHelper.downcall(Descriptors.FD_glTessellationModeAMD);
+        public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTessellationModeAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTessellationFactorAMD;
         public final MemorySegment PFN_glTessellationModeAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {

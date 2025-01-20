@@ -29,12 +29,8 @@ public final class GLEXTBlendMinmax {
     public static final int GL_FUNC_ADD_EXT = 0x8006;
     public static final int GL_BLEND_EQUATION_EXT = 0x8009;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendEquationEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationEXT);
+        public static final MethodHandle MH_glBlendEquationEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendEquationEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendEquationEXT = func.invoke("glBlendEquationEXT", "glBlendEquation");

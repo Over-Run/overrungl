@@ -41,24 +41,14 @@ public final class ALCSOFTLoopback {
     public static final int ALC_6POINT1_SOFT = 0x1505;
     public static final int ALC_7POINT1_SOFT = 0x1506;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcLoopbackOpenDeviceSOFT`.
-        public static final FunctionDescriptor FD_alcLoopbackOpenDeviceSOFT = FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alcIsRenderFormatSupportedSOFT`.
-        public static final FunctionDescriptor FD_alcIsRenderFormatSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `alcRenderSamplesSOFT`.
-        public static final FunctionDescriptor FD_alcRenderSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcLoopbackOpenDeviceSOFT`.
-        public static final MethodHandle MH_alcLoopbackOpenDeviceSOFT = RuntimeHelper.downcall(Descriptors.FD_alcLoopbackOpenDeviceSOFT);
+        public static final MethodHandle MH_alcLoopbackOpenDeviceSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `alcIsRenderFormatSupportedSOFT`.
-        public static final MethodHandle MH_alcIsRenderFormatSupportedSOFT = RuntimeHelper.downcall(Descriptors.FD_alcIsRenderFormatSupportedSOFT);
+        public static final MethodHandle MH_alcIsRenderFormatSupportedSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alcRenderSamplesSOFT`.
-        public static final MethodHandle MH_alcRenderSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alcRenderSamplesSOFT);
+        public static final MethodHandle MH_alcRenderSamplesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The function address of `alcLoopbackOpenDeviceSOFT`.
         public final MemorySegment PFN_alcLoopbackOpenDeviceSOFT;
         /// The function address of `alcIsRenderFormatSupportedSOFT`.

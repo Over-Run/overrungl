@@ -35,16 +35,10 @@ public final class GLEXTLightTexture {
     public static final int GL_TEXTURE_MATERIAL_PARAMETER_EXT = 0x8352;
     public static final int GL_FRAGMENT_DEPTH_EXT = 0x8452;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glApplyTextureEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTextureLightEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTextureMaterialEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glApplyTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glApplyTextureEXT);
-        public static final MethodHandle MH_glTextureLightEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureLightEXT);
-        public static final MethodHandle MH_glTextureMaterialEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureMaterialEXT);
+        public static final MethodHandle MH_glApplyTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTextureLightEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTextureMaterialEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glApplyTextureEXT;
         public final MemorySegment PFN_glTextureLightEXT;
         public final MemorySegment PFN_glTextureMaterialEXT;

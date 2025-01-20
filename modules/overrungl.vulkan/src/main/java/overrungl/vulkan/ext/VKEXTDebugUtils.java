@@ -39,32 +39,18 @@ public class VKEXTDebugUtils {
     public static final int VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT = 1000128004;
     public static final int VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT = 1000128000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetDebugUtilsObjectNameEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetDebugUtilsObjectTagEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueBeginDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueEndDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueInsertDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBeginDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdInsertDebugUtilsLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateDebugUtilsMessengerEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyDebugUtilsMessengerEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSubmitDebugUtilsMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetDebugUtilsObjectNameEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetDebugUtilsObjectNameEXT);
-        public static final MethodHandle MH_vkSetDebugUtilsObjectTagEXT = RuntimeHelper.downcall(Descriptors.FD_vkSetDebugUtilsObjectTagEXT);
-        public static final MethodHandle MH_vkQueueBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueBeginDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkQueueEndDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueEndDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkQueueInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkQueueInsertDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkCmdBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkCmdEndDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkCmdInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdInsertDebugUtilsLabelEXT);
-        public static final MethodHandle MH_vkCreateDebugUtilsMessengerEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateDebugUtilsMessengerEXT);
-        public static final MethodHandle MH_vkDestroyDebugUtilsMessengerEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDebugUtilsMessengerEXT);
-        public static final MethodHandle MH_vkSubmitDebugUtilsMessageEXT = RuntimeHelper.downcall(Descriptors.FD_vkSubmitDebugUtilsMessageEXT);
+        public static final MethodHandle MH_vkSetDebugUtilsObjectNameEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetDebugUtilsObjectTagEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueEndDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdInsertDebugUtilsLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateDebugUtilsMessengerEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDebugUtilsMessengerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSubmitDebugUtilsMessageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkSetDebugUtilsObjectNameEXT;
         public final MemorySegment PFN_vkSetDebugUtilsObjectTagEXT;
         public final MemorySegment PFN_vkQueueBeginDebugUtilsLabelEXT;

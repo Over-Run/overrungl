@@ -25,20 +25,12 @@ import overrungl.util.*;
 
 public final class GLNVDrawVulkanImage {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawVkImageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glGetVkProcAddrNV = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWaitVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glSignalVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glSignalVkFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawVkImageNV = RuntimeHelper.downcall(Descriptors.FD_glDrawVkImageNV);
-        public static final MethodHandle MH_glGetVkProcAddrNV = RuntimeHelper.downcall(Descriptors.FD_glGetVkProcAddrNV);
-        public static final MethodHandle MH_glWaitVkSemaphoreNV = RuntimeHelper.downcall(Descriptors.FD_glWaitVkSemaphoreNV);
-        public static final MethodHandle MH_glSignalVkSemaphoreNV = RuntimeHelper.downcall(Descriptors.FD_glSignalVkSemaphoreNV);
-        public static final MethodHandle MH_glSignalVkFenceNV = RuntimeHelper.downcall(Descriptors.FD_glSignalVkFenceNV);
+        public static final MethodHandle MH_glDrawVkImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glGetVkProcAddrNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWaitVkSemaphoreNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glSignalVkSemaphoreNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glSignalVkFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glDrawVkImageNV;
         public final MemorySegment PFN_glGetVkProcAddrNV;
         public final MemorySegment PFN_glWaitVkSemaphoreNV;

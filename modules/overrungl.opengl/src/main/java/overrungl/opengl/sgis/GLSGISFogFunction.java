@@ -28,14 +28,9 @@ public final class GLSGISFogFunction {
     public static final int GL_FOG_FUNC_POINTS_SGIS = 0x812B;
     public static final int GL_MAX_FOG_FUNC_POINTS_SGIS = 0x812C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFogFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetFogFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFogFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glFogFuncSGIS);
-        public static final MethodHandle MH_glGetFogFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetFogFuncSGIS);
+        public static final MethodHandle MH_glFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFogFuncSGIS;
         public final MemorySegment PFN_glGetFogFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

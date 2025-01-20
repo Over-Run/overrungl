@@ -27,12 +27,8 @@ public class VKNNViSurface {
     public static final String VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
     public static final int VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN = 1000062000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateViSurfaceNN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateViSurfaceNN = RuntimeHelper.downcall(Descriptors.FD_vkCreateViSurfaceNN);
+        public static final MethodHandle MH_vkCreateViSurfaceNN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateViSurfaceNN;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateViSurfaceNN = func.invoke(instance, "vkCreateViSurfaceNN");

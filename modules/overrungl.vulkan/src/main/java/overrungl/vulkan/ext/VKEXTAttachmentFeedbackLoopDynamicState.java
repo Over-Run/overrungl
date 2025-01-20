@@ -28,12 +28,8 @@ public class VKEXTAttachmentFeedbackLoopDynamicState {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT = 1000524000;
     public static final int VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT = 1000524000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetAttachmentFeedbackLoopEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetAttachmentFeedbackLoopEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetAttachmentFeedbackLoopEnableEXT);
+        public static final MethodHandle MH_vkCmdSetAttachmentFeedbackLoopEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT = func.invoke(device, "vkCmdSetAttachmentFeedbackLoopEnableEXT");

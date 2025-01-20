@@ -29,16 +29,10 @@ public final class GLINTELMapTexture {
     public static final int GL_LAYOUT_LINEAR_INTEL = 1;
     public static final int GL_LAYOUT_LINEAR_CPU_CACHED_INTEL = 2;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSyncTextureINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUnmapTexture2DINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMapTexture2DINTEL = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSyncTextureINTEL = RuntimeHelper.downcall(Descriptors.FD_glSyncTextureINTEL);
-        public static final MethodHandle MH_glUnmapTexture2DINTEL = RuntimeHelper.downcall(Descriptors.FD_glUnmapTexture2DINTEL);
-        public static final MethodHandle MH_glMapTexture2DINTEL = RuntimeHelper.downcall(Descriptors.FD_glMapTexture2DINTEL);
+        public static final MethodHandle MH_glSyncTextureINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUnmapTexture2DINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMapTexture2DINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSyncTextureINTEL;
         public final MemorySegment PFN_glUnmapTexture2DINTEL;
         public final MemorySegment PFN_glMapTexture2DINTEL;

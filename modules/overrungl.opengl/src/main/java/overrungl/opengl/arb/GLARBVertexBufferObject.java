@@ -56,32 +56,18 @@ public final class GLARBVertexBufferObject {
     public static final int GL_DYNAMIC_READ_ARB = 0x88E9;
     public static final int GL_DYNAMIC_COPY_ARB = 0x88EA;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindBufferARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteBuffersARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenBuffersARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsBufferARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBufferDataARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBufferSubDataARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetBufferSubDataARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMapBufferARB = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUnmapBufferARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetBufferParameterivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetBufferPointervARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindBufferARB = RuntimeHelper.downcall(Descriptors.FD_glBindBufferARB);
-        public static final MethodHandle MH_glDeleteBuffersARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteBuffersARB);
-        public static final MethodHandle MH_glGenBuffersARB = RuntimeHelper.downcall(Descriptors.FD_glGenBuffersARB);
-        public static final MethodHandle MH_glIsBufferARB = RuntimeHelper.downcall(Descriptors.FD_glIsBufferARB);
-        public static final MethodHandle MH_glBufferDataARB = RuntimeHelper.downcall(Descriptors.FD_glBufferDataARB);
-        public static final MethodHandle MH_glBufferSubDataARB = RuntimeHelper.downcall(Descriptors.FD_glBufferSubDataARB);
-        public static final MethodHandle MH_glGetBufferSubDataARB = RuntimeHelper.downcall(Descriptors.FD_glGetBufferSubDataARB);
-        public static final MethodHandle MH_glMapBufferARB = RuntimeHelper.downcall(Descriptors.FD_glMapBufferARB);
-        public static final MethodHandle MH_glUnmapBufferARB = RuntimeHelper.downcall(Descriptors.FD_glUnmapBufferARB);
-        public static final MethodHandle MH_glGetBufferParameterivARB = RuntimeHelper.downcall(Descriptors.FD_glGetBufferParameterivARB);
-        public static final MethodHandle MH_glGetBufferPointervARB = RuntimeHelper.downcall(Descriptors.FD_glGetBufferPointervARB);
+        public static final MethodHandle MH_glBindBufferARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteBuffersARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenBuffersARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsBufferARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBufferDataARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBufferSubDataARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetBufferSubDataARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMapBufferARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUnmapBufferARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetBufferParameterivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetBufferPointervARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindBufferARB;
         public final MemorySegment PFN_glDeleteBuffersARB;
         public final MemorySegment PFN_glGenBuffersARB;

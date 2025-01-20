@@ -54,34 +54,19 @@ public final class GLNVVideoCapture {
     public static final int GL_VIDEO_CAPTURE_FIELD_LOWER_HEIGHT_NV = 0x903B;
     public static final int GL_VIDEO_CAPTURE_SURFACE_ORIGIN_NV = 0x903C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginVideoCaptureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindVideoCaptureStreamBufferNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindVideoCaptureStreamTextureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndVideoCaptureNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetVideoCaptureivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVideoCaptureStreamdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVideoCaptureStreamParameterdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glBeginVideoCaptureNV);
-        public static final MethodHandle MH_glBindVideoCaptureStreamBufferNV = RuntimeHelper.downcall(Descriptors.FD_glBindVideoCaptureStreamBufferNV);
-        public static final MethodHandle MH_glBindVideoCaptureStreamTextureNV = RuntimeHelper.downcall(Descriptors.FD_glBindVideoCaptureStreamTextureNV);
-        public static final MethodHandle MH_glEndVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glEndVideoCaptureNV);
-        public static final MethodHandle MH_glGetVideoCaptureivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureivNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamivNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamivNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamfvNV);
-        public static final MethodHandle MH_glGetVideoCaptureStreamdvNV = RuntimeHelper.downcall(Descriptors.FD_glGetVideoCaptureStreamdvNV);
-        public static final MethodHandle MH_glVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterivNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterfvNV);
-        public static final MethodHandle MH_glVideoCaptureStreamParameterdvNV = RuntimeHelper.downcall(Descriptors.FD_glVideoCaptureStreamParameterdvNV);
+        public static final MethodHandle MH_glBeginVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindVideoCaptureStreamBufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindVideoCaptureStreamTextureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetVideoCaptureivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVideoCaptureStreamdvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVideoCaptureStreamParameterdvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBeginVideoCaptureNV;
         public final MemorySegment PFN_glBindVideoCaptureStreamBufferNV;
         public final MemorySegment PFN_glBindVideoCaptureStreamTextureNV;

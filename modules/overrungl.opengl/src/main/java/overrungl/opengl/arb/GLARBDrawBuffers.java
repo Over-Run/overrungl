@@ -42,12 +42,8 @@ public final class GLARBDrawBuffers {
     public static final int GL_DRAW_BUFFER14_ARB = 0x8833;
     public static final int GL_DRAW_BUFFER15_ARB = 0x8834;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawBuffersARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawBuffersARB = RuntimeHelper.downcall(Descriptors.FD_glDrawBuffersARB);
+        public static final MethodHandle MH_glDrawBuffersARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawBuffersARB = func.invoke("glDrawBuffersARB", "glDrawBuffers");

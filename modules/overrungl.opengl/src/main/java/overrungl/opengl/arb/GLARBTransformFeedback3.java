@@ -27,18 +27,11 @@ public final class GLARBTransformFeedback3 {
     public static final int GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
     public static final int GL_MAX_VERTEX_STREAMS = 0x8E71;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawTransformFeedbackStream = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetQueryIndexediv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedbackStream);
-        public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glBeginQueryIndexed);
-        public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(Descriptors.FD_glEndQueryIndexed);
-        public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(Descriptors.FD_glGetQueryIndexediv);
+        public static final MethodHandle MH_glDrawTransformFeedbackStream = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndQueryIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetQueryIndexediv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawTransformFeedbackStream;
         public final MemorySegment PFN_glBeginQueryIndexed;
         public final MemorySegment PFN_glEndQueryIndexed;

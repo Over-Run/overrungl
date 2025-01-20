@@ -32,20 +32,12 @@ public final class ALEXTFOLDBACK {
     public static final int AL_FOLDBACK_MODE_MONO = 0x4101;
     public static final int AL_FOLDBACK_MODE_STEREO = 0x4102;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alRequestFoldbackStart`.
-        public static final FunctionDescriptor FD_alRequestFoldbackStart = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `alRequestFoldbackStop`.
-        public static final FunctionDescriptor FD_alRequestFoldbackStop = FunctionDescriptor.ofVoid();
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alRequestFoldbackStart`.
-        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcall(Descriptors.FD_alRequestFoldbackStart);
+        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alRequestFoldbackStop`.
-        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcall(Descriptors.FD_alRequestFoldbackStop);
+        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The function address of `alRequestFoldbackStart`.
         public final MemorySegment PFN_alRequestFoldbackStart;
         /// The function address of `alRequestFoldbackStop`.

@@ -27,14 +27,9 @@ public class VKGOOGLEDisplayTiming {
     public static final String VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
     public static final int VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE = 1000092000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetRefreshCycleDurationGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPastPresentationTimingGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetRefreshCycleDurationGOOGLE = RuntimeHelper.downcall(Descriptors.FD_vkGetRefreshCycleDurationGOOGLE);
-        public static final MethodHandle MH_vkGetPastPresentationTimingGOOGLE = RuntimeHelper.downcall(Descriptors.FD_vkGetPastPresentationTimingGOOGLE);
+        public static final MethodHandle MH_vkGetRefreshCycleDurationGOOGLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPastPresentationTimingGOOGLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetRefreshCycleDurationGOOGLE;
         public final MemorySegment PFN_vkGetPastPresentationTimingGOOGLE;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

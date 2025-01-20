@@ -41,18 +41,11 @@ public final class GLNVGeometryProgram4 {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4;
     public static final int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramVertexLimitNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureLayerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureFaceEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramVertexLimitNV = RuntimeHelper.downcall(Descriptors.FD_glProgramVertexLimitNV);
-        public static final MethodHandle MH_glFramebufferTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureEXT);
-        public static final MethodHandle MH_glFramebufferTextureLayerEXT = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureLayerEXT);
-        public static final MethodHandle MH_glFramebufferTextureFaceEXT = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureFaceEXT);
+        public static final MethodHandle MH_glProgramVertexLimitNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureLayerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureFaceEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProgramVertexLimitNV;
         public final MemorySegment PFN_glFramebufferTextureEXT;
         public final MemorySegment PFN_glFramebufferTextureLayerEXT;

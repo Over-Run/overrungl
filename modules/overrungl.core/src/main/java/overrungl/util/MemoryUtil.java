@@ -30,6 +30,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public final class MemoryUtil {
+    // TODO size_t might be 32-bit
     public static final class Descriptors {
         public static final FunctionDescriptor
             FD_malloc = FunctionDescriptor.of(ADDRESS, JAVA_LONG),

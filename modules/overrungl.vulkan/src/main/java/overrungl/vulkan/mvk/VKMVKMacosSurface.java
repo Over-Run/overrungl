@@ -27,12 +27,8 @@ public class VKMVKMacosSurface {
     public static final String VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
     public static final int VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK = 1000123000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateMacOSSurfaceMVK = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateMacOSSurfaceMVK = RuntimeHelper.downcall(Descriptors.FD_vkCreateMacOSSurfaceMVK);
+        public static final MethodHandle MH_vkCreateMacOSSurfaceMVK = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateMacOSSurfaceMVK;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateMacOSSurfaceMVK = func.invoke(instance, "vkCreateMacOSSurfaceMVK");

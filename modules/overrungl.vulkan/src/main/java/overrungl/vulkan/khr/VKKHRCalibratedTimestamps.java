@@ -31,14 +31,9 @@ public class VKKHRCalibratedTimestamps {
     public static final String VK_KHR_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_KHR_calibrated_timestamps";
     public static final int VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR = 1000543000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetCalibratedTimestampsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR);
-        public static final MethodHandle MH_vkGetCalibratedTimestampsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetCalibratedTimestampsKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetCalibratedTimestampsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
         public final MemorySegment PFN_vkGetCalibratedTimestampsKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

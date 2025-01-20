@@ -34,14 +34,9 @@ public class VKHUAWEISubpassShading {
     public static final int VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI = 0x00004000;
     public static final long VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI = VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSubpassShadingHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI);
-        public static final MethodHandle MH_vkCmdSubpassShadingHUAWEI = RuntimeHelper.downcall(Descriptors.FD_vkCmdSubpassShadingHUAWEI);
+        public static final MethodHandle MH_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSubpassShadingHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI;
         public final MemorySegment PFN_vkCmdSubpassShadingHUAWEI;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

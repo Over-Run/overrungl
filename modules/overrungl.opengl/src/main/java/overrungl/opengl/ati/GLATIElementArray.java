@@ -28,16 +28,10 @@ public final class GLATIElementArray {
     public static final int GL_ELEMENT_ARRAY_TYPE_ATI = 0x8769;
     public static final int GL_ELEMENT_ARRAY_POINTER_ATI = 0x876A;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glElementPointerATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDrawElementArrayATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawRangeElementArrayATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glElementPointerATI = RuntimeHelper.downcall(Descriptors.FD_glElementPointerATI);
-        public static final MethodHandle MH_glDrawElementArrayATI = RuntimeHelper.downcall(Descriptors.FD_glDrawElementArrayATI);
-        public static final MethodHandle MH_glDrawRangeElementArrayATI = RuntimeHelper.downcall(Descriptors.FD_glDrawRangeElementArrayATI);
+        public static final MethodHandle MH_glElementPointerATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawElementArrayATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawRangeElementArrayATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glElementPointerATI;
         public final MemorySegment PFN_glDrawElementArrayATI;
         public final MemorySegment PFN_glDrawRangeElementArrayATI;

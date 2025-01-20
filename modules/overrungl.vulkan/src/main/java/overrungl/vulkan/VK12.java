@@ -135,36 +135,20 @@ public class VK12 extends VK11 {
     public static final int VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT = 0x00000004;
     public static final int VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS = -1000257000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDrawIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawIndexedIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCreateRenderPass2 = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBeginRenderPass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdNextSubpass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndRenderPass2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkResetQueryPool = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkGetSemaphoreCounterValue = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkWaitSemaphores = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkSignalSemaphore = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetBufferDeviceAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawIndirectCount = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndirectCount);
-        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCount = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndexedIndirectCount);
-        public static final MethodHandle MH_vkCreateRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCreateRenderPass2);
-        public static final MethodHandle MH_vkCmdBeginRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderPass2);
-        public static final MethodHandle MH_vkCmdNextSubpass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdNextSubpass2);
-        public static final MethodHandle MH_vkCmdEndRenderPass2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderPass2);
-        public static final MethodHandle MH_vkResetQueryPool = RuntimeHelper.downcall(Descriptors.FD_vkResetQueryPool);
-        public static final MethodHandle MH_vkGetSemaphoreCounterValue = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreCounterValue);
-        public static final MethodHandle MH_vkWaitSemaphores = RuntimeHelper.downcall(Descriptors.FD_vkWaitSemaphores);
-        public static final MethodHandle MH_vkSignalSemaphore = RuntimeHelper.downcall(Descriptors.FD_vkSignalSemaphore);
-        public static final MethodHandle MH_vkGetBufferDeviceAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddress);
-        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferOpaqueCaptureAddress);
-        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddress = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceMemoryOpaqueCaptureAddress);
+        public static final MethodHandle MH_vkCmdDrawIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCreateRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdNextSubpass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderPass2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkResetQueryPool = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetSemaphoreCounterValue = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkWaitSemaphores = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkSignalSemaphore = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferDeviceAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceMemoryOpaqueCaptureAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdDrawIndirectCount;
         public final MemorySegment PFN_vkCmdDrawIndexedIndirectCount;
         public final MemorySegment PFN_vkCreateRenderPass2;

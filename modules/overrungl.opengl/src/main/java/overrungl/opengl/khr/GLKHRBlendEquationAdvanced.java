@@ -40,12 +40,8 @@ public final class GLKHRBlendEquationAdvanced {
     public static final int GL_HSL_COLOR_KHR = 0x92AF;
     public static final int GL_HSL_LUMINOSITY_KHR = 0x92B0;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendBarrierKHR = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendBarrierKHR = RuntimeHelper.downcall(Descriptors.FD_glBlendBarrierKHR);
+        public static final MethodHandle MH_glBlendBarrierKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBlendBarrierKHR;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendBarrierKHR = func.invoke("glBlendBarrierKHR", "glBlendBarrier");

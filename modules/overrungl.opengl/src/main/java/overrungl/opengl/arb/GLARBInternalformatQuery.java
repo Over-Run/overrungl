@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLARBInternalformatQuery {
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInternalformativ = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformativ = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformativ);
+        public static final MethodHandle MH_glGetInternalformativ = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformativ;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformativ = func.invoke("glGetInternalformativ");

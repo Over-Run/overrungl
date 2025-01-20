@@ -28,12 +28,8 @@ public final class GLEXTIndexMaterial {
     public static final int GL_INDEX_MATERIAL_PARAMETER_EXT = 0x81B9;
     public static final int GL_INDEX_MATERIAL_FACE_EXT = 0x81BA;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glIndexMaterialEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(Descriptors.FD_glIndexMaterialEXT);
+        public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glIndexMaterialEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glIndexMaterialEXT = func.invoke("glIndexMaterialEXT");

@@ -26,18 +26,11 @@ import overrungl.util.*;
 public final class GLAPPLEVertexArrayObject {
     public static final int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindVertexArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteVertexArraysAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenVertexArraysAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsVertexArrayAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindVertexArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glBindVertexArrayAPPLE);
-        public static final MethodHandle MH_glDeleteVertexArraysAPPLE = RuntimeHelper.downcall(Descriptors.FD_glDeleteVertexArraysAPPLE);
-        public static final MethodHandle MH_glGenVertexArraysAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGenVertexArraysAPPLE);
-        public static final MethodHandle MH_glIsVertexArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glIsVertexArrayAPPLE);
+        public static final MethodHandle MH_glBindVertexArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteVertexArraysAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenVertexArraysAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsVertexArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindVertexArrayAPPLE;
         public final MemorySegment PFN_glDeleteVertexArraysAPPLE;
         public final MemorySegment PFN_glGenVertexArraysAPPLE;

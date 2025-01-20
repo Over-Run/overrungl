@@ -30,18 +30,11 @@ public class VKEXTValidationCache {
     public static final int VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT = 1000160001;
     public static final int VK_OBJECT_TYPE_VALIDATION_CACHE_EXT = 1000160000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateValidationCacheEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyValidationCacheEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkMergeValidationCachesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetValidationCacheDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateValidationCacheEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateValidationCacheEXT);
-        public static final MethodHandle MH_vkDestroyValidationCacheEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyValidationCacheEXT);
-        public static final MethodHandle MH_vkMergeValidationCachesEXT = RuntimeHelper.downcall(Descriptors.FD_vkMergeValidationCachesEXT);
-        public static final MethodHandle MH_vkGetValidationCacheDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetValidationCacheDataEXT);
+        public static final MethodHandle MH_vkCreateValidationCacheEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyValidationCacheEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkMergeValidationCachesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetValidationCacheDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateValidationCacheEXT;
         public final MemorySegment PFN_vkDestroyValidationCacheEXT;
         public final MemorySegment PFN_vkMergeValidationCachesEXT;

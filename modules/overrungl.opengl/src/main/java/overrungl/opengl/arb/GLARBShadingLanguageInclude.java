@@ -28,22 +28,13 @@ public final class GLARBShadingLanguageInclude {
     public static final int GL_NAMED_STRING_LENGTH_ARB = 0x8DE9;
     public static final int GL_NAMED_STRING_TYPE_ARB = 0x8DEA;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glNamedStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteNamedStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCompileShaderIncludeARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsNamedStringARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetNamedStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetNamedStringivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glNamedStringARB = RuntimeHelper.downcall(Descriptors.FD_glNamedStringARB);
-        public static final MethodHandle MH_glDeleteNamedStringARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteNamedStringARB);
-        public static final MethodHandle MH_glCompileShaderIncludeARB = RuntimeHelper.downcall(Descriptors.FD_glCompileShaderIncludeARB);
-        public static final MethodHandle MH_glIsNamedStringARB = RuntimeHelper.downcall(Descriptors.FD_glIsNamedStringARB);
-        public static final MethodHandle MH_glGetNamedStringARB = RuntimeHelper.downcall(Descriptors.FD_glGetNamedStringARB);
-        public static final MethodHandle MH_glGetNamedStringivARB = RuntimeHelper.downcall(Descriptors.FD_glGetNamedStringivARB);
+        public static final MethodHandle MH_glNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCompileShaderIncludeARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedStringivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glNamedStringARB;
         public final MemorySegment PFN_glDeleteNamedStringARB;
         public final MemorySegment PFN_glCompileShaderIncludeARB;

@@ -25,18 +25,11 @@ import overrungl.util.*;
 
 public final class GLNVMemoryObjectSparse {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBufferPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTexPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glNamedBufferPageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glTexturePageCommitmentMemNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBufferPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glBufferPageCommitmentMemNV);
-        public static final MethodHandle MH_glTexPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glTexPageCommitmentMemNV);
-        public static final MethodHandle MH_glNamedBufferPageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferPageCommitmentMemNV);
-        public static final MethodHandle MH_glTexturePageCommitmentMemNV = RuntimeHelper.downcall(Descriptors.FD_glTexturePageCommitmentMemNV);
+        public static final MethodHandle MH_glBufferPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTexPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glNamedBufferPageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTexturePageCommitmentMemNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glBufferPageCommitmentMemNV;
         public final MemorySegment PFN_glTexPageCommitmentMemNV;
         public final MemorySegment PFN_glNamedBufferPageCommitmentMemNV;

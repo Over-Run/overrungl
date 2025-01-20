@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLEXTWin32KeyedMutex {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAcquireKeyedMutexWin32EXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glReleaseKeyedMutexWin32EXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAcquireKeyedMutexWin32EXT = RuntimeHelper.downcall(Descriptors.FD_glAcquireKeyedMutexWin32EXT);
-        public static final MethodHandle MH_glReleaseKeyedMutexWin32EXT = RuntimeHelper.downcall(Descriptors.FD_glReleaseKeyedMutexWin32EXT);
+        public static final MethodHandle MH_glAcquireKeyedMutexWin32EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReleaseKeyedMutexWin32EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glAcquireKeyedMutexWin32EXT;
         public final MemorySegment PFN_glReleaseKeyedMutexWin32EXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

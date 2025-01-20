@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLEXTX11SyncObject {
     public static final int GL_SYNC_X11_FENCE_EXT = 0x90E1;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportSyncEXT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportSyncEXT = RuntimeHelper.downcall(Descriptors.FD_glImportSyncEXT);
+        public static final MethodHandle MH_glImportSyncEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportSyncEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportSyncEXT = func.invoke("glImportSyncEXT");

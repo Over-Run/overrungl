@@ -28,14 +28,9 @@ public final class GLNVPointSprite {
     public static final int GL_COORD_REPLACE_NV = 0x8862;
     public static final int GL_POINT_SPRITE_R_MODE_NV = 0x8863;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPointParameteriNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPointParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPointParameteriNV = RuntimeHelper.downcall(Descriptors.FD_glPointParameteriNV);
-        public static final MethodHandle MH_glPointParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glPointParameterivNV);
+        public static final MethodHandle MH_glPointParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPointParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameteriNV;
         public final MemorySegment PFN_glPointParameterivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

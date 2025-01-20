@@ -38,28 +38,16 @@ public final class GLEXTSemaphore {
     public static final int GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT = 0x9530;
     public static final int GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT = 0x9531;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetUnsignedBytevEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUnsignedBytei_vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenSemaphoresEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteSemaphoresEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsSemaphoreEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSemaphoreParameterui64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetSemaphoreParameterui64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWaitSemaphoreEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSignalSemaphoreEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUnsignedBytevEXT);
-        public static final MethodHandle MH_glGetUnsignedBytei_vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUnsignedBytei_vEXT);
-        public static final MethodHandle MH_glGenSemaphoresEXT = RuntimeHelper.downcall(Descriptors.FD_glGenSemaphoresEXT);
-        public static final MethodHandle MH_glDeleteSemaphoresEXT = RuntimeHelper.downcall(Descriptors.FD_glDeleteSemaphoresEXT);
-        public static final MethodHandle MH_glIsSemaphoreEXT = RuntimeHelper.downcall(Descriptors.FD_glIsSemaphoreEXT);
-        public static final MethodHandle MH_glSemaphoreParameterui64vEXT = RuntimeHelper.downcall(Descriptors.FD_glSemaphoreParameterui64vEXT);
-        public static final MethodHandle MH_glGetSemaphoreParameterui64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetSemaphoreParameterui64vEXT);
-        public static final MethodHandle MH_glWaitSemaphoreEXT = RuntimeHelper.downcall(Descriptors.FD_glWaitSemaphoreEXT);
-        public static final MethodHandle MH_glSignalSemaphoreEXT = RuntimeHelper.downcall(Descriptors.FD_glSignalSemaphoreEXT);
+        public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUnsignedBytei_vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenSemaphoresEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteSemaphoresEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsSemaphoreEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSemaphoreParameterui64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSemaphoreParameterui64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWaitSemaphoreEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSignalSemaphoreEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetUnsignedBytevEXT;
         public final MemorySegment PFN_glGetUnsignedBytei_vEXT;
         public final MemorySegment PFN_glGenSemaphoresEXT;

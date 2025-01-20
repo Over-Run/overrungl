@@ -36,16 +36,10 @@ public class VKKHRTimelineSemaphore {
     public static final int VK_SEMAPHORE_TYPE_TIMELINE_KHR = VK_SEMAPHORE_TYPE_TIMELINE;
     public static final int VK_SEMAPHORE_WAIT_ANY_BIT_KHR = VK_SEMAPHORE_WAIT_ANY_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetSemaphoreCounterValueKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkWaitSemaphoresKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkSignalSemaphoreKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetSemaphoreCounterValueKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreCounterValueKHR);
-        public static final MethodHandle MH_vkWaitSemaphoresKHR = RuntimeHelper.downcall(Descriptors.FD_vkWaitSemaphoresKHR);
-        public static final MethodHandle MH_vkSignalSemaphoreKHR = RuntimeHelper.downcall(Descriptors.FD_vkSignalSemaphoreKHR);
+        public static final MethodHandle MH_vkGetSemaphoreCounterValueKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkWaitSemaphoresKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkSignalSemaphoreKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetSemaphoreCounterValueKHR;
         public final MemorySegment PFN_vkWaitSemaphoresKHR;
         public final MemorySegment PFN_vkSignalSemaphoreKHR;

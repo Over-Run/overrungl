@@ -29,12 +29,8 @@ public class VKAMDDisplayNativeHdr {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD = 1000213001;
     public static final int VK_COLOR_SPACE_DISPLAY_NATIVE_AMD = 1000213000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetLocalDimmingAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(Descriptors.FD_vkSetLocalDimmingAMD);
+        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkSetLocalDimmingAMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkSetLocalDimmingAMD = func.invoke(device, "vkSetLocalDimmingAMD");

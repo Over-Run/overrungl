@@ -41,20 +41,12 @@ public class VKKHRPipelineBinary {
     public static final int VK_ERROR_NOT_ENOUGH_SPACE_KHR = -1000483000;
     public static final long VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR = 0x80000000L;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreatePipelineBinariesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyPipelineBinaryKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineKeyKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineBinaryDataKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkReleaseCapturedPipelineDataKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreatePipelineBinariesKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreatePipelineBinariesKHR);
-        public static final MethodHandle MH_vkDestroyPipelineBinaryKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroyPipelineBinaryKHR);
-        public static final MethodHandle MH_vkGetPipelineKeyKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineKeyKHR);
-        public static final MethodHandle MH_vkGetPipelineBinaryDataKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineBinaryDataKHR);
-        public static final MethodHandle MH_vkReleaseCapturedPipelineDataKHR = RuntimeHelper.downcall(Descriptors.FD_vkReleaseCapturedPipelineDataKHR);
+        public static final MethodHandle MH_vkCreatePipelineBinariesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyPipelineBinaryKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineKeyKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineBinaryDataKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleaseCapturedPipelineDataKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreatePipelineBinariesKHR;
         public final MemorySegment PFN_vkDestroyPipelineBinaryKHR;
         public final MemorySegment PFN_vkGetPipelineKeyKHR;

@@ -29,24 +29,14 @@ public final class GLNVOcclusionQuery {
     public static final int GL_PIXEL_COUNT_NV = 0x8866;
     public static final int GL_PIXEL_COUNT_AVAILABLE_NV = 0x8867;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenOcclusionQueriesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteOcclusionQueriesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsOcclusionQueryNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginOcclusionQueryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndOcclusionQueryNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glGetOcclusionQueryivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetOcclusionQueryuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenOcclusionQueriesNV = RuntimeHelper.downcall(Descriptors.FD_glGenOcclusionQueriesNV);
-        public static final MethodHandle MH_glDeleteOcclusionQueriesNV = RuntimeHelper.downcall(Descriptors.FD_glDeleteOcclusionQueriesNV);
-        public static final MethodHandle MH_glIsOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glIsOcclusionQueryNV);
-        public static final MethodHandle MH_glBeginOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glBeginOcclusionQueryNV);
-        public static final MethodHandle MH_glEndOcclusionQueryNV = RuntimeHelper.downcall(Descriptors.FD_glEndOcclusionQueryNV);
-        public static final MethodHandle MH_glGetOcclusionQueryivNV = RuntimeHelper.downcall(Descriptors.FD_glGetOcclusionQueryivNV);
-        public static final MethodHandle MH_glGetOcclusionQueryuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetOcclusionQueryuivNV);
+        public static final MethodHandle MH_glGenOcclusionQueriesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteOcclusionQueriesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndOcclusionQueryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glGetOcclusionQueryivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetOcclusionQueryuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGenOcclusionQueriesNV;
         public final MemorySegment PFN_glDeleteOcclusionQueriesNV;
         public final MemorySegment PFN_glIsOcclusionQueryNV;

@@ -30,22 +30,13 @@ public final class GLEXTTextureObject {
     public static final int GL_TEXTURE_2D_BINDING_EXT = 0x8069;
     public static final int GL_TEXTURE_3D_BINDING_EXT = 0x806A;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAreTexturesResidentEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBindTextureEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteTexturesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenTexturesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsTextureEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPrioritizeTexturesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAreTexturesResidentEXT = RuntimeHelper.downcall(Descriptors.FD_glAreTexturesResidentEXT);
-        public static final MethodHandle MH_glBindTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glBindTextureEXT);
-        public static final MethodHandle MH_glDeleteTexturesEXT = RuntimeHelper.downcall(Descriptors.FD_glDeleteTexturesEXT);
-        public static final MethodHandle MH_glGenTexturesEXT = RuntimeHelper.downcall(Descriptors.FD_glGenTexturesEXT);
-        public static final MethodHandle MH_glIsTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glIsTextureEXT);
-        public static final MethodHandle MH_glPrioritizeTexturesEXT = RuntimeHelper.downcall(Descriptors.FD_glPrioritizeTexturesEXT);
+        public static final MethodHandle MH_glAreTexturesResidentEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBindTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteTexturesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenTexturesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPrioritizeTexturesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glAreTexturesResidentEXT;
         public final MemorySegment PFN_glBindTextureEXT;
         public final MemorySegment PFN_glDeleteTexturesEXT;

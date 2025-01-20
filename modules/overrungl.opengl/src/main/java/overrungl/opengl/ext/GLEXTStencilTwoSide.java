@@ -27,12 +27,8 @@ public final class GLEXTStencilTwoSide {
     public static final int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
     public static final int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glActiveStencilFaceEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glActiveStencilFaceEXT = RuntimeHelper.downcall(Descriptors.FD_glActiveStencilFaceEXT);
+        public static final MethodHandle MH_glActiveStencilFaceEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glActiveStencilFaceEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glActiveStencilFaceEXT = func.invoke("glActiveStencilFaceEXT");

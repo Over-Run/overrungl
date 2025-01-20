@@ -56,24 +56,14 @@ public class VKKHRRayTracingPipeline {
     public static final int VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR = 0x00080000;
     public static final int VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR = 1000347000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdTraceRaysKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCreateRayTracingPipelinesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetRayTracingShaderGroupHandlesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdTraceRaysIndirectKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkGetRayTracingShaderGroupStackSizeKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetRayTracingPipelineStackSizeKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdTraceRaysKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdTraceRaysKHR);
-        public static final MethodHandle MH_vkCreateRayTracingPipelinesKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateRayTracingPipelinesKHR);
-        public static final MethodHandle MH_vkGetRayTracingShaderGroupHandlesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetRayTracingShaderGroupHandlesKHR);
-        public static final MethodHandle MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR);
-        public static final MethodHandle MH_vkCmdTraceRaysIndirectKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdTraceRaysIndirectKHR);
-        public static final MethodHandle MH_vkGetRayTracingShaderGroupStackSizeKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetRayTracingShaderGroupStackSizeKHR);
-        public static final MethodHandle MH_vkCmdSetRayTracingPipelineStackSizeKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRayTracingPipelineStackSizeKHR);
+        public static final MethodHandle MH_vkCmdTraceRaysKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCreateRayTracingPipelinesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetRayTracingShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdTraceRaysIndirectKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetRayTracingShaderGroupStackSizeKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetRayTracingPipelineStackSizeKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdTraceRaysKHR;
         public final MemorySegment PFN_vkCreateRayTracingPipelinesKHR;
         public final MemorySegment PFN_vkGetRayTracingShaderGroupHandlesKHR;

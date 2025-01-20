@@ -31,12 +31,8 @@ public class VKEXTDisplaySurfaceCounter {
     public static final int VK_SURFACE_COUNTER_VBLANK_EXT = VK_SURFACE_COUNTER_VBLANK_BIT_EXT;
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceCapabilities2EXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2EXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceCapabilities2EXT);
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT = func.invoke(instance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");

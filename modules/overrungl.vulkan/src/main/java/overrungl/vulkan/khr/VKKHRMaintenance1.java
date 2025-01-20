@@ -34,12 +34,8 @@ public class VKKHRMaintenance1 {
     public static final int VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR = VK_FORMAT_FEATURE_TRANSFER_DST_BIT;
     public static final int VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR = VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkTrimCommandPoolKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkTrimCommandPoolKHR = RuntimeHelper.downcall(Descriptors.FD_vkTrimCommandPoolKHR);
+        public static final MethodHandle MH_vkTrimCommandPoolKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkTrimCommandPoolKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkTrimCommandPoolKHR = func.invoke(device, "vkTrimCommandPoolKHR", "vkTrimCommandPool");

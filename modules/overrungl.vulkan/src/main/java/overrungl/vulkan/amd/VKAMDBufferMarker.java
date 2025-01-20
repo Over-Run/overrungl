@@ -26,14 +26,9 @@ public class VKAMDBufferMarker {
     public static final int VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1;
     public static final String VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdWriteBufferMarkerAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdWriteBufferMarker2AMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdWriteBufferMarkerAMD = RuntimeHelper.downcall(Descriptors.FD_vkCmdWriteBufferMarkerAMD);
-        public static final MethodHandle MH_vkCmdWriteBufferMarker2AMD = RuntimeHelper.downcall(Descriptors.FD_vkCmdWriteBufferMarker2AMD);
+        public static final MethodHandle MH_vkCmdWriteBufferMarkerAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdWriteBufferMarker2AMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdWriteBufferMarkerAMD;
         public final MemorySegment PFN_vkCmdWriteBufferMarker2AMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

@@ -45,12 +45,8 @@ public final class GLPGIMiscHints {
     public static final int GL_WIDE_LINE_HINT_PGI = 0x1A222;
     public static final int GL_BACK_NORMALS_HINT_PGI = 0x1A223;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glHintPGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glHintPGI = RuntimeHelper.downcall(Descriptors.FD_glHintPGI);
+        public static final MethodHandle MH_glHintPGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glHintPGI;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glHintPGI = func.invoke("glHintPGI");

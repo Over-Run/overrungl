@@ -38,16 +38,10 @@ public class VKEXTMeshShader {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT = 1000328000;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT = 1000328001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectCountEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawMeshTasksEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksEXT);
-        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectEXT);
-        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawMeshTasksIndirectCountEXT);
+        public static final MethodHandle MH_vkCmdDrawMeshTasksEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawMeshTasksIndirectCountEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdDrawMeshTasksEXT;
         public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectEXT;
         public final MemorySegment PFN_vkCmdDrawMeshTasksIndirectCountEXT;

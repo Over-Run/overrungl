@@ -29,14 +29,9 @@ public class VKFUCHSIAExternalSemaphore {
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000365001;
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA = 0x00000080;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkImportSemaphoreZirconHandleFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetSemaphoreZirconHandleFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkImportSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkImportSemaphoreZirconHandleFUCHSIA);
-        public static final MethodHandle MH_vkGetSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkGetSemaphoreZirconHandleFUCHSIA);
+        public static final MethodHandle MH_vkImportSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportSemaphoreZirconHandleFUCHSIA;
         public final MemorySegment PFN_vkGetSemaphoreZirconHandleFUCHSIA;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

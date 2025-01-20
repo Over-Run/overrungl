@@ -30,12 +30,8 @@ public final class GLARBTextureView {
     public static final int GL_TEXTURE_VIEW_NUM_LAYERS = 0x82DE;
     public static final int GL_TEXTURE_IMMUTABLE_LEVELS = 0x82DF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureView = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureView = RuntimeHelper.downcall(Descriptors.FD_glTextureView);
+        public static final MethodHandle MH_glTextureView = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTextureView;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTextureView = func.invoke("glTextureView");

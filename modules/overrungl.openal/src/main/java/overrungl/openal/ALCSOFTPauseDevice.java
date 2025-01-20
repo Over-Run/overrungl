@@ -26,20 +26,12 @@ public final class ALCSOFTPauseDevice {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcDevicePauseSOFT`.
-        public static final FunctionDescriptor FD_alcDevicePauseSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        /// The function descriptor of `alcDeviceResumeSOFT`.
-        public static final FunctionDescriptor FD_alcDeviceResumeSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcDevicePauseSOFT`.
-        public static final MethodHandle MH_alcDevicePauseSOFT = RuntimeHelper.downcall(Descriptors.FD_alcDevicePauseSOFT);
+        public static final MethodHandle MH_alcDevicePauseSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcDeviceResumeSOFT`.
-        public static final MethodHandle MH_alcDeviceResumeSOFT = RuntimeHelper.downcall(Descriptors.FD_alcDeviceResumeSOFT);
+        public static final MethodHandle MH_alcDeviceResumeSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The function address of `alcDevicePauseSOFT`.
         public final MemorySegment PFN_alcDevicePauseSOFT;
         /// The function address of `alcDeviceResumeSOFT`.

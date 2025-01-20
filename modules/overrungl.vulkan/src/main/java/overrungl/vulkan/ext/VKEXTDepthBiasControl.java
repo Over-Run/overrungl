@@ -32,12 +32,8 @@ public class VKEXTDepthBiasControl {
     public static final int VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT = 1000283001;
     public static final int VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT = 1000283002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetDepthBias2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetDepthBias2EXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDepthBias2EXT);
+        public static final MethodHandle MH_vkCmdSetDepthBias2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetDepthBias2EXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetDepthBias2EXT = func.invoke(device, "vkCmdSetDepthBias2EXT");

@@ -25,18 +25,11 @@ import overrungl.util.*;
 
 public final class GLNVXProgressFence {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCreateProgressFenceNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSignalSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWaitSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glClientWaitSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCreateProgressFenceNVX = RuntimeHelper.downcall(Descriptors.FD_glCreateProgressFenceNVX);
-        public static final MethodHandle MH_glSignalSemaphoreui64NVX = RuntimeHelper.downcall(Descriptors.FD_glSignalSemaphoreui64NVX);
-        public static final MethodHandle MH_glWaitSemaphoreui64NVX = RuntimeHelper.downcall(Descriptors.FD_glWaitSemaphoreui64NVX);
-        public static final MethodHandle MH_glClientWaitSemaphoreui64NVX = RuntimeHelper.downcall(Descriptors.FD_glClientWaitSemaphoreui64NVX);
+        public static final MethodHandle MH_glCreateProgressFenceNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSignalSemaphoreui64NVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWaitSemaphoreui64NVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glClientWaitSemaphoreui64NVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCreateProgressFenceNVX;
         public final MemorySegment PFN_glSignalSemaphoreui64NVX;
         public final MemorySegment PFN_glWaitSemaphoreui64NVX;

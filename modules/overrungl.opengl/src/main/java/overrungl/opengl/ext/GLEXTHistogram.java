@@ -39,30 +39,17 @@ public final class GLEXTHistogram {
     public static final int GL_MINMAX_SINK_EXT = 0x8030;
     public static final int GL_TABLE_TOO_LARGE_EXT = 0x8031;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetHistogramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetHistogramParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetHistogramParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMinmaxEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMinmaxParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMinmaxParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glHistogramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glMinmaxEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glResetHistogramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glResetMinmaxEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetHistogramEXT = RuntimeHelper.downcall(Descriptors.FD_glGetHistogramEXT);
-        public static final MethodHandle MH_glGetHistogramParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetHistogramParameterfvEXT);
-        public static final MethodHandle MH_glGetHistogramParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetHistogramParameterivEXT);
-        public static final MethodHandle MH_glGetMinmaxEXT = RuntimeHelper.downcall(Descriptors.FD_glGetMinmaxEXT);
-        public static final MethodHandle MH_glGetMinmaxParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetMinmaxParameterfvEXT);
-        public static final MethodHandle MH_glGetMinmaxParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetMinmaxParameterivEXT);
-        public static final MethodHandle MH_glHistogramEXT = RuntimeHelper.downcall(Descriptors.FD_glHistogramEXT);
-        public static final MethodHandle MH_glMinmaxEXT = RuntimeHelper.downcall(Descriptors.FD_glMinmaxEXT);
-        public static final MethodHandle MH_glResetHistogramEXT = RuntimeHelper.downcall(Descriptors.FD_glResetHistogramEXT);
-        public static final MethodHandle MH_glResetMinmaxEXT = RuntimeHelper.downcall(Descriptors.FD_glResetMinmaxEXT);
+        public static final MethodHandle MH_glGetHistogramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetHistogramParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetHistogramParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMinmaxEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMinmaxParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMinmaxParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glHistogramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glMinmaxEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glResetHistogramEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glResetMinmaxEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGetHistogramEXT;
         public final MemorySegment PFN_glGetHistogramParameterfvEXT;
         public final MemorySegment PFN_glGetHistogramParameterivEXT;

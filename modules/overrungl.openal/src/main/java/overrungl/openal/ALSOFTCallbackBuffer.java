@@ -28,28 +28,16 @@ public final class ALSOFTCallbackBuffer {
     public static final int AL_BUFFER_CALLBACK_FUNCTION_SOFT = 0x19A0;
     public static final int AL_BUFFER_CALLBACK_USER_PARAM_SOFT = 0x19A1;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alBufferCallbackSOFT`.
-        public static final FunctionDescriptor FD_alBufferCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `alGetBufferPtrSOFT`.
-        public static final FunctionDescriptor FD_alGetBufferPtrSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// The function descriptor of `alGetBuffer3PtrSOFT`.
-        public static final FunctionDescriptor FD_alGetBuffer3PtrSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `alGetBufferPtrvSOFT`.
-        public static final FunctionDescriptor FD_alGetBufferPtrvSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alBufferCallbackSOFT`.
-        public static final MethodHandle MH_alBufferCallbackSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferCallbackSOFT);
+        public static final MethodHandle MH_alBufferCallbackSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alGetBufferPtrSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetBufferPtrSOFT);
+        public static final MethodHandle MH_alGetBufferPtrSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alGetBuffer3PtrSOFT`.
-        public static final MethodHandle MH_alGetBuffer3PtrSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetBuffer3PtrSOFT);
+        public static final MethodHandle MH_alGetBuffer3PtrSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alGetBufferPtrvSOFT`.
-        public static final MethodHandle MH_alGetBufferPtrvSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetBufferPtrvSOFT);
+        public static final MethodHandle MH_alGetBufferPtrvSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The function address of `alBufferCallbackSOFT`.
         public final MemorySegment PFN_alBufferCallbackSOFT;
         /// The function address of `alGetBufferPtrSOFT`.

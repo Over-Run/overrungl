@@ -38,22 +38,13 @@ public class VKKHRCopyCommands2 {
     public static final int VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2_KHR = VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2;
     public static final int VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2_KHR = VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdCopyBuffer2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCopyImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCopyBufferToImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCopyImageToBuffer2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBlitImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdResolveImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdCopyBuffer2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyBuffer2KHR);
-        public static final MethodHandle MH_vkCmdCopyImage2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyImage2KHR);
-        public static final MethodHandle MH_vkCmdCopyBufferToImage2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyBufferToImage2KHR);
-        public static final MethodHandle MH_vkCmdCopyImageToBuffer2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyImageToBuffer2KHR);
-        public static final MethodHandle MH_vkCmdBlitImage2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBlitImage2KHR);
-        public static final MethodHandle MH_vkCmdResolveImage2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdResolveImage2KHR);
+        public static final MethodHandle MH_vkCmdCopyBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyBufferToImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyImageToBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBlitImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdResolveImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdCopyBuffer2KHR;
         public final MemorySegment PFN_vkCmdCopyImage2KHR;
         public final MemorySegment PFN_vkCmdCopyBufferToImage2KHR;

@@ -30,14 +30,9 @@ public class VKKHRExternalMemoryWin32 {
     public static final int VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR = 1000073002;
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR = 1000073003;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetMemoryWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetMemoryWin32HandlePropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryWin32HandleKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryWin32HandleKHR);
-        public static final MethodHandle MH_vkGetMemoryWin32HandlePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryWin32HandlePropertiesKHR);
+        public static final MethodHandle MH_vkGetMemoryWin32HandleKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMemoryWin32HandlePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryWin32HandleKHR;
         public final MemorySegment PFN_vkGetMemoryWin32HandlePropertiesKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

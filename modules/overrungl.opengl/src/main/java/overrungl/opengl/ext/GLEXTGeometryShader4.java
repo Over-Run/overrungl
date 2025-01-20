@@ -45,12 +45,8 @@ public final class GLEXTGeometryShader4 {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4;
     public static final int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramParameteriEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteriEXT);
+        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProgramParameteriEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProgramParameteriEXT = func.invoke("glProgramParameteriEXT", "glProgramParameteri");

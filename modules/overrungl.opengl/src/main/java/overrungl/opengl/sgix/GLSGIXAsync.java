@@ -26,22 +26,13 @@ import overrungl.util.*;
 public final class GLSGIXAsync {
     public static final int GL_ASYNC_MARKER_SGIX = 0x8329;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAsyncMarkerSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFinishAsyncSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPollAsyncSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenAsyncMarkersSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteAsyncMarkersSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsAsyncMarkerSGIX = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAsyncMarkerSGIX = RuntimeHelper.downcall(Descriptors.FD_glAsyncMarkerSGIX);
-        public static final MethodHandle MH_glFinishAsyncSGIX = RuntimeHelper.downcall(Descriptors.FD_glFinishAsyncSGIX);
-        public static final MethodHandle MH_glPollAsyncSGIX = RuntimeHelper.downcall(Descriptors.FD_glPollAsyncSGIX);
-        public static final MethodHandle MH_glGenAsyncMarkersSGIX = RuntimeHelper.downcall(Descriptors.FD_glGenAsyncMarkersSGIX);
-        public static final MethodHandle MH_glDeleteAsyncMarkersSGIX = RuntimeHelper.downcall(Descriptors.FD_glDeleteAsyncMarkersSGIX);
-        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(Descriptors.FD_glIsAsyncMarkerSGIX);
+        public static final MethodHandle MH_glAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinishAsyncSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPollAsyncSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAsyncMarkerSGIX;
         public final MemorySegment PFN_glFinishAsyncSGIX;
         public final MemorySegment PFN_glPollAsyncSGIX;

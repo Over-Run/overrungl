@@ -31,16 +31,10 @@ public final class GLAPPLEObjectPurgeable {
     public static final int GL_UNDEFINED_APPLE = 0x8A1C;
     public static final int GL_PURGEABLE_APPLE = 0x8A1D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glObjectPurgeableAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glObjectUnpurgeableAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetObjectParameterivAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glObjectPurgeableAPPLE = RuntimeHelper.downcall(Descriptors.FD_glObjectPurgeableAPPLE);
-        public static final MethodHandle MH_glObjectUnpurgeableAPPLE = RuntimeHelper.downcall(Descriptors.FD_glObjectUnpurgeableAPPLE);
-        public static final MethodHandle MH_glGetObjectParameterivAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGetObjectParameterivAPPLE);
+        public static final MethodHandle MH_glObjectPurgeableAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glObjectUnpurgeableAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetObjectParameterivAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glObjectPurgeableAPPLE;
         public final MemorySegment PFN_glObjectUnpurgeableAPPLE;
         public final MemorySegment PFN_glGetObjectParameterivAPPLE;

@@ -33,42 +33,23 @@ public final class GLNVGpuProgram4 {
     public static final int GL_MAX_PROGRAM_GENERIC_ATTRIBS_NV = 0x8DA5;
     public static final int GL_MAX_PROGRAM_GENERIC_RESULTS_NV = 0x8DA6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4iNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParametersI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4uiNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParametersI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4iNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParametersI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4uiNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParametersI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramLocalParameterIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramLocalParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramEnvParameterIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramEnvParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramLocalParameterI4iNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4iNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4ivNV);
-        public static final MethodHandle MH_glProgramLocalParametersI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParametersI4ivNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4uiNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4uiNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4uivNV);
-        public static final MethodHandle MH_glProgramLocalParametersI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParametersI4uivNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4iNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4iNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4ivNV);
-        public static final MethodHandle MH_glProgramEnvParametersI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParametersI4ivNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4uiNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4uiNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4uivNV);
-        public static final MethodHandle MH_glProgramEnvParametersI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParametersI4uivNV);
-        public static final MethodHandle MH_glGetProgramLocalParameterIivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterIivNV);
-        public static final MethodHandle MH_glGetProgramLocalParameterIuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterIuivNV);
-        public static final MethodHandle MH_glGetProgramEnvParameterIivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterIivNV);
-        public static final MethodHandle MH_glGetProgramEnvParameterIuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterIuivNV);
+        public static final MethodHandle MH_glProgramLocalParameterI4iNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramLocalParameterI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParametersI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameterI4uiNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramLocalParameterI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParametersI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameterI4iNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramEnvParameterI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParametersI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameterI4uiNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramEnvParameterI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParametersI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterIivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterIuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterIivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterIuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramLocalParameterI4iNV;
         public final MemorySegment PFN_glProgramLocalParameterI4ivNV;
         public final MemorySegment PFN_glProgramLocalParametersI4ivNV;

@@ -28,14 +28,9 @@ public final class GLEXTCullVertex {
     public static final int GL_CULL_VERTEX_EYE_POSITION_EXT = 0x81AB;
     public static final int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCullParameterdvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCullParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCullParameterdvEXT = RuntimeHelper.downcall(Descriptors.FD_glCullParameterdvEXT);
-        public static final MethodHandle MH_glCullParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glCullParameterfvEXT);
+        public static final MethodHandle MH_glCullParameterdvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCullParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCullParameterdvEXT;
         public final MemorySegment PFN_glCullParameterfvEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

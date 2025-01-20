@@ -27,14 +27,9 @@ public final class GLARBIndirectParameters {
     public static final int GL_PARAMETER_BUFFER_ARB = 0x80EE;
     public static final int GL_PARAMETER_BUFFER_BINDING_ARB = 0x80EF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirectCountARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirectCountARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirectCountARB = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectCountARB);
-        public static final MethodHandle MH_glMultiDrawElementsIndirectCountARB = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirectCountARB);
+        public static final MethodHandle MH_glMultiDrawArraysIndirectCountARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirectCountARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirectCountARB;
         public final MemorySegment PFN_glMultiDrawElementsIndirectCountARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {

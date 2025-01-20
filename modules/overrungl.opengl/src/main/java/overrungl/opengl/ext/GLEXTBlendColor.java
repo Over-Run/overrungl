@@ -30,12 +30,8 @@ public final class GLEXTBlendColor {
     public static final int GL_ONE_MINUS_CONSTANT_ALPHA_EXT = 0x8004;
     public static final int GL_BLEND_COLOR_EXT = 0x8005;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendColorEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendColorEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendColorEXT);
+        public static final MethodHandle MH_glBlendColorEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glBlendColorEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendColorEXT = func.invoke("glBlendColorEXT", "glBlendColor");

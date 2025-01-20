@@ -51,32 +51,18 @@ public class VKEXTDescriptorBuffer {
     public static final int VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT = 0x20000000;
     public static final int VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT = 1000316009;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutSizeEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutBindingOffsetEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDescriptorEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBindDescriptorBuffersEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetDescriptorBufferOffsetsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBindDescriptorBufferEmbeddedSamplersEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageViewOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetSamplerOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutSizeEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetLayoutSizeEXT);
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutBindingOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetLayoutBindingOffsetEXT);
-        public static final MethodHandle MH_vkGetDescriptorEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorEXT);
-        public static final MethodHandle MH_vkCmdBindDescriptorBuffersEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindDescriptorBuffersEXT);
-        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsetsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDescriptorBufferOffsetsEXT);
-        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindDescriptorBufferEmbeddedSamplersEXT);
-        public static final MethodHandle MH_vkGetBufferOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferOpaqueCaptureDescriptorDataEXT);
-        public static final MethodHandle MH_vkGetImageOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetImageOpaqueCaptureDescriptorDataEXT);
-        public static final MethodHandle MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetImageViewOpaqueCaptureDescriptorDataEXT);
-        public static final MethodHandle MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetSamplerOpaqueCaptureDescriptorDataEXT);
-        public static final MethodHandle MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT);
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutSizeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutBindingOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorBuffersEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsetsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDescriptorSetLayoutSizeEXT;
         public final MemorySegment PFN_vkGetDescriptorSetLayoutBindingOffsetEXT;
         public final MemorySegment PFN_vkGetDescriptorEXT;

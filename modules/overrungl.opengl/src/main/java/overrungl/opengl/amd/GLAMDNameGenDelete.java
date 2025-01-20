@@ -30,16 +30,10 @@ public final class GLAMDNameGenDelete {
     public static final int GL_VERTEX_ARRAY_OBJECT_AMD = 0x9154;
     public static final int GL_SAMPLER_OBJECT_AMD = 0x9155;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsNameAMD = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(Descriptors.FD_glGenNamesAMD);
-        public static final MethodHandle MH_glDeleteNamesAMD = RuntimeHelper.downcall(Descriptors.FD_glDeleteNamesAMD);
-        public static final MethodHandle MH_glIsNameAMD = RuntimeHelper.downcall(Descriptors.FD_glIsNameAMD);
+        public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsNameAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGenNamesAMD;
         public final MemorySegment PFN_glDeleteNamesAMD;
         public final MemorySegment PFN_glIsNameAMD;

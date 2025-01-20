@@ -27,14 +27,9 @@ public final class GLEXTCompiledVertexArray {
     public static final int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     public static final int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glLockArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUnlockArraysEXT = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glLockArraysEXT);
-        public static final MethodHandle MH_glUnlockArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glUnlockArraysEXT);
+        public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUnlockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glLockArraysEXT;
         public final MemorySegment PFN_glUnlockArraysEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

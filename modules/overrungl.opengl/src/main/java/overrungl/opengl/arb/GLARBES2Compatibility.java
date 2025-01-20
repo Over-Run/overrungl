@@ -41,20 +41,12 @@ public final class GLARBES2Compatibility {
     public static final int GL_MAX_FRAGMENT_UNIFORM_VECTORS = 0x8DFD;
     public static final int GL_RGB565 = 0x8D62;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glReleaseShaderCompiler = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glShaderBinary = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetShaderPrecisionFormat = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDepthRangef = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glClearDepthf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glReleaseShaderCompiler = RuntimeHelper.downcall(Descriptors.FD_glReleaseShaderCompiler);
-        public static final MethodHandle MH_glShaderBinary = RuntimeHelper.downcall(Descriptors.FD_glShaderBinary);
-        public static final MethodHandle MH_glGetShaderPrecisionFormat = RuntimeHelper.downcall(Descriptors.FD_glGetShaderPrecisionFormat);
-        public static final MethodHandle MH_glDepthRangef = RuntimeHelper.downcall(Descriptors.FD_glDepthRangef);
-        public static final MethodHandle MH_glClearDepthf = RuntimeHelper.downcall(Descriptors.FD_glClearDepthf);
+        public static final MethodHandle MH_glReleaseShaderCompiler = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glShaderBinary = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetShaderPrecisionFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangef = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glClearDepthf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glReleaseShaderCompiler;
         public final MemorySegment PFN_glShaderBinary;
         public final MemorySegment PFN_glGetShaderPrecisionFormat;

@@ -38,16 +38,10 @@ public final class GLEXTVertexWeighting {
     public static final int GL_VERTEX_WEIGHT_ARRAY_STRIDE_EXT = 0x850F;
     public static final int GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT = 0x8510;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexWeightfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glVertexWeightfvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexWeightPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexWeightfEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightfEXT);
-        public static final MethodHandle MH_glVertexWeightfvEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightfvEXT);
-        public static final MethodHandle MH_glVertexWeightPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexWeightPointerEXT);
+        public static final MethodHandle MH_glVertexWeightfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexWeightfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexWeightPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVertexWeightfEXT;
         public final MemorySegment PFN_glVertexWeightfvEXT;
         public final MemorySegment PFN_glVertexWeightPointerEXT;

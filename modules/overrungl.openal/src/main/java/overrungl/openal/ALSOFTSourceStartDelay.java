@@ -26,20 +26,12 @@ public final class ALSOFTSourceStartDelay {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alSourcePlayAtTimeSOFT`.
-        public static final FunctionDescriptor FD_alSourcePlayAtTimeSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        /// The function descriptor of `alSourcePlayAtTimevSOFT`.
-        public static final FunctionDescriptor FD_alSourcePlayAtTimevSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alSourcePlayAtTimeSOFT`.
-        public static final MethodHandle MH_alSourcePlayAtTimeSOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcePlayAtTimeSOFT);
+        public static final MethodHandle MH_alSourcePlayAtTimeSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         /// The method handle of `alSourcePlayAtTimevSOFT`.
-        public static final MethodHandle MH_alSourcePlayAtTimevSOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcePlayAtTimevSOFT);
+        public static final MethodHandle MH_alSourcePlayAtTimevSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         /// The function address of `alSourcePlayAtTimeSOFT`.
         public final MemorySegment PFN_alSourcePlayAtTimeSOFT;
         /// The function address of `alSourcePlayAtTimevSOFT`.

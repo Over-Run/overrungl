@@ -33,18 +33,11 @@ public final class GLATIEnvmapBumpmap {
     public static final int GL_BUMP_ENVMAP_ATI = 0x877B;
     public static final int GL_BUMP_TARGET_ATI = 0x877C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexBumpParameterivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexBumpParameterfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexBumpParameterivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexBumpParameterfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexBumpParameterivATI = RuntimeHelper.downcall(Descriptors.FD_glTexBumpParameterivATI);
-        public static final MethodHandle MH_glTexBumpParameterfvATI = RuntimeHelper.downcall(Descriptors.FD_glTexBumpParameterfvATI);
-        public static final MethodHandle MH_glGetTexBumpParameterivATI = RuntimeHelper.downcall(Descriptors.FD_glGetTexBumpParameterivATI);
-        public static final MethodHandle MH_glGetTexBumpParameterfvATI = RuntimeHelper.downcall(Descriptors.FD_glGetTexBumpParameterfvATI);
+        public static final MethodHandle MH_glTexBumpParameterivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexBumpParameterfvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexBumpParameterivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexBumpParameterfvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTexBumpParameterivATI;
         public final MemorySegment PFN_glTexBumpParameterfvATI;
         public final MemorySegment PFN_glGetTexBumpParameterivATI;

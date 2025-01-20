@@ -30,18 +30,11 @@ public final class GLINTELParallelArrays {
     public static final int GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F7;
     public static final int GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F8;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNormalPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColorPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoordPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexPointervINTEL = RuntimeHelper.downcall(Descriptors.FD_glVertexPointervINTEL);
-        public static final MethodHandle MH_glNormalPointervINTEL = RuntimeHelper.downcall(Descriptors.FD_glNormalPointervINTEL);
-        public static final MethodHandle MH_glColorPointervINTEL = RuntimeHelper.downcall(Descriptors.FD_glColorPointervINTEL);
-        public static final MethodHandle MH_glTexCoordPointervINTEL = RuntimeHelper.downcall(Descriptors.FD_glTexCoordPointervINTEL);
+        public static final MethodHandle MH_glVertexPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVertexPointervINTEL;
         public final MemorySegment PFN_glNormalPointervINTEL;
         public final MemorySegment PFN_glColorPointervINTEL;

@@ -27,26 +27,15 @@ public final class GLSUNGlobalAlpha {
     public static final int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     public static final int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGlobalAlphaFactorbSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactorsSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactoriSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactorfSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactordSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactorubSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactorusSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glGlobalAlphaFactoruiSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGlobalAlphaFactorbSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorbSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactorsSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorsSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactoriSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactoriSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactorfSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorfSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactordSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactordSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactorubSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorubSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactorusSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorusSUN);
-        public static final MethodHandle MH_glGlobalAlphaFactoruiSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactoruiSUN);
+        public static final MethodHandle MH_glGlobalAlphaFactorbSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glGlobalAlphaFactorsSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glGlobalAlphaFactoriSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGlobalAlphaFactorfSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glGlobalAlphaFactordSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glGlobalAlphaFactorubSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glGlobalAlphaFactorusSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glGlobalAlphaFactoruiSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGlobalAlphaFactorbSUN;
         public final MemorySegment PFN_glGlobalAlphaFactorsSUN;
         public final MemorySegment PFN_glGlobalAlphaFactoriSUN;

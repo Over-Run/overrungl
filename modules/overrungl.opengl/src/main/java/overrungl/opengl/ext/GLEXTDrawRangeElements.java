@@ -27,12 +27,8 @@ public final class GLEXTDrawRangeElements {
     public static final int GL_MAX_ELEMENTS_VERTICES_EXT = 0x80E8;
     public static final int GL_MAX_ELEMENTS_INDICES_EXT = 0x80E9;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawRangeElementsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawRangeElementsEXT = RuntimeHelper.downcall(Descriptors.FD_glDrawRangeElementsEXT);
+        public static final MethodHandle MH_glDrawRangeElementsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawRangeElementsEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawRangeElementsEXT = func.invoke("glDrawRangeElementsEXT", "glDrawRangeElements");

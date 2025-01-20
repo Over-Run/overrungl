@@ -35,12 +35,8 @@ public class VKKHRLineRasterization {
     public static final int VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR = VK_LINE_RASTERIZATION_MODE_BRESENHAM;
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR = VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetLineStippleKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetLineStippleKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetLineStippleKHR);
+        public static final MethodHandle MH_vkCmdSetLineStippleKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
         public final MemorySegment PFN_vkCmdSetLineStippleKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetLineStippleKHR = func.invoke(device, "vkCmdSetLineStippleKHR", "vkCmdSetLineStipple");

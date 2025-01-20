@@ -28,38 +28,21 @@ public final class GLNVShaderBufferLoad {
     public static final int GL_GPU_ADDRESS_NV = 0x8F34;
     public static final int GL_MAX_SHADER_BUFFER_ADDRESS_NV = 0x8F35;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMakeBufferResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeBufferNonResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsBufferResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeNamedBufferResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeNamedBufferNonResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsNamedBufferResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetBufferParameterui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetNamedBufferParameterui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetIntegerui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformui64NV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glUniformui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetUniformui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformui64NV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glProgramUniformui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMakeBufferResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeBufferResidentNV);
-        public static final MethodHandle MH_glMakeBufferNonResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeBufferNonResidentNV);
-        public static final MethodHandle MH_glIsBufferResidentNV = RuntimeHelper.downcall(Descriptors.FD_glIsBufferResidentNV);
-        public static final MethodHandle MH_glMakeNamedBufferResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeNamedBufferResidentNV);
-        public static final MethodHandle MH_glMakeNamedBufferNonResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeNamedBufferNonResidentNV);
-        public static final MethodHandle MH_glIsNamedBufferResidentNV = RuntimeHelper.downcall(Descriptors.FD_glIsNamedBufferResidentNV);
-        public static final MethodHandle MH_glGetBufferParameterui64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetBufferParameterui64vNV);
-        public static final MethodHandle MH_glGetNamedBufferParameterui64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetNamedBufferParameterui64vNV);
-        public static final MethodHandle MH_glGetIntegerui64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetIntegerui64vNV);
-        public static final MethodHandle MH_glUniformui64NV = RuntimeHelper.downcall(Descriptors.FD_glUniformui64NV);
-        public static final MethodHandle MH_glUniformui64vNV = RuntimeHelper.downcall(Descriptors.FD_glUniformui64vNV);
-        public static final MethodHandle MH_glGetUniformui64vNV = RuntimeHelper.downcall(Descriptors.FD_glGetUniformui64vNV);
-        public static final MethodHandle MH_glProgramUniformui64NV = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformui64NV);
-        public static final MethodHandle MH_glProgramUniformui64vNV = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformui64vNV);
+        public static final MethodHandle MH_glMakeBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeBufferNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeNamedBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeNamedBufferNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsNamedBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetBufferParameterui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedBufferParameterui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetIntegerui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glProgramUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glMakeBufferResidentNV;
         public final MemorySegment PFN_glMakeBufferNonResidentNV;
         public final MemorySegment PFN_glIsBufferResidentNV;

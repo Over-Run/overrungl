@@ -78,92 +78,48 @@ public final class STBImageResize2 {
         STBIR_TYPE_FLOAT = 4,
         STBIR_TYPE_HALF_FLOAT = 5;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `stbir_resize_uint8_srgb`.
-        public static final FunctionDescriptor FD_stbir_resize_uint8_srgb = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_resize`.
-        public static final FunctionDescriptor FD_stbir_resize = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_resize_init`.
-        public static final FunctionDescriptor FD_stbir_resize_init = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_datatypes`.
-        public static final FunctionDescriptor FD_stbir_set_datatypes = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_pixel_callbacks`.
-        public static final FunctionDescriptor FD_stbir_set_pixel_callbacks = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_set_user_data`.
-        public static final FunctionDescriptor FD_stbir_set_user_data = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_set_buffer_ptrs`.
-        public static final FunctionDescriptor FD_stbir_set_buffer_ptrs = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_pixel_layouts`.
-        public static final FunctionDescriptor FD_stbir_set_pixel_layouts = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_edgemodes`.
-        public static final FunctionDescriptor FD_stbir_set_edgemodes = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_filters`.
-        public static final FunctionDescriptor FD_stbir_set_filters = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_filter_callbacks`.
-        public static final FunctionDescriptor FD_stbir_set_filter_callbacks = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_set_pixel_subrect`.
-        public static final FunctionDescriptor FD_stbir_set_pixel_subrect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_input_subrect`.
-        public static final FunctionDescriptor FD_stbir_set_input_subrect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        /// The function descriptor of `stbir_set_output_pixel_subrect`.
-        public static final FunctionDescriptor FD_stbir_set_output_pixel_subrect = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_set_non_pm_alpha_speed_over_quality`.
-        public static final FunctionDescriptor FD_stbir_set_non_pm_alpha_speed_over_quality = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_build_samplers`.
-        public static final FunctionDescriptor FD_stbir_build_samplers = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_free_samplers`.
-        public static final FunctionDescriptor FD_stbir_free_samplers = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_resize_extended`.
-        public static final FunctionDescriptor FD_stbir_resize_extended = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        /// The function descriptor of `stbir_build_samplers_with_splits`.
-        public static final FunctionDescriptor FD_stbir_build_samplers_with_splits = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stbir_resize_extended_splits`.
-        public static final FunctionDescriptor FD_stbir_resize_extended_splits = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `stbir_resize_uint8_srgb`.
-        public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(Descriptors.FD_stbir_resize_uint8_srgb);
+        public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_resize`.
-        public static final MethodHandle MH_stbir_resize = RuntimeHelper.downcall(Descriptors.FD_stbir_resize);
+        public static final MethodHandle MH_stbir_resize = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_resize_init`.
-        public static final MethodHandle MH_stbir_resize_init = RuntimeHelper.downcall(Descriptors.FD_stbir_resize_init);
+        public static final MethodHandle MH_stbir_resize_init = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_datatypes`.
-        public static final MethodHandle MH_stbir_set_datatypes = RuntimeHelper.downcall(Descriptors.FD_stbir_set_datatypes);
+        public static final MethodHandle MH_stbir_set_datatypes = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_pixel_callbacks`.
-        public static final MethodHandle MH_stbir_set_pixel_callbacks = RuntimeHelper.downcall(Descriptors.FD_stbir_set_pixel_callbacks);
+        public static final MethodHandle MH_stbir_set_pixel_callbacks = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbir_set_user_data`.
-        public static final MethodHandle MH_stbir_set_user_data = RuntimeHelper.downcall(Descriptors.FD_stbir_set_user_data);
+        public static final MethodHandle MH_stbir_set_user_data = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbir_set_buffer_ptrs`.
-        public static final MethodHandle MH_stbir_set_buffer_ptrs = RuntimeHelper.downcall(Descriptors.FD_stbir_set_buffer_ptrs);
+        public static final MethodHandle MH_stbir_set_buffer_ptrs = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_pixel_layouts`.
-        public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(Descriptors.FD_stbir_set_pixel_layouts);
+        public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_edgemodes`.
-        public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(Descriptors.FD_stbir_set_edgemodes);
+        public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_filters`.
-        public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(Descriptors.FD_stbir_set_filters);
+        public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_filter_callbacks`.
-        public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(Descriptors.FD_stbir_set_filter_callbacks);
+        public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbir_set_pixel_subrect`.
-        public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(Descriptors.FD_stbir_set_pixel_subrect);
+        public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_input_subrect`.
-        public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(Descriptors.FD_stbir_set_input_subrect);
+        public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         /// The method handle of `stbir_set_output_pixel_subrect`.
-        public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(Descriptors.FD_stbir_set_output_pixel_subrect);
+        public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_non_pm_alpha_speed_over_quality`.
-        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(Descriptors.FD_stbir_set_non_pm_alpha_speed_over_quality);
+        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_build_samplers`.
-        public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(Descriptors.FD_stbir_build_samplers);
+        public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
         /// The method handle of `stbir_free_samplers`.
-        public static final MethodHandle MH_stbir_free_samplers = RuntimeHelper.downcall(Descriptors.FD_stbir_free_samplers);
+        public static final MethodHandle MH_stbir_free_samplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `stbir_resize_extended`.
-        public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(Descriptors.FD_stbir_resize_extended);
+        public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
         /// The method handle of `stbir_build_samplers_with_splits`.
-        public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(Descriptors.FD_stbir_build_samplers_with_splits);
+        public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_resize_extended_splits`.
-        public static final MethodHandle MH_stbir_resize_extended_splits = RuntimeHelper.downcall(Descriptors.FD_stbir_resize_extended_splits);
+        public static final MethodHandle MH_stbir_resize_extended_splits = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The function address of `stbir_resize_uint8_srgb`.
         public final MemorySegment PFN_stbir_resize_uint8_srgb;
         /// The function address of `stbir_resize`.

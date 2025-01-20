@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLARBMultiDrawIndirect {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirect = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirect);
-        public static final MethodHandle MH_glMultiDrawElementsIndirect = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirect);
+        public static final MethodHandle MH_glMultiDrawArraysIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirect;
         public final MemorySegment PFN_glMultiDrawElementsIndirect;
         private Handles(overrungl.opengl.GLLoadFunc func) {

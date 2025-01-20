@@ -27,14 +27,9 @@ public final class GLARBDrawIndirect {
     public static final int GL_DRAW_INDIRECT_BUFFER = 0x8F3F;
     public static final int GL_DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawArraysIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDrawElementsIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysIndirect = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysIndirect);
-        public static final MethodHandle MH_glDrawElementsIndirect = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsIndirect);
+        public static final MethodHandle MH_glDrawArraysIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawElementsIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawArraysIndirect;
         public final MemorySegment PFN_glDrawElementsIndirect;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -33,14 +33,9 @@ public final class GLEXTDebugLabel {
     public static final int GL_SAMPLER = 0x82E6;
     public static final int GL_TRANSFORM_FEEDBACK = 0x8E22;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glLabelObjectEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetObjectLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glLabelObjectEXT = RuntimeHelper.downcall(Descriptors.FD_glLabelObjectEXT);
-        public static final MethodHandle MH_glGetObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_glGetObjectLabelEXT);
+        public static final MethodHandle MH_glLabelObjectEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetObjectLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glLabelObjectEXT;
         public final MemorySegment PFN_glGetObjectLabelEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

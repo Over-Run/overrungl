@@ -34,14 +34,9 @@ public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_NORMAL_MODE_LINEAR_ATI = 0x87F7;
     public static final int GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATI = 0x87F8;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPNTrianglesiATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPNTrianglesfATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPNTrianglesiATI = RuntimeHelper.downcall(Descriptors.FD_glPNTrianglesiATI);
-        public static final MethodHandle MH_glPNTrianglesfATI = RuntimeHelper.downcall(Descriptors.FD_glPNTrianglesfATI);
+        public static final MethodHandle MH_glPNTrianglesiATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPNTrianglesfATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPNTrianglesiATI;
         public final MemorySegment PFN_glPNTrianglesfATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {

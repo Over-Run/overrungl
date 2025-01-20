@@ -26,18 +26,11 @@ import overrungl.util.*;
 public final class GLARBVertexArrayObject {
     public static final int GL_VERTEX_ARRAY_BINDING = 0x85B5;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindVertexArray = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteVertexArrays = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenVertexArrays = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsVertexArray = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindVertexArray = RuntimeHelper.downcall(Descriptors.FD_glBindVertexArray);
-        public static final MethodHandle MH_glDeleteVertexArrays = RuntimeHelper.downcall(Descriptors.FD_glDeleteVertexArrays);
-        public static final MethodHandle MH_glGenVertexArrays = RuntimeHelper.downcall(Descriptors.FD_glGenVertexArrays);
-        public static final MethodHandle MH_glIsVertexArray = RuntimeHelper.downcall(Descriptors.FD_glIsVertexArray);
+        public static final MethodHandle MH_glBindVertexArray = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteVertexArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenVertexArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsVertexArray = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindVertexArray;
         public final MemorySegment PFN_glDeleteVertexArrays;
         public final MemorySegment PFN_glGenVertexArrays;

@@ -34,12 +34,8 @@ public final class GLARBMultisample {
     public static final int GL_SAMPLE_COVERAGE_INVERT_ARB = 0x80AB;
     public static final int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSampleCoverageARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(Descriptors.FD_glSampleCoverageARB);
+        public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glSampleCoverageARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSampleCoverageARB = func.invoke("glSampleCoverageARB", "glSampleCoverage");

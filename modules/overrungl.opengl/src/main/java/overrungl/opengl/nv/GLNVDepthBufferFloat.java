@@ -29,16 +29,10 @@ public final class GLNVDepthBufferFloat {
     public static final int GL_FLOAT_32_UNSIGNED_INT_24_8_REV_NV = 0x8DAD;
     public static final int GL_DEPTH_BUFFER_FLOAT_MODE_NV = 0x8DAF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDepthRangedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glClearDepthdNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glDepthBoundsdNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDepthRangedNV = RuntimeHelper.downcall(Descriptors.FD_glDepthRangedNV);
-        public static final MethodHandle MH_glClearDepthdNV = RuntimeHelper.downcall(Descriptors.FD_glClearDepthdNV);
-        public static final MethodHandle MH_glDepthBoundsdNV = RuntimeHelper.downcall(Descriptors.FD_glDepthBoundsdNV);
+        public static final MethodHandle MH_glDepthRangedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glClearDepthdNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glDepthBoundsdNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         public final MemorySegment PFN_glDepthRangedNV;
         public final MemorySegment PFN_glClearDepthdNV;
         public final MemorySegment PFN_glDepthBoundsdNV;

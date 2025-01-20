@@ -31,12 +31,8 @@ public final class GLARBClipControl {
     public static final int GL_CLIP_ORIGIN = 0x935C;
     public static final int GL_CLIP_DEPTH_MODE = 0x935D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glClipControl = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glClipControl = RuntimeHelper.downcall(Descriptors.FD_glClipControl);
+        public static final MethodHandle MH_glClipControl = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClipControl;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glClipControl = func.invoke("glClipControl");

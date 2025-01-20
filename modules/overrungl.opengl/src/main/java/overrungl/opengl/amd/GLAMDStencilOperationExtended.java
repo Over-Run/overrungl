@@ -29,12 +29,8 @@ public final class GLAMDStencilOperationExtended {
     public static final int GL_STENCIL_OP_VALUE_AMD = 0x874C;
     public static final int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glStencilOpValueAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glStencilOpValueAMD = RuntimeHelper.downcall(Descriptors.FD_glStencilOpValueAMD);
+        public static final MethodHandle MH_glStencilOpValueAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilOpValueAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glStencilOpValueAMD = func.invoke("glStencilOpValueAMD");

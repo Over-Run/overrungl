@@ -45,12 +45,8 @@ public class VKNVCooperativeMatrix {
     public static final int VK_COMPONENT_TYPE_UINT32_NV = VK_COMPONENT_TYPE_UINT32_KHR;
     public static final int VK_COMPONENT_TYPE_UINT64_NV = VK_COMPONENT_TYPE_UINT64_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
+        public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");

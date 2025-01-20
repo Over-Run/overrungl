@@ -91,14 +91,9 @@ public class VKKHRSamplerYcbcrConversion {
     public static final int VK_CHROMA_LOCATION_MIDPOINT_KHR = VK_CHROMA_LOCATION_MIDPOINT;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateSamplerYcbcrConversionKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroySamplerYcbcrConversionKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateSamplerYcbcrConversionKHR);
-        public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroySamplerYcbcrConversionKHR);
+        public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateSamplerYcbcrConversionKHR;
         public final MemorySegment PFN_vkDestroySamplerYcbcrConversionKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

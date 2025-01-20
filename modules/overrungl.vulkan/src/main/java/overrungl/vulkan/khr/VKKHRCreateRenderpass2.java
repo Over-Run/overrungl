@@ -34,18 +34,11 @@ public class VKKHRCreateRenderpass2 {
     public static final int VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR = VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO;
     public static final int VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR = VK_STRUCTURE_TYPE_SUBPASS_END_INFO;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateRenderPass2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBeginRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdNextSubpass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateRenderPass2KHR);
-        public static final MethodHandle MH_vkCmdBeginRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderPass2KHR);
-        public static final MethodHandle MH_vkCmdNextSubpass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdNextSubpass2KHR);
-        public static final MethodHandle MH_vkCmdEndRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderPass2KHR);
+        public static final MethodHandle MH_vkCreateRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdNextSubpass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateRenderPass2KHR;
         public final MemorySegment PFN_vkCmdBeginRenderPass2KHR;
         public final MemorySegment PFN_vkCmdNextSubpass2KHR;

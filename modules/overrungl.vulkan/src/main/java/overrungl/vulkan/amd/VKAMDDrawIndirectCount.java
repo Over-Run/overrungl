@@ -26,14 +26,9 @@ public class VKAMDDrawIndirectCount {
     public static final int VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2;
     public static final String VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_AMD_draw_indirect_count";
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDrawIndirectCountAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawIndexedIndirectCountAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawIndirectCountAMD = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndirectCountAMD);
-        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCountAMD = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawIndexedIndirectCountAMD);
+        public static final MethodHandle MH_vkCmdDrawIndirectCountAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawIndexedIndirectCountAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdDrawIndirectCountAMD;
         public final MemorySegment PFN_vkCmdDrawIndexedIndirectCountAMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

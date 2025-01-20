@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLSGISTextureColorMask {
     public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureColorMaskSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureColorMaskSGIS = RuntimeHelper.downcall(Descriptors.FD_glTextureColorMaskSGIS);
+        public static final MethodHandle MH_glTextureColorMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glTextureColorMaskSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTextureColorMaskSGIS = func.invoke("glTextureColorMaskSGIS");

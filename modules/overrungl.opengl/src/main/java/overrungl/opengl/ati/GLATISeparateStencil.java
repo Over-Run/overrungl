@@ -29,14 +29,9 @@ public final class GLATISeparateStencil {
     public static final int GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI = 0x8802;
     public static final int GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI = 0x8803;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glStencilOpSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glStencilFuncSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glStencilOpSeparateATI = RuntimeHelper.downcall(Descriptors.FD_glStencilOpSeparateATI);
-        public static final MethodHandle MH_glStencilFuncSeparateATI = RuntimeHelper.downcall(Descriptors.FD_glStencilFuncSeparateATI);
+        public static final MethodHandle MH_glStencilOpSeparateATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilFuncSeparateATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilOpSeparateATI;
         public final MemorySegment PFN_glStencilFuncSeparateATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {

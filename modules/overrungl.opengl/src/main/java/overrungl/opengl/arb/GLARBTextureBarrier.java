@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLARBTextureBarrier {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureBarrier = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureBarrier = RuntimeHelper.downcall(Descriptors.FD_glTextureBarrier);
+        public static final MethodHandle MH_glTextureBarrier = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glTextureBarrier;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTextureBarrier = func.invoke("glTextureBarrier");

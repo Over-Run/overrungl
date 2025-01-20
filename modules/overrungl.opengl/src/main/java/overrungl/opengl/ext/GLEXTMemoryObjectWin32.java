@@ -34,14 +34,9 @@ public final class GLEXTMemoryObjectWin32 {
     public static final int GL_HANDLE_TYPE_D3D11_IMAGE_EXT = 0x958B;
     public static final int GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT = 0x958C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportMemoryWin32HandleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glImportMemoryWin32NameEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportMemoryWin32HandleEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryWin32HandleEXT);
-        public static final MethodHandle MH_glImportMemoryWin32NameEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryWin32NameEXT);
+        public static final MethodHandle MH_glImportMemoryWin32HandleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImportMemoryWin32NameEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glImportMemoryWin32HandleEXT;
         public final MemorySegment PFN_glImportMemoryWin32NameEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

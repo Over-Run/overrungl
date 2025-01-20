@@ -32,14 +32,9 @@ public final class GLEXTSemaphoreWin32 {
     public static final int GL_HANDLE_TYPE_D3D12_FENCE_EXT = 0x9594;
     public static final int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportSemaphoreWin32HandleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glImportSemaphoreWin32NameEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportSemaphoreWin32HandleEXT = RuntimeHelper.downcall(Descriptors.FD_glImportSemaphoreWin32HandleEXT);
-        public static final MethodHandle MH_glImportSemaphoreWin32NameEXT = RuntimeHelper.downcall(Descriptors.FD_glImportSemaphoreWin32NameEXT);
+        public static final MethodHandle MH_glImportSemaphoreWin32HandleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImportSemaphoreWin32NameEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glImportSemaphoreWin32HandleEXT;
         public final MemorySegment PFN_glImportSemaphoreWin32NameEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -42,12 +42,8 @@ public final class GLARBShaderStorageBufferObject {
     public static final int GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES = 0x8F39;
     public static final int GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS = 0x8F39;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glShaderStorageBlockBinding = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glShaderStorageBlockBinding = RuntimeHelper.downcall(Descriptors.FD_glShaderStorageBlockBinding);
+        public static final MethodHandle MH_glShaderStorageBlockBinding = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glShaderStorageBlockBinding;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glShaderStorageBlockBinding = func.invoke("glShaderStorageBlockBinding");

@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLEXTPolygonOffsetClamp {
     public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPolygonOffsetClampEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPolygonOffsetClampEXT = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetClampEXT);
+        public static final MethodHandle MH_glPolygonOffsetClampEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetClampEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPolygonOffsetClampEXT = func.invoke("glPolygonOffsetClampEXT", "glPolygonOffsetClamp");

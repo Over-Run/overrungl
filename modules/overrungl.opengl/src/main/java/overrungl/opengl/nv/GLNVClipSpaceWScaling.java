@@ -28,12 +28,8 @@ public final class GLNVClipSpaceWScaling {
     public static final int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
     public static final int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glViewportPositionWScaleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glViewportPositionWScaleNV = RuntimeHelper.downcall(Descriptors.FD_glViewportPositionWScaleNV);
+        public static final MethodHandle MH_glViewportPositionWScaleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glViewportPositionWScaleNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glViewportPositionWScaleNV = func.invoke("glViewportPositionWScaleNV");

@@ -73,18 +73,11 @@ public final class GLNVMeshShader {
     public static final int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_MESH_SHADER_NV = 0x959E;
     public static final int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TASK_SHADER_NV = 0x959F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawMeshTasksNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glMultiDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawMeshTasksIndirectCountNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawMeshTasksNV = RuntimeHelper.downcall(Descriptors.FD_glDrawMeshTasksNV);
-        public static final MethodHandle MH_glDrawMeshTasksIndirectNV = RuntimeHelper.downcall(Descriptors.FD_glDrawMeshTasksIndirectNV);
-        public static final MethodHandle MH_glMultiDrawMeshTasksIndirectNV = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawMeshTasksIndirectNV);
-        public static final MethodHandle MH_glMultiDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawMeshTasksIndirectCountNV);
+        public static final MethodHandle MH_glDrawMeshTasksNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glMultiDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawMeshTasksNV;
         public final MemorySegment PFN_glDrawMeshTasksIndirectNV;
         public final MemorySegment PFN_glMultiDrawMeshTasksIndirectNV;

@@ -25,42 +25,23 @@ import overrungl.util.*;
 
 public final class GLARBWindowPos {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glWindowPos2dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glWindowPos2dvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glWindowPos2fvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glWindowPos2ivARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos2sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glWindowPos2svARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3dARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glWindowPos3dvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3fARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glWindowPos3fvARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3iARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glWindowPos3ivARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWindowPos3sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glWindowPos3svARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glWindowPos2dARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dARB);
-        public static final MethodHandle MH_glWindowPos2dvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dvARB);
-        public static final MethodHandle MH_glWindowPos2fARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2fARB);
-        public static final MethodHandle MH_glWindowPos2fvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2fvARB);
-        public static final MethodHandle MH_glWindowPos2iARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2iARB);
-        public static final MethodHandle MH_glWindowPos2ivARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2ivARB);
-        public static final MethodHandle MH_glWindowPos2sARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2sARB);
-        public static final MethodHandle MH_glWindowPos2svARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2svARB);
-        public static final MethodHandle MH_glWindowPos3dARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3dARB);
-        public static final MethodHandle MH_glWindowPos3dvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3dvARB);
-        public static final MethodHandle MH_glWindowPos3fARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3fARB);
-        public static final MethodHandle MH_glWindowPos3fvARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3fvARB);
-        public static final MethodHandle MH_glWindowPos3iARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3iARB);
-        public static final MethodHandle MH_glWindowPos3ivARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3ivARB);
-        public static final MethodHandle MH_glWindowPos3sARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3sARB);
-        public static final MethodHandle MH_glWindowPos3svARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos3svARB);
+        public static final MethodHandle MH_glWindowPos2dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos2dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos2ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos2svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos3dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos3ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos3svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowPos2dARB;
         public final MemorySegment PFN_glWindowPos2dvARB;
         public final MemorySegment PFN_glWindowPos2fARB;

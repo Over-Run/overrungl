@@ -32,12 +32,8 @@ public final class GLNVInternalformatSampleQuery {
     public static final int GL_SUPERSAMPLE_SCALE_Y_NV = 0x9373;
     public static final int GL_CONFORMANT_NV = 0x9374;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInternalformatSampleivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformatSampleivNV = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformatSampleivNV);
+        public static final MethodHandle MH_glGetInternalformatSampleivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformatSampleivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformatSampleivNV = func.invoke("glGetInternalformatSampleivNV");

@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLINGRBlendFuncSeparate {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendFuncSeparateINGR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncSeparateINGR = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparateINGR);
+        public static final MethodHandle MH_glBlendFuncSeparateINGR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparateINGR;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendFuncSeparateINGR = func.invoke("glBlendFuncSeparateINGR", "glBlendFuncSeparate");

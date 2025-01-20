@@ -31,14 +31,9 @@ public final class GLAPPLETextureRange {
     public static final int GL_STORAGE_CACHED_APPLE = 0x85BE;
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexParameterPointervAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glTextureRangeAPPLE);
-        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGetTexParameterPointervAPPLE);
+        public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTextureRangeAPPLE;
         public final MemorySegment PFN_glGetTexParameterPointervAPPLE;
         private Handles(overrungl.opengl.GLLoadFunc func) {

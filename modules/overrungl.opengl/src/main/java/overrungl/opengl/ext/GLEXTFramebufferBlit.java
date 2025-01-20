@@ -29,12 +29,8 @@ public final class GLEXTFramebufferBlit {
     public static final int GL_DRAW_FRAMEBUFFER_BINDING_EXT = 0x8CA6;
     public static final int GL_READ_FRAMEBUFFER_BINDING_EXT = 0x8CAA;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlitFramebufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlitFramebufferEXT = RuntimeHelper.downcall(Descriptors.FD_glBlitFramebufferEXT);
+        public static final MethodHandle MH_glBlitFramebufferEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlitFramebufferEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlitFramebufferEXT = func.invoke("glBlitFramebufferEXT", "glBlitFramebuffer");

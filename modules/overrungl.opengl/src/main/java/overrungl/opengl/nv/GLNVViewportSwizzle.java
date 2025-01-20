@@ -37,12 +37,8 @@ public final class GLNVViewportSwizzle {
     public static final int GL_VIEWPORT_SWIZZLE_Z_NV = 0x935A;
     public static final int GL_VIEWPORT_SWIZZLE_W_NV = 0x935B;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glViewportSwizzleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glViewportSwizzleNV = RuntimeHelper.downcall(Descriptors.FD_glViewportSwizzleNV);
+        public static final MethodHandle MH_glViewportSwizzleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glViewportSwizzleNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glViewportSwizzleNV = func.invoke("glViewportSwizzleNV");

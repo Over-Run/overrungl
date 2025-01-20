@@ -74,20 +74,12 @@ public class VKNVOpticalFlow {
     public static final long VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV = 0x40000000000L;
     public static final int VK_FORMAT_R16G16_S10_5_NV = VK_FORMAT_R16G16_SFIXED5_NV;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateOpticalFlowSessionNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyOpticalFlowSessionNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkBindOpticalFlowSessionImageNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdOpticalFlowExecuteNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV);
-        public static final MethodHandle MH_vkCreateOpticalFlowSessionNV = RuntimeHelper.downcall(Descriptors.FD_vkCreateOpticalFlowSessionNV);
-        public static final MethodHandle MH_vkDestroyOpticalFlowSessionNV = RuntimeHelper.downcall(Descriptors.FD_vkDestroyOpticalFlowSessionNV);
-        public static final MethodHandle MH_vkBindOpticalFlowSessionImageNV = RuntimeHelper.downcall(Descriptors.FD_vkBindOpticalFlowSessionImageNV);
-        public static final MethodHandle MH_vkCmdOpticalFlowExecuteNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdOpticalFlowExecuteNV);
+        public static final MethodHandle MH_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateOpticalFlowSessionNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyOpticalFlowSessionNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBindOpticalFlowSessionImageNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdOpticalFlowExecuteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
         public final MemorySegment PFN_vkCreateOpticalFlowSessionNV;
         public final MemorySegment PFN_vkDestroyOpticalFlowSessionNV;

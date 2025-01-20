@@ -31,14 +31,9 @@ public class VKEXTShaderModuleIdentifier {
     public static final int VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT = 1000462003;
     public static final int VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetShaderModuleIdentifierEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetShaderModuleCreateInfoIdentifierEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetShaderModuleIdentifierEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetShaderModuleIdentifierEXT);
-        public static final MethodHandle MH_vkGetShaderModuleCreateInfoIdentifierEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetShaderModuleCreateInfoIdentifierEXT);
+        public static final MethodHandle MH_vkGetShaderModuleIdentifierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetShaderModuleCreateInfoIdentifierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetShaderModuleIdentifierEXT;
         public final MemorySegment PFN_vkGetShaderModuleCreateInfoIdentifierEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

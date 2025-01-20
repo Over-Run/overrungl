@@ -45,30 +45,17 @@ public final class GLINTELPerformanceQuery {
     public static final int GL_PERFQUERY_COUNTER_DESC_LENGTH_MAX_INTEL = 0x94FF;
     public static final int GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL = 0x9500;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginPerfQueryINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glCreatePerfQueryINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeletePerfQueryINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndPerfQueryINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFirstPerfQueryIdINTEL = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetNextPerfQueryIdINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfCounterInfoINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfQueryDataINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfQueryIdByNameINTEL = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfQueryInfoINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginPerfQueryINTEL = RuntimeHelper.downcall(Descriptors.FD_glBeginPerfQueryINTEL);
-        public static final MethodHandle MH_glCreatePerfQueryINTEL = RuntimeHelper.downcall(Descriptors.FD_glCreatePerfQueryINTEL);
-        public static final MethodHandle MH_glDeletePerfQueryINTEL = RuntimeHelper.downcall(Descriptors.FD_glDeletePerfQueryINTEL);
-        public static final MethodHandle MH_glEndPerfQueryINTEL = RuntimeHelper.downcall(Descriptors.FD_glEndPerfQueryINTEL);
-        public static final MethodHandle MH_glGetFirstPerfQueryIdINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetFirstPerfQueryIdINTEL);
-        public static final MethodHandle MH_glGetNextPerfQueryIdINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetNextPerfQueryIdINTEL);
-        public static final MethodHandle MH_glGetPerfCounterInfoINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetPerfCounterInfoINTEL);
-        public static final MethodHandle MH_glGetPerfQueryDataINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetPerfQueryDataINTEL);
-        public static final MethodHandle MH_glGetPerfQueryIdByNameINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetPerfQueryIdByNameINTEL);
-        public static final MethodHandle MH_glGetPerfQueryInfoINTEL = RuntimeHelper.downcall(Descriptors.FD_glGetPerfQueryInfoINTEL);
+        public static final MethodHandle MH_glBeginPerfQueryINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreatePerfQueryINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeletePerfQueryINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndPerfQueryINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFirstPerfQueryIdINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNextPerfQueryIdINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfCounterInfoINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfQueryDataINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfQueryIdByNameINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfQueryInfoINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBeginPerfQueryINTEL;
         public final MemorySegment PFN_glCreatePerfQueryINTEL;
         public final MemorySegment PFN_glDeletePerfQueryINTEL;

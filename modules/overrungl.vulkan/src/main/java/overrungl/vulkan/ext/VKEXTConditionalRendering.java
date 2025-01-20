@@ -33,14 +33,9 @@ public class VKEXTConditionalRendering {
     public static final int VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT = 0x00000200;
     public static final int VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT = 0x00040000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBeginConditionalRenderingEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndConditionalRenderingEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBeginConditionalRenderingEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginConditionalRenderingEXT);
-        public static final MethodHandle MH_vkCmdEndConditionalRenderingEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndConditionalRenderingEXT);
+        public static final MethodHandle MH_vkCmdBeginConditionalRenderingEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndConditionalRenderingEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBeginConditionalRenderingEXT;
         public final MemorySegment PFN_vkCmdEndConditionalRenderingEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

@@ -31,14 +31,9 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public static final int GL_NUM_SUPPORTED_MULTISAMPLE_MODES_AMD = 0x91B6;
     public static final int GL_SUPPORTED_MULTISAMPLE_MODES_AMD = 0x91B7;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRenderbufferStorageMultisampleAdvancedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNamedRenderbufferStorageMultisampleAdvancedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleAdvancedAMD = RuntimeHelper.downcall(Descriptors.FD_glRenderbufferStorageMultisampleAdvancedAMD);
-        public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleAdvancedAMD = RuntimeHelper.downcall(Descriptors.FD_glNamedRenderbufferStorageMultisampleAdvancedAMD);
+        public static final MethodHandle MH_glRenderbufferStorageMultisampleAdvancedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNamedRenderbufferStorageMultisampleAdvancedAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleAdvancedAMD;
         public final MemorySegment PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {

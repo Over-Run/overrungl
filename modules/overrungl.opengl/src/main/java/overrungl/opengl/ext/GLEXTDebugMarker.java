@@ -25,16 +25,10 @@ import overrungl.util.*;
 
 public final class GLEXTDebugMarker {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glInsertEventMarkerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPushGroupMarkerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPopGroupMarkerEXT = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glInsertEventMarkerEXT = RuntimeHelper.downcall(Descriptors.FD_glInsertEventMarkerEXT);
-        public static final MethodHandle MH_glPushGroupMarkerEXT = RuntimeHelper.downcall(Descriptors.FD_glPushGroupMarkerEXT);
-        public static final MethodHandle MH_glPopGroupMarkerEXT = RuntimeHelper.downcall(Descriptors.FD_glPopGroupMarkerEXT);
+        public static final MethodHandle MH_glInsertEventMarkerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPushGroupMarkerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPopGroupMarkerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glInsertEventMarkerEXT;
         public final MemorySegment PFN_glPushGroupMarkerEXT;
         public final MemorySegment PFN_glPopGroupMarkerEXT;

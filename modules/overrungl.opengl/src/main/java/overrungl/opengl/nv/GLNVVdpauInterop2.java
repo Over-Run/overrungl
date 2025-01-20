@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLNVVdpauInterop2 {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVDPAURegisterVideoSurfaceWithPictureStructureNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAURegisterVideoSurfaceWithPictureStructureNV);
+        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV = func.invoke("glVDPAURegisterVideoSurfaceWithPictureStructureNV");

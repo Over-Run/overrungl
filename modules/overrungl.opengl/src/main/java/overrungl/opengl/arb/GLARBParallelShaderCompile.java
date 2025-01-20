@@ -27,12 +27,8 @@ public final class GLARBParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_ARB = 0x91B0;
     public static final int GL_COMPLETION_STATUS_ARB = 0x91B1;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMaxShaderCompilerThreadsARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMaxShaderCompilerThreadsARB = RuntimeHelper.downcall(Descriptors.FD_glMaxShaderCompilerThreadsARB);
+        public static final MethodHandle MH_glMaxShaderCompilerThreadsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMaxShaderCompilerThreadsARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glMaxShaderCompilerThreadsARB = func.invoke("glMaxShaderCompilerThreadsARB", "glMaxShaderCompilerThreadsKHR");

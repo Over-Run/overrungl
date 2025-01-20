@@ -32,12 +32,8 @@ public class VKKHRMaintenance3 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutSupportKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutSupportKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetLayoutSupportKHR);
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDescriptorSetLayoutSupportKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetDescriptorSetLayoutSupportKHR = func.invoke(device, "vkGetDescriptorSetLayoutSupportKHR", "vkGetDescriptorSetLayoutSupport");

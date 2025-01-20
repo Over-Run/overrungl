@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLINTELFramebufferCMAA {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glApplyFramebufferAttachmentCMAAINTEL = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glApplyFramebufferAttachmentCMAAINTEL = RuntimeHelper.downcall(Descriptors.FD_glApplyFramebufferAttachmentCMAAINTEL);
+        public static final MethodHandle MH_glApplyFramebufferAttachmentCMAAINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glApplyFramebufferAttachmentCMAAINTEL;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glApplyFramebufferAttachmentCMAAINTEL = func.invoke("glApplyFramebufferAttachmentCMAAINTEL");

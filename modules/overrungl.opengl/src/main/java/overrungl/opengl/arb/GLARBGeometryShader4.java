@@ -45,18 +45,11 @@ public final class GLARBGeometryShader4 {
     public static final int GL_MAX_VARYING_COMPONENTS = 0x8B4B;
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER = 0x8CD4;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramParameteriARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureLayerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFramebufferTextureFaceARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramParameteriARB = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteriARB);
-        public static final MethodHandle MH_glFramebufferTextureARB = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureARB);
-        public static final MethodHandle MH_glFramebufferTextureLayerARB = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureLayerARB);
-        public static final MethodHandle MH_glFramebufferTextureFaceARB = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureFaceARB);
+        public static final MethodHandle MH_glProgramParameteriARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureLayerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureFaceARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProgramParameteriARB;
         public final MemorySegment PFN_glFramebufferTextureARB;
         public final MemorySegment PFN_glFramebufferTextureLayerARB;

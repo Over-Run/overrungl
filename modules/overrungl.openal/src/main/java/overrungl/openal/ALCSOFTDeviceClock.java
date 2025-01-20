@@ -31,16 +31,10 @@ public final class ALCSOFTDeviceClock {
     public static final int AL_SAMPLE_OFFSET_CLOCK_SOFT = 0x1202;
     public static final int AL_SEC_OFFSET_CLOCK_SOFT = 0x1203;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcGetInteger64vSOFT`.
-        public static final FunctionDescriptor FD_alcGetInteger64vSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcGetInteger64vSOFT`.
-        public static final MethodHandle MH_alcGetInteger64vSOFT = RuntimeHelper.downcall(Descriptors.FD_alcGetInteger64vSOFT);
+        public static final MethodHandle MH_alcGetInteger64vSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The function address of `alcGetInteger64vSOFT`.
         public final MemorySegment PFN_alcGetInteger64vSOFT;
         private Handles() {

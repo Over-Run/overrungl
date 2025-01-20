@@ -34,7 +34,6 @@ class InstanceDowncall(
     var customCode: String? = null
     private val extends = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
-    val descriptorFields = mutableListOf<InstanceDowncallField>()
     val handleFields = mutableListOf<InstanceDowncallField>()
     val pfnFields = mutableListOf<InstanceDowncallField>()
     private val methods = mutableListOf<InstanceDowncallMethod>()
@@ -103,12 +102,6 @@ class InstanceDowncall(
             }
         }
         writeFields(fields, 4)
-        if (descriptorFields.isNotEmpty()) {
-            sb.appendLine("    public static final class Descriptors {")
-            sb.appendLine("        private Descriptors() {}")
-            writeFields(descriptorFields, 8)
-            sb.appendLine("    }")
-        }
         if (handleFields.isNotEmpty()) {
             sb.appendLine("    public static final class Handles {")
             writeFields(handleFields, 8)

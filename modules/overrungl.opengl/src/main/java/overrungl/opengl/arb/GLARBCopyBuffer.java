@@ -27,12 +27,8 @@ public final class GLARBCopyBuffer {
     public static final int GL_COPY_READ_BUFFER = 0x8F36;
     public static final int GL_COPY_WRITE_BUFFER = 0x8F37;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCopyBufferSubData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCopyBufferSubData = RuntimeHelper.downcall(Descriptors.FD_glCopyBufferSubData);
+        public static final MethodHandle MH_glCopyBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glCopyBufferSubData;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glCopyBufferSubData = func.invoke("glCopyBufferSubData");

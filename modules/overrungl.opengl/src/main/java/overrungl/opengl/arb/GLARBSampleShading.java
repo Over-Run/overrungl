@@ -27,12 +27,8 @@ public final class GLARBSampleShading {
     public static final int GL_SAMPLE_SHADING_ARB = 0x8C36;
     public static final int GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMinSampleShadingARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMinSampleShadingARB = RuntimeHelper.downcall(Descriptors.FD_glMinSampleShadingARB);
+        public static final MethodHandle MH_glMinSampleShadingARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glMinSampleShadingARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glMinSampleShadingARB = func.invoke("glMinSampleShadingARB", "glMinSampleShading");

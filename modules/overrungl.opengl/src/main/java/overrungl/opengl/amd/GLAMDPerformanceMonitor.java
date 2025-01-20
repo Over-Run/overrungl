@@ -32,32 +32,18 @@ public final class GLAMDPerformanceMonitor {
     public static final int GL_PERFMON_RESULT_SIZE_AMD = 0x8BC5;
     public static final int GL_PERFMON_RESULT_AMD = 0x8BC6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetPerfMonitorGroupsAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfMonitorCountersAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfMonitorGroupStringAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfMonitorCounterStringAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPerfMonitorCounterInfoAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenPerfMonitorsAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeletePerfMonitorsAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSelectPerfMonitorCountersAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBeginPerfMonitorAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndPerfMonitorAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetPerfMonitorCounterDataAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetPerfMonitorGroupsAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorGroupsAMD);
-        public static final MethodHandle MH_glGetPerfMonitorCountersAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorCountersAMD);
-        public static final MethodHandle MH_glGetPerfMonitorGroupStringAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorGroupStringAMD);
-        public static final MethodHandle MH_glGetPerfMonitorCounterStringAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorCounterStringAMD);
-        public static final MethodHandle MH_glGetPerfMonitorCounterInfoAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorCounterInfoAMD);
-        public static final MethodHandle MH_glGenPerfMonitorsAMD = RuntimeHelper.downcall(Descriptors.FD_glGenPerfMonitorsAMD);
-        public static final MethodHandle MH_glDeletePerfMonitorsAMD = RuntimeHelper.downcall(Descriptors.FD_glDeletePerfMonitorsAMD);
-        public static final MethodHandle MH_glSelectPerfMonitorCountersAMD = RuntimeHelper.downcall(Descriptors.FD_glSelectPerfMonitorCountersAMD);
-        public static final MethodHandle MH_glBeginPerfMonitorAMD = RuntimeHelper.downcall(Descriptors.FD_glBeginPerfMonitorAMD);
-        public static final MethodHandle MH_glEndPerfMonitorAMD = RuntimeHelper.downcall(Descriptors.FD_glEndPerfMonitorAMD);
-        public static final MethodHandle MH_glGetPerfMonitorCounterDataAMD = RuntimeHelper.downcall(Descriptors.FD_glGetPerfMonitorCounterDataAMD);
+        public static final MethodHandle MH_glGetPerfMonitorGroupsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCountersAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorGroupStringAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCounterStringAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCounterInfoAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenPerfMonitorsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeletePerfMonitorsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSelectPerfMonitorCountersAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBeginPerfMonitorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndPerfMonitorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetPerfMonitorCounterDataAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetPerfMonitorGroupsAMD;
         public final MemorySegment PFN_glGetPerfMonitorCountersAMD;
         public final MemorySegment PFN_glGetPerfMonitorGroupStringAMD;

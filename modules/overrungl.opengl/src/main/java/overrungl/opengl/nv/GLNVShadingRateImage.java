@@ -46,24 +46,14 @@ public final class GLNVShadingRateImage {
     public static final int GL_SHADING_RATE_SAMPLE_ORDER_PIXEL_MAJOR_NV = 0x95AF;
     public static final int GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV = 0x95B0;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindShadingRateImageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetShadingRateImagePaletteNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetShadingRateSampleLocationivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glShadingRateImageBarrierNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glShadingRateImagePaletteNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glShadingRateSampleOrderNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glShadingRateSampleOrderCustomNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindShadingRateImageNV = RuntimeHelper.downcall(Descriptors.FD_glBindShadingRateImageNV);
-        public static final MethodHandle MH_glGetShadingRateImagePaletteNV = RuntimeHelper.downcall(Descriptors.FD_glGetShadingRateImagePaletteNV);
-        public static final MethodHandle MH_glGetShadingRateSampleLocationivNV = RuntimeHelper.downcall(Descriptors.FD_glGetShadingRateSampleLocationivNV);
-        public static final MethodHandle MH_glShadingRateImageBarrierNV = RuntimeHelper.downcall(Descriptors.FD_glShadingRateImageBarrierNV);
-        public static final MethodHandle MH_glShadingRateImagePaletteNV = RuntimeHelper.downcall(Descriptors.FD_glShadingRateImagePaletteNV);
-        public static final MethodHandle MH_glShadingRateSampleOrderNV = RuntimeHelper.downcall(Descriptors.FD_glShadingRateSampleOrderNV);
-        public static final MethodHandle MH_glShadingRateSampleOrderCustomNV = RuntimeHelper.downcall(Descriptors.FD_glShadingRateSampleOrderCustomNV);
+        public static final MethodHandle MH_glBindShadingRateImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetShadingRateImagePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetShadingRateSampleLocationivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glShadingRateImageBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glShadingRateImagePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glShadingRateSampleOrderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glShadingRateSampleOrderCustomNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindShadingRateImageNV;
         public final MemorySegment PFN_glGetShadingRateImagePaletteNV;
         public final MemorySegment PFN_glGetShadingRateSampleLocationivNV;

@@ -35,22 +35,13 @@ public final class GLNVMemoryAttachment {
     public static final int GL_MAX_DETACHED_TEXTURES_NV = 0x95AC;
     public static final int GL_MAX_DETACHED_BUFFERS_NV = 0x95AD;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetMemoryObjectDetachedResourcesuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glResetMemoryObjectParameterNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBufferAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glTextureAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glNamedBufferAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetMemoryObjectDetachedResourcesuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetMemoryObjectDetachedResourcesuivNV);
-        public static final MethodHandle MH_glResetMemoryObjectParameterNV = RuntimeHelper.downcall(Descriptors.FD_glResetMemoryObjectParameterNV);
-        public static final MethodHandle MH_glTexAttachMemoryNV = RuntimeHelper.downcall(Descriptors.FD_glTexAttachMemoryNV);
-        public static final MethodHandle MH_glBufferAttachMemoryNV = RuntimeHelper.downcall(Descriptors.FD_glBufferAttachMemoryNV);
-        public static final MethodHandle MH_glTextureAttachMemoryNV = RuntimeHelper.downcall(Descriptors.FD_glTextureAttachMemoryNV);
-        public static final MethodHandle MH_glNamedBufferAttachMemoryNV = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferAttachMemoryNV);
+        public static final MethodHandle MH_glGetMemoryObjectDetachedResourcesuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glResetMemoryObjectParameterNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBufferAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glNamedBufferAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glGetMemoryObjectDetachedResourcesuivNV;
         public final MemorySegment PFN_glResetMemoryObjectParameterNV;
         public final MemorySegment PFN_glTexAttachMemoryNV;

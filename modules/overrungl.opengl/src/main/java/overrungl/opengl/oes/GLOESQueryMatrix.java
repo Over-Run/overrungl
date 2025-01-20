@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLOESQueryMatrix {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryMatrixxOES = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glQueryMatrixxOES);
+        public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryMatrixxOES;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryMatrixxOES = func.invoke("glQueryMatrixxOES");

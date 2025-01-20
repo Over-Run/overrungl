@@ -34,14 +34,9 @@ public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID = 1000129005;
     public static final int VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID = 1000129006;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetAndroidHardwareBufferPropertiesANDROID = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetMemoryAndroidHardwareBufferANDROID = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetAndroidHardwareBufferPropertiesANDROID = RuntimeHelper.downcall(Descriptors.FD_vkGetAndroidHardwareBufferPropertiesANDROID);
-        public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryAndroidHardwareBufferANDROID);
+        public static final MethodHandle MH_vkGetAndroidHardwareBufferPropertiesANDROID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetAndroidHardwareBufferPropertiesANDROID;
         public final MemorySegment PFN_vkGetMemoryAndroidHardwareBufferANDROID;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

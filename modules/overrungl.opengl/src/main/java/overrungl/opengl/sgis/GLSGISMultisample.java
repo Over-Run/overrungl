@@ -41,14 +41,9 @@ public final class GLSGISMultisample {
     public static final int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
     public static final int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSampleMaskSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glSamplePatternSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskSGIS);
-        public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(Descriptors.FD_glSamplePatternSGIS);
+        public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSampleMaskSGIS;
         public final MemorySegment PFN_glSamplePatternSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

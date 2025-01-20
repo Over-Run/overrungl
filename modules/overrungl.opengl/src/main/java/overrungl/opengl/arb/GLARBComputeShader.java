@@ -43,14 +43,9 @@ public final class GLARBComputeShader {
     public static final int GL_DISPATCH_INDIRECT_BUFFER_BINDING = 0x90EF;
     public static final int GL_COMPUTE_SHADER_BIT = 0x00000020;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDispatchCompute = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDispatchComputeIndirect = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(Descriptors.FD_glDispatchCompute);
-        public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(Descriptors.FD_glDispatchComputeIndirect);
+        public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glDispatchCompute;
         public final MemorySegment PFN_glDispatchComputeIndirect;
         private Handles(overrungl.opengl.GLLoadFunc func) {

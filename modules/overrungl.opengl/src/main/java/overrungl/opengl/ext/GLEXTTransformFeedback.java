@@ -40,24 +40,14 @@ public final class GLEXTTransformFeedback {
     public static final int GL_TRANSFORM_FEEDBACK_BUFFER_MODE_EXT = 0x8C7F;
     public static final int GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH_EXT = 0x8C76;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginTransformFeedbackEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndTransformFeedbackEXT = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glBindBufferRangeEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferOffsetEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferBaseEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTransformFeedbackVaryingsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetTransformFeedbackVaryingEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginTransformFeedbackEXT = RuntimeHelper.downcall(Descriptors.FD_glBeginTransformFeedbackEXT);
-        public static final MethodHandle MH_glEndTransformFeedbackEXT = RuntimeHelper.downcall(Descriptors.FD_glEndTransformFeedbackEXT);
-        public static final MethodHandle MH_glBindBufferRangeEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferRangeEXT);
-        public static final MethodHandle MH_glBindBufferOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferOffsetEXT);
-        public static final MethodHandle MH_glBindBufferBaseEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferBaseEXT);
-        public static final MethodHandle MH_glTransformFeedbackVaryingsEXT = RuntimeHelper.downcall(Descriptors.FD_glTransformFeedbackVaryingsEXT);
-        public static final MethodHandle MH_glGetTransformFeedbackVaryingEXT = RuntimeHelper.downcall(Descriptors.FD_glGetTransformFeedbackVaryingEXT);
+        public static final MethodHandle MH_glBeginTransformFeedbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndTransformFeedbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glBindBufferRangeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferBaseEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTransformFeedbackVaryingsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTransformFeedbackVaryingEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBeginTransformFeedbackEXT;
         public final MemorySegment PFN_glEndTransformFeedbackEXT;
         public final MemorySegment PFN_glBindBufferRangeEXT;

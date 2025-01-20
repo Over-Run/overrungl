@@ -28,12 +28,8 @@ public class VKEXTHostQueryReset {
     public static final String VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkResetQueryPoolEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkResetQueryPoolEXT = RuntimeHelper.downcall(Descriptors.FD_vkResetQueryPoolEXT);
+        public static final MethodHandle MH_vkResetQueryPoolEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkResetQueryPoolEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkResetQueryPoolEXT = func.invoke(device, "vkResetQueryPoolEXT", "vkResetQueryPool");

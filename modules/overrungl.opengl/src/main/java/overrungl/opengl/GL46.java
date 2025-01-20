@@ -47,18 +47,11 @@ public class GL46 extends GL45 {
     public static final int GL_TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
     public static final int GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSpecializeShader = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPolygonOffsetClamp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSpecializeShader = RuntimeHelper.downcall(Descriptors.FD_glSpecializeShader);
-        public static final MethodHandle MH_glMultiDrawArraysIndirectCount = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectCount);
-        public static final MethodHandle MH_glMultiDrawElementsIndirectCount = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirectCount);
-        public static final MethodHandle MH_glPolygonOffsetClamp = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetClamp);
+        public static final MethodHandle MH_glSpecializeShader = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiDrawArraysIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPolygonOffsetClamp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glSpecializeShader;
         public final MemorySegment PFN_glMultiDrawArraysIndirectCount;
         public final MemorySegment PFN_glMultiDrawElementsIndirectCount;

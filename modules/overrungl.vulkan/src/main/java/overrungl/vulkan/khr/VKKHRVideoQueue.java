@@ -70,34 +70,19 @@ public class VKKHRVideoQueue {
     public static final int VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR = -1000023004;
     public static final int VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR = -1000023005;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceVideoCapabilitiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceVideoFormatPropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateVideoSessionKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyVideoSessionKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetVideoSessionMemoryRequirementsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkBindVideoSessionMemoryKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateVideoSessionParametersKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUpdateVideoSessionParametersKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyVideoSessionParametersKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBeginVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdControlVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceVideoCapabilitiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceVideoCapabilitiesKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceVideoFormatPropertiesKHR);
-        public static final MethodHandle MH_vkCreateVideoSessionKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateVideoSessionKHR);
-        public static final MethodHandle MH_vkDestroyVideoSessionKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroyVideoSessionKHR);
-        public static final MethodHandle MH_vkGetVideoSessionMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetVideoSessionMemoryRequirementsKHR);
-        public static final MethodHandle MH_vkBindVideoSessionMemoryKHR = RuntimeHelper.downcall(Descriptors.FD_vkBindVideoSessionMemoryKHR);
-        public static final MethodHandle MH_vkCreateVideoSessionParametersKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateVideoSessionParametersKHR);
-        public static final MethodHandle MH_vkUpdateVideoSessionParametersKHR = RuntimeHelper.downcall(Descriptors.FD_vkUpdateVideoSessionParametersKHR);
-        public static final MethodHandle MH_vkDestroyVideoSessionParametersKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroyVideoSessionParametersKHR);
-        public static final MethodHandle MH_vkCmdBeginVideoCodingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginVideoCodingKHR);
-        public static final MethodHandle MH_vkCmdEndVideoCodingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndVideoCodingKHR);
-        public static final MethodHandle MH_vkCmdControlVideoCodingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdControlVideoCodingKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceVideoCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateVideoSessionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyVideoSessionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetVideoSessionMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBindVideoSessionMemoryKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdControlVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR;
         public final MemorySegment PFN_vkCreateVideoSessionKHR;

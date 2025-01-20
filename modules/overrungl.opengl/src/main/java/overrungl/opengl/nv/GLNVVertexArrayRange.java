@@ -30,14 +30,9 @@ public final class GLNVVertexArrayRange {
     public static final int GL_MAX_VERTEX_ARRAY_RANGE_ELEMENT_NV = 0x8520;
     public static final int GL_VERTEX_ARRAY_RANGE_POINTER_NV = 0x8521;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFlushVertexArrayRangeNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glVertexArrayRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFlushVertexArrayRangeNV = RuntimeHelper.downcall(Descriptors.FD_glFlushVertexArrayRangeNV);
-        public static final MethodHandle MH_glVertexArrayRangeNV = RuntimeHelper.downcall(Descriptors.FD_glVertexArrayRangeNV);
+        public static final MethodHandle MH_glFlushVertexArrayRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glVertexArrayRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFlushVertexArrayRangeNV;
         public final MemorySegment PFN_glVertexArrayRangeNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -26,14 +26,9 @@ import overrungl.util.*;
 public final class GLNVRegisterCombiners2 {
     public static final int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCombinerStageParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetCombinerStageParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCombinerStageParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerStageParameterfvNV);
-        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerStageParameterfvNV);
+        public static final MethodHandle MH_glCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCombinerStageParameterfvNV;
         public final MemorySegment PFN_glGetCombinerStageParameterfvNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

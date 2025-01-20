@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLARBTransformFeedbackInstanced {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawTransformFeedbackInstanced = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawTransformFeedbackStreamInstanced = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawTransformFeedbackInstanced = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedbackInstanced);
-        public static final MethodHandle MH_glDrawTransformFeedbackStreamInstanced = RuntimeHelper.downcall(Descriptors.FD_glDrawTransformFeedbackStreamInstanced);
+        public static final MethodHandle MH_glDrawTransformFeedbackInstanced = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawTransformFeedbackStreamInstanced = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawTransformFeedbackInstanced;
         public final MemorySegment PFN_glDrawTransformFeedbackStreamInstanced;
         private Handles(overrungl.opengl.GLLoadFunc func) {

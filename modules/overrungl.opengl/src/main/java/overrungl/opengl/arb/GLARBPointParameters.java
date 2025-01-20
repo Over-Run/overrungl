@@ -29,14 +29,9 @@ public final class GLARBPointParameters {
     public static final int GL_POINT_FADE_THRESHOLD_SIZE_ARB = 0x8128;
     public static final int GL_POINT_DISTANCE_ATTENUATION_ARB = 0x8129;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPointParameterfARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPointParameterfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPointParameterfARB = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfARB);
-        public static final MethodHandle MH_glPointParameterfvARB = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfvARB);
+        public static final MethodHandle MH_glPointParameterfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameterfARB;
         public final MemorySegment PFN_glPointParameterfvARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {

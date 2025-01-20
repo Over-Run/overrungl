@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLARBDrawInstanced {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawArraysInstancedARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawElementsInstancedARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysInstancedARB = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstancedARB);
-        public static final MethodHandle MH_glDrawElementsInstancedARB = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsInstancedARB);
+        public static final MethodHandle MH_glDrawArraysInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawElementsInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawArraysInstancedARB;
         public final MemorySegment PFN_glDrawElementsInstancedARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {

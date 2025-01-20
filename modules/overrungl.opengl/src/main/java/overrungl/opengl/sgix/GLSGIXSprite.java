@@ -32,18 +32,11 @@ public final class GLSGIXSprite {
     public static final int GL_SPRITE_OBJECT_ALIGNED_SGIX = 0x814D;
     public static final int GL_SPRITE_EYE_ALIGNED_SGIX = 0x814E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSpriteParameterfSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glSpriteParameterfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSpriteParameteriSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSpriteParameterivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSpriteParameterfSGIX = RuntimeHelper.downcall(Descriptors.FD_glSpriteParameterfSGIX);
-        public static final MethodHandle MH_glSpriteParameterfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glSpriteParameterfvSGIX);
-        public static final MethodHandle MH_glSpriteParameteriSGIX = RuntimeHelper.downcall(Descriptors.FD_glSpriteParameteriSGIX);
-        public static final MethodHandle MH_glSpriteParameterivSGIX = RuntimeHelper.downcall(Descriptors.FD_glSpriteParameterivSGIX);
+        public static final MethodHandle MH_glSpriteParameterfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glSpriteParameterfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSpriteParameteriSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSpriteParameterivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSpriteParameterfSGIX;
         public final MemorySegment PFN_glSpriteParameterfvSGIX;
         public final MemorySegment PFN_glSpriteParameteriSGIX;

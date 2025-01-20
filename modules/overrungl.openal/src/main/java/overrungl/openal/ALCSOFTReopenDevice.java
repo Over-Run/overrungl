@@ -26,16 +26,10 @@ public final class ALCSOFTReopenDevice {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcReopenDeviceSOFT`.
-        public static final FunctionDescriptor FD_alcReopenDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcReopenDeviceSOFT`.
-        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcall(Descriptors.FD_alcReopenDeviceSOFT);
+        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
         /// The function address of `alcReopenDeviceSOFT`.
         public final MemorySegment PFN_alcReopenDeviceSOFT;
         private Handles() {

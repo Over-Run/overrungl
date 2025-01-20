@@ -34,14 +34,9 @@ public final class GLARBFramebufferNoAttachments {
     public static final int GL_MAX_FRAMEBUFFER_LAYERS = 0x9317;
     public static final int GL_MAX_FRAMEBUFFER_SAMPLES = 0x9318;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFramebufferParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferParameteri = RuntimeHelper.downcall(Descriptors.FD_glFramebufferParameteri);
-        public static final MethodHandle MH_glGetFramebufferParameteriv = RuntimeHelper.downcall(Descriptors.FD_glGetFramebufferParameteriv);
+        public static final MethodHandle MH_glFramebufferParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFramebufferParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFramebufferParameteri;
         public final MemorySegment PFN_glGetFramebufferParameteriv;
         private Handles(overrungl.opengl.GLLoadFunc func) {

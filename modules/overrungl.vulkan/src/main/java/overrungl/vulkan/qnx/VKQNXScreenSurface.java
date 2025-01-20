@@ -27,14 +27,9 @@ public class VKQNXScreenSurface {
     public static final String VK_QNX_SCREEN_SURFACE_EXTENSION_NAME = "VK_QNX_screen_surface";
     public static final int VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX = 1000378000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateScreenSurfaceQNX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceScreenPresentationSupportQNX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateScreenSurfaceQNX = RuntimeHelper.downcall(Descriptors.FD_vkCreateScreenSurfaceQNX);
-        public static final MethodHandle MH_vkGetPhysicalDeviceScreenPresentationSupportQNX = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceScreenPresentationSupportQNX);
+        public static final MethodHandle MH_vkCreateScreenSurfaceQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceScreenPresentationSupportQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateScreenSurfaceQNX;
         public final MemorySegment PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

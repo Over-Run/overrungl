@@ -31,12 +31,8 @@ public final class GLEXTRasterMultisample {
     public static final int GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT = 0x932B;
     public static final int GL_EFFECTIVE_RASTER_SAMPLES_EXT = 0x932C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRasterSamplesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(Descriptors.FD_glRasterSamplesEXT);
+        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glRasterSamplesEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glRasterSamplesEXT = func.invoke("glRasterSamplesEXT");

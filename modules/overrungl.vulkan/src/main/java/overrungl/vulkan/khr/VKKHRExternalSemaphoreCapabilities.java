@@ -38,12 +38,8 @@ public class VKKHRExternalSemaphoreCapabilities {
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR = VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT;
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR = VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", "vkGetPhysicalDeviceExternalSemaphoreProperties");

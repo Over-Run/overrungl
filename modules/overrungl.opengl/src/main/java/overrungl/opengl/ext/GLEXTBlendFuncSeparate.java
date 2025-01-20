@@ -29,12 +29,8 @@ public final class GLEXTBlendFuncSeparate {
     public static final int GL_BLEND_DST_ALPHA_EXT = 0x80CA;
     public static final int GL_BLEND_SRC_ALPHA_EXT = 0x80CB;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendFuncSeparateEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncSeparateEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparateEXT);
+        public static final MethodHandle MH_glBlendFuncSeparateEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparateEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendFuncSeparateEXT = func.invoke("glBlendFuncSeparateEXT", "glBlendFuncSeparate");

@@ -31,12 +31,8 @@ public class VKKHRDeviceGroupCreation {
     public static final int VK_MAX_DEVICE_GROUP_SIZE_KHR = VK_MAX_DEVICE_GROUP_SIZE;
     public static final int VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkEnumeratePhysicalDeviceGroupsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkEnumeratePhysicalDeviceGroupsKHR = RuntimeHelper.downcall(Descriptors.FD_vkEnumeratePhysicalDeviceGroupsKHR);
+        public static final MethodHandle MH_vkEnumeratePhysicalDeviceGroupsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkEnumeratePhysicalDeviceGroupsKHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkEnumeratePhysicalDeviceGroupsKHR = func.invoke(instance, "vkEnumeratePhysicalDeviceGroupsKHR", "vkEnumeratePhysicalDeviceGroups");

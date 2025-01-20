@@ -27,12 +27,8 @@ public final class GLSUNMeshArray {
     public static final int GL_QUAD_MESH_SUN = 0x8614;
     public static final int GL_TRIANGLE_MESH_SUN = 0x8615;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawMeshArraysSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawMeshArraysSUN = RuntimeHelper.downcall(Descriptors.FD_glDrawMeshArraysSUN);
+        public static final MethodHandle MH_glDrawMeshArraysSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawMeshArraysSUN;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawMeshArraysSUN = func.invoke("glDrawMeshArraysSUN");

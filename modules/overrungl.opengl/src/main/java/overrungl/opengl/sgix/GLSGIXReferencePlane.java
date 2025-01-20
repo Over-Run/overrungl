@@ -27,12 +27,8 @@ public final class GLSGIXReferencePlane {
     public static final int GL_REFERENCE_PLANE_SGIX = 0x817D;
     public static final int GL_REFERENCE_PLANE_EQUATION_SGIX = 0x817E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glReferencePlaneSGIX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glReferencePlaneSGIX = RuntimeHelper.downcall(Descriptors.FD_glReferencePlaneSGIX);
+        public static final MethodHandle MH_glReferencePlaneSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glReferencePlaneSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glReferencePlaneSGIX = func.invoke("glReferencePlaneSGIX");

@@ -31,12 +31,8 @@ public final class GLEXTWindowRectangles {
     public static final int GL_MAX_WINDOW_RECTANGLES_EXT = 0x8F14;
     public static final int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glWindowRectanglesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glWindowRectanglesEXT = RuntimeHelper.downcall(Descriptors.FD_glWindowRectanglesEXT);
+        public static final MethodHandle MH_glWindowRectanglesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowRectanglesEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glWindowRectanglesEXT = func.invoke("glWindowRectanglesEXT");

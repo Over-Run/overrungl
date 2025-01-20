@@ -27,16 +27,10 @@ public final class GLARBTimerQuery {
     public static final int GL_TIME_ELAPSED = 0x88BF;
     public static final int GL_TIMESTAMP = 0x8E28;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryCounter = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetQueryObjecti64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetQueryObjectui64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryCounter = RuntimeHelper.downcall(Descriptors.FD_glQueryCounter);
-        public static final MethodHandle MH_glGetQueryObjecti64v = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjecti64v);
-        public static final MethodHandle MH_glGetQueryObjectui64v = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjectui64v);
+        public static final MethodHandle MH_glQueryCounter = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetQueryObjecti64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectui64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryCounter;
         public final MemorySegment PFN_glGetQueryObjecti64v;
         public final MemorySegment PFN_glGetQueryObjectui64v;

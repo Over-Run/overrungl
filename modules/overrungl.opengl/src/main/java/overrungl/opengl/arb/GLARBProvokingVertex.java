@@ -29,12 +29,8 @@ public final class GLARBProvokingVertex {
     public static final int GL_LAST_VERTEX_CONVENTION = 0x8E4E;
     public static final int GL_PROVOKING_VERTEX = 0x8E4F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProvokingVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProvokingVertex = RuntimeHelper.downcall(Descriptors.FD_glProvokingVertex);
+        public static final MethodHandle MH_glProvokingVertex = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertex;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProvokingVertex = func.invoke("glProvokingVertex");

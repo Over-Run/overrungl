@@ -56,34 +56,19 @@ public final class GLNVTransformFeedback {
     public static final int GL_SKIP_COMPONENTS2_NV = -5;
     public static final int GL_SKIP_COMPONENTS1_NV = -6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginTransformFeedbackNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndTransformFeedbackNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glTransformFeedbackAttribsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindBufferRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferOffsetNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferBaseNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTransformFeedbackVaryingsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glActiveVaryingNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetVaryingLocationNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetActiveVaryingNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTransformFeedbackVaryingNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTransformFeedbackStreamAttribsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginTransformFeedbackNV = RuntimeHelper.downcall(Descriptors.FD_glBeginTransformFeedbackNV);
-        public static final MethodHandle MH_glEndTransformFeedbackNV = RuntimeHelper.downcall(Descriptors.FD_glEndTransformFeedbackNV);
-        public static final MethodHandle MH_glTransformFeedbackAttribsNV = RuntimeHelper.downcall(Descriptors.FD_glTransformFeedbackAttribsNV);
-        public static final MethodHandle MH_glBindBufferRangeNV = RuntimeHelper.downcall(Descriptors.FD_glBindBufferRangeNV);
-        public static final MethodHandle MH_glBindBufferOffsetNV = RuntimeHelper.downcall(Descriptors.FD_glBindBufferOffsetNV);
-        public static final MethodHandle MH_glBindBufferBaseNV = RuntimeHelper.downcall(Descriptors.FD_glBindBufferBaseNV);
-        public static final MethodHandle MH_glTransformFeedbackVaryingsNV = RuntimeHelper.downcall(Descriptors.FD_glTransformFeedbackVaryingsNV);
-        public static final MethodHandle MH_glActiveVaryingNV = RuntimeHelper.downcall(Descriptors.FD_glActiveVaryingNV);
-        public static final MethodHandle MH_glGetVaryingLocationNV = RuntimeHelper.downcall(Descriptors.FD_glGetVaryingLocationNV);
-        public static final MethodHandle MH_glGetActiveVaryingNV = RuntimeHelper.downcall(Descriptors.FD_glGetActiveVaryingNV);
-        public static final MethodHandle MH_glGetTransformFeedbackVaryingNV = RuntimeHelper.downcall(Descriptors.FD_glGetTransformFeedbackVaryingNV);
-        public static final MethodHandle MH_glTransformFeedbackStreamAttribsNV = RuntimeHelper.downcall(Descriptors.FD_glTransformFeedbackStreamAttribsNV);
+        public static final MethodHandle MH_glBeginTransformFeedbackNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndTransformFeedbackNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glTransformFeedbackAttribsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindBufferRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferOffsetNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferBaseNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTransformFeedbackVaryingsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glActiveVaryingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVaryingLocationNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetActiveVaryingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTransformFeedbackVaryingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTransformFeedbackStreamAttribsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBeginTransformFeedbackNV;
         public final MemorySegment PFN_glEndTransformFeedbackNV;
         public final MemorySegment PFN_glTransformFeedbackAttribsNV;

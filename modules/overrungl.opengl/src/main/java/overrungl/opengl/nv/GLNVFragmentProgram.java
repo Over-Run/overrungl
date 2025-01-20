@@ -31,22 +31,13 @@ public final class GLNVFragmentProgram {
     public static final int GL_FRAGMENT_PROGRAM_BINDING_NV = 0x8873;
     public static final int GL_PROGRAM_ERROR_STRING_NV = 0x8874;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramNamedParameter4fNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glProgramNamedParameter4fvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramNamedParameter4dNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glProgramNamedParameter4dvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramNamedParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramNamedParameterdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramNamedParameter4fNV = RuntimeHelper.downcall(Descriptors.FD_glProgramNamedParameter4fNV);
-        public static final MethodHandle MH_glProgramNamedParameter4fvNV = RuntimeHelper.downcall(Descriptors.FD_glProgramNamedParameter4fvNV);
-        public static final MethodHandle MH_glProgramNamedParameter4dNV = RuntimeHelper.downcall(Descriptors.FD_glProgramNamedParameter4dNV);
-        public static final MethodHandle MH_glProgramNamedParameter4dvNV = RuntimeHelper.downcall(Descriptors.FD_glProgramNamedParameter4dvNV);
-        public static final MethodHandle MH_glGetProgramNamedParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramNamedParameterfvNV);
-        public static final MethodHandle MH_glGetProgramNamedParameterdvNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramNamedParameterdvNV);
+        public static final MethodHandle MH_glProgramNamedParameter4fNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramNamedParameter4fvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramNamedParameter4dNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glProgramNamedParameter4dvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramNamedParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramNamedParameterdvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramNamedParameter4fNV;
         public final MemorySegment PFN_glProgramNamedParameter4fvNV;
         public final MemorySegment PFN_glProgramNamedParameter4dNV;

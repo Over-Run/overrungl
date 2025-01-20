@@ -30,26 +30,15 @@ public final class GLARBOcclusionQuery {
     public static final int GL_QUERY_RESULT_AVAILABLE_ARB = 0x8867;
     public static final int GL_SAMPLES_PASSED_ARB = 0x8914;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenQueriesARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteQueriesARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsQueryARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginQueryARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndQueryARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetQueryivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetQueryObjectivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetQueryObjectuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenQueriesARB = RuntimeHelper.downcall(Descriptors.FD_glGenQueriesARB);
-        public static final MethodHandle MH_glDeleteQueriesARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteQueriesARB);
-        public static final MethodHandle MH_glIsQueryARB = RuntimeHelper.downcall(Descriptors.FD_glIsQueryARB);
-        public static final MethodHandle MH_glBeginQueryARB = RuntimeHelper.downcall(Descriptors.FD_glBeginQueryARB);
-        public static final MethodHandle MH_glEndQueryARB = RuntimeHelper.downcall(Descriptors.FD_glEndQueryARB);
-        public static final MethodHandle MH_glGetQueryivARB = RuntimeHelper.downcall(Descriptors.FD_glGetQueryivARB);
-        public static final MethodHandle MH_glGetQueryObjectivARB = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjectivARB);
-        public static final MethodHandle MH_glGetQueryObjectuivARB = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjectuivARB);
+        public static final MethodHandle MH_glGenQueriesARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteQueriesARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsQueryARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginQueryARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndQueryARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetQueryivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGenQueriesARB;
         public final MemorySegment PFN_glDeleteQueriesARB;
         public final MemorySegment PFN_glIsQueryARB;

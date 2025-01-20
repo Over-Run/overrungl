@@ -47,28 +47,16 @@ public class VKINTELPerformanceQuery {
     public static final int VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL = 1000210000;
     public static final int VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO_INTEL = VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkInitializePerformanceApiINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUninitializePerformanceApiINTEL = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetPerformanceMarkerINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetPerformanceStreamMarkerINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetPerformanceOverrideINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkAcquirePerformanceConfigurationINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkReleasePerformanceConfigurationINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueSetPerformanceConfigurationINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPerformanceParameterINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkInitializePerformanceApiINTEL = RuntimeHelper.downcall(Descriptors.FD_vkInitializePerformanceApiINTEL);
-        public static final MethodHandle MH_vkUninitializePerformanceApiINTEL = RuntimeHelper.downcall(Descriptors.FD_vkUninitializePerformanceApiINTEL);
-        public static final MethodHandle MH_vkCmdSetPerformanceMarkerINTEL = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetPerformanceMarkerINTEL);
-        public static final MethodHandle MH_vkCmdSetPerformanceStreamMarkerINTEL = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetPerformanceStreamMarkerINTEL);
-        public static final MethodHandle MH_vkCmdSetPerformanceOverrideINTEL = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetPerformanceOverrideINTEL);
-        public static final MethodHandle MH_vkAcquirePerformanceConfigurationINTEL = RuntimeHelper.downcall(Descriptors.FD_vkAcquirePerformanceConfigurationINTEL);
-        public static final MethodHandle MH_vkReleasePerformanceConfigurationINTEL = RuntimeHelper.downcall(Descriptors.FD_vkReleasePerformanceConfigurationINTEL);
-        public static final MethodHandle MH_vkQueueSetPerformanceConfigurationINTEL = RuntimeHelper.downcall(Descriptors.FD_vkQueueSetPerformanceConfigurationINTEL);
-        public static final MethodHandle MH_vkGetPerformanceParameterINTEL = RuntimeHelper.downcall(Descriptors.FD_vkGetPerformanceParameterINTEL);
+        public static final MethodHandle MH_vkInitializePerformanceApiINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUninitializePerformanceApiINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetPerformanceMarkerINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetPerformanceStreamMarkerINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetPerformanceOverrideINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquirePerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleasePerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueSetPerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPerformanceParameterINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkInitializePerformanceApiINTEL;
         public final MemorySegment PFN_vkUninitializePerformanceApiINTEL;
         public final MemorySegment PFN_vkCmdSetPerformanceMarkerINTEL;

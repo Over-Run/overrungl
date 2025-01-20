@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLSGIXFlushRaster {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFlushRasterSGIX = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFlushRasterSGIX = RuntimeHelper.downcall(Descriptors.FD_glFlushRasterSGIX);
+        public static final MethodHandle MH_glFlushRasterSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFlushRasterSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFlushRasterSGIX = func.invoke("glFlushRasterSGIX");

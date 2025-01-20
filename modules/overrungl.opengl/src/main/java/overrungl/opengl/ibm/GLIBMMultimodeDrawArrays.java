@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLIBMMultimodeDrawArrays {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiModeDrawArraysIBM = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiModeDrawElementsIBM = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiModeDrawArraysIBM = RuntimeHelper.downcall(Descriptors.FD_glMultiModeDrawArraysIBM);
-        public static final MethodHandle MH_glMultiModeDrawElementsIBM = RuntimeHelper.downcall(Descriptors.FD_glMultiModeDrawElementsIBM);
+        public static final MethodHandle MH_glMultiModeDrawArraysIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiModeDrawElementsIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiModeDrawArraysIBM;
         public final MemorySegment PFN_glMultiModeDrawElementsIBM;
         private Handles(overrungl.opengl.GLLoadFunc func) {

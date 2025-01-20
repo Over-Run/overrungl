@@ -41,22 +41,13 @@ public class GL21 extends GL20 {
     public static final int GL_COMPRESSED_SRGB = 0x8C48;
     public static final int GL_COMPRESSED_SRGB_ALPHA = 0x8C49;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glUniformMatrix2x3fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix3x2fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix2x4fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix4x2fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix3x4fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glUniformMatrix4x3fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glUniformMatrix2x3fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2x3fv);
-        public static final MethodHandle MH_glUniformMatrix3x2fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix3x2fv);
-        public static final MethodHandle MH_glUniformMatrix2x4fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2x4fv);
-        public static final MethodHandle MH_glUniformMatrix4x2fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix4x2fv);
-        public static final MethodHandle MH_glUniformMatrix3x4fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix3x4fv);
-        public static final MethodHandle MH_glUniformMatrix4x3fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix4x3fv);
+        public static final MethodHandle MH_glUniformMatrix2x3fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix3x2fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix2x4fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix4x2fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix3x4fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix4x3fv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glUniformMatrix2x3fv;
         public final MemorySegment PFN_glUniformMatrix3x2fv;
         public final MemorySegment PFN_glUniformMatrix2x4fv;

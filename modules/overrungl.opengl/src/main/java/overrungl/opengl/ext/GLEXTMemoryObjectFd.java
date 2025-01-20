@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLEXTMemoryObjectFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportMemoryFdEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportMemoryFdEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryFdEXT);
+        public static final MethodHandle MH_glImportMemoryFdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportMemoryFdEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportMemoryFdEXT = func.invoke("glImportMemoryFdEXT");

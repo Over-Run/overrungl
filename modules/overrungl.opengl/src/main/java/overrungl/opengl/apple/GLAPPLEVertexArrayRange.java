@@ -32,16 +32,10 @@ public final class GLAPPLEVertexArrayRange {
     public static final int GL_STORAGE_CACHED_APPLE = 0x85BE;
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexArrayRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFlushVertexArrayRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexArrayParameteriAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexArrayRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glVertexArrayRangeAPPLE);
-        public static final MethodHandle MH_glFlushVertexArrayRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glFlushVertexArrayRangeAPPLE);
-        public static final MethodHandle MH_glVertexArrayParameteriAPPLE = RuntimeHelper.downcall(Descriptors.FD_glVertexArrayParameteriAPPLE);
+        public static final MethodHandle MH_glVertexArrayRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFlushVertexArrayRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexArrayParameteriAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glFlushVertexArrayRangeAPPLE;
         public final MemorySegment PFN_glVertexArrayParameteriAPPLE;

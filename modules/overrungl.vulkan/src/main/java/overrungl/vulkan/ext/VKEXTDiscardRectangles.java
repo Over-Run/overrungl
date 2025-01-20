@@ -33,16 +33,10 @@ public class VKEXTDiscardRectangles {
     public static final int VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT = 1000099001;
     public static final int VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT = 1000099002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleModeEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetDiscardRectangleEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDiscardRectangleEXT);
-        public static final MethodHandle MH_vkCmdSetDiscardRectangleEnableEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDiscardRectangleEnableEXT);
-        public static final MethodHandle MH_vkCmdSetDiscardRectangleModeEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetDiscardRectangleModeEXT);
+        public static final MethodHandle MH_vkCmdSetDiscardRectangleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetDiscardRectangleEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetDiscardRectangleModeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdSetDiscardRectangleEXT;
         public final MemorySegment PFN_vkCmdSetDiscardRectangleEnableEXT;
         public final MemorySegment PFN_vkCmdSetDiscardRectangleModeEXT;

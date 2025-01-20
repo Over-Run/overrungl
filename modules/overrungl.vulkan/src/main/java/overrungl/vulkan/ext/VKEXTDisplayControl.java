@@ -35,18 +35,11 @@ public class VKEXTDisplayControl {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT = 1000091002;
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT = 1000091003;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkDisplayPowerControlEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkRegisterDeviceEventEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkRegisterDisplayEventEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetSwapchainCounterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkDisplayPowerControlEXT = RuntimeHelper.downcall(Descriptors.FD_vkDisplayPowerControlEXT);
-        public static final MethodHandle MH_vkRegisterDeviceEventEXT = RuntimeHelper.downcall(Descriptors.FD_vkRegisterDeviceEventEXT);
-        public static final MethodHandle MH_vkRegisterDisplayEventEXT = RuntimeHelper.downcall(Descriptors.FD_vkRegisterDisplayEventEXT);
-        public static final MethodHandle MH_vkGetSwapchainCounterEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetSwapchainCounterEXT);
+        public static final MethodHandle MH_vkDisplayPowerControlEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkRegisterDeviceEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkRegisterDisplayEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSwapchainCounterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkDisplayPowerControlEXT;
         public final MemorySegment PFN_vkRegisterDeviceEventEXT;
         public final MemorySegment PFN_vkRegisterDisplayEventEXT;

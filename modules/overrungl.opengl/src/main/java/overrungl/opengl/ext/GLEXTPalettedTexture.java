@@ -32,18 +32,11 @@ public final class GLEXTPalettedTexture {
     public static final int GL_COLOR_INDEX16_EXT = 0x80E7;
     public static final int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetColorTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetColorTableParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetColorTableParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorTableEXT = RuntimeHelper.downcall(Descriptors.FD_glColorTableEXT);
-        public static final MethodHandle MH_glGetColorTableEXT = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableEXT);
-        public static final MethodHandle MH_glGetColorTableParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableParameterivEXT);
-        public static final MethodHandle MH_glGetColorTableParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableParameterfvEXT);
+        public static final MethodHandle MH_glColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glColorTableEXT;
         public final MemorySegment PFN_glGetColorTableEXT;
         public final MemorySegment PFN_glGetColorTableParameterivEXT;

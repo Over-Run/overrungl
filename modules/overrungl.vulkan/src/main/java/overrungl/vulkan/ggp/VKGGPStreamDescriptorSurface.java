@@ -27,12 +27,8 @@ public class VKGGPStreamDescriptorSurface {
     public static final String VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME = "VK_GGP_stream_descriptor_surface";
     public static final int VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP = 1000049000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateStreamDescriptorSurfaceGGP = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = RuntimeHelper.downcall(Descriptors.FD_vkCreateStreamDescriptorSurfaceGGP);
+        public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateStreamDescriptorSurfaceGGP;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateStreamDescriptorSurfaceGGP = func.invoke(instance, "vkCreateStreamDescriptorSurfaceGGP");

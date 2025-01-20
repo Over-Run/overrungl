@@ -26,22 +26,13 @@ import overrungl.util.*;
 public final class GLSGIXListPriority {
     public static final int GL_LIST_PRIORITY_SGIX = 0x8182;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetListParameterfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetListParameterivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glListParameterfSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glListParameterfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glListParameteriSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glListParameterivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetListParameterfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetListParameterfvSGIX);
-        public static final MethodHandle MH_glGetListParameterivSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetListParameterivSGIX);
-        public static final MethodHandle MH_glListParameterfSGIX = RuntimeHelper.downcall(Descriptors.FD_glListParameterfSGIX);
-        public static final MethodHandle MH_glListParameterfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glListParameterfvSGIX);
-        public static final MethodHandle MH_glListParameteriSGIX = RuntimeHelper.downcall(Descriptors.FD_glListParameteriSGIX);
-        public static final MethodHandle MH_glListParameterivSGIX = RuntimeHelper.downcall(Descriptors.FD_glListParameterivSGIX);
+        public static final MethodHandle MH_glGetListParameterfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetListParameterivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glListParameterfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glListParameterfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glListParameteriSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glListParameterivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetListParameterfvSGIX;
         public final MemorySegment PFN_glGetListParameterivSGIX;
         public final MemorySegment PFN_glListParameterfSGIX;

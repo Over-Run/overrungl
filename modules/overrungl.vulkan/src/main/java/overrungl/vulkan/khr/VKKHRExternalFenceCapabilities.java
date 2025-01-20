@@ -37,12 +37,8 @@ public class VKKHRExternalFenceCapabilities {
     public static final int VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT_KHR = VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT;
     public static final int VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR = VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceExternalFencePropertiesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceExternalFencePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceExternalFencePropertiesKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceExternalFencePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalFencePropertiesKHR", "vkGetPhysicalDeviceExternalFenceProperties");

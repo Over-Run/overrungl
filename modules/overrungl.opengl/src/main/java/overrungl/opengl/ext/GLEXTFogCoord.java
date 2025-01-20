@@ -33,20 +33,12 @@ public final class GLEXTFogCoord {
     public static final int GL_FOG_COORDINATE_ARRAY_POINTER_EXT = 0x8456;
     public static final int GL_FOG_COORDINATE_ARRAY_EXT = 0x8457;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFogCoordfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glFogCoordfvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFogCoorddEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
-        public static final FunctionDescriptor FD_glFogCoorddvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFogCoordPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFogCoordfEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoordfEXT);
-        public static final MethodHandle MH_glFogCoordfvEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoordfvEXT);
-        public static final MethodHandle MH_glFogCoorddEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoorddEXT);
-        public static final MethodHandle MH_glFogCoorddvEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoorddvEXT);
-        public static final MethodHandle MH_glFogCoordPointerEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoordPointerEXT);
+        public static final MethodHandle MH_glFogCoordfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glFogCoordfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogCoorddEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glFogCoorddvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogCoordPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFogCoordfEXT;
         public final MemorySegment PFN_glFogCoordfvEXT;
         public final MemorySegment PFN_glFogCoorddEXT;

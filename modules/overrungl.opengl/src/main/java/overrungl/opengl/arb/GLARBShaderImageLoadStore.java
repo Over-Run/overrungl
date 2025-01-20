@@ -89,14 +89,9 @@ public final class GLARBShaderImageLoadStore {
     public static final int GL_MAX_FRAGMENT_IMAGE_UNIFORMS = 0x90CE;
     public static final int GL_MAX_COMBINED_IMAGE_UNIFORMS = 0x90CF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindImageTexture = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMemoryBarrier = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindImageTexture = RuntimeHelper.downcall(Descriptors.FD_glBindImageTexture);
-        public static final MethodHandle MH_glMemoryBarrier = RuntimeHelper.downcall(Descriptors.FD_glMemoryBarrier);
+        public static final MethodHandle MH_glBindImageTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMemoryBarrier = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTexture;
         public final MemorySegment PFN_glMemoryBarrier;
         private Handles(overrungl.opengl.GLLoadFunc func) {

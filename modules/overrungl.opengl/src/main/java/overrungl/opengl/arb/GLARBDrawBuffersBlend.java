@@ -25,18 +25,11 @@ import overrungl.util.*;
 
 public final class GLARBDrawBuffersBlend {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendEquationiARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendEquationSeparateiARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendFunciARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendFuncSeparateiARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationiARB = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationiARB);
-        public static final MethodHandle MH_glBlendEquationSeparateiARB = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationSeparateiARB);
-        public static final MethodHandle MH_glBlendFunciARB = RuntimeHelper.downcall(Descriptors.FD_glBlendFunciARB);
-        public static final MethodHandle MH_glBlendFuncSeparateiARB = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparateiARB);
+        public static final MethodHandle MH_glBlendEquationiARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendEquationSeparateiARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendFunciARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendFuncSeparateiARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendEquationiARB;
         public final MemorySegment PFN_glBlendEquationSeparateiARB;
         public final MemorySegment PFN_glBlendFunciARB;

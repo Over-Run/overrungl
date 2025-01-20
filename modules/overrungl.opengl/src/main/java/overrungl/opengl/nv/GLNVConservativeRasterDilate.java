@@ -28,12 +28,8 @@ public final class GLNVConservativeRasterDilate {
     public static final int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
     public static final int GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV = 0x937B;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glConservativeRasterParameterfNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glConservativeRasterParameterfNV = RuntimeHelper.downcall(Descriptors.FD_glConservativeRasterParameterfNV);
+        public static final MethodHandle MH_glConservativeRasterParameterfNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glConservativeRasterParameterfNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glConservativeRasterParameterfNV = func.invoke("glConservativeRasterParameterfNV");

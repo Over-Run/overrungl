@@ -36,24 +36,14 @@ public class VKAMDXShaderEnqueue {
     public static final long VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000L;
     public static final long VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000L;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateExecutionGraphPipelinesAMDX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetExecutionGraphPipelineScratchSizeAMDX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetExecutionGraphPipelineNodeIndexAMDX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdInitializeGraphScratchMemoryAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkCmdDispatchGraphAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdDispatchGraphIndirectAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdDispatchGraphIndirectCountAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateExecutionGraphPipelinesAMDX = RuntimeHelper.downcall(Descriptors.FD_vkCreateExecutionGraphPipelinesAMDX);
-        public static final MethodHandle MH_vkGetExecutionGraphPipelineScratchSizeAMDX = RuntimeHelper.downcall(Descriptors.FD_vkGetExecutionGraphPipelineScratchSizeAMDX);
-        public static final MethodHandle MH_vkGetExecutionGraphPipelineNodeIndexAMDX = RuntimeHelper.downcall(Descriptors.FD_vkGetExecutionGraphPipelineNodeIndexAMDX);
-        public static final MethodHandle MH_vkCmdInitializeGraphScratchMemoryAMDX = RuntimeHelper.downcall(Descriptors.FD_vkCmdInitializeGraphScratchMemoryAMDX);
-        public static final MethodHandle MH_vkCmdDispatchGraphAMDX = RuntimeHelper.downcall(Descriptors.FD_vkCmdDispatchGraphAMDX);
-        public static final MethodHandle MH_vkCmdDispatchGraphIndirectAMDX = RuntimeHelper.downcall(Descriptors.FD_vkCmdDispatchGraphIndirectAMDX);
-        public static final MethodHandle MH_vkCmdDispatchGraphIndirectCountAMDX = RuntimeHelper.downcall(Descriptors.FD_vkCmdDispatchGraphIndirectCountAMDX);
+        public static final MethodHandle MH_vkCreateExecutionGraphPipelinesAMDX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetExecutionGraphPipelineScratchSizeAMDX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetExecutionGraphPipelineNodeIndexAMDX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdInitializeGraphScratchMemoryAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkCmdDispatchGraphAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDispatchGraphIndirectAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDispatchGraphIndirectCountAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCreateExecutionGraphPipelinesAMDX;
         public final MemorySegment PFN_vkGetExecutionGraphPipelineScratchSizeAMDX;
         public final MemorySegment PFN_vkGetExecutionGraphPipelineNodeIndexAMDX;

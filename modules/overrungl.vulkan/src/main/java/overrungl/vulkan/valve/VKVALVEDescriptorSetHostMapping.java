@@ -29,14 +29,9 @@ public class VKVALVEDescriptorSetHostMapping {
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE = 1000420001;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE = 1000420002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutHostMappingInfoVALVE = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDescriptorSetHostMappingVALVE = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetLayoutHostMappingInfoVALVE);
-        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(Descriptors.FD_vkGetDescriptorSetHostMappingVALVE);
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE;
         public final MemorySegment PFN_vkGetDescriptorSetHostMappingVALVE;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

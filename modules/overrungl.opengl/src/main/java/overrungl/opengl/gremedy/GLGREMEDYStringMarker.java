@@ -25,12 +25,8 @@ import overrungl.util.*;
 
 public final class GLGREMEDYStringMarker {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glStringMarkerGREMEDY = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glStringMarkerGREMEDY = RuntimeHelper.downcall(Descriptors.FD_glStringMarkerGREMEDY);
+        public static final MethodHandle MH_glStringMarkerGREMEDY = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glStringMarkerGREMEDY;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glStringMarkerGREMEDY = func.invoke("glStringMarkerGREMEDY");

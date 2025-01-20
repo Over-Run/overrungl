@@ -34,22 +34,13 @@ public final class GLEXTPixelTransform {
     public static final int GL_MAX_PIXEL_TRANSFORM_2D_STACK_DEPTH_EXT = 0x8337;
     public static final int GL_PIXEL_TRANSFORM_2D_MATRIX_EXT = 0x8338;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPixelTransformParameteriEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelTransformParameterfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPixelTransformParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPixelTransformParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPixelTransformParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPixelTransformParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPixelTransformParameteriEXT = RuntimeHelper.downcall(Descriptors.FD_glPixelTransformParameteriEXT);
-        public static final MethodHandle MH_glPixelTransformParameterfEXT = RuntimeHelper.downcall(Descriptors.FD_glPixelTransformParameterfEXT);
-        public static final MethodHandle MH_glPixelTransformParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glPixelTransformParameterivEXT);
-        public static final MethodHandle MH_glPixelTransformParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glPixelTransformParameterfvEXT);
-        public static final MethodHandle MH_glGetPixelTransformParameterivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetPixelTransformParameterivEXT);
-        public static final MethodHandle MH_glGetPixelTransformParameterfvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetPixelTransformParameterfvEXT);
+        public static final MethodHandle MH_glPixelTransformParameteriEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelTransformParameterfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPixelTransformParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPixelTransformParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTransformParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTransformParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPixelTransformParameteriEXT;
         public final MemorySegment PFN_glPixelTransformParameterfEXT;
         public final MemorySegment PFN_glPixelTransformParameterivEXT;

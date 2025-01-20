@@ -34,20 +34,12 @@ public class VKNVXBinaryImport {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CU_MODULE_NVX_EXT = 1000029000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CU_FUNCTION_NVX_EXT = 1000029001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateCuModuleNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateCuFunctionNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyCuModuleNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyCuFunctionNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCuLaunchKernelNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateCuModuleNVX = RuntimeHelper.downcall(Descriptors.FD_vkCreateCuModuleNVX);
-        public static final MethodHandle MH_vkCreateCuFunctionNVX = RuntimeHelper.downcall(Descriptors.FD_vkCreateCuFunctionNVX);
-        public static final MethodHandle MH_vkDestroyCuModuleNVX = RuntimeHelper.downcall(Descriptors.FD_vkDestroyCuModuleNVX);
-        public static final MethodHandle MH_vkDestroyCuFunctionNVX = RuntimeHelper.downcall(Descriptors.FD_vkDestroyCuFunctionNVX);
-        public static final MethodHandle MH_vkCmdCuLaunchKernelNVX = RuntimeHelper.downcall(Descriptors.FD_vkCmdCuLaunchKernelNVX);
+        public static final MethodHandle MH_vkCreateCuModuleNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateCuFunctionNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCuModuleNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCuFunctionNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCuLaunchKernelNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateCuModuleNVX;
         public final MemorySegment PFN_vkCreateCuFunctionNVX;
         public final MemorySegment PFN_vkDestroyCuModuleNVX;

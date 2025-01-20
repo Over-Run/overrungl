@@ -140,21 +140,6 @@ class StaticDowncall(
                 }
             }
 
-            // function descriptors
-            sb.appendLine("    /// Function descriptors.")
-            sb.appendLine("    public static final class Descriptors {")
-            sb.appendLine("        private Descriptors() { }")
-            list.forEach {
-                sb.appendLine(
-                    """
-                        |        /// The function descriptor of `${it.entrypoint}`.
-                        |        public static final FunctionDescriptor FD_${it.entrypoint} = ${it.functionDescriptor};
-                    """.trimMargin()
-                )
-                nativeImageDowncallDescriptors.add("$packageName.$name.Descriptors.FD_${it.entrypoint}")
-            }
-            sb.appendLine("    }")
-
             // method handles
             sb.appendLine("    /// Method handles.")
             sb.appendLine("    public static final class Handles {")
@@ -162,9 +147,10 @@ class StaticDowncall(
                 sb.appendLine(
                     """
                         |        /// The method handle of `${it.entrypoint}`.
-                        |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall(Descriptors.FD_${it.entrypoint});
+                        |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall(${it.functionDescriptor});
                     """.trimMargin()
                 )
+                nativeImageDowncallDescriptors.add(it.functionDescriptor)
             }
             list.forEach {
                 sb.appendLine(

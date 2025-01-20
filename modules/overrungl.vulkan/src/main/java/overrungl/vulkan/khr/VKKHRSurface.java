@@ -48,20 +48,12 @@ public class VKKHRSurface {
     public static final int VK_OBJECT_TYPE_SURFACE_KHR = 1000000000;
     public static final int VK_COLORSPACE_SRGB_NONLINEAR_KHR = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkDestroySurfaceKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceSupportKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceFormatsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfacePresentModesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkDestroySurfaceKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroySurfaceKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceSupportKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceSupportKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceCapabilitiesKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormatsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfaceFormatsKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfacePresentModesKHR);
+        public static final MethodHandle MH_vkDestroySurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormatsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkDestroySurfaceKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceSupportKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR;

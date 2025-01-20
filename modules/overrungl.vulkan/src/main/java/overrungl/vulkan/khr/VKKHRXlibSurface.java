@@ -27,14 +27,9 @@ public class VKKHRXlibSurface {
     public static final String VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface";
     public static final int VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR = 1000004000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateXlibSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceXlibPresentationSupportKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateXlibSurfaceKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateXlibSurfaceKHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceXlibPresentationSupportKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceXlibPresentationSupportKHR);
+        public static final MethodHandle MH_vkCreateXlibSurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceXlibPresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCreateXlibSurfaceKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR;
         private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {

@@ -26,14 +26,9 @@ import overrungl.util.*;
 public final class GLMESAFramebufferFlipY {
     public static final int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferParameteriMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFramebufferParameterivMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(Descriptors.FD_glFramebufferParameteriMESA);
-        public static final MethodHandle MH_glGetFramebufferParameterivMESA = RuntimeHelper.downcall(Descriptors.FD_glGetFramebufferParameterivMESA);
+        public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFramebufferParameterivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFramebufferParameteriMESA;
         public final MemorySegment PFN_glGetFramebufferParameterivMESA;
         private Handles(overrungl.opengl.GLLoadFunc func) {

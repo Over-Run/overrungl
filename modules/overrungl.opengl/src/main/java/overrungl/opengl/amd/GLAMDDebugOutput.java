@@ -39,18 +39,11 @@ public final class GLAMDDebugOutput {
     public static final int GL_DEBUG_CATEGORY_APPLICATION_AMD = 0x914F;
     public static final int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDebugMessageEnableAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glDebugMessageInsertAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDebugMessageCallbackAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetDebugMessageLogAMD = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageEnableAMD);
-        public static final MethodHandle MH_glDebugMessageInsertAMD = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageInsertAMD);
-        public static final MethodHandle MH_glDebugMessageCallbackAMD = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageCallbackAMD);
-        public static final MethodHandle MH_glGetDebugMessageLogAMD = RuntimeHelper.downcall(Descriptors.FD_glGetDebugMessageLogAMD);
+        public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glDebugMessageInsertAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDebugMessageCallbackAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDebugMessageLogAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDebugMessageEnableAMD;
         public final MemorySegment PFN_glDebugMessageInsertAMD;
         public final MemorySegment PFN_glDebugMessageCallbackAMD;

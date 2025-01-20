@@ -51,12 +51,8 @@ public class VKKHRVideoDecodeQueue {
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR = 0x02000000L;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR = 0x04000000L;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDecodeVideoKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdDecodeVideoKHR);
+        public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdDecodeVideoKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdDecodeVideoKHR = func.invoke(device, "vkCmdDecodeVideoKHR");

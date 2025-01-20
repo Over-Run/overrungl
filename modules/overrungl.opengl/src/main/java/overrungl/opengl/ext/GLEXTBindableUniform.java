@@ -31,16 +31,10 @@ public final class GLEXTBindableUniform {
     public static final int GL_UNIFORM_BUFFER_EXT = 0x8DEE;
     public static final int GL_UNIFORM_BUFFER_BINDING_EXT = 0x8DEF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glUniformBufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetUniformBufferSizeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetUniformOffsetEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glUniformBufferEXT = RuntimeHelper.downcall(Descriptors.FD_glUniformBufferEXT);
-        public static final MethodHandle MH_glGetUniformBufferSizeEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUniformBufferSizeEXT);
-        public static final MethodHandle MH_glGetUniformOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUniformOffsetEXT);
+        public static final MethodHandle MH_glUniformBufferEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetUniformBufferSizeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetUniformOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glUniformBufferEXT;
         public final MemorySegment PFN_glGetUniformBufferSizeEXT;
         public final MemorySegment PFN_glGetUniformOffsetEXT;

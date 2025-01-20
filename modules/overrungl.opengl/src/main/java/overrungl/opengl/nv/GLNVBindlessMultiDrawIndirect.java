@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLNVBindlessMultiDrawIndirect {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirectBindlessNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirectBindlessNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirectBindlessNV = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectBindlessNV);
-        public static final MethodHandle MH_glMultiDrawElementsIndirectBindlessNV = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirectBindlessNV);
+        public static final MethodHandle MH_glMultiDrawArraysIndirectBindlessNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirectBindlessNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirectBindlessNV;
         public final MemorySegment PFN_glMultiDrawElementsIndirectBindlessNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

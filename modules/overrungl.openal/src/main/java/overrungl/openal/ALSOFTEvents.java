@@ -31,28 +31,16 @@ public final class ALSOFTEvents {
     public static final int AL_EVENT_TYPE_SOURCE_STATE_CHANGED_SOFT = 0x19A5;
     public static final int AL_EVENT_TYPE_DISCONNECTED_SOFT = 0x19A6;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alEventControlSOFT`.
-        public static final FunctionDescriptor FD_alEventControlSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-        /// The function descriptor of `alEventCallbackSOFT`.
-        public static final FunctionDescriptor FD_alEventCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `alGetPointerSOFT`.
-        public static final FunctionDescriptor FD_alGetPointerSOFT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `alGetPointervSOFT`.
-        public static final FunctionDescriptor FD_alGetPointervSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alEventControlSOFT`.
-        public static final MethodHandle MH_alEventControlSOFT = RuntimeHelper.downcall(Descriptors.FD_alEventControlSOFT);
+        public static final MethodHandle MH_alEventControlSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `alEventCallbackSOFT`.
-        public static final MethodHandle MH_alEventCallbackSOFT = RuntimeHelper.downcall(Descriptors.FD_alEventCallbackSOFT);
+        public static final MethodHandle MH_alEventCallbackSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alGetPointerSOFT`.
-        public static final MethodHandle MH_alGetPointerSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetPointerSOFT);
+        public static final MethodHandle MH_alGetPointerSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `alGetPointervSOFT`.
-        public static final MethodHandle MH_alGetPointervSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetPointervSOFT);
+        public static final MethodHandle MH_alGetPointervSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The function address of `alEventControlSOFT`.
         public final MemorySegment PFN_alEventControlSOFT;
         /// The function address of `alEventCallbackSOFT`.

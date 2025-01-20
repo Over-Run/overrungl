@@ -35,22 +35,13 @@ public class VKNVCudaKernelLaunch {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV_EXT = 1000307000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV_EXT = 1000307001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateCudaModuleNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetCudaModuleCacheNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateCudaFunctionNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyCudaModuleNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyCudaFunctionNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCudaLaunchKernelNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateCudaModuleNV = RuntimeHelper.downcall(Descriptors.FD_vkCreateCudaModuleNV);
-        public static final MethodHandle MH_vkGetCudaModuleCacheNV = RuntimeHelper.downcall(Descriptors.FD_vkGetCudaModuleCacheNV);
-        public static final MethodHandle MH_vkCreateCudaFunctionNV = RuntimeHelper.downcall(Descriptors.FD_vkCreateCudaFunctionNV);
-        public static final MethodHandle MH_vkDestroyCudaModuleNV = RuntimeHelper.downcall(Descriptors.FD_vkDestroyCudaModuleNV);
-        public static final MethodHandle MH_vkDestroyCudaFunctionNV = RuntimeHelper.downcall(Descriptors.FD_vkDestroyCudaFunctionNV);
-        public static final MethodHandle MH_vkCmdCudaLaunchKernelNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdCudaLaunchKernelNV);
+        public static final MethodHandle MH_vkCreateCudaModuleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetCudaModuleCacheNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateCudaFunctionNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCudaModuleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCudaFunctionNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCudaLaunchKernelNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateCudaModuleNV;
         public final MemorySegment PFN_vkGetCudaModuleCacheNV;
         public final MemorySegment PFN_vkCreateCudaFunctionNV;

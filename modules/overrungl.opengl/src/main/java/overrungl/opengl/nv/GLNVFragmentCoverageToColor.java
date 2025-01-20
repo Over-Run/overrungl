@@ -27,12 +27,8 @@ public final class GLNVFragmentCoverageToColor {
     public static final int GL_FRAGMENT_COVERAGE_TO_COLOR_NV = 0x92DD;
     public static final int GL_FRAGMENT_COVERAGE_COLOR_NV = 0x92DE;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFragmentCoverageColorNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFragmentCoverageColorNV = RuntimeHelper.downcall(Descriptors.FD_glFragmentCoverageColorNV);
+        public static final MethodHandle MH_glFragmentCoverageColorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFragmentCoverageColorNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFragmentCoverageColorNV = func.invoke("glFragmentCoverageColorNV");

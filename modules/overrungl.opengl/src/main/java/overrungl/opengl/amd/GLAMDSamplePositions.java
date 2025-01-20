@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLAMDSamplePositions {
     public static final int GL_SUBSAMPLE_DISTANCE_AMD = 0x883F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSetMultisamplefvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSetMultisamplefvAMD = RuntimeHelper.downcall(Descriptors.FD_glSetMultisamplefvAMD);
+        public static final MethodHandle MH_glSetMultisamplefvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSetMultisamplefvAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSetMultisamplefvAMD = func.invoke("glSetMultisamplefvAMD");

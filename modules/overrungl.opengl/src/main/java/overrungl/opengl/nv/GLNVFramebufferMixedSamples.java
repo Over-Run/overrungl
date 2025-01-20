@@ -39,18 +39,11 @@ public final class GLNVFramebufferMixedSamples {
     public static final int GL_COVERAGE_MODULATION_NV = 0x9332;
     public static final int GL_COVERAGE_MODULATION_TABLE_SIZE_NV = 0x9333;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRasterSamplesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCoverageModulationNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(Descriptors.FD_glRasterSamplesEXT);
-        public static final MethodHandle MH_glCoverageModulationTableNV = RuntimeHelper.downcall(Descriptors.FD_glCoverageModulationTableNV);
-        public static final MethodHandle MH_glGetCoverageModulationTableNV = RuntimeHelper.downcall(Descriptors.FD_glGetCoverageModulationTableNV);
-        public static final MethodHandle MH_glCoverageModulationNV = RuntimeHelper.downcall(Descriptors.FD_glCoverageModulationNV);
+        public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCoverageModulationNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRasterSamplesEXT;
         public final MemorySegment PFN_glCoverageModulationTableNV;
         public final MemorySegment PFN_glGetCoverageModulationTableNV;

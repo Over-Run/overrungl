@@ -42,24 +42,14 @@ public final class GLSUNTriangleList {
     public static final int GL_R1UI_T2F_N3F_V3F_SUN = 0x85CA;
     public static final int GL_R1UI_T2F_C4F_N3F_V3F_SUN = 0x85CB;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glReplacementCodeuiSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glReplacementCodeusSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_glReplacementCodeubSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
-        public static final FunctionDescriptor FD_glReplacementCodeuivSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glReplacementCodeusvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glReplacementCodeubvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glReplacementCodePointerSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glReplacementCodeuiSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeuiSUN);
-        public static final MethodHandle MH_glReplacementCodeusSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeusSUN);
-        public static final MethodHandle MH_glReplacementCodeubSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeubSUN);
-        public static final MethodHandle MH_glReplacementCodeuivSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeuivSUN);
-        public static final MethodHandle MH_glReplacementCodeusvSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeusvSUN);
-        public static final MethodHandle MH_glReplacementCodeubvSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeubvSUN);
-        public static final MethodHandle MH_glReplacementCodePointerSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodePointerSUN);
+        public static final MethodHandle MH_glReplacementCodeuiSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReplacementCodeusSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glReplacementCodeubSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glReplacementCodeuivSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReplacementCodeusvSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReplacementCodeubvSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReplacementCodePointerSUN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glReplacementCodeuiSUN;
         public final MemorySegment PFN_glReplacementCodeusSUN;
         public final MemorySegment PFN_glReplacementCodeubSUN;

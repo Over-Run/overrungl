@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLEXTShaderFramebufferFetchNonCoherent {
     public static final int GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT = 0x8A52;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferFetchBarrierEXT = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferFetchBarrierEXT = RuntimeHelper.downcall(Descriptors.FD_glFramebufferFetchBarrierEXT);
+        public static final MethodHandle MH_glFramebufferFetchBarrierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferFetchBarrierEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFramebufferFetchBarrierEXT = func.invoke("glFramebufferFetchBarrierEXT");

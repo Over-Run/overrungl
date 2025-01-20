@@ -27,12 +27,8 @@ public final class GLARBClEvent {
     public static final int GL_SYNC_CL_EVENT_ARB = 0x8240;
     public static final int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCreateSyncFromCLeventARB = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCreateSyncFromCLeventARB = RuntimeHelper.downcall(Descriptors.FD_glCreateSyncFromCLeventARB);
+        public static final MethodHandle MH_glCreateSyncFromCLeventARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glCreateSyncFromCLeventARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glCreateSyncFromCLeventARB = func.invoke("glCreateSyncFromCLeventARB");

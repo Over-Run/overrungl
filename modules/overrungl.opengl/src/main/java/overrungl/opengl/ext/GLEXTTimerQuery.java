@@ -26,14 +26,9 @@ import overrungl.util.*;
 public final class GLEXTTimerQuery {
     public static final int GL_TIME_ELAPSED_EXT = 0x88BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetQueryObjecti64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetQueryObjectui64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjecti64vEXT);
-        public static final MethodHandle MH_glGetQueryObjectui64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjectui64vEXT);
+        public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectui64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetQueryObjecti64vEXT;
         public final MemorySegment PFN_glGetQueryObjectui64vEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

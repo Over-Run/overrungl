@@ -31,12 +31,8 @@ public final class GLAMDOcclusionQueryEvent {
     public static final int GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = 0x00000008;
     public static final int GL_QUERY_ALL_EVENT_BITS_AMD = 0xFFFFFFFF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryObjectParameteruiAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryObjectParameteruiAMD = RuntimeHelper.downcall(Descriptors.FD_glQueryObjectParameteruiAMD);
+        public static final MethodHandle MH_glQueryObjectParameteruiAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glQueryObjectParameteruiAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryObjectParameteruiAMD = func.invoke("glQueryObjectParameteruiAMD");

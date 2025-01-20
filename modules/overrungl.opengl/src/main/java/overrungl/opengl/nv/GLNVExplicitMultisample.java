@@ -35,16 +35,10 @@ public final class GLNVExplicitMultisample {
     public static final int GL_UNSIGNED_INT_SAMPLER_RENDERBUFFER_NV = 0x8E58;
     public static final int GL_MAX_SAMPLE_MASK_WORDS_NV = 0x8E59;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetMultisamplefvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSampleMaskIndexedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexRenderbufferNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetMultisamplefvNV = RuntimeHelper.downcall(Descriptors.FD_glGetMultisamplefvNV);
-        public static final MethodHandle MH_glSampleMaskIndexedNV = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskIndexedNV);
-        public static final MethodHandle MH_glTexRenderbufferNV = RuntimeHelper.downcall(Descriptors.FD_glTexRenderbufferNV);
+        public static final MethodHandle MH_glGetMultisamplefvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSampleMaskIndexedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexRenderbufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGetMultisamplefvNV;
         public final MemorySegment PFN_glSampleMaskIndexedNV;
         public final MemorySegment PFN_glTexRenderbufferNV;

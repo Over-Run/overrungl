@@ -42,14 +42,9 @@ public final class GLEXTMultisample {
     public static final int GL_SAMPLE_PATTERN_EXT = 0x80AC;
     public static final int GL_MULTISAMPLE_BIT_EXT = 0x20000000;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSampleMaskEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glSamplePatternEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskEXT);
-        public static final MethodHandle MH_glSamplePatternEXT = RuntimeHelper.downcall(Descriptors.FD_glSamplePatternEXT);
+        public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glSamplePatternEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSampleMaskEXT;
         public final MemorySegment PFN_glSamplePatternEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

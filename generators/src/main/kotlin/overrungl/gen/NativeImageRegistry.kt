@@ -33,13 +33,15 @@ fun writeNativeImageRegistration(
         appendLine(
             """
                 package $packageName;
+                import java.lang.foreign.*;
+                import overrungl.util.*;
                 import org.graalvm.nativeimage.hosted.Feature;
                 import static org.graalvm.nativeimage.hosted.RuntimeForeignAccess.*;
             """.trimIndent()
         )
         appendLine("class $className implements Feature {")
         appendLine("    @Override public void duringSetup(DuringSetupAccess access) {")
-        downcall.forEach {
+        downcall.toSortedSet().forEach {
             appendLine("        registerForDowncall($it);")
         }
         upcall.forEach {

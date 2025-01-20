@@ -33,14 +33,9 @@ public final class GLSGISDetailTexture {
     public static final int GL_DETAIL_TEXTURE_MODE_SGIS = 0x809B;
     public static final int GL_DETAIL_TEXTURE_FUNC_POINTS_SGIS = 0x809C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDetailTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetDetailTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDetailTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glDetailTexFuncSGIS);
-        public static final MethodHandle MH_glGetDetailTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetDetailTexFuncSGIS);
+        public static final MethodHandle MH_glDetailTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDetailTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDetailTexFuncSGIS;
         public final MemorySegment PFN_glGetDetailTexFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

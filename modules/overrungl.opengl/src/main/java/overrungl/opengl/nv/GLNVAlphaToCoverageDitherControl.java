@@ -29,12 +29,8 @@ public final class GLNVAlphaToCoverageDitherControl {
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV = 0x934F;
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_MODE_NV = 0x92BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAlphaToCoverageDitherControlNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAlphaToCoverageDitherControlNV = RuntimeHelper.downcall(Descriptors.FD_glAlphaToCoverageDitherControlNV);
+        public static final MethodHandle MH_glAlphaToCoverageDitherControlNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAlphaToCoverageDitherControlNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glAlphaToCoverageDitherControlNV = func.invoke("glAlphaToCoverageDitherControlNV");

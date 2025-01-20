@@ -33,16 +33,10 @@ public final class GLNVSampleLocations {
     public static final int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV = 0x9342;
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV = 0x9343;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNamedFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glResolveDepthValuesNV = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSampleLocationsfvNV);
-        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferSampleLocationsfvNV);
-        public static final MethodHandle MH_glResolveDepthValuesNV = RuntimeHelper.downcall(Descriptors.FD_glResolveDepthValuesNV);
+        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glResolveDepthValuesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glResolveDepthValuesNV;

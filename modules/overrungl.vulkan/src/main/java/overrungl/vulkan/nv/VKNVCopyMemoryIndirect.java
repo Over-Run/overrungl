@@ -28,14 +28,9 @@ public class VKNVCopyMemoryIndirect {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV = 1000426000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV = 1000426001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdCopyMemoryIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdCopyMemoryToImageIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdCopyMemoryIndirectNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyMemoryIndirectNV);
-        public static final MethodHandle MH_vkCmdCopyMemoryToImageIndirectNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyMemoryToImageIndirectNV);
+        public static final MethodHandle MH_vkCmdCopyMemoryIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdCopyMemoryToImageIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdCopyMemoryIndirectNV;
         public final MemorySegment PFN_vkCmdCopyMemoryToImageIndirectNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

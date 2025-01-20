@@ -30,16 +30,10 @@ public final class GLNVTimelineSemaphore {
     public static final int GL_SEMAPHORE_TYPE_TIMELINE_NV = 0x95B5;
     public static final int GL_MAX_TIMELINE_SEMAPHORE_VALUE_DIFFERENCE_NV = 0x95B6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCreateSemaphoresNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glSemaphoreParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetSemaphoreParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCreateSemaphoresNV = RuntimeHelper.downcall(Descriptors.FD_glCreateSemaphoresNV);
-        public static final MethodHandle MH_glSemaphoreParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glSemaphoreParameterivNV);
-        public static final MethodHandle MH_glGetSemaphoreParameterivNV = RuntimeHelper.downcall(Descriptors.FD_glGetSemaphoreParameterivNV);
+        public static final MethodHandle MH_glCreateSemaphoresNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSemaphoreParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSemaphoreParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCreateSemaphoresNV;
         public final MemorySegment PFN_glSemaphoreParameterivNV;
         public final MemorySegment PFN_glGetSemaphoreParameterivNV;

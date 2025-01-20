@@ -34,12 +34,8 @@ public final class GLAMDInterleavedElements {
     public static final int GL_RG16UI = 0x823A;
     public static final int GL_RGBA8UI = 0x8D7C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexAttribParameteriAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribParameteriAMD = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribParameteriAMD);
+        public static final MethodHandle MH_glVertexAttribParameteriAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribParameteriAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVertexAttribParameteriAMD = func.invoke("glVertexAttribParameteriAMD");

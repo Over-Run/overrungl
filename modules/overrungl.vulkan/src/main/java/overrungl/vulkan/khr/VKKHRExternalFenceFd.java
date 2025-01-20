@@ -28,14 +28,9 @@ public class VKKHRExternalFenceFd {
     public static final int VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR = 1000115000;
     public static final int VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR = 1000115001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkImportFenceFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetFenceFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkImportFenceFdKHR = RuntimeHelper.downcall(Descriptors.FD_vkImportFenceFdKHR);
-        public static final MethodHandle MH_vkGetFenceFdKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetFenceFdKHR);
+        public static final MethodHandle MH_vkImportFenceFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetFenceFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportFenceFdKHR;
         public final MemorySegment PFN_vkGetFenceFdKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

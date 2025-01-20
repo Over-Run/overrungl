@@ -29,14 +29,9 @@ public final class GLOVRMultiview {
     public static final int GL_MAX_VIEWS_OVR = 0x9631;
     public static final int GL_FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR = 0x9633;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNamedFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureMultiviewOVR);
-        public static final MethodHandle MH_glNamedFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferTextureMultiviewOVR);
+        public static final MethodHandle MH_glFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNamedFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFramebufferTextureMultiviewOVR;
         public final MemorySegment PFN_glNamedFramebufferTextureMultiviewOVR;
         private Handles(overrungl.opengl.GLLoadFunc func) {

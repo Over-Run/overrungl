@@ -26,12 +26,8 @@ import overrungl.util.*;
 public final class GLARBInstancedArrays {
     public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexAttribDivisorARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribDivisorARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribDivisorARB);
+        public static final MethodHandle MH_glVertexAttribDivisorARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribDivisorARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVertexAttribDivisorARB = func.invoke("glVertexAttribDivisorARB", "glVertexAttribDivisor");

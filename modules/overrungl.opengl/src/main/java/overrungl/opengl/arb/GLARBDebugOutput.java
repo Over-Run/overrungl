@@ -47,18 +47,11 @@ public final class GLARBDebugOutput {
     public static final int GL_DEBUG_SEVERITY_MEDIUM_ARB = 0x9147;
     public static final int GL_DEBUG_SEVERITY_LOW_ARB = 0x9148;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDebugMessageControlARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glDebugMessageInsertARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDebugMessageCallbackARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetDebugMessageLogARB = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDebugMessageControlARB = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageControlARB);
-        public static final MethodHandle MH_glDebugMessageInsertARB = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageInsertARB);
-        public static final MethodHandle MH_glDebugMessageCallbackARB = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageCallbackARB);
-        public static final MethodHandle MH_glGetDebugMessageLogARB = RuntimeHelper.downcall(Descriptors.FD_glGetDebugMessageLogARB);
+        public static final MethodHandle MH_glDebugMessageControlARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glDebugMessageInsertARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDebugMessageCallbackARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDebugMessageLogARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDebugMessageControlARB;
         public final MemorySegment PFN_glDebugMessageInsertARB;
         public final MemorySegment PFN_glDebugMessageCallbackARB;

@@ -26,16 +26,10 @@ public final class ALEXTSTATICBUFFER {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alBufferDataStatic`.
-        public static final FunctionDescriptor FD_alBufferDataStatic = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alBufferDataStatic`.
-        public static final MethodHandle MH_alBufferDataStatic = RuntimeHelper.downcall(Descriptors.FD_alBufferDataStatic);
+        public static final MethodHandle MH_alBufferDataStatic = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The function address of `alBufferDataStatic`.
         public final MemorySegment PFN_alBufferDataStatic;
         private Handles() {

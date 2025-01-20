@@ -29,18 +29,11 @@ public final class GLARBTransposeMatrix {
     public static final int GL_TRANSPOSE_TEXTURE_MATRIX_ARB = 0x84E5;
     public static final int GL_TRANSPOSE_COLOR_MATRIX_ARB = 0x84E6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glLoadTransposeMatrixfARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glLoadTransposeMatrixdARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultTransposeMatrixfARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultTransposeMatrixdARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glLoadTransposeMatrixfARB = RuntimeHelper.downcall(Descriptors.FD_glLoadTransposeMatrixfARB);
-        public static final MethodHandle MH_glLoadTransposeMatrixdARB = RuntimeHelper.downcall(Descriptors.FD_glLoadTransposeMatrixdARB);
-        public static final MethodHandle MH_glMultTransposeMatrixfARB = RuntimeHelper.downcall(Descriptors.FD_glMultTransposeMatrixfARB);
-        public static final MethodHandle MH_glMultTransposeMatrixdARB = RuntimeHelper.downcall(Descriptors.FD_glMultTransposeMatrixdARB);
+        public static final MethodHandle MH_glLoadTransposeMatrixfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glLoadTransposeMatrixdARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultTransposeMatrixfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultTransposeMatrixdARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glLoadTransposeMatrixfARB;
         public final MemorySegment PFN_glLoadTransposeMatrixdARB;
         public final MemorySegment PFN_glMultTransposeMatrixfARB;

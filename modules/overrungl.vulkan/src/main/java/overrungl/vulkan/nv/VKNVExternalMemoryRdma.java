@@ -30,12 +30,8 @@ public class VKNVExternalMemoryRdma {
     public static final int VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV = 0x00000100;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV = 0x00001000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetMemoryRemoteAddressNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryRemoteAddressNV = RuntimeHelper.downcall(Descriptors.FD_vkGetMemoryRemoteAddressNV);
+        public static final MethodHandle MH_vkGetMemoryRemoteAddressNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryRemoteAddressNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryRemoteAddressNV = func.invoke(device, "vkGetMemoryRemoteAddressNV");

@@ -43,20 +43,12 @@ public class VKFUCHSIABufferCollection {
     public static final int VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA = 1000366009;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT = 1000366000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateBufferCollectionFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetBufferCollectionImageConstraintsFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetBufferCollectionBufferConstraintsFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyBufferCollectionFUCHSIA = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetBufferCollectionPropertiesFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateBufferCollectionFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkCreateBufferCollectionFUCHSIA);
-        public static final MethodHandle MH_vkSetBufferCollectionImageConstraintsFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkSetBufferCollectionImageConstraintsFUCHSIA);
-        public static final MethodHandle MH_vkSetBufferCollectionBufferConstraintsFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkSetBufferCollectionBufferConstraintsFUCHSIA);
-        public static final MethodHandle MH_vkDestroyBufferCollectionFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkDestroyBufferCollectionFUCHSIA);
-        public static final MethodHandle MH_vkGetBufferCollectionPropertiesFUCHSIA = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferCollectionPropertiesFUCHSIA);
+        public static final MethodHandle MH_vkCreateBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetBufferCollectionImageConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetBufferCollectionBufferConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferCollectionPropertiesFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateBufferCollectionFUCHSIA;
         public final MemorySegment PFN_vkSetBufferCollectionImageConstraintsFUCHSIA;
         public final MemorySegment PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA;

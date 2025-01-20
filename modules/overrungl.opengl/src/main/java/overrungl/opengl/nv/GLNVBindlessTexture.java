@@ -25,36 +25,20 @@ import overrungl.util.*;
 
 public final class GLNVBindlessTexture {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetTextureHandleNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetTextureSamplerHandleNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeTextureHandleResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glMakeTextureHandleNonResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glGetImageHandleNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeImageHandleResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMakeImageHandleNonResidentNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glUniformHandleui64NV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glUniformHandleui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramUniformHandleui64NV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glProgramUniformHandleui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsTextureHandleResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glIsImageHandleResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetTextureHandleNV = RuntimeHelper.downcall(Descriptors.FD_glGetTextureHandleNV);
-        public static final MethodHandle MH_glGetTextureSamplerHandleNV = RuntimeHelper.downcall(Descriptors.FD_glGetTextureSamplerHandleNV);
-        public static final MethodHandle MH_glMakeTextureHandleResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeTextureHandleResidentNV);
-        public static final MethodHandle MH_glMakeTextureHandleNonResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeTextureHandleNonResidentNV);
-        public static final MethodHandle MH_glGetImageHandleNV = RuntimeHelper.downcall(Descriptors.FD_glGetImageHandleNV);
-        public static final MethodHandle MH_glMakeImageHandleResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeImageHandleResidentNV);
-        public static final MethodHandle MH_glMakeImageHandleNonResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeImageHandleNonResidentNV);
-        public static final MethodHandle MH_glUniformHandleui64NV = RuntimeHelper.downcall(Descriptors.FD_glUniformHandleui64NV);
-        public static final MethodHandle MH_glUniformHandleui64vNV = RuntimeHelper.downcall(Descriptors.FD_glUniformHandleui64vNV);
-        public static final MethodHandle MH_glProgramUniformHandleui64NV = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformHandleui64NV);
-        public static final MethodHandle MH_glProgramUniformHandleui64vNV = RuntimeHelper.downcall(Descriptors.FD_glProgramUniformHandleui64vNV);
-        public static final MethodHandle MH_glIsTextureHandleResidentNV = RuntimeHelper.downcall(Descriptors.FD_glIsTextureHandleResidentNV);
-        public static final MethodHandle MH_glIsImageHandleResidentNV = RuntimeHelper.downcall(Descriptors.FD_glIsImageHandleResidentNV);
+        public static final MethodHandle MH_glGetTextureHandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTextureSamplerHandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeTextureHandleResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glMakeTextureHandleNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glGetImageHandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeImageHandleResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeImageHandleNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformHandleui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformHandleui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformHandleui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glProgramUniformHandleui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsTextureHandleResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glIsImageHandleResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glGetTextureHandleNV;
         public final MemorySegment PFN_glGetTextureSamplerHandleNV;
         public final MemorySegment PFN_glMakeTextureHandleResidentNV;

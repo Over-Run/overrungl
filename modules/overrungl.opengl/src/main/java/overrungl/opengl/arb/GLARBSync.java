@@ -40,24 +40,14 @@ public final class GLARBSync {
     public static final int GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001;
     public static final long GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFenceSync = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsSync = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteSync = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glClientWaitSync = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glWaitSync = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glGetInteger64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetSynciv = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFenceSync = RuntimeHelper.downcall(Descriptors.FD_glFenceSync);
-        public static final MethodHandle MH_glIsSync = RuntimeHelper.downcall(Descriptors.FD_glIsSync);
-        public static final MethodHandle MH_glDeleteSync = RuntimeHelper.downcall(Descriptors.FD_glDeleteSync);
-        public static final MethodHandle MH_glClientWaitSync = RuntimeHelper.downcall(Descriptors.FD_glClientWaitSync);
-        public static final MethodHandle MH_glWaitSync = RuntimeHelper.downcall(Descriptors.FD_glWaitSync);
-        public static final MethodHandle MH_glGetInteger64v = RuntimeHelper.downcall(Descriptors.FD_glGetInteger64v);
-        public static final MethodHandle MH_glGetSynciv = RuntimeHelper.downcall(Descriptors.FD_glGetSynciv);
+        public static final MethodHandle MH_glFenceSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteSync = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glClientWaitSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glWaitSync = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glGetInteger64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSynciv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFenceSync;
         public final MemorySegment PFN_glIsSync;
         public final MemorySegment PFN_glDeleteSync;

@@ -27,14 +27,9 @@ public final class GLSGISTextureFilter4 {
     public static final int GL_FILTER4_SGIS = 0x8146;
     public static final int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetTexFilterFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexFilterFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetTexFilterFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetTexFilterFuncSGIS);
-        public static final MethodHandle MH_glTexFilterFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glTexFilterFuncSGIS);
+        public static final MethodHandle MH_glGetTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetTexFilterFuncSGIS;
         public final MemorySegment PFN_glTexFilterFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -27,22 +27,13 @@ public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
     public static final int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInstrumentsSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glInstrumentsBufferSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPollInstrumentsSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glReadInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glStartInstrumentsSGIX = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glStopInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetInstrumentsSGIX);
-        public static final MethodHandle MH_glInstrumentsBufferSGIX = RuntimeHelper.downcall(Descriptors.FD_glInstrumentsBufferSGIX);
-        public static final MethodHandle MH_glPollInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glPollInstrumentsSGIX);
-        public static final MethodHandle MH_glReadInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glReadInstrumentsSGIX);
-        public static final MethodHandle MH_glStartInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glStartInstrumentsSGIX);
-        public static final MethodHandle MH_glStopInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glStopInstrumentsSGIX);
+        public static final MethodHandle MH_glGetInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glInstrumentsBufferSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPollInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReadInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStartInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glStopInstrumentsSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glGetInstrumentsSGIX;
         public final MemorySegment PFN_glInstrumentsBufferSGIX;
         public final MemorySegment PFN_glPollInstrumentsSGIX;

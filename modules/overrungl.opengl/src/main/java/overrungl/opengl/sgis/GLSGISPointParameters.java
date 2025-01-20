@@ -29,14 +29,9 @@ public final class GLSGISPointParameters {
     public static final int GL_POINT_FADE_THRESHOLD_SIZE_SGIS = 0x8128;
     public static final int GL_DISTANCE_ATTENUATION_SGIS = 0x8129;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPointParameterfSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPointParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPointParameterfSGIS = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfSGIS);
-        public static final MethodHandle MH_glPointParameterfvSGIS = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfvSGIS);
+        public static final MethodHandle MH_glPointParameterfSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameterfSGIS;
         public final MemorySegment PFN_glPointParameterfvSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

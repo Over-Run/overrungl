@@ -41,26 +41,15 @@ public final class GLIBMVertexArrayLists {
     public static final int GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM = 103086;
     public static final int GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = 103087;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSecondaryColorPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEdgeFlagPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFogCoordPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIndexPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNormalPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glColorPointerListIBM);
-        public static final MethodHandle MH_glSecondaryColorPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glSecondaryColorPointerListIBM);
-        public static final MethodHandle MH_glEdgeFlagPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glEdgeFlagPointerListIBM);
-        public static final MethodHandle MH_glFogCoordPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glFogCoordPointerListIBM);
-        public static final MethodHandle MH_glIndexPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glIndexPointerListIBM);
-        public static final MethodHandle MH_glNormalPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glNormalPointerListIBM);
-        public static final MethodHandle MH_glTexCoordPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glTexCoordPointerListIBM);
-        public static final MethodHandle MH_glVertexPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glVertexPointerListIBM);
+        public static final MethodHandle MH_glColorPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSecondaryColorPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEdgeFlagPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFogCoordPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIndexPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormalPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glColorPointerListIBM;
         public final MemorySegment PFN_glSecondaryColorPointerListIBM;
         public final MemorySegment PFN_glEdgeFlagPointerListIBM;

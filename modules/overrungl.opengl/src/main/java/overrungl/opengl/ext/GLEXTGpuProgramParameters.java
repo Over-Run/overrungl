@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLEXTGpuProgramParameters {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramEnvParameters4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParameters4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramEnvParameters4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameters4fvEXT);
-        public static final MethodHandle MH_glProgramLocalParameters4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameters4fvEXT);
+        public static final MethodHandle MH_glProgramEnvParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramEnvParameters4fvEXT;
         public final MemorySegment PFN_glProgramLocalParameters4fvEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

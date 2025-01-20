@@ -27,16 +27,10 @@ public final class GLARBSparseBuffer {
     public static final int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     public static final int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBufferPageCommitmentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glNamedBufferPageCommitmentEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glNamedBufferPageCommitmentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBufferPageCommitmentARB = RuntimeHelper.downcall(Descriptors.FD_glBufferPageCommitmentARB);
-        public static final MethodHandle MH_glNamedBufferPageCommitmentEXT = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferPageCommitmentEXT);
-        public static final MethodHandle MH_glNamedBufferPageCommitmentARB = RuntimeHelper.downcall(Descriptors.FD_glNamedBufferPageCommitmentARB);
+        public static final MethodHandle MH_glBufferPageCommitmentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glNamedBufferPageCommitmentEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glNamedBufferPageCommitmentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
         public final MemorySegment PFN_glBufferPageCommitmentARB;
         public final MemorySegment PFN_glNamedBufferPageCommitmentEXT;
         public final MemorySegment PFN_glNamedBufferPageCommitmentARB;

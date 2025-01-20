@@ -27,12 +27,8 @@ public class VKKHRPresentWait {
     public static final String VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR = 1000248000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkWaitForPresentKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkWaitForPresentKHR = RuntimeHelper.downcall(Descriptors.FD_vkWaitForPresentKHR);
+        public static final MethodHandle MH_vkWaitForPresentKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkWaitForPresentKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkWaitForPresentKHR = func.invoke(device, "vkWaitForPresentKHR");

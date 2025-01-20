@@ -28,12 +28,8 @@ public final class GLARBTextureBufferRange {
     public static final int GL_TEXTURE_BUFFER_SIZE = 0x919E;
     public static final int GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT = 0x919F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexBufferRange = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexBufferRange = RuntimeHelper.downcall(Descriptors.FD_glTexBufferRange);
+        public static final MethodHandle MH_glTexBufferRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glTexBufferRange;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTexBufferRange = func.invoke("glTexBufferRange");

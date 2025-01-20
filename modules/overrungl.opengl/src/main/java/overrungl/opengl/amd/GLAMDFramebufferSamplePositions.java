@@ -29,18 +29,11 @@ public final class GLAMDFramebufferSamplePositions {
     public static final int GL_PIXELS_PER_SAMPLE_PATTERN_Y_AMD = 0x91AF;
     public static final int GL_ALL_PIXELS_AMD = 0xFFFFFFFF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferSamplePositionsfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNamedFramebufferSamplePositionsfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetFramebufferParameterfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetNamedFramebufferParameterfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSamplePositionsfvAMD = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSamplePositionsfvAMD);
-        public static final MethodHandle MH_glNamedFramebufferSamplePositionsfvAMD = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferSamplePositionsfvAMD);
-        public static final MethodHandle MH_glGetFramebufferParameterfvAMD = RuntimeHelper.downcall(Descriptors.FD_glGetFramebufferParameterfvAMD);
-        public static final MethodHandle MH_glGetNamedFramebufferParameterfvAMD = RuntimeHelper.downcall(Descriptors.FD_glGetNamedFramebufferParameterfvAMD);
+        public static final MethodHandle MH_glFramebufferSamplePositionsfvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedFramebufferSamplePositionsfvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFramebufferParameterfvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedFramebufferParameterfvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFramebufferSamplePositionsfvAMD;
         public final MemorySegment PFN_glNamedFramebufferSamplePositionsfvAMD;
         public final MemorySegment PFN_glGetFramebufferParameterfvAMD;

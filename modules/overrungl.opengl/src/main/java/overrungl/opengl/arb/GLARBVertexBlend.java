@@ -67,30 +67,17 @@ public final class GLARBVertexBlend {
     public static final int GL_MODELVIEW30_ARB = 0x873E;
     public static final int GL_MODELVIEW31_ARB = 0x873F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glWeightbvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightsvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightdvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightubvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightusvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWeightPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertexBlendARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glWeightbvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightbvARB);
-        public static final MethodHandle MH_glWeightsvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightsvARB);
-        public static final MethodHandle MH_glWeightivARB = RuntimeHelper.downcall(Descriptors.FD_glWeightivARB);
-        public static final MethodHandle MH_glWeightfvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightfvARB);
-        public static final MethodHandle MH_glWeightdvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightdvARB);
-        public static final MethodHandle MH_glWeightubvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightubvARB);
-        public static final MethodHandle MH_glWeightusvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightusvARB);
-        public static final MethodHandle MH_glWeightuivARB = RuntimeHelper.downcall(Descriptors.FD_glWeightuivARB);
-        public static final MethodHandle MH_glWeightPointerARB = RuntimeHelper.downcall(Descriptors.FD_glWeightPointerARB);
-        public static final MethodHandle MH_glVertexBlendARB = RuntimeHelper.downcall(Descriptors.FD_glVertexBlendARB);
+        public static final MethodHandle MH_glWeightbvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightsvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightusvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWeightPointerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexBlendARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glWeightbvARB;
         public final MemorySegment PFN_glWeightsvARB;
         public final MemorySegment PFN_glWeightivARB;

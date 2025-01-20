@@ -27,12 +27,8 @@ public final class GLEXTTexturePerturbNormal {
     public static final int GL_PERTURB_EXT = 0x85AE;
     public static final int GL_TEXTURE_NORMAL_EXT = 0x85AF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureNormalEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureNormalEXT = RuntimeHelper.downcall(Descriptors.FD_glTextureNormalEXT);
+        public static final MethodHandle MH_glTextureNormalEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTextureNormalEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTextureNormalEXT = func.invoke("glTextureNormalEXT");

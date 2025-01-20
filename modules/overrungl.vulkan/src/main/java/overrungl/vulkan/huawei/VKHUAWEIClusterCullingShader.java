@@ -32,14 +32,9 @@ public class VKHUAWEIClusterCullingShader {
     public static final int VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI = 0x00080000;
     public static final int VK_QUERY_PIPELINE_STATISTIC_CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI = 0x00002000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdDrawClusterHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkCmdDrawClusterIndirectHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDrawClusterHUAWEI = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawClusterHUAWEI);
-        public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = RuntimeHelper.downcall(Descriptors.FD_vkCmdDrawClusterIndirectHUAWEI);
+        public static final MethodHandle MH_vkCmdDrawClusterHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCmdDrawClusterHUAWEI;
         public final MemorySegment PFN_vkCmdDrawClusterIndirectHUAWEI;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

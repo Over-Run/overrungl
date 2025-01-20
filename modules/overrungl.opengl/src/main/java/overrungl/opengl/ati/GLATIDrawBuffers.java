@@ -42,12 +42,8 @@ public final class GLATIDrawBuffers {
     public static final int GL_DRAW_BUFFER14_ATI = 0x8833;
     public static final int GL_DRAW_BUFFER15_ATI = 0x8834;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawBuffersATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawBuffersATI = RuntimeHelper.downcall(Descriptors.FD_glDrawBuffersATI);
+        public static final MethodHandle MH_glDrawBuffersATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawBuffersATI = func.invoke("glDrawBuffersATI", "glDrawBuffers");

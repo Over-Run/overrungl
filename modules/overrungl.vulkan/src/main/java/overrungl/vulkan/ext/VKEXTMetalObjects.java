@@ -44,12 +44,8 @@ public class VKEXTMetalObjects {
     public static final int VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311010;
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311011;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkExportMetalObjectsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(Descriptors.FD_vkExportMetalObjectsEXT);
+        public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkExportMetalObjectsEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");

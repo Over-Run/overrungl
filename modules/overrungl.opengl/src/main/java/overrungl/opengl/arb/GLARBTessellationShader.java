@@ -62,14 +62,9 @@ public final class GLARBTessellationShader {
     public static final int GL_TESS_EVALUATION_SHADER = 0x8E87;
     public static final int GL_TESS_CONTROL_SHADER = 0x8E88;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPatchParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPatchParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPatchParameteri = RuntimeHelper.downcall(Descriptors.FD_glPatchParameteri);
-        public static final MethodHandle MH_glPatchParameterfv = RuntimeHelper.downcall(Descriptors.FD_glPatchParameterfv);
+        public static final MethodHandle MH_glPatchParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPatchParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPatchParameteri;
         public final MemorySegment PFN_glPatchParameterfv;
         private Handles(overrungl.opengl.GLLoadFunc func) {

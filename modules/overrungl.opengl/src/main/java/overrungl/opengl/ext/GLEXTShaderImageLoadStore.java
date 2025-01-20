@@ -80,14 +80,9 @@ public final class GLEXTShaderImageLoadStore {
     public static final int GL_ATOMIC_COUNTER_BARRIER_BIT_EXT = 0x00001000;
     public static final int GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindImageTextureEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMemoryBarrierEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(Descriptors.FD_glBindImageTextureEXT);
-        public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(Descriptors.FD_glMemoryBarrierEXT);
+        public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTextureEXT;
         public final MemorySegment PFN_glMemoryBarrierEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

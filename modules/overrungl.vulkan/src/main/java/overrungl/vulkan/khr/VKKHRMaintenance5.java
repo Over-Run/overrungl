@@ -95,18 +95,11 @@ public class VKKHRMaintenance5 {
     public static final long VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV = VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR;
     public static final long VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT_KHR = VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBindIndexBuffer2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkGetRenderingAreaGranularityKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageSubresourceLayoutKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageSubresourceLayout2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindIndexBuffer2KHR);
-        public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetRenderingAreaGranularityKHR);
-        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageSubresourceLayoutKHR);
-        public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetImageSubresourceLayout2KHR);
+        public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBindIndexBuffer2KHR;
         public final MemorySegment PFN_vkGetRenderingAreaGranularityKHR;
         public final MemorySegment PFN_vkGetDeviceImageSubresourceLayoutKHR;

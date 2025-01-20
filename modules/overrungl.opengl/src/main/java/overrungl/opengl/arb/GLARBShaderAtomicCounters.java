@@ -54,12 +54,8 @@ public final class GLARBShaderAtomicCounters {
     public static final int GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX = 0x92DA;
     public static final int GL_UNSIGNED_INT_ATOMIC_COUNTER = 0x92DB;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetActiveAtomicCounterBufferiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = RuntimeHelper.downcall(Descriptors.FD_glGetActiveAtomicCounterBufferiv);
+        public static final MethodHandle MH_glGetActiveAtomicCounterBufferiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetActiveAtomicCounterBufferiv;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetActiveAtomicCounterBufferiv = func.invoke("glGetActiveAtomicCounterBufferiv");

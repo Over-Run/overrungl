@@ -28,24 +28,14 @@ public final class GLNVFence {
     public static final int GL_FENCE_STATUS_NV = 0x84F3;
     public static final int GL_FENCE_CONDITION_NV = 0x84F4;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDeleteFencesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGenFencesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIsFenceNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTestFenceNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFenceivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFinishFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSetFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDeleteFencesNV = RuntimeHelper.downcall(Descriptors.FD_glDeleteFencesNV);
-        public static final MethodHandle MH_glGenFencesNV = RuntimeHelper.downcall(Descriptors.FD_glGenFencesNV);
-        public static final MethodHandle MH_glIsFenceNV = RuntimeHelper.downcall(Descriptors.FD_glIsFenceNV);
-        public static final MethodHandle MH_glTestFenceNV = RuntimeHelper.downcall(Descriptors.FD_glTestFenceNV);
-        public static final MethodHandle MH_glGetFenceivNV = RuntimeHelper.downcall(Descriptors.FD_glGetFenceivNV);
-        public static final MethodHandle MH_glFinishFenceNV = RuntimeHelper.downcall(Descriptors.FD_glFinishFenceNV);
-        public static final MethodHandle MH_glSetFenceNV = RuntimeHelper.downcall(Descriptors.FD_glSetFenceNV);
+        public static final MethodHandle MH_glDeleteFencesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenFencesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsFenceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTestFenceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFenceivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFinishFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSetFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDeleteFencesNV;
         public final MemorySegment PFN_glGenFencesNV;
         public final MemorySegment PFN_glIsFenceNV;

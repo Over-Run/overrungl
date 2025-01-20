@@ -27,12 +27,8 @@ public final class GLEXTDepthBoundsTest {
     public static final int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
     public static final int GL_DEPTH_BOUNDS_EXT = 0x8891;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDepthBoundsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDepthBoundsEXT = RuntimeHelper.downcall(Descriptors.FD_glDepthBoundsEXT);
+        public static final MethodHandle MH_glDepthBoundsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         public final MemorySegment PFN_glDepthBoundsEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDepthBoundsEXT = func.invoke("glDepthBoundsEXT");

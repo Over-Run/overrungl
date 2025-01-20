@@ -34,14 +34,9 @@ public final class GLAMDSparseTexture {
     public static final int GL_MIN_LOD_WARNING_AMD = 0x919C;
     public static final int GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTexStorageSparseAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTextureStorageSparseAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTexStorageSparseAMD = RuntimeHelper.downcall(Descriptors.FD_glTexStorageSparseAMD);
-        public static final MethodHandle MH_glTextureStorageSparseAMD = RuntimeHelper.downcall(Descriptors.FD_glTextureStorageSparseAMD);
+        public static final MethodHandle MH_glTexStorageSparseAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTextureStorageSparseAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexStorageSparseAMD;
         public final MemorySegment PFN_glTextureStorageSparseAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {

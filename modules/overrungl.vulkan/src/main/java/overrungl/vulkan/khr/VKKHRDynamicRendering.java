@@ -36,14 +36,9 @@ public class VKKHRDynamicRendering {
     public static final int VK_RENDERING_SUSPENDING_BIT_KHR = VK_RENDERING_SUSPENDING_BIT;
     public static final int VK_RENDERING_RESUMING_BIT_KHR = VK_RENDERING_RESUMING_BIT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBeginRenderingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndRenderingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBeginRenderingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderingKHR);
-        public static final MethodHandle MH_vkCmdEndRenderingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderingKHR);
+        public static final MethodHandle MH_vkCmdBeginRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBeginRenderingKHR;
         public final MemorySegment PFN_vkCmdEndRenderingKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

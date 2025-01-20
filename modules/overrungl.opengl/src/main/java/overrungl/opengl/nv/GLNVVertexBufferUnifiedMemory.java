@@ -50,34 +50,19 @@ public final class GLNVVertexBufferUnifiedMemory {
     public static final int GL_DRAW_INDIRECT_ADDRESS_NV = 0x8F41;
     public static final int GL_DRAW_INDIRECT_LENGTH_NV = 0x8F42;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBufferAddressRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glVertexFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNormalFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIndexFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoordFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEdgeFlagFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSecondaryColorFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFogCoordFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertexAttribIFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetIntegerui64i_vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBufferAddressRangeNV = RuntimeHelper.downcall(Descriptors.FD_glBufferAddressRangeNV);
-        public static final MethodHandle MH_glVertexFormatNV = RuntimeHelper.downcall(Descriptors.FD_glVertexFormatNV);
-        public static final MethodHandle MH_glNormalFormatNV = RuntimeHelper.downcall(Descriptors.FD_glNormalFormatNV);
-        public static final MethodHandle MH_glColorFormatNV = RuntimeHelper.downcall(Descriptors.FD_glColorFormatNV);
-        public static final MethodHandle MH_glIndexFormatNV = RuntimeHelper.downcall(Descriptors.FD_glIndexFormatNV);
-        public static final MethodHandle MH_glTexCoordFormatNV = RuntimeHelper.downcall(Descriptors.FD_glTexCoordFormatNV);
-        public static final MethodHandle MH_glEdgeFlagFormatNV = RuntimeHelper.downcall(Descriptors.FD_glEdgeFlagFormatNV);
-        public static final MethodHandle MH_glSecondaryColorFormatNV = RuntimeHelper.downcall(Descriptors.FD_glSecondaryColorFormatNV);
-        public static final MethodHandle MH_glFogCoordFormatNV = RuntimeHelper.downcall(Descriptors.FD_glFogCoordFormatNV);
-        public static final MethodHandle MH_glVertexAttribFormatNV = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribFormatNV);
-        public static final MethodHandle MH_glVertexAttribIFormatNV = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribIFormatNV);
-        public static final MethodHandle MH_glGetIntegerui64i_vNV = RuntimeHelper.downcall(Descriptors.FD_glGetIntegerui64i_vNV);
+        public static final MethodHandle MH_glBufferAddressRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormalFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIndexFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEdgeFlagFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSecondaryColorFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFogCoordFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribIFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetIntegerui64i_vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBufferAddressRangeNV;
         public final MemorySegment PFN_glVertexFormatNV;
         public final MemorySegment PFN_glNormalFormatNV;

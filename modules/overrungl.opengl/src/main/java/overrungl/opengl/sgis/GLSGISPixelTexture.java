@@ -29,22 +29,13 @@ public final class GLSGISPixelTexture {
     public static final int GL_PIXEL_FRAGMENT_ALPHA_SOURCE_SGIS = 0x8355;
     public static final int GL_PIXEL_GROUP_COLOR_SGIS = 0x8356;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPixelTexGenParameteriSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelTexGenParameterivSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPixelTexGenParameterfSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPixelTexGenParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPixelTexGenParameterivSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetPixelTexGenParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPixelTexGenParameteriSGIS = RuntimeHelper.downcall(Descriptors.FD_glPixelTexGenParameteriSGIS);
-        public static final MethodHandle MH_glPixelTexGenParameterivSGIS = RuntimeHelper.downcall(Descriptors.FD_glPixelTexGenParameterivSGIS);
-        public static final MethodHandle MH_glPixelTexGenParameterfSGIS = RuntimeHelper.downcall(Descriptors.FD_glPixelTexGenParameterfSGIS);
-        public static final MethodHandle MH_glPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(Descriptors.FD_glPixelTexGenParameterfvSGIS);
-        public static final MethodHandle MH_glGetPixelTexGenParameterivSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetPixelTexGenParameterivSGIS);
-        public static final MethodHandle MH_glGetPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetPixelTexGenParameterfvSGIS);
+        public static final MethodHandle MH_glPixelTexGenParameteriSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelTexGenParameterivSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPixelTexGenParameterfSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTexGenParameterivSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPixelTexGenParameteriSGIS;
         public final MemorySegment PFN_glPixelTexGenParameterivSGIS;
         public final MemorySegment PFN_glPixelTexGenParameterfSGIS;

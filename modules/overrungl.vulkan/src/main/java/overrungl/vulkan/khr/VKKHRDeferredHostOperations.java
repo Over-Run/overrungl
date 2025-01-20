@@ -31,20 +31,12 @@ public class VKKHRDeferredHostOperations {
     public static final int VK_OPERATION_DEFERRED_KHR = 1000268002;
     public static final int VK_OPERATION_NOT_DEFERRED_KHR = 1000268003;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateDeferredOperationKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyDeferredOperationKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeferredOperationMaxConcurrencyKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeferredOperationResultKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDeferredOperationJoinKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDeferredOperationKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateDeferredOperationKHR);
-        public static final MethodHandle MH_vkDestroyDeferredOperationKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDeferredOperationKHR);
-        public static final MethodHandle MH_vkGetDeferredOperationMaxConcurrencyKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeferredOperationMaxConcurrencyKHR);
-        public static final MethodHandle MH_vkGetDeferredOperationResultKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeferredOperationResultKHR);
-        public static final MethodHandle MH_vkDeferredOperationJoinKHR = RuntimeHelper.downcall(Descriptors.FD_vkDeferredOperationJoinKHR);
+        public static final MethodHandle MH_vkCreateDeferredOperationKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDeferredOperationKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeferredOperationMaxConcurrencyKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeferredOperationResultKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDeferredOperationJoinKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateDeferredOperationKHR;
         public final MemorySegment PFN_vkDestroyDeferredOperationKHR;
         public final MemorySegment PFN_vkGetDeferredOperationMaxConcurrencyKHR;

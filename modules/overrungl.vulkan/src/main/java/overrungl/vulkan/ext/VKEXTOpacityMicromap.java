@@ -66,38 +66,21 @@ public class VKEXTOpacityMicromap {
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_EXT = 0x00000080;
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_EXT = 0x00000100;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateMicromapEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyMicromapEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBuildMicromapsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkBuildMicromapsEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyMicromapEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyMicromapToMemoryEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyMemoryToMicromapEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkWriteMicromapsPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkCmdCopyMicromapEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCopyMicromapToMemoryEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdCopyMemoryToMicromapEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdWriteMicromapsPropertiesEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkGetDeviceMicromapCompatibilityEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetMicromapBuildSizesEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateMicromapEXT);
-        public static final MethodHandle MH_vkDestroyMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyMicromapEXT);
-        public static final MethodHandle MH_vkCmdBuildMicromapsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdBuildMicromapsEXT);
-        public static final MethodHandle MH_vkBuildMicromapsEXT = RuntimeHelper.downcall(Descriptors.FD_vkBuildMicromapsEXT);
-        public static final MethodHandle MH_vkCopyMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyMicromapEXT);
-        public static final MethodHandle MH_vkCopyMicromapToMemoryEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyMicromapToMemoryEXT);
-        public static final MethodHandle MH_vkCopyMemoryToMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyMemoryToMicromapEXT);
-        public static final MethodHandle MH_vkWriteMicromapsPropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkWriteMicromapsPropertiesEXT);
-        public static final MethodHandle MH_vkCmdCopyMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyMicromapEXT);
-        public static final MethodHandle MH_vkCmdCopyMicromapToMemoryEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyMicromapToMemoryEXT);
-        public static final MethodHandle MH_vkCmdCopyMemoryToMicromapEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdCopyMemoryToMicromapEXT);
-        public static final MethodHandle MH_vkCmdWriteMicromapsPropertiesEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdWriteMicromapsPropertiesEXT);
-        public static final MethodHandle MH_vkGetDeviceMicromapCompatibilityEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceMicromapCompatibilityEXT);
-        public static final MethodHandle MH_vkGetMicromapBuildSizesEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetMicromapBuildSizesEXT);
+        public static final MethodHandle MH_vkCreateMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBuildMicromapsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBuildMicromapsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyMicromapToMemoryEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyMemoryToMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkWriteMicromapsPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkCmdCopyMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyMicromapToMemoryEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyMemoryToMicromapEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdWriteMicromapsPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetDeviceMicromapCompatibilityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMicromapBuildSizesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateMicromapEXT;
         public final MemorySegment PFN_vkDestroyMicromapEXT;
         public final MemorySegment PFN_vkCmdBuildMicromapsEXT;

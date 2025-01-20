@@ -32,12 +32,8 @@ public class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX = 1000529003;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = 1000529004;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetScreenBufferPropertiesQNX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetScreenBufferPropertiesQNX = RuntimeHelper.downcall(Descriptors.FD_vkGetScreenBufferPropertiesQNX);
+        public static final MethodHandle MH_vkGetScreenBufferPropertiesQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetScreenBufferPropertiesQNX;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetScreenBufferPropertiesQNX = func.invoke(device, "vkGetScreenBufferPropertiesQNX");

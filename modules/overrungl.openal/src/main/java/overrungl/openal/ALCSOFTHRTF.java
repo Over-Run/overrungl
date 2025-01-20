@@ -38,20 +38,12 @@ public final class ALCSOFTHRTF {
     public static final int ALC_HRTF_SPECIFIER_SOFT = 0x1995;
     public static final int ALC_HRTF_ID_SOFT = 0x1996;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcGetStringiSOFT`.
-        public static final FunctionDescriptor FD_alcGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `alcResetDeviceSOFT`.
-        public static final FunctionDescriptor FD_alcResetDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcGetStringiSOFT`.
-        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcall(Descriptors.FD_alcGetStringiSOFT);
+        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alcResetDeviceSOFT`.
-        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcall(Descriptors.FD_alcResetDeviceSOFT);
+        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The function address of `alcGetStringiSOFT`.
         public final MemorySegment PFN_alcGetStringiSOFT;
         /// The function address of `alcResetDeviceSOFT`.

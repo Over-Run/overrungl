@@ -43,12 +43,8 @@ public class VKNVFragmentShadingRateEnums {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV = 1000326001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV = 1000326002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetFragmentShadingRateEnumNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetFragmentShadingRateEnumNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetFragmentShadingRateEnumNV);
+        public static final MethodHandle MH_vkCmdSetFragmentShadingRateEnumNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdSetFragmentShadingRateEnumNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetFragmentShadingRateEnumNV = func.invoke(device, "vkCmdSetFragmentShadingRateEnumNV");

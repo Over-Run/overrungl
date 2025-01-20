@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLEXTColorSubtable {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorSubTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCopyColorSubTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorSubTableEXT = RuntimeHelper.downcall(Descriptors.FD_glColorSubTableEXT);
-        public static final MethodHandle MH_glCopyColorSubTableEXT = RuntimeHelper.downcall(Descriptors.FD_glCopyColorSubTableEXT);
+        public static final MethodHandle MH_glColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCopyColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glColorSubTableEXT;
         public final MemorySegment PFN_glCopyColorSubTableEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

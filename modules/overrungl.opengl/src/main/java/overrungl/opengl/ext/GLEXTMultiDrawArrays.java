@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLEXTMultiDrawArrays {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysEXT);
-        public static final MethodHandle MH_glMultiDrawElementsEXT = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsEXT);
+        public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysEXT;
         public final MemorySegment PFN_glMultiDrawElementsEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

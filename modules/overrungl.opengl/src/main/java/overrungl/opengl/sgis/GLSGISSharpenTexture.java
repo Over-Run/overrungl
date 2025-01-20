@@ -29,14 +29,9 @@ public final class GLSGISSharpenTexture {
     public static final int GL_LINEAR_SHARPEN_COLOR_SGIS = 0x80AF;
     public static final int GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS = 0x80B0;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glSharpenTexFuncSGIS);
-        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetSharpenTexFuncSGIS);
+        public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSharpenTexFuncSGIS;
         public final MemorySegment PFN_glGetSharpenTexFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {

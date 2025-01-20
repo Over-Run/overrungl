@@ -68,28 +68,16 @@ public final class ALSOFTBufferSamples {
     public static final int AL_SAMPLE_LENGTH_SOFT = 0x200A;
     public static final int AL_SEC_LENGTH_SOFT = 0x200B;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alBufferSamplesSOFT`.
-        public static final FunctionDescriptor FD_alBufferSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// The function descriptor of `alBufferSubSamplesSOFT`.
-        public static final FunctionDescriptor FD_alBufferSubSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// The function descriptor of `alGetBufferSamplesSOFT`.
-        public static final FunctionDescriptor FD_alGetBufferSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// The function descriptor of `alIsBufferFormatSupportedSOFT`.
-        public static final FunctionDescriptor FD_alIsBufferFormatSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alBufferSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferSamplesSOFT);
+        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alBufferSubSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferSubSamplesSOFT);
+        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alGetBufferSamplesSOFT`.
-        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetBufferSamplesSOFT);
+        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alIsBufferFormatSupportedSOFT`.
-        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcall(Descriptors.FD_alIsBufferFormatSupportedSOFT);
+        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
         /// The function address of `alBufferSamplesSOFT`.
         public final MemorySegment PFN_alBufferSamplesSOFT;
         /// The function address of `alBufferSubSamplesSOFT`.

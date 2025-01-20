@@ -29,12 +29,8 @@ public final class GLNVFramebufferMultisampleCoverage {
     public static final int GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11;
     public static final int GL_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E12;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glRenderbufferStorageMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glRenderbufferStorageMultisampleCoverageNV);
+        public static final MethodHandle MH_glRenderbufferStorageMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleCoverageNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleCoverageNV = func.invoke("glRenderbufferStorageMultisampleCoverageNV");

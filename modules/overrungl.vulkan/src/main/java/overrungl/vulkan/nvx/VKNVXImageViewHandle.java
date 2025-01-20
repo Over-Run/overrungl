@@ -28,16 +28,10 @@ public class VKNVXImageViewHandle {
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX = 1000030000;
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX = 1000030001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetImageViewHandleNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageViewHandle64NVX = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageViewAddressNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageViewHandleNVX = RuntimeHelper.downcall(Descriptors.FD_vkGetImageViewHandleNVX);
-        public static final MethodHandle MH_vkGetImageViewHandle64NVX = RuntimeHelper.downcall(Descriptors.FD_vkGetImageViewHandle64NVX);
-        public static final MethodHandle MH_vkGetImageViewAddressNVX = RuntimeHelper.downcall(Descriptors.FD_vkGetImageViewAddressNVX);
+        public static final MethodHandle MH_vkGetImageViewHandleNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageViewHandle64NVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageViewAddressNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetImageViewHandleNVX;
         public final MemorySegment PFN_vkGetImageViewHandle64NVX;
         public final MemorySegment PFN_vkGetImageViewAddressNVX;

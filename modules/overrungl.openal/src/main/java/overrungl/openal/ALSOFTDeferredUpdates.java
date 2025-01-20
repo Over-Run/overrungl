@@ -27,20 +27,12 @@ public final class ALSOFTDeferredUpdates {
     //region Fields
     public static final int AL_DEFERRED_UPDATES_SOFT = 0xC002;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alDeferUpdatesSOFT`.
-        public static final FunctionDescriptor FD_alDeferUpdatesSOFT = FunctionDescriptor.ofVoid();
-        /// The function descriptor of `alProcessUpdatesSOFT`.
-        public static final FunctionDescriptor FD_alProcessUpdatesSOFT = FunctionDescriptor.ofVoid();
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alDeferUpdatesSOFT`.
-        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcall(Descriptors.FD_alDeferUpdatesSOFT);
+        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `alProcessUpdatesSOFT`.
-        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcall(Descriptors.FD_alProcessUpdatesSOFT);
+        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The function address of `alDeferUpdatesSOFT`.
         public final MemorySegment PFN_alDeferUpdatesSOFT;
         /// The function address of `alProcessUpdatesSOFT`.

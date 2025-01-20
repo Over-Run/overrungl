@@ -40,20 +40,12 @@ public class VKEXTHostImageCopy {
     public static final long VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT = VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT;
     public static final int VK_HOST_IMAGE_COPY_MEMCPY_EXT = VK_HOST_IMAGE_COPY_MEMCPY;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCopyMemoryToImageEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyImageToMemoryEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyImageToImageEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkTransitionImageLayoutEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageSubresourceLayout2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCopyMemoryToImageEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyMemoryToImageEXT);
-        public static final MethodHandle MH_vkCopyImageToMemoryEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyImageToMemoryEXT);
-        public static final MethodHandle MH_vkCopyImageToImageEXT = RuntimeHelper.downcall(Descriptors.FD_vkCopyImageToImageEXT);
-        public static final MethodHandle MH_vkTransitionImageLayoutEXT = RuntimeHelper.downcall(Descriptors.FD_vkTransitionImageLayoutEXT);
-        public static final MethodHandle MH_vkGetImageSubresourceLayout2EXT = RuntimeHelper.downcall(Descriptors.FD_vkGetImageSubresourceLayout2EXT);
+        public static final MethodHandle MH_vkCopyMemoryToImageEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyImageToMemoryEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyImageToImageEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkTransitionImageLayoutEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCopyMemoryToImageEXT;
         public final MemorySegment PFN_vkCopyImageToMemoryEXT;
         public final MemorySegment PFN_vkCopyImageToImageEXT;

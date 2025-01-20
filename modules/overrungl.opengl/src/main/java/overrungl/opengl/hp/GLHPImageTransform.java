@@ -40,22 +40,13 @@ public final class GLHPImageTransform {
     public static final int GL_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8162;
     public static final int GL_PROXY_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8163;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImageTransformParameteriHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glImageTransformParameterfHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glImageTransformParameterivHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glImageTransformParameterfvHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetImageTransformParameterivHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetImageTransformParameterfvHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImageTransformParameteriHP = RuntimeHelper.downcall(Descriptors.FD_glImageTransformParameteriHP);
-        public static final MethodHandle MH_glImageTransformParameterfHP = RuntimeHelper.downcall(Descriptors.FD_glImageTransformParameterfHP);
-        public static final MethodHandle MH_glImageTransformParameterivHP = RuntimeHelper.downcall(Descriptors.FD_glImageTransformParameterivHP);
-        public static final MethodHandle MH_glImageTransformParameterfvHP = RuntimeHelper.downcall(Descriptors.FD_glImageTransformParameterfvHP);
-        public static final MethodHandle MH_glGetImageTransformParameterivHP = RuntimeHelper.downcall(Descriptors.FD_glGetImageTransformParameterivHP);
-        public static final MethodHandle MH_glGetImageTransformParameterfvHP = RuntimeHelper.downcall(Descriptors.FD_glGetImageTransformParameterfvHP);
+        public static final MethodHandle MH_glImageTransformParameteriHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glImageTransformParameterfHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glImageTransformParameterivHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImageTransformParameterfvHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetImageTransformParameterivHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetImageTransformParameterfvHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glImageTransformParameteriHP;
         public final MemorySegment PFN_glImageTransformParameterfHP;
         public final MemorySegment PFN_glImageTransformParameterivHP;

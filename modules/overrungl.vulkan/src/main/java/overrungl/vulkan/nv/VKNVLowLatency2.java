@@ -49,20 +49,12 @@ public class VKNVLowLatency2 {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV = 1000505007;
     public static final int VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV = 1000505008;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetLatencySleepModeNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkLatencySleepNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetLatencyMarkerNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetLatencyTimingsNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueNotifyOutOfBandNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLatencySleepModeNV = RuntimeHelper.downcall(Descriptors.FD_vkSetLatencySleepModeNV);
-        public static final MethodHandle MH_vkLatencySleepNV = RuntimeHelper.downcall(Descriptors.FD_vkLatencySleepNV);
-        public static final MethodHandle MH_vkSetLatencyMarkerNV = RuntimeHelper.downcall(Descriptors.FD_vkSetLatencyMarkerNV);
-        public static final MethodHandle MH_vkGetLatencyTimingsNV = RuntimeHelper.downcall(Descriptors.FD_vkGetLatencyTimingsNV);
-        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = RuntimeHelper.downcall(Descriptors.FD_vkQueueNotifyOutOfBandNV);
+        public static final MethodHandle MH_vkSetLatencySleepModeNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkLatencySleepNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetLatencyMarkerNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetLatencyTimingsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkSetLatencySleepModeNV;
         public final MemorySegment PFN_vkLatencySleepNV;
         public final MemorySegment PFN_vkSetLatencyMarkerNV;

@@ -30,16 +30,10 @@ public class VKNVDeviceDiagnosticCheckpoints {
     public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV = 1000206008;
     public static final int VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV = 1000206009;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetCheckpointNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetQueueCheckpointDataNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetQueueCheckpointData2NV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetCheckpointNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetCheckpointNV);
-        public static final MethodHandle MH_vkGetQueueCheckpointDataNV = RuntimeHelper.downcall(Descriptors.FD_vkGetQueueCheckpointDataNV);
-        public static final MethodHandle MH_vkGetQueueCheckpointData2NV = RuntimeHelper.downcall(Descriptors.FD_vkGetQueueCheckpointData2NV);
+        public static final MethodHandle MH_vkCmdSetCheckpointNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetQueueCheckpointDataNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetQueueCheckpointData2NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetCheckpointNV;
         public final MemorySegment PFN_vkGetQueueCheckpointDataNV;
         public final MemorySegment PFN_vkGetQueueCheckpointData2NV;

@@ -28,12 +28,8 @@ public class VKKHRDisplaySwapchain {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR = 1000003000;
     public static final int VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = -1000003001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateSharedSwapchainsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateSharedSwapchainsKHR);
+        public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateSharedSwapchainsKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCreateSharedSwapchainsKHR = func.invoke(device, "vkCreateSharedSwapchainsKHR");

@@ -82,16 +82,10 @@ public class VKKHRVideoEncodeQueue {
     public static final long VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR = 0x08000000L;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR = 0x10000000L;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetEncodedVideoSessionParametersKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEncodeVideoKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR);
-        public static final MethodHandle MH_vkGetEncodedVideoSessionParametersKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetEncodedVideoSessionParametersKHR);
-        public static final MethodHandle MH_vkCmdEncodeVideoKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEncodeVideoKHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetEncodedVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEncodeVideoKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR;
         public final MemorySegment PFN_vkGetEncodedVideoSessionParametersKHR;
         public final MemorySegment PFN_vkCmdEncodeVideoKHR;

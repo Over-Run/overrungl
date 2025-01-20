@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLAMDMultiDrawIndirect {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirectAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirectAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysIndirectAMD = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectAMD);
-        public static final MethodHandle MH_glMultiDrawElementsIndirectAMD = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirectAMD);
+        public static final MethodHandle MH_glMultiDrawArraysIndirectAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirectAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysIndirectAMD;
         public final MemorySegment PFN_glMultiDrawElementsIndirectAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {

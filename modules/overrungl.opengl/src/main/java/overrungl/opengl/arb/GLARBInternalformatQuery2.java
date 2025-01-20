@@ -159,12 +159,8 @@ public final class GLARBInternalformatQuery2 {
     public static final int GL_VIEW_CLASS_ASTC_12x10_RGBA = 0x9394;
     public static final int GL_VIEW_CLASS_ASTC_12x12_RGBA = 0x9395;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInternalformati64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformati64v);
+        public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformati64v;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");

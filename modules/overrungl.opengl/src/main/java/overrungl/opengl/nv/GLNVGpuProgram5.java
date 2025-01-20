@@ -33,14 +33,9 @@ public final class GLNVGpuProgram5 {
     public static final int GL_MAX_PROGRAM_SUBROUTINE_PARAMETERS_NV = 0x8F44;
     public static final int GL_MAX_PROGRAM_SUBROUTINE_NUM_NV = 0x8F45;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramSubroutineParametersuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramSubroutineParameteruivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramSubroutineParametersuivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramSubroutineParametersuivNV);
-        public static final MethodHandle MH_glGetProgramSubroutineParameteruivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramSubroutineParameteruivNV);
+        public static final MethodHandle MH_glProgramSubroutineParametersuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramSubroutineParameteruivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramSubroutineParametersuivNV;
         public final MemorySegment PFN_glGetProgramSubroutineParameteruivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

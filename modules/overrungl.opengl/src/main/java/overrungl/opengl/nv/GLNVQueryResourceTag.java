@@ -25,16 +25,10 @@ import overrungl.util.*;
 
 public final class GLNVQueryResourceTag {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenQueryResourceTagNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDeleteQueryResourceTagNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glQueryResourceTagNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenQueryResourceTagNV = RuntimeHelper.downcall(Descriptors.FD_glGenQueryResourceTagNV);
-        public static final MethodHandle MH_glDeleteQueryResourceTagNV = RuntimeHelper.downcall(Descriptors.FD_glDeleteQueryResourceTagNV);
-        public static final MethodHandle MH_glQueryResourceTagNV = RuntimeHelper.downcall(Descriptors.FD_glQueryResourceTagNV);
+        public static final MethodHandle MH_glGenQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGenQueryResourceTagNV;
         public final MemorySegment PFN_glDeleteQueryResourceTagNV;
         public final MemorySegment PFN_glQueryResourceTagNV;

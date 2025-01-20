@@ -65,28 +65,16 @@ public class VKEXTDeviceGeneratedCommands {
     public static final int VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT = VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV;
     public static final int VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT = VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetGeneratedCommandsMemoryRequirementsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPreprocessGeneratedCommandsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdExecuteGeneratedCommandsEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateIndirectCommandsLayoutEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyIndirectCommandsLayoutEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCreateIndirectExecutionSetEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyIndirectExecutionSetEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUpdateIndirectExecutionSetPipelineEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUpdateIndirectExecutionSetShaderEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetGeneratedCommandsMemoryRequirementsEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetGeneratedCommandsMemoryRequirementsEXT);
-        public static final MethodHandle MH_vkCmdPreprocessGeneratedCommandsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdPreprocessGeneratedCommandsEXT);
-        public static final MethodHandle MH_vkCmdExecuteGeneratedCommandsEXT = RuntimeHelper.downcall(Descriptors.FD_vkCmdExecuteGeneratedCommandsEXT);
-        public static final MethodHandle MH_vkCreateIndirectCommandsLayoutEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateIndirectCommandsLayoutEXT);
-        public static final MethodHandle MH_vkDestroyIndirectCommandsLayoutEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyIndirectCommandsLayoutEXT);
-        public static final MethodHandle MH_vkCreateIndirectExecutionSetEXT = RuntimeHelper.downcall(Descriptors.FD_vkCreateIndirectExecutionSetEXT);
-        public static final MethodHandle MH_vkDestroyIndirectExecutionSetEXT = RuntimeHelper.downcall(Descriptors.FD_vkDestroyIndirectExecutionSetEXT);
-        public static final MethodHandle MH_vkUpdateIndirectExecutionSetPipelineEXT = RuntimeHelper.downcall(Descriptors.FD_vkUpdateIndirectExecutionSetPipelineEXT);
-        public static final MethodHandle MH_vkUpdateIndirectExecutionSetShaderEXT = RuntimeHelper.downcall(Descriptors.FD_vkUpdateIndirectExecutionSetShaderEXT);
+        public static final MethodHandle MH_vkGetGeneratedCommandsMemoryRequirementsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPreprocessGeneratedCommandsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdExecuteGeneratedCommandsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateIndirectCommandsLayoutEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyIndirectCommandsLayoutEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateIndirectExecutionSetEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyIndirectExecutionSetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateIndirectExecutionSetPipelineEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateIndirectExecutionSetShaderEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetGeneratedCommandsMemoryRequirementsEXT;
         public final MemorySegment PFN_vkCmdPreprocessGeneratedCommandsEXT;
         public final MemorySegment PFN_vkCmdExecuteGeneratedCommandsEXT;

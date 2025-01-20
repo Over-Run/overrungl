@@ -34,18 +34,11 @@ public class VKEXTFullScreenExclusive {
     public static final int VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT = -1000255000;
     public static final int VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT = 1000255001;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfacePresentModes2EXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkAcquireFullScreenExclusiveModeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkReleaseFullScreenExclusiveModeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceGroupSurfacePresentModes2EXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModes2EXT = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSurfacePresentModes2EXT);
-        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = RuntimeHelper.downcall(Descriptors.FD_vkAcquireFullScreenExclusiveModeEXT);
-        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = RuntimeHelper.downcall(Descriptors.FD_vkReleaseFullScreenExclusiveModeEXT);
-        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModes2EXT = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceGroupSurfacePresentModes2EXT);
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT;
         public final MemorySegment PFN_vkAcquireFullScreenExclusiveModeEXT;
         public final MemorySegment PFN_vkReleaseFullScreenExclusiveModeEXT;

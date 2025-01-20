@@ -28,12 +28,8 @@ public class VKNVClipSpaceWScaling {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetViewportWScalingNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetViewportWScalingNV = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetViewportWScalingNV);
+        public static final MethodHandle MH_vkCmdSetViewportWScalingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetViewportWScalingNV;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetViewportWScalingNV = func.invoke(device, "vkCmdSetViewportWScalingNV");

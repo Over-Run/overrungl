@@ -31,12 +31,8 @@ public final class GLNVQueryResource {
     public static final int GL_QUERY_RESOURCE_RENDERBUFFER_NV = 0x9546;
     public static final int GL_QUERY_RESOURCE_BUFFEROBJECT_NV = 0x9547;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryResourceNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryResourceNV = RuntimeHelper.downcall(Descriptors.FD_glQueryResourceNV);
+        public static final MethodHandle MH_glQueryResourceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryResourceNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryResourceNV = func.invoke("glQueryResourceNV");

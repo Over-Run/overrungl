@@ -129,38 +129,21 @@ public final class GLATIFragmentShader {
     public static final int GL_NEGATE_BIT_ATI = 0x00000004;
     public static final int GL_BIAS_BIT_ATI = 0x00000008;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGenFragmentShadersATI = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBindFragmentShaderATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDeleteFragmentShaderATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBeginFragmentShaderATI = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glEndFragmentShaderATI = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glPassTexCoordATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSampleMapATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorFragmentOp1ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorFragmentOp2ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColorFragmentOp3ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glAlphaFragmentOp1ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glAlphaFragmentOp2ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glAlphaFragmentOp3ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSetFragmentShaderConstantATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGenFragmentShadersATI = RuntimeHelper.downcall(Descriptors.FD_glGenFragmentShadersATI);
-        public static final MethodHandle MH_glBindFragmentShaderATI = RuntimeHelper.downcall(Descriptors.FD_glBindFragmentShaderATI);
-        public static final MethodHandle MH_glDeleteFragmentShaderATI = RuntimeHelper.downcall(Descriptors.FD_glDeleteFragmentShaderATI);
-        public static final MethodHandle MH_glBeginFragmentShaderATI = RuntimeHelper.downcall(Descriptors.FD_glBeginFragmentShaderATI);
-        public static final MethodHandle MH_glEndFragmentShaderATI = RuntimeHelper.downcall(Descriptors.FD_glEndFragmentShaderATI);
-        public static final MethodHandle MH_glPassTexCoordATI = RuntimeHelper.downcall(Descriptors.FD_glPassTexCoordATI);
-        public static final MethodHandle MH_glSampleMapATI = RuntimeHelper.downcall(Descriptors.FD_glSampleMapATI);
-        public static final MethodHandle MH_glColorFragmentOp1ATI = RuntimeHelper.downcall(Descriptors.FD_glColorFragmentOp1ATI);
-        public static final MethodHandle MH_glColorFragmentOp2ATI = RuntimeHelper.downcall(Descriptors.FD_glColorFragmentOp2ATI);
-        public static final MethodHandle MH_glColorFragmentOp3ATI = RuntimeHelper.downcall(Descriptors.FD_glColorFragmentOp3ATI);
-        public static final MethodHandle MH_glAlphaFragmentOp1ATI = RuntimeHelper.downcall(Descriptors.FD_glAlphaFragmentOp1ATI);
-        public static final MethodHandle MH_glAlphaFragmentOp2ATI = RuntimeHelper.downcall(Descriptors.FD_glAlphaFragmentOp2ATI);
-        public static final MethodHandle MH_glAlphaFragmentOp3ATI = RuntimeHelper.downcall(Descriptors.FD_glAlphaFragmentOp3ATI);
-        public static final MethodHandle MH_glSetFragmentShaderConstantATI = RuntimeHelper.downcall(Descriptors.FD_glSetFragmentShaderConstantATI);
+        public static final MethodHandle MH_glGenFragmentShadersATI = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindFragmentShaderATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteFragmentShaderATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBeginFragmentShaderATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glEndFragmentShaderATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glPassTexCoordATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSampleMapATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorFragmentOp1ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorFragmentOp2ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorFragmentOp3ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glAlphaFragmentOp1ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glAlphaFragmentOp2ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glAlphaFragmentOp3ATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSetFragmentShaderConstantATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGenFragmentShadersATI;
         public final MemorySegment PFN_glBindFragmentShaderATI;
         public final MemorySegment PFN_glDeleteFragmentShaderATI;

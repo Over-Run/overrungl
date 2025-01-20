@@ -50,100 +50,52 @@ public final class NFD {
         NFD_WINDOW_HANDLE_TYPE_X11 = 3;
     public static final int NFD_INTERFACE_VERSION = 1;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `NFD_FreePathN`.
-        public static final FunctionDescriptor FD_NFD_FreePathN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_Init`.
-        public static final FunctionDescriptor FD_NFD_Init = FunctionDescriptor.of(ValueLayout.JAVA_INT);
-        /// The function descriptor of `NFD_Quit`.
-        public static final FunctionDescriptor FD_NFD_Quit = FunctionDescriptor.ofVoid();
-        /// The function descriptor of `NFD_OpenDialogN`.
-        public static final FunctionDescriptor FD_NFD_OpenDialogN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_OpenDialogN_With_Impl`.
-        public static final FunctionDescriptor FD_NFD_OpenDialogN_With_Impl = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_OpenDialogMultipleN`.
-        public static final FunctionDescriptor FD_NFD_OpenDialogMultipleN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_OpenDialogMultipleN_With_Impl`.
-        public static final FunctionDescriptor FD_NFD_OpenDialogMultipleN_With_Impl = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_SaveDialogN`.
-        public static final FunctionDescriptor FD_NFD_SaveDialogN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_SaveDialogN_With_Impl`.
-        public static final FunctionDescriptor FD_NFD_SaveDialogN_With_Impl = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PickFolderN`.
-        public static final FunctionDescriptor FD_NFD_PickFolderN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_PickFolderN_With_Impl`.
-        public static final FunctionDescriptor FD_NFD_PickFolderN_With_Impl = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PickFolderMultipleN`.
-        public static final FunctionDescriptor FD_NFD_PickFolderMultipleN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_PickFolderMultipleN_With_Impl`.
-        public static final FunctionDescriptor FD_NFD_PickFolderMultipleN_With_Impl = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_GetError`.
-        public static final FunctionDescriptor FD_NFD_GetError = FunctionDescriptor.of(Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_ClearError`.
-        public static final FunctionDescriptor FD_NFD_ClearError = FunctionDescriptor.ofVoid();
-        /// The function descriptor of `NFD_PathSet_GetCount`.
-        public static final FunctionDescriptor FD_NFD_PathSet_GetCount = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PathSet_GetPathN`.
-        public static final FunctionDescriptor FD_NFD_PathSet_GetPathN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PathSet_FreePathN`.
-        public static final FunctionDescriptor FD_NFD_PathSet_FreePathN = FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `NFD_PathSet_GetEnum`.
-        public static final FunctionDescriptor FD_NFD_PathSet_GetEnum = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PathSet_FreeEnum`.
-        public static final FunctionDescriptor FD_NFD_PathSet_FreeEnum = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PathSet_EnumNextN`.
-        public static final FunctionDescriptor FD_NFD_PathSet_EnumNextN = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `NFD_PathSet_Free`.
-        public static final FunctionDescriptor FD_NFD_PathSet_Free = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `NFD_FreePathN`.
-        public static final MethodHandle MH_NFD_FreePathN = RuntimeHelper.downcall(Descriptors.FD_NFD_FreePathN);
+        public static final MethodHandle MH_NFD_FreePathN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `NFD_Init`.
-        public static final MethodHandle MH_NFD_Init = RuntimeHelper.downcall(Descriptors.FD_NFD_Init);
+        public static final MethodHandle MH_NFD_Init = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
         /// The method handle of `NFD_Quit`.
-        public static final MethodHandle MH_NFD_Quit = RuntimeHelper.downcall(Descriptors.FD_NFD_Quit);
+        public static final MethodHandle MH_NFD_Quit = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `NFD_OpenDialogN`.
-        public static final MethodHandle MH_NFD_OpenDialogN = RuntimeHelper.downcall(Descriptors.FD_NFD_OpenDialogN);
+        public static final MethodHandle MH_NFD_OpenDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_OpenDialogN_With_Impl`.
-        public static final MethodHandle MH_NFD_OpenDialogN_With_Impl = RuntimeHelper.downcall(Descriptors.FD_NFD_OpenDialogN_With_Impl);
+        public static final MethodHandle MH_NFD_OpenDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_OpenDialogMultipleN`.
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN = RuntimeHelper.downcall(Descriptors.FD_NFD_OpenDialogMultipleN);
+        public static final MethodHandle MH_NFD_OpenDialogMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_OpenDialogMultipleN_With_Impl`.
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN_With_Impl = RuntimeHelper.downcall(Descriptors.FD_NFD_OpenDialogMultipleN_With_Impl);
+        public static final MethodHandle MH_NFD_OpenDialogMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_SaveDialogN`.
-        public static final MethodHandle MH_NFD_SaveDialogN = RuntimeHelper.downcall(Descriptors.FD_NFD_SaveDialogN);
+        public static final MethodHandle MH_NFD_SaveDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_SaveDialogN_With_Impl`.
-        public static final MethodHandle MH_NFD_SaveDialogN_With_Impl = RuntimeHelper.downcall(Descriptors.FD_NFD_SaveDialogN_With_Impl);
+        public static final MethodHandle MH_NFD_SaveDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderN`.
-        public static final MethodHandle MH_NFD_PickFolderN = RuntimeHelper.downcall(Descriptors.FD_NFD_PickFolderN);
+        public static final MethodHandle MH_NFD_PickFolderN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_PickFolderN_With_Impl`.
-        public static final MethodHandle MH_NFD_PickFolderN_With_Impl = RuntimeHelper.downcall(Descriptors.FD_NFD_PickFolderN_With_Impl);
+        public static final MethodHandle MH_NFD_PickFolderN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderMultipleN`.
-        public static final MethodHandle MH_NFD_PickFolderMultipleN = RuntimeHelper.downcall(Descriptors.FD_NFD_PickFolderMultipleN);
+        public static final MethodHandle MH_NFD_PickFolderMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_PickFolderMultipleN_With_Impl`.
-        public static final MethodHandle MH_NFD_PickFolderMultipleN_With_Impl = RuntimeHelper.downcall(Descriptors.FD_NFD_PickFolderMultipleN_With_Impl);
+        public static final MethodHandle MH_NFD_PickFolderMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_GetError`.
-        public static final MethodHandle MH_NFD_GetError = RuntimeHelper.downcall(Descriptors.FD_NFD_GetError);
+        public static final MethodHandle MH_NFD_GetError = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_ClearError`.
-        public static final MethodHandle MH_NFD_ClearError = RuntimeHelper.downcall(Descriptors.FD_NFD_ClearError);
+        public static final MethodHandle MH_NFD_ClearError = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `NFD_PathSet_GetCount`.
-        public static final MethodHandle MH_NFD_PathSet_GetCount = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_GetCount);
+        public static final MethodHandle MH_NFD_PathSet_GetCount = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_GetPathN`.
-        public static final MethodHandle MH_NFD_PathSet_GetPathN = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_GetPathN);
+        public static final MethodHandle MH_NFD_PathSet_GetPathN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_FreePathN`.
-        public static final MethodHandle MH_NFD_PathSet_FreePathN = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_FreePathN);
+        public static final MethodHandle MH_NFD_PathSet_FreePathN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT));
         /// The method handle of `NFD_PathSet_GetEnum`.
-        public static final MethodHandle MH_NFD_PathSet_GetEnum = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_GetEnum);
+        public static final MethodHandle MH_NFD_PathSet_GetEnum = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_FreeEnum`.
-        public static final MethodHandle MH_NFD_PathSet_FreeEnum = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_FreeEnum);
+        public static final MethodHandle MH_NFD_PathSet_FreeEnum = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_EnumNextN`.
-        public static final MethodHandle MH_NFD_PathSet_EnumNextN = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_EnumNextN);
+        public static final MethodHandle MH_NFD_PathSet_EnumNextN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_Free`.
-        public static final MethodHandle MH_NFD_PathSet_Free = RuntimeHelper.downcall(Descriptors.FD_NFD_PathSet_Free);
+        public static final MethodHandle MH_NFD_PathSet_Free = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The function address of `NFD_FreePathN`.
         public final MemorySegment PFN_NFD_FreePathN;
         /// The function address of `NFD_Init`.

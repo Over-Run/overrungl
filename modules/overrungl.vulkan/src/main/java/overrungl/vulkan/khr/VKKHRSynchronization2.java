@@ -120,22 +120,13 @@ public class VKKHRSynchronization2 {
     public static final long VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_NV = VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT;
     public static final long VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_NV = VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetEvent2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdResetEvent2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_vkCmdWaitEvents2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPipelineBarrier2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdWriteTimestamp2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkQueueSubmit2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetEvent2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetEvent2KHR);
-        public static final MethodHandle MH_vkCmdResetEvent2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdResetEvent2KHR);
-        public static final MethodHandle MH_vkCmdWaitEvents2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdWaitEvents2KHR);
-        public static final MethodHandle MH_vkCmdPipelineBarrier2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdPipelineBarrier2KHR);
-        public static final MethodHandle MH_vkCmdWriteTimestamp2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdWriteTimestamp2KHR);
-        public static final MethodHandle MH_vkQueueSubmit2KHR = RuntimeHelper.downcall(Descriptors.FD_vkQueueSubmit2KHR);
+        public static final MethodHandle MH_vkCmdSetEvent2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdResetEvent2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkCmdWaitEvents2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPipelineBarrier2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdWriteTimestamp2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkQueueSubmit2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetEvent2KHR;
         public final MemorySegment PFN_vkCmdResetEvent2KHR;
         public final MemorySegment PFN_vkCmdWaitEvents2KHR;

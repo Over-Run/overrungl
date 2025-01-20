@@ -619,15 +619,8 @@ fun main() {
         val get = commandMap[command.name]!!
 
         // descriptor
-        descriptorFields.add(
-            InstanceDowncallField(
-                modifier = "public static final",
-                type = "FunctionDescriptor",
-                name = "FD_${get.name}",
-                value = computeFunctionDescriptor(get)
-            )
-        )
-        downcallDescriptors.add("$packageName.$name.Descriptors.FD_${get.name}")
+        val descriptor = computeFunctionDescriptor(get)
+        downcallDescriptors.add(descriptor)
 
         // handle
         handleFields.add(
@@ -635,7 +628,7 @@ fun main() {
                 modifier = "public static final",
                 type = "MethodHandle",
                 name = "MH_${get.name}",
-                value = "RuntimeHelper.downcall(Descriptors.FD_${get.name})"
+                value = "RuntimeHelper.downcall($descriptor)"
             )
         )
 

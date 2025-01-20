@@ -27,14 +27,9 @@ public final class GLAPPLEFlushBufferRange {
     public static final int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
     public static final int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBufferParameteriAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFlushMappedBufferRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBufferParameteriAPPLE = RuntimeHelper.downcall(Descriptors.FD_glBufferParameteriAPPLE);
-        public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glFlushMappedBufferRangeAPPLE);
+        public static final MethodHandle MH_glBufferParameteriAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glBufferParameteriAPPLE;
         public final MemorySegment PFN_glFlushMappedBufferRangeAPPLE;
         private Handles(overrungl.opengl.GLLoadFunc func) {

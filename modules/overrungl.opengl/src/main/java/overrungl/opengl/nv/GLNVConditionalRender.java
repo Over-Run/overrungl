@@ -29,14 +29,9 @@ public final class GLNVConditionalRender {
     public static final int GL_QUERY_BY_REGION_WAIT_NV = 0x8E15;
     public static final int GL_QUERY_BY_REGION_NO_WAIT_NV = 0x8E16;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginConditionalRenderNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndConditionalRenderNV = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginConditionalRenderNV = RuntimeHelper.downcall(Descriptors.FD_glBeginConditionalRenderNV);
-        public static final MethodHandle MH_glEndConditionalRenderNV = RuntimeHelper.downcall(Descriptors.FD_glEndConditionalRenderNV);
+        public static final MethodHandle MH_glBeginConditionalRenderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndConditionalRenderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBeginConditionalRenderNV;
         public final MemorySegment PFN_glEndConditionalRenderNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

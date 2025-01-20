@@ -36,24 +36,14 @@ public class VKKHRGetPhysicalDeviceProperties2 {
     public static final int VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR = VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceFeatures2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceFormatProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceImageFormatProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceQueueFamilyProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceMemoryProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPhysicalDeviceSparseImageFormatProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceFeatures2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceFeatures2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceFormatProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceFormatProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceImageFormatProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceImageFormatProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceQueueFamilyProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceMemoryProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceMemoryProperties2KHR);
-        public static final MethodHandle MH_vkGetPhysicalDeviceSparseImageFormatProperties2KHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPhysicalDeviceSparseImageFormatProperties2KHR);
+        public static final MethodHandle MH_vkGetPhysicalDeviceFeatures2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceFormatProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceImageFormatProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceMemoryProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSparseImageFormatProperties2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceFeatures2KHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceProperties2KHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceFormatProperties2KHR;

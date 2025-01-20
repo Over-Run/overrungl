@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLEXTDrawInstanced {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawArraysInstancedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawElementsInstancedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstancedEXT);
-        public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsInstancedEXT);
+        public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawArraysInstancedEXT;
         public final MemorySegment PFN_glDrawElementsInstancedEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {

@@ -28,20 +28,12 @@ public final class GLAPPLEElementArray {
     public static final int GL_ELEMENT_ARRAY_TYPE_APPLE = 0x8A0D;
     public static final int GL_ELEMENT_ARRAY_POINTER_APPLE = 0x8A0E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glElementPointerAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glDrawElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDrawRangeElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawRangeElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glElementPointerAPPLE = RuntimeHelper.downcall(Descriptors.FD_glElementPointerAPPLE);
-        public static final MethodHandle MH_glDrawElementArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glDrawElementArrayAPPLE);
-        public static final MethodHandle MH_glDrawRangeElementArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glDrawRangeElementArrayAPPLE);
-        public static final MethodHandle MH_glMultiDrawElementArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementArrayAPPLE);
-        public static final MethodHandle MH_glMultiDrawRangeElementArrayAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawRangeElementArrayAPPLE);
+        public static final MethodHandle MH_glElementPointerAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawElementArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawRangeElementArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawRangeElementArrayAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glElementPointerAPPLE;
         public final MemorySegment PFN_glDrawElementArrayAPPLE;
         public final MemorySegment PFN_glDrawRangeElementArrayAPPLE;

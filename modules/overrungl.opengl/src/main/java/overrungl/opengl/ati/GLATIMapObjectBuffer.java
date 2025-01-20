@@ -25,14 +25,9 @@ import overrungl.util.*;
 
 public final class GLATIMapObjectBuffer {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMapObjectBufferATI = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glUnmapObjectBufferATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMapObjectBufferATI = RuntimeHelper.downcall(Descriptors.FD_glMapObjectBufferATI);
-        public static final MethodHandle MH_glUnmapObjectBufferATI = RuntimeHelper.downcall(Descriptors.FD_glUnmapObjectBufferATI);
+        public static final MethodHandle MH_glMapObjectBufferATI = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUnmapObjectBufferATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMapObjectBufferATI;
         public final MemorySegment PFN_glUnmapObjectBufferATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {

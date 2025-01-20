@@ -34,12 +34,8 @@ public class VKAMDAntiLag {
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = 1000476001;
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = 1000476002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkAntiLagUpdateAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkAntiLagUpdateAMD = RuntimeHelper.downcall(Descriptors.FD_vkAntiLagUpdateAMD);
+        public static final MethodHandle MH_vkAntiLagUpdateAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkAntiLagUpdateAMD;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkAntiLagUpdateAMD = func.invoke(device, "vkAntiLagUpdateAMD");

@@ -27,12 +27,8 @@ public final class GLARBGlSpirv {
     public static final int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
     public static final int GL_SPIR_V_BINARY_ARB = 0x9552;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSpecializeShaderARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSpecializeShaderARB = RuntimeHelper.downcall(Descriptors.FD_glSpecializeShaderARB);
+        public static final MethodHandle MH_glSpecializeShaderARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSpecializeShaderARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSpecializeShaderARB = func.invoke("glSpecializeShaderARB", "glSpecializeShader");

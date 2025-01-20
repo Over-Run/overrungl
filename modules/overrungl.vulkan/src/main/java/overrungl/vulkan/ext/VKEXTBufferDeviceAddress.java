@@ -35,12 +35,8 @@ public class VKEXTBufferDeviceAddress {
     public static final int VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT;
     public static final int VK_ERROR_INVALID_DEVICE_ADDRESS_EXT = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetBufferDeviceAddressEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(Descriptors.FD_vkGetBufferDeviceAddressEXT);
+        public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetBufferDeviceAddressEXT;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
             PFN_vkGetBufferDeviceAddressEXT = func.invoke(device, "vkGetBufferDeviceAddressEXT", "vkGetBufferDeviceAddress");

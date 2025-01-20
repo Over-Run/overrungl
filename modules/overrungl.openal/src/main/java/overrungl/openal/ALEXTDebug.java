@@ -62,52 +62,28 @@ public final class ALEXTDebug {
     public static final int AL_EFFECT_EXT = 0x19D2;
     public static final int AL_AUXILIARY_EFFECT_SLOT_EXT = 0x19D3;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alDebugMessageCallbackEXT`.
-        public static final FunctionDescriptor FD_alDebugMessageCallbackEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// The function descriptor of `alDebugMessageInsertEXT`.
-        public static final FunctionDescriptor FD_alDebugMessageInsertEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alDebugMessageControlEXT`.
-        public static final FunctionDescriptor FD_alDebugMessageControlEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-        /// The function descriptor of `alPushDebugGroupEXT`.
-        public static final FunctionDescriptor FD_alPushDebugGroupEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alPopDebugGroupEXT`.
-        public static final FunctionDescriptor FD_alPopDebugGroupEXT = FunctionDescriptor.ofVoid();
-        /// The function descriptor of `alGetDebugMessageLogEXT`.
-        public static final FunctionDescriptor FD_alGetDebugMessageLogEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alObjectLabelEXT`.
-        public static final FunctionDescriptor FD_alObjectLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alGetObjectLabelEXT`.
-        public static final FunctionDescriptor FD_alGetObjectLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `alGetPointerEXT`.
-        public static final FunctionDescriptor FD_alGetPointerEXT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `alGetPointervEXT`.
-        public static final FunctionDescriptor FD_alGetPointervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alDebugMessageCallbackEXT`.
-        public static final MethodHandle MH_alDebugMessageCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageCallbackEXT);
+        public static final MethodHandle MH_alDebugMessageCallbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alDebugMessageInsertEXT`.
-        public static final MethodHandle MH_alDebugMessageInsertEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageInsertEXT);
+        public static final MethodHandle MH_alDebugMessageInsertEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
         /// The method handle of `alDebugMessageControlEXT`.
-        public static final MethodHandle MH_alDebugMessageControlEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageControlEXT);
+        public static final MethodHandle MH_alDebugMessageControlEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `alPushDebugGroupEXT`.
-        public static final MethodHandle MH_alPushDebugGroupEXT = RuntimeHelper.downcall(Descriptors.FD_alPushDebugGroupEXT);
+        public static final MethodHandle MH_alPushDebugGroupEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
         /// The method handle of `alPopDebugGroupEXT`.
-        public static final MethodHandle MH_alPopDebugGroupEXT = RuntimeHelper.downcall(Descriptors.FD_alPopDebugGroupEXT);
+        public static final MethodHandle MH_alPopDebugGroupEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `alGetDebugMessageLogEXT`.
-        public static final MethodHandle MH_alGetDebugMessageLogEXT = RuntimeHelper.downcall(Descriptors.FD_alGetDebugMessageLogEXT);
+        public static final MethodHandle MH_alGetDebugMessageLogEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `alObjectLabelEXT`.
-        public static final MethodHandle MH_alObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_alObjectLabelEXT);
+        public static final MethodHandle MH_alObjectLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
         /// The method handle of `alGetObjectLabelEXT`.
-        public static final MethodHandle MH_alGetObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_alGetObjectLabelEXT);
+        public static final MethodHandle MH_alGetObjectLabelEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `alGetPointerEXT`.
-        public static final MethodHandle MH_alGetPointerEXT = RuntimeHelper.downcall(Descriptors.FD_alGetPointerEXT);
+        public static final MethodHandle MH_alGetPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `alGetPointervEXT`.
-        public static final MethodHandle MH_alGetPointervEXT = RuntimeHelper.downcall(Descriptors.FD_alGetPointervEXT);
+        public static final MethodHandle MH_alGetPointervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The function address of `alDebugMessageCallbackEXT`.
         public final MemorySegment PFN_alDebugMessageCallbackEXT;
         /// The function address of `alDebugMessageInsertEXT`.

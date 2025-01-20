@@ -35,20 +35,12 @@ public final class GLARBMatrixPalette {
     public static final int GL_MATRIX_INDEX_ARRAY_STRIDE_ARB = 0x8848;
     public static final int GL_MATRIX_INDEX_ARRAY_POINTER_ARB = 0x8849;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCurrentPaletteMatrixARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMatrixIndexubvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexusvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCurrentPaletteMatrixARB = RuntimeHelper.downcall(Descriptors.FD_glCurrentPaletteMatrixARB);
-        public static final MethodHandle MH_glMatrixIndexubvARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexubvARB);
-        public static final MethodHandle MH_glMatrixIndexusvARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexusvARB);
-        public static final MethodHandle MH_glMatrixIndexuivARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexuivARB);
-        public static final MethodHandle MH_glMatrixIndexPointerARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexPointerARB);
+        public static final MethodHandle MH_glCurrentPaletteMatrixARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMatrixIndexubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexusvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexPointerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCurrentPaletteMatrixARB;
         public final MemorySegment PFN_glMatrixIndexubvARB;
         public final MemorySegment PFN_glMatrixIndexusvARB;

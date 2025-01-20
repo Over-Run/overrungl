@@ -26,20 +26,12 @@ public final class ALCEXTThreadLocalContext {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcSetThreadContext`.
-        public static final FunctionDescriptor FD_alcSetThreadContext = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        /// The function descriptor of `alcGetThreadContext`.
-        public static final FunctionDescriptor FD_alcGetThreadContext = FunctionDescriptor.of(ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcSetThreadContext`.
-        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcall(Descriptors.FD_alcSetThreadContext);
+        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
         /// The method handle of `alcGetThreadContext`.
-        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcall(Descriptors.FD_alcGetThreadContext);
+        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The function address of `alcSetThreadContext`.
         public final MemorySegment PFN_alcSetThreadContext;
         /// The function address of `alcGetThreadContext`.

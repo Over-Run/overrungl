@@ -29,30 +29,17 @@ public final class GLNVVdpauInterop {
     public static final int GL_SURFACE_MAPPED_NV = 0x8700;
     public static final int GL_WRITE_DISCARD_NV = 0x88BE;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVDPAUInitNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVDPAUFiniNV = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glVDPAURegisterVideoSurfaceNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVDPAURegisterOutputSurfaceNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVDPAUIsSurfaceNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glVDPAUUnregisterSurfaceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glVDPAUGetSurfaceivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVDPAUSurfaceAccessNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVDPAUMapSurfacesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVDPAUUnmapSurfacesNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVDPAUInitNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUInitNV);
-        public static final MethodHandle MH_glVDPAUFiniNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUFiniNV);
-        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAURegisterVideoSurfaceNV);
-        public static final MethodHandle MH_glVDPAURegisterOutputSurfaceNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAURegisterOutputSurfaceNV);
-        public static final MethodHandle MH_glVDPAUIsSurfaceNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUIsSurfaceNV);
-        public static final MethodHandle MH_glVDPAUUnregisterSurfaceNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUUnregisterSurfaceNV);
-        public static final MethodHandle MH_glVDPAUGetSurfaceivNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUGetSurfaceivNV);
-        public static final MethodHandle MH_glVDPAUSurfaceAccessNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUSurfaceAccessNV);
-        public static final MethodHandle MH_glVDPAUMapSurfacesNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUMapSurfacesNV);
-        public static final MethodHandle MH_glVDPAUUnmapSurfacesNV = RuntimeHelper.downcall(Descriptors.FD_glVDPAUUnmapSurfacesNV);
+        public static final MethodHandle MH_glVDPAUInitNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVDPAUFiniNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVDPAURegisterOutputSurfaceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVDPAUIsSurfaceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVDPAUUnregisterSurfaceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVDPAUGetSurfaceivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVDPAUSurfaceAccessNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVDPAUMapSurfacesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVDPAUUnmapSurfacesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVDPAUInitNV;
         public final MemorySegment PFN_glVDPAUFiniNV;
         public final MemorySegment PFN_glVDPAURegisterVideoSurfaceNV;

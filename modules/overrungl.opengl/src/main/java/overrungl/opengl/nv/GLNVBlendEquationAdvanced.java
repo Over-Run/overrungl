@@ -76,14 +76,9 @@ public final class GLNVBlendEquationAdvanced {
     public static final int GL_XOR_NV = 0x1506;
     public static final int GL_ZERO = 0;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendParameteriNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlendBarrierNV = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendParameteriNV = RuntimeHelper.downcall(Descriptors.FD_glBlendParameteriNV);
-        public static final MethodHandle MH_glBlendBarrierNV = RuntimeHelper.downcall(Descriptors.FD_glBlendBarrierNV);
+        public static final MethodHandle MH_glBlendParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBlendParameteriNV;
         public final MemorySegment PFN_glBlendBarrierNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {

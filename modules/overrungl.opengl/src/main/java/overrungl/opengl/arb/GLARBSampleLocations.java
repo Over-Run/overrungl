@@ -33,16 +33,10 @@ public final class GLARBSampleLocations {
     public static final int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_ARB = 0x9342;
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_ARB = 0x9343;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferSampleLocationsfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNamedFramebufferSampleLocationsfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEvaluateDepthValuesARB = FunctionDescriptor.ofVoid();
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSampleLocationsfvARB);
-        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferSampleLocationsfvARB);
-        public static final MethodHandle MH_glEvaluateDepthValuesARB = RuntimeHelper.downcall(Descriptors.FD_glEvaluateDepthValuesARB);
+        public static final MethodHandle MH_glFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEvaluateDepthValuesARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferSampleLocationsfvARB;
         public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvARB;
         public final MemorySegment PFN_glEvaluateDepthValuesARB;

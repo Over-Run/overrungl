@@ -16,31 +16,22 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
+import java.lang.foreign.*;
+import overrungl.util.*;
 import org.graalvm.nativeimage.hosted.Feature;
 import static org.graalvm.nativeimage.hosted.RuntimeForeignAccess.*;
 class ForeignRegistrationFeature implements Feature {
     @Override public void duringSetup(DuringSetupAccess access) {
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_FreePathN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_Init);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_Quit);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_OpenDialogN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_OpenDialogN_With_Impl);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_OpenDialogMultipleN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_OpenDialogMultipleN_With_Impl);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_SaveDialogN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_SaveDialogN_With_Impl);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PickFolderN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PickFolderN_With_Impl);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PickFolderMultipleN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PickFolderMultipleN_With_Impl);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_GetError);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_ClearError);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_GetCount);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_GetPathN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_FreePathN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_GetEnum);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_FreeEnum);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_EnumNextN);
-        registerForDowncall(overrungl.nfd.NFD.Descriptors.FD_NFD_PathSet_Free);
+        registerForDowncall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, Unmarshal.STR_LAYOUT));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        registerForDowncall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        registerForDowncall(FunctionDescriptor.ofVoid());
+        registerForDowncall(FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT));
+        registerForDowncall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
     }
 }

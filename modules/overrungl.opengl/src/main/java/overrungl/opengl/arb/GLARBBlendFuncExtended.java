@@ -30,14 +30,9 @@ public final class GLARBBlendFuncExtended {
     public static final int GL_ONE_MINUS_SRC1_ALPHA = 0x88FB;
     public static final int GL_MAX_DUAL_SOURCE_DRAW_BUFFERS = 0x88FC;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBindFragDataLocationIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetFragDataIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(Descriptors.FD_glBindFragDataLocationIndexed);
-        public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(Descriptors.FD_glGetFragDataIndex);
+        public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindFragDataLocationIndexed;
         public final MemorySegment PFN_glGetFragDataIndex;
         private Handles(overrungl.opengl.GLLoadFunc func) {

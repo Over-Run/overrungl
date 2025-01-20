@@ -29,14 +29,9 @@ public class VKKHRExternalFenceWin32 {
     public static final int VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR = 1000114001;
     public static final int VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR = 1000114002;
     private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkImportFenceWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetFenceWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkImportFenceWin32HandleKHR = RuntimeHelper.downcall(Descriptors.FD_vkImportFenceWin32HandleKHR);
-        public static final MethodHandle MH_vkGetFenceWin32HandleKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetFenceWin32HandleKHR);
+        public static final MethodHandle MH_vkImportFenceWin32HandleKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetFenceWin32HandleKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportFenceWin32HandleKHR;
         public final MemorySegment PFN_vkGetFenceWin32HandleKHR;
         private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {

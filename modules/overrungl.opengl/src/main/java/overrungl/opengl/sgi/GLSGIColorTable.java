@@ -41,24 +41,14 @@ public final class GLSGIColorTable {
     public static final int GL_COLOR_TABLE_LUMINANCE_SIZE_SGI = 0x80DE;
     public static final int GL_COLOR_TABLE_INTENSITY_SIZE_SGI = 0x80DF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorTableSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColorTableParameterfvSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColorTableParameterivSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCopyColorTableSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetColorTableSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetColorTableParameterfvSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetColorTableParameterivSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorTableSGI = RuntimeHelper.downcall(Descriptors.FD_glColorTableSGI);
-        public static final MethodHandle MH_glColorTableParameterfvSGI = RuntimeHelper.downcall(Descriptors.FD_glColorTableParameterfvSGI);
-        public static final MethodHandle MH_glColorTableParameterivSGI = RuntimeHelper.downcall(Descriptors.FD_glColorTableParameterivSGI);
-        public static final MethodHandle MH_glCopyColorTableSGI = RuntimeHelper.downcall(Descriptors.FD_glCopyColorTableSGI);
-        public static final MethodHandle MH_glGetColorTableSGI = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableSGI);
-        public static final MethodHandle MH_glGetColorTableParameterfvSGI = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableParameterfvSGI);
-        public static final MethodHandle MH_glGetColorTableParameterivSGI = RuntimeHelper.downcall(Descriptors.FD_glGetColorTableParameterivSGI);
+        public static final MethodHandle MH_glColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableParameterfvSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableParameterivSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCopyColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterfvSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterivSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glColorTableSGI;
         public final MemorySegment PFN_glColorTableParameterfvSGI;
         public final MemorySegment PFN_glColorTableParameterivSGI;

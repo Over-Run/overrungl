@@ -33,24 +33,14 @@ public final class ALCSOFTSystemEvents {
     public static final int ALC_EVENT_SUPPORTED_SOFT = 0x19D9;
     public static final int ALC_EVENT_NOT_SUPPORTED_SOFT = 0x19DA;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alcEventIsSupportedSOFT`.
-        public static final FunctionDescriptor FD_alcEventIsSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// The function descriptor of `alcEventControlSOFT`.
-        public static final FunctionDescriptor FD_alcEventControlSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
-        /// The function descriptor of `alcEventCallbackSOFT`.
-        public static final FunctionDescriptor FD_alcEventCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcEventIsSupportedSOFT`.
-        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventIsSupportedSOFT);
+        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alcEventControlSOFT`.
-        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventControlSOFT);
+        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `alcEventCallbackSOFT`.
-        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventCallbackSOFT);
+        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The function address of `alcEventIsSupportedSOFT`.
         public final MemorySegment PFN_alcEventIsSupportedSOFT;
         /// The function address of `alcEventControlSOFT`.

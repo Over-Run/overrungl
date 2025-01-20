@@ -28,12 +28,8 @@ public final class GLEXTPolygonOffset {
     public static final int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
     public static final int GL_POLYGON_OFFSET_BIAS_EXT = 0x8039;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPolygonOffsetEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPolygonOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetEXT);
+        public static final MethodHandle MH_glPolygonOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPolygonOffsetEXT = func.invoke("glPolygonOffsetEXT");

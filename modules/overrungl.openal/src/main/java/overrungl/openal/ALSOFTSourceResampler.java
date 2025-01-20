@@ -30,16 +30,10 @@ public final class ALSOFTSourceResampler {
     public static final int AL_SOURCE_RESAMPLER_SOFT = 0x1212;
     public static final int AL_RESAMPLER_NAME_SOFT = 0x1213;
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `alGetStringiSOFT`.
-        public static final FunctionDescriptor FD_alGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    }
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alGetStringiSOFT`.
-        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetStringiSOFT);
+        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The function address of `alGetStringiSOFT`.
         public final MemorySegment PFN_alGetStringiSOFT;
         private Handles() {
