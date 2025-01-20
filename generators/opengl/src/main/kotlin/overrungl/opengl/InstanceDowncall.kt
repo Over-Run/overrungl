@@ -16,7 +16,6 @@
 
 package overrungl.opengl
 
-import com.palantir.javapoet.TypeName
 import overrungl.gen.CustomTypeSpec
 import overrungl.gen.commentedFileHeader
 import overrungl.gen.writeString
@@ -152,7 +151,7 @@ class InstanceDowncall(
 
             sb.appendLine("""        if (Unmarshal.isNullPointer(handles.PFN_${m.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
             sb.append("        try { ")
-            if (m.returnType.carrier != TypeName.VOID) {
+            if (m.returnType.carrier != "void") {
                 sb.append("return (${m.returnType.carrier}) ")
             }
             sb.append("Handles.MH_${m.entrypoint}.invokeExact(handles.PFN_${m.entrypoint}")

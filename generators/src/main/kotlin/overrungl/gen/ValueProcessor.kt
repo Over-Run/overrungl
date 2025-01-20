@@ -16,8 +16,6 @@
 
 package overrungl.gen
 
-import com.palantir.javapoet.TypeName
-
 data class ProcessorContext(
     val allocatorName: String?,
     val builder: StringBuilder,
@@ -77,7 +75,7 @@ class ArrayValueProcessor(private val asType: String) : ValueProcessor {
     }
 }
 
-class StructProcessor(private val typeName: TypeName) : ValueProcessor {
+class StructProcessor(private val typeName: String) : ValueProcessor {
     override fun marshal(context: ProcessorContext) {
         val builder = context.builder
         builder.append("Marshal.marshal(")
@@ -97,7 +95,7 @@ class StructProcessor(private val typeName: TypeName) : ValueProcessor {
     }
 }
 
-class UpcallProcessor(private val typeName: TypeName) : ValueProcessor {
+class UpcallProcessor(private val typeName: String) : ValueProcessor {
     override fun marshal(context: ProcessorContext) {
         val builder = context.builder
         builder.append("Marshal.marshal(${context.allocatorName}, ")

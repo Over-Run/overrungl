@@ -71,7 +71,7 @@ public final class GLEXTFogCoord {
         catch (Throwable e) { throw new RuntimeException("error in glFogCoordfEXT", e); }
     }
 
-    public void FogCoordfvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment coord) {
+    public void FogCoordfvEXT(@CType("const GLfloat *") MemorySegment coord) {
         if (Unmarshal.isNullPointer(handles.PFN_glFogCoordfvEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoordfvEXT");
         try { Handles.MH_glFogCoordfvEXT.invokeExact(handles.PFN_glFogCoordfvEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in glFogCoordfvEXT", e); }
@@ -83,13 +83,13 @@ public final class GLEXTFogCoord {
         catch (Throwable e) { throw new RuntimeException("error in glFogCoorddEXT", e); }
     }
 
-    public void FogCoorddvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment coord) {
+    public void FogCoorddvEXT(@CType("const GLdouble *") MemorySegment coord) {
         if (Unmarshal.isNullPointer(handles.PFN_glFogCoorddvEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoorddvEXT");
         try { Handles.MH_glFogCoorddvEXT.invokeExact(handles.PFN_glFogCoorddvEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in glFogCoorddvEXT", e); }
     }
 
-    public void FogCoordPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void FogCoordPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glFogCoordPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoordPointerEXT");
         try { Handles.MH_glFogCoordPointerEXT.invokeExact(handles.PFN_glFogCoordPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glFogCoordPointerEXT", e); }

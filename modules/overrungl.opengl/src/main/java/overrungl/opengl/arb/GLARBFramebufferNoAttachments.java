@@ -60,7 +60,7 @@ public final class GLARBFramebufferNoAttachments {
         catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteri", e); }
     }
 
-    public void GetFramebufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetFramebufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
         try { Handles.MH_glGetFramebufferParameteriv.invokeExact(handles.PFN_glGetFramebufferParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameteriv", e); }

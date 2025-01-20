@@ -60,13 +60,13 @@ public final class GLAPPLEVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in glBindVertexArrayAPPLE", e); }
     }
 
-    public void DeleteVertexArraysAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment arrays) {
+    public void DeleteVertexArraysAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment arrays) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteVertexArraysAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArraysAPPLE");
         try { Handles.MH_glDeleteVertexArraysAPPLE.invokeExact(handles.PFN_glDeleteVertexArraysAPPLE, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArraysAPPLE", e); }
     }
 
-    public void GenVertexArraysAPPLE(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment arrays) {
+    public void GenVertexArraysAPPLE(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment arrays) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenVertexArraysAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGenVertexArraysAPPLE");
         try { Handles.MH_glGenVertexArraysAPPLE.invokeExact(handles.PFN_glGenVertexArraysAPPLE, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in glGenVertexArraysAPPLE", e); }

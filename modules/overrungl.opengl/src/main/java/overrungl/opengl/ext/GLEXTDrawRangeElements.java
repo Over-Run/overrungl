@@ -43,7 +43,7 @@ public final class GLEXTDrawRangeElements {
         this.handles = new Handles(func);
     }
 
-    public void DrawRangeElementsEXT(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices) {
+    public void DrawRangeElementsEXT(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");
         try { Handles.MH_glDrawRangeElementsEXT.invokeExact(handles.PFN_glDrawRangeElementsEXT, mode, start, end, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementsEXT", e); }

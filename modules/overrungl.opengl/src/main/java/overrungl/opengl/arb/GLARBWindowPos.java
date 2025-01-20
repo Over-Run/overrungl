@@ -107,7 +107,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dARB", e); }
     }
 
-    public void WindowPos2dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2dvARB(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvARB");
         try { Handles.MH_glWindowPos2dvARB.invokeExact(handles.PFN_glWindowPos2dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dvARB", e); }
@@ -119,7 +119,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fARB", e); }
     }
 
-    public void WindowPos2fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2fvARB(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvARB");
         try { Handles.MH_glWindowPos2fvARB.invokeExact(handles.PFN_glWindowPos2fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fvARB", e); }
@@ -131,7 +131,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2iARB", e); }
     }
 
-    public void WindowPos2ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2ivARB(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivARB");
         try { Handles.MH_glWindowPos2ivARB.invokeExact(handles.PFN_glWindowPos2ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2ivARB", e); }
@@ -143,7 +143,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2sARB", e); }
     }
 
-    public void WindowPos2svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2svARB(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2svARB");
         try { Handles.MH_glWindowPos2svARB.invokeExact(handles.PFN_glWindowPos2svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2svARB", e); }
@@ -155,7 +155,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dARB", e); }
     }
 
-    public void WindowPos3dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3dvARB(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvARB");
         try { Handles.MH_glWindowPos3dvARB.invokeExact(handles.PFN_glWindowPos3dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dvARB", e); }
@@ -167,7 +167,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fARB", e); }
     }
 
-    public void WindowPos3fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3fvARB(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvARB");
         try { Handles.MH_glWindowPos3fvARB.invokeExact(handles.PFN_glWindowPos3fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fvARB", e); }
@@ -179,7 +179,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3iARB", e); }
     }
 
-    public void WindowPos3ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3ivARB(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivARB");
         try { Handles.MH_glWindowPos3ivARB.invokeExact(handles.PFN_glWindowPos3ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3ivARB", e); }
@@ -191,7 +191,7 @@ public final class GLARBWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3sARB", e); }
     }
 
-    public void WindowPos3svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3svARB(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3svARB");
         try { Handles.MH_glWindowPos3svARB.invokeExact(handles.PFN_glWindowPos3svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3svARB", e); }

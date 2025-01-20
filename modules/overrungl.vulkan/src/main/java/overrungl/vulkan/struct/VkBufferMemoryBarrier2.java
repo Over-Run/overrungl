@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### srcStageMask
 /// [VarHandle][#VH_srcStageMask] - [Getter][#srcStageMask()] - [Setter][#srcStageMask(long)]
 /// ### srcAccessMask
@@ -42,7 +42,7 @@ import overrungl.util.*;
 /// ### dstQueueFamilyIndex
 /// [VarHandle][#VH_dstQueueFamilyIndex] - [Getter][#dstQueueFamilyIndex()] - [Setter][#dstQueueFamilyIndex(int)]
 /// ### buffer
-/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(MemorySegment)]
 /// ### offset
 /// [VarHandle][#VH_offset] - [Getter][#offset()] - [Setter][#offset(long)]
 /// ### size
@@ -81,7 +81,7 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `srcStageMask` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_srcStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask"));
@@ -95,7 +95,7 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
     public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
     /// The [VarHandle] of `dstQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
@@ -145,7 +145,7 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
     /// Allocates a `VkBufferMemoryBarrier2` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferMemoryBarrier2`
-    public static VkBufferMemoryBarrier2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineStageFlags2") long srcStageMask, @CType("VkAccessFlags2") long srcAccessMask, @CType("VkPipelineStageFlags2") long dstStageMask, @CType("VkAccessFlags2") long dstAccessMask, @CType("uint32_t") int srcQueueFamilyIndex, @CType("uint32_t") int dstQueueFamilyIndex, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long size) { return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask).srcAccessMask(srcAccessMask).dstStageMask(dstStageMask).dstAccessMask(dstAccessMask).srcQueueFamilyIndex(srcQueueFamilyIndex).dstQueueFamilyIndex(dstQueueFamilyIndex).buffer(buffer).offset(offset).size(size); }
+    public static VkBufferMemoryBarrier2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineStageFlags2") long srcStageMask, @CType("VkAccessFlags2") long srcAccessMask, @CType("VkPipelineStageFlags2") long dstStageMask, @CType("VkAccessFlags2") long dstAccessMask, @CType("uint32_t") int srcQueueFamilyIndex, @CType("uint32_t") int dstQueueFamilyIndex, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long size) { return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask).srcAccessMask(srcAccessMask).dstStageMask(dstStageMask).dstAccessMask(dstAccessMask).srcQueueFamilyIndex(srcQueueFamilyIndex).dstQueueFamilyIndex(dstQueueFamilyIndex).buffer(buffer).offset(offset).size(size); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -182,25 +182,25 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferMemoryBarrier2.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBufferMemoryBarrier2.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferMemoryBarrier2.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkBufferMemoryBarrier2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferMemoryBarrier2 pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(this.segment(), value); return this; }
+    public VkBufferMemoryBarrier2 pNext(@CType("const void *") MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(this.segment(), value); return this; }
 
     /// {@return `srcStageMask` at the given index}
     /// @param segment the segment of the struct
@@ -343,25 +343,25 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_buffer.get(segment, 0L, index); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_buffer.get(segment, 0L, index); }
     /// {@return `buffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkBufferMemoryBarrier2.get_buffer(segment, 0L); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment) { return VkBufferMemoryBarrier2.get_buffer(segment, 0L); }
     /// {@return `buffer`}
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkBufferMemoryBarrier2.get_buffer(this.segment()); }
+    public @CType("VkBuffer") MemorySegment buffer() { return VkBufferMemoryBarrier2.get_buffer(this.segment()); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
+    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(segment, 0L, value); }
+    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(segment, 0L, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferMemoryBarrier2 buffer(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(this.segment(), value); return this; }
+    public VkBufferMemoryBarrier2 buffer(@CType("VkBuffer") MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(this.segment(), value); return this; }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
@@ -442,12 +442,12 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferMemoryBarrier2.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBufferMemoryBarrier2.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBufferMemoryBarrier2.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `srcStageMask` at the given index}
         /// @param index the index
@@ -505,12 +505,12 @@ public sealed class VkBufferMemoryBarrier2 extends Struct {
 
         /// {@return `buffer` at the given index}
         /// @param index the index
-        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkBufferMemoryBarrier2.get_buffer(this.segment(), index); }
+        public @CType("VkBuffer") MemorySegment bufferAt(long index) { return VkBufferMemoryBarrier2.get_buffer(this.segment(), index); }
         /// Sets `buffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(this.segment(), index, value); return this; }
+        public Buffer bufferAt(long index, @CType("VkBuffer") MemorySegment value) { VkBufferMemoryBarrier2.set_buffer(this.segment(), index, value); return this; }
 
         /// {@return `offset` at the given index}
         /// @param index the index

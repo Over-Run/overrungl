@@ -30,7 +30,7 @@ import overrungl.util.*;
 /// ### height
 /// [VarHandle][#VH_height] - [Getter][#height()] - [Setter][#height(int)]
 /// ### pixels
-/// [VarHandle][#VH_pixels] - [Getter][#pixels()] - [Setter][#pixels(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pixels] - [Getter][#pixels()] - [Setter][#pixels(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -51,7 +51,7 @@ public sealed class GLFWImage extends Struct {
     public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
     /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
-    /// The [VarHandle] of `pixels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pixels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels"));
 
     /// Creates `GLFWImage` with the given segment.
@@ -97,7 +97,7 @@ public sealed class GLFWImage extends Struct {
     /// Allocates a `GLFWImage` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWImage`
-    public static GLFWImage allocInit(SegmentAllocator allocator, @CType("int") int width, @CType("int") int height, @CType("unsigned char*") java.lang.foreign.MemorySegment pixels) { return alloc(allocator).width(width).height(height).pixels(pixels); }
+    public static GLFWImage allocInit(SegmentAllocator allocator, @CType("int") int width, @CType("int") int height, @CType("unsigned char*") MemorySegment pixels) { return alloc(allocator).width(width).height(height).pixels(pixels); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -157,25 +157,25 @@ public sealed class GLFWImage extends Struct {
     /// {@return `pixels` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("unsigned char*") java.lang.foreign.MemorySegment get_pixels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pixels.get(segment, 0L, index); }
+    public static @CType("unsigned char*") MemorySegment get_pixels(MemorySegment segment, long index) { return (MemorySegment) VH_pixels.get(segment, 0L, index); }
     /// {@return `pixels`}
     /// @param segment the segment of the struct
-    public static @CType("unsigned char*") java.lang.foreign.MemorySegment get_pixels(MemorySegment segment) { return GLFWImage.get_pixels(segment, 0L); }
+    public static @CType("unsigned char*") MemorySegment get_pixels(MemorySegment segment) { return GLFWImage.get_pixels(segment, 0L); }
     /// {@return `pixels`}
-    public @CType("unsigned char*") java.lang.foreign.MemorySegment pixels() { return GLFWImage.get_pixels(this.segment()); }
+    public @CType("unsigned char*") MemorySegment pixels() { return GLFWImage.get_pixels(this.segment()); }
     /// Sets `pixels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pixels(MemorySegment segment, long index, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { VH_pixels.set(segment, 0L, index, value); }
+    public static void set_pixels(MemorySegment segment, long index, @CType("unsigned char*") MemorySegment value) { VH_pixels.set(segment, 0L, index, value); }
     /// Sets `pixels` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pixels(MemorySegment segment, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(segment, 0L, value); }
+    public static void set_pixels(MemorySegment segment, @CType("unsigned char*") MemorySegment value) { GLFWImage.set_pixels(segment, 0L, value); }
     /// Sets `pixels` with the given value.
     /// @param value the value
     /// @return `this`
-    public GLFWImage pixels(@CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(this.segment(), value); return this; }
+    public GLFWImage pixels(@CType("unsigned char*") MemorySegment value) { GLFWImage.set_pixels(this.segment(), value); return this; }
 
     /// A buffer of [GLFWImage].
     public static final class Buffer extends GLFWImage {
@@ -219,12 +219,12 @@ public sealed class GLFWImage extends Struct {
 
         /// {@return `pixels` at the given index}
         /// @param index the index
-        public @CType("unsigned char*") java.lang.foreign.MemorySegment pixelsAt(long index) { return GLFWImage.get_pixels(this.segment(), index); }
+        public @CType("unsigned char*") MemorySegment pixelsAt(long index) { return GLFWImage.get_pixels(this.segment(), index); }
         /// Sets `pixels` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pixelsAt(long index, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(this.segment(), index, value); return this; }
+        public Buffer pixelsAt(long index, @CType("unsigned char*") MemorySegment value) { GLFWImage.set_pixels(this.segment(), index, value); return this; }
 
     }
 }

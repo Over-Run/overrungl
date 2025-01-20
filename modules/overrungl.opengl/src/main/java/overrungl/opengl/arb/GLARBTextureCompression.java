@@ -76,43 +76,43 @@ public final class GLARBTextureCompression {
         this.handles = new Handles(func);
     }
 
-    public void CompressedTexImage3DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexImage3DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage3DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage3DARB");
         try { Handles.MH_glCompressedTexImage3DARB.invokeExact(handles.PFN_glCompressedTexImage3DARB, target, level, internalformat, width, height, depth, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage3DARB", e); }
     }
 
-    public void CompressedTexImage2DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexImage2DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage2DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage2DARB");
         try { Handles.MH_glCompressedTexImage2DARB.invokeExact(handles.PFN_glCompressedTexImage2DARB, target, level, internalformat, width, height, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage2DARB", e); }
     }
 
-    public void CompressedTexImage1DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexImage1DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexImage1DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage1DARB");
         try { Handles.MH_glCompressedTexImage1DARB.invokeExact(handles.PFN_glCompressedTexImage1DARB, target, level, internalformat, width, border, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage1DARB", e); }
     }
 
-    public void CompressedTexSubImage3DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexSubImage3DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage3DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage3DARB");
         try { Handles.MH_glCompressedTexSubImage3DARB.invokeExact(handles.PFN_glCompressedTexSubImage3DARB, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage3DARB", e); }
     }
 
-    public void CompressedTexSubImage2DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexSubImage2DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage2DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage2DARB");
         try { Handles.MH_glCompressedTexSubImage2DARB.invokeExact(handles.PFN_glCompressedTexSubImage2DARB, target, level, xoffset, yoffset, width, height, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage2DARB", e); }
     }
 
-    public void CompressedTexSubImage1DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void CompressedTexSubImage1DARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompressedTexSubImage1DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage1DARB");
         try { Handles.MH_glCompressedTexSubImage1DARB.invokeExact(handles.PFN_glCompressedTexSubImage1DARB, target, level, xoffset, width, format, imageSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage1DARB", e); }
     }
 
-    public void GetCompressedTexImageARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("void*") java.lang.foreign.MemorySegment img) {
+    public void GetCompressedTexImageARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("void*") MemorySegment img) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetCompressedTexImageARB)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTexImageARB");
         try { Handles.MH_glGetCompressedTexImageARB.invokeExact(handles.PFN_glGetCompressedTexImageARB, target, level, img); }
         catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTexImageARB", e); }

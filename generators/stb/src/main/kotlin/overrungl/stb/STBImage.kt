@@ -16,7 +16,6 @@
 
 package overrungl.stb
 
-import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
 val stbi_uc = char c "stbi_uc"
@@ -48,8 +47,8 @@ fun STBImage() {
         interfaceMethod = "invoke"(jboolean, void_ptr("user"))
         targetMethod = "invoke_"(
             CustomTypeSpec(
-                carrier = TypeName.INT,
-                javaType = TypeName.BOOLEAN,
+                carrier = "int",
+                javaType = "boolean",
                 processor = object : ValueProcessor {
                     override fun marshal(context: ProcessorContext) {
                         val builder = context.builder

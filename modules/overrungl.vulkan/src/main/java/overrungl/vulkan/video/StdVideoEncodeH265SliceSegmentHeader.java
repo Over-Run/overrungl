@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### slice_type
 /// [VarHandle][#VH_slice_type] - [Getter][#slice_type()] - [Setter][#slice_type(int)]
 /// ### slice_segment_address
@@ -54,7 +54,7 @@ import overrungl.util.*;
 /// ### reserved1
 /// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(short)]
 /// ### pWeightTable
-/// [VarHandle][#VH_pWeightTable] - [Getter][#pWeightTable()] - [Setter][#pWeightTable(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pWeightTable] - [Getter][#pWeightTable()] - [Setter][#pWeightTable(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -95,7 +95,7 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
         ValueLayout.JAVA_SHORT.withName("reserved1"),
         ValueLayout.ADDRESS.withName("pWeightTable")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `slice_type` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_slice_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type"));
@@ -123,7 +123,7 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     public static final VarHandle VH_slice_qp_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta"));
     /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)short`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
-    /// The [VarHandle] of `pWeightTable` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pWeightTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWeightTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable"));
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
@@ -169,7 +169,7 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// Allocates a `StdVideoEncodeH265SliceSegmentHeader` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH265SliceSegmentHeader`
-    public static StdVideoEncodeH265SliceSegmentHeader allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoH265SliceType") int slice_type, @CType("uint32_t") int slice_segment_address, @CType("uint8_t") byte collocated_ref_idx, @CType("uint8_t") byte MaxNumMergeCand, @CType("int8_t") byte slice_cb_qp_offset, @CType("int8_t") byte slice_cr_qp_offset, @CType("int8_t") byte slice_beta_offset_div2, @CType("int8_t") byte slice_tc_offset_div2, @CType("int8_t") byte slice_act_y_qp_offset, @CType("int8_t") byte slice_act_cb_qp_offset, @CType("int8_t") byte slice_act_cr_qp_offset, @CType("int8_t") byte slice_qp_delta, @CType("uint16_t") short reserved1, @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment pWeightTable) { return alloc(allocator).flags(flags).slice_type(slice_type).slice_segment_address(slice_segment_address).collocated_ref_idx(collocated_ref_idx).MaxNumMergeCand(MaxNumMergeCand).slice_cb_qp_offset(slice_cb_qp_offset).slice_cr_qp_offset(slice_cr_qp_offset).slice_beta_offset_div2(slice_beta_offset_div2).slice_tc_offset_div2(slice_tc_offset_div2).slice_act_y_qp_offset(slice_act_y_qp_offset).slice_act_cb_qp_offset(slice_act_cb_qp_offset).slice_act_cr_qp_offset(slice_act_cr_qp_offset).slice_qp_delta(slice_qp_delta).reserved1(reserved1).pWeightTable(pWeightTable); }
+    public static StdVideoEncodeH265SliceSegmentHeader allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flags, @CType("StdVideoH265SliceType") int slice_type, @CType("uint32_t") int slice_segment_address, @CType("uint8_t") byte collocated_ref_idx, @CType("uint8_t") byte MaxNumMergeCand, @CType("int8_t") byte slice_cb_qp_offset, @CType("int8_t") byte slice_cr_qp_offset, @CType("int8_t") byte slice_beta_offset_div2, @CType("int8_t") byte slice_tc_offset_div2, @CType("int8_t") byte slice_act_y_qp_offset, @CType("int8_t") byte slice_act_cb_qp_offset, @CType("int8_t") byte slice_act_cr_qp_offset, @CType("int8_t") byte slice_qp_delta, @CType("uint16_t") short reserved1, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTable) { return alloc(allocator).flags(flags).slice_type(slice_type).slice_segment_address(slice_segment_address).collocated_ref_idx(collocated_ref_idx).MaxNumMergeCand(MaxNumMergeCand).slice_cb_qp_offset(slice_cb_qp_offset).slice_cr_qp_offset(slice_cr_qp_offset).slice_beta_offset_div2(slice_beta_offset_div2).slice_tc_offset_div2(slice_tc_offset_div2).slice_act_y_qp_offset(slice_act_y_qp_offset).slice_act_cb_qp_offset(slice_act_cb_qp_offset).slice_act_cr_qp_offset(slice_act_cr_qp_offset).slice_qp_delta(slice_qp_delta).reserved1(reserved1).pWeightTable(pWeightTable); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -183,25 +183,25 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(segment, 0L); }
+    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment()); }
+    public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flags() { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader flags(@CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader flags(@CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), value); return this; }
 
     /// {@return `slice_type` at the given index}
     /// @param segment the segment of the struct
@@ -505,25 +505,25 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// {@return `pWeightTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment get_pWeightTable(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
+    public static @CType("const StdVideoEncodeH265WeightTable *") MemorySegment get_pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
     /// {@return `pWeightTable`}
     /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment get_pWeightTable(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(segment, 0L); }
+    public static @CType("const StdVideoEncodeH265WeightTable *") MemorySegment get_pWeightTable(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(segment, 0L); }
     /// {@return `pWeightTable`}
-    public @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment pWeightTable() { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment()); }
+    public @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTable() { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment()); }
     /// Sets `pWeightTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pWeightTable(MemorySegment segment, long index, @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
+    public static void set_pWeightTable(MemorySegment segment, long index, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
     /// Sets `pWeightTable` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pWeightTable(MemorySegment segment, @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(segment, 0L, value); }
+    public static void set_pWeightTable(MemorySegment segment, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(segment, 0L, value); }
     /// Sets `pWeightTable` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader pWeightTable(@CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader pWeightTable(@CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), value); return this; }
 
     /// A buffer of [StdVideoEncodeH265SliceSegmentHeader].
     public static final class Buffer extends StdVideoEncodeH265SliceSegmentHeader {
@@ -549,12 +549,12 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment(), index); }
+        public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `slice_type` at the given index}
         /// @param index the index
@@ -675,12 +675,12 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
 
         /// {@return `pWeightTable` at the given index}
         /// @param index the index
-        public @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment pWeightTableAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment(), index); }
+        public @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTableAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment(), index); }
         /// Sets `pWeightTable` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pWeightTableAt(long index, @CType("const StdVideoEncodeH265WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), index, value); return this; }
+        public Buffer pWeightTableAt(long index, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), index, value); return this; }
 
     }
 }

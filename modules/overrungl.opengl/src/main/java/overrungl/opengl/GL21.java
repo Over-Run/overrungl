@@ -78,37 +78,37 @@ public class GL21 extends GL20 {
         this.handles = new Handles(func);
     }
 
-    public void UniformMatrix2x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix2x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix2x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x3fv");
         try { Handles.MH_glUniformMatrix2x3fv.invokeExact(handles.PFN_glUniformMatrix2x3fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2x3fv", e); }
     }
 
-    public void UniformMatrix3x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix3x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix3x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x2fv");
         try { Handles.MH_glUniformMatrix3x2fv.invokeExact(handles.PFN_glUniformMatrix3x2fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3x2fv", e); }
     }
 
-    public void UniformMatrix2x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix2x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix2x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x4fv");
         try { Handles.MH_glUniformMatrix2x4fv.invokeExact(handles.PFN_glUniformMatrix2x4fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2x4fv", e); }
     }
 
-    public void UniformMatrix4x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix4x2fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix4x2fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x2fv");
         try { Handles.MH_glUniformMatrix4x2fv.invokeExact(handles.PFN_glUniformMatrix4x2fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4x2fv", e); }
     }
 
-    public void UniformMatrix3x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix3x4fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix3x4fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x4fv");
         try { Handles.MH_glUniformMatrix3x4fv.invokeExact(handles.PFN_glUniformMatrix3x4fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3x4fv", e); }
     }
 
-    public void UniformMatrix4x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void UniformMatrix4x3fv(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformMatrix4x3fv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x3fv");
         try { Handles.MH_glUniformMatrix4x3fv.invokeExact(handles.PFN_glUniformMatrix4x3fv, location, count, transpose, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4x3fv", e); }

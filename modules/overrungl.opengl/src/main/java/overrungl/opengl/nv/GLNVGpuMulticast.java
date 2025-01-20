@@ -96,7 +96,7 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glRenderGpuMaskNV", e); }
     }
 
-    public void MulticastBufferSubDataNV(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void MulticastBufferSubDataNV(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastBufferSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastBufferSubDataNV");
         try { Handles.MH_glMulticastBufferSubDataNV.invokeExact(handles.PFN_glMulticastBufferSubDataNV, gpuMask, buffer, offset, size, data); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastBufferSubDataNV", e); }
@@ -120,7 +120,7 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glMulticastBlitFramebufferNV", e); }
     }
 
-    public void MulticastFramebufferSampleLocationsfvNV(@CType("GLuint") int gpu, @CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void MulticastFramebufferSampleLocationsfvNV(@CType("GLuint") int gpu, @CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastFramebufferSampleLocationsfvNV");
         try { Handles.MH_glMulticastFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glMulticastFramebufferSampleLocationsfvNV, gpu, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastFramebufferSampleLocationsfvNV", e); }
@@ -138,25 +138,25 @@ public final class GLNVGpuMulticast {
         catch (Throwable e) { throw new RuntimeException("error in glMulticastWaitSyncNV", e); }
     }
 
-    public void MulticastGetQueryObjectivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectivNV");
         try { Handles.MH_glMulticastGetQueryObjectivNV.invokeExact(handles.PFN_glMulticastGetQueryObjectivNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectivNV", e); }
     }
 
-    public void MulticastGetQueryObjectuivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectuivNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectuivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectuivNV");
         try { Handles.MH_glMulticastGetQueryObjectuivNV.invokeExact(handles.PFN_glMulticastGetQueryObjectuivNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectuivNV", e); }
     }
 
-    public void MulticastGetQueryObjecti64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjecti64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjecti64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjecti64vNV");
         try { Handles.MH_glMulticastGetQueryObjecti64vNV.invokeExact(handles.PFN_glMulticastGetQueryObjecti64vNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjecti64vNV", e); }
     }
 
-    public void MulticastGetQueryObjectui64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
+    public void MulticastGetQueryObjectui64vNV(@CType("GLuint") int gpu, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMulticastGetQueryObjectui64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectui64vNV");
         try { Handles.MH_glMulticastGetQueryObjectui64vNV.invokeExact(handles.PFN_glMulticastGetQueryObjectui64vNV, gpu, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMulticastGetQueryObjectui64vNV", e); }

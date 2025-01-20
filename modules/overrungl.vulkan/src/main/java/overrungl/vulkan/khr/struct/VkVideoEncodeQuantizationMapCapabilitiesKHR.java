@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### maxQuantizationMapExtent
-/// [Byte offset][#OFFSET_maxQuantizationMapExtent] - [Memory layout][#ML_maxQuantizationMapExtent] - [Getter][#maxQuantizationMapExtent()] - [Setter][#maxQuantizationMapExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxQuantizationMapExtent] - [Memory layout][#ML_maxQuantizationMapExtent] - [Getter][#maxQuantizationMapExtent()] - [Setter][#maxQuantizationMapExtent(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,7 +49,7 @@ public sealed class VkVideoEncodeQuantizationMapCapabilitiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `maxQuantizationMapExtent`.
     public static final long OFFSET_maxQuantizationMapExtent = LAYOUT.byteOffset(PathElement.groupElement("maxQuantizationMapExtent"));
@@ -99,7 +99,7 @@ public sealed class VkVideoEncodeQuantizationMapCapabilitiesKHR extends Struct {
     /// Allocates a `VkVideoEncodeQuantizationMapCapabilitiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeQuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeQuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxQuantizationMapExtent) { return alloc(allocator).sType(sType).pNext(pNext).maxQuantizationMapExtent(maxQuantizationMapExtent); }
+    public static VkVideoEncodeQuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkExtent2D") MemorySegment maxQuantizationMapExtent) { return alloc(allocator).sType(sType).pNext(pNext).maxQuantizationMapExtent(maxQuantizationMapExtent); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -136,48 +136,48 @@ public sealed class VkVideoEncodeQuantizationMapCapabilitiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeQuantizationMapCapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeQuantizationMapCapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `maxQuantizationMapExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxQuantizationMapExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxQuantizationMapExtent, index), ML_maxQuantizationMapExtent); }
+    public static @CType("VkExtent2D") MemorySegment get_maxQuantizationMapExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxQuantizationMapExtent, index), ML_maxQuantizationMapExtent); }
     /// {@return `maxQuantizationMapExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxQuantizationMapExtent(MemorySegment segment) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxQuantizationMapExtent(MemorySegment segment) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(segment, 0L); }
     /// {@return `maxQuantizationMapExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxQuantizationMapExtent() { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxQuantizationMapExtent() { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(this.segment()); }
     /// Sets `maxQuantizationMapExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxQuantizationMapExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxQuantizationMapExtent, index), ML_maxQuantizationMapExtent.byteSize()); }
+    public static void set_maxQuantizationMapExtent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxQuantizationMapExtent, index), ML_maxQuantizationMapExtent.byteSize()); }
     /// Sets `maxQuantizationMapExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxQuantizationMapExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(segment, 0L, value); }
+    public static void set_maxQuantizationMapExtent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(segment, 0L, value); }
     /// Sets `maxQuantizationMapExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeQuantizationMapCapabilitiesKHR maxQuantizationMapExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(this.segment(), value); return this; }
+    public VkVideoEncodeQuantizationMapCapabilitiesKHR maxQuantizationMapExtent(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoEncodeQuantizationMapCapabilitiesKHR].
     public static final class Buffer extends VkVideoEncodeQuantizationMapCapabilitiesKHR {
@@ -212,21 +212,21 @@ public sealed class VkVideoEncodeQuantizationMapCapabilitiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxQuantizationMapExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxQuantizationMapExtentAt(long index) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxQuantizationMapExtentAt(long index) { return VkVideoEncodeQuantizationMapCapabilitiesKHR.get_maxQuantizationMapExtent(this.segment(), index); }
         /// Sets `maxQuantizationMapExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxQuantizationMapExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(this.segment(), index, value); return this; }
+        public Buffer maxQuantizationMapExtentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeQuantizationMapCapabilitiesKHR.set_maxQuantizationMapExtent(this.segment(), index, value); return this; }
 
     }
 }

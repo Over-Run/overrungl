@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### base_q_idx
 /// [VarHandle][#VH_base_q_idx] - [Getter][#base_q_idx()] - [Setter][#base_q_idx(byte)]
 /// ### DeltaQYDc
@@ -75,7 +75,7 @@ public sealed class StdVideoAV1Quantization extends Struct {
         ValueLayout.JAVA_BYTE.withName("qm_u"),
         ValueLayout.JAVA_BYTE.withName("qm_v")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `base_q_idx` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_base_q_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("base_q_idx"));
@@ -139,7 +139,7 @@ public sealed class StdVideoAV1Quantization extends Struct {
     /// Allocates a `StdVideoAV1Quantization` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1Quantization`
-    public static StdVideoAV1Quantization allocInit(SegmentAllocator allocator, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte base_q_idx, @CType("int8_t") byte DeltaQYDc, @CType("int8_t") byte DeltaQUDc, @CType("int8_t") byte DeltaQUAc, @CType("int8_t") byte DeltaQVDc, @CType("int8_t") byte DeltaQVAc, @CType("uint8_t") byte qm_y, @CType("uint8_t") byte qm_u, @CType("uint8_t") byte qm_v) { return alloc(allocator).flags(flags).base_q_idx(base_q_idx).DeltaQYDc(DeltaQYDc).DeltaQUDc(DeltaQUDc).DeltaQUAc(DeltaQUAc).DeltaQVDc(DeltaQVDc).DeltaQVAc(DeltaQVAc).qm_y(qm_y).qm_u(qm_u).qm_v(qm_v); }
+    public static StdVideoAV1Quantization allocInit(SegmentAllocator allocator, @CType("StdVideoAV1QuantizationFlags") MemorySegment flags, @CType("uint8_t") byte base_q_idx, @CType("int8_t") byte DeltaQYDc, @CType("int8_t") byte DeltaQUDc, @CType("int8_t") byte DeltaQUAc, @CType("int8_t") byte DeltaQVDc, @CType("int8_t") byte DeltaQVAc, @CType("uint8_t") byte qm_y, @CType("uint8_t") byte qm_u, @CType("uint8_t") byte qm_v) { return alloc(allocator).flags(flags).base_q_idx(base_q_idx).DeltaQYDc(DeltaQYDc).DeltaQUDc(DeltaQUDc).DeltaQUAc(DeltaQUAc).DeltaQVDc(DeltaQVDc).DeltaQVAc(DeltaQVAc).qm_y(qm_y).qm_u(qm_u).qm_v(qm_v); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -153,25 +153,25 @@ public sealed class StdVideoAV1Quantization extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1QuantizationFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1Quantization.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1QuantizationFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1Quantization.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1Quantization.get_flags(this.segment()); }
+    public @CType("StdVideoAV1QuantizationFlags") MemorySegment flags() { return StdVideoAV1Quantization.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1QuantizationFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1QuantizationFlags") MemorySegment value) { StdVideoAV1Quantization.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1Quantization flags(@CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1Quantization flags(@CType("StdVideoAV1QuantizationFlags") MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), value); return this; }
 
     /// {@return `base_q_idx` at the given index}
     /// @param segment the segment of the struct
@@ -404,12 +404,12 @@ public sealed class StdVideoAV1Quantization extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1Quantization.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1QuantizationFlags") MemorySegment flagsAt(long index) { return StdVideoAV1Quantization.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1QuantizationFlags") MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `base_q_idx` at the given index}
         /// @param index the index

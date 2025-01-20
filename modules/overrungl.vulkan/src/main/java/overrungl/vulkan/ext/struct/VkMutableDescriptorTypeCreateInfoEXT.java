@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### mutableDescriptorTypeListCount
 /// [VarHandle][#VH_mutableDescriptorTypeListCount] - [Getter][#mutableDescriptorTypeListCount()] - [Setter][#mutableDescriptorTypeListCount(int)]
 /// ### pMutableDescriptorTypeLists
-/// [VarHandle][#VH_pMutableDescriptorTypeLists] - [Getter][#pMutableDescriptorTypeLists()] - [Setter][#pMutableDescriptorTypeLists(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pMutableDescriptorTypeLists] - [Getter][#pMutableDescriptorTypeLists()] - [Setter][#pMutableDescriptorTypeLists(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `mutableDescriptorTypeListCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_mutableDescriptorTypeListCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mutableDescriptorTypeListCount"));
-    /// The [VarHandle] of `pMutableDescriptorTypeLists` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pMutableDescriptorTypeLists` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMutableDescriptorTypeLists = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMutableDescriptorTypeLists"));
 
     /// Creates `VkMutableDescriptorTypeCreateInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
     /// Allocates a `VkMutableDescriptorTypeCreateInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
-    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int mutableDescriptorTypeListCount, @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment pMutableDescriptorTypeLists) { return alloc(allocator).sType(sType).pNext(pNext).mutableDescriptorTypeListCount(mutableDescriptorTypeListCount).pMutableDescriptorTypeLists(pMutableDescriptorTypeLists); }
+    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int mutableDescriptorTypeListCount, @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment pMutableDescriptorTypeLists) { return alloc(allocator).sType(sType).pNext(pNext).mutableDescriptorTypeListCount(mutableDescriptorTypeListCount).pMutableDescriptorTypeLists(pMutableDescriptorTypeLists); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkMutableDescriptorTypeCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `mutableDescriptorTypeListCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
     /// {@return `pMutableDescriptorTypeLists` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment get_pMutableDescriptorTypeLists(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pMutableDescriptorTypeLists.get(segment, 0L, index); }
+    public static @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment get_pMutableDescriptorTypeLists(MemorySegment segment, long index) { return (MemorySegment) VH_pMutableDescriptorTypeLists.get(segment, 0L, index); }
     /// {@return `pMutableDescriptorTypeLists`}
     /// @param segment the segment of the struct
-    public static @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment get_pMutableDescriptorTypeLists(MemorySegment segment) { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(segment, 0L); }
+    public static @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment get_pMutableDescriptorTypeLists(MemorySegment segment) { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(segment, 0L); }
     /// {@return `pMutableDescriptorTypeLists`}
-    public @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment pMutableDescriptorTypeLists() { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(this.segment()); }
+    public @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment pMutableDescriptorTypeLists() { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(this.segment()); }
     /// Sets `pMutableDescriptorTypeLists` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pMutableDescriptorTypeLists(MemorySegment segment, long index, @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment value) { VH_pMutableDescriptorTypeLists.set(segment, 0L, index, value); }
+    public static void set_pMutableDescriptorTypeLists(MemorySegment segment, long index, @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment value) { VH_pMutableDescriptorTypeLists.set(segment, 0L, index, value); }
     /// Sets `pMutableDescriptorTypeLists` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pMutableDescriptorTypeLists(MemorySegment segment, @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(segment, 0L, value); }
+    public static void set_pMutableDescriptorTypeLists(MemorySegment segment, @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(segment, 0L, value); }
     /// Sets `pMutableDescriptorTypeLists` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMutableDescriptorTypeCreateInfoEXT pMutableDescriptorTypeLists(@CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(this.segment(), value); return this; }
+    public VkMutableDescriptorTypeCreateInfoEXT pMutableDescriptorTypeLists(@CType("const VkMutableDescriptorTypeListEXT *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(this.segment(), value); return this; }
 
     /// A buffer of [VkMutableDescriptorTypeCreateInfoEXT].
     public static final class Buffer extends VkMutableDescriptorTypeCreateInfoEXT {
@@ -239,12 +239,12 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkMutableDescriptorTypeCreateInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `mutableDescriptorTypeListCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
 
         /// {@return `pMutableDescriptorTypeLists` at the given index}
         /// @param index the index
-        public @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment pMutableDescriptorTypeListsAt(long index) { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(this.segment(), index); }
+        public @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment pMutableDescriptorTypeListsAt(long index) { return VkMutableDescriptorTypeCreateInfoEXT.get_pMutableDescriptorTypeLists(this.segment(), index); }
         /// Sets `pMutableDescriptorTypeLists` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pMutableDescriptorTypeListsAt(long index, @CType("const VkMutableDescriptorTypeListEXT *") java.lang.foreign.MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(this.segment(), index, value); return this; }
+        public Buffer pMutableDescriptorTypeListsAt(long index, @CType("const VkMutableDescriptorTypeListEXT *") MemorySegment value) { VkMutableDescriptorTypeCreateInfoEXT.set_pMutableDescriptorTypeLists(this.segment(), index, value); return this; }
 
     }
 }

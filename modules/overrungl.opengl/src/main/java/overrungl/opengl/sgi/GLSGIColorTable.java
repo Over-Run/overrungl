@@ -81,19 +81,19 @@ public final class GLSGIColorTable {
         this.handles = new Handles(func);
     }
 
-    public void ColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment table) {
+    public void ColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment table) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTableSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableSGI");
         try { Handles.MH_glColorTableSGI.invokeExact(handles.PFN_glColorTableSGI, target, internalformat, width, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTableSGI", e); }
     }
 
-    public void ColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTableParameterfvSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameterfvSGI");
         try { Handles.MH_glColorTableParameterfvSGI.invokeExact(handles.PFN_glColorTableParameterfvSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterfvSGI", e); }
     }
 
-    public void ColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void ColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTableParameterivSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameterivSGI");
         try { Handles.MH_glColorTableParameterivSGI.invokeExact(handles.PFN_glColorTableParameterivSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterivSGI", e); }
@@ -105,19 +105,19 @@ public final class GLSGIColorTable {
         catch (Throwable e) { throw new RuntimeException("error in glCopyColorTableSGI", e); }
     }
 
-    public void GetColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment table) {
+    public void GetColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment table) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTableSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableSGI");
         try { Handles.MH_glGetColorTableSGI.invokeExact(handles.PFN_glGetColorTableSGI, target, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTableSGI", e); }
     }
 
-    public void GetColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTableParameterfvSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvSGI");
         try { Handles.MH_glGetColorTableParameterfvSGI.invokeExact(handles.PFN_glGetColorTableParameterfvSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfvSGI", e); }
     }
 
-    public void GetColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTableParameterivSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivSGI");
         try { Handles.MH_glGetColorTableParameterivSGI.invokeExact(handles.PFN_glGetColorTableParameterivSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterivSGI", e); }

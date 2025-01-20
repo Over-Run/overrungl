@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### indirectExecutionSet
-/// [VarHandle][#VH_indirectExecutionSet] - [Getter][#indirectExecutionSet()] - [Setter][#indirectExecutionSet(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_indirectExecutionSet] - [Getter][#indirectExecutionSet()] - [Setter][#indirectExecutionSet(MemorySegment)]
 /// ### indirectCommandsLayout
-/// [VarHandle][#VH_indirectCommandsLayout] - [Getter][#indirectCommandsLayout()] - [Setter][#indirectCommandsLayout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_indirectCommandsLayout] - [Getter][#indirectCommandsLayout()] - [Setter][#indirectCommandsLayout(MemorySegment)]
 /// ### maxSequenceCount
 /// [VarHandle][#VH_maxSequenceCount] - [Getter][#maxSequenceCount()] - [Setter][#maxSequenceCount(int)]
 /// ### maxDrawCount
@@ -61,11 +61,11 @@ public sealed class VkGeneratedCommandsMemoryRequirementsInfoEXT extends Struct 
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `indirectExecutionSet` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `indirectExecutionSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_indirectExecutionSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectExecutionSet"));
-    /// The [VarHandle] of `indirectCommandsLayout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `indirectCommandsLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_indirectCommandsLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectCommandsLayout"));
     /// The [VarHandle] of `maxSequenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxSequenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSequenceCount"));
@@ -115,7 +115,7 @@ public sealed class VkGeneratedCommandsMemoryRequirementsInfoEXT extends Struct 
     /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment indirectExecutionSet, @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment indirectCommandsLayout, @CType("uint32_t") int maxSequenceCount, @CType("uint32_t") int maxDrawCount) { return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet).indirectCommandsLayout(indirectCommandsLayout).maxSequenceCount(maxSequenceCount).maxDrawCount(maxDrawCount); }
+    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkIndirectExecutionSetEXT") MemorySegment indirectExecutionSet, @CType("VkIndirectCommandsLayoutEXT") MemorySegment indirectCommandsLayout, @CType("uint32_t") int maxSequenceCount, @CType("uint32_t") int maxDrawCount) { return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet).indirectCommandsLayout(indirectCommandsLayout).maxSequenceCount(maxSequenceCount).maxDrawCount(maxDrawCount); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -152,71 +152,71 @@ public sealed class VkGeneratedCommandsMemoryRequirementsInfoEXT extends Struct 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT pNext(@CType("const void *") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `indirectExecutionSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment get_indirectExecutionSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_indirectExecutionSet.get(segment, 0L, index); }
+    public static @CType("VkIndirectExecutionSetEXT") MemorySegment get_indirectExecutionSet(MemorySegment segment, long index) { return (MemorySegment) VH_indirectExecutionSet.get(segment, 0L, index); }
     /// {@return `indirectExecutionSet`}
     /// @param segment the segment of the struct
-    public static @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment get_indirectExecutionSet(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(segment, 0L); }
+    public static @CType("VkIndirectExecutionSetEXT") MemorySegment get_indirectExecutionSet(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(segment, 0L); }
     /// {@return `indirectExecutionSet`}
-    public @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment indirectExecutionSet() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(this.segment()); }
+    public @CType("VkIndirectExecutionSetEXT") MemorySegment indirectExecutionSet() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(this.segment()); }
     /// Sets `indirectExecutionSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_indirectExecutionSet(MemorySegment segment, long index, @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment value) { VH_indirectExecutionSet.set(segment, 0L, index, value); }
+    public static void set_indirectExecutionSet(MemorySegment segment, long index, @CType("VkIndirectExecutionSetEXT") MemorySegment value) { VH_indirectExecutionSet.set(segment, 0L, index, value); }
     /// Sets `indirectExecutionSet` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_indirectExecutionSet(MemorySegment segment, @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(segment, 0L, value); }
+    public static void set_indirectExecutionSet(MemorySegment segment, @CType("VkIndirectExecutionSetEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(segment, 0L, value); }
     /// Sets `indirectExecutionSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectExecutionSet(@CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(this.segment(), value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectExecutionSet(@CType("VkIndirectExecutionSetEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(this.segment(), value); return this; }
 
     /// {@return `indirectCommandsLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment get_indirectCommandsLayout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_indirectCommandsLayout.get(segment, 0L, index); }
+    public static @CType("VkIndirectCommandsLayoutEXT") MemorySegment get_indirectCommandsLayout(MemorySegment segment, long index) { return (MemorySegment) VH_indirectCommandsLayout.get(segment, 0L, index); }
     /// {@return `indirectCommandsLayout`}
     /// @param segment the segment of the struct
-    public static @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment get_indirectCommandsLayout(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(segment, 0L); }
+    public static @CType("VkIndirectCommandsLayoutEXT") MemorySegment get_indirectCommandsLayout(MemorySegment segment) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(segment, 0L); }
     /// {@return `indirectCommandsLayout`}
-    public @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment indirectCommandsLayout() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(this.segment()); }
+    public @CType("VkIndirectCommandsLayoutEXT") MemorySegment indirectCommandsLayout() { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(this.segment()); }
     /// Sets `indirectCommandsLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_indirectCommandsLayout(MemorySegment segment, long index, @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment value) { VH_indirectCommandsLayout.set(segment, 0L, index, value); }
+    public static void set_indirectCommandsLayout(MemorySegment segment, long index, @CType("VkIndirectCommandsLayoutEXT") MemorySegment value) { VH_indirectCommandsLayout.set(segment, 0L, index, value); }
     /// Sets `indirectCommandsLayout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_indirectCommandsLayout(MemorySegment segment, @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(segment, 0L, value); }
+    public static void set_indirectCommandsLayout(MemorySegment segment, @CType("VkIndirectCommandsLayoutEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(segment, 0L, value); }
     /// Sets `indirectCommandsLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectCommandsLayout(@CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(this.segment(), value); return this; }
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectCommandsLayout(@CType("VkIndirectCommandsLayoutEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(this.segment(), value); return this; }
 
     /// {@return `maxSequenceCount` at the given index}
     /// @param segment the segment of the struct
@@ -297,30 +297,30 @@ public sealed class VkGeneratedCommandsMemoryRequirementsInfoEXT extends Struct 
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `indirectExecutionSet` at the given index}
         /// @param index the index
-        public @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment indirectExecutionSetAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(this.segment(), index); }
+        public @CType("VkIndirectExecutionSetEXT") MemorySegment indirectExecutionSetAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectExecutionSet(this.segment(), index); }
         /// Sets `indirectExecutionSet` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer indirectExecutionSetAt(long index, @CType("VkIndirectExecutionSetEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(this.segment(), index, value); return this; }
+        public Buffer indirectExecutionSetAt(long index, @CType("VkIndirectExecutionSetEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectExecutionSet(this.segment(), index, value); return this; }
 
         /// {@return `indirectCommandsLayout` at the given index}
         /// @param index the index
-        public @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment indirectCommandsLayoutAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(this.segment(), index); }
+        public @CType("VkIndirectCommandsLayoutEXT") MemorySegment indirectCommandsLayoutAt(long index) { return VkGeneratedCommandsMemoryRequirementsInfoEXT.get_indirectCommandsLayout(this.segment(), index); }
         /// Sets `indirectCommandsLayout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer indirectCommandsLayoutAt(long index, @CType("VkIndirectCommandsLayoutEXT") java.lang.foreign.MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(this.segment(), index, value); return this; }
+        public Buffer indirectCommandsLayoutAt(long index, @CType("VkIndirectCommandsLayoutEXT") MemorySegment value) { VkGeneratedCommandsMemoryRequirementsInfoEXT.set_indirectCommandsLayout(this.segment(), index, value); return this; }
 
         /// {@return `maxSequenceCount` at the given index}
         /// @param index the index

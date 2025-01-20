@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
 /// ### stageFlags
 /// [VarHandle][#VH_stageFlags] - [Getter][#stageFlags()] - [Setter][#stageFlags(int)]
 /// ### offset
@@ -38,7 +38,7 @@ import overrungl.util.*;
 /// ### size
 /// [VarHandle][#VH_size] - [Getter][#size()] - [Setter][#size(int)]
 /// ### pValues
-/// [VarHandle][#VH_pValues] - [Getter][#pValues()] - [Setter][#pValues(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pValues] - [Getter][#pValues()] - [Setter][#pValues(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,9 +65,9 @@ public sealed class VkPushConstantsInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
     /// The [VarHandle] of `stageFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageFlags"));
@@ -75,7 +75,7 @@ public sealed class VkPushConstantsInfo extends Struct {
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
     /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
-    /// The [VarHandle] of `pValues` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pValues"));
 
     /// Creates `VkPushConstantsInfo` with the given segment.
@@ -121,7 +121,7 @@ public sealed class VkPushConstantsInfo extends Struct {
     /// Allocates a `VkPushConstantsInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPushConstantsInfo`
-    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("VkShaderStageFlags") int stageFlags, @CType("uint32_t") int offset, @CType("uint32_t") int size, @CType("const void *") java.lang.foreign.MemorySegment pValues) { return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags).offset(offset).size(size).pValues(pValues); }
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineLayout") MemorySegment layout, @CType("VkShaderStageFlags") int stageFlags, @CType("uint32_t") int offset, @CType("uint32_t") int size, @CType("const void *") MemorySegment pValues) { return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags).offset(offset).size(size).pValues(pValues); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,48 +158,48 @@ public sealed class VkPushConstantsInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPushConstantsInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPushConstantsInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPushConstantsInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPushConstantsInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushConstantsInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pNext(this.segment(), value); return this; }
+    public VkPushConstantsInfo pNext(@CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_layout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkPushConstantsInfo.get_layout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkPushConstantsInfo.get_layout(segment, 0L); }
     /// {@return `layout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkPushConstantsInfo.get_layout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment layout() { return VkPushConstantsInfo.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
+    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_layout(segment, 0L, value); }
+    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkPushConstantsInfo.set_layout(segment, 0L, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushConstantsInfo layout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_layout(this.segment(), value); return this; }
+    public VkPushConstantsInfo layout(@CType("VkPipelineLayout") MemorySegment value) { VkPushConstantsInfo.set_layout(this.segment(), value); return this; }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -273,25 +273,25 @@ public sealed class VkPushConstantsInfo extends Struct {
     /// {@return `pValues` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pValues(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pValues.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pValues(MemorySegment segment, long index) { return (MemorySegment) VH_pValues.get(segment, 0L, index); }
     /// {@return `pValues`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pValues(MemorySegment segment) { return VkPushConstantsInfo.get_pValues(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pValues(MemorySegment segment) { return VkPushConstantsInfo.get_pValues(segment, 0L); }
     /// {@return `pValues`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pValues() { return VkPushConstantsInfo.get_pValues(this.segment()); }
+    public @CType("const void *") MemorySegment pValues() { return VkPushConstantsInfo.get_pValues(this.segment()); }
     /// Sets `pValues` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pValues(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
+    public static void set_pValues(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
     /// Sets `pValues` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pValues(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pValues(segment, 0L, value); }
+    public static void set_pValues(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pValues(segment, 0L, value); }
     /// Sets `pValues` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushConstantsInfo pValues(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pValues(this.segment(), value); return this; }
+    public VkPushConstantsInfo pValues(@CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pValues(this.segment(), value); return this; }
 
     /// A buffer of [VkPushConstantsInfo].
     public static final class Buffer extends VkPushConstantsInfo {
@@ -326,21 +326,21 @@ public sealed class VkPushConstantsInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPushConstantsInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPushConstantsInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `layout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkPushConstantsInfo.get_layout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkPushConstantsInfo.get_layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkPushConstantsInfo.set_layout(this.segment(), index, value); return this; }
 
         /// {@return `stageFlags` at the given index}
         /// @param index the index
@@ -371,12 +371,12 @@ public sealed class VkPushConstantsInfo extends Struct {
 
         /// {@return `pValues` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pValuesAt(long index) { return VkPushConstantsInfo.get_pValues(this.segment(), index); }
+        public @CType("const void *") MemorySegment pValuesAt(long index) { return VkPushConstantsInfo.get_pValues(this.segment(), index); }
         /// Sets `pValues` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pValuesAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushConstantsInfo.set_pValues(this.segment(), index, value); return this; }
+        public Buffer pValuesAt(long index, @CType("const void *") MemorySegment value) { VkPushConstantsInfo.set_pValues(this.segment(), index, value); return this; }
 
     }
 }

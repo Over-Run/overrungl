@@ -28,13 +28,13 @@ import static overrungl.vulkan.VK10.*;
 
 /// ## Members
 /// ### layerName
-/// [Byte offset][#OFFSET_layerName] - [Memory layout][#ML_layerName] - [Getter][#layerName()] - [Setter][#layerName(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_layerName] - [Memory layout][#ML_layerName] - [Getter][#layerName()] - [Setter][#layerName(MemorySegment)]
 /// ### specVersion
 /// [VarHandle][#VH_specVersion] - [Getter][#specVersion()] - [Setter][#specVersion(int)]
 /// ### implementationVersion
 /// [VarHandle][#VH_implementationVersion] - [Getter][#implementationVersion()] - [Setter][#implementationVersion(int)]
 /// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -109,7 +109,7 @@ public sealed class VkLayerProperties extends Struct {
     /// Allocates a `VkLayerProperties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkLayerProperties`
-    public static VkLayerProperties allocInit(SegmentAllocator allocator, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layerName, @CType("uint32_t") int specVersion, @CType("uint32_t") int implementationVersion, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description) { return alloc(allocator).layerName(layerName).specVersion(specVersion).implementationVersion(implementationVersion).description(description); }
+    public static VkLayerProperties allocInit(SegmentAllocator allocator, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment layerName, @CType("uint32_t") int specVersion, @CType("uint32_t") int implementationVersion, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description) { return alloc(allocator).layerName(layerName).specVersion(specVersion).implementationVersion(implementationVersion).description(description); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -123,25 +123,25 @@ public sealed class VkLayerProperties extends Struct {
     /// {@return `layerName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_layerName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_layerName, index), ML_layerName); }
+    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment get_layerName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_layerName, index), ML_layerName); }
     /// {@return `layerName`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_layerName(MemorySegment segment) { return VkLayerProperties.get_layerName(segment, 0L); }
+    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment get_layerName(MemorySegment segment) { return VkLayerProperties.get_layerName(segment, 0L); }
     /// {@return `layerName`}
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layerName() { return VkLayerProperties.get_layerName(this.segment()); }
+    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment layerName() { return VkLayerProperties.get_layerName(this.segment()); }
     /// Sets `layerName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layerName(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_layerName, index), ML_layerName.byteSize()); }
+    public static void set_layerName(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_layerName, index), ML_layerName.byteSize()); }
     /// Sets `layerName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layerName(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_layerName(segment, 0L, value); }
+    public static void set_layerName(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment value) { VkLayerProperties.set_layerName(segment, 0L, value); }
     /// Sets `layerName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLayerProperties layerName(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_layerName(this.segment(), value); return this; }
+    public VkLayerProperties layerName(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment value) { VkLayerProperties.set_layerName(this.segment(), value); return this; }
 
     /// {@return `specVersion` at the given index}
     /// @param segment the segment of the struct
@@ -192,25 +192,25 @@ public sealed class VkLayerProperties extends Struct {
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
     /// {@return `description`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkLayerProperties.get_description(segment, 0L); }
+    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment) { return VkLayerProperties.get_description(segment, 0L); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkLayerProperties.get_description(this.segment()); }
+    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description() { return VkLayerProperties.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
+    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
     /// Sets `description` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_description(segment, 0L, value); }
+    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkLayerProperties.set_description(segment, 0L, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLayerProperties description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_description(this.segment(), value); return this; }
+    public VkLayerProperties description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkLayerProperties.set_description(this.segment(), value); return this; }
 
     /// A buffer of [VkLayerProperties].
     public static final class Buffer extends VkLayerProperties {
@@ -236,12 +236,12 @@ public sealed class VkLayerProperties extends Struct {
 
         /// {@return `layerName` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layerNameAt(long index) { return VkLayerProperties.get_layerName(this.segment(), index); }
+        public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment layerNameAt(long index) { return VkLayerProperties.get_layerName(this.segment(), index); }
         /// Sets `layerName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layerNameAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_layerName(this.segment(), index, value); return this; }
+        public Buffer layerNameAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") MemorySegment value) { VkLayerProperties.set_layerName(this.segment(), index, value); return this; }
 
         /// {@return `specVersion` at the given index}
         /// @param index the index
@@ -263,12 +263,12 @@ public sealed class VkLayerProperties extends Struct {
 
         /// {@return `description` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkLayerProperties.get_description(this.segment(), index); }
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment descriptionAt(long index) { return VkLayerProperties.get_description(this.segment(), index); }
         /// Sets `description` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkLayerProperties.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkLayerProperties.set_description(this.segment(), index, value); return this; }
 
     }
 }

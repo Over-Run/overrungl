@@ -31,15 +31,15 @@ public interface VkGetInstanceProcAddrLUNARG extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkGetInstanceProcAddrLUNARG.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("PFN_vkVoidFunction") java.lang.foreign.MemorySegment invoke(@CType("VkInstance") java.lang.foreign.MemorySegment instance, @CType("const char *") java.lang.foreign.MemorySegment pName);
+    @CType("PFN_vkVoidFunction") MemorySegment invoke(@CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("PFN_vkVoidFunction") java.lang.foreign.MemorySegment invoke(MemorySegment stub, @CType("VkInstance") java.lang.foreign.MemorySegment instance, @CType("const char *") java.lang.foreign.MemorySegment pName) {
-        try { return (java.lang.foreign.MemorySegment) HANDLE.invokeExact(stub, instance, pName); }
+    static @CType("PFN_vkVoidFunction") MemorySegment invoke(MemorySegment stub, @CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName) {
+        try { return (MemorySegment) HANDLE.invokeExact(stub, instance, pName); }
         catch (Throwable e) { throw new RuntimeException("error in VkGetInstanceProcAddrLUNARG::invoke (static invoker)", e); }
     }
 

@@ -52,7 +52,7 @@ public final class ALEXTSTATICBUFFER {
         }
     }
 
-    public static void alBufferDataStatic(@CType("const ALuint") int buffer, @CType("ALenum") int format, @CType("ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int freq) {
+    public static void alBufferDataStatic(@CType("const ALuint") int buffer, @CType("ALenum") int format, @CType("ALvoid *") MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int freq) {
         if (Handles.MH_alBufferDataStatic == null) throw new SymbolNotFoundError("Symbol not found: alBufferDataStatic");
         try {
             Handles.MH_alBufferDataStatic.invokeExact(Handles.get().PFN_alBufferDataStatic, buffer, format, data, size, freq);

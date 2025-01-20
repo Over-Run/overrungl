@@ -482,7 +482,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glClearDepthxOES", e); }
     }
 
-    public void ClipPlanexOES(@CType("GLenum") int plane, @CType("const GLfixed *") java.lang.foreign.MemorySegment equation) {
+    public void ClipPlanexOES(@CType("GLenum") int plane, @CType("const GLfixed *") MemorySegment equation) {
         if (Unmarshal.isNullPointer(handles.PFN_glClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanexOES");
         try { Handles.MH_glClipPlanexOES.invokeExact(handles.PFN_glClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glClipPlanexOES", e); }
@@ -506,7 +506,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glFogxOES", e); }
     }
 
-    public void FogxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
+    public void FogxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glFogxvOES)) throw new SymbolNotFoundError("Symbol not found: glFogxvOES");
         try { Handles.MH_glFogxvOES.invokeExact(handles.PFN_glFogxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glFogxvOES", e); }
@@ -518,25 +518,25 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glFrustumxOES", e); }
     }
 
-    public void GetClipPlanexOES(@CType("GLenum") int plane, @CType("GLfixed *") java.lang.foreign.MemorySegment equation) {
+    public void GetClipPlanexOES(@CType("GLenum") int plane, @CType("GLfixed *") MemorySegment equation) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
         try { Handles.MH_glGetClipPlanexOES.invokeExact(handles.PFN_glGetClipPlanexOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanexOES", e); }
     }
 
-    public void GetFixedvOES(@CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetFixedvOES(@CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFixedvOES)) throw new SymbolNotFoundError("Symbol not found: glGetFixedvOES");
         try { Handles.MH_glGetFixedvOES.invokeExact(handles.PFN_glGetFixedvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFixedvOES", e); }
     }
 
-    public void GetTexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetTexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
         try { Handles.MH_glGetTexEnvxvOES.invokeExact(handles.PFN_glGetTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexEnvxvOES", e); }
     }
 
-    public void GetTexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetTexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
         try { Handles.MH_glGetTexParameterxvOES.invokeExact(handles.PFN_glGetTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterxvOES", e); }
@@ -548,7 +548,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glLightModelxOES", e); }
     }
 
-    public void LightModelxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
+    public void LightModelxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glLightModelxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxvOES");
         try { Handles.MH_glLightModelxvOES.invokeExact(handles.PFN_glLightModelxvOES, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glLightModelxvOES", e); }
@@ -560,7 +560,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glLightxOES", e); }
     }
 
-    public void LightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void LightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightxvOES");
         try { Handles.MH_glLightxvOES.invokeExact(handles.PFN_glLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glLightxvOES", e); }
@@ -572,7 +572,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glLineWidthxOES", e); }
     }
 
-    public void LoadMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
+    public void LoadMatrixxOES(@CType("const GLfixed *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glLoadMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadMatrixxOES");
         try { Handles.MH_glLoadMatrixxOES.invokeExact(handles.PFN_glLoadMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in glLoadMatrixxOES", e); }
@@ -584,13 +584,13 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glMaterialxOES", e); }
     }
 
-    public void MaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
+    public void MaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxvOES");
         try { Handles.MH_glMaterialxvOES.invokeExact(handles.PFN_glMaterialxvOES, face, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glMaterialxvOES", e); }
     }
 
-    public void MultMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
+    public void MultMatrixxOES(@CType("const GLfixed *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultMatrixxOES");
         try { Handles.MH_glMultMatrixxOES.invokeExact(handles.PFN_glMultMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMultMatrixxOES", e); }
@@ -614,7 +614,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glOrthoxOES", e); }
     }
 
-    public void PointParameterxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void PointParameterxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxvOES");
         try { Handles.MH_glPointParameterxvOES.invokeExact(handles.PFN_glPointParameterxvOES, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterxvOES", e); }
@@ -650,7 +650,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexEnvxOES", e); }
     }
 
-    public void TexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void TexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxvOES");
         try { Handles.MH_glTexEnvxvOES.invokeExact(handles.PFN_glTexEnvxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glTexEnvxvOES", e); }
@@ -662,7 +662,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexParameterxOES", e); }
     }
 
-    public void TexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void TexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxvOES");
         try { Handles.MH_glTexParameterxvOES.invokeExact(handles.PFN_glTexParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glTexParameterxvOES", e); }
@@ -674,13 +674,13 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTranslatexOES", e); }
     }
 
-    public void GetLightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetLightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxvOES");
         try { Handles.MH_glGetLightxvOES.invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetLightxvOES", e); }
     }
 
-    public void GetMaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetMaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
         try { Handles.MH_glGetMaterialxvOES.invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMaterialxvOES", e); }
@@ -704,7 +704,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glAccumxOES", e); }
     }
 
-    public void BitmapxOES(@CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLfixed") int xorig, @CType("GLfixed") int yorig, @CType("GLfixed") int xmove, @CType("GLfixed") int ymove, @CType("const GLubyte *") java.lang.foreign.MemorySegment bitmap) {
+    public void BitmapxOES(@CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLfixed") int xorig, @CType("GLfixed") int yorig, @CType("GLfixed") int xmove, @CType("GLfixed") int ymove, @CType("const GLubyte *") MemorySegment bitmap) {
         if (Unmarshal.isNullPointer(handles.PFN_glBitmapxOES)) throw new SymbolNotFoundError("Symbol not found: glBitmapxOES");
         try { Handles.MH_glBitmapxOES.invokeExact(handles.PFN_glBitmapxOES, width, height, xorig, yorig, xmove, ymove, bitmap); }
         catch (Throwable e) { throw new RuntimeException("error in glBitmapxOES", e); }
@@ -728,13 +728,13 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glColor3xOES", e); }
     }
 
-    public void Color3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment components) {
+    public void Color3xvOES(@CType("const GLfixed *") MemorySegment components) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor3xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xvOES");
         try { Handles.MH_glColor3xvOES.invokeExact(handles.PFN_glColor3xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in glColor3xvOES", e); }
     }
 
-    public void Color4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment components) {
+    public void Color4xvOES(@CType("const GLfixed *") MemorySegment components) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor4xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xvOES");
         try { Handles.MH_glColor4xvOES.invokeExact(handles.PFN_glColor4xvOES, components); }
         catch (Throwable e) { throw new RuntimeException("error in glColor4xvOES", e); }
@@ -746,7 +746,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterxOES", e); }
     }
 
-    public void ConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void ConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
         try { Handles.MH_glConvolutionParameterxvOES.invokeExact(handles.PFN_glConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterxvOES", e); }
@@ -758,7 +758,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glEvalCoord1xOES", e); }
     }
 
-    public void EvalCoord1xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void EvalCoord1xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xvOES");
         try { Handles.MH_glEvalCoord1xvOES.invokeExact(handles.PFN_glEvalCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glEvalCoord1xvOES", e); }
@@ -770,37 +770,37 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glEvalCoord2xOES", e); }
     }
 
-    public void EvalCoord2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void EvalCoord2xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xvOES");
         try { Handles.MH_glEvalCoord2xvOES.invokeExact(handles.PFN_glEvalCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glEvalCoord2xvOES", e); }
     }
 
-    public void FeedbackBufferxOES(@CType("GLsizei") int n, @CType("GLenum") int type, @CType("const GLfixed *") java.lang.foreign.MemorySegment buffer) {
+    public void FeedbackBufferxOES(@CType("GLsizei") int n, @CType("GLenum") int type, @CType("const GLfixed *") MemorySegment buffer) {
         if (Unmarshal.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new SymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
         try { Handles.MH_glFeedbackBufferxOES.invokeExact(handles.PFN_glFeedbackBufferxOES, n, type, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glFeedbackBufferxOES", e); }
     }
 
-    public void GetConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
         try { Handles.MH_glGetConvolutionParameterxvOES.invokeExact(handles.PFN_glGetConvolutionParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetConvolutionParameterxvOES", e); }
     }
 
-    public void GetHistogramParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetHistogramParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
         try { Handles.MH_glGetHistogramParameterxvOES.invokeExact(handles.PFN_glGetHistogramParameterxvOES, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetHistogramParameterxvOES", e); }
     }
 
-    public void GetLightxOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetLightxOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetLightxOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxOES");
         try { Handles.MH_glGetLightxOES.invokeExact(handles.PFN_glGetLightxOES, light, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetLightxOES", e); }
     }
 
-    public void GetMapxvOES(@CType("GLenum") int target, @CType("GLenum") int query, @CType("GLfixed *") java.lang.foreign.MemorySegment v) {
+    public void GetMapxvOES(@CType("GLenum") int target, @CType("GLenum") int query, @CType("GLfixed *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMapxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMapxvOES");
         try { Handles.MH_glGetMapxvOES.invokeExact(handles.PFN_glGetMapxvOES, target, query, v); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMapxvOES", e); }
@@ -812,19 +812,19 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glGetMaterialxOES", e); }
     }
 
-    public void GetPixelMapxv(@CType("GLenum") int map, @CType("GLint") int size, @CType("GLfixed *") java.lang.foreign.MemorySegment values) {
+    public void GetPixelMapxv(@CType("GLenum") int map, @CType("GLint") int size, @CType("GLfixed *") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new SymbolNotFoundError("Symbol not found: glGetPixelMapxv");
         try { Handles.MH_glGetPixelMapxv.invokeExact(handles.PFN_glGetPixelMapxv, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPixelMapxv", e); }
     }
 
-    public void GetTexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetTexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
         try { Handles.MH_glGetTexGenxvOES.invokeExact(handles.PFN_glGetTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexGenxvOES", e); }
     }
 
-    public void GetTexLevelParameterxvOES(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void GetTexLevelParameterxvOES(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
         try { Handles.MH_glGetTexLevelParameterxvOES.invokeExact(handles.PFN_glGetTexLevelParameterxvOES, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameterxvOES", e); }
@@ -836,13 +836,13 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glIndexxOES", e); }
     }
 
-    public void IndexxvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment component) {
+    public void IndexxvOES(@CType("const GLfixed *") MemorySegment component) {
         if (Unmarshal.isNullPointer(handles.PFN_glIndexxvOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxvOES");
         try { Handles.MH_glIndexxvOES.invokeExact(handles.PFN_glIndexxvOES, component); }
         catch (Throwable e) { throw new RuntimeException("error in glIndexxvOES", e); }
     }
 
-    public void LoadTransposeMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
+    public void LoadTransposeMatrixxOES(@CType("const GLfixed *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glLoadTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixxOES");
         try { Handles.MH_glLoadTransposeMatrixxOES.invokeExact(handles.PFN_glLoadTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixxOES", e); }
@@ -872,7 +872,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glMapGrid2xOES", e); }
     }
 
-    public void MultTransposeMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
+    public void MultTransposeMatrixxOES(@CType("const GLfixed *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixxOES");
         try { Handles.MH_glMultTransposeMatrixxOES.invokeExact(handles.PFN_glMultTransposeMatrixxOES, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixxOES", e); }
@@ -884,7 +884,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1xOES", e); }
     }
 
-    public void MultiTexCoord1xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoord1xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
         try { Handles.MH_glMultiTexCoord1xvOES.invokeExact(handles.PFN_glMultiTexCoord1xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1xvOES", e); }
@@ -896,7 +896,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2xOES", e); }
     }
 
-    public void MultiTexCoord2xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoord2xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
         try { Handles.MH_glMultiTexCoord2xvOES.invokeExact(handles.PFN_glMultiTexCoord2xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2xvOES", e); }
@@ -908,19 +908,19 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3xOES", e); }
     }
 
-    public void MultiTexCoord3xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoord3xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
         try { Handles.MH_glMultiTexCoord3xvOES.invokeExact(handles.PFN_glMultiTexCoord3xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3xvOES", e); }
     }
 
-    public void MultiTexCoord4xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoord4xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
         try { Handles.MH_glMultiTexCoord4xvOES.invokeExact(handles.PFN_glMultiTexCoord4xvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4xvOES", e); }
     }
 
-    public void Normal3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void Normal3xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormal3xvOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xvOES");
         try { Handles.MH_glNormal3xvOES.invokeExact(handles.PFN_glNormal3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormal3xvOES", e); }
@@ -932,7 +932,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glPassThroughxOES", e); }
     }
 
-    public void PixelMapx(@CType("GLenum") int map, @CType("GLint") int size, @CType("const GLfixed *") java.lang.foreign.MemorySegment values) {
+    public void PixelMapx(@CType("GLenum") int map, @CType("GLint") int size, @CType("const GLfixed *") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glPixelMapx)) throw new SymbolNotFoundError("Symbol not found: glPixelMapx");
         try { Handles.MH_glPixelMapx.invokeExact(handles.PFN_glPixelMapx, map, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in glPixelMapx", e); }
@@ -956,7 +956,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glPixelZoomxOES", e); }
     }
 
-    public void PrioritizeTexturesxOES(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("const GLfixed *") java.lang.foreign.MemorySegment priorities) {
+    public void PrioritizeTexturesxOES(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment textures, @CType("const GLfixed *") MemorySegment priorities) {
         if (Unmarshal.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
         try { Handles.MH_glPrioritizeTexturesxOES.invokeExact(handles.PFN_glPrioritizeTexturesxOES, n, textures, priorities); }
         catch (Throwable e) { throw new RuntimeException("error in glPrioritizeTexturesxOES", e); }
@@ -968,7 +968,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos2xOES", e); }
     }
 
-    public void RasterPos2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void RasterPos2xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glRasterPos2xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xvOES");
         try { Handles.MH_glRasterPos2xvOES.invokeExact(handles.PFN_glRasterPos2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos2xvOES", e); }
@@ -980,7 +980,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos3xOES", e); }
     }
 
-    public void RasterPos3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void RasterPos3xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glRasterPos3xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xvOES");
         try { Handles.MH_glRasterPos3xvOES.invokeExact(handles.PFN_glRasterPos3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos3xvOES", e); }
@@ -992,7 +992,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos4xOES", e); }
     }
 
-    public void RasterPos4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void RasterPos4xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glRasterPos4xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xvOES");
         try { Handles.MH_glRasterPos4xvOES.invokeExact(handles.PFN_glRasterPos4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glRasterPos4xvOES", e); }
@@ -1004,7 +1004,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glRectxOES", e); }
     }
 
-    public void RectxvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment v1, @CType("const GLfixed *") java.lang.foreign.MemorySegment v2) {
+    public void RectxvOES(@CType("const GLfixed *") MemorySegment v1, @CType("const GLfixed *") MemorySegment v2) {
         if (Unmarshal.isNullPointer(handles.PFN_glRectxvOES)) throw new SymbolNotFoundError("Symbol not found: glRectxvOES");
         try { Handles.MH_glRectxvOES.invokeExact(handles.PFN_glRectxvOES, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in glRectxvOES", e); }
@@ -1016,7 +1016,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord1xOES", e); }
     }
 
-    public void TexCoord1xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoord1xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xvOES");
         try { Handles.MH_glTexCoord1xvOES.invokeExact(handles.PFN_glTexCoord1xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord1xvOES", e); }
@@ -1028,7 +1028,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2xOES", e); }
     }
 
-    public void TexCoord2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoord2xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xvOES");
         try { Handles.MH_glTexCoord2xvOES.invokeExact(handles.PFN_glTexCoord2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2xvOES", e); }
@@ -1040,7 +1040,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord3xOES", e); }
     }
 
-    public void TexCoord3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoord3xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xvOES");
         try { Handles.MH_glTexCoord3xvOES.invokeExact(handles.PFN_glTexCoord3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord3xvOES", e); }
@@ -1052,7 +1052,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4xOES", e); }
     }
 
-    public void TexCoord4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoord4xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xvOES");
         try { Handles.MH_glTexCoord4xvOES.invokeExact(handles.PFN_glTexCoord4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4xvOES", e); }
@@ -1064,7 +1064,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glTexGenxOES", e); }
     }
 
-    public void TexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
+    public void TexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("const GLfixed *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxvOES");
         try { Handles.MH_glTexGenxvOES.invokeExact(handles.PFN_glTexGenxvOES, coord, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glTexGenxvOES", e); }
@@ -1076,7 +1076,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glVertex2xOES", e); }
     }
 
-    public void Vertex2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void Vertex2xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertex2xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xvOES");
         try { Handles.MH_glVertex2xvOES.invokeExact(handles.PFN_glVertex2xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertex2xvOES", e); }
@@ -1088,7 +1088,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glVertex3xOES", e); }
     }
 
-    public void Vertex3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void Vertex3xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertex3xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xvOES");
         try { Handles.MH_glVertex3xvOES.invokeExact(handles.PFN_glVertex3xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertex3xvOES", e); }
@@ -1100,7 +1100,7 @@ public final class GLOESFixedPoint {
         catch (Throwable e) { throw new RuntimeException("error in glVertex4xOES", e); }
     }
 
-    public void Vertex4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
+    public void Vertex4xvOES(@CType("const GLfixed *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertex4xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xvOES");
         try { Handles.MH_glVertex4xvOES.invokeExact(handles.PFN_glVertex4xvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertex4xvOES", e); }

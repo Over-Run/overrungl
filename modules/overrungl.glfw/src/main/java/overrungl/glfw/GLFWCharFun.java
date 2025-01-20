@@ -31,14 +31,14 @@ public interface GLFWCharFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWCharFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("unsigned int") int codepoint);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("unsigned int") int codepoint);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("unsigned int") int codepoint) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("unsigned int") int codepoint) {
         try { HANDLE.invokeExact(stub, window, codepoint); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWCharFun::invoke (static invoker)", e); }
     }

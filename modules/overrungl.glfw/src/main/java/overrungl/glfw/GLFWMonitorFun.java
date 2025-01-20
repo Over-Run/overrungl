@@ -31,14 +31,14 @@ public interface GLFWMonitorFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWMonitorFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWmonitor*") java.lang.foreign.MemorySegment monitor, @CType("int") int event);
+    void invoke(@CType("GLFWmonitor*") MemorySegment monitor, @CType("int") int event);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWmonitor*") java.lang.foreign.MemorySegment monitor, @CType("int") int event) {
+    static void invoke(MemorySegment stub, @CType("GLFWmonitor*") MemorySegment monitor, @CType("int") int event) {
         try { HANDLE.invokeExact(stub, monitor, event); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWMonitorFun::invoke (static invoker)", e); }
     }

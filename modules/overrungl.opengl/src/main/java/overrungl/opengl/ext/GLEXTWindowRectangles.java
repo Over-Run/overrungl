@@ -47,7 +47,7 @@ public final class GLEXTWindowRectangles {
         this.handles = new Handles(func);
     }
 
-    public void WindowRectanglesEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment box) {
+    public void WindowRectanglesEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment box) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new SymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
         try { Handles.MH_glWindowRectanglesEXT.invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowRectanglesEXT", e); }

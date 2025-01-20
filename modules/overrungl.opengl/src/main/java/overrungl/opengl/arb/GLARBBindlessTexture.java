@@ -150,7 +150,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64ARB", e); }
     }
 
-    public void UniformHandleui64vARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment value) {
+    public void UniformHandleui64vARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vARB");
         try { Handles.MH_glUniformHandleui64vARB.invokeExact(handles.PFN_glUniformHandleui64vARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64vARB", e); }
@@ -162,7 +162,7 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64ARB", e); }
     }
 
-    public void ProgramUniformHandleui64vARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment values) {
+    public void ProgramUniformHandleui64vARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB");
         try { Handles.MH_glProgramUniformHandleui64vARB.invokeExact(handles.PFN_glProgramUniformHandleui64vARB, program, location, count, values); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64vARB", e); }
@@ -186,13 +186,13 @@ public final class GLARBBindlessTexture {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64ARB", e); }
     }
 
-    public void VertexAttribL1ui64vARB(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL1ui64vARB(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB");
         try { Handles.MH_glVertexAttribL1ui64vARB.invokeExact(handles.PFN_glVertexAttribL1ui64vARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64vARB", e); }
     }
 
-    public void GetVertexAttribLui64vARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribLui64vARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribLui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB");
         try { Handles.MH_glGetVertexAttribLui64vARB.invokeExact(handles.PFN_glGetVertexAttribLui64vARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLui64vARB", e); }

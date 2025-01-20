@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### maxLevelIdc
 /// [VarHandle][#VH_maxLevelIdc] - [Getter][#maxLevelIdc()] - [Setter][#maxLevelIdc(int)]
 /// ### fieldOffsetGranularity
-/// [Byte offset][#OFFSET_fieldOffsetGranularity] - [Memory layout][#ML_fieldOffsetGranularity] - [Getter][#fieldOffsetGranularity()] - [Setter][#fieldOffsetGranularity(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_fieldOffsetGranularity] - [Memory layout][#ML_fieldOffsetGranularity] - [Getter][#fieldOffsetGranularity()] - [Setter][#fieldOffsetGranularity(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,7 +53,7 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `maxLevelIdc` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxLevelIdc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevelIdc"));
@@ -105,7 +105,7 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
     /// Allocates a `VkVideoDecodeH264CapabilitiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoDecodeH264CapabilitiesKHR`
-    public static VkVideoDecodeH264CapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("StdVideoH264LevelIdc") int maxLevelIdc, @CType("VkOffset2D") java.lang.foreign.MemorySegment fieldOffsetGranularity) { return alloc(allocator).sType(sType).pNext(pNext).maxLevelIdc(maxLevelIdc).fieldOffsetGranularity(fieldOffsetGranularity); }
+    public static VkVideoDecodeH264CapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("StdVideoH264LevelIdc") int maxLevelIdc, @CType("VkOffset2D") MemorySegment fieldOffsetGranularity) { return alloc(allocator).sType(sType).pNext(pNext).maxLevelIdc(maxLevelIdc).fieldOffsetGranularity(fieldOffsetGranularity); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -142,25 +142,25 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeH264CapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoDecodeH264CapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `maxLevelIdc` at the given index}
     /// @param segment the segment of the struct
@@ -188,25 +188,25 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
     /// {@return `fieldOffsetGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_fieldOffsetGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fieldOffsetGranularity, index), ML_fieldOffsetGranularity); }
+    public static @CType("VkOffset2D") MemorySegment get_fieldOffsetGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fieldOffsetGranularity, index), ML_fieldOffsetGranularity); }
     /// {@return `fieldOffsetGranularity`}
     /// @param segment the segment of the struct
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_fieldOffsetGranularity(MemorySegment segment) { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(segment, 0L); }
+    public static @CType("VkOffset2D") MemorySegment get_fieldOffsetGranularity(MemorySegment segment) { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(segment, 0L); }
     /// {@return `fieldOffsetGranularity`}
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment fieldOffsetGranularity() { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(this.segment()); }
+    public @CType("VkOffset2D") MemorySegment fieldOffsetGranularity() { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(this.segment()); }
     /// Sets `fieldOffsetGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_fieldOffsetGranularity(MemorySegment segment, long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fieldOffsetGranularity, index), ML_fieldOffsetGranularity.byteSize()); }
+    public static void set_fieldOffsetGranularity(MemorySegment segment, long index, @CType("VkOffset2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fieldOffsetGranularity, index), ML_fieldOffsetGranularity.byteSize()); }
     /// Sets `fieldOffsetGranularity` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_fieldOffsetGranularity(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(segment, 0L, value); }
+    public static void set_fieldOffsetGranularity(MemorySegment segment, @CType("VkOffset2D") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(segment, 0L, value); }
     /// Sets `fieldOffsetGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(@CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(this.segment(), value); return this; }
+    public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(@CType("VkOffset2D") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoDecodeH264CapabilitiesKHR].
     public static final class Buffer extends VkVideoDecodeH264CapabilitiesKHR {
@@ -241,12 +241,12 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoDecodeH264CapabilitiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxLevelIdc` at the given index}
         /// @param index the index
@@ -259,12 +259,12 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends Struct {
 
         /// {@return `fieldOffsetGranularity` at the given index}
         /// @param index the index
-        public @CType("VkOffset2D") java.lang.foreign.MemorySegment fieldOffsetGranularityAt(long index) { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(this.segment(), index); }
+        public @CType("VkOffset2D") MemorySegment fieldOffsetGranularityAt(long index) { return VkVideoDecodeH264CapabilitiesKHR.get_fieldOffsetGranularity(this.segment(), index); }
         /// Sets `fieldOffsetGranularity` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer fieldOffsetGranularityAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(this.segment(), index, value); return this; }
+        public Buffer fieldOffsetGranularityAt(long index, @CType("VkOffset2D") MemorySegment value) { VkVideoDecodeH264CapabilitiesKHR.set_fieldOffsetGranularity(this.segment(), index, value); return this; }
 
     }
 }

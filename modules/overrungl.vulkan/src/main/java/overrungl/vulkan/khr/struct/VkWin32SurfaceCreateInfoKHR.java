@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### hinstance
-/// [VarHandle][#VH_hinstance] - [Getter][#hinstance()] - [Setter][#hinstance(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_hinstance] - [Getter][#hinstance()] - [Setter][#hinstance(MemorySegment)]
 /// ### hwnd
-/// [VarHandle][#VH_hwnd] - [Getter][#hwnd()] - [Setter][#hwnd(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_hwnd] - [Getter][#hwnd()] - [Setter][#hwnd(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `hinstance` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `hinstance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hinstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hinstance"));
-    /// The [VarHandle] of `hwnd` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `hwnd` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hwnd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hwnd"));
 
     /// Creates `VkWin32SurfaceCreateInfoKHR` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
     /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
-    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkWin32SurfaceCreateFlagsKHR") int flags, @CType("HINSTANCE") java.lang.foreign.MemorySegment hinstance, @CType("HWND") java.lang.foreign.MemorySegment hwnd) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).hinstance(hinstance).hwnd(hwnd); }
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkWin32SurfaceCreateFlagsKHR") int flags, @CType("HINSTANCE") MemorySegment hinstance, @CType("HWND") MemorySegment hwnd) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).hinstance(hinstance).hwnd(hwnd); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkWin32SurfaceCreateInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkWin32SurfaceCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWin32SurfaceCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkWin32SurfaceCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -192,48 +192,48 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
     /// {@return `hinstance` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("HINSTANCE") java.lang.foreign.MemorySegment get_hinstance(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_hinstance.get(segment, 0L, index); }
+    public static @CType("HINSTANCE") MemorySegment get_hinstance(MemorySegment segment, long index) { return (MemorySegment) VH_hinstance.get(segment, 0L, index); }
     /// {@return `hinstance`}
     /// @param segment the segment of the struct
-    public static @CType("HINSTANCE") java.lang.foreign.MemorySegment get_hinstance(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_hinstance(segment, 0L); }
+    public static @CType("HINSTANCE") MemorySegment get_hinstance(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_hinstance(segment, 0L); }
     /// {@return `hinstance`}
-    public @CType("HINSTANCE") java.lang.foreign.MemorySegment hinstance() { return VkWin32SurfaceCreateInfoKHR.get_hinstance(this.segment()); }
+    public @CType("HINSTANCE") MemorySegment hinstance() { return VkWin32SurfaceCreateInfoKHR.get_hinstance(this.segment()); }
     /// Sets `hinstance` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_hinstance(MemorySegment segment, long index, @CType("HINSTANCE") java.lang.foreign.MemorySegment value) { VH_hinstance.set(segment, 0L, index, value); }
+    public static void set_hinstance(MemorySegment segment, long index, @CType("HINSTANCE") MemorySegment value) { VH_hinstance.set(segment, 0L, index, value); }
     /// Sets `hinstance` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_hinstance(MemorySegment segment, @CType("HINSTANCE") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(segment, 0L, value); }
+    public static void set_hinstance(MemorySegment segment, @CType("HINSTANCE") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(segment, 0L, value); }
     /// Sets `hinstance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWin32SurfaceCreateInfoKHR hinstance(@CType("HINSTANCE") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(this.segment(), value); return this; }
+    public VkWin32SurfaceCreateInfoKHR hinstance(@CType("HINSTANCE") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(this.segment(), value); return this; }
 
     /// {@return `hwnd` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("HWND") java.lang.foreign.MemorySegment get_hwnd(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_hwnd.get(segment, 0L, index); }
+    public static @CType("HWND") MemorySegment get_hwnd(MemorySegment segment, long index) { return (MemorySegment) VH_hwnd.get(segment, 0L, index); }
     /// {@return `hwnd`}
     /// @param segment the segment of the struct
-    public static @CType("HWND") java.lang.foreign.MemorySegment get_hwnd(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_hwnd(segment, 0L); }
+    public static @CType("HWND") MemorySegment get_hwnd(MemorySegment segment) { return VkWin32SurfaceCreateInfoKHR.get_hwnd(segment, 0L); }
     /// {@return `hwnd`}
-    public @CType("HWND") java.lang.foreign.MemorySegment hwnd() { return VkWin32SurfaceCreateInfoKHR.get_hwnd(this.segment()); }
+    public @CType("HWND") MemorySegment hwnd() { return VkWin32SurfaceCreateInfoKHR.get_hwnd(this.segment()); }
     /// Sets `hwnd` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_hwnd(MemorySegment segment, long index, @CType("HWND") java.lang.foreign.MemorySegment value) { VH_hwnd.set(segment, 0L, index, value); }
+    public static void set_hwnd(MemorySegment segment, long index, @CType("HWND") MemorySegment value) { VH_hwnd.set(segment, 0L, index, value); }
     /// Sets `hwnd` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_hwnd(MemorySegment segment, @CType("HWND") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(segment, 0L, value); }
+    public static void set_hwnd(MemorySegment segment, @CType("HWND") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(segment, 0L, value); }
     /// Sets `hwnd` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWin32SurfaceCreateInfoKHR hwnd(@CType("HWND") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(this.segment(), value); return this; }
+    public VkWin32SurfaceCreateInfoKHR hwnd(@CType("HWND") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(this.segment(), value); return this; }
 
     /// A buffer of [VkWin32SurfaceCreateInfoKHR].
     public static final class Buffer extends VkWin32SurfaceCreateInfoKHR {
@@ -268,12 +268,12 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -286,21 +286,21 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends Struct {
 
         /// {@return `hinstance` at the given index}
         /// @param index the index
-        public @CType("HINSTANCE") java.lang.foreign.MemorySegment hinstanceAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_hinstance(this.segment(), index); }
+        public @CType("HINSTANCE") MemorySegment hinstanceAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_hinstance(this.segment(), index); }
         /// Sets `hinstance` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer hinstanceAt(long index, @CType("HINSTANCE") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(this.segment(), index, value); return this; }
+        public Buffer hinstanceAt(long index, @CType("HINSTANCE") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hinstance(this.segment(), index, value); return this; }
 
         /// {@return `hwnd` at the given index}
         /// @param index the index
-        public @CType("HWND") java.lang.foreign.MemorySegment hwndAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_hwnd(this.segment(), index); }
+        public @CType("HWND") MemorySegment hwndAt(long index) { return VkWin32SurfaceCreateInfoKHR.get_hwnd(this.segment(), index); }
         /// Sets `hwnd` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer hwndAt(long index, @CType("HWND") java.lang.foreign.MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(this.segment(), index, value); return this; }
+        public Buffer hwndAt(long index, @CType("HWND") MemorySegment value) { VkWin32SurfaceCreateInfoKHR.set_hwnd(this.segment(), index, value); return this; }
 
     }
 }

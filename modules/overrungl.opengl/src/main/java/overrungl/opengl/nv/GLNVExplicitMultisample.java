@@ -59,7 +59,7 @@ public final class GLNVExplicitMultisample {
         this.handles = new Handles(func);
     }
 
-    public void GetMultisamplefvNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
+    public void GetMultisamplefvNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") MemorySegment val) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
         try { Handles.MH_glGetMultisamplefvNV.invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }

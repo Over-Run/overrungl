@@ -56,10 +56,10 @@ public final class ALSOFTSourceResampler {
         }
     }
 
-    public static @CType("const ALchar*") java.lang.foreign.MemorySegment alGetStringiSOFT(@CType("ALenum") int pname, @CType("ALsizei") int index) {
+    public static @CType("const ALchar*") MemorySegment alGetStringiSOFT(@CType("ALenum") int pname, @CType("ALsizei") int index) {
         if (Handles.MH_alGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetStringiSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetStringiSOFT.invokeExact(Handles.get().PFN_alGetStringiSOFT, pname, index);
+            return (MemorySegment) Handles.MH_alGetStringiSOFT.invokeExact(Handles.get().PFN_alGetStringiSOFT, pname, index);
         } catch (Throwable e) { throw new RuntimeException("error in alGetStringiSOFT", e); }
     }
 

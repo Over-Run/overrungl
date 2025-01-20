@@ -78,28 +78,28 @@ public final class ALSOFTEvents {
         }
     }
 
-    public static void alEventControlSOFT(@CType("ALsizei") int count, @CType("const ALenum *") java.lang.foreign.MemorySegment types, @CType("ALboolean") boolean enable) {
+    public static void alEventControlSOFT(@CType("ALsizei") int count, @CType("const ALenum *") MemorySegment types, @CType("ALboolean") boolean enable) {
         if (Handles.MH_alEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventControlSOFT");
         try {
             Handles.MH_alEventControlSOFT.invokeExact(Handles.get().PFN_alEventControlSOFT, count, types, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alEventControlSOFT", e); }
     }
 
-    public static void alEventCallbackSOFT(@CType("ALEVENTPROCSOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
+    public static void alEventCallbackSOFT(@CType("ALEVENTPROCSOFT") MemorySegment callback, @CType("void*") MemorySegment userParam) {
         if (Handles.MH_alEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventCallbackSOFT");
         try {
             Handles.MH_alEventCallbackSOFT.invokeExact(Handles.get().PFN_alEventCallbackSOFT, callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alEventCallbackSOFT", e); }
     }
 
-    public static @CType("void*") java.lang.foreign.MemorySegment alGetPointerSOFT(@CType("ALenum") int pname) {
+    public static @CType("void*") MemorySegment alGetPointerSOFT(@CType("ALenum") int pname) {
         if (Handles.MH_alGetPointerSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointerSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerSOFT.invokeExact(Handles.get().PFN_alGetPointerSOFT, pname);
+            return (MemorySegment) Handles.MH_alGetPointerSOFT.invokeExact(Handles.get().PFN_alGetPointerSOFT, pname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointerSOFT", e); }
     }
 
-    public static void alGetPointervSOFT(@CType("ALenum") int pname, @CType("void**") java.lang.foreign.MemorySegment values) {
+    public static void alGetPointervSOFT(@CType("ALenum") int pname, @CType("void**") MemorySegment values) {
         if (Handles.MH_alGetPointervSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointervSOFT");
         try {
             Handles.MH_alGetPointervSOFT.invokeExact(Handles.get().PFN_alGetPointervSOFT, pname, values);

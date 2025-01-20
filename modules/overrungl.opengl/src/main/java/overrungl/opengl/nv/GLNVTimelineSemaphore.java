@@ -54,19 +54,19 @@ public final class GLNVTimelineSemaphore {
         this.handles = new Handles(func);
     }
 
-    public void CreateSemaphoresNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment semaphores) {
+    public void CreateSemaphoresNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment semaphores) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateSemaphoresNV)) throw new SymbolNotFoundError("Symbol not found: glCreateSemaphoresNV");
         try { Handles.MH_glCreateSemaphoresNV.invokeExact(handles.PFN_glCreateSemaphoresNV, n, semaphores); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateSemaphoresNV", e); }
     }
 
-    public void SemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void SemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterivNV");
         try { Handles.MH_glSemaphoreParameterivNV.invokeExact(handles.PFN_glSemaphoreParameterivNV, semaphore, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterivNV", e); }
     }
 
-    public void GetSemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetSemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterivNV");
         try { Handles.MH_glGetSemaphoreParameterivNV.invokeExact(handles.PFN_glGetSemaphoreParameterivNV, semaphore, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterivNV", e); }

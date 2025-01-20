@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### plane
 /// [VarHandle][#VH_plane] - [Getter][#plane()] - [Setter][#plane(int)]
 /// ### mtlTexture
-/// [VarHandle][#VH_mtlTexture] - [Getter][#mtlTexture()] - [Setter][#mtlTexture(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_mtlTexture] - [Getter][#mtlTexture()] - [Setter][#mtlTexture(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `plane` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_plane = LAYOUT.arrayElementVarHandle(PathElement.groupElement("plane"));
-    /// The [VarHandle] of `mtlTexture` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `mtlTexture` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mtlTexture = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlTexture"));
 
     /// Creates `VkImportMetalTextureInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
     /// Allocates a `VkImportMetalTextureInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImportMetalTextureInfoEXT`
-    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageAspectFlagBits") int plane, @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTexture) { return alloc(allocator).sType(sType).pNext(pNext).plane(plane).mtlTexture(mtlTexture); }
+    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageAspectFlagBits") int plane, @CType("MTLTexture_id") MemorySegment mtlTexture) { return alloc(allocator).sType(sType).pNext(pNext).plane(plane).mtlTexture(mtlTexture); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImportMetalTextureInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImportMetalTextureInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImportMetalTextureInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkImportMetalTextureInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMetalTextureInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkImportMetalTextureInfoEXT pNext(@CType("const void *") MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `plane` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
     /// {@return `mtlTexture` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("MTLTexture_id") java.lang.foreign.MemorySegment get_mtlTexture(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_mtlTexture.get(segment, 0L, index); }
+    public static @CType("MTLTexture_id") MemorySegment get_mtlTexture(MemorySegment segment, long index) { return (MemorySegment) VH_mtlTexture.get(segment, 0L, index); }
     /// {@return `mtlTexture`}
     /// @param segment the segment of the struct
-    public static @CType("MTLTexture_id") java.lang.foreign.MemorySegment get_mtlTexture(MemorySegment segment) { return VkImportMetalTextureInfoEXT.get_mtlTexture(segment, 0L); }
+    public static @CType("MTLTexture_id") MemorySegment get_mtlTexture(MemorySegment segment) { return VkImportMetalTextureInfoEXT.get_mtlTexture(segment, 0L); }
     /// {@return `mtlTexture`}
-    public @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTexture() { return VkImportMetalTextureInfoEXT.get_mtlTexture(this.segment()); }
+    public @CType("MTLTexture_id") MemorySegment mtlTexture() { return VkImportMetalTextureInfoEXT.get_mtlTexture(this.segment()); }
     /// Sets `mtlTexture` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_mtlTexture(MemorySegment segment, long index, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VH_mtlTexture.set(segment, 0L, index, value); }
+    public static void set_mtlTexture(MemorySegment segment, long index, @CType("MTLTexture_id") MemorySegment value) { VH_mtlTexture.set(segment, 0L, index, value); }
     /// Sets `mtlTexture` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_mtlTexture(MemorySegment segment, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(segment, 0L, value); }
+    public static void set_mtlTexture(MemorySegment segment, @CType("MTLTexture_id") MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(segment, 0L, value); }
     /// Sets `mtlTexture` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMetalTextureInfoEXT mtlTexture(@CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(this.segment(), value); return this; }
+    public VkImportMetalTextureInfoEXT mtlTexture(@CType("MTLTexture_id") MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(this.segment(), value); return this; }
 
     /// A buffer of [VkImportMetalTextureInfoEXT].
     public static final class Buffer extends VkImportMetalTextureInfoEXT {
@@ -239,12 +239,12 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImportMetalTextureInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImportMetalTextureInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImportMetalTextureInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `plane` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkImportMetalTextureInfoEXT extends Struct {
 
         /// {@return `mtlTexture` at the given index}
         /// @param index the index
-        public @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTextureAt(long index) { return VkImportMetalTextureInfoEXT.get_mtlTexture(this.segment(), index); }
+        public @CType("MTLTexture_id") MemorySegment mtlTextureAt(long index) { return VkImportMetalTextureInfoEXT.get_mtlTexture(this.segment(), index); }
         /// Sets `mtlTexture` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer mtlTextureAt(long index, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(this.segment(), index, value); return this; }
+        public Buffer mtlTextureAt(long index, @CType("MTLTexture_id") MemorySegment value) { VkImportMetalTextureInfoEXT.set_mtlTexture(this.segment(), index, value); return this; }
 
     }
 }

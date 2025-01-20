@@ -53,13 +53,13 @@ public final class GLNVGpuProgram5 {
         this.handles = new Handles(func);
     }
 
-    public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
+    public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
         try { Handles.MH_glProgramSubroutineParametersuivNV.invokeExact(handles.PFN_glProgramSubroutineParametersuivNV, target, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramSubroutineParametersuivNV", e); }
     }
 
-    public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") java.lang.foreign.MemorySegment param) {
+    public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
         try { Handles.MH_glGetProgramSubroutineParameteruivNV.invokeExact(handles.PFN_glGetProgramSubroutineParameteruivNV, target, index, param); }
         catch (Throwable e) { throw new RuntimeException("error in glGetProgramSubroutineParameteruivNV", e); }

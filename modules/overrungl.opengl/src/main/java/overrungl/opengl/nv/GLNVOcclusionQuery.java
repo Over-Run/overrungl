@@ -69,13 +69,13 @@ public final class GLNVOcclusionQuery {
         this.handles = new Handles(func);
     }
 
-    public void GenOcclusionQueriesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void GenOcclusionQueriesNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glGenOcclusionQueriesNV");
         try { Handles.MH_glGenOcclusionQueriesNV.invokeExact(handles.PFN_glGenOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glGenOcclusionQueriesNV", e); }
     }
 
-    public void DeleteOcclusionQueriesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void DeleteOcclusionQueriesNV(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteOcclusionQueriesNV");
         try { Handles.MH_glDeleteOcclusionQueriesNV.invokeExact(handles.PFN_glDeleteOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteOcclusionQueriesNV", e); }
@@ -99,13 +99,13 @@ public final class GLNVOcclusionQuery {
         catch (Throwable e) { throw new RuntimeException("error in glEndOcclusionQueryNV", e); }
     }
 
-    public void GetOcclusionQueryivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetOcclusionQueryivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetOcclusionQueryivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryivNV");
         try { Handles.MH_glGetOcclusionQueryivNV.invokeExact(handles.PFN_glGetOcclusionQueryivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetOcclusionQueryivNV", e); }
     }
 
-    public void GetOcclusionQueryuivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void GetOcclusionQueryuivNV(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetOcclusionQueryuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryuivNV");
         try { Handles.MH_glGetOcclusionQueryuivNV.invokeExact(handles.PFN_glGetOcclusionQueryuivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetOcclusionQueryuivNV", e); }

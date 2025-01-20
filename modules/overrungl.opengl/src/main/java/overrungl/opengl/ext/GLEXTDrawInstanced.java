@@ -51,7 +51,7 @@ public final class GLEXTDrawInstanced {
         catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
     }
 
-    public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
+    public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
         try { Handles.MH_glDrawElementsInstancedEXT.invokeExact(handles.PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }

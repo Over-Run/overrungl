@@ -26,9 +26,9 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### name
-/// [VarHandle][#VH_name] - [Getter][#name()] - [Setter][#name(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_name] - [Getter][#name()] - [Setter][#name(MemorySegment)]
 /// ### spec
-/// [VarHandle][#VH_spec] - [Getter][#spec()] - [Setter][#spec(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_spec] - [Getter][#spec()] - [Setter][#spec(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -43,9 +43,9 @@ public sealed class NFDFilterItem extends Struct {
         Unmarshal.STR_LAYOUT.withName("name"),
         Unmarshal.STR_LAYOUT.withName("spec")
     );
-    /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"));
-    /// The [VarHandle] of `spec` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `spec` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_spec = LAYOUT.arrayElementVarHandle(PathElement.groupElement("spec"));
 
     /// Creates `NFDFilterItem` with the given segment.
@@ -91,7 +91,7 @@ public sealed class NFDFilterItem extends Struct {
     /// Allocates a `NFDFilterItem` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `NFDFilterItem`
-    public static NFDFilterItem allocInit(SegmentAllocator allocator, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment name, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment spec) { return alloc(allocator).name(name).spec(spec); }
+    public static NFDFilterItem allocInit(SegmentAllocator allocator, @CType("const nfdnchar_t*") MemorySegment name, @CType("const nfdnchar_t*") MemorySegment spec) { return alloc(allocator).name(name).spec(spec); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -105,48 +105,48 @@ public sealed class NFDFilterItem extends Struct {
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_name(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_name.get(segment, 0L, index); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_name(MemorySegment segment, long index) { return (MemorySegment) VH_name.get(segment, 0L, index); }
     /// {@return `name`}
     /// @param segment the segment of the struct
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_name(MemorySegment segment) { return NFDFilterItem.get_name(segment, 0L); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_name(MemorySegment segment) { return NFDFilterItem.get_name(segment, 0L); }
     /// {@return `name`}
-    public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment name() { return NFDFilterItem.get_name(this.segment()); }
+    public @CType("const nfdnchar_t*") MemorySegment name() { return NFDFilterItem.get_name(this.segment()); }
     /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_name(MemorySegment segment, long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { VH_name.set(segment, 0L, index, value); }
+    public static void set_name(MemorySegment segment, long index, @CType("const nfdnchar_t*") MemorySegment value) { VH_name.set(segment, 0L, index, value); }
     /// Sets `name` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_name(MemorySegment segment, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_name(segment, 0L, value); }
+    public static void set_name(MemorySegment segment, @CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_name(segment, 0L, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDFilterItem name(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_name(this.segment(), value); return this; }
+    public NFDFilterItem name(@CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_name(this.segment(), value); return this; }
 
     /// {@return `spec` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_spec(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_spec.get(segment, 0L, index); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_spec(MemorySegment segment, long index) { return (MemorySegment) VH_spec.get(segment, 0L, index); }
     /// {@return `spec`}
     /// @param segment the segment of the struct
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_spec(MemorySegment segment) { return NFDFilterItem.get_spec(segment, 0L); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_spec(MemorySegment segment) { return NFDFilterItem.get_spec(segment, 0L); }
     /// {@return `spec`}
-    public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment spec() { return NFDFilterItem.get_spec(this.segment()); }
+    public @CType("const nfdnchar_t*") MemorySegment spec() { return NFDFilterItem.get_spec(this.segment()); }
     /// Sets `spec` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_spec(MemorySegment segment, long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { VH_spec.set(segment, 0L, index, value); }
+    public static void set_spec(MemorySegment segment, long index, @CType("const nfdnchar_t*") MemorySegment value) { VH_spec.set(segment, 0L, index, value); }
     /// Sets `spec` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_spec(MemorySegment segment, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_spec(segment, 0L, value); }
+    public static void set_spec(MemorySegment segment, @CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_spec(segment, 0L, value); }
     /// Sets `spec` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDFilterItem spec(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_spec(this.segment(), value); return this; }
+    public NFDFilterItem spec(@CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_spec(this.segment(), value); return this; }
 
     /// A buffer of [NFDFilterItem].
     public static final class Buffer extends NFDFilterItem {
@@ -172,21 +172,21 @@ public sealed class NFDFilterItem extends Struct {
 
         /// {@return `name` at the given index}
         /// @param index the index
-        public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment nameAt(long index) { return NFDFilterItem.get_name(this.segment(), index); }
+        public @CType("const nfdnchar_t*") MemorySegment nameAt(long index) { return NFDFilterItem.get_name(this.segment(), index); }
         /// Sets `name` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer nameAt(long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_name(this.segment(), index, value); return this; }
+        public Buffer nameAt(long index, @CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_name(this.segment(), index, value); return this; }
 
         /// {@return `spec` at the given index}
         /// @param index the index
-        public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment specAt(long index) { return NFDFilterItem.get_spec(this.segment(), index); }
+        public @CType("const nfdnchar_t*") MemorySegment specAt(long index) { return NFDFilterItem.get_spec(this.segment(), index); }
         /// Sets `spec` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer specAt(long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDFilterItem.set_spec(this.segment(), index, value); return this; }
+        public Buffer specAt(long index, @CType("const nfdnchar_t*") MemorySegment value) { NFDFilterItem.set_spec(this.segment(), index, value); return this; }
 
     }
     public static NFDFilterItem create(SegmentAllocator allocator, String name, String spec) {

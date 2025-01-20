@@ -68,13 +68,13 @@ public final class GLNVFence {
         this.handles = new Handles(func);
     }
 
-    public void DeleteFencesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void DeleteFencesNV(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteFencesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesNV");
         try { Handles.MH_glDeleteFencesNV.invokeExact(handles.PFN_glDeleteFencesNV, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesNV", e); }
     }
 
-    public void GenFencesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void GenFencesNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenFencesNV)) throw new SymbolNotFoundError("Symbol not found: glGenFencesNV");
         try { Handles.MH_glGenFencesNV.invokeExact(handles.PFN_glGenFencesNV, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glGenFencesNV", e); }
@@ -92,7 +92,7 @@ public final class GLNVFence {
         catch (Throwable e) { throw new RuntimeException("error in glTestFenceNV", e); }
     }
 
-    public void GetFenceivNV(@CType("GLuint") int fence, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetFenceivNV(@CType("GLuint") int fence, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFenceivNV)) throw new SymbolNotFoundError("Symbol not found: glGetFenceivNV");
         try { Handles.MH_glGetFenceivNV.invokeExact(handles.PFN_glGetFenceivNV, fence, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFenceivNV", e); }

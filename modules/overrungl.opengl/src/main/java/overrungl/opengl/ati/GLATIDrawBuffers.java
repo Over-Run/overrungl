@@ -58,7 +58,7 @@ public final class GLATIDrawBuffers {
         this.handles = new Handles(func);
     }
 
-    public void DrawBuffersATI(@CType("GLsizei") int n, @CType("const GLenum *") java.lang.foreign.MemorySegment bufs) {
+    public void DrawBuffersATI(@CType("GLsizei") int n, @CType("const GLenum *") MemorySegment bufs) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");
         try { Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersATI", e); }

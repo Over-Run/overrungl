@@ -54,19 +54,19 @@ public final class GLNVParameterBufferObject {
         this.handles = new Handles(func);
     }
 
-    public void ProgramBufferParametersfvNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ProgramBufferParametersfvNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramBufferParametersfvNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersfvNV");
         try { Handles.MH_glProgramBufferParametersfvNV.invokeExact(handles.PFN_glProgramBufferParametersfvNV, target, bindingIndex, wordIndex, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersfvNV", e); }
     }
 
-    public void ProgramBufferParametersIivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void ProgramBufferParametersIivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramBufferParametersIivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIivNV");
         try { Handles.MH_glProgramBufferParametersIivNV.invokeExact(handles.PFN_glProgramBufferParametersIivNV, target, bindingIndex, wordIndex, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIivNV", e); }
     }
 
-    public void ProgramBufferParametersIuivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
+    public void ProgramBufferParametersIuivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramBufferParametersIuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIuivNV");
         try { Handles.MH_glProgramBufferParametersIuivNV.invokeExact(handles.PFN_glProgramBufferParametersIuivNV, target, bindingIndex, wordIndex, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIuivNV", e); }

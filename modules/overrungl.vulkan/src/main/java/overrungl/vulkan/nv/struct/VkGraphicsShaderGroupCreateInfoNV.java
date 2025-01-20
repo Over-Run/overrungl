@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### stageCount
 /// [VarHandle][#VH_stageCount] - [Getter][#stageCount()] - [Setter][#stageCount(int)]
 /// ### pStages
-/// [VarHandle][#VH_pStages] - [Getter][#pStages()] - [Setter][#pStages(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pStages] - [Getter][#pStages()] - [Setter][#pStages(MemorySegment)]
 /// ### pVertexInputState
-/// [VarHandle][#VH_pVertexInputState] - [Getter][#pVertexInputState()] - [Setter][#pVertexInputState(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVertexInputState] - [Getter][#pVertexInputState()] - [Setter][#pVertexInputState(MemorySegment)]
 /// ### pTessellationState
-/// [VarHandle][#VH_pTessellationState] - [Getter][#pTessellationState()] - [Setter][#pTessellationState(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pTessellationState] - [Getter][#pTessellationState()] - [Setter][#pTessellationState(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -61,15 +61,15 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `stageCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageCount"));
-    /// The [VarHandle] of `pStages` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStages"));
-    /// The [VarHandle] of `pVertexInputState` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVertexInputState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVertexInputState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexInputState"));
-    /// The [VarHandle] of `pTessellationState` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pTessellationState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTessellationState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTessellationState"));
 
     /// Creates `VkGraphicsShaderGroupCreateInfoNV` with the given segment.
@@ -115,7 +115,7 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
     /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
-    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int stageCount, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages, @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment pVertexInputState, @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment pTessellationState) { return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pTessellationState(pTessellationState); }
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int stageCount, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStages, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputState, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationState) { return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pTessellationState(pTessellationState); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -152,25 +152,25 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsShaderGroupCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkGraphicsShaderGroupCreateInfoNV pNext(@CType("const void *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `stageCount` at the given index}
     /// @param segment the segment of the struct
@@ -198,71 +198,71 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
     /// {@return `pStages` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment get_pStages(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStages.get(segment, 0L, index); }
+    public static @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment get_pStages(MemorySegment segment, long index) { return (MemorySegment) VH_pStages.get(segment, 0L, index); }
     /// {@return `pStages`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment get_pStages(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(segment, 0L); }
+    public static @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment get_pStages(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(segment, 0L); }
     /// {@return `pStages`}
-    public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages() { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(this.segment()); }
+    public @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStages() { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(this.segment()); }
     /// Sets `pStages` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pStages(MemorySegment segment, long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VH_pStages.set(segment, 0L, index, value); }
+    public static void set_pStages(MemorySegment segment, long index, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VH_pStages.set(segment, 0L, index, value); }
     /// Sets `pStages` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pStages(MemorySegment segment, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(segment, 0L, value); }
+    public static void set_pStages(MemorySegment segment, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(segment, 0L, value); }
     /// Sets `pStages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsShaderGroupCreateInfoNV pStages(@CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(this.segment(), value); return this; }
+    public VkGraphicsShaderGroupCreateInfoNV pStages(@CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(this.segment(), value); return this; }
 
     /// {@return `pVertexInputState` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment get_pVertexInputState(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVertexInputState.get(segment, 0L, index); }
+    public static @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment get_pVertexInputState(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexInputState.get(segment, 0L, index); }
     /// {@return `pVertexInputState`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment get_pVertexInputState(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(segment, 0L); }
+    public static @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment get_pVertexInputState(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(segment, 0L); }
     /// {@return `pVertexInputState`}
-    public @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment pVertexInputState() { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(this.segment()); }
+    public @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputState() { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(this.segment()); }
     /// Sets `pVertexInputState` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVertexInputState(MemorySegment segment, long index, @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment value) { VH_pVertexInputState.set(segment, 0L, index, value); }
+    public static void set_pVertexInputState(MemorySegment segment, long index, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VH_pVertexInputState.set(segment, 0L, index, value); }
     /// Sets `pVertexInputState` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVertexInputState(MemorySegment segment, @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(segment, 0L, value); }
+    public static void set_pVertexInputState(MemorySegment segment, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(segment, 0L, value); }
     /// Sets `pVertexInputState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsShaderGroupCreateInfoNV pVertexInputState(@CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(this.segment(), value); return this; }
+    public VkGraphicsShaderGroupCreateInfoNV pVertexInputState(@CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(this.segment(), value); return this; }
 
     /// {@return `pTessellationState` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment get_pTessellationState(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTessellationState.get(segment, 0L, index); }
+    public static @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment get_pTessellationState(MemorySegment segment, long index) { return (MemorySegment) VH_pTessellationState.get(segment, 0L, index); }
     /// {@return `pTessellationState`}
     /// @param segment the segment of the struct
-    public static @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment get_pTessellationState(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(segment, 0L); }
+    public static @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment get_pTessellationState(MemorySegment segment) { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(segment, 0L); }
     /// {@return `pTessellationState`}
-    public @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment pTessellationState() { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(this.segment()); }
+    public @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationState() { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(this.segment()); }
     /// Sets `pTessellationState` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pTessellationState(MemorySegment segment, long index, @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment value) { VH_pTessellationState.set(segment, 0L, index, value); }
+    public static void set_pTessellationState(MemorySegment segment, long index, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VH_pTessellationState.set(segment, 0L, index, value); }
     /// Sets `pTessellationState` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pTessellationState(MemorySegment segment, @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(segment, 0L, value); }
+    public static void set_pTessellationState(MemorySegment segment, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(segment, 0L, value); }
     /// Sets `pTessellationState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsShaderGroupCreateInfoNV pTessellationState(@CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(this.segment(), value); return this; }
+    public VkGraphicsShaderGroupCreateInfoNV pTessellationState(@CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(this.segment(), value); return this; }
 
     /// A buffer of [VkGraphicsShaderGroupCreateInfoNV].
     public static final class Buffer extends VkGraphicsShaderGroupCreateInfoNV {
@@ -297,12 +297,12 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `stageCount` at the given index}
         /// @param index the index
@@ -315,30 +315,30 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends Struct {
 
         /// {@return `pStages` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStagesAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(this.segment(), index); }
+        public @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStagesAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pStages(this.segment(), index); }
         /// Sets `pStages` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(this.segment(), index, value); return this; }
+        public Buffer pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pStages(this.segment(), index, value); return this; }
 
         /// {@return `pVertexInputState` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment pVertexInputStateAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(this.segment(), index); }
+        public @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputStateAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pVertexInputState(this.segment(), index); }
         /// Sets `pVertexInputState` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVertexInputStateAt(long index, @CType("const VkPipelineVertexInputStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(this.segment(), index, value); return this; }
+        public Buffer pVertexInputStateAt(long index, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pVertexInputState(this.segment(), index, value); return this; }
 
         /// {@return `pTessellationState` at the given index}
         /// @param index the index
-        public @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment pTessellationStateAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(this.segment(), index); }
+        public @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationStateAt(long index) { return VkGraphicsShaderGroupCreateInfoNV.get_pTessellationState(this.segment(), index); }
         /// Sets `pTessellationState` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pTessellationStateAt(long index, @CType("const VkPipelineTessellationStateCreateInfo *") java.lang.foreign.MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(this.segment(), index, value); return this; }
+        public Buffer pTessellationStateAt(long index, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsShaderGroupCreateInfoNV.set_pTessellationState(this.segment(), index, value); return this; }
 
     }
 }

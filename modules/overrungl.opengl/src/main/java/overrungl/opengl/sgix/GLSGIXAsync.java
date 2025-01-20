@@ -68,13 +68,13 @@ public final class GLSGIXAsync {
         catch (Throwable e) { throw new RuntimeException("error in glAsyncMarkerSGIX", e); }
     }
 
-    public @CType("GLint") int FinishAsyncSGIX(@CType("GLuint *") java.lang.foreign.MemorySegment markerp) {
+    public @CType("GLint") int FinishAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
         if (Unmarshal.isNullPointer(handles.PFN_glFinishAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glFinishAsyncSGIX");
         try { return (int) Handles.MH_glFinishAsyncSGIX.invokeExact(handles.PFN_glFinishAsyncSGIX, markerp); }
         catch (Throwable e) { throw new RuntimeException("error in glFinishAsyncSGIX", e); }
     }
 
-    public @CType("GLint") int PollAsyncSGIX(@CType("GLuint *") java.lang.foreign.MemorySegment markerp) {
+    public @CType("GLint") int PollAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
         if (Unmarshal.isNullPointer(handles.PFN_glPollAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollAsyncSGIX");
         try { return (int) Handles.MH_glPollAsyncSGIX.invokeExact(handles.PFN_glPollAsyncSGIX, markerp); }
         catch (Throwable e) { throw new RuntimeException("error in glPollAsyncSGIX", e); }

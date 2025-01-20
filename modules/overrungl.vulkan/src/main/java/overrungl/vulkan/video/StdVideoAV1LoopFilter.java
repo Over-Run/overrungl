@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### loop_filter_level
 /// [VarHandle][#VH_loop_filter_level] - [Getter][#loop_filter_level()] - [Setter][#loop_filter_level(byte)]
 /// ### loop_filter_sharpness
@@ -63,7 +63,7 @@ public sealed class StdVideoAV1LoopFilter extends Struct {
         ValueLayout.JAVA_BYTE.withName("update_mode_delta"),
         ValueLayout.JAVA_BYTE.withName("loop_filter_mode_deltas")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `loop_filter_level` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_loop_filter_level = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_level"));
@@ -121,7 +121,7 @@ public sealed class StdVideoAV1LoopFilter extends Struct {
     /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1LoopFilter`
-    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t [ ]") byte loop_filter_level, @CType("uint8_t") byte loop_filter_sharpness, @CType("uint8_t") byte update_ref_delta, @CType("int8_t [ ]") byte loop_filter_ref_deltas, @CType("uint8_t") byte update_mode_delta, @CType("int8_t [ ]") byte loop_filter_mode_deltas) { return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta).loop_filter_ref_deltas(loop_filter_ref_deltas).update_mode_delta(update_mode_delta).loop_filter_mode_deltas(loop_filter_mode_deltas); }
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, @CType("StdVideoAV1LoopFilterFlags") MemorySegment flags, @CType("uint8_t [ ]") byte loop_filter_level, @CType("uint8_t") byte loop_filter_sharpness, @CType("uint8_t") byte update_ref_delta, @CType("int8_t [ ]") byte loop_filter_ref_deltas, @CType("uint8_t") byte update_mode_delta, @CType("int8_t [ ]") byte loop_filter_mode_deltas) { return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta).loop_filter_ref_deltas(loop_filter_ref_deltas).update_mode_delta(update_mode_delta).loop_filter_mode_deltas(loop_filter_mode_deltas); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -135,25 +135,25 @@ public sealed class StdVideoAV1LoopFilter extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1LoopFilterFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1LoopFilter.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1LoopFilterFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1LoopFilter.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1LoopFilter.get_flags(this.segment()); }
+    public @CType("StdVideoAV1LoopFilterFlags") MemorySegment flags() { return StdVideoAV1LoopFilter.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1LoopFilterFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1LoopFilter.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1LoopFilterFlags") MemorySegment value) { StdVideoAV1LoopFilter.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1LoopFilter flags(@CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1LoopFilter.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1LoopFilter flags(@CType("StdVideoAV1LoopFilterFlags") MemorySegment value) { StdVideoAV1LoopFilter.set_flags(this.segment(), value); return this; }
 
     /// {@return `loop_filter_level` at the given index}
     /// @param segment the segment of the struct
@@ -317,12 +317,12 @@ public sealed class StdVideoAV1LoopFilter extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1LoopFilter.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1LoopFilterFlags") MemorySegment flagsAt(long index) { return StdVideoAV1LoopFilter.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1LoopFilterFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1LoopFilter.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1LoopFilterFlags") MemorySegment value) { StdVideoAV1LoopFilter.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `loop_filter_level` at the given index}
         /// @param index the index

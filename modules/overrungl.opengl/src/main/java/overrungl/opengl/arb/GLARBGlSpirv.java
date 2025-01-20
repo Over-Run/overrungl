@@ -43,7 +43,7 @@ public final class GLARBGlSpirv {
         this.handles = new Handles(func);
     }
 
-    public void SpecializeShaderARB(@CType("GLuint") int shader, @CType("const GLchar *") java.lang.foreign.MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantIndex, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantValue) {
+    public void SpecializeShaderARB(@CType("GLuint") int shader, @CType("const GLchar *") MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") MemorySegment pConstantIndex, @CType("const GLuint *") MemorySegment pConstantValue) {
         if (Unmarshal.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShaderARB");
         try { Handles.MH_glSpecializeShaderARB.invokeExact(handles.PFN_glSpecializeShaderARB, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in glSpecializeShaderARB", e); }

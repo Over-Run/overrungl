@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### primary_pic_type
 /// [VarHandle][#VH_primary_pic_type] - [Getter][#primary_pic_type()] - [Setter][#primary_pic_type(int)]
 /// ### FrameNum
@@ -63,7 +63,7 @@ public sealed class StdVideoEncodeH264ReferenceInfo extends Struct {
         ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
         ValueLayout.JAVA_BYTE.withName("temporal_id")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `primary_pic_type` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_primary_pic_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primary_pic_type"));
@@ -121,7 +121,7 @@ public sealed class StdVideoEncodeH264ReferenceInfo extends Struct {
     /// Allocates a `StdVideoEncodeH264ReferenceInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH264ReferenceInfo`
-    public static StdVideoEncodeH264ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoH264PictureType") int primary_pic_type, @CType("uint32_t") int FrameNum, @CType("int32_t") int PicOrderCnt, @CType("uint16_t") short long_term_pic_num, @CType("uint16_t") short long_term_frame_idx, @CType("uint8_t") byte temporal_id) { return alloc(allocator).flags(flags).primary_pic_type(primary_pic_type).FrameNum(FrameNum).PicOrderCnt(PicOrderCnt).long_term_pic_num(long_term_pic_num).long_term_frame_idx(long_term_frame_idx).temporal_id(temporal_id); }
+    public static StdVideoEncodeH264ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment flags, @CType("StdVideoH264PictureType") int primary_pic_type, @CType("uint32_t") int FrameNum, @CType("int32_t") int PicOrderCnt, @CType("uint16_t") short long_term_pic_num, @CType("uint16_t") short long_term_frame_idx, @CType("uint8_t") byte temporal_id) { return alloc(allocator).flags(flags).primary_pic_type(primary_pic_type).FrameNum(FrameNum).PicOrderCnt(PicOrderCnt).long_term_pic_num(long_term_pic_num).long_term_frame_idx(long_term_frame_idx).temporal_id(temporal_id); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -135,25 +135,25 @@ public sealed class StdVideoEncodeH264ReferenceInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264ReferenceInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264ReferenceInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH264ReferenceInfo.get_flags(this.segment()); }
+    public @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment flags() { return StdVideoEncodeH264ReferenceInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264ReferenceInfo flags(@CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeH264ReferenceInfo flags(@CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `primary_pic_type` at the given index}
     /// @param segment the segment of the struct
@@ -317,12 +317,12 @@ public sealed class StdVideoEncodeH264ReferenceInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264ReferenceInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeH264ReferenceInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264ReferenceInfoFlags") MemorySegment value) { StdVideoEncodeH264ReferenceInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `primary_pic_type` at the given index}
         /// @param index the index

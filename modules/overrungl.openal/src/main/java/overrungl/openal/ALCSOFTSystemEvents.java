@@ -80,14 +80,14 @@ public final class ALCSOFTSystemEvents {
         } catch (Throwable e) { throw new RuntimeException("error in alcEventIsSupportedSOFT", e); }
     }
 
-    public static @CType("ALCboolean") boolean alcEventControlSOFT(@CType("ALCsizei") int count, @CType("const ALCenum *") java.lang.foreign.MemorySegment events, @CType("ALCboolean") boolean enable) {
+    public static @CType("ALCboolean") boolean alcEventControlSOFT(@CType("ALCsizei") int count, @CType("const ALCenum *") MemorySegment events, @CType("ALCboolean") boolean enable) {
         if (Handles.MH_alcEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventControlSOFT");
         try {
             return (boolean) Handles.MH_alcEventControlSOFT.invokeExact(Handles.get().PFN_alcEventControlSOFT, count, events, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventControlSOFT", e); }
     }
 
-    public static void alcEventCallbackSOFT(@CType("ALCEVENTPROCTYPESOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
+    public static void alcEventCallbackSOFT(@CType("ALCEVENTPROCTYPESOFT") MemorySegment callback, @CType("void*") MemorySegment userParam) {
         if (Handles.MH_alcEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventCallbackSOFT");
         try {
             Handles.MH_alcEventCallbackSOFT.invokeExact(Handles.get().PFN_alcEventCallbackSOFT, callback, userParam);

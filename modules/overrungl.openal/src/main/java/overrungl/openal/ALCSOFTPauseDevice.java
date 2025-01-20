@@ -59,14 +59,14 @@ public final class ALCSOFTPauseDevice {
         }
     }
 
-    public static void alcDevicePauseSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device) {
+    public static void alcDevicePauseSOFT(@CType("ALCdevice *") MemorySegment device) {
         if (Handles.MH_alcDevicePauseSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcDevicePauseSOFT");
         try {
             Handles.MH_alcDevicePauseSOFT.invokeExact(Handles.get().PFN_alcDevicePauseSOFT, device);
         } catch (Throwable e) { throw new RuntimeException("error in alcDevicePauseSOFT", e); }
     }
 
-    public static void alcDeviceResumeSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device) {
+    public static void alcDeviceResumeSOFT(@CType("ALCdevice *") MemorySegment device) {
         if (Handles.MH_alcDeviceResumeSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcDeviceResumeSOFT");
         try {
             Handles.MH_alcDeviceResumeSOFT.invokeExact(Handles.get().PFN_alcDeviceResumeSOFT, device);

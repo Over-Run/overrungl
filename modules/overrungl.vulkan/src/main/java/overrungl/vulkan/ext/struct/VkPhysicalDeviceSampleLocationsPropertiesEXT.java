@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### sampleLocationSampleCounts
 /// [VarHandle][#VH_sampleLocationSampleCounts] - [Getter][#sampleLocationSampleCounts()] - [Setter][#sampleLocationSampleCounts(int)]
 /// ### maxSampleLocationGridSize
-/// [Byte offset][#OFFSET_maxSampleLocationGridSize] - [Memory layout][#ML_maxSampleLocationGridSize] - [Getter][#maxSampleLocationGridSize()] - [Setter][#maxSampleLocationGridSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxSampleLocationGridSize] - [Memory layout][#ML_maxSampleLocationGridSize] - [Getter][#maxSampleLocationGridSize()] - [Setter][#maxSampleLocationGridSize(MemorySegment)]
 /// ### sampleLocationCoordinateRange
-/// [Byte offset][#OFFSET_sampleLocationCoordinateRange] - [Memory layout][#ML_sampleLocationCoordinateRange] - [Getter][#sampleLocationCoordinateRange()] - [Setter][#sampleLocationCoordinateRange(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_sampleLocationCoordinateRange] - [Memory layout][#ML_sampleLocationCoordinateRange] - [Getter][#sampleLocationCoordinateRange()] - [Setter][#sampleLocationCoordinateRange(MemorySegment)]
 /// ### sampleLocationSubPixelBits
 /// [VarHandle][#VH_sampleLocationSubPixelBits] - [Getter][#sampleLocationSubPixelBits()] - [Setter][#sampleLocationSubPixelBits(int)]
 /// ### variableSampleLocations
@@ -65,7 +65,7 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `sampleLocationSampleCounts` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sampleLocationSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleLocationSampleCounts"));
@@ -125,7 +125,7 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
     /// Allocates a `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceSampleLocationsPropertiesEXT`
-    public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSampleCountFlags") int sampleLocationSampleCounts, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSampleLocationGridSize, @CType("float[2]") java.lang.foreign.MemorySegment sampleLocationCoordinateRange, @CType("uint32_t") int sampleLocationSubPixelBits, @CType("VkBool32") int variableSampleLocations) { return alloc(allocator).sType(sType).pNext(pNext).sampleLocationSampleCounts(sampleLocationSampleCounts).maxSampleLocationGridSize(maxSampleLocationGridSize).sampleLocationCoordinateRange(sampleLocationCoordinateRange).sampleLocationSubPixelBits(sampleLocationSubPixelBits).variableSampleLocations(variableSampleLocations); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkSampleCountFlags") int sampleLocationSampleCounts, @CType("VkExtent2D") MemorySegment maxSampleLocationGridSize, @CType("float[2]") MemorySegment sampleLocationCoordinateRange, @CType("uint32_t") int sampleLocationSubPixelBits, @CType("VkBool32") int variableSampleLocations) { return alloc(allocator).sType(sType).pNext(pNext).sampleLocationSampleCounts(sampleLocationSampleCounts).maxSampleLocationGridSize(maxSampleLocationGridSize).sampleLocationCoordinateRange(sampleLocationCoordinateRange).sampleLocationSubPixelBits(sampleLocationSubPixelBits).variableSampleLocations(variableSampleLocations); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -162,25 +162,25 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `sampleLocationSampleCounts` at the given index}
     /// @param segment the segment of the struct
@@ -208,48 +208,48 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
     /// {@return `maxSampleLocationGridSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxSampleLocationGridSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxSampleLocationGridSize, index), ML_maxSampleLocationGridSize); }
+    public static @CType("VkExtent2D") MemorySegment get_maxSampleLocationGridSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxSampleLocationGridSize, index), ML_maxSampleLocationGridSize); }
     /// {@return `maxSampleLocationGridSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxSampleLocationGridSize(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxSampleLocationGridSize(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(segment, 0L); }
     /// {@return `maxSampleLocationGridSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSampleLocationGridSize() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxSampleLocationGridSize() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(this.segment()); }
     /// Sets `maxSampleLocationGridSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxSampleLocationGridSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxSampleLocationGridSize, index), ML_maxSampleLocationGridSize.byteSize()); }
+    public static void set_maxSampleLocationGridSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxSampleLocationGridSize, index), ML_maxSampleLocationGridSize.byteSize()); }
     /// Sets `maxSampleLocationGridSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxSampleLocationGridSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(segment, 0L, value); }
+    public static void set_maxSampleLocationGridSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(segment, 0L, value); }
     /// Sets `maxSampleLocationGridSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT maxSampleLocationGridSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT maxSampleLocationGridSize(@CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(this.segment(), value); return this; }
 
     /// {@return `sampleLocationCoordinateRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_sampleLocationCoordinateRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sampleLocationCoordinateRange, index), ML_sampleLocationCoordinateRange); }
+    public static @CType("float[2]") MemorySegment get_sampleLocationCoordinateRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sampleLocationCoordinateRange, index), ML_sampleLocationCoordinateRange); }
     /// {@return `sampleLocationCoordinateRange`}
     /// @param segment the segment of the struct
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_sampleLocationCoordinateRange(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(segment, 0L); }
+    public static @CType("float[2]") MemorySegment get_sampleLocationCoordinateRange(MemorySegment segment) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(segment, 0L); }
     /// {@return `sampleLocationCoordinateRange`}
-    public @CType("float[2]") java.lang.foreign.MemorySegment sampleLocationCoordinateRange() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(this.segment()); }
+    public @CType("float[2]") MemorySegment sampleLocationCoordinateRange() { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(this.segment()); }
     /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_sampleLocationCoordinateRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sampleLocationCoordinateRange, index), ML_sampleLocationCoordinateRange.byteSize()); }
+    public static void set_sampleLocationCoordinateRange(MemorySegment segment, long index, @CType("float[2]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sampleLocationCoordinateRange, index), ML_sampleLocationCoordinateRange.byteSize()); }
     /// Sets `sampleLocationCoordinateRange` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_sampleLocationCoordinateRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(segment, 0L, value); }
+    public static void set_sampleLocationCoordinateRange(MemorySegment segment, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(segment, 0L, value); }
     /// Sets `sampleLocationCoordinateRange` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(this.segment(), value); return this; }
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(@CType("float[2]") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(this.segment(), value); return this; }
 
     /// {@return `sampleLocationSubPixelBits` at the given index}
     /// @param segment the segment of the struct
@@ -330,12 +330,12 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `sampleLocationSampleCounts` at the given index}
         /// @param index the index
@@ -348,21 +348,21 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends Struct 
 
         /// {@return `maxSampleLocationGridSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSampleLocationGridSizeAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxSampleLocationGridSizeAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_maxSampleLocationGridSize(this.segment(), index); }
         /// Sets `maxSampleLocationGridSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxSampleLocationGridSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(this.segment(), index, value); return this; }
+        public Buffer maxSampleLocationGridSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_maxSampleLocationGridSize(this.segment(), index, value); return this; }
 
         /// {@return `sampleLocationCoordinateRange` at the given index}
         /// @param index the index
-        public @CType("float[2]") java.lang.foreign.MemorySegment sampleLocationCoordinateRangeAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(this.segment(), index); }
+        public @CType("float[2]") MemorySegment sampleLocationCoordinateRangeAt(long index) { return VkPhysicalDeviceSampleLocationsPropertiesEXT.get_sampleLocationCoordinateRange(this.segment(), index); }
         /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer sampleLocationCoordinateRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(this.segment(), index, value); return this; }
+        public Buffer sampleLocationCoordinateRangeAt(long index, @CType("float[2]") MemorySegment value) { VkPhysicalDeviceSampleLocationsPropertiesEXT.set_sampleLocationCoordinateRange(this.segment(), index, value); return this; }
 
         /// {@return `sampleLocationSubPixelBits` at the given index}
         /// @param index the index

@@ -75,28 +75,28 @@ public final class ALSOFTCallbackBuffer {
         }
     }
 
-    public static void alBufferCallbackSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("ALsizei") int freq, @CType("ALBUFFERCALLBACKTYPESOFT") java.lang.foreign.MemorySegment callback, @CType("ALvoid *") java.lang.foreign.MemorySegment userptr) {
+    public static void alBufferCallbackSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("ALsizei") int freq, @CType("ALBUFFERCALLBACKTYPESOFT") MemorySegment callback, @CType("ALvoid *") MemorySegment userptr) {
         if (Handles.MH_alBufferCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferCallbackSOFT");
         try {
             Handles.MH_alBufferCallbackSOFT.invokeExact(Handles.get().PFN_alBufferCallbackSOFT, buffer, format, freq, callback, userptr);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferCallbackSOFT", e); }
     }
 
-    public static void alGetBufferPtrSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") java.lang.foreign.MemorySegment ptr) {
+    public static void alGetBufferPtrSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") MemorySegment ptr) {
         if (Handles.MH_alGetBufferPtrSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBufferPtrSOFT");
         try {
             Handles.MH_alGetBufferPtrSOFT.invokeExact(Handles.get().PFN_alGetBufferPtrSOFT, buffer, param, ptr);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferPtrSOFT", e); }
     }
 
-    public static void alGetBuffer3PtrSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") java.lang.foreign.MemorySegment ptr0, @CType("ALvoid **") java.lang.foreign.MemorySegment ptr1, @CType("ALvoid **") java.lang.foreign.MemorySegment ptr2) {
+    public static void alGetBuffer3PtrSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") MemorySegment ptr0, @CType("ALvoid **") MemorySegment ptr1, @CType("ALvoid **") MemorySegment ptr2) {
         if (Handles.MH_alGetBuffer3PtrSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBuffer3PtrSOFT");
         try {
             Handles.MH_alGetBuffer3PtrSOFT.invokeExact(Handles.get().PFN_alGetBuffer3PtrSOFT, buffer, param, ptr0, ptr1, ptr2);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3PtrSOFT", e); }
     }
 
-    public static void alGetBufferPtrvSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") java.lang.foreign.MemorySegment ptr) {
+    public static void alGetBufferPtrvSOFT(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALvoid **") MemorySegment ptr) {
         if (Handles.MH_alGetBufferPtrvSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBufferPtrvSOFT");
         try {
             Handles.MH_alGetBufferPtrvSOFT.invokeExact(Handles.get().PFN_alGetBufferPtrvSOFT, buffer, param, ptr);

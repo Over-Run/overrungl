@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### memory
-/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_memory] - [Getter][#memory()] - [Setter][#memory(MemorySegment)]
 /// ### mtlBuffer
-/// [VarHandle][#VH_mtlBuffer] - [Getter][#mtlBuffer()] - [Setter][#mtlBuffer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_mtlBuffer] - [Getter][#mtlBuffer()] - [Setter][#mtlBuffer(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkExportMetalBufferInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `memory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory"));
-    /// The [VarHandle] of `mtlBuffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `mtlBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mtlBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlBuffer"));
 
     /// Creates `VkExportMetalBufferInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkExportMetalBufferInfoEXT extends Struct {
     /// Allocates a `VkExportMetalBufferInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMetalBufferInfoEXT`
-    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory, @CType("MTLBuffer_id") java.lang.foreign.MemorySegment mtlBuffer) { return alloc(allocator).sType(sType).pNext(pNext).memory(memory).mtlBuffer(mtlBuffer); }
+    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDeviceMemory") MemorySegment memory, @CType("MTLBuffer_id") MemorySegment mtlBuffer) { return alloc(allocator).sType(sType).pNext(pNext).memory(memory).mtlBuffer(mtlBuffer); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,71 +140,71 @@ public sealed class VkExportMetalBufferInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMetalBufferInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkExportMetalBufferInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalBufferInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkExportMetalBufferInfoEXT pNext(@CType("const void *") MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `memory` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_memory.get(segment, 0L, index); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment, long index) { return (MemorySegment) VH_memory.get(segment, 0L, index); }
     /// {@return `memory`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceMemory") java.lang.foreign.MemorySegment get_memory(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_memory(segment, 0L); }
+    public static @CType("VkDeviceMemory") MemorySegment get_memory(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_memory(segment, 0L); }
     /// {@return `memory`}
-    public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memory() { return VkExportMetalBufferInfoEXT.get_memory(this.segment()); }
+    public @CType("VkDeviceMemory") MemorySegment memory() { return VkExportMetalBufferInfoEXT.get_memory(this.segment()); }
     /// Sets `memory` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
+    public static void set_memory(MemorySegment segment, long index, @CType("VkDeviceMemory") MemorySegment value) { VH_memory.set(segment, 0L, index, value); }
     /// Sets `memory` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(segment, 0L, value); }
+    public static void set_memory(MemorySegment segment, @CType("VkDeviceMemory") MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(segment, 0L, value); }
     /// Sets `memory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalBufferInfoEXT memory(@CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(this.segment(), value); return this; }
+    public VkExportMetalBufferInfoEXT memory(@CType("VkDeviceMemory") MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(this.segment(), value); return this; }
 
     /// {@return `mtlBuffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("MTLBuffer_id") java.lang.foreign.MemorySegment get_mtlBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_mtlBuffer.get(segment, 0L, index); }
+    public static @CType("MTLBuffer_id") MemorySegment get_mtlBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_mtlBuffer.get(segment, 0L, index); }
     /// {@return `mtlBuffer`}
     /// @param segment the segment of the struct
-    public static @CType("MTLBuffer_id") java.lang.foreign.MemorySegment get_mtlBuffer(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_mtlBuffer(segment, 0L); }
+    public static @CType("MTLBuffer_id") MemorySegment get_mtlBuffer(MemorySegment segment) { return VkExportMetalBufferInfoEXT.get_mtlBuffer(segment, 0L); }
     /// {@return `mtlBuffer`}
-    public @CType("MTLBuffer_id") java.lang.foreign.MemorySegment mtlBuffer() { return VkExportMetalBufferInfoEXT.get_mtlBuffer(this.segment()); }
+    public @CType("MTLBuffer_id") MemorySegment mtlBuffer() { return VkExportMetalBufferInfoEXT.get_mtlBuffer(this.segment()); }
     /// Sets `mtlBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_mtlBuffer(MemorySegment segment, long index, @CType("MTLBuffer_id") java.lang.foreign.MemorySegment value) { VH_mtlBuffer.set(segment, 0L, index, value); }
+    public static void set_mtlBuffer(MemorySegment segment, long index, @CType("MTLBuffer_id") MemorySegment value) { VH_mtlBuffer.set(segment, 0L, index, value); }
     /// Sets `mtlBuffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_mtlBuffer(MemorySegment segment, @CType("MTLBuffer_id") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(segment, 0L, value); }
+    public static void set_mtlBuffer(MemorySegment segment, @CType("MTLBuffer_id") MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(segment, 0L, value); }
     /// Sets `mtlBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalBufferInfoEXT mtlBuffer(@CType("MTLBuffer_id") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), value); return this; }
+    public VkExportMetalBufferInfoEXT mtlBuffer(@CType("MTLBuffer_id") MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), value); return this; }
 
     /// A buffer of [VkExportMetalBufferInfoEXT].
     public static final class Buffer extends VkExportMetalBufferInfoEXT {
@@ -239,30 +239,30 @@ public sealed class VkExportMetalBufferInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalBufferInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkExportMetalBufferInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkExportMetalBufferInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `memory` at the given index}
         /// @param index the index
-        public @CType("VkDeviceMemory") java.lang.foreign.MemorySegment memoryAt(long index) { return VkExportMetalBufferInfoEXT.get_memory(this.segment(), index); }
+        public @CType("VkDeviceMemory") MemorySegment memoryAt(long index) { return VkExportMetalBufferInfoEXT.get_memory(this.segment(), index); }
         /// Sets `memory` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer memoryAt(long index, @CType("VkDeviceMemory") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(this.segment(), index, value); return this; }
+        public Buffer memoryAt(long index, @CType("VkDeviceMemory") MemorySegment value) { VkExportMetalBufferInfoEXT.set_memory(this.segment(), index, value); return this; }
 
         /// {@return `mtlBuffer` at the given index}
         /// @param index the index
-        public @CType("MTLBuffer_id") java.lang.foreign.MemorySegment mtlBufferAt(long index) { return VkExportMetalBufferInfoEXT.get_mtlBuffer(this.segment(), index); }
+        public @CType("MTLBuffer_id") MemorySegment mtlBufferAt(long index) { return VkExportMetalBufferInfoEXT.get_mtlBuffer(this.segment(), index); }
         /// Sets `mtlBuffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer mtlBufferAt(long index, @CType("MTLBuffer_id") java.lang.foreign.MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), index, value); return this; }
+        public Buffer mtlBufferAt(long index, @CType("MTLBuffer_id") MemorySegment value) { VkExportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), index, value); return this; }
 
     }
 }

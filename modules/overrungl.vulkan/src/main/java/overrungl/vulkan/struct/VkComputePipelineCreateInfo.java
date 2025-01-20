@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### stage
-/// [Byte offset][#OFFSET_stage] - [Memory layout][#ML_stage] - [Getter][#stage()] - [Setter][#stage(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_stage] - [Memory layout][#ML_stage] - [Getter][#stage()] - [Setter][#stage(MemorySegment)]
 /// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
 /// ### basePipelineHandle
-/// [VarHandle][#VH_basePipelineHandle] - [Getter][#basePipelineHandle()] - [Setter][#basePipelineHandle(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_basePipelineHandle] - [Getter][#basePipelineHandle()] - [Setter][#basePipelineHandle(MemorySegment)]
 /// ### basePipelineIndex
 /// [VarHandle][#VH_basePipelineIndex] - [Getter][#basePipelineIndex()] - [Setter][#basePipelineIndex(int)]
 /// ## Layout
@@ -65,7 +65,7 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
@@ -73,9 +73,9 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
     public static final long OFFSET_stage = LAYOUT.byteOffset(PathElement.groupElement("stage"));
     /// The memory layout of `stage`.
     public static final MemoryLayout ML_stage = LAYOUT.select(PathElement.groupElement("stage"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
-    /// The [VarHandle] of `basePipelineHandle` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `basePipelineHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_basePipelineHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineHandle"));
     /// The [VarHandle] of `basePipelineIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_basePipelineIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineIndex"));
@@ -123,7 +123,7 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
     /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkComputePipelineCreateInfo`
-    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineCreateFlags") int flags, @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment stage, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle, @CType("int32_t") int basePipelineIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex); }
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineCreateFlags") int flags, @CType("VkPipelineShaderStageCreateInfo") MemorySegment stage, @CType("VkPipelineLayout") MemorySegment layout, @CType("VkPipeline") MemorySegment basePipelineHandle, @CType("int32_t") int basePipelineIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -160,25 +160,25 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkComputePipelineCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkComputePipelineCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkComputePipelineCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkComputePipelineCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComputePipelineCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkComputePipelineCreateInfo pNext(@CType("const void *") MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -206,71 +206,71 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
     /// {@return `stage` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment get_stage(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_stage, index), ML_stage); }
+    public static @CType("VkPipelineShaderStageCreateInfo") MemorySegment get_stage(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_stage, index), ML_stage); }
     /// {@return `stage`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment get_stage(MemorySegment segment) { return VkComputePipelineCreateInfo.get_stage(segment, 0L); }
+    public static @CType("VkPipelineShaderStageCreateInfo") MemorySegment get_stage(MemorySegment segment) { return VkComputePipelineCreateInfo.get_stage(segment, 0L); }
     /// {@return `stage`}
-    public @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment stage() { return VkComputePipelineCreateInfo.get_stage(this.segment()); }
+    public @CType("VkPipelineShaderStageCreateInfo") MemorySegment stage() { return VkComputePipelineCreateInfo.get_stage(this.segment()); }
     /// Sets `stage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_stage(MemorySegment segment, long index, @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_stage, index), ML_stage.byteSize()); }
+    public static void set_stage(MemorySegment segment, long index, @CType("VkPipelineShaderStageCreateInfo") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_stage, index), ML_stage.byteSize()); }
     /// Sets `stage` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_stage(MemorySegment segment, @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_stage(segment, 0L, value); }
+    public static void set_stage(MemorySegment segment, @CType("VkPipelineShaderStageCreateInfo") MemorySegment value) { VkComputePipelineCreateInfo.set_stage(segment, 0L, value); }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComputePipelineCreateInfo stage(@CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_stage(this.segment(), value); return this; }
+    public VkComputePipelineCreateInfo stage(@CType("VkPipelineShaderStageCreateInfo") MemorySegment value) { VkComputePipelineCreateInfo.set_stage(this.segment(), value); return this; }
 
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_layout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkComputePipelineCreateInfo.get_layout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkComputePipelineCreateInfo.get_layout(segment, 0L); }
     /// {@return `layout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkComputePipelineCreateInfo.get_layout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment layout() { return VkComputePipelineCreateInfo.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
+    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_layout(segment, 0L, value); }
+    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkComputePipelineCreateInfo.set_layout(segment, 0L, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComputePipelineCreateInfo layout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_layout(this.segment(), value); return this; }
+    public VkComputePipelineCreateInfo layout(@CType("VkPipelineLayout") MemorySegment value) { VkComputePipelineCreateInfo.set_layout(this.segment(), value); return this; }
 
     /// {@return `basePipelineHandle` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_basePipelineHandle(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_basePipelineHandle.get(segment, 0L, index); }
+    public static @CType("VkPipeline") MemorySegment get_basePipelineHandle(MemorySegment segment, long index) { return (MemorySegment) VH_basePipelineHandle.get(segment, 0L, index); }
     /// {@return `basePipelineHandle`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_basePipelineHandle(MemorySegment segment) { return VkComputePipelineCreateInfo.get_basePipelineHandle(segment, 0L); }
+    public static @CType("VkPipeline") MemorySegment get_basePipelineHandle(MemorySegment segment) { return VkComputePipelineCreateInfo.get_basePipelineHandle(segment, 0L); }
     /// {@return `basePipelineHandle`}
-    public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle() { return VkComputePipelineCreateInfo.get_basePipelineHandle(this.segment()); }
+    public @CType("VkPipeline") MemorySegment basePipelineHandle() { return VkComputePipelineCreateInfo.get_basePipelineHandle(this.segment()); }
     /// Sets `basePipelineHandle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_basePipelineHandle(MemorySegment segment, long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VH_basePipelineHandle.set(segment, 0L, index, value); }
+    public static void set_basePipelineHandle(MemorySegment segment, long index, @CType("VkPipeline") MemorySegment value) { VH_basePipelineHandle.set(segment, 0L, index, value); }
     /// Sets `basePipelineHandle` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_basePipelineHandle(MemorySegment segment, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(segment, 0L, value); }
+    public static void set_basePipelineHandle(MemorySegment segment, @CType("VkPipeline") MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(segment, 0L, value); }
     /// Sets `basePipelineHandle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComputePipelineCreateInfo basePipelineHandle(@CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(this.segment(), value); return this; }
+    public VkComputePipelineCreateInfo basePipelineHandle(@CType("VkPipeline") MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(this.segment(), value); return this; }
 
     /// {@return `basePipelineIndex` at the given index}
     /// @param segment the segment of the struct
@@ -328,12 +328,12 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkComputePipelineCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkComputePipelineCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkComputePipelineCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -346,30 +346,30 @@ public sealed class VkComputePipelineCreateInfo extends Struct {
 
         /// {@return `stage` at the given index}
         /// @param index the index
-        public @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment stageAt(long index) { return VkComputePipelineCreateInfo.get_stage(this.segment(), index); }
+        public @CType("VkPipelineShaderStageCreateInfo") MemorySegment stageAt(long index) { return VkComputePipelineCreateInfo.get_stage(this.segment(), index); }
         /// Sets `stage` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer stageAt(long index, @CType("VkPipelineShaderStageCreateInfo") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_stage(this.segment(), index, value); return this; }
+        public Buffer stageAt(long index, @CType("VkPipelineShaderStageCreateInfo") MemorySegment value) { VkComputePipelineCreateInfo.set_stage(this.segment(), index, value); return this; }
 
         /// {@return `layout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkComputePipelineCreateInfo.get_layout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkComputePipelineCreateInfo.get_layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkComputePipelineCreateInfo.set_layout(this.segment(), index, value); return this; }
 
         /// {@return `basePipelineHandle` at the given index}
         /// @param index the index
-        public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandleAt(long index) { return VkComputePipelineCreateInfo.get_basePipelineHandle(this.segment(), index); }
+        public @CType("VkPipeline") MemorySegment basePipelineHandleAt(long index) { return VkComputePipelineCreateInfo.get_basePipelineHandle(this.segment(), index); }
         /// Sets `basePipelineHandle` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer basePipelineHandleAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(this.segment(), index, value); return this; }
+        public Buffer basePipelineHandleAt(long index, @CType("VkPipeline") MemorySegment value) { VkComputePipelineCreateInfo.set_basePipelineHandle(this.segment(), index, value); return this; }
 
         /// {@return `basePipelineIndex` at the given index}
         /// @param index the index

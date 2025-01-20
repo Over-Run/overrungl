@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### globalPriorityQuery
 /// [VarHandle][#VH_globalPriorityQuery] - [Getter][#globalPriorityQuery()] - [Setter][#globalPriorityQuery(int)]
 /// ### shaderSubgroupRotate
@@ -129,7 +129,7 @@ public sealed class VkPhysicalDeviceVulkan14Features extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `globalPriorityQuery` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_globalPriorityQuery = LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalPriorityQuery"));
@@ -217,7 +217,7 @@ public sealed class VkPhysicalDeviceVulkan14Features extends Struct {
     /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceVulkan14Features`
-    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int globalPriorityQuery, @CType("VkBool32") int shaderSubgroupRotate, @CType("VkBool32") int shaderSubgroupRotateClustered, @CType("VkBool32") int shaderFloatControls2, @CType("VkBool32") int shaderExpectAssume, @CType("VkBool32") int rectangularLines, @CType("VkBool32") int bresenhamLines, @CType("VkBool32") int smoothLines, @CType("VkBool32") int stippledRectangularLines, @CType("VkBool32") int stippledBresenhamLines, @CType("VkBool32") int stippledSmoothLines, @CType("VkBool32") int vertexAttributeInstanceRateDivisor, @CType("VkBool32") int vertexAttributeInstanceRateZeroDivisor, @CType("VkBool32") int indexTypeUint8, @CType("VkBool32") int dynamicRenderingLocalRead, @CType("VkBool32") int maintenance5, @CType("VkBool32") int maintenance6, @CType("VkBool32") int pipelineProtectedAccess, @CType("VkBool32") int pipelineRobustness, @CType("VkBool32") int hostImageCopy, @CType("VkBool32") int pushDescriptor) { return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess).pipelineRobustness(pipelineRobustness).hostImageCopy(hostImageCopy).pushDescriptor(pushDescriptor); }
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int globalPriorityQuery, @CType("VkBool32") int shaderSubgroupRotate, @CType("VkBool32") int shaderSubgroupRotateClustered, @CType("VkBool32") int shaderFloatControls2, @CType("VkBool32") int shaderExpectAssume, @CType("VkBool32") int rectangularLines, @CType("VkBool32") int bresenhamLines, @CType("VkBool32") int smoothLines, @CType("VkBool32") int stippledRectangularLines, @CType("VkBool32") int stippledBresenhamLines, @CType("VkBool32") int stippledSmoothLines, @CType("VkBool32") int vertexAttributeInstanceRateDivisor, @CType("VkBool32") int vertexAttributeInstanceRateZeroDivisor, @CType("VkBool32") int indexTypeUint8, @CType("VkBool32") int dynamicRenderingLocalRead, @CType("VkBool32") int maintenance5, @CType("VkBool32") int maintenance6, @CType("VkBool32") int pipelineProtectedAccess, @CType("VkBool32") int pipelineRobustness, @CType("VkBool32") int hostImageCopy, @CType("VkBool32") int pushDescriptor) { return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess).pipelineRobustness(pipelineRobustness).hostImageCopy(hostImageCopy).pushDescriptor(pushDescriptor); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -254,25 +254,25 @@ public sealed class VkPhysicalDeviceVulkan14Features extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan14Features.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan14Features.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkan14Features.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceVulkan14Features.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan14Features pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan14Features pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(this.segment(), value); return this; }
 
     /// {@return `globalPriorityQuery` at the given index}
     /// @param segment the segment of the struct
@@ -790,12 +790,12 @@ public sealed class VkPhysicalDeviceVulkan14Features extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan14Features.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan14Features.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan14Features.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `globalPriorityQuery` at the given index}
         /// @param index the index

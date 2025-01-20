@@ -223,7 +223,7 @@ public final class NFD {
         }
     }
 
-    public static void NFD_FreePath(@CType("nfdnchar_t*") java.lang.foreign.MemorySegment filePath) {
+    public static void NFD_FreePath(@CType("nfdnchar_t*") MemorySegment filePath) {
         try {
             Handles.MH_NFD_FreePathN.invokeExact(Handles.get().PFN_NFD_FreePathN, filePath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_FreePathN", e); }
@@ -241,95 +241,95 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_Quit", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+    public static @CType("nfdresult_t") int NFD_OpenDialog(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_OpenDialogN.invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_OpenDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdopendialognargs_t*") MemorySegment args) {
         try {
             return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invokeExact(Handles.get().PFN_NFD_OpenDialogN_With_Impl, version, outPath, args);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogN_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog_With(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_OpenDialog_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdopendialognargs_t*") MemorySegment args) {
         return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple(@CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_OpenDialogMultipleN.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultipleN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdopendialognargs_t*") MemorySegment args) {
         try {
             return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, version, outPaths, args);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultipleN_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With(@CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdopendialognargs_t*") MemorySegment args) {
         return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultName) {
+    public static @CType("nfdresult_t") int NFD_SaveDialog(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath, @CType("const nfdnchar_t*") MemorySegment defaultName) {
         try {
             return (int) Handles.MH_NFD_SaveDialogN.invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialogN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdsavedialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_SaveDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdsavedialognargs_t*") MemorySegment args) {
         try {
             return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invokeExact(Handles.get().PFN_NFD_SaveDialogN_With_Impl, version, outPath, args);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialogN_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog_With(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdsavedialognargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_SaveDialog_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdsavedialognargs_t*") MemorySegment args) {
         return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+    public static @CType("nfdresult_t") int NFD_PickFolder(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_PickFolderN.invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_PickFolder_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
         try {
             return (int) Handles.MH_NFD_PickFolderN_With_Impl.invokeExact(Handles.get().PFN_NFD_PickFolderN_With_Impl, version, outPath, args);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderN_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder_With(@CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_PickFolder_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
         return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple(@CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+    public static @CType("nfdresult_t") int NFD_PickFolderMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_PickFolderMultipleN.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultipleN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
         try {
             return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, version, outPaths, args);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultipleN_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With(@CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
         return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    public static @CType("const char*") java.lang.foreign.MemorySegment NFD_GetError_() {
+    public static @CType("const char*") MemorySegment NFD_GetError_() {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError);
+            return (MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }
 
-    public static @CType("const char*") java.lang.String NFD_GetError() {
+    public static @CType("const char*") String NFD_GetError() {
         try {
-            return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError));
+            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError));
         } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }
 
@@ -339,13 +339,13 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_ClearError", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet, @Out @CType("nfdpathsetsize_t*") java.lang.foreign.MemorySegment count) {
+    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") MemorySegment pathSet, @Out @CType("nfdpathsetsize_t*") MemorySegment count) {
         try {
             return (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet, @Out long[] count) {
+    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") MemorySegment pathSet, @Out long[] count) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_count = Marshal.marshal(__overrungl_stack, count);
             var __overrungl_result = (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, __overrungl_ref_count);
@@ -354,37 +354,37 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetPath(@CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet, @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath) {
+    public static @CType("nfdresult_t") int NFD_PathSet_GetPath(@CType("const nfdpathset_t*") MemorySegment pathSet, @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") MemorySegment outPath) {
         try {
             return (int) Handles.MH_NFD_PathSet_GetPathN.invokeExact(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, index, outPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPathN", e); }
     }
 
-    public static void NFD_PathSet_FreePath(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment filePath) {
+    public static void NFD_PathSet_FreePath(@CType("const nfdnchar_t*") MemorySegment filePath) {
         try {
             Handles.MH_NFD_PathSet_FreePathN.invokeExact(Handles.get().PFN_NFD_PathSet_FreePathN, filePath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreePathN", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetEnum(@CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet, @CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment outEnumerator) {
+    public static @CType("nfdresult_t") int NFD_PathSet_GetEnum(@CType("const nfdpathset_t*") MemorySegment pathSet, @CType("nfdpathsetenum_t*") MemorySegment outEnumerator) {
         try {
             return (int) Handles.MH_NFD_PathSet_GetEnum.invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetEnum", e); }
     }
 
-    public static void NFD_PathSet_FreeEnum(@CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment enumerator) {
+    public static void NFD_PathSet_FreeEnum(@CType("nfdpathsetenum_t*") MemorySegment enumerator) {
         try {
             Handles.MH_NFD_PathSet_FreeEnum.invokeExact(Handles.get().PFN_NFD_PathSet_FreeEnum, enumerator);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreeEnum", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_EnumNext(@CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment enumerator, @CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath) {
+    public static @CType("nfdresult_t") int NFD_PathSet_EnumNext(@CType("nfdpathsetenum_t*") MemorySegment enumerator, @CType("nfdnchar_t**") MemorySegment outPath) {
         try {
             return (int) Handles.MH_NFD_PathSet_EnumNextN.invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_EnumNextN", e); }
     }
 
-    public static void NFD_PathSet_Free(@CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet) {
+    public static void NFD_PathSet_Free(@CType("const nfdpathset_t*") MemorySegment pathSet) {
         try {
             Handles.MH_NFD_PathSet_Free.invokeExact(Handles.get().PFN_NFD_PathSet_Free, pathSet);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_Free", e); }

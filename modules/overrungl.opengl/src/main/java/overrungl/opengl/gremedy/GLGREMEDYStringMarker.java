@@ -41,7 +41,7 @@ public final class GLGREMEDYStringMarker {
         this.handles = new Handles(func);
     }
 
-    public void StringMarkerGREMEDY(@CType("GLsizei") int len, @CType("const void *") java.lang.foreign.MemorySegment string) {
+    public void StringMarkerGREMEDY(@CType("GLsizei") int len, @CType("const void *") MemorySegment string) {
         if (Unmarshal.isNullPointer(handles.PFN_glStringMarkerGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glStringMarkerGREMEDY");
         try { Handles.MH_glStringMarkerGREMEDY.invokeExact(handles.PFN_glStringMarkerGREMEDY, len, string); }
         catch (Throwable e) { throw new RuntimeException("error in glStringMarkerGREMEDY", e); }

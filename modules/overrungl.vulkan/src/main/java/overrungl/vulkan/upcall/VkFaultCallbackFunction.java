@@ -31,14 +31,14 @@ public interface VkFaultCallbackFunction extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkFaultCallbackFunction.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") java.lang.foreign.MemorySegment pFaults);
+    @CType("void") void invoke(@CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") MemorySegment pFaults);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") java.lang.foreign.MemorySegment pFaults) {
+    static @CType("void") void invoke(MemorySegment stub, @CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") MemorySegment pFaults) {
         try { HANDLE.invokeExact(stub, unrecordedFaults, faultCount, pFaults); }
         catch (Throwable e) { throw new RuntimeException("error in VkFaultCallbackFunction::invoke (static invoker)", e); }
     }

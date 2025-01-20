@@ -49,13 +49,13 @@ public final class GLEXTDebugMarker {
         this.handles = new Handles(func);
     }
 
-    public void InsertEventMarkerEXT(@CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment marker) {
+    public void InsertEventMarkerEXT(@CType("GLsizei") int length, @CType("const GLchar *") MemorySegment marker) {
         if (Unmarshal.isNullPointer(handles.PFN_glInsertEventMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertEventMarkerEXT");
         try { Handles.MH_glInsertEventMarkerEXT.invokeExact(handles.PFN_glInsertEventMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in glInsertEventMarkerEXT", e); }
     }
 
-    public void PushGroupMarkerEXT(@CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment marker) {
+    public void PushGroupMarkerEXT(@CType("GLsizei") int length, @CType("const GLchar *") MemorySegment marker) {
         if (Unmarshal.isNullPointer(handles.PFN_glPushGroupMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glPushGroupMarkerEXT");
         try { Handles.MH_glPushGroupMarkerEXT.invokeExact(handles.PFN_glPushGroupMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in glPushGroupMarkerEXT", e); }

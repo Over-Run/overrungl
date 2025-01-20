@@ -66,7 +66,7 @@ public final class ALSOFTSourceStartDelay {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayAtTimeSOFT", e); }
     }
 
-    public static void alSourcePlayAtTimevSOFT(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources, @CType("ALint64SOFT") long start_time) {
+    public static void alSourcePlayAtTimevSOFT(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources, @CType("ALint64SOFT") long start_time) {
         if (Handles.MH_alSourcePlayAtTimevSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcePlayAtTimevSOFT");
         try {
             Handles.MH_alSourcePlayAtTimevSOFT.invokeExact(Handles.get().PFN_alSourcePlayAtTimevSOFT, n, sources, start_time);

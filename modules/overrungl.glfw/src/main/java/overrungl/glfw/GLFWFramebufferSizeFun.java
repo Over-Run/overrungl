@@ -31,14 +31,14 @@ public interface GLFWFramebufferSizeFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWFramebufferSizeFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int width, @CType("int") int height);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int width, @CType("int") int height) {
         try { HANDLE.invokeExact(stub, window, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWFramebufferSizeFun::invoke (static invoker)", e); }
     }

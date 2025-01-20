@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### function
-/// [VarHandle][#VH_function] - [Getter][#function()] - [Setter][#function(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_function] - [Getter][#function()] - [Setter][#function(MemorySegment)]
 /// ### gridDimX
 /// [VarHandle][#VH_gridDimX] - [Getter][#gridDimX()] - [Setter][#gridDimX(int)]
 /// ### gridDimY
@@ -48,11 +48,11 @@ import overrungl.util.*;
 /// ### paramCount
 /// [VarHandle][#VH_paramCount] - [Getter][#paramCount()] - [Setter][#paramCount(long)]
 /// ### pParams
-/// [VarHandle][#VH_pParams] - [Getter][#pParams()] - [Setter][#pParams(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pParams] - [Getter][#pParams()] - [Setter][#pParams(MemorySegment)]
 /// ### extraCount
 /// [VarHandle][#VH_extraCount] - [Getter][#extraCount()] - [Setter][#extraCount(long)]
 /// ### pExtras
-/// [VarHandle][#VH_pExtras] - [Getter][#pExtras()] - [Setter][#pExtras(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pExtras] - [Getter][#pExtras()] - [Setter][#pExtras(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -93,9 +93,9 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `function` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `function` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_function = LAYOUT.arrayElementVarHandle(PathElement.groupElement("function"));
     /// The [VarHandle] of `gridDimX` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_gridDimX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gridDimX"));
@@ -113,11 +113,11 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     public static final VarHandle VH_sharedMemBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sharedMemBytes"));
     /// The [VarHandle] of `paramCount` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_paramCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("paramCount"));
-    /// The [VarHandle] of `pParams` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pParams` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pParams = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pParams"));
     /// The [VarHandle] of `extraCount` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_extraCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extraCount"));
-    /// The [VarHandle] of `pExtras` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pExtras` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pExtras = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExtras"));
 
     /// Creates `VkCuLaunchInfoNVX` with the given segment.
@@ -163,7 +163,7 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     /// Allocates a `VkCuLaunchInfoNVX` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCuLaunchInfoNVX`
-    public static VkCuLaunchInfoNVX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment function, @CType("uint32_t") int gridDimX, @CType("uint32_t") int gridDimY, @CType("uint32_t") int gridDimZ, @CType("uint32_t") int blockDimX, @CType("uint32_t") int blockDimY, @CType("uint32_t") int blockDimZ, @CType("uint32_t") int sharedMemBytes, @CType("size_t") long paramCount, @CType("const void * const *") java.lang.foreign.MemorySegment pParams, @CType("size_t") long extraCount, @CType("const void * const *") java.lang.foreign.MemorySegment pExtras) { return alloc(allocator).sType(sType).pNext(pNext).function(function).gridDimX(gridDimX).gridDimY(gridDimY).gridDimZ(gridDimZ).blockDimX(blockDimX).blockDimY(blockDimY).blockDimZ(blockDimZ).sharedMemBytes(sharedMemBytes).paramCount(paramCount).pParams(pParams).extraCount(extraCount).pExtras(pExtras); }
+    public static VkCuLaunchInfoNVX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkCuFunctionNVX") MemorySegment function, @CType("uint32_t") int gridDimX, @CType("uint32_t") int gridDimY, @CType("uint32_t") int gridDimZ, @CType("uint32_t") int blockDimX, @CType("uint32_t") int blockDimY, @CType("uint32_t") int blockDimZ, @CType("uint32_t") int sharedMemBytes, @CType("size_t") long paramCount, @CType("const void * const *") MemorySegment pParams, @CType("size_t") long extraCount, @CType("const void * const *") MemorySegment pExtras) { return alloc(allocator).sType(sType).pNext(pNext).function(function).gridDimX(gridDimX).gridDimY(gridDimY).gridDimZ(gridDimZ).blockDimX(blockDimX).blockDimY(blockDimY).blockDimZ(blockDimZ).sharedMemBytes(sharedMemBytes).paramCount(paramCount).pParams(pParams).extraCount(extraCount).pExtras(pExtras); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -200,48 +200,48 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCuLaunchInfoNVX.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkCuLaunchInfoNVX.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuLaunchInfoNVX pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(this.segment(), value); return this; }
+    public VkCuLaunchInfoNVX pNext(@CType("const void *") MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(this.segment(), value); return this; }
 
     /// {@return `function` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment get_function(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_function.get(segment, 0L, index); }
+    public static @CType("VkCuFunctionNVX") MemorySegment get_function(MemorySegment segment, long index) { return (MemorySegment) VH_function.get(segment, 0L, index); }
     /// {@return `function`}
     /// @param segment the segment of the struct
-    public static @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment get_function(MemorySegment segment) { return VkCuLaunchInfoNVX.get_function(segment, 0L); }
+    public static @CType("VkCuFunctionNVX") MemorySegment get_function(MemorySegment segment) { return VkCuLaunchInfoNVX.get_function(segment, 0L); }
     /// {@return `function`}
-    public @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment function() { return VkCuLaunchInfoNVX.get_function(this.segment()); }
+    public @CType("VkCuFunctionNVX") MemorySegment function() { return VkCuLaunchInfoNVX.get_function(this.segment()); }
     /// Sets `function` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_function(MemorySegment segment, long index, @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment value) { VH_function.set(segment, 0L, index, value); }
+    public static void set_function(MemorySegment segment, long index, @CType("VkCuFunctionNVX") MemorySegment value) { VH_function.set(segment, 0L, index, value); }
     /// Sets `function` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_function(MemorySegment segment, @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_function(segment, 0L, value); }
+    public static void set_function(MemorySegment segment, @CType("VkCuFunctionNVX") MemorySegment value) { VkCuLaunchInfoNVX.set_function(segment, 0L, value); }
     /// Sets `function` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuLaunchInfoNVX function(@CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_function(this.segment(), value); return this; }
+    public VkCuLaunchInfoNVX function(@CType("VkCuFunctionNVX") MemorySegment value) { VkCuLaunchInfoNVX.set_function(this.segment(), value); return this; }
 
     /// {@return `gridDimX` at the given index}
     /// @param segment the segment of the struct
@@ -430,25 +430,25 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     /// {@return `pParams` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void * const *") java.lang.foreign.MemorySegment get_pParams(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pParams.get(segment, 0L, index); }
+    public static @CType("const void * const *") MemorySegment get_pParams(MemorySegment segment, long index) { return (MemorySegment) VH_pParams.get(segment, 0L, index); }
     /// {@return `pParams`}
     /// @param segment the segment of the struct
-    public static @CType("const void * const *") java.lang.foreign.MemorySegment get_pParams(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pParams(segment, 0L); }
+    public static @CType("const void * const *") MemorySegment get_pParams(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pParams(segment, 0L); }
     /// {@return `pParams`}
-    public @CType("const void * const *") java.lang.foreign.MemorySegment pParams() { return VkCuLaunchInfoNVX.get_pParams(this.segment()); }
+    public @CType("const void * const *") MemorySegment pParams() { return VkCuLaunchInfoNVX.get_pParams(this.segment()); }
     /// Sets `pParams` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pParams(MemorySegment segment, long index, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VH_pParams.set(segment, 0L, index, value); }
+    public static void set_pParams(MemorySegment segment, long index, @CType("const void * const *") MemorySegment value) { VH_pParams.set(segment, 0L, index, value); }
     /// Sets `pParams` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pParams(MemorySegment segment, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(segment, 0L, value); }
+    public static void set_pParams(MemorySegment segment, @CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(segment, 0L, value); }
     /// Sets `pParams` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuLaunchInfoNVX pParams(@CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(this.segment(), value); return this; }
+    public VkCuLaunchInfoNVX pParams(@CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(this.segment(), value); return this; }
 
     /// {@return `extraCount` at the given index}
     /// @param segment the segment of the struct
@@ -476,25 +476,25 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
     /// {@return `pExtras` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void * const *") java.lang.foreign.MemorySegment get_pExtras(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pExtras.get(segment, 0L, index); }
+    public static @CType("const void * const *") MemorySegment get_pExtras(MemorySegment segment, long index) { return (MemorySegment) VH_pExtras.get(segment, 0L, index); }
     /// {@return `pExtras`}
     /// @param segment the segment of the struct
-    public static @CType("const void * const *") java.lang.foreign.MemorySegment get_pExtras(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pExtras(segment, 0L); }
+    public static @CType("const void * const *") MemorySegment get_pExtras(MemorySegment segment) { return VkCuLaunchInfoNVX.get_pExtras(segment, 0L); }
     /// {@return `pExtras`}
-    public @CType("const void * const *") java.lang.foreign.MemorySegment pExtras() { return VkCuLaunchInfoNVX.get_pExtras(this.segment()); }
+    public @CType("const void * const *") MemorySegment pExtras() { return VkCuLaunchInfoNVX.get_pExtras(this.segment()); }
     /// Sets `pExtras` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pExtras(MemorySegment segment, long index, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VH_pExtras.set(segment, 0L, index, value); }
+    public static void set_pExtras(MemorySegment segment, long index, @CType("const void * const *") MemorySegment value) { VH_pExtras.set(segment, 0L, index, value); }
     /// Sets `pExtras` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pExtras(MemorySegment segment, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(segment, 0L, value); }
+    public static void set_pExtras(MemorySegment segment, @CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(segment, 0L, value); }
     /// Sets `pExtras` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuLaunchInfoNVX pExtras(@CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(this.segment(), value); return this; }
+    public VkCuLaunchInfoNVX pExtras(@CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(this.segment(), value); return this; }
 
     /// A buffer of [VkCuLaunchInfoNVX].
     public static final class Buffer extends VkCuLaunchInfoNVX {
@@ -529,21 +529,21 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCuLaunchInfoNVX.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCuLaunchInfoNVX.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCuLaunchInfoNVX.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `function` at the given index}
         /// @param index the index
-        public @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment functionAt(long index) { return VkCuLaunchInfoNVX.get_function(this.segment(), index); }
+        public @CType("VkCuFunctionNVX") MemorySegment functionAt(long index) { return VkCuLaunchInfoNVX.get_function(this.segment(), index); }
         /// Sets `function` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer functionAt(long index, @CType("VkCuFunctionNVX") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_function(this.segment(), index, value); return this; }
+        public Buffer functionAt(long index, @CType("VkCuFunctionNVX") MemorySegment value) { VkCuLaunchInfoNVX.set_function(this.segment(), index, value); return this; }
 
         /// {@return `gridDimX` at the given index}
         /// @param index the index
@@ -619,12 +619,12 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
 
         /// {@return `pParams` at the given index}
         /// @param index the index
-        public @CType("const void * const *") java.lang.foreign.MemorySegment pParamsAt(long index) { return VkCuLaunchInfoNVX.get_pParams(this.segment(), index); }
+        public @CType("const void * const *") MemorySegment pParamsAt(long index) { return VkCuLaunchInfoNVX.get_pParams(this.segment(), index); }
         /// Sets `pParams` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pParamsAt(long index, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(this.segment(), index, value); return this; }
+        public Buffer pParamsAt(long index, @CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pParams(this.segment(), index, value); return this; }
 
         /// {@return `extraCount` at the given index}
         /// @param index the index
@@ -637,12 +637,12 @@ public sealed class VkCuLaunchInfoNVX extends Struct {
 
         /// {@return `pExtras` at the given index}
         /// @param index the index
-        public @CType("const void * const *") java.lang.foreign.MemorySegment pExtrasAt(long index) { return VkCuLaunchInfoNVX.get_pExtras(this.segment(), index); }
+        public @CType("const void * const *") MemorySegment pExtrasAt(long index) { return VkCuLaunchInfoNVX.get_pExtras(this.segment(), index); }
         /// Sets `pExtras` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pExtrasAt(long index, @CType("const void * const *") java.lang.foreign.MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(this.segment(), index, value); return this; }
+        public Buffer pExtrasAt(long index, @CType("const void * const *") MemorySegment value) { VkCuLaunchInfoNVX.set_pExtras(this.segment(), index, value); return this; }
 
     }
 }

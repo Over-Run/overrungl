@@ -31,14 +31,14 @@ public interface GLFWDeallocateFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWDeallocateFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("void*") java.lang.foreign.MemorySegment block, @CType("void*") java.lang.foreign.MemorySegment user);
+    void invoke(@CType("void*") MemorySegment block, @CType("void*") MemorySegment user);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment block, @CType("void*") java.lang.foreign.MemorySegment user) {
+    static void invoke(MemorySegment stub, @CType("void*") MemorySegment block, @CType("void*") MemorySegment user) {
         try { HANDLE.invokeExact(stub, block, user); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWDeallocateFun::invoke (static invoker)", e); }
     }

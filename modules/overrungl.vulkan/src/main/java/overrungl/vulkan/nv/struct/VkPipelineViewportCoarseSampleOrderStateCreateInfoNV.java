@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### sampleOrderType
 /// [VarHandle][#VH_sampleOrderType] - [Getter][#sampleOrderType()] - [Setter][#sampleOrderType(int)]
 /// ### customSampleOrderCount
 /// [VarHandle][#VH_customSampleOrderCount] - [Getter][#customSampleOrderCount()] - [Setter][#customSampleOrderCount(int)]
 /// ### pCustomSampleOrders
-/// [VarHandle][#VH_pCustomSampleOrders] - [Getter][#pCustomSampleOrders()] - [Setter][#pCustomSampleOrders(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCustomSampleOrders] - [Getter][#pCustomSampleOrders()] - [Setter][#pCustomSampleOrders(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `sampleOrderType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sampleOrderType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleOrderType"));
     /// The [VarHandle] of `customSampleOrderCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_customSampleOrderCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("customSampleOrderCount"));
-    /// The [VarHandle] of `pCustomSampleOrders` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCustomSampleOrders` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCustomSampleOrders = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCustomSampleOrders"));
 
     /// Creates `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
     /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
-    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkCoarseSampleOrderTypeNV") int sampleOrderType, @CType("uint32_t") int customSampleOrderCount, @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment pCustomSampleOrders) { return alloc(allocator).sType(sType).pNext(pNext).sampleOrderType(sampleOrderType).customSampleOrderCount(customSampleOrderCount).pCustomSampleOrders(pCustomSampleOrders); }
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkCoarseSampleOrderTypeNV") int sampleOrderType, @CType("uint32_t") int customSampleOrderCount, @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment pCustomSampleOrders) { return alloc(allocator).sType(sType).pNext(pNext).sampleOrderType(sampleOrderType).customSampleOrderCount(customSampleOrderCount).pCustomSampleOrders(pCustomSampleOrders); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@CType("const void *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `sampleOrderType` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
     /// {@return `pCustomSampleOrders` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment get_pCustomSampleOrders(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCustomSampleOrders.get(segment, 0L, index); }
+    public static @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment get_pCustomSampleOrders(MemorySegment segment, long index) { return (MemorySegment) VH_pCustomSampleOrders.get(segment, 0L, index); }
     /// {@return `pCustomSampleOrders`}
     /// @param segment the segment of the struct
-    public static @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment get_pCustomSampleOrders(MemorySegment segment) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(segment, 0L); }
+    public static @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment get_pCustomSampleOrders(MemorySegment segment) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(segment, 0L); }
     /// {@return `pCustomSampleOrders`}
-    public @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment pCustomSampleOrders() { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(this.segment()); }
+    public @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment pCustomSampleOrders() { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(this.segment()); }
     /// Sets `pCustomSampleOrders` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCustomSampleOrders(MemorySegment segment, long index, @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment value) { VH_pCustomSampleOrders.set(segment, 0L, index, value); }
+    public static void set_pCustomSampleOrders(MemorySegment segment, long index, @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment value) { VH_pCustomSampleOrders.set(segment, 0L, index, value); }
     /// Sets `pCustomSampleOrders` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCustomSampleOrders(MemorySegment segment, @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(segment, 0L, value); }
+    public static void set_pCustomSampleOrders(MemorySegment segment, @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(segment, 0L, value); }
     /// Sets `pCustomSampleOrders` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pCustomSampleOrders(@CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(this.segment(), value); return this; }
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pCustomSampleOrders(@CType("const VkCoarseSampleOrderCustomNV *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineViewportCoarseSampleOrderStateCreateInfoNV].
     public static final class Buffer extends VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
@@ -268,12 +268,12 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `sampleOrderType` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
 
         /// {@return `pCustomSampleOrders` at the given index}
         /// @param index the index
-        public @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment pCustomSampleOrdersAt(long index) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(this.segment(), index); }
+        public @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment pCustomSampleOrdersAt(long index) { return VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.get_pCustomSampleOrders(this.segment(), index); }
         /// Sets `pCustomSampleOrders` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCustomSampleOrdersAt(long index, @CType("const VkCoarseSampleOrderCustomNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(this.segment(), index, value); return this; }
+        public Buffer pCustomSampleOrdersAt(long index, @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment value) { VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.set_pCustomSampleOrders(this.segment(), index, value); return this; }
 
     }
 }

@@ -28,21 +28,21 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### waitSemaphoreInfoCount
 /// [VarHandle][#VH_waitSemaphoreInfoCount] - [Getter][#waitSemaphoreInfoCount()] - [Setter][#waitSemaphoreInfoCount(int)]
 /// ### pWaitSemaphoreInfos
-/// [VarHandle][#VH_pWaitSemaphoreInfos] - [Getter][#pWaitSemaphoreInfos()] - [Setter][#pWaitSemaphoreInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pWaitSemaphoreInfos] - [Getter][#pWaitSemaphoreInfos()] - [Setter][#pWaitSemaphoreInfos(MemorySegment)]
 /// ### commandBufferInfoCount
 /// [VarHandle][#VH_commandBufferInfoCount] - [Getter][#commandBufferInfoCount()] - [Setter][#commandBufferInfoCount(int)]
 /// ### pCommandBufferInfos
-/// [VarHandle][#VH_pCommandBufferInfos] - [Getter][#pCommandBufferInfos()] - [Setter][#pCommandBufferInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCommandBufferInfos] - [Getter][#pCommandBufferInfos()] - [Setter][#pCommandBufferInfos(MemorySegment)]
 /// ### signalSemaphoreInfoCount
 /// [VarHandle][#VH_signalSemaphoreInfoCount] - [Getter][#signalSemaphoreInfoCount()] - [Setter][#signalSemaphoreInfoCount(int)]
 /// ### pSignalSemaphoreInfos
-/// [VarHandle][#VH_pSignalSemaphoreInfos] - [Getter][#pSignalSemaphoreInfos()] - [Setter][#pSignalSemaphoreInfos(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSignalSemaphoreInfos] - [Getter][#pSignalSemaphoreInfos()] - [Setter][#pSignalSemaphoreInfos(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -73,21 +73,21 @@ public sealed class VkSubmitInfo2 extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `waitSemaphoreInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_waitSemaphoreInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreInfoCount"));
-    /// The [VarHandle] of `pWaitSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pWaitSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWaitSemaphoreInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreInfos"));
     /// The [VarHandle] of `commandBufferInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_commandBufferInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferInfoCount"));
-    /// The [VarHandle] of `pCommandBufferInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCommandBufferInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCommandBufferInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCommandBufferInfos"));
     /// The [VarHandle] of `signalSemaphoreInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_signalSemaphoreInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreInfoCount"));
-    /// The [VarHandle] of `pSignalSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSignalSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSignalSemaphoreInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreInfos"));
 
     /// Creates `VkSubmitInfo2` with the given segment.
@@ -133,7 +133,7 @@ public sealed class VkSubmitInfo2 extends Struct {
     /// Allocates a `VkSubmitInfo2` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubmitInfo2`
-    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSubmitFlags") int flags, @CType("uint32_t") int waitSemaphoreInfoCount, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pWaitSemaphoreInfos, @CType("uint32_t") int commandBufferInfoCount, @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment pCommandBufferInfos, @CType("uint32_t") int signalSemaphoreInfoCount, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pSignalSemaphoreInfos) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount).pCommandBufferInfos(pCommandBufferInfos).signalSemaphoreInfoCount(signalSemaphoreInfoCount).pSignalSemaphoreInfos(pSignalSemaphoreInfos); }
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSubmitFlags") int flags, @CType("uint32_t") int waitSemaphoreInfoCount, @CType("const VkSemaphoreSubmitInfo *") MemorySegment pWaitSemaphoreInfos, @CType("uint32_t") int commandBufferInfoCount, @CType("const VkCommandBufferSubmitInfo *") MemorySegment pCommandBufferInfos, @CType("uint32_t") int signalSemaphoreInfoCount, @CType("const VkSemaphoreSubmitInfo *") MemorySegment pSignalSemaphoreInfos) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount).pCommandBufferInfos(pCommandBufferInfos).signalSemaphoreInfoCount(signalSemaphoreInfoCount).pSignalSemaphoreInfos(pSignalSemaphoreInfos); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -170,25 +170,25 @@ public sealed class VkSubmitInfo2 extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSubmitInfo2.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSubmitInfo2.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSubmitInfo2.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSubmitInfo2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSubmitInfo2.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubmitInfo2 pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pNext(this.segment(), value); return this; }
+    public VkSubmitInfo2 pNext(@CType("const void *") MemorySegment value) { VkSubmitInfo2.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -239,25 +239,25 @@ public sealed class VkSubmitInfo2 extends Struct {
     /// {@return `pWaitSemaphoreInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pWaitSemaphoreInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pWaitSemaphoreInfos.get(segment, 0L, index); }
+    public static @CType("const VkSemaphoreSubmitInfo *") MemorySegment get_pWaitSemaphoreInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreInfos.get(segment, 0L, index); }
     /// {@return `pWaitSemaphoreInfos`}
     /// @param segment the segment of the struct
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pWaitSemaphoreInfos(MemorySegment segment) { return VkSubmitInfo2.get_pWaitSemaphoreInfos(segment, 0L); }
+    public static @CType("const VkSemaphoreSubmitInfo *") MemorySegment get_pWaitSemaphoreInfos(MemorySegment segment) { return VkSubmitInfo2.get_pWaitSemaphoreInfos(segment, 0L); }
     /// {@return `pWaitSemaphoreInfos`}
-    public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pWaitSemaphoreInfos() { return VkSubmitInfo2.get_pWaitSemaphoreInfos(this.segment()); }
+    public @CType("const VkSemaphoreSubmitInfo *") MemorySegment pWaitSemaphoreInfos() { return VkSubmitInfo2.get_pWaitSemaphoreInfos(this.segment()); }
     /// Sets `pWaitSemaphoreInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pWaitSemaphoreInfos(MemorySegment segment, long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VH_pWaitSemaphoreInfos.set(segment, 0L, index, value); }
+    public static void set_pWaitSemaphoreInfos(MemorySegment segment, long index, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VH_pWaitSemaphoreInfos.set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphoreInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pWaitSemaphoreInfos(MemorySegment segment, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(segment, 0L, value); }
+    public static void set_pWaitSemaphoreInfos(MemorySegment segment, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(segment, 0L, value); }
     /// Sets `pWaitSemaphoreInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubmitInfo2 pWaitSemaphoreInfos(@CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(this.segment(), value); return this; }
+    public VkSubmitInfo2 pWaitSemaphoreInfos(@CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(this.segment(), value); return this; }
 
     /// {@return `commandBufferInfoCount` at the given index}
     /// @param segment the segment of the struct
@@ -285,25 +285,25 @@ public sealed class VkSubmitInfo2 extends Struct {
     /// {@return `pCommandBufferInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment get_pCommandBufferInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCommandBufferInfos.get(segment, 0L, index); }
+    public static @CType("const VkCommandBufferSubmitInfo *") MemorySegment get_pCommandBufferInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pCommandBufferInfos.get(segment, 0L, index); }
     /// {@return `pCommandBufferInfos`}
     /// @param segment the segment of the struct
-    public static @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment get_pCommandBufferInfos(MemorySegment segment) { return VkSubmitInfo2.get_pCommandBufferInfos(segment, 0L); }
+    public static @CType("const VkCommandBufferSubmitInfo *") MemorySegment get_pCommandBufferInfos(MemorySegment segment) { return VkSubmitInfo2.get_pCommandBufferInfos(segment, 0L); }
     /// {@return `pCommandBufferInfos`}
-    public @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment pCommandBufferInfos() { return VkSubmitInfo2.get_pCommandBufferInfos(this.segment()); }
+    public @CType("const VkCommandBufferSubmitInfo *") MemorySegment pCommandBufferInfos() { return VkSubmitInfo2.get_pCommandBufferInfos(this.segment()); }
     /// Sets `pCommandBufferInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCommandBufferInfos(MemorySegment segment, long index, @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment value) { VH_pCommandBufferInfos.set(segment, 0L, index, value); }
+    public static void set_pCommandBufferInfos(MemorySegment segment, long index, @CType("const VkCommandBufferSubmitInfo *") MemorySegment value) { VH_pCommandBufferInfos.set(segment, 0L, index, value); }
     /// Sets `pCommandBufferInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCommandBufferInfos(MemorySegment segment, @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(segment, 0L, value); }
+    public static void set_pCommandBufferInfos(MemorySegment segment, @CType("const VkCommandBufferSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(segment, 0L, value); }
     /// Sets `pCommandBufferInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubmitInfo2 pCommandBufferInfos(@CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(this.segment(), value); return this; }
+    public VkSubmitInfo2 pCommandBufferInfos(@CType("const VkCommandBufferSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(this.segment(), value); return this; }
 
     /// {@return `signalSemaphoreInfoCount` at the given index}
     /// @param segment the segment of the struct
@@ -331,25 +331,25 @@ public sealed class VkSubmitInfo2 extends Struct {
     /// {@return `pSignalSemaphoreInfos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pSignalSemaphoreInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSignalSemaphoreInfos.get(segment, 0L, index); }
+    public static @CType("const VkSemaphoreSubmitInfo *") MemorySegment get_pSignalSemaphoreInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreInfos.get(segment, 0L, index); }
     /// {@return `pSignalSemaphoreInfos`}
     /// @param segment the segment of the struct
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pSignalSemaphoreInfos(MemorySegment segment) { return VkSubmitInfo2.get_pSignalSemaphoreInfos(segment, 0L); }
+    public static @CType("const VkSemaphoreSubmitInfo *") MemorySegment get_pSignalSemaphoreInfos(MemorySegment segment) { return VkSubmitInfo2.get_pSignalSemaphoreInfos(segment, 0L); }
     /// {@return `pSignalSemaphoreInfos`}
-    public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pSignalSemaphoreInfos() { return VkSubmitInfo2.get_pSignalSemaphoreInfos(this.segment()); }
+    public @CType("const VkSemaphoreSubmitInfo *") MemorySegment pSignalSemaphoreInfos() { return VkSubmitInfo2.get_pSignalSemaphoreInfos(this.segment()); }
     /// Sets `pSignalSemaphoreInfos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSignalSemaphoreInfos(MemorySegment segment, long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VH_pSignalSemaphoreInfos.set(segment, 0L, index, value); }
+    public static void set_pSignalSemaphoreInfos(MemorySegment segment, long index, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VH_pSignalSemaphoreInfos.set(segment, 0L, index, value); }
     /// Sets `pSignalSemaphoreInfos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSignalSemaphoreInfos(MemorySegment segment, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(segment, 0L, value); }
+    public static void set_pSignalSemaphoreInfos(MemorySegment segment, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(segment, 0L, value); }
     /// Sets `pSignalSemaphoreInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubmitInfo2 pSignalSemaphoreInfos(@CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(this.segment(), value); return this; }
+    public VkSubmitInfo2 pSignalSemaphoreInfos(@CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(this.segment(), value); return this; }
 
     /// A buffer of [VkSubmitInfo2].
     public static final class Buffer extends VkSubmitInfo2 {
@@ -384,12 +384,12 @@ public sealed class VkSubmitInfo2 extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSubmitInfo2.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSubmitInfo2.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSubmitInfo2.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -411,12 +411,12 @@ public sealed class VkSubmitInfo2 extends Struct {
 
         /// {@return `pWaitSemaphoreInfos` at the given index}
         /// @param index the index
-        public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pWaitSemaphoreInfosAt(long index) { return VkSubmitInfo2.get_pWaitSemaphoreInfos(this.segment(), index); }
+        public @CType("const VkSemaphoreSubmitInfo *") MemorySegment pWaitSemaphoreInfosAt(long index) { return VkSubmitInfo2.get_pWaitSemaphoreInfos(this.segment(), index); }
         /// Sets `pWaitSemaphoreInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pWaitSemaphoreInfosAt(long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(this.segment(), index, value); return this; }
+        public Buffer pWaitSemaphoreInfosAt(long index, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pWaitSemaphoreInfos(this.segment(), index, value); return this; }
 
         /// {@return `commandBufferInfoCount` at the given index}
         /// @param index the index
@@ -429,12 +429,12 @@ public sealed class VkSubmitInfo2 extends Struct {
 
         /// {@return `pCommandBufferInfos` at the given index}
         /// @param index the index
-        public @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment pCommandBufferInfosAt(long index) { return VkSubmitInfo2.get_pCommandBufferInfos(this.segment(), index); }
+        public @CType("const VkCommandBufferSubmitInfo *") MemorySegment pCommandBufferInfosAt(long index) { return VkSubmitInfo2.get_pCommandBufferInfos(this.segment(), index); }
         /// Sets `pCommandBufferInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCommandBufferInfosAt(long index, @CType("const VkCommandBufferSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(this.segment(), index, value); return this; }
+        public Buffer pCommandBufferInfosAt(long index, @CType("const VkCommandBufferSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pCommandBufferInfos(this.segment(), index, value); return this; }
 
         /// {@return `signalSemaphoreInfoCount` at the given index}
         /// @param index the index
@@ -447,12 +447,12 @@ public sealed class VkSubmitInfo2 extends Struct {
 
         /// {@return `pSignalSemaphoreInfos` at the given index}
         /// @param index the index
-        public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pSignalSemaphoreInfosAt(long index) { return VkSubmitInfo2.get_pSignalSemaphoreInfos(this.segment(), index); }
+        public @CType("const VkSemaphoreSubmitInfo *") MemorySegment pSignalSemaphoreInfosAt(long index) { return VkSubmitInfo2.get_pSignalSemaphoreInfos(this.segment(), index); }
         /// Sets `pSignalSemaphoreInfos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSignalSemaphoreInfosAt(long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(this.segment(), index, value); return this; }
+        public Buffer pSignalSemaphoreInfosAt(long index, @CType("const VkSemaphoreSubmitInfo *") MemorySegment value) { VkSubmitInfo2.set_pSignalSemaphoreInfos(this.segment(), index, value); return this; }
 
     }
 }

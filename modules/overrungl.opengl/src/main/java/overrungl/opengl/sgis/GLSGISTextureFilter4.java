@@ -47,13 +47,13 @@ public final class GLSGISTextureFilter4 {
         this.handles = new Handles(func);
     }
 
-    public void GetTexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLfloat *") java.lang.foreign.MemorySegment weights) {
+    public void GetTexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLfloat *") MemorySegment weights) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
         try { Handles.MH_glGetTexFilterFuncSGIS.invokeExact(handles.PFN_glGetTexFilterFuncSGIS, target, filter, weights); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
     }
 
-    public void TexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment weights) {
+    public void TexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment weights) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");
         try { Handles.MH_glTexFilterFuncSGIS.invokeExact(handles.PFN_glTexFilterFuncSGIS, target, filter, n, weights); }
         catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }

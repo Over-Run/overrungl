@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### shaderStages
@@ -36,11 +36,11 @@ import overrungl.util.*;
 /// ### indirectStride
 /// [VarHandle][#VH_indirectStride] - [Getter][#indirectStride()] - [Setter][#indirectStride(int)]
 /// ### pipelineLayout
-/// [VarHandle][#VH_pipelineLayout] - [Getter][#pipelineLayout()] - [Setter][#pipelineLayout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pipelineLayout] - [Getter][#pipelineLayout()] - [Setter][#pipelineLayout(MemorySegment)]
 /// ### tokenCount
 /// [VarHandle][#VH_tokenCount] - [Getter][#tokenCount()] - [Setter][#tokenCount(int)]
 /// ### pTokens
-/// [VarHandle][#VH_pTokens] - [Getter][#pTokens()] - [Setter][#pTokens(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pTokens] - [Getter][#pTokens()] - [Setter][#pTokens(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,7 +69,7 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
@@ -77,11 +77,11 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     public static final VarHandle VH_shaderStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStages"));
     /// The [VarHandle] of `indirectStride` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_indirectStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectStride"));
-    /// The [VarHandle] of `pipelineLayout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pipelineLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayout"));
     /// The [VarHandle] of `tokenCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_tokenCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenCount"));
-    /// The [VarHandle] of `pTokens` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pTokens` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTokens = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTokens"));
 
     /// Creates `VkIndirectCommandsLayoutCreateInfoEXT` with the given segment.
@@ -127,7 +127,7 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     /// Allocates a `VkIndirectCommandsLayoutCreateInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkIndirectCommandsLayoutCreateInfoEXT`
-    public static VkIndirectCommandsLayoutCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkIndirectCommandsLayoutUsageFlagsEXT") int flags, @CType("VkShaderStageFlags") int shaderStages, @CType("uint32_t") int indirectStride, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pipelineLayout, @CType("uint32_t") int tokenCount, @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment pTokens) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).shaderStages(shaderStages).indirectStride(indirectStride).pipelineLayout(pipelineLayout).tokenCount(tokenCount).pTokens(pTokens); }
+    public static VkIndirectCommandsLayoutCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkIndirectCommandsLayoutUsageFlagsEXT") int flags, @CType("VkShaderStageFlags") int shaderStages, @CType("uint32_t") int indirectStride, @CType("VkPipelineLayout") MemorySegment pipelineLayout, @CType("uint32_t") int tokenCount, @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment pTokens) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).shaderStages(shaderStages).indirectStride(indirectStride).pipelineLayout(pipelineLayout).tokenCount(tokenCount).pTokens(pTokens); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -256,25 +256,25 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     /// {@return `pipelineLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_pipelineLayout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pipelineLayout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_pipelineLayout(MemorySegment segment, long index) { return (MemorySegment) VH_pipelineLayout.get(segment, 0L, index); }
     /// {@return `pipelineLayout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_pipelineLayout(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_pipelineLayout(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(segment, 0L); }
     /// {@return `pipelineLayout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pipelineLayout() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment pipelineLayout() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(this.segment()); }
     /// Sets `pipelineLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pipelineLayout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_pipelineLayout.set(segment, 0L, index, value); }
+    public static void set_pipelineLayout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_pipelineLayout.set(segment, 0L, index, value); }
     /// Sets `pipelineLayout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pipelineLayout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(segment, 0L, value); }
+    public static void set_pipelineLayout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(segment, 0L, value); }
     /// Sets `pipelineLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoEXT pipelineLayout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoEXT pipelineLayout(@CType("VkPipelineLayout") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(this.segment(), value); return this; }
 
     /// {@return `tokenCount` at the given index}
     /// @param segment the segment of the struct
@@ -302,25 +302,25 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     /// {@return `pTokens` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment get_pTokens(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTokens.get(segment, 0L, index); }
+    public static @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment get_pTokens(MemorySegment segment, long index) { return (MemorySegment) VH_pTokens.get(segment, 0L, index); }
     /// {@return `pTokens`}
     /// @param segment the segment of the struct
-    public static @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment get_pTokens(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(segment, 0L); }
+    public static @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment get_pTokens(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(segment, 0L); }
     /// {@return `pTokens`}
-    public @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment pTokens() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(this.segment()); }
+    public @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment pTokens() { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(this.segment()); }
     /// Sets `pTokens` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pTokens(MemorySegment segment, long index, @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pTokens.set(segment, 0L, index, value); }
+    public static void set_pTokens(MemorySegment segment, long index, @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment value) { VH_pTokens.set(segment, 0L, index, value); }
     /// Sets `pTokens` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pTokens(MemorySegment segment, @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(segment, 0L, value); }
+    public static void set_pTokens(MemorySegment segment, @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(segment, 0L, value); }
     /// Sets `pTokens` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoEXT pTokens(@CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoEXT pTokens(@CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(this.segment(), value); return this; }
 
     /// A buffer of [VkIndirectCommandsLayoutCreateInfoEXT].
     public static final class Buffer extends VkIndirectCommandsLayoutCreateInfoEXT {
@@ -355,12 +355,12 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -391,12 +391,12 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
 
         /// {@return `pipelineLayout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pipelineLayoutAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment pipelineLayoutAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pipelineLayout(this.segment(), index); }
         /// Sets `pipelineLayout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineLayoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(this.segment(), index, value); return this; }
+        public Buffer pipelineLayoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pipelineLayout(this.segment(), index, value); return this; }
 
         /// {@return `tokenCount` at the given index}
         /// @param index the index
@@ -409,12 +409,12 @@ public sealed class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
 
         /// {@return `pTokens` at the given index}
         /// @param index the index
-        public @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment pTokensAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(this.segment(), index); }
+        public @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment pTokensAt(long index) { return VkIndirectCommandsLayoutCreateInfoEXT.get_pTokens(this.segment(), index); }
         /// Sets `pTokens` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pTokensAt(long index, @CType("const VkIndirectCommandsLayoutTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(this.segment(), index, value); return this; }
+        public Buffer pTokensAt(long index, @CType("const VkIndirectCommandsLayoutTokenEXT *") MemorySegment value) { VkIndirectCommandsLayoutCreateInfoEXT.set_pTokens(this.segment(), index, value); return this; }
 
     }
 }

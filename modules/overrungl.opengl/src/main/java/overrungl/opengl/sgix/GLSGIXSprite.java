@@ -66,7 +66,7 @@ public final class GLSGIXSprite {
         catch (Throwable e) { throw new RuntimeException("error in glSpriteParameterfSGIX", e); }
     }
 
-    public void SpriteParameterfvSGIX(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void SpriteParameterfvSGIX(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glSpriteParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameterfvSGIX");
         try { Handles.MH_glSpriteParameterfvSGIX.invokeExact(handles.PFN_glSpriteParameterfvSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glSpriteParameterfvSGIX", e); }
@@ -78,7 +78,7 @@ public final class GLSGIXSprite {
         catch (Throwable e) { throw new RuntimeException("error in glSpriteParameteriSGIX", e); }
     }
 
-    public void SpriteParameterivSGIX(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void SpriteParameterivSGIX(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glSpriteParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameterivSGIX");
         try { Handles.MH_glSpriteParameterivSGIX.invokeExact(handles.PFN_glSpriteParameterivSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glSpriteParameterivSGIX", e); }

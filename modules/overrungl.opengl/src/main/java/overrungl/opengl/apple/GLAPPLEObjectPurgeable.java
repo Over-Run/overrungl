@@ -67,7 +67,7 @@ public final class GLAPPLEObjectPurgeable {
         catch (Throwable e) { throw new RuntimeException("error in glObjectUnpurgeableAPPLE", e); }
     }
 
-    public void GetObjectParameterivAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetObjectParameterivAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetObjectParameterivAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE");
         try { Handles.MH_glGetObjectParameterivAPPLE.invokeExact(handles.PFN_glGetObjectParameterivAPPLE, objectType, name, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivAPPLE", e); }

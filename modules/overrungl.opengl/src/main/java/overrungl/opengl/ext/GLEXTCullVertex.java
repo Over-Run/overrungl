@@ -48,13 +48,13 @@ public final class GLEXTCullVertex {
         this.handles = new Handles(func);
     }
 
-    public void CullParameterdvEXT(@CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
+    public void CullParameterdvEXT(@CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
         try { Handles.MH_glCullParameterdvEXT.invokeExact(handles.PFN_glCullParameterdvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
     }
 
-    public void CullParameterfvEXT(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void CullParameterfvEXT(@CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
         try { Handles.MH_glCullParameterfvEXT.invokeExact(handles.PFN_glCullParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }

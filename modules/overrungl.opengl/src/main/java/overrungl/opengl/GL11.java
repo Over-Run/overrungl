@@ -126,7 +126,7 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glDrawArrays", e); }
     }
 
-    public void DrawElements(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices) {
+    public void DrawElements(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawElements)) throw new SymbolNotFoundError("Symbol not found: glDrawElements");
         try { Handles.MH_glDrawElements.invokeExact(handles.PFN_glDrawElements, mode, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawElements", e); }
@@ -162,13 +162,13 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage2D", e); }
     }
 
-    public void TexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+    public void TexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1D");
         try { Handles.MH_glTexSubImage1D.invokeExact(handles.PFN_glTexSubImage1D, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1D", e); }
     }
 
-    public void TexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+    public void TexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2D");
         try { Handles.MH_glTexSubImage2D.invokeExact(handles.PFN_glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2D", e); }
@@ -180,13 +180,13 @@ public class GL11 extends GL10 {
         catch (Throwable e) { throw new RuntimeException("error in glBindTexture", e); }
     }
 
-    public void DeleteTextures(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures) {
+    public void DeleteTextures(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment textures) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteTextures)) throw new SymbolNotFoundError("Symbol not found: glDeleteTextures");
         try { Handles.MH_glDeleteTextures.invokeExact(handles.PFN_glDeleteTextures, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteTextures", e); }
     }
 
-    public void GenTextures(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment textures) {
+    public void GenTextures(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment textures) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenTextures)) throw new SymbolNotFoundError("Symbol not found: glGenTextures");
         try { Handles.MH_glGenTextures.invokeExact(handles.PFN_glGenTextures, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in glGenTextures", e); }

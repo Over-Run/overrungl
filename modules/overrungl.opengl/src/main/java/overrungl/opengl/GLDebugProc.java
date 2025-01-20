@@ -31,10 +31,10 @@ public interface GLDebugProc extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLDebugProc.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("const GLchar *") java.lang.String message, @CType("const void *") java.lang.foreign.MemorySegment userParam);
+    void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("const GLchar *") String message, @CType("const void *") MemorySegment userParam);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
+    default void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("const void *") MemorySegment userParam) {
         invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message), userParam);
     }
 
@@ -43,7 +43,7 @@ public interface GLDebugProc extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
+    static void invoke(MemorySegment stub, @CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("const void *") MemorySegment userParam) {
         try { HANDLE.invokeExact(stub, source, type, id, severity, length, message, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in GLDebugProc::invoke (static invoker)", e); }
     }

@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### count
 /// [VarHandle][#VH_count] - [Getter][#count()] - [Setter][#count(int)]
 /// ### infos
-/// [Byte offset][#OFFSET_infos] - [Memory layout][#ML_infos] - [Getter][#infos()] - [Setter][#infos(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_infos] - [Memory layout][#ML_infos] - [Getter][#infos()] - [Setter][#infos(MemorySegment)]
 /// ### stride
 /// [VarHandle][#VH_stride] - [Getter][#stride()] - [Setter][#stride(long)]
 /// ## Layout
@@ -99,7 +99,7 @@ public sealed class VkDispatchGraphCountInfoAMDX extends Struct {
     /// Allocates a `VkDispatchGraphCountInfoAMDX` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDispatchGraphCountInfoAMDX`
-    public static VkDispatchGraphCountInfoAMDX allocInit(SegmentAllocator allocator, @CType("uint32_t") int count, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment infos, @CType("uint64_t") long stride) { return alloc(allocator).count(count).infos(infos).stride(stride); }
+    public static VkDispatchGraphCountInfoAMDX allocInit(SegmentAllocator allocator, @CType("uint32_t") int count, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment infos, @CType("uint64_t") long stride) { return alloc(allocator).count(count).infos(infos).stride(stride); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -136,25 +136,25 @@ public sealed class VkDispatchGraphCountInfoAMDX extends Struct {
     /// {@return `infos` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment get_infos(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_infos, index), ML_infos); }
+    public static @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment get_infos(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_infos, index), ML_infos); }
     /// {@return `infos`}
     /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment get_infos(MemorySegment segment) { return VkDispatchGraphCountInfoAMDX.get_infos(segment, 0L); }
+    public static @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment get_infos(MemorySegment segment) { return VkDispatchGraphCountInfoAMDX.get_infos(segment, 0L); }
     /// {@return `infos`}
-    public @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment infos() { return VkDispatchGraphCountInfoAMDX.get_infos(this.segment()); }
+    public @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment infos() { return VkDispatchGraphCountInfoAMDX.get_infos(this.segment()); }
     /// Sets `infos` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_infos(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_infos, index), ML_infos.byteSize()); }
+    public static void set_infos(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_infos, index), ML_infos.byteSize()); }
     /// Sets `infos` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_infos(MemorySegment segment, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(segment, 0L, value); }
+    public static void set_infos(MemorySegment segment, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(segment, 0L, value); }
     /// Sets `infos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDispatchGraphCountInfoAMDX infos(@CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(this.segment(), value); return this; }
+    public VkDispatchGraphCountInfoAMDX infos(@CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(this.segment(), value); return this; }
 
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
@@ -212,12 +212,12 @@ public sealed class VkDispatchGraphCountInfoAMDX extends Struct {
 
         /// {@return `infos` at the given index}
         /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment infosAt(long index) { return VkDispatchGraphCountInfoAMDX.get_infos(this.segment(), index); }
+        public @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment infosAt(long index) { return VkDispatchGraphCountInfoAMDX.get_infos(this.segment(), index); }
         /// Sets `infos` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer infosAt(long index, @CType("VkDeviceOrHostAddressConstAMDX") java.lang.foreign.MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(this.segment(), index, value); return this; }
+        public Buffer infosAt(long index, @CType("VkDeviceOrHostAddressConstAMDX") MemorySegment value) { VkDispatchGraphCountInfoAMDX.set_infos(this.segment(), index, value); return this; }
 
         /// {@return `stride` at the given index}
         /// @param index the index

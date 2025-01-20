@@ -26,11 +26,11 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### vendor
-/// [VarHandle][#VH_vendor] - [Getter][#vendor()] - [Setter][#vendor(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_vendor] - [Getter][#vendor()] - [Setter][#vendor(MemorySegment)]
 /// ### comment_list_length
 /// [VarHandle][#VH_comment_list_length] - [Getter][#comment_list_length()] - [Setter][#comment_list_length(int)]
 /// ### comment_list
-/// [VarHandle][#VH_comment_list] - [Getter][#comment_list()] - [Setter][#comment_list(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_comment_list] - [Getter][#comment_list()] - [Setter][#comment_list(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -47,11 +47,11 @@ public sealed class STBVorbisComment extends Struct {
         ValueLayout.JAVA_INT.withName("comment_list_length"),
         ValueLayout.ADDRESS.withName("comment_list")
     );
-    /// The [VarHandle] of `vendor` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `vendor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vendor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendor"));
     /// The [VarHandle] of `comment_list_length` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_comment_list_length = LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list_length"));
-    /// The [VarHandle] of `comment_list` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `comment_list` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_comment_list = LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list"));
 
     /// Creates `STBVorbisComment` with the given segment.
@@ -97,7 +97,7 @@ public sealed class STBVorbisComment extends Struct {
     /// Allocates a `STBVorbisComment` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `STBVorbisComment`
-    public static STBVorbisComment allocInit(SegmentAllocator allocator, @CType("char *") java.lang.foreign.MemorySegment vendor, @CType("int") int comment_list_length, @CType("char **") java.lang.foreign.MemorySegment comment_list) { return alloc(allocator).vendor(vendor).comment_list_length(comment_list_length).comment_list(comment_list); }
+    public static STBVorbisComment allocInit(SegmentAllocator allocator, @CType("char *") MemorySegment vendor, @CType("int") int comment_list_length, @CType("char **") MemorySegment comment_list) { return alloc(allocator).vendor(vendor).comment_list_length(comment_list_length).comment_list(comment_list); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -111,25 +111,25 @@ public sealed class STBVorbisComment extends Struct {
     /// {@return `vendor` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char *") java.lang.foreign.MemorySegment get_vendor(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_vendor.get(segment, 0L, index); }
+    public static @CType("char *") MemorySegment get_vendor(MemorySegment segment, long index) { return (MemorySegment) VH_vendor.get(segment, 0L, index); }
     /// {@return `vendor`}
     /// @param segment the segment of the struct
-    public static @CType("char *") java.lang.foreign.MemorySegment get_vendor(MemorySegment segment) { return STBVorbisComment.get_vendor(segment, 0L); }
+    public static @CType("char *") MemorySegment get_vendor(MemorySegment segment) { return STBVorbisComment.get_vendor(segment, 0L); }
     /// {@return `vendor`}
-    public @CType("char *") java.lang.foreign.MemorySegment vendor() { return STBVorbisComment.get_vendor(this.segment()); }
+    public @CType("char *") MemorySegment vendor() { return STBVorbisComment.get_vendor(this.segment()); }
     /// Sets `vendor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_vendor(MemorySegment segment, long index, @CType("char *") java.lang.foreign.MemorySegment value) { VH_vendor.set(segment, 0L, index, value); }
+    public static void set_vendor(MemorySegment segment, long index, @CType("char *") MemorySegment value) { VH_vendor.set(segment, 0L, index, value); }
     /// Sets `vendor` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_vendor(MemorySegment segment, @CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_vendor(segment, 0L, value); }
+    public static void set_vendor(MemorySegment segment, @CType("char *") MemorySegment value) { STBVorbisComment.set_vendor(segment, 0L, value); }
     /// Sets `vendor` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBVorbisComment vendor(@CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_vendor(this.segment(), value); return this; }
+    public STBVorbisComment vendor(@CType("char *") MemorySegment value) { STBVorbisComment.set_vendor(this.segment(), value); return this; }
 
     /// {@return `comment_list_length` at the given index}
     /// @param segment the segment of the struct
@@ -157,25 +157,25 @@ public sealed class STBVorbisComment extends Struct {
     /// {@return `comment_list` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char **") java.lang.foreign.MemorySegment get_comment_list(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_comment_list.get(segment, 0L, index); }
+    public static @CType("char **") MemorySegment get_comment_list(MemorySegment segment, long index) { return (MemorySegment) VH_comment_list.get(segment, 0L, index); }
     /// {@return `comment_list`}
     /// @param segment the segment of the struct
-    public static @CType("char **") java.lang.foreign.MemorySegment get_comment_list(MemorySegment segment) { return STBVorbisComment.get_comment_list(segment, 0L); }
+    public static @CType("char **") MemorySegment get_comment_list(MemorySegment segment) { return STBVorbisComment.get_comment_list(segment, 0L); }
     /// {@return `comment_list`}
-    public @CType("char **") java.lang.foreign.MemorySegment comment_list() { return STBVorbisComment.get_comment_list(this.segment()); }
+    public @CType("char **") MemorySegment comment_list() { return STBVorbisComment.get_comment_list(this.segment()); }
     /// Sets `comment_list` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_comment_list(MemorySegment segment, long index, @CType("char **") java.lang.foreign.MemorySegment value) { VH_comment_list.set(segment, 0L, index, value); }
+    public static void set_comment_list(MemorySegment segment, long index, @CType("char **") MemorySegment value) { VH_comment_list.set(segment, 0L, index, value); }
     /// Sets `comment_list` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_comment_list(MemorySegment segment, @CType("char **") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_comment_list(segment, 0L, value); }
+    public static void set_comment_list(MemorySegment segment, @CType("char **") MemorySegment value) { STBVorbisComment.set_comment_list(segment, 0L, value); }
     /// Sets `comment_list` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBVorbisComment comment_list(@CType("char **") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_comment_list(this.segment(), value); return this; }
+    public STBVorbisComment comment_list(@CType("char **") MemorySegment value) { STBVorbisComment.set_comment_list(this.segment(), value); return this; }
 
     /// A buffer of [STBVorbisComment].
     public static final class Buffer extends STBVorbisComment {
@@ -201,12 +201,12 @@ public sealed class STBVorbisComment extends Struct {
 
         /// {@return `vendor` at the given index}
         /// @param index the index
-        public @CType("char *") java.lang.foreign.MemorySegment vendorAt(long index) { return STBVorbisComment.get_vendor(this.segment(), index); }
+        public @CType("char *") MemorySegment vendorAt(long index) { return STBVorbisComment.get_vendor(this.segment(), index); }
         /// Sets `vendor` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer vendorAt(long index, @CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_vendor(this.segment(), index, value); return this; }
+        public Buffer vendorAt(long index, @CType("char *") MemorySegment value) { STBVorbisComment.set_vendor(this.segment(), index, value); return this; }
 
         /// {@return `comment_list_length` at the given index}
         /// @param index the index
@@ -219,12 +219,12 @@ public sealed class STBVorbisComment extends Struct {
 
         /// {@return `comment_list` at the given index}
         /// @param index the index
-        public @CType("char **") java.lang.foreign.MemorySegment comment_listAt(long index) { return STBVorbisComment.get_comment_list(this.segment(), index); }
+        public @CType("char **") MemorySegment comment_listAt(long index) { return STBVorbisComment.get_comment_list(this.segment(), index); }
         /// Sets `comment_list` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer comment_listAt(long index, @CType("char **") java.lang.foreign.MemorySegment value) { STBVorbisComment.set_comment_list(this.segment(), index, value); return this; }
+        public Buffer comment_listAt(long index, @CType("char **") MemorySegment value) { STBVorbisComment.set_comment_list(this.segment(), index, value); return this; }
 
     }
 }

@@ -31,14 +31,14 @@ public interface STBIIOSkip extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIIOSkip.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n);
+    void invoke(@CType("void*") MemorySegment user, @CType("int") int n);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n) {
+    static void invoke(MemorySegment stub, @CType("void*") MemorySegment user, @CType("int") int n) {
         try { HANDLE.invokeExact(stub, user, n); }
         catch (Throwable e) { throw new RuntimeException("error in STBIIOSkip::invoke (static invoker)", e); }
     }

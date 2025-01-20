@@ -31,10 +31,10 @@ public interface GLFWDropFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWDropFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, java.lang.String[] paths);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, String[] paths);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int path_count, java.lang.foreign.MemorySegment paths) {
+    default void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int path_count, MemorySegment paths) {
         var a = new String[path_count];
         Unmarshal.copy(paths, a);
         invoke(window, a);
@@ -45,7 +45,7 @@ public interface GLFWDropFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int path_count, java.lang.foreign.MemorySegment paths) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int path_count, MemorySegment paths) {
         try { HANDLE.invokeExact(stub, window, path_count, paths); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWDropFun::invoke (static invoker)", e); }
     }

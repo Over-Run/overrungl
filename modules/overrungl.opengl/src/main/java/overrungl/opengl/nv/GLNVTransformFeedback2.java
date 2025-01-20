@@ -75,13 +75,13 @@ public final class GLNVTransformFeedback2 {
         catch (Throwable e) { throw new RuntimeException("error in glBindTransformFeedbackNV", e); }
     }
 
-    public void DeleteTransformFeedbacksNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void DeleteTransformFeedbacksNV(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteTransformFeedbacksNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacksNV");
         try { Handles.MH_glDeleteTransformFeedbacksNV.invokeExact(handles.PFN_glDeleteTransformFeedbacksNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteTransformFeedbacksNV", e); }
     }
 
-    public void GenTransformFeedbacksNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
+    public void GenTransformFeedbacksNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenTransformFeedbacksNV)) throw new SymbolNotFoundError("Symbol not found: glGenTransformFeedbacksNV");
         try { Handles.MH_glGenTransformFeedbacksNV.invokeExact(handles.PFN_glGenTransformFeedbacksNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in glGenTransformFeedbacksNV", e); }

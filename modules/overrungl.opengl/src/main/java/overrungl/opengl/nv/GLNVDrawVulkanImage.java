@@ -63,9 +63,9 @@ public final class GLNVDrawVulkanImage {
         catch (Throwable e) { throw new RuntimeException("error in glDrawVkImageNV", e); }
     }
 
-    public @CType("GLVULKANPROCNV") java.lang.foreign.MemorySegment GetVkProcAddrNV(@CType("const GLchar *") java.lang.foreign.MemorySegment name) {
+    public @CType("GLVULKANPROCNV") MemorySegment GetVkProcAddrNV(@CType("const GLchar *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new SymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glGetVkProcAddrNV.invokeExact(handles.PFN_glGetVkProcAddrNV, name); }
+        try { return (MemorySegment) Handles.MH_glGetVkProcAddrNV.invokeExact(handles.PFN_glGetVkProcAddrNV, name); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVkProcAddrNV", e); }
     }
 

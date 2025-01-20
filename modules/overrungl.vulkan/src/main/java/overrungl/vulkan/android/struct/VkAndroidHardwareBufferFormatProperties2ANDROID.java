@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### format
 /// [VarHandle][#VH_format] - [Getter][#format()] - [Setter][#format(int)]
 /// ### externalFormat
@@ -36,7 +36,7 @@ import overrungl.util.*;
 /// ### formatFeatures
 /// [VarHandle][#VH_formatFeatures] - [Getter][#formatFeatures()] - [Setter][#formatFeatures(long)]
 /// ### samplerYcbcrConversionComponents
-/// [Byte offset][#OFFSET_samplerYcbcrConversionComponents] - [Memory layout][#ML_samplerYcbcrConversionComponents] - [Getter][#samplerYcbcrConversionComponents()] - [Setter][#samplerYcbcrConversionComponents(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_samplerYcbcrConversionComponents] - [Memory layout][#ML_samplerYcbcrConversionComponents] - [Getter][#samplerYcbcrConversionComponents()] - [Setter][#samplerYcbcrConversionComponents(MemorySegment)]
 /// ### suggestedYcbcrModel
 /// [VarHandle][#VH_suggestedYcbcrModel] - [Getter][#suggestedYcbcrModel()] - [Setter][#suggestedYcbcrModel(int)]
 /// ### suggestedYcbcrRange
@@ -77,7 +77,7 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
@@ -141,7 +141,7 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
     /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
-    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int format, @CType("uint64_t") long externalFormat, @CType("VkFormatFeatureFlags2") long formatFeatures, @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents, @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel, @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange, @CType("VkChromaLocation") int suggestedXChromaOffset, @CType("VkChromaLocation") int suggestedYChromaOffset) { return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset); }
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkFormat") int format, @CType("uint64_t") long externalFormat, @CType("VkFormatFeatureFlags2") long formatFeatures, @CType("VkComponentMapping") MemorySegment samplerYcbcrConversionComponents, @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel, @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange, @CType("VkChromaLocation") int suggestedXChromaOffset, @CType("VkChromaLocation") int suggestedYChromaOffset) { return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -178,25 +178,25 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAndroidHardwareBufferFormatProperties2ANDROID pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(this.segment(), value); return this; }
+    public VkAndroidHardwareBufferFormatProperties2ANDROID pNext(@CType("void *") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(this.segment(), value); return this; }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
@@ -270,25 +270,25 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
     /// {@return `samplerYcbcrConversionComponents` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), ML_samplerYcbcrConversionComponents); }
+    public static @CType("VkComponentMapping") MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), ML_samplerYcbcrConversionComponents); }
     /// {@return `samplerYcbcrConversionComponents`}
     /// @param segment the segment of the struct
-    public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(segment, 0L); }
+    public static @CType("VkComponentMapping") MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(segment, 0L); }
     /// {@return `samplerYcbcrConversionComponents`}
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents() { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(this.segment()); }
+    public @CType("VkComponentMapping") MemorySegment samplerYcbcrConversionComponents() { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(this.segment()); }
     /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_samplerYcbcrConversionComponents(MemorySegment segment, long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), ML_samplerYcbcrConversionComponents.byteSize()); }
+    public static void set_samplerYcbcrConversionComponents(MemorySegment segment, long index, @CType("VkComponentMapping") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_samplerYcbcrConversionComponents, index), ML_samplerYcbcrConversionComponents.byteSize()); }
     /// Sets `samplerYcbcrConversionComponents` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_samplerYcbcrConversionComponents(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(segment, 0L, value); }
+    public static void set_samplerYcbcrConversionComponents(MemorySegment segment, @CType("VkComponentMapping") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(segment, 0L, value); }
     /// Sets `samplerYcbcrConversionComponents` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAndroidHardwareBufferFormatProperties2ANDROID samplerYcbcrConversionComponents(@CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(this.segment(), value); return this; }
+    public VkAndroidHardwareBufferFormatProperties2ANDROID samplerYcbcrConversionComponents(@CType("VkComponentMapping") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(this.segment(), value); return this; }
 
     /// {@return `suggestedYcbcrModel` at the given index}
     /// @param segment the segment of the struct
@@ -415,12 +415,12 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `format` at the given index}
         /// @param index the index
@@ -451,12 +451,12 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Stru
 
         /// {@return `samplerYcbcrConversionComponents` at the given index}
         /// @param index the index
-        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(this.segment(), index); }
+        public @CType("VkComponentMapping") MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkAndroidHardwareBufferFormatProperties2ANDROID.get_samplerYcbcrConversionComponents(this.segment(), index); }
         /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+        public Buffer samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") MemorySegment value) { VkAndroidHardwareBufferFormatProperties2ANDROID.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
 
         /// {@return `suggestedYcbcrModel` at the given index}
         /// @param index the index

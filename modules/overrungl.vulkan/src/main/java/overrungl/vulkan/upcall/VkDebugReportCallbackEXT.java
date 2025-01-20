@@ -31,14 +31,14 @@ public interface VkDebugReportCallbackEXT extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkDebugReportCallbackEXT.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("VkBool32") int invoke(@CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") java.lang.foreign.MemorySegment pLayerPrefix, @CType("const char *") java.lang.foreign.MemorySegment pMessage, @CType("void *") java.lang.foreign.MemorySegment pUserData);
+    @CType("VkBool32") int invoke(@CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") MemorySegment pLayerPrefix, @CType("const char *") MemorySegment pMessage, @CType("void *") MemorySegment pUserData);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("VkBool32") int invoke(MemorySegment stub, @CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") java.lang.foreign.MemorySegment pLayerPrefix, @CType("const char *") java.lang.foreign.MemorySegment pMessage, @CType("void *") java.lang.foreign.MemorySegment pUserData) {
+    static @CType("VkBool32") int invoke(MemorySegment stub, @CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") MemorySegment pLayerPrefix, @CType("const char *") MemorySegment pMessage, @CType("void *") MemorySegment pUserData) {
         try { return (int) HANDLE.invokeExact(stub, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage, pUserData); }
         catch (Throwable e) { throw new RuntimeException("error in VkDebugReportCallbackEXT::invoke (static invoker)", e); }
     }

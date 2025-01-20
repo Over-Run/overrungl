@@ -537,19 +537,19 @@ public final class STBTrueType {
         }
     }
 
-    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") java.lang.foreign.MemorySegment chardata) {
+    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") MemorySegment chardata) {
         try {
             return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(Handles.get().PFN_stbtt_BakeFontBitmap, data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, chardata);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
     }
 
-    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") overrungl.stb.STBTTBakedChar chardata) {
+    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") overrungl.stb.STBTTBakedChar chardata) {
         try {
             return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(Handles.get().PFN_stbtt_BakeFontBitmap, data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, Marshal.marshal(chardata));
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
     }
 
-    public static void stbtt_GetBakedQuad(@CType("const stbtt_bakedchar *") java.lang.foreign.MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") java.lang.foreign.MemorySegment xpos, @Out @CType("float*") java.lang.foreign.MemorySegment ypos, @CType("stbtt_aligned_quad *") java.lang.foreign.MemorySegment q, @CType("int") boolean opengl_fillrule) {
+    public static void stbtt_GetBakedQuad(@CType("const stbtt_bakedchar *") MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") MemorySegment xpos, @Out @CType("float*") MemorySegment ypos, @CType("stbtt_aligned_quad *") MemorySegment q, @CType("int") boolean opengl_fillrule) {
         try {
             Handles.MH_stbtt_GetBakedQuad.invokeExact(Handles.get().PFN_stbtt_GetBakedQuad, chardata, pw, ph, char_index, xpos, ypos, q, opengl_fillrule);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
@@ -565,13 +565,13 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
     }
 
-    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") java.lang.foreign.MemorySegment ascent, @Out @CType("float*") java.lang.foreign.MemorySegment descent, @Out @CType("float*") java.lang.foreign.MemorySegment lineGap) {
+    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") MemorySegment ascent, @Out @CType("float*") MemorySegment descent, @Out @CType("float*") MemorySegment lineGap) {
         try {
             Handles.MH_stbtt_GetScaledFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetScaledFontVMetrics, fontdata, index, size, ascent, descent, lineGap);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
     }
 
-    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") float[] ascent, @Out @CType("float*") float[] descent, @Out @CType("float*") float[] lineGap) {
+    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") float[] ascent, @Out @CType("float*") float[] descent, @Out @CType("float*") float[] lineGap) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_ascent = Marshal.marshal(__overrungl_stack, ascent);
             var __overrungl_ref_descent = Marshal.marshal(__overrungl_stack, descent);
@@ -583,49 +583,49 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
     }
 
-    public static @CType("int") boolean stbtt_PackBegin(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int width, @CType("int") int height, @CType("int") int stride_in_bytes, @CType("int") int padding, @CType("void*") java.lang.foreign.MemorySegment alloc_context) {
+    public static @CType("int") boolean stbtt_PackBegin(@CType("stbtt_pack_context *") MemorySegment spc, @CType("unsigned char *") MemorySegment pixels, @CType("int") int width, @CType("int") int height, @CType("int") int stride_in_bytes, @CType("int") int padding, @CType("void*") MemorySegment alloc_context) {
         try {
             return (boolean) Handles.MH_stbtt_PackBegin.invokeExact(Handles.get().PFN_stbtt_PackBegin, spc, pixels, width, height, stride_in_bytes, padding, alloc_context);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackBegin", e); }
     }
 
-    public static void stbtt_PackEnd(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc) {
+    public static void stbtt_PackEnd(@CType("stbtt_pack_context *") MemorySegment spc) {
         try {
             Handles.MH_stbtt_PackEnd.invokeExact(Handles.get().PFN_stbtt_PackEnd, spc);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackEnd", e); }
     }
 
-    public static @CType("int") boolean stbtt_PackFontRange(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("float") float font_size, @CType("int") int first_unicode_char_in_range, @CType("int") int num_chars_in_range, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment chardata_for_range) {
+    public static @CType("int") boolean stbtt_PackFontRange(@CType("stbtt_pack_context *") MemorySegment spc, @CType("const unsigned char *") MemorySegment fontdata, @CType("int") int font_index, @CType("float") float font_size, @CType("int") int first_unicode_char_in_range, @CType("int") int num_chars_in_range, @CType("stbtt_packedchar *") MemorySegment chardata_for_range) {
         try {
             return (boolean) Handles.MH_stbtt_PackFontRange.invokeExact(Handles.get().PFN_stbtt_PackFontRange, spc, fontdata, font_index, font_size, first_unicode_char_in_range, num_chars_in_range, chardata_for_range);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRange", e); }
     }
 
-    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges) {
+    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") MemorySegment spc, @CType("const unsigned char *") MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") MemorySegment ranges, @CType("int") int num_ranges) {
         try {
             return (boolean) Handles.MH_stbtt_PackFontRanges.invokeExact(Handles.get().PFN_stbtt_PackFontRanges, spc, fontdata, font_index, ranges, num_ranges);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
     }
 
-    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") overrungl.stb.STBTTPackRange ranges, @CType("int") int num_ranges) {
+    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") MemorySegment spc, @CType("const unsigned char *") MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") overrungl.stb.STBTTPackRange ranges, @CType("int") int num_ranges) {
         try {
             return (boolean) Handles.MH_stbtt_PackFontRanges.invokeExact(Handles.get().PFN_stbtt_PackFontRanges, spc, fontdata, font_index, Marshal.marshal(ranges), num_ranges);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
     }
 
-    public static void stbtt_PackSetOversampling(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("unsigned int") int h_oversample, @CType("unsigned int") int v_oversample) {
+    public static void stbtt_PackSetOversampling(@CType("stbtt_pack_context *") MemorySegment spc, @CType("unsigned int") int h_oversample, @CType("unsigned int") int v_oversample) {
         try {
             Handles.MH_stbtt_PackSetOversampling.invokeExact(Handles.get().PFN_stbtt_PackSetOversampling, spc, h_oversample, v_oversample);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetOversampling", e); }
     }
 
-    public static void stbtt_PackSetSkipMissingCodepoints(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("int") boolean skip) {
+    public static void stbtt_PackSetSkipMissingCodepoints(@CType("stbtt_pack_context *") MemorySegment spc, @CType("int") boolean skip) {
         try {
             Handles.MH_stbtt_PackSetSkipMissingCodepoints.invokeExact(Handles.get().PFN_stbtt_PackSetSkipMissingCodepoints, spc, skip);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetSkipMissingCodepoints", e); }
     }
 
-    public static void stbtt_GetPackedQuad(@CType("const stbtt_packedchar *") java.lang.foreign.MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") java.lang.foreign.MemorySegment xpos, @Out @CType("float*") java.lang.foreign.MemorySegment ypos, @CType("stbtt_aligned_quad *") java.lang.foreign.MemorySegment q, @CType("int") boolean align_to_integer) {
+    public static void stbtt_GetPackedQuad(@CType("const stbtt_packedchar *") MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") MemorySegment xpos, @Out @CType("float*") MemorySegment ypos, @CType("stbtt_aligned_quad *") MemorySegment q, @CType("int") boolean align_to_integer) {
         try {
             Handles.MH_stbtt_GetPackedQuad.invokeExact(Handles.get().PFN_stbtt_GetPackedQuad, chardata, pw, ph, char_index, xpos, ypos, q, align_to_integer);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
@@ -641,61 +641,61 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
     }
 
-    public static @CType("int") int stbtt_PackFontRangesGatherRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects) {
+    public static @CType("int") int stbtt_PackFontRangesGatherRects(@CType("stbtt_pack_context *") MemorySegment spc, @CType("const stbtt_fontinfo *") MemorySegment info, @CType("stbtt_pack_range *") MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") MemorySegment rects) {
         try {
             return (int) Handles.MH_stbtt_PackFontRangesGatherRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesGatherRects, spc, info, ranges, num_ranges, rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesGatherRects", e); }
     }
 
-    public static void stbtt_PackFontRangesPackRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects, @CType("int") int num_rects) {
+    public static void stbtt_PackFontRangesPackRects(@CType("stbtt_pack_context *") MemorySegment spc, @CType("stbrp_rect *") MemorySegment rects, @CType("int") int num_rects) {
         try {
             Handles.MH_stbtt_PackFontRangesPackRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesPackRects, spc, rects, num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesPackRects", e); }
     }
 
-    public static @CType("int") int stbtt_PackFontRangesRenderIntoRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects) {
+    public static @CType("int") int stbtt_PackFontRangesRenderIntoRects(@CType("stbtt_pack_context *") MemorySegment spc, @CType("const stbtt_fontinfo *") MemorySegment info, @CType("stbtt_pack_range *") MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") MemorySegment rects) {
         try {
             return (int) Handles.MH_stbtt_PackFontRangesRenderIntoRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesRenderIntoRects, spc, info, ranges, num_ranges, rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesRenderIntoRects", e); }
     }
 
-    public static @CType("int") int stbtt_GetNumberOfFonts(@CType("const unsigned char *") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") int stbtt_GetNumberOfFonts(@CType("const unsigned char *") MemorySegment data) {
         try {
             return (int) Handles.MH_stbtt_GetNumberOfFonts.invokeExact(Handles.get().PFN_stbtt_GetNumberOfFonts, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetNumberOfFonts", e); }
     }
 
-    public static @CType("int") int stbtt_GetFontOffsetForIndex(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int index) {
+    public static @CType("int") int stbtt_GetFontOffsetForIndex(@CType("const unsigned char *") MemorySegment data, @CType("int") int index) {
         try {
             return (int) Handles.MH_stbtt_GetFontOffsetForIndex.invokeExact(Handles.get().PFN_stbtt_GetFontOffsetForIndex, data, index);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontOffsetForIndex", e); }
     }
 
-    public static @CType("int") boolean stbtt_InitFont(@CType("stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset) {
+    public static @CType("int") boolean stbtt_InitFont(@CType("stbtt_fontinfo *") MemorySegment info, @CType("const unsigned char *") MemorySegment data, @CType("int") int offset) {
         try {
             return (boolean) Handles.MH_stbtt_InitFont.invokeExact(Handles.get().PFN_stbtt_InitFont, info, data, offset);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_InitFont", e); }
     }
 
-    public static @CType("int") int stbtt_FindGlyphIndex(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint) {
+    public static @CType("int") int stbtt_FindGlyphIndex(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int unicode_codepoint) {
         try {
             return (int) Handles.MH_stbtt_FindGlyphIndex.invokeExact(Handles.get().PFN_stbtt_FindGlyphIndex, info, unicode_codepoint);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindGlyphIndex", e); }
     }
 
-    public static @CType("float") float stbtt_ScaleForPixelHeight(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float pixels) {
+    public static @CType("float") float stbtt_ScaleForPixelHeight(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float pixels) {
         try {
             return (float) Handles.MH_stbtt_ScaleForPixelHeight.invokeExact(Handles.get().PFN_stbtt_ScaleForPixelHeight, info, pixels);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForPixelHeight", e); }
     }
 
-    public static @CType("float") float stbtt_ScaleForMappingEmToPixels(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float pixels) {
+    public static @CType("float") float stbtt_ScaleForMappingEmToPixels(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float pixels) {
         try {
             return (float) Handles.MH_stbtt_ScaleForMappingEmToPixels.invokeExact(Handles.get().PFN_stbtt_ScaleForMappingEmToPixels, info, pixels);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForMappingEmToPixels", e); }
     }
 
-    public static void stbtt_GetFontVMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment ascent, @Out @CType("int*") java.lang.foreign.MemorySegment descent, @Out @CType("int*") java.lang.foreign.MemorySegment lineGap) {
+    public static void stbtt_GetFontVMetrics(@CType("const stbtt_fontinfo *") MemorySegment info, @Out @CType("int*") MemorySegment ascent, @Out @CType("int*") MemorySegment descent, @Out @CType("int*") MemorySegment lineGap) {
         try {
             Handles.MH_stbtt_GetFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetFontVMetrics, info, ascent, descent, lineGap);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
@@ -713,7 +713,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
     }
 
-    public static @CType("int") boolean stbtt_GetFontVMetricsOS2(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment typoAscent, @Out @CType("int*") java.lang.foreign.MemorySegment typoDescent, @Out @CType("int*") java.lang.foreign.MemorySegment typoLineGap) {
+    public static @CType("int") boolean stbtt_GetFontVMetricsOS2(@CType("const stbtt_fontinfo *") MemorySegment info, @Out @CType("int*") MemorySegment typoAscent, @Out @CType("int*") MemorySegment typoDescent, @Out @CType("int*") MemorySegment typoLineGap) {
         try {
             return (boolean) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(Handles.get().PFN_stbtt_GetFontVMetricsOS2, info, typoAscent, typoDescent, typoLineGap);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
@@ -732,7 +732,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
     }
 
-    public static void stbtt_GetFontBoundingBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+    public static void stbtt_GetFontBoundingBox(@CType("const stbtt_fontinfo *") MemorySegment info, @Out @CType("int*") MemorySegment x0, @Out @CType("int*") MemorySegment y0, @Out @CType("int*") MemorySegment x1, @Out @CType("int*") MemorySegment y1) {
         try {
             Handles.MH_stbtt_GetFontBoundingBox.invokeExact(Handles.get().PFN_stbtt_GetFontBoundingBox, info, x0, y0, x1, y1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
@@ -752,7 +752,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
     }
 
-    public static void stbtt_GetCodepointHMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment advanceWidth, @Out @CType("int*") java.lang.foreign.MemorySegment leftSideBearing) {
+    public static void stbtt_GetCodepointHMetrics(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") MemorySegment advanceWidth, @Out @CType("int*") MemorySegment leftSideBearing) {
         try {
             Handles.MH_stbtt_GetCodepointHMetrics.invokeExact(Handles.get().PFN_stbtt_GetCodepointHMetrics, info, codepoint, advanceWidth, leftSideBearing);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
@@ -768,13 +768,13 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
     }
 
-    public static @CType("int") int stbtt_GetCodepointKernAdvance(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int ch1, @CType("int") int ch2) {
+    public static @CType("int") int stbtt_GetCodepointKernAdvance(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int ch1, @CType("int") int ch2) {
         try {
             return (int) Handles.MH_stbtt_GetCodepointKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetCodepointKernAdvance, info, ch1, ch2);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointKernAdvance", e); }
     }
 
-    public static @CType("int") int stbtt_GetCodepointBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+    public static @CType("int") int stbtt_GetCodepointBox(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") MemorySegment x0, @Out @CType("int*") MemorySegment y0, @Out @CType("int*") MemorySegment x1, @Out @CType("int*") MemorySegment y1) {
         try {
             return (int) Handles.MH_stbtt_GetCodepointBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBox, info, codepoint, x0, y0, x1, y1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
@@ -795,7 +795,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
     }
 
-    public static void stbtt_GetGlyphHMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") java.lang.foreign.MemorySegment advanceWidth, @Out @CType("int*") java.lang.foreign.MemorySegment leftSideBearing) {
+    public static void stbtt_GetGlyphHMetrics(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") MemorySegment advanceWidth, @Out @CType("int*") MemorySegment leftSideBearing) {
         try {
             Handles.MH_stbtt_GetGlyphHMetrics.invokeExact(Handles.get().PFN_stbtt_GetGlyphHMetrics, info, glyph_index, advanceWidth, leftSideBearing);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
@@ -811,13 +811,13 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
     }
 
-    public static @CType("int") int stbtt_GetGlyphKernAdvance(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph1, @CType("int") int glyph2) {
+    public static @CType("int") int stbtt_GetGlyphKernAdvance(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int glyph1, @CType("int") int glyph2) {
         try {
             return (int) Handles.MH_stbtt_GetGlyphKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetGlyphKernAdvance, info, glyph1, glyph2);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphKernAdvance", e); }
     }
 
-    public static @CType("int") int stbtt_GetGlyphBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+    public static @CType("int") int stbtt_GetGlyphBox(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") MemorySegment x0, @Out @CType("int*") MemorySegment y0, @Out @CType("int*") MemorySegment x1, @Out @CType("int*") MemorySegment y1) {
         try {
             return (int) Handles.MH_stbtt_GetGlyphBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBox, info, glyph_index, x0, y0, x1, y1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
@@ -838,37 +838,37 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
     }
 
-    public static @CType("int") int stbtt_GetKerningTableLength(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info) {
+    public static @CType("int") int stbtt_GetKerningTableLength(@CType("const stbtt_fontinfo *") MemorySegment info) {
         try {
             return (int) Handles.MH_stbtt_GetKerningTableLength.invokeExact(Handles.get().PFN_stbtt_GetKerningTableLength, info);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTableLength", e); }
     }
 
-    public static @CType("int") int stbtt_GetKerningTable(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_kerningentry*") java.lang.foreign.MemorySegment table, @CType("int") int table_length) {
+    public static @CType("int") int stbtt_GetKerningTable(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("stbtt_kerningentry*") MemorySegment table, @CType("int") int table_length) {
         try {
             return (int) Handles.MH_stbtt_GetKerningTable.invokeExact(Handles.get().PFN_stbtt_GetKerningTable, info, table, table_length);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTable", e); }
     }
 
-    public static @CType("int") boolean stbtt_IsGlyphEmpty(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index) {
+    public static @CType("int") boolean stbtt_IsGlyphEmpty(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int glyph_index) {
         try {
             return (boolean) Handles.MH_stbtt_IsGlyphEmpty.invokeExact(Handles.get().PFN_stbtt_IsGlyphEmpty, info, glyph_index);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_IsGlyphEmpty", e); }
     }
 
-    public static @CType("int") int stbtt_GetCodepointShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint, @CType("stbtt_vertex **") java.lang.foreign.MemorySegment vertices) {
+    public static @CType("int") int stbtt_GetCodepointShape(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int unicode_codepoint, @CType("stbtt_vertex **") MemorySegment vertices) {
         try {
             return (int) Handles.MH_stbtt_GetCodepointShape.invokeExact(Handles.get().PFN_stbtt_GetCodepointShape, info, unicode_codepoint, vertices);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointShape", e); }
     }
 
-    public static @CType("int") int stbtt_GetGlyphShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @CType("stbtt_vertex **") java.lang.foreign.MemorySegment vertices) {
+    public static @CType("int") int stbtt_GetGlyphShape(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int glyph_index, @CType("stbtt_vertex **") MemorySegment vertices) {
         try {
             return (int) Handles.MH_stbtt_GetGlyphShape.invokeExact(Handles.get().PFN_stbtt_GetGlyphShape, info, glyph_index, vertices);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphShape", e); }
     }
 
-    public static void stbtt_FreeShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_vertex *") java.lang.foreign.MemorySegment vertices) {
+    public static void stbtt_FreeShape(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("stbtt_vertex *") MemorySegment vertices) {
         try {
             Handles.MH_stbtt_FreeShape.invokeExact(Handles.get().PFN_stbtt_FreeShape, info, vertices);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
@@ -880,43 +880,43 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_FindSVGDoc(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int gl) {
+    public static @CType("unsigned char *") MemorySegment stbtt_FindSVGDoc(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int gl) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_FindSVGDoc.invokeExact(Handles.get().PFN_stbtt_FindSVGDoc, info, gl);
+            return (MemorySegment) Handles.MH_stbtt_FindSVGDoc.invokeExact(Handles.get().PFN_stbtt_FindSVGDoc, info, gl);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindSVGDoc", e); }
     }
 
-    public static @CType("int") int stbtt_GetCodepointSVG(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint, @CType("const char **") java.lang.foreign.MemorySegment svg) {
+    public static @CType("int") int stbtt_GetCodepointSVG(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int unicode_codepoint, @CType("const char **") MemorySegment svg) {
         try {
             return (int) Handles.MH_stbtt_GetCodepointSVG.invokeExact(Handles.get().PFN_stbtt_GetCodepointSVG, info, unicode_codepoint, svg);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSVG", e); }
     }
 
-    public static @CType("int") int stbtt_GetGlyphSVG(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int gl, @CType("const char **") java.lang.foreign.MemorySegment svg) {
+    public static @CType("int") int stbtt_GetGlyphSVG(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("int") int gl, @CType("const char **") MemorySegment svg) {
         try {
             return (int) Handles.MH_stbtt_GetGlyphSVG.invokeExact(Handles.get().PFN_stbtt_GetGlyphSVG, info, gl, svg);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSVG", e); }
     }
 
-    public static void stbtt_FreeBitmap(@CType("unsigned char *") java.lang.foreign.MemorySegment bitmap, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+    public static void stbtt_FreeBitmap(@CType("unsigned char *") MemorySegment bitmap, @CType("void*") MemorySegment userdata) {
         try {
             Handles.MH_stbtt_FreeBitmap.invokeExact(Handles.get().PFN_stbtt_FreeBitmap, bitmap, userdata);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeBitmap", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, info, scale_x, scale_y, codepoint, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, info, scale_x, scale_y, codepoint, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, Marshal.marshal(info), scale_x, scale_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, Marshal.marshal(info), scale_x, scale_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -925,19 +925,19 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, codepoint, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, codepoint, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -946,25 +946,25 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
     }
 
-    public static void stbtt_MakeCodepointBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint) {
+    public static void stbtt_MakeCodepointBitmap(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint) {
         try {
             Handles.MH_stbtt_MakeCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, codepoint);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmap", e); }
     }
 
-    public static void stbtt_MakeCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint) {
+    public static void stbtt_MakeCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint) {
         try {
             Handles.MH_stbtt_MakeCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, codepoint);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixel", e); }
     }
 
-    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") java.lang.foreign.MemorySegment sub_x, @Out @CType("float*") java.lang.foreign.MemorySegment sub_y, @CType("int") int codepoint) {
+    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") MemorySegment sub_x, @Out @CType("float*") MemorySegment sub_y, @CType("int") int codepoint) {
         try {
             Handles.MH_stbtt_MakeCodepointBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, codepoint);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
     }
 
-    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int codepoint) {
+    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int codepoint) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_sub_x = Marshal.marshal(__overrungl_stack, sub_x);
             var __overrungl_ref_sub_y = Marshal.marshal(__overrungl_stack, sub_y);
@@ -974,7 +974,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
     }
 
-    public static void stbtt_GetCodepointBitmapBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+    public static void stbtt_GetCodepointBitmapBox(@CType("const stbtt_fontinfo *") MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") MemorySegment ix0, @Out @CType("int*") MemorySegment iy0, @Out @CType("int*") MemorySegment ix1, @Out @CType("int*") MemorySegment iy1) {
         try {
             Handles.MH_stbtt_GetCodepointBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBox, font, codepoint, scale_x, scale_y, ix0, iy0, ix1, iy1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
@@ -994,7 +994,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
     }
 
-    public static void stbtt_GetCodepointBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+    public static void stbtt_GetCodepointBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") MemorySegment ix0, @Out @CType("int*") MemorySegment iy0, @Out @CType("int*") MemorySegment ix1, @Out @CType("int*") MemorySegment iy1) {
         try {
             Handles.MH_stbtt_GetCodepointBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBoxSubpixel, font, codepoint, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
@@ -1014,19 +1014,19 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, info, scale_x, scale_y, glyph, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, info, scale_x, scale_y, glyph, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, Marshal.marshal(info), scale_x, scale_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, Marshal.marshal(info), scale_x, scale_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -1035,19 +1035,19 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, glyph, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, glyph, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -1056,25 +1056,25 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
     }
 
-    public static void stbtt_MakeGlyphBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph) {
+    public static void stbtt_MakeGlyphBitmap(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph) {
         try {
             Handles.MH_stbtt_MakeGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, glyph);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmap", e); }
     }
 
-    public static void stbtt_MakeGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph) {
+    public static void stbtt_MakeGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph) {
         try {
             Handles.MH_stbtt_MakeGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, glyph);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixel", e); }
     }
 
-    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") java.lang.foreign.MemorySegment sub_x, @Out @CType("float*") java.lang.foreign.MemorySegment sub_y, @CType("int") int glyph) {
+    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") MemorySegment sub_x, @Out @CType("float*") MemorySegment sub_y, @CType("int") int glyph) {
         try {
             Handles.MH_stbtt_MakeGlyphBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, glyph);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
     }
 
-    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int glyph) {
+    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int glyph) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_sub_x = Marshal.marshal(__overrungl_stack, sub_x);
             var __overrungl_ref_sub_y = Marshal.marshal(__overrungl_stack, sub_y);
@@ -1084,7 +1084,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
     }
 
-    public static void stbtt_GetGlyphBitmapBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+    public static void stbtt_GetGlyphBitmapBox(@CType("const stbtt_fontinfo *") MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") MemorySegment ix0, @Out @CType("int*") MemorySegment iy0, @Out @CType("int*") MemorySegment ix1, @Out @CType("int*") MemorySegment iy1) {
         try {
             Handles.MH_stbtt_GetGlyphBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBox, font, glyph, scale_x, scale_y, ix0, iy0, ix1, iy1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
@@ -1104,7 +1104,7 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
     }
 
-    public static void stbtt_GetGlyphBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+    public static void stbtt_GetGlyphBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") MemorySegment ix0, @Out @CType("int*") MemorySegment iy0, @Out @CType("int*") MemorySegment ix1, @Out @CType("int*") MemorySegment iy1) {
         try {
             Handles.MH_stbtt_GetGlyphBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBoxSubpixel, font, glyph, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
@@ -1124,37 +1124,37 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
     }
 
-    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") java.lang.foreign.MemorySegment result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") java.lang.foreign.MemorySegment vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") MemorySegment result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") MemorySegment vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") MemorySegment userdata) {
         try {
             Handles.MH_stbtt_Rasterize.invokeExact(Handles.get().PFN_stbtt_Rasterize, result, flatness_in_pixels, vertices, num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
     }
 
-    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") overrungl.stb.STBTT__bitmap result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") overrungl.stb.STBTTVertex vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") overrungl.stb.STBTT__bitmap result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") overrungl.stb.STBTTVertex vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") MemorySegment userdata) {
         try {
             Handles.MH_stbtt_Rasterize.invokeExact(Handles.get().PFN_stbtt_Rasterize, Marshal.marshal(result), flatness_in_pixels, Marshal.marshal(vertices), num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
     }
 
-    public static void stbtt_FreeSDF(@CType("unsigned char *") java.lang.foreign.MemorySegment bitmap, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+    public static void stbtt_FreeSDF(@CType("unsigned char *") MemorySegment bitmap, @CType("void*") MemorySegment userdata) {
         try {
             Handles.MH_stbtt_FreeSDF.invokeExact(Handles.get().PFN_stbtt_FreeSDF, bitmap, userdata);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeSDF", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, info, scale, glyph, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, info, scale, glyph, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, Marshal.marshal(info), scale, glyph, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, Marshal.marshal(info), scale, glyph, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -1163,19 +1163,19 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") MemorySegment info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height, @Out @CType("int*") MemorySegment xoff, @Out @CType("int*") MemorySegment yoff) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, info, scale, codepoint, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
+            return (MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, info, scale, codepoint, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+    public static @CType("unsigned char *") MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
             var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
             var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
             var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, Marshal.marshal(info), scale, codepoint, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, Marshal.marshal(info), scale, codepoint, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
             Unmarshal.copy(__overrungl_ref_width, width);
             Unmarshal.copy(__overrungl_ref_height, height);
             Unmarshal.copy(__overrungl_ref_xoff, xoff);
@@ -1184,27 +1184,27 @@ public final class STBTrueType {
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
     }
 
-    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("const char*") java.lang.foreign.MemorySegment name, @CType("int") int flags) {
+    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") MemorySegment fontdata, @CType("const char*") MemorySegment name, @CType("int") int flags) {
         try {
             return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(Handles.get().PFN_stbtt_FindMatchingFont, fontdata, name, flags);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
     }
 
-    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("const char*") java.lang.String name, @CType("int") int flags) {
+    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") MemorySegment fontdata, @CType("const char*") String name, @CType("int") int flags) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(Handles.get().PFN_stbtt_FindMatchingFont, fontdata, Marshal.marshal(__overrungl_stack, name), flags);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
     }
 
-    public static @CType("int") boolean stbtt_CompareUTF8toUTF16_bigendian(@CType("const char*") java.lang.foreign.MemorySegment s1, @CType("int") int len1, @CType("const char*") java.lang.foreign.MemorySegment s2, @CType("int") int len2) {
+    public static @CType("int") boolean stbtt_CompareUTF8toUTF16_bigendian(@CType("const char*") MemorySegment s1, @CType("int") int len1, @CType("const char*") MemorySegment s2, @CType("int") int len2) {
         try {
             return (boolean) Handles.MH_stbtt_CompareUTF8toUTF16_bigendian.invokeExact(Handles.get().PFN_stbtt_CompareUTF8toUTF16_bigendian, s1, len1, s2, len2);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_CompareUTF8toUTF16_bigendian", e); }
     }
 
-    public static @CType("const char*") java.lang.foreign.MemorySegment stbtt_GetFontNameString(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @Out @CType("int*") java.lang.foreign.MemorySegment length, @CType("int") int platformID, @CType("int") int encodingID, @CType("int") int languageID, @CType("int") int nameID) {
+    public static @CType("const char*") MemorySegment stbtt_GetFontNameString(@CType("const stbtt_fontinfo *") MemorySegment font, @Out @CType("int*") MemorySegment length, @CType("int") int platformID, @CType("int") int encodingID, @CType("int") int languageID, @CType("int") int nameID) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetFontNameString.invokeExact(Handles.get().PFN_stbtt_GetFontNameString, font, length, platformID, encodingID, languageID, nameID);
+            return (MemorySegment) Handles.MH_stbtt_GetFontNameString.invokeExact(Handles.get().PFN_stbtt_GetFontNameString, font, length, platformID, encodingID, languageID, nameID);
         } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontNameString", e); }
     }
 

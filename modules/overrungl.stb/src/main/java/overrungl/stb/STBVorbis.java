@@ -25,6 +25,7 @@ import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
@@ -253,192 +254,192 @@ public final class STBVorbis {
         }
     }
 
-    public static @CType("stb_vorbis_info") java.lang.foreign.MemorySegment stb_vorbis_get_info_(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("stb_vorbis_info") MemorySegment stb_vorbis_get_info_(SegmentAllocator allocator, @CType("stb_vorbis *") MemorySegment f) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, allocator, f);
+            return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, allocator, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
-    public static @CType("stb_vorbis_info") overrungl.stb.STBVorbisInfo stb_vorbis_get_info(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("stb_vorbis_info") overrungl.stb.STBVorbisInfo stb_vorbis_get_info(SegmentAllocator allocator, @CType("stb_vorbis *") MemorySegment f) {
         try {
-            return overrungl.stb.STBVorbisInfo.of((java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, allocator, f));
+            return overrungl.stb.STBVorbisInfo.of((MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
-    public static @CType("stb_vorbis_comment") java.lang.foreign.MemorySegment stb_vorbis_get_comment_(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("stb_vorbis_comment") MemorySegment stb_vorbis_get_comment_(SegmentAllocator allocator, @CType("stb_vorbis *") MemorySegment f) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, allocator, f);
+            return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, allocator, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
-    public static @CType("stb_vorbis_comment") overrungl.stb.STBVorbisComment stb_vorbis_get_comment(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("stb_vorbis_comment") overrungl.stb.STBVorbisComment stb_vorbis_get_comment(SegmentAllocator allocator, @CType("stb_vorbis *") MemorySegment f) {
         try {
-            return overrungl.stb.STBVorbisComment.of((java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, allocator, f));
+            return overrungl.stb.STBVorbisComment.of((MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_error(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("int") int stb_vorbis_get_error(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (int) Handles.MH_stb_vorbis_get_error.invokeExact(Handles.get().PFN_stb_vorbis_get_error, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
     }
 
-    public static void stb_vorbis_close(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static void stb_vorbis_close(@CType("stb_vorbis *") MemorySegment f) {
         try {
             Handles.MH_stb_vorbis_close.invokeExact(Handles.get().PFN_stb_vorbis_close, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_sample_offset(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("int") int stb_vorbis_get_sample_offset(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (int) Handles.MH_stb_vorbis_get_sample_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_sample_offset, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
     }
 
-    public static @CType("unsigned int") int stb_vorbis_get_file_offset(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("unsigned int") int stb_vorbis_get_file_offset(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (int) Handles.MH_stb_vorbis_get_file_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_file_offset, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_pushdata(@CType("const unsigned char *") java.lang.foreign.MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment datablock_memory_consumed_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_pushdata(@CType("const unsigned char *") MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") MemorySegment datablock_memory_consumed_in_bytes, @Out @CType("int*") MemorySegment error, @CType("const stb_vorbis_alloc *") MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer);
+            return (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_pushdata(@CType("const unsigned char *") java.lang.foreign.MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") int[] datablock_memory_consumed_in_bytes, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_pushdata(@CType("const unsigned char *") MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") int[] datablock_memory_consumed_in_bytes, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_datablock_memory_consumed_in_bytes = Marshal.marshal(__overrungl_stack, datablock_memory_consumed_in_bytes);
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, __overrungl_ref_datablock_memory_consumed_in_bytes, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, __overrungl_ref_datablock_memory_consumed_in_bytes, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_datablock_memory_consumed_in_bytes, datablock_memory_consumed_in_bytes);
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
-    public static @CType("int") int stb_vorbis_decode_frame_pushdata(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("const unsigned char *") java.lang.foreign.MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("float ***") java.lang.foreign.MemorySegment output, @Out @CType("int*") java.lang.foreign.MemorySegment samples) {
+    public static @CType("int") int stb_vorbis_decode_frame_pushdata(@CType("stb_vorbis *") MemorySegment f, @CType("const unsigned char *") MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") MemorySegment channels, @Out @CType("float ***") MemorySegment output, @Out @CType("int*") MemorySegment samples) {
         try {
             return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_decode_frame_pushdata, f, datablock, datablock_length_in_bytes, channels, output, samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
     }
 
-    public static void stb_vorbis_flush_pushdata(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static void stb_vorbis_flush_pushdata(@CType("stb_vorbis *") MemorySegment f) {
         try {
             Handles.MH_stb_vorbis_flush_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_flush_pushdata, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
     }
 
-    public static @CType("int") int stb_vorbis_decode_filename(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("int*") java.lang.foreign.MemorySegment sample_rate, @Out @CType("short **") java.lang.foreign.MemorySegment output) {
+    public static @CType("int") int stb_vorbis_decode_filename(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment channels, @Out @CType("int*") MemorySegment sample_rate, @Out @CType("short **") MemorySegment output) {
         try {
             return (int) Handles.MH_stb_vorbis_decode_filename.invokeExact(Handles.get().PFN_stb_vorbis_decode_filename, filename, channels, sample_rate, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
     }
 
-    public static @CType("int") int stb_vorbis_decode_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment mem, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("int*") java.lang.foreign.MemorySegment sample_rate, @Out @CType("short **") java.lang.foreign.MemorySegment output) {
+    public static @CType("int") int stb_vorbis_decode_memory(@CType("const unsigned char *") MemorySegment mem, @CType("int") int len, @Out @CType("int*") MemorySegment channels, @Out @CType("int*") MemorySegment sample_rate, @Out @CType("short **") MemorySegment output) {
         try {
             return (int) Handles.MH_stb_vorbis_decode_memory.invokeExact(Handles.get().PFN_stb_vorbis_decode_memory, mem, len, channels, sample_rate, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") MemorySegment data, @CType("int") int len, @Out @CType("int*") MemorySegment error, @CType("const stb_vorbis_alloc *") MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer);
+            return (MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int len, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") MemorySegment data, @CType("int") int len, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_filename(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_filename(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment error, @CType("const stb_vorbis_alloc *") MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer);
+            return (MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
-    public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_filename(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
+    public static @CType("stb_vorbis *") MemorySegment stb_vorbis_open_filename(@CType("const char*") String filename, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
-    public static @CType("int") int stb_vorbis_seek_frame(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("unsigned int") int sample_number) {
+    public static @CType("int") int stb_vorbis_seek_frame(@CType("stb_vorbis *") MemorySegment f, @CType("unsigned int") int sample_number) {
         try {
             return (int) Handles.MH_stb_vorbis_seek_frame.invokeExact(Handles.get().PFN_stb_vorbis_seek_frame, f, sample_number);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
     }
 
-    public static @CType("int") int stb_vorbis_seek(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("unsigned int") int sample_number) {
+    public static @CType("int") int stb_vorbis_seek(@CType("stb_vorbis *") MemorySegment f, @CType("unsigned int") int sample_number) {
         try {
             return (int) Handles.MH_stb_vorbis_seek.invokeExact(Handles.get().PFN_stb_vorbis_seek, f, sample_number);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
     }
 
-    public static @CType("int") int stb_vorbis_seek_start(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("int") int stb_vorbis_seek_start(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (int) Handles.MH_stb_vorbis_seek_start.invokeExact(Handles.get().PFN_stb_vorbis_seek_start, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
     }
 
-    public static @CType("unsigned int") int stb_vorbis_stream_length_in_samples(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("unsigned int") int stb_vorbis_stream_length_in_samples(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (int) Handles.MH_stb_vorbis_stream_length_in_samples.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_samples, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
     }
 
-    public static @CType("float") float stb_vorbis_stream_length_in_seconds(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
+    public static @CType("float") float stb_vorbis_stream_length_in_seconds(@CType("stb_vorbis *") MemorySegment f) {
         try {
             return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_seconds, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_frame_float(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("float ***") java.lang.foreign.MemorySegment output) {
+    public static @CType("int") int stb_vorbis_get_frame_float(@CType("stb_vorbis *") MemorySegment f, @Out @CType("int*") MemorySegment channels, @Out @CType("float ***") MemorySegment output) {
         try {
             return (int) Handles.MH_stb_vorbis_get_frame_float.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_float, f, channels, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_frame_short_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int num_c, @Out @CType("short*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_shorts) {
+    public static @CType("int") int stb_vorbis_get_frame_short_interleaved(@CType("stb_vorbis *") MemorySegment f, @CType("int") int num_c, @Out @CType("short*") MemorySegment buffer, @CType("int") int num_shorts) {
         try {
             return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short_interleaved, f, num_c, buffer, num_shorts);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_frame_short(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int num_c, @Out @CType("short **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
+    public static @CType("int") int stb_vorbis_get_frame_short(@CType("stb_vorbis *") MemorySegment f, @CType("int") int num_c, @Out @CType("short **") MemorySegment buffer, @CType("int") int num_samples) {
         try {
             return (int) Handles.MH_stb_vorbis_get_frame_short.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short, f, num_c, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_samples_float_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("float*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_floats) {
+    public static @CType("int") int stb_vorbis_get_samples_float_interleaved(@CType("stb_vorbis *") MemorySegment f, @CType("int") int channels, @Out @CType("float*") MemorySegment buffer, @CType("int") int num_floats) {
         try {
             return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float_interleaved, f, channels, buffer, num_floats);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_samples_float(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("float **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
+    public static @CType("int") int stb_vorbis_get_samples_float(@CType("stb_vorbis *") MemorySegment f, @CType("int") int channels, @Out @CType("float **") MemorySegment buffer, @CType("int") int num_samples) {
         try {
             return (int) Handles.MH_stb_vorbis_get_samples_float.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float, f, channels, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_samples_short_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("short*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_shorts) {
+    public static @CType("int") int stb_vorbis_get_samples_short_interleaved(@CType("stb_vorbis *") MemorySegment f, @CType("int") int channels, @Out @CType("short*") MemorySegment buffer, @CType("int") int num_shorts) {
         try {
             return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short_interleaved, f, channels, buffer, num_shorts);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
     }
 
-    public static @CType("int") int stb_vorbis_get_samples_short(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("short **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
+    public static @CType("int") int stb_vorbis_get_samples_short(@CType("stb_vorbis *") MemorySegment f, @CType("int") int channels, @Out @CType("short **") MemorySegment buffer, @CType("int") int num_samples) {
         try {
             return (int) Handles.MH_stb_vorbis_get_samples_short.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short, f, channels, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short", e); }

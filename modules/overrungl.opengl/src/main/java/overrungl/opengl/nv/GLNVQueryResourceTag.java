@@ -49,19 +49,19 @@ public final class GLNVQueryResourceTag {
         this.handles = new Handles(func);
     }
 
-    public void GenQueryResourceTagNV(@CType("GLsizei") int n, @CType("GLint *") java.lang.foreign.MemorySegment tagIds) {
+    public void GenQueryResourceTagNV(@CType("GLsizei") int n, @CType("GLint *") MemorySegment tagIds) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glGenQueryResourceTagNV");
         try { Handles.MH_glGenQueryResourceTagNV.invokeExact(handles.PFN_glGenQueryResourceTagNV, n, tagIds); }
         catch (Throwable e) { throw new RuntimeException("error in glGenQueryResourceTagNV", e); }
     }
 
-    public void DeleteQueryResourceTagNV(@CType("GLsizei") int n, @CType("const GLint *") java.lang.foreign.MemorySegment tagIds) {
+    public void DeleteQueryResourceTagNV(@CType("GLsizei") int n, @CType("const GLint *") MemorySegment tagIds) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteQueryResourceTagNV");
         try { Handles.MH_glDeleteQueryResourceTagNV.invokeExact(handles.PFN_glDeleteQueryResourceTagNV, n, tagIds); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteQueryResourceTagNV", e); }
     }
 
-    public void QueryResourceTagNV(@CType("GLint") int tagId, @CType("const GLchar *") java.lang.foreign.MemorySegment tagString) {
+    public void QueryResourceTagNV(@CType("GLint") int tagId, @CType("const GLchar *") MemorySegment tagString) {
         if (Unmarshal.isNullPointer(handles.PFN_glQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceTagNV");
         try { Handles.MH_glQueryResourceTagNV.invokeExact(handles.PFN_glQueryResourceTagNV, tagId, tagString); }
         catch (Throwable e) { throw new RuntimeException("error in glQueryResourceTagNV", e); }

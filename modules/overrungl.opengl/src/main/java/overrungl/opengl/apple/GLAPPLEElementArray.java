@@ -60,7 +60,7 @@ public final class GLAPPLEElementArray {
         this.handles = new Handles(func);
     }
 
-    public void ElementPointerAPPLE(@CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void ElementPointerAPPLE(@CType("GLenum") int type, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glElementPointerAPPLE)) throw new SymbolNotFoundError("Symbol not found: glElementPointerAPPLE");
         try { Handles.MH_glElementPointerAPPLE.invokeExact(handles.PFN_glElementPointerAPPLE, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glElementPointerAPPLE", e); }
@@ -78,13 +78,13 @@ public final class GLAPPLEElementArray {
         catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementArrayAPPLE", e); }
     }
 
-    public void MultiDrawElementArrayAPPLE(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount) {
+    public void MultiDrawElementArrayAPPLE(@CType("GLenum") int mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementArrayAPPLE");
         try { Handles.MH_glMultiDrawElementArrayAPPLE.invokeExact(handles.PFN_glMultiDrawElementArrayAPPLE, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementArrayAPPLE", e); }
     }
 
-    public void MultiDrawRangeElementArrayAPPLE(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount) {
+    public void MultiDrawRangeElementArrayAPPLE(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawRangeElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawRangeElementArrayAPPLE");
         try { Handles.MH_glMultiDrawRangeElementArrayAPPLE.invokeExact(handles.PFN_glMultiDrawRangeElementArrayAPPLE, mode, start, end, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawRangeElementArrayAPPLE", e); }

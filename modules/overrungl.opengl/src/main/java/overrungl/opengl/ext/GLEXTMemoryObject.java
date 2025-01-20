@@ -121,19 +121,19 @@ public final class GLEXTMemoryObject {
         this.handles = new Handles(func);
     }
 
-    public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
+    public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
         try { Handles.MH_glGetUnsignedBytevEXT.invokeExact(handles.PFN_glGetUnsignedBytevEXT, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytevEXT", e); }
     }
 
-    public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
+    public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
         try { Handles.MH_glGetUnsignedBytei_vEXT.invokeExact(handles.PFN_glGetUnsignedBytei_vEXT, target, index, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytei_vEXT", e); }
     }
 
-    public void DeleteMemoryObjectsEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment memoryObjects) {
+    public void DeleteMemoryObjectsEXT(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment memoryObjects) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteMemoryObjectsEXT");
         try { Handles.MH_glDeleteMemoryObjectsEXT.invokeExact(handles.PFN_glDeleteMemoryObjectsEXT, n, memoryObjects); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteMemoryObjectsEXT", e); }
@@ -145,19 +145,19 @@ public final class GLEXTMemoryObject {
         catch (Throwable e) { throw new RuntimeException("error in glIsMemoryObjectEXT", e); }
     }
 
-    public void CreateMemoryObjectsEXT(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment memoryObjects) {
+    public void CreateMemoryObjectsEXT(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment memoryObjects) {
         if (Unmarshal.isNullPointer(handles.PFN_glCreateMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateMemoryObjectsEXT");
         try { Handles.MH_glCreateMemoryObjectsEXT.invokeExact(handles.PFN_glCreateMemoryObjectsEXT, n, memoryObjects); }
         catch (Throwable e) { throw new RuntimeException("error in glCreateMemoryObjectsEXT", e); }
     }
 
-    public void MemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void MemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryObjectParameterivEXT");
         try { Handles.MH_glMemoryObjectParameterivEXT.invokeExact(handles.PFN_glMemoryObjectParameterivEXT, memoryObject, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glMemoryObjectParameterivEXT", e); }
     }
 
-    public void GetMemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetMemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectParameterivEXT");
         try { Handles.MH_glGetMemoryObjectParameterivEXT.invokeExact(handles.PFN_glGetMemoryObjectParameterivEXT, memoryObject, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectParameterivEXT", e); }

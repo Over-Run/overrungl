@@ -26,15 +26,15 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### filterList
-/// [VarHandle][#VH_filterList] - [Getter][#filterList()] - [Setter][#filterList(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_filterList] - [Getter][#filterList()] - [Setter][#filterList(MemorySegment)]
 /// ### filterCount
 /// [VarHandle][#VH_filterCount] - [Getter][#filterCount()] - [Setter][#filterCount(int)]
 /// ### defaultPath
-/// [VarHandle][#VH_defaultPath] - [Getter][#defaultPath()] - [Setter][#defaultPath(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_defaultPath] - [Getter][#defaultPath()] - [Setter][#defaultPath(MemorySegment)]
 /// ### defaultName
-/// [VarHandle][#VH_defaultName] - [Getter][#defaultName()] - [Setter][#defaultName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_defaultName] - [Getter][#defaultName()] - [Setter][#defaultName(MemorySegment)]
 /// ### parentWindow
-/// [Byte offset][#OFFSET_parentWindow] - [Memory layout][#ML_parentWindow] - [Getter][#parentWindow()] - [Setter][#parentWindow(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_parentWindow] - [Memory layout][#ML_parentWindow] - [Getter][#parentWindow()] - [Setter][#parentWindow(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -55,13 +55,13 @@ public sealed class NFDSaveDialogArgs extends Struct {
         Unmarshal.STR_LAYOUT.withName("defaultName"),
         overrungl.nfd.NFDWindowHandle.LAYOUT.withName("parentWindow")
     );
-    /// The [VarHandle] of `filterList` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `filterList` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_filterList = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterList"));
     /// The [VarHandle] of `filterCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_filterCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCount"));
-    /// The [VarHandle] of `defaultPath` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `defaultPath` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultPath = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath"));
-    /// The [VarHandle] of `defaultName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `defaultName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultName"));
     /// The byte offset of `parentWindow`.
     public static final long OFFSET_parentWindow = LAYOUT.byteOffset(PathElement.groupElement("parentWindow"));
@@ -111,7 +111,7 @@ public sealed class NFDSaveDialogArgs extends Struct {
     /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultName, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindow) { return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).defaultName(defaultName).parentWindow(parentWindow); }
+    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath, @CType("const nfdnchar_t*") MemorySegment defaultName, @CType("nfdwindowhandle_t") MemorySegment parentWindow) { return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).defaultName(defaultName).parentWindow(parentWindow); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -125,25 +125,25 @@ public sealed class NFDSaveDialogArgs extends Struct {
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment get_filterList(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_filterList.get(segment, 0L, index); }
+    public static @CType("const nfdnfilteritem_t*") MemorySegment get_filterList(MemorySegment segment, long index) { return (MemorySegment) VH_filterList.get(segment, 0L, index); }
     /// {@return `filterList`}
     /// @param segment the segment of the struct
-    public static @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment get_filterList(MemorySegment segment) { return NFDSaveDialogArgs.get_filterList(segment, 0L); }
+    public static @CType("const nfdnfilteritem_t*") MemorySegment get_filterList(MemorySegment segment) { return NFDSaveDialogArgs.get_filterList(segment, 0L); }
     /// {@return `filterList`}
-    public @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList() { return NFDSaveDialogArgs.get_filterList(this.segment()); }
+    public @CType("const nfdnfilteritem_t*") MemorySegment filterList() { return NFDSaveDialogArgs.get_filterList(this.segment()); }
     /// Sets `filterList` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_filterList(MemorySegment segment, long index, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment value) { VH_filterList.set(segment, 0L, index, value); }
+    public static void set_filterList(MemorySegment segment, long index, @CType("const nfdnfilteritem_t*") MemorySegment value) { VH_filterList.set(segment, 0L, index, value); }
     /// Sets `filterList` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_filterList(MemorySegment segment, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_filterList(segment, 0L, value); }
+    public static void set_filterList(MemorySegment segment, @CType("const nfdnfilteritem_t*") MemorySegment value) { NFDSaveDialogArgs.set_filterList(segment, 0L, value); }
     /// Sets `filterList` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDSaveDialogArgs filterList(@CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_filterList(this.segment(), value); return this; }
+    public NFDSaveDialogArgs filterList(@CType("const nfdnfilteritem_t*") MemorySegment value) { NFDSaveDialogArgs.set_filterList(this.segment(), value); return this; }
 
     /// {@return `filterCount` at the given index}
     /// @param segment the segment of the struct
@@ -171,71 +171,71 @@ public sealed class NFDSaveDialogArgs extends Struct {
     /// {@return `defaultPath` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_defaultPath(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_defaultPath.get(segment, 0L, index); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get(segment, 0L, index); }
     /// {@return `defaultPath`}
     /// @param segment the segment of the struct
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_defaultPath(MemorySegment segment) { return NFDSaveDialogArgs.get_defaultPath(segment, 0L); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_defaultPath(MemorySegment segment) { return NFDSaveDialogArgs.get_defaultPath(segment, 0L); }
     /// {@return `defaultPath`}
-    public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath() { return NFDSaveDialogArgs.get_defaultPath(this.segment()); }
+    public @CType("const nfdnchar_t*") MemorySegment defaultPath() { return NFDSaveDialogArgs.get_defaultPath(this.segment()); }
     /// Sets `defaultPath` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_defaultPath(MemorySegment segment, long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
+    public static void set_defaultPath(MemorySegment segment, long index, @CType("const nfdnchar_t*") MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
     /// Sets `defaultPath` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_defaultPath(MemorySegment segment, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(segment, 0L, value); }
+    public static void set_defaultPath(MemorySegment segment, @CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(segment, 0L, value); }
     /// Sets `defaultPath` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDSaveDialogArgs defaultPath(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(this.segment(), value); return this; }
+    public NFDSaveDialogArgs defaultPath(@CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(this.segment(), value); return this; }
 
     /// {@return `defaultName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_defaultName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_defaultName.get(segment, 0L, index); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_defaultName(MemorySegment segment, long index) { return (MemorySegment) VH_defaultName.get(segment, 0L, index); }
     /// {@return `defaultName`}
     /// @param segment the segment of the struct
-    public static @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment get_defaultName(MemorySegment segment) { return NFDSaveDialogArgs.get_defaultName(segment, 0L); }
+    public static @CType("const nfdnchar_t*") MemorySegment get_defaultName(MemorySegment segment) { return NFDSaveDialogArgs.get_defaultName(segment, 0L); }
     /// {@return `defaultName`}
-    public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultName() { return NFDSaveDialogArgs.get_defaultName(this.segment()); }
+    public @CType("const nfdnchar_t*") MemorySegment defaultName() { return NFDSaveDialogArgs.get_defaultName(this.segment()); }
     /// Sets `defaultName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_defaultName(MemorySegment segment, long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { VH_defaultName.set(segment, 0L, index, value); }
+    public static void set_defaultName(MemorySegment segment, long index, @CType("const nfdnchar_t*") MemorySegment value) { VH_defaultName.set(segment, 0L, index, value); }
     /// Sets `defaultName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_defaultName(MemorySegment segment, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultName(segment, 0L, value); }
+    public static void set_defaultName(MemorySegment segment, @CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultName(segment, 0L, value); }
     /// Sets `defaultName` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDSaveDialogArgs defaultName(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultName(this.segment(), value); return this; }
+    public NFDSaveDialogArgs defaultName(@CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultName(this.segment(), value); return this; }
 
     /// {@return `parentWindow` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment get_parentWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow); }
+    public static @CType("nfdwindowhandle_t") MemorySegment get_parentWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow); }
     /// {@return `parentWindow`}
     /// @param segment the segment of the struct
-    public static @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment get_parentWindow(MemorySegment segment) { return NFDSaveDialogArgs.get_parentWindow(segment, 0L); }
+    public static @CType("nfdwindowhandle_t") MemorySegment get_parentWindow(MemorySegment segment) { return NFDSaveDialogArgs.get_parentWindow(segment, 0L); }
     /// {@return `parentWindow`}
-    public @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindow() { return NFDSaveDialogArgs.get_parentWindow(this.segment()); }
+    public @CType("nfdwindowhandle_t") MemorySegment parentWindow() { return NFDSaveDialogArgs.get_parentWindow(this.segment()); }
     /// Sets `parentWindow` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_parentWindow(MemorySegment segment, long index, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow.byteSize()); }
+    public static void set_parentWindow(MemorySegment segment, long index, @CType("nfdwindowhandle_t") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow.byteSize()); }
     /// Sets `parentWindow` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_parentWindow(MemorySegment segment, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(segment, 0L, value); }
+    public static void set_parentWindow(MemorySegment segment, @CType("nfdwindowhandle_t") MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(segment, 0L, value); }
     /// Sets `parentWindow` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDSaveDialogArgs parentWindow(@CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(this.segment(), value); return this; }
+    public NFDSaveDialogArgs parentWindow(@CType("nfdwindowhandle_t") MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(this.segment(), value); return this; }
 
     /// A buffer of [NFDSaveDialogArgs].
     public static final class Buffer extends NFDSaveDialogArgs {
@@ -261,12 +261,12 @@ public sealed class NFDSaveDialogArgs extends Struct {
 
         /// {@return `filterList` at the given index}
         /// @param index the index
-        public @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterListAt(long index) { return NFDSaveDialogArgs.get_filterList(this.segment(), index); }
+        public @CType("const nfdnfilteritem_t*") MemorySegment filterListAt(long index) { return NFDSaveDialogArgs.get_filterList(this.segment(), index); }
         /// Sets `filterList` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer filterListAt(long index, @CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_filterList(this.segment(), index, value); return this; }
+        public Buffer filterListAt(long index, @CType("const nfdnfilteritem_t*") MemorySegment value) { NFDSaveDialogArgs.set_filterList(this.segment(), index, value); return this; }
 
         /// {@return `filterCount` at the given index}
         /// @param index the index
@@ -279,30 +279,30 @@ public sealed class NFDSaveDialogArgs extends Struct {
 
         /// {@return `defaultPath` at the given index}
         /// @param index the index
-        public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPathAt(long index) { return NFDSaveDialogArgs.get_defaultPath(this.segment(), index); }
+        public @CType("const nfdnchar_t*") MemorySegment defaultPathAt(long index) { return NFDSaveDialogArgs.get_defaultPath(this.segment(), index); }
         /// Sets `defaultPath` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer defaultPathAt(long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(this.segment(), index, value); return this; }
+        public Buffer defaultPathAt(long index, @CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultPath(this.segment(), index, value); return this; }
 
         /// {@return `defaultName` at the given index}
         /// @param index the index
-        public @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultNameAt(long index) { return NFDSaveDialogArgs.get_defaultName(this.segment(), index); }
+        public @CType("const nfdnchar_t*") MemorySegment defaultNameAt(long index) { return NFDSaveDialogArgs.get_defaultName(this.segment(), index); }
         /// Sets `defaultName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer defaultNameAt(long index, @CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_defaultName(this.segment(), index, value); return this; }
+        public Buffer defaultNameAt(long index, @CType("const nfdnchar_t*") MemorySegment value) { NFDSaveDialogArgs.set_defaultName(this.segment(), index, value); return this; }
 
         /// {@return `parentWindow` at the given index}
         /// @param index the index
-        public @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindowAt(long index) { return NFDSaveDialogArgs.get_parentWindow(this.segment(), index); }
+        public @CType("nfdwindowhandle_t") MemorySegment parentWindowAt(long index) { return NFDSaveDialogArgs.get_parentWindow(this.segment(), index); }
         /// Sets `parentWindow` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer parentWindowAt(long index, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(this.segment(), index, value); return this; }
+        public Buffer parentWindowAt(long index, @CType("nfdwindowhandle_t") MemorySegment value) { NFDSaveDialogArgs.set_parentWindow(this.segment(), index, value); return this; }
 
     }
 }

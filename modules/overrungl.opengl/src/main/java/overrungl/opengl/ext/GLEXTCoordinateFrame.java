@@ -145,7 +145,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3bEXT", e); }
     }
 
-    public void Tangent3bvEXT(@CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3bvEXT(@CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bvEXT");
         try { Handles.MH_glTangent3bvEXT.invokeExact(handles.PFN_glTangent3bvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3bvEXT", e); }
@@ -157,7 +157,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3dEXT", e); }
     }
 
-    public void Tangent3dvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3dvEXT(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dvEXT");
         try { Handles.MH_glTangent3dvEXT.invokeExact(handles.PFN_glTangent3dvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3dvEXT", e); }
@@ -169,7 +169,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3fEXT", e); }
     }
 
-    public void Tangent3fvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3fvEXT(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fvEXT");
         try { Handles.MH_glTangent3fvEXT.invokeExact(handles.PFN_glTangent3fvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3fvEXT", e); }
@@ -181,7 +181,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3iEXT", e); }
     }
 
-    public void Tangent3ivEXT(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3ivEXT(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3ivEXT");
         try { Handles.MH_glTangent3ivEXT.invokeExact(handles.PFN_glTangent3ivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3ivEXT", e); }
@@ -193,7 +193,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glTangent3sEXT", e); }
     }
 
-    public void Tangent3svEXT(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void Tangent3svEXT(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangent3svEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3svEXT");
         try { Handles.MH_glTangent3svEXT.invokeExact(handles.PFN_glTangent3svEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTangent3svEXT", e); }
@@ -205,7 +205,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3bEXT", e); }
     }
 
-    public void Binormal3bvEXT(@CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3bvEXT(@CType("const GLbyte *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bvEXT");
         try { Handles.MH_glBinormal3bvEXT.invokeExact(handles.PFN_glBinormal3bvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3bvEXT", e); }
@@ -217,7 +217,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3dEXT", e); }
     }
 
-    public void Binormal3dvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3dvEXT(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dvEXT");
         try { Handles.MH_glBinormal3dvEXT.invokeExact(handles.PFN_glBinormal3dvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3dvEXT", e); }
@@ -229,7 +229,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3fEXT", e); }
     }
 
-    public void Binormal3fvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3fvEXT(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fvEXT");
         try { Handles.MH_glBinormal3fvEXT.invokeExact(handles.PFN_glBinormal3fvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3fvEXT", e); }
@@ -241,7 +241,7 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3iEXT", e); }
     }
 
-    public void Binormal3ivEXT(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3ivEXT(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3ivEXT");
         try { Handles.MH_glBinormal3ivEXT.invokeExact(handles.PFN_glBinormal3ivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3ivEXT", e); }
@@ -253,19 +253,19 @@ public final class GLEXTCoordinateFrame {
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3sEXT", e); }
     }
 
-    public void Binormal3svEXT(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void Binormal3svEXT(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormal3svEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3svEXT");
         try { Handles.MH_glBinormal3svEXT.invokeExact(handles.PFN_glBinormal3svEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormal3svEXT", e); }
     }
 
-    public void TangentPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void TangentPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glTangentPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTangentPointerEXT");
         try { Handles.MH_glTangentPointerEXT.invokeExact(handles.PFN_glTangentPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glTangentPointerEXT", e); }
     }
 
-    public void BinormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void BinormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glBinormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormalPointerEXT");
         try { Handles.MH_glBinormalPointerEXT.invokeExact(handles.PFN_glBinormalPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glBinormalPointerEXT", e); }

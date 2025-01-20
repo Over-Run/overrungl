@@ -69,13 +69,13 @@ public final class GLSGIXInstruments {
         catch (Throwable e) { throw new RuntimeException("error in glGetInstrumentsSGIX", e); }
     }
 
-    public void InstrumentsBufferSGIX(@CType("GLsizei") int size, @CType("GLint *") java.lang.foreign.MemorySegment buffer) {
+    public void InstrumentsBufferSGIX(@CType("GLsizei") int size, @CType("GLint *") MemorySegment buffer) {
         if (Unmarshal.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
         try { Handles.MH_glInstrumentsBufferSGIX.invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glInstrumentsBufferSGIX", e); }
     }
 
-    public @CType("GLint") int PollInstrumentsSGIX(@CType("GLint *") java.lang.foreign.MemorySegment marker_p) {
+    public @CType("GLint") int PollInstrumentsSGIX(@CType("GLint *") MemorySegment marker_p) {
         if (Unmarshal.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
         try { return (int) Handles.MH_glPollInstrumentsSGIX.invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
         catch (Throwable e) { throw new RuntimeException("error in glPollInstrumentsSGIX", e); }

@@ -44,13 +44,13 @@ public final class GLEXTEGLImageStorage {
         this.handles = new Handles(func);
     }
 
-    public void EGLImageTargetTexStorageEXT(@CType("GLenum") int target, @CType("GLeglImageOES") java.lang.foreign.MemorySegment image, @CType("const GLint *") java.lang.foreign.MemorySegment attrib_list) {
+    public void EGLImageTargetTexStorageEXT(@CType("GLenum") int target, @CType("GLeglImageOES") MemorySegment image, @CType("const GLint *") MemorySegment attrib_list) {
         if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
         try { Handles.MH_glEGLImageTargetTexStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTexStorageEXT, target, image, attrib_list); }
         catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTexStorageEXT", e); }
     }
 
-    public void EGLImageTargetTextureStorageEXT(@CType("GLuint") int texture, @CType("GLeglImageOES") java.lang.foreign.MemorySegment image, @CType("const GLint *") java.lang.foreign.MemorySegment attrib_list) {
+    public void EGLImageTargetTextureStorageEXT(@CType("GLuint") int texture, @CType("GLeglImageOES") MemorySegment image, @CType("const GLint *") MemorySegment attrib_list) {
         if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
         try { Handles.MH_glEGLImageTargetTextureStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTextureStorageEXT, texture, image, attrib_list); }
         catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTextureStorageEXT", e); }

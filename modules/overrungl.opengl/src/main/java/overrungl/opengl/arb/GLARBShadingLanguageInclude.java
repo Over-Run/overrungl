@@ -64,37 +64,37 @@ public final class GLARBShadingLanguageInclude {
         this.handles = new Handles(func);
     }
 
-    public void NamedStringARB(@CType("GLenum") int type, @CType("GLint") int namelen, @CType("const GLchar *") java.lang.foreign.MemorySegment name, @CType("GLint") int stringlen, @CType("const GLchar *") java.lang.foreign.MemorySegment string) {
+    public void NamedStringARB(@CType("GLenum") int type, @CType("GLint") int namelen, @CType("const GLchar *") MemorySegment name, @CType("GLint") int stringlen, @CType("const GLchar *") MemorySegment string) {
         if (Unmarshal.isNullPointer(handles.PFN_glNamedStringARB)) throw new SymbolNotFoundError("Symbol not found: glNamedStringARB");
         try { Handles.MH_glNamedStringARB.invokeExact(handles.PFN_glNamedStringARB, type, namelen, name, stringlen, string); }
         catch (Throwable e) { throw new RuntimeException("error in glNamedStringARB", e); }
     }
 
-    public void DeleteNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
+    public void DeleteNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteNamedStringARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamedStringARB");
         try { Handles.MH_glDeleteNamedStringARB.invokeExact(handles.PFN_glDeleteNamedStringARB, namelen, name); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteNamedStringARB", e); }
     }
 
-    public void CompileShaderIncludeARB(@CType("GLuint") int shader, @CType("GLsizei") int count, @CType("const GLchar *const*") java.lang.foreign.MemorySegment path, @CType("const GLint *") java.lang.foreign.MemorySegment length) {
+    public void CompileShaderIncludeARB(@CType("GLuint") int shader, @CType("GLsizei") int count, @CType("const GLchar *const*") MemorySegment path, @CType("const GLint *") MemorySegment length) {
         if (Unmarshal.isNullPointer(handles.PFN_glCompileShaderIncludeARB)) throw new SymbolNotFoundError("Symbol not found: glCompileShaderIncludeARB");
         try { Handles.MH_glCompileShaderIncludeARB.invokeExact(handles.PFN_glCompileShaderIncludeARB, shader, count, path, length); }
         catch (Throwable e) { throw new RuntimeException("error in glCompileShaderIncludeARB", e); }
     }
 
-    public @CType("GLboolean") boolean IsNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
+    public @CType("GLboolean") boolean IsNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") MemorySegment name) {
         if (Unmarshal.isNullPointer(handles.PFN_glIsNamedStringARB)) throw new SymbolNotFoundError("Symbol not found: glIsNamedStringARB");
         try { return (boolean) Handles.MH_glIsNamedStringARB.invokeExact(handles.PFN_glIsNamedStringARB, namelen, name); }
         catch (Throwable e) { throw new RuntimeException("error in glIsNamedStringARB", e); }
     }
 
-    public void GetNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") java.lang.foreign.MemorySegment name, @CType("GLsizei") int bufSize, @CType("GLint *") java.lang.foreign.MemorySegment stringlen, @CType("GLchar *") java.lang.foreign.MemorySegment string) {
+    public void GetNamedStringARB(@CType("GLint") int namelen, @CType("const GLchar *") MemorySegment name, @CType("GLsizei") int bufSize, @CType("GLint *") MemorySegment stringlen, @CType("GLchar *") MemorySegment string) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetNamedStringARB)) throw new SymbolNotFoundError("Symbol not found: glGetNamedStringARB");
         try { Handles.MH_glGetNamedStringARB.invokeExact(handles.PFN_glGetNamedStringARB, namelen, name, bufSize, stringlen, string); }
         catch (Throwable e) { throw new RuntimeException("error in glGetNamedStringARB", e); }
     }
 
-    public void GetNamedStringivARB(@CType("GLint") int namelen, @CType("const GLchar *") java.lang.foreign.MemorySegment name, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetNamedStringivARB(@CType("GLint") int namelen, @CType("const GLchar *") MemorySegment name, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetNamedStringivARB)) throw new SymbolNotFoundError("Symbol not found: glGetNamedStringivARB");
         try { Handles.MH_glGetNamedStringivARB.invokeExact(handles.PFN_glGetNamedStringivARB, namelen, name, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetNamedStringivARB", e); }

@@ -297,24 +297,24 @@ public final class STBImage {
         }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_from_memory.invokeExact(Handles.get().PFN_stbi_load_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load_from_memory.invokeExact(Handles.get().PFN_stbi_load_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_memory", e); }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -322,18 +322,18 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, filename, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, filename, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load(@CType("const char*") String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -341,30 +341,30 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
     }
 
-    public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load_gif_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int**") java.lang.foreign.MemorySegment delays, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment z, @Out @CType("int*") java.lang.foreign.MemorySegment comp, @CType("int") int req_comp) {
+    public static @CType("stbi_uc*") MemorySegment stbi_load_gif_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len, @Out @CType("int**") MemorySegment delays, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment z, @Out @CType("int*") MemorySegment comp, @CType("int") int req_comp) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_gif_from_memory.invokeExact(Handles.get().PFN_stbi_load_gif_from_memory, buffer, len, delays, x, y, z, comp, req_comp);
+            return (MemorySegment) Handles.MH_stbi_load_gif_from_memory.invokeExact(Handles.get().PFN_stbi_load_gif_from_memory, buffer, len, delays, x, y, z, comp, req_comp);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_gif_from_memory", e); }
     }
 
-    public static @CType("stbi_us*") java.lang.foreign.MemorySegment stbi_load_16_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_us*") MemorySegment stbi_load_16_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_16_from_memory.invokeExact(Handles.get().PFN_stbi_load_16_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load_16_from_memory.invokeExact(Handles.get().PFN_stbi_load_16_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_memory", e); }
     }
 
-    public static @CType("stbi_us*") java.lang.foreign.MemorySegment stbi_load_16_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_us*") MemorySegment stbi_load_16_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
     }
 
-    public static @CType("stbi_us*") java.lang.foreign.MemorySegment stbi_load_16_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_us*") MemorySegment stbi_load_16_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -372,18 +372,18 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
     }
 
-    public static @CType("stbi_us*") java.lang.foreign.MemorySegment stbi_load_16(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_us*") MemorySegment stbi_load_16(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, filename, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, filename, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
     }
 
-    public static @CType("stbi_us*") java.lang.foreign.MemorySegment stbi_load_16(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("stbi_us*") MemorySegment stbi_load_16(@CType("const char*") String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -391,24 +391,24 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbi_loadf_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("float*") MemorySegment stbi_loadf_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_loadf_from_memory.invokeExact(Handles.get().PFN_stbi_loadf_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_loadf_from_memory.invokeExact(Handles.get().PFN_stbi_loadf_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_memory", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbi_loadf_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("float*") MemorySegment stbi_loadf_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbi_loadf_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("float*") MemorySegment stbi_loadf_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, Marshal.marshal(clbk), user, __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -416,18 +416,18 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbi_loadf(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("float*") MemorySegment stbi_loadf(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment channels_in_file, @CType("int") int desired_channels) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, filename, x, y, channels_in_file, desired_channels);
+            return (MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, filename, x, y, channels_in_file, desired_channels);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbi_loadf(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
+    public static @CType("float*") MemorySegment stbi_loadf(@CType("const char*") String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] channels_in_file, @CType("int") int desired_channels) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
             var __overrungl_ref_channels_in_file = Marshal.marshal(__overrungl_stack, channels_in_file);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
+            var __overrungl_result = (MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_x, __overrungl_ref_y, __overrungl_ref_channels_in_file, desired_channels);
             Unmarshal.copy(__overrungl_ref_x, x);
             Unmarshal.copy(__overrungl_ref_y, y);
             Unmarshal.copy(__overrungl_ref_channels_in_file, channels_in_file);
@@ -459,67 +459,67 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_scale", e); }
     }
 
-    public static @CType("int") boolean stbi_is_hdr_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user) {
+    public static @CType("int") boolean stbi_is_hdr_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user) {
         try {
             return (boolean) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, clbk, user);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbi_is_hdr_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") java.lang.foreign.MemorySegment user) {
+    public static @CType("int") boolean stbi_is_hdr_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") MemorySegment user) {
         try {
             return (boolean) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, Marshal.marshal(clbk), user);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbi_is_hdr_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len) {
+    public static @CType("int") boolean stbi_is_hdr_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len) {
         try {
             return (boolean) Handles.MH_stbi_is_hdr_from_memory.invokeExact(Handles.get().PFN_stbi_is_hdr_from_memory, buffer, len);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_memory", e); }
     }
 
-    public static @CType("int") boolean stbi_is_hdr(@CType("const char*") java.lang.foreign.MemorySegment filename) {
+    public static @CType("int") boolean stbi_is_hdr(@CType("const char*") MemorySegment filename) {
         try {
             return (boolean) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, filename);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
-    public static @CType("int") boolean stbi_is_hdr(@CType("const char*") java.lang.String filename) {
+    public static @CType("int") boolean stbi_is_hdr(@CType("const char*") String filename) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, Marshal.marshal(__overrungl_stack, filename));
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
-    public static @CType("const char*") java.lang.foreign.MemorySegment stbi_failure_reason_() {
+    public static @CType("const char*") MemorySegment stbi_failure_reason_() {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason);
+            return (MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
-    public static @CType("const char*") java.lang.String stbi_failure_reason() {
+    public static @CType("const char*") String stbi_failure_reason() {
         try {
-            return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason));
+            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason));
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
-    public static void stbi_image_free(@CType("void*") java.lang.foreign.MemorySegment retval_from_stbi_load) {
+    public static void stbi_image_free(@CType("void*") MemorySegment retval_from_stbi_load) {
         try {
             Handles.MH_stbi_image_free.invokeExact(Handles.get().PFN_stbi_image_free, retval_from_stbi_load);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_image_free", e); }
     }
 
-    public static @CType("int") boolean stbi_info_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment comp) {
+    public static @CType("int") boolean stbi_info_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment comp) {
         try {
             return (boolean) Handles.MH_stbi_info_from_memory.invokeExact(Handles.get().PFN_stbi_info_from_memory, buffer, len, x, y, comp);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_memory", e); }
     }
 
-    public static @CType("int") boolean stbi_info_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment comp) {
+    public static @CType("int") boolean stbi_info_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment comp) {
         try {
             return (boolean) Handles.MH_stbi_info_from_callbacks.invokeExact(Handles.get().PFN_stbi_info_from_callbacks, clbk, user, x, y, comp);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbi_info_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") java.lang.foreign.MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] comp) {
+    public static @CType("int") boolean stbi_info_from_callbacks(@CType("stbi_io_callbacks const *") overrungl.stb.STBIIOCallbacks clbk, @CType("void*") MemorySegment user, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] comp) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
@@ -532,25 +532,25 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbi_is_16_bit_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len) {
+    public static @CType("int") boolean stbi_is_16_bit_from_memory(@CType("stbi_uc const *") MemorySegment buffer, @CType("int") int len) {
         try {
             return (boolean) Handles.MH_stbi_is_16_bit_from_memory.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_memory, buffer, len);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_memory", e); }
     }
 
-    public static @CType("int") boolean stbi_is_16_bit_from_callbacks(@CType("stbi_io_callbacks const *") java.lang.foreign.MemorySegment clbk, @CType("void*") java.lang.foreign.MemorySegment user) {
+    public static @CType("int") boolean stbi_is_16_bit_from_callbacks(@CType("stbi_io_callbacks const *") MemorySegment clbk, @CType("void*") MemorySegment user) {
         try {
             return (boolean) Handles.MH_stbi_is_16_bit_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_callbacks, clbk, user);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbi_info(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment comp) {
+    public static @CType("int") boolean stbi_info(@CType("const char*") MemorySegment filename, @Out @CType("int*") MemorySegment x, @Out @CType("int*") MemorySegment y, @Out @CType("int*") MemorySegment comp) {
         try {
             return (boolean) Handles.MH_stbi_info.invokeExact(Handles.get().PFN_stbi_info, filename, x, y, comp);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
     }
 
-    public static @CType("int") boolean stbi_info(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] comp) {
+    public static @CType("int") boolean stbi_info(@CType("const char*") String filename, @Out @CType("int*") int[] x, @Out @CType("int*") int[] y, @Out @CType("int*") int[] comp) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_x = Marshal.marshal(__overrungl_stack, x);
             var __overrungl_ref_y = Marshal.marshal(__overrungl_stack, y);
@@ -563,13 +563,13 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
     }
 
-    public static @CType("int") boolean stbi_is_16_bit(@CType("const char*") java.lang.foreign.MemorySegment filename) {
+    public static @CType("int") boolean stbi_is_16_bit(@CType("const char*") MemorySegment filename) {
         try {
             return (boolean) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, filename);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
     }
 
-    public static @CType("int") boolean stbi_is_16_bit(@CType("const char*") java.lang.String filename) {
+    public static @CType("int") boolean stbi_is_16_bit(@CType("const char*") String filename) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, Marshal.marshal(__overrungl_stack, filename));
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
@@ -611,37 +611,37 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") MemorySegment stbi_zlib_decode_malloc_guesssize(@CType("const char *") MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") MemorySegment outlen) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize, buffer, len, initial_size, outlen);
+            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize, buffer, len, initial_size, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen, @CType("int") int parse_header) {
+    public static @CType("char *") MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(@CType("const char *") MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") MemorySegment outlen, @CType("int") int parse_header) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize_headerflag, buffer, len, initial_size, outlen, parse_header);
+            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize_headerflag, buffer, len, initial_size, outlen, parse_header);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") MemorySegment stbi_zlib_decode_malloc(@CType("const char *") MemorySegment buffer, @CType("int") int len, @Out @CType("int*") MemorySegment outlen) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_zlib_decode_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc, buffer, len, outlen);
+            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc, buffer, len, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
     }
 
-    public static @CType("int") int stbi_zlib_decode_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char *") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
+    public static @CType("int") int stbi_zlib_decode_buffer(@CType("char *") MemorySegment obuffer, @CType("int") int olen, @CType("const char *") MemorySegment ibuffer, @CType("int") int ilen) {
         try {
             return (int) Handles.MH_stbi_zlib_decode_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_buffer, obuffer, olen, ibuffer, ilen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_noheader_malloc(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") MemorySegment stbi_zlib_decode_noheader_malloc(@CType("const char *") MemorySegment buffer, @CType("int") int len, @CType("int*") MemorySegment outlen) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbi_zlib_decode_noheader_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_malloc, buffer, len, outlen);
+            return (MemorySegment) Handles.MH_stbi_zlib_decode_noheader_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_malloc, buffer, len, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
     }
 
-    public static @CType("int") int stbi_zlib_decode_noheader_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char *") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
+    public static @CType("int") int stbi_zlib_decode_noheader_buffer(@CType("char *") MemorySegment obuffer, @CType("int") int olen, @CType("const char *") MemorySegment ibuffer, @CType("int") int ilen) {
         try {
             return (int) Handles.MH_stbi_zlib_decode_noheader_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_buffer, obuffer, olen, ibuffer, ilen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_buffer", e); }

@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### customBorderColor
-/// [Byte offset][#OFFSET_customBorderColor] - [Memory layout][#ML_customBorderColor] - [Getter][#customBorderColor()] - [Setter][#customBorderColor(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_customBorderColor] - [Memory layout][#ML_customBorderColor] - [Getter][#customBorderColor()] - [Setter][#customBorderColor(MemorySegment)]
 /// ### format
 /// [VarHandle][#VH_format] - [Getter][#format()] - [Setter][#format(int)]
 /// ## Layout
@@ -53,7 +53,7 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `customBorderColor`.
     public static final long OFFSET_customBorderColor = LAYOUT.byteOffset(PathElement.groupElement("customBorderColor"));
@@ -105,7 +105,7 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends Struct {
     /// Allocates a `VkSamplerCustomBorderColorCreateInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
-    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkClearColorValue") java.lang.foreign.MemorySegment customBorderColor, @CType("VkFormat") int format) { return alloc(allocator).sType(sType).pNext(pNext).customBorderColor(customBorderColor).format(format); }
+    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkClearColorValue") MemorySegment customBorderColor, @CType("VkFormat") int format) { return alloc(allocator).sType(sType).pNext(pNext).customBorderColor(customBorderColor).format(format); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -142,48 +142,48 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerCustomBorderColorCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSamplerCustomBorderColorCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `customBorderColor` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkClearColorValue") java.lang.foreign.MemorySegment get_customBorderColor(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_customBorderColor, index), ML_customBorderColor); }
+    public static @CType("VkClearColorValue") MemorySegment get_customBorderColor(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_customBorderColor, index), ML_customBorderColor); }
     /// {@return `customBorderColor`}
     /// @param segment the segment of the struct
-    public static @CType("VkClearColorValue") java.lang.foreign.MemorySegment get_customBorderColor(MemorySegment segment) { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(segment, 0L); }
+    public static @CType("VkClearColorValue") MemorySegment get_customBorderColor(MemorySegment segment) { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(segment, 0L); }
     /// {@return `customBorderColor`}
-    public @CType("VkClearColorValue") java.lang.foreign.MemorySegment customBorderColor() { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(this.segment()); }
+    public @CType("VkClearColorValue") MemorySegment customBorderColor() { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(this.segment()); }
     /// Sets `customBorderColor` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_customBorderColor(MemorySegment segment, long index, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_customBorderColor, index), ML_customBorderColor.byteSize()); }
+    public static void set_customBorderColor(MemorySegment segment, long index, @CType("VkClearColorValue") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_customBorderColor, index), ML_customBorderColor.byteSize()); }
     /// Sets `customBorderColor` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_customBorderColor(MemorySegment segment, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(segment, 0L, value); }
+    public static void set_customBorderColor(MemorySegment segment, @CType("VkClearColorValue") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(segment, 0L, value); }
     /// Sets `customBorderColor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerCustomBorderColorCreateInfoEXT customBorderColor(@CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(this.segment(), value); return this; }
+    public VkSamplerCustomBorderColorCreateInfoEXT customBorderColor(@CType("VkClearColorValue") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(this.segment(), value); return this; }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
@@ -241,21 +241,21 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSamplerCustomBorderColorCreateInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `customBorderColor` at the given index}
         /// @param index the index
-        public @CType("VkClearColorValue") java.lang.foreign.MemorySegment customBorderColorAt(long index) { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(this.segment(), index); }
+        public @CType("VkClearColorValue") MemorySegment customBorderColorAt(long index) { return VkSamplerCustomBorderColorCreateInfoEXT.get_customBorderColor(this.segment(), index); }
         /// Sets `customBorderColor` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer customBorderColorAt(long index, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(this.segment(), index, value); return this; }
+        public Buffer customBorderColorAt(long index, @CType("VkClearColorValue") MemorySegment value) { VkSamplerCustomBorderColorCreateInfoEXT.set_customBorderColor(this.segment(), index, value); return this; }
 
         /// {@return `format` at the given index}
         /// @param index the index

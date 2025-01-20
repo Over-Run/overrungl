@@ -41,7 +41,7 @@ public final class GLSGIXIglooInterface {
         this.handles = new Handles(func);
     }
 
-    public void IglooInterfaceSGIX(@CType("GLenum") int pname, @CType("const void *") java.lang.foreign.MemorySegment params) {
+    public void IglooInterfaceSGIX(@CType("GLenum") int pname, @CType("const void *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glIglooInterfaceSGIX)) throw new SymbolNotFoundError("Symbol not found: glIglooInterfaceSGIX");
         try { Handles.MH_glIglooInterfaceSGIX.invokeExact(handles.PFN_glIglooInterfaceSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glIglooInterfaceSGIX", e); }

@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### frame_type
 /// [VarHandle][#VH_frame_type] - [Getter][#frame_type()] - [Setter][#frame_type(byte)]
 /// ### RefFrameSignBias
@@ -55,7 +55,7 @@ public sealed class StdVideoDecodeAV1ReferenceInfo extends Struct {
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
         ValueLayout.JAVA_BYTE.withName("SavedOrderHints")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `frame_type` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_frame_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_type"));
@@ -109,7 +109,7 @@ public sealed class StdVideoDecodeAV1ReferenceInfo extends Struct {
     /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte frame_type, @CType("uint8_t") byte RefFrameSignBias, @CType("uint8_t") byte OrderHint, @CType("uint8_t [ ]") byte SavedOrderHints) { return alloc(allocator).flags(flags).frame_type(frame_type).RefFrameSignBias(RefFrameSignBias).OrderHint(OrderHint).SavedOrderHints(SavedOrderHints); }
+    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment flags, @CType("uint8_t") byte frame_type, @CType("uint8_t") byte RefFrameSignBias, @CType("uint8_t") byte OrderHint, @CType("uint8_t [ ]") byte SavedOrderHints) { return alloc(allocator).flags(flags).frame_type(frame_type).RefFrameSignBias(RefFrameSignBias).OrderHint(OrderHint).SavedOrderHints(SavedOrderHints); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -123,25 +123,25 @@ public sealed class StdVideoDecodeAV1ReferenceInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoDecodeAV1ReferenceInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoDecodeAV1ReferenceInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoDecodeAV1ReferenceInfo.get_flags(this.segment()); }
+    public @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment flags() { return StdVideoDecodeAV1ReferenceInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoDecodeAV1ReferenceInfo flags(@CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoDecodeAV1ReferenceInfo flags(@CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `frame_type` at the given index}
     /// @param segment the segment of the struct
@@ -259,12 +259,12 @@ public sealed class StdVideoDecodeAV1ReferenceInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoDecodeAV1ReferenceInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment flagsAt(long index) { return StdVideoDecodeAV1ReferenceInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoDecodeAV1ReferenceInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoDecodeAV1ReferenceInfoFlags") MemorySegment value) { StdVideoDecodeAV1ReferenceInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `frame_type` at the given index}
         /// @param index the index

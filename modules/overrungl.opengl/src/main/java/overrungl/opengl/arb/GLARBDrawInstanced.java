@@ -51,7 +51,7 @@ public final class GLARBDrawInstanced {
         catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
     }
 
-    public void DrawElementsInstancedARB(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
+    public void DrawElementsInstancedARB(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
         try { Handles.MH_glDrawElementsInstancedARB.invokeExact(handles.PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }

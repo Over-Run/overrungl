@@ -31,14 +31,14 @@ public interface GLFWScrollFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWScrollFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset) {
         try { HANDLE.invokeExact(stub, window, xoffset, yoffset); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWScrollFun::invoke (static invoker)", e); }
     }

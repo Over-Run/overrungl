@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### subpassIndex
 /// [VarHandle][#VH_subpassIndex] - [Getter][#subpassIndex()] - [Setter][#subpassIndex(int)]
 /// ### sampleLocationsInfo
-/// [Byte offset][#OFFSET_sampleLocationsInfo] - [Memory layout][#ML_sampleLocationsInfo] - [Getter][#sampleLocationsInfo()] - [Setter][#sampleLocationsInfo(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_sampleLocationsInfo] - [Memory layout][#ML_sampleLocationsInfo] - [Getter][#sampleLocationsInfo()] - [Setter][#sampleLocationsInfo(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -93,7 +93,7 @@ public sealed class VkSubpassSampleLocationsEXT extends Struct {
     /// Allocates a `VkSubpassSampleLocationsEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubpassSampleLocationsEXT`
-    public static VkSubpassSampleLocationsEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int subpassIndex, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfo) { return alloc(allocator).subpassIndex(subpassIndex).sampleLocationsInfo(sampleLocationsInfo); }
+    public static VkSubpassSampleLocationsEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int subpassIndex, @CType("VkSampleLocationsInfoEXT") MemorySegment sampleLocationsInfo) { return alloc(allocator).subpassIndex(subpassIndex).sampleLocationsInfo(sampleLocationsInfo); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -130,25 +130,25 @@ public sealed class VkSubpassSampleLocationsEXT extends Struct {
     /// {@return `sampleLocationsInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment get_sampleLocationsInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sampleLocationsInfo, index), ML_sampleLocationsInfo); }
+    public static @CType("VkSampleLocationsInfoEXT") MemorySegment get_sampleLocationsInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_sampleLocationsInfo, index), ML_sampleLocationsInfo); }
     /// {@return `sampleLocationsInfo`}
     /// @param segment the segment of the struct
-    public static @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment get_sampleLocationsInfo(MemorySegment segment) { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(segment, 0L); }
+    public static @CType("VkSampleLocationsInfoEXT") MemorySegment get_sampleLocationsInfo(MemorySegment segment) { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(segment, 0L); }
     /// {@return `sampleLocationsInfo`}
-    public @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfo() { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(this.segment()); }
+    public @CType("VkSampleLocationsInfoEXT") MemorySegment sampleLocationsInfo() { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(this.segment()); }
     /// Sets `sampleLocationsInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_sampleLocationsInfo(MemorySegment segment, long index, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sampleLocationsInfo, index), ML_sampleLocationsInfo.byteSize()); }
+    public static void set_sampleLocationsInfo(MemorySegment segment, long index, @CType("VkSampleLocationsInfoEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_sampleLocationsInfo, index), ML_sampleLocationsInfo.byteSize()); }
     /// Sets `sampleLocationsInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_sampleLocationsInfo(MemorySegment segment, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(segment, 0L, value); }
+    public static void set_sampleLocationsInfo(MemorySegment segment, @CType("VkSampleLocationsInfoEXT") MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(segment, 0L, value); }
     /// Sets `sampleLocationsInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassSampleLocationsEXT sampleLocationsInfo(@CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), value); return this; }
+    public VkSubpassSampleLocationsEXT sampleLocationsInfo(@CType("VkSampleLocationsInfoEXT") MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), value); return this; }
 
     /// A buffer of [VkSubpassSampleLocationsEXT].
     public static final class Buffer extends VkSubpassSampleLocationsEXT {
@@ -183,12 +183,12 @@ public sealed class VkSubpassSampleLocationsEXT extends Struct {
 
         /// {@return `sampleLocationsInfo` at the given index}
         /// @param index the index
-        public @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfoAt(long index) { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(this.segment(), index); }
+        public @CType("VkSampleLocationsInfoEXT") MemorySegment sampleLocationsInfoAt(long index) { return VkSubpassSampleLocationsEXT.get_sampleLocationsInfo(this.segment(), index); }
         /// Sets `sampleLocationsInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer sampleLocationsInfoAt(long index, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), index, value); return this; }
+        public Buffer sampleLocationsInfoAt(long index, @CType("VkSampleLocationsInfoEXT") MemorySegment value) { VkSubpassSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), index, value); return this; }
 
     }
 }

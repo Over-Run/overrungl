@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### timingCount
 /// [VarHandle][#VH_timingCount] - [Getter][#timingCount()] - [Setter][#timingCount(int)]
 /// ### pTimings
-/// [VarHandle][#VH_pTimings] - [Getter][#pTimings()] - [Setter][#pTimings(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pTimings] - [Getter][#pTimings()] - [Setter][#pTimings(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `timingCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_timingCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timingCount"));
-    /// The [VarHandle] of `pTimings` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pTimings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTimings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTimings"));
 
     /// Creates `VkGetLatencyMarkerInfoNV` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
     /// Allocates a `VkGetLatencyMarkerInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGetLatencyMarkerInfoNV`
-    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int timingCount, @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment pTimings) { return alloc(allocator).sType(sType).pNext(pNext).timingCount(timingCount).pTimings(pTimings); }
+    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int timingCount, @CType("VkLatencyTimingsFrameReportNV *") MemorySegment pTimings) { return alloc(allocator).sType(sType).pNext(pNext).timingCount(timingCount).pTimings(pTimings); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkGetLatencyMarkerInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkGetLatencyMarkerInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkGetLatencyMarkerInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkGetLatencyMarkerInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGetLatencyMarkerInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkGetLatencyMarkerInfoNV pNext(@CType("const void *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `timingCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
     /// {@return `pTimings` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment get_pTimings(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTimings.get(segment, 0L, index); }
+    public static @CType("VkLatencyTimingsFrameReportNV *") MemorySegment get_pTimings(MemorySegment segment, long index) { return (MemorySegment) VH_pTimings.get(segment, 0L, index); }
     /// {@return `pTimings`}
     /// @param segment the segment of the struct
-    public static @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment get_pTimings(MemorySegment segment) { return VkGetLatencyMarkerInfoNV.get_pTimings(segment, 0L); }
+    public static @CType("VkLatencyTimingsFrameReportNV *") MemorySegment get_pTimings(MemorySegment segment) { return VkGetLatencyMarkerInfoNV.get_pTimings(segment, 0L); }
     /// {@return `pTimings`}
-    public @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment pTimings() { return VkGetLatencyMarkerInfoNV.get_pTimings(this.segment()); }
+    public @CType("VkLatencyTimingsFrameReportNV *") MemorySegment pTimings() { return VkGetLatencyMarkerInfoNV.get_pTimings(this.segment()); }
     /// Sets `pTimings` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pTimings(MemorySegment segment, long index, @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment value) { VH_pTimings.set(segment, 0L, index, value); }
+    public static void set_pTimings(MemorySegment segment, long index, @CType("VkLatencyTimingsFrameReportNV *") MemorySegment value) { VH_pTimings.set(segment, 0L, index, value); }
     /// Sets `pTimings` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pTimings(MemorySegment segment, @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(segment, 0L, value); }
+    public static void set_pTimings(MemorySegment segment, @CType("VkLatencyTimingsFrameReportNV *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(segment, 0L, value); }
     /// Sets `pTimings` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGetLatencyMarkerInfoNV pTimings(@CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(this.segment(), value); return this; }
+    public VkGetLatencyMarkerInfoNV pTimings(@CType("VkLatencyTimingsFrameReportNV *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(this.segment(), value); return this; }
 
     /// A buffer of [VkGetLatencyMarkerInfoNV].
     public static final class Buffer extends VkGetLatencyMarkerInfoNV {
@@ -239,12 +239,12 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGetLatencyMarkerInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkGetLatencyMarkerInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `timingCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkGetLatencyMarkerInfoNV extends Struct {
 
         /// {@return `pTimings` at the given index}
         /// @param index the index
-        public @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment pTimingsAt(long index) { return VkGetLatencyMarkerInfoNV.get_pTimings(this.segment(), index); }
+        public @CType("VkLatencyTimingsFrameReportNV *") MemorySegment pTimingsAt(long index) { return VkGetLatencyMarkerInfoNV.get_pTimings(this.segment(), index); }
         /// Sets `pTimings` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pTimingsAt(long index, @CType("VkLatencyTimingsFrameReportNV *") java.lang.foreign.MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(this.segment(), index, value); return this; }
+        public Buffer pTimingsAt(long index, @CType("VkLatencyTimingsFrameReportNV *") MemorySegment value) { VkGetLatencyMarkerInfoNV.set_pTimings(this.segment(), index, value); return this; }
 
     }
 }

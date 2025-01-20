@@ -32,7 +32,7 @@ import overrungl.util.*;
 /// ### timestampValidBits
 /// [VarHandle][#VH_timestampValidBits] - [Getter][#timestampValidBits()] - [Setter][#timestampValidBits(int)]
 /// ### minImageTransferGranularity
-/// [Byte offset][#OFFSET_minImageTransferGranularity] - [Memory layout][#ML_minImageTransferGranularity] - [Getter][#minImageTransferGranularity()] - [Setter][#minImageTransferGranularity(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_minImageTransferGranularity] - [Memory layout][#ML_minImageTransferGranularity] - [Getter][#minImageTransferGranularity()] - [Setter][#minImageTransferGranularity(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -105,7 +105,7 @@ public sealed class VkQueueFamilyProperties extends Struct {
     /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkQueueFamilyProperties`
-    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, @CType("VkQueueFlags") int queueFlags, @CType("uint32_t") int queueCount, @CType("uint32_t") int timestampValidBits, @CType("VkExtent3D") java.lang.foreign.MemorySegment minImageTransferGranularity) { return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount).timestampValidBits(timestampValidBits).minImageTransferGranularity(minImageTransferGranularity); }
+    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, @CType("VkQueueFlags") int queueFlags, @CType("uint32_t") int queueCount, @CType("uint32_t") int timestampValidBits, @CType("VkExtent3D") MemorySegment minImageTransferGranularity) { return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount).timestampValidBits(timestampValidBits).minImageTransferGranularity(minImageTransferGranularity); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -188,25 +188,25 @@ public sealed class VkQueueFamilyProperties extends Struct {
     /// {@return `minImageTransferGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_minImageTransferGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity); }
+    public static @CType("VkExtent3D") MemorySegment get_minImageTransferGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity); }
     /// {@return `minImageTransferGranularity`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_minImageTransferGranularity(MemorySegment segment) { return VkQueueFamilyProperties.get_minImageTransferGranularity(segment, 0L); }
+    public static @CType("VkExtent3D") MemorySegment get_minImageTransferGranularity(MemorySegment segment) { return VkQueueFamilyProperties.get_minImageTransferGranularity(segment, 0L); }
     /// {@return `minImageTransferGranularity`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment minImageTransferGranularity() { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment()); }
+    public @CType("VkExtent3D") MemorySegment minImageTransferGranularity() { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment()); }
     /// Sets `minImageTransferGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_minImageTransferGranularity(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity.byteSize()); }
+    public static void set_minImageTransferGranularity(MemorySegment segment, long index, @CType("VkExtent3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity.byteSize()); }
     /// Sets `minImageTransferGranularity` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_minImageTransferGranularity(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(segment, 0L, value); }
+    public static void set_minImageTransferGranularity(MemorySegment segment, @CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(segment, 0L, value); }
     /// Sets `minImageTransferGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueueFamilyProperties minImageTransferGranularity(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), value); return this; }
+    public VkQueueFamilyProperties minImageTransferGranularity(@CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), value); return this; }
 
     /// A buffer of [VkQueueFamilyProperties].
     public static final class Buffer extends VkQueueFamilyProperties {
@@ -259,12 +259,12 @@ public sealed class VkQueueFamilyProperties extends Struct {
 
         /// {@return `minImageTransferGranularity` at the given index}
         /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment minImageTransferGranularityAt(long index) { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment(), index); }
+        public @CType("VkExtent3D") MemorySegment minImageTransferGranularityAt(long index) { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment(), index); }
         /// Sets `minImageTransferGranularity` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer minImageTransferGranularityAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), index, value); return this; }
+        public Buffer minImageTransferGranularityAt(long index, @CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), index, value); return this; }
 
     }
 }

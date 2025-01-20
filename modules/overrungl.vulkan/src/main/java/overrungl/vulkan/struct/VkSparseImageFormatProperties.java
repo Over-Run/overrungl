@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### aspectMask
 /// [VarHandle][#VH_aspectMask] - [Getter][#aspectMask()] - [Setter][#aspectMask(int)]
 /// ### imageGranularity
-/// [Byte offset][#OFFSET_imageGranularity] - [Memory layout][#ML_imageGranularity] - [Getter][#imageGranularity()] - [Setter][#imageGranularity(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageGranularity] - [Memory layout][#ML_imageGranularity] - [Getter][#imageGranularity()] - [Setter][#imageGranularity(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ## Layout
@@ -99,7 +99,7 @@ public sealed class VkSparseImageFormatProperties extends Struct {
     /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSparseImageFormatProperties`
-    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularity, @CType("VkSparseImageFormatFlags") int flags) { return alloc(allocator).aspectMask(aspectMask).imageGranularity(imageGranularity).flags(flags); }
+    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("VkExtent3D") MemorySegment imageGranularity, @CType("VkSparseImageFormatFlags") int flags) { return alloc(allocator).aspectMask(aspectMask).imageGranularity(imageGranularity).flags(flags); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -136,25 +136,25 @@ public sealed class VkSparseImageFormatProperties extends Struct {
     /// {@return `imageGranularity` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity); }
+    public static @CType("VkExtent3D") MemorySegment get_imageGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity); }
     /// {@return `imageGranularity`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageGranularity(MemorySegment segment) { return VkSparseImageFormatProperties.get_imageGranularity(segment, 0L); }
+    public static @CType("VkExtent3D") MemorySegment get_imageGranularity(MemorySegment segment) { return VkSparseImageFormatProperties.get_imageGranularity(segment, 0L); }
     /// {@return `imageGranularity`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularity() { return VkSparseImageFormatProperties.get_imageGranularity(this.segment()); }
+    public @CType("VkExtent3D") MemorySegment imageGranularity() { return VkSparseImageFormatProperties.get_imageGranularity(this.segment()); }
     /// Sets `imageGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageGranularity(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity.byteSize()); }
+    public static void set_imageGranularity(MemorySegment segment, long index, @CType("VkExtent3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity.byteSize()); }
     /// Sets `imageGranularity` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageGranularity(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(segment, 0L, value); }
+    public static void set_imageGranularity(MemorySegment segment, @CType("VkExtent3D") MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(segment, 0L, value); }
     /// Sets `imageGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseImageFormatProperties imageGranularity(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), value); return this; }
+    public VkSparseImageFormatProperties imageGranularity(@CType("VkExtent3D") MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -212,12 +212,12 @@ public sealed class VkSparseImageFormatProperties extends Struct {
 
         /// {@return `imageGranularity` at the given index}
         /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularityAt(long index) { return VkSparseImageFormatProperties.get_imageGranularity(this.segment(), index); }
+        public @CType("VkExtent3D") MemorySegment imageGranularityAt(long index) { return VkSparseImageFormatProperties.get_imageGranularity(this.segment(), index); }
         /// Sets `imageGranularity` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageGranularityAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), index, value); return this; }
+        public Buffer imageGranularityAt(long index, @CType("VkExtent3D") MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index

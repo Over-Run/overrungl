@@ -57,25 +57,25 @@ public final class GLARBTransposeMatrix {
         this.handles = new Handles(func);
     }
 
-    public void LoadTransposeMatrixfARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
+    public void LoadTransposeMatrixfARB(@CType("const GLfloat *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glLoadTransposeMatrixfARB)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixfARB");
         try { Handles.MH_glLoadTransposeMatrixfARB.invokeExact(handles.PFN_glLoadTransposeMatrixfARB, m); }
         catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixfARB", e); }
     }
 
-    public void LoadTransposeMatrixdARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
+    public void LoadTransposeMatrixdARB(@CType("const GLdouble *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glLoadTransposeMatrixdARB)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixdARB");
         try { Handles.MH_glLoadTransposeMatrixdARB.invokeExact(handles.PFN_glLoadTransposeMatrixdARB, m); }
         catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixdARB", e); }
     }
 
-    public void MultTransposeMatrixfARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
+    public void MultTransposeMatrixfARB(@CType("const GLfloat *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultTransposeMatrixfARB)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixfARB");
         try { Handles.MH_glMultTransposeMatrixfARB.invokeExact(handles.PFN_glMultTransposeMatrixfARB, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixfARB", e); }
     }
 
-    public void MultTransposeMatrixdARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
+    public void MultTransposeMatrixdARB(@CType("const GLdouble *") MemorySegment m) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultTransposeMatrixdARB)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixdARB");
         try { Handles.MH_glMultTransposeMatrixdARB.invokeExact(handles.PFN_glMultTransposeMatrixdARB, m); }
         catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixdARB", e); }

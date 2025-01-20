@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### grain_scaling_minus_8
 /// [VarHandle][#VH_grain_scaling_minus_8] - [Getter][#grain_scaling_minus_8()] - [Setter][#grain_scaling_minus_8(byte)]
 /// ### ar_coeff_lag
@@ -135,7 +135,7 @@ public sealed class StdVideoAV1FilmGrain extends Struct {
         ValueLayout.JAVA_BYTE.withName("cr_luma_mult"),
         ValueLayout.JAVA_SHORT.withName("cr_offset")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `grain_scaling_minus_8` of type `(MemorySegment base, long baseOffset, long index)byte`.
     public static final VarHandle VH_grain_scaling_minus_8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("grain_scaling_minus_8"));
@@ -229,7 +229,7 @@ public sealed class StdVideoAV1FilmGrain extends Struct {
     /// Allocates a `StdVideoAV1FilmGrain` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1FilmGrain`
-    public static StdVideoAV1FilmGrain allocInit(SegmentAllocator allocator, @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte grain_scaling_minus_8, @CType("uint8_t") byte ar_coeff_lag, @CType("uint8_t") byte ar_coeff_shift_minus_6, @CType("uint8_t") byte grain_scale_shift, @CType("uint16_t") short grain_seed, @CType("uint8_t") byte film_grain_params_ref_idx, @CType("uint8_t") byte num_y_points, @CType("uint8_t [ ]") byte point_y_value, @CType("uint8_t [ ]") byte point_y_scaling, @CType("uint8_t") byte num_cb_points, @CType("uint8_t [ ]") byte point_cb_value, @CType("uint8_t [ ]") byte point_cb_scaling, @CType("uint8_t") byte num_cr_points, @CType("uint8_t [ ]") byte point_cr_value, @CType("uint8_t [ ]") byte point_cr_scaling, @CType("int8_t [ ]") byte ar_coeffs_y_plus_128, @CType("int8_t [ ]") byte ar_coeffs_cb_plus_128, @CType("int8_t [ ]") byte ar_coeffs_cr_plus_128, @CType("uint8_t") byte cb_mult, @CType("uint8_t") byte cb_luma_mult, @CType("uint16_t") short cb_offset, @CType("uint8_t") byte cr_mult, @CType("uint8_t") byte cr_luma_mult, @CType("uint16_t") short cr_offset) { return alloc(allocator).flags(flags).grain_scaling_minus_8(grain_scaling_minus_8).ar_coeff_lag(ar_coeff_lag).ar_coeff_shift_minus_6(ar_coeff_shift_minus_6).grain_scale_shift(grain_scale_shift).grain_seed(grain_seed).film_grain_params_ref_idx(film_grain_params_ref_idx).num_y_points(num_y_points).point_y_value(point_y_value).point_y_scaling(point_y_scaling).num_cb_points(num_cb_points).point_cb_value(point_cb_value).point_cb_scaling(point_cb_scaling).num_cr_points(num_cr_points).point_cr_value(point_cr_value).point_cr_scaling(point_cr_scaling).ar_coeffs_y_plus_128(ar_coeffs_y_plus_128).ar_coeffs_cb_plus_128(ar_coeffs_cb_plus_128).ar_coeffs_cr_plus_128(ar_coeffs_cr_plus_128).cb_mult(cb_mult).cb_luma_mult(cb_luma_mult).cb_offset(cb_offset).cr_mult(cr_mult).cr_luma_mult(cr_luma_mult).cr_offset(cr_offset); }
+    public static StdVideoAV1FilmGrain allocInit(SegmentAllocator allocator, @CType("StdVideoAV1FilmGrainFlags") MemorySegment flags, @CType("uint8_t") byte grain_scaling_minus_8, @CType("uint8_t") byte ar_coeff_lag, @CType("uint8_t") byte ar_coeff_shift_minus_6, @CType("uint8_t") byte grain_scale_shift, @CType("uint16_t") short grain_seed, @CType("uint8_t") byte film_grain_params_ref_idx, @CType("uint8_t") byte num_y_points, @CType("uint8_t [ ]") byte point_y_value, @CType("uint8_t [ ]") byte point_y_scaling, @CType("uint8_t") byte num_cb_points, @CType("uint8_t [ ]") byte point_cb_value, @CType("uint8_t [ ]") byte point_cb_scaling, @CType("uint8_t") byte num_cr_points, @CType("uint8_t [ ]") byte point_cr_value, @CType("uint8_t [ ]") byte point_cr_scaling, @CType("int8_t [ ]") byte ar_coeffs_y_plus_128, @CType("int8_t [ ]") byte ar_coeffs_cb_plus_128, @CType("int8_t [ ]") byte ar_coeffs_cr_plus_128, @CType("uint8_t") byte cb_mult, @CType("uint8_t") byte cb_luma_mult, @CType("uint16_t") short cb_offset, @CType("uint8_t") byte cr_mult, @CType("uint8_t") byte cr_luma_mult, @CType("uint16_t") short cr_offset) { return alloc(allocator).flags(flags).grain_scaling_minus_8(grain_scaling_minus_8).ar_coeff_lag(ar_coeff_lag).ar_coeff_shift_minus_6(ar_coeff_shift_minus_6).grain_scale_shift(grain_scale_shift).grain_seed(grain_seed).film_grain_params_ref_idx(film_grain_params_ref_idx).num_y_points(num_y_points).point_y_value(point_y_value).point_y_scaling(point_y_scaling).num_cb_points(num_cb_points).point_cb_value(point_cb_value).point_cb_scaling(point_cb_scaling).num_cr_points(num_cr_points).point_cr_value(point_cr_value).point_cr_scaling(point_cr_scaling).ar_coeffs_y_plus_128(ar_coeffs_y_plus_128).ar_coeffs_cb_plus_128(ar_coeffs_cb_plus_128).ar_coeffs_cr_plus_128(ar_coeffs_cr_plus_128).cb_mult(cb_mult).cb_luma_mult(cb_luma_mult).cb_offset(cb_offset).cr_mult(cr_mult).cr_luma_mult(cr_luma_mult).cr_offset(cr_offset); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -243,25 +243,25 @@ public sealed class StdVideoAV1FilmGrain extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1FilmGrainFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1FilmGrain.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1FilmGrainFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1FilmGrain.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1FilmGrain.get_flags(this.segment()); }
+    public @CType("StdVideoAV1FilmGrainFlags") MemorySegment flags() { return StdVideoAV1FilmGrain.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1FilmGrainFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1FilmGrain.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1FilmGrainFlags") MemorySegment value) { StdVideoAV1FilmGrain.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1FilmGrain flags(@CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1FilmGrain.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1FilmGrain flags(@CType("StdVideoAV1FilmGrainFlags") MemorySegment value) { StdVideoAV1FilmGrain.set_flags(this.segment(), value); return this; }
 
     /// {@return `grain_scaling_minus_8` at the given index}
     /// @param segment the segment of the struct
@@ -839,12 +839,12 @@ public sealed class StdVideoAV1FilmGrain extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1FilmGrain.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1FilmGrainFlags") MemorySegment flagsAt(long index) { return StdVideoAV1FilmGrain.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1FilmGrainFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1FilmGrain.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1FilmGrainFlags") MemorySegment value) { StdVideoAV1FilmGrain.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `grain_scaling_minus_8` at the given index}
         /// @param index the index

@@ -30,15 +30,15 @@ import static overrungl.vulkan.VK12.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### driverID
 /// [VarHandle][#VH_driverID] - [Getter][#driverID()] - [Setter][#driverID(int)]
 /// ### driverName
-/// [Byte offset][#OFFSET_driverName] - [Memory layout][#ML_driverName] - [Getter][#driverName()] - [Setter][#driverName(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_driverName] - [Memory layout][#ML_driverName] - [Getter][#driverName()] - [Setter][#driverName(MemorySegment)]
 /// ### driverInfo
-/// [Byte offset][#OFFSET_driverInfo] - [Memory layout][#ML_driverInfo] - [Getter][#driverInfo()] - [Setter][#driverInfo(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_driverInfo] - [Memory layout][#ML_driverInfo] - [Getter][#driverInfo()] - [Setter][#driverInfo(MemorySegment)]
 /// ### conformanceVersion
-/// [Byte offset][#OFFSET_conformanceVersion] - [Memory layout][#ML_conformanceVersion] - [Getter][#conformanceVersion()] - [Setter][#conformanceVersion(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_conformanceVersion] - [Memory layout][#ML_conformanceVersion] - [Getter][#conformanceVersion()] - [Setter][#conformanceVersion(MemorySegment)]
 /// ### denormBehaviorIndependence
 /// [VarHandle][#VH_denormBehaviorIndependence] - [Getter][#denormBehaviorIndependence()] - [Setter][#denormBehaviorIndependence(int)]
 /// ### roundingModeIndependence
@@ -255,7 +255,7 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `driverID` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_driverID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverID"));
@@ -411,7 +411,7 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
     /// Allocates a `VkPhysicalDeviceVulkan12Properties` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceVulkan12Properties`
-    public static VkPhysicalDeviceVulkan12Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDriverId") int driverID, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverName, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfo, @CType("VkConformanceVersion") java.lang.foreign.MemorySegment conformanceVersion, @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependence, @CType("VkShaderFloatControlsIndependence") int roundingModeIndependence, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64, @CType("VkBool32") int shaderDenormPreserveFloat16, @CType("VkBool32") int shaderDenormPreserveFloat32, @CType("VkBool32") int shaderDenormPreserveFloat64, @CType("VkBool32") int shaderDenormFlushToZeroFloat16, @CType("VkBool32") int shaderDenormFlushToZeroFloat32, @CType("VkBool32") int shaderDenormFlushToZeroFloat64, @CType("VkBool32") int shaderRoundingModeRTEFloat16, @CType("VkBool32") int shaderRoundingModeRTEFloat32, @CType("VkBool32") int shaderRoundingModeRTEFloat64, @CType("VkBool32") int shaderRoundingModeRTZFloat16, @CType("VkBool32") int shaderRoundingModeRTZFloat32, @CType("VkBool32") int shaderRoundingModeRTZFloat64, @CType("uint32_t") int maxUpdateAfterBindDescriptorsInAllPools, @CType("VkBool32") int shaderUniformBufferArrayNonUniformIndexingNative, @CType("VkBool32") int shaderSampledImageArrayNonUniformIndexingNative, @CType("VkBool32") int shaderStorageBufferArrayNonUniformIndexingNative, @CType("VkBool32") int shaderStorageImageArrayNonUniformIndexingNative, @CType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexingNative, @CType("VkBool32") int robustBufferAccessUpdateAfterBind, @CType("VkBool32") int quadDivergentImplicitLod, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindSamplers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindUniformBuffers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindStorageBuffers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindSampledImages, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindStorageImages, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInputAttachments, @CType("uint32_t") int maxPerStageUpdateAfterBindResources, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindSamplers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindUniformBuffers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageBuffers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindSampledImages, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageImages, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInputAttachments, @CType("VkResolveModeFlags") int supportedDepthResolveModes, @CType("VkResolveModeFlags") int supportedStencilResolveModes, @CType("VkBool32") int independentResolveNone, @CType("VkBool32") int independentResolve, @CType("VkBool32") int filterMinmaxSingleComponentFormats, @CType("VkBool32") int filterMinmaxImageComponentMapping, @CType("uint64_t") long maxTimelineSemaphoreValueDifference, @CType("VkSampleCountFlags") int framebufferIntegerColorSampleCounts) { return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID).driverName(driverName).driverInfo(driverInfo).conformanceVersion(conformanceVersion).denormBehaviorIndependence(denormBehaviorIndependence).roundingModeIndependence(roundingModeIndependence).shaderSignedZeroInfNanPreserveFloat16(shaderSignedZeroInfNanPreserveFloat16).shaderSignedZeroInfNanPreserveFloat32(shaderSignedZeroInfNanPreserveFloat32).shaderSignedZeroInfNanPreserveFloat64(shaderSignedZeroInfNanPreserveFloat64).shaderDenormPreserveFloat16(shaderDenormPreserveFloat16).shaderDenormPreserveFloat32(shaderDenormPreserveFloat32).shaderDenormPreserveFloat64(shaderDenormPreserveFloat64).shaderDenormFlushToZeroFloat16(shaderDenormFlushToZeroFloat16).shaderDenormFlushToZeroFloat32(shaderDenormFlushToZeroFloat32).shaderDenormFlushToZeroFloat64(shaderDenormFlushToZeroFloat64).shaderRoundingModeRTEFloat16(shaderRoundingModeRTEFloat16).shaderRoundingModeRTEFloat32(shaderRoundingModeRTEFloat32).shaderRoundingModeRTEFloat64(shaderRoundingModeRTEFloat64).shaderRoundingModeRTZFloat16(shaderRoundingModeRTZFloat16).shaderRoundingModeRTZFloat32(shaderRoundingModeRTZFloat32).shaderRoundingModeRTZFloat64(shaderRoundingModeRTZFloat64).maxUpdateAfterBindDescriptorsInAllPools(maxUpdateAfterBindDescriptorsInAllPools).shaderUniformBufferArrayNonUniformIndexingNative(shaderUniformBufferArrayNonUniformIndexingNative).shaderSampledImageArrayNonUniformIndexingNative(shaderSampledImageArrayNonUniformIndexingNative).shaderStorageBufferArrayNonUniformIndexingNative(shaderStorageBufferArrayNonUniformIndexingNative).shaderStorageImageArrayNonUniformIndexingNative(shaderStorageImageArrayNonUniformIndexingNative).shaderInputAttachmentArrayNonUniformIndexingNative(shaderInputAttachmentArrayNonUniformIndexingNative).robustBufferAccessUpdateAfterBind(robustBufferAccessUpdateAfterBind).quadDivergentImplicitLod(quadDivergentImplicitLod).maxPerStageDescriptorUpdateAfterBindSamplers(maxPerStageDescriptorUpdateAfterBindSamplers).maxPerStageDescriptorUpdateAfterBindUniformBuffers(maxPerStageDescriptorUpdateAfterBindUniformBuffers).maxPerStageDescriptorUpdateAfterBindStorageBuffers(maxPerStageDescriptorUpdateAfterBindStorageBuffers).maxPerStageDescriptorUpdateAfterBindSampledImages(maxPerStageDescriptorUpdateAfterBindSampledImages).maxPerStageDescriptorUpdateAfterBindStorageImages(maxPerStageDescriptorUpdateAfterBindStorageImages).maxPerStageDescriptorUpdateAfterBindInputAttachments(maxPerStageDescriptorUpdateAfterBindInputAttachments).maxPerStageUpdateAfterBindResources(maxPerStageUpdateAfterBindResources).maxDescriptorSetUpdateAfterBindSamplers(maxDescriptorSetUpdateAfterBindSamplers).maxDescriptorSetUpdateAfterBindUniformBuffers(maxDescriptorSetUpdateAfterBindUniformBuffers).maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(maxDescriptorSetUpdateAfterBindUniformBuffersDynamic).maxDescriptorSetUpdateAfterBindStorageBuffers(maxDescriptorSetUpdateAfterBindStorageBuffers).maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(maxDescriptorSetUpdateAfterBindStorageBuffersDynamic).maxDescriptorSetUpdateAfterBindSampledImages(maxDescriptorSetUpdateAfterBindSampledImages).maxDescriptorSetUpdateAfterBindStorageImages(maxDescriptorSetUpdateAfterBindStorageImages).maxDescriptorSetUpdateAfterBindInputAttachments(maxDescriptorSetUpdateAfterBindInputAttachments).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes).independentResolveNone(independentResolveNone).independentResolve(independentResolve).filterMinmaxSingleComponentFormats(filterMinmaxSingleComponentFormats).filterMinmaxImageComponentMapping(filterMinmaxImageComponentMapping).maxTimelineSemaphoreValueDifference(maxTimelineSemaphoreValueDifference).framebufferIntegerColorSampleCounts(framebufferIntegerColorSampleCounts); }
+    public static VkPhysicalDeviceVulkan12Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkDriverId") int driverID, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment driverName, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment driverInfo, @CType("VkConformanceVersion") MemorySegment conformanceVersion, @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependence, @CType("VkShaderFloatControlsIndependence") int roundingModeIndependence, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64, @CType("VkBool32") int shaderDenormPreserveFloat16, @CType("VkBool32") int shaderDenormPreserveFloat32, @CType("VkBool32") int shaderDenormPreserveFloat64, @CType("VkBool32") int shaderDenormFlushToZeroFloat16, @CType("VkBool32") int shaderDenormFlushToZeroFloat32, @CType("VkBool32") int shaderDenormFlushToZeroFloat64, @CType("VkBool32") int shaderRoundingModeRTEFloat16, @CType("VkBool32") int shaderRoundingModeRTEFloat32, @CType("VkBool32") int shaderRoundingModeRTEFloat64, @CType("VkBool32") int shaderRoundingModeRTZFloat16, @CType("VkBool32") int shaderRoundingModeRTZFloat32, @CType("VkBool32") int shaderRoundingModeRTZFloat64, @CType("uint32_t") int maxUpdateAfterBindDescriptorsInAllPools, @CType("VkBool32") int shaderUniformBufferArrayNonUniformIndexingNative, @CType("VkBool32") int shaderSampledImageArrayNonUniformIndexingNative, @CType("VkBool32") int shaderStorageBufferArrayNonUniformIndexingNative, @CType("VkBool32") int shaderStorageImageArrayNonUniformIndexingNative, @CType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexingNative, @CType("VkBool32") int robustBufferAccessUpdateAfterBind, @CType("VkBool32") int quadDivergentImplicitLod, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindSamplers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindUniformBuffers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindStorageBuffers, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindSampledImages, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindStorageImages, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInputAttachments, @CType("uint32_t") int maxPerStageUpdateAfterBindResources, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindSamplers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindUniformBuffers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageBuffers, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindSampledImages, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindStorageImages, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInputAttachments, @CType("VkResolveModeFlags") int supportedDepthResolveModes, @CType("VkResolveModeFlags") int supportedStencilResolveModes, @CType("VkBool32") int independentResolveNone, @CType("VkBool32") int independentResolve, @CType("VkBool32") int filterMinmaxSingleComponentFormats, @CType("VkBool32") int filterMinmaxImageComponentMapping, @CType("uint64_t") long maxTimelineSemaphoreValueDifference, @CType("VkSampleCountFlags") int framebufferIntegerColorSampleCounts) { return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID).driverName(driverName).driverInfo(driverInfo).conformanceVersion(conformanceVersion).denormBehaviorIndependence(denormBehaviorIndependence).roundingModeIndependence(roundingModeIndependence).shaderSignedZeroInfNanPreserveFloat16(shaderSignedZeroInfNanPreserveFloat16).shaderSignedZeroInfNanPreserveFloat32(shaderSignedZeroInfNanPreserveFloat32).shaderSignedZeroInfNanPreserveFloat64(shaderSignedZeroInfNanPreserveFloat64).shaderDenormPreserveFloat16(shaderDenormPreserveFloat16).shaderDenormPreserveFloat32(shaderDenormPreserveFloat32).shaderDenormPreserveFloat64(shaderDenormPreserveFloat64).shaderDenormFlushToZeroFloat16(shaderDenormFlushToZeroFloat16).shaderDenormFlushToZeroFloat32(shaderDenormFlushToZeroFloat32).shaderDenormFlushToZeroFloat64(shaderDenormFlushToZeroFloat64).shaderRoundingModeRTEFloat16(shaderRoundingModeRTEFloat16).shaderRoundingModeRTEFloat32(shaderRoundingModeRTEFloat32).shaderRoundingModeRTEFloat64(shaderRoundingModeRTEFloat64).shaderRoundingModeRTZFloat16(shaderRoundingModeRTZFloat16).shaderRoundingModeRTZFloat32(shaderRoundingModeRTZFloat32).shaderRoundingModeRTZFloat64(shaderRoundingModeRTZFloat64).maxUpdateAfterBindDescriptorsInAllPools(maxUpdateAfterBindDescriptorsInAllPools).shaderUniformBufferArrayNonUniformIndexingNative(shaderUniformBufferArrayNonUniformIndexingNative).shaderSampledImageArrayNonUniformIndexingNative(shaderSampledImageArrayNonUniformIndexingNative).shaderStorageBufferArrayNonUniformIndexingNative(shaderStorageBufferArrayNonUniformIndexingNative).shaderStorageImageArrayNonUniformIndexingNative(shaderStorageImageArrayNonUniformIndexingNative).shaderInputAttachmentArrayNonUniformIndexingNative(shaderInputAttachmentArrayNonUniformIndexingNative).robustBufferAccessUpdateAfterBind(robustBufferAccessUpdateAfterBind).quadDivergentImplicitLod(quadDivergentImplicitLod).maxPerStageDescriptorUpdateAfterBindSamplers(maxPerStageDescriptorUpdateAfterBindSamplers).maxPerStageDescriptorUpdateAfterBindUniformBuffers(maxPerStageDescriptorUpdateAfterBindUniformBuffers).maxPerStageDescriptorUpdateAfterBindStorageBuffers(maxPerStageDescriptorUpdateAfterBindStorageBuffers).maxPerStageDescriptorUpdateAfterBindSampledImages(maxPerStageDescriptorUpdateAfterBindSampledImages).maxPerStageDescriptorUpdateAfterBindStorageImages(maxPerStageDescriptorUpdateAfterBindStorageImages).maxPerStageDescriptorUpdateAfterBindInputAttachments(maxPerStageDescriptorUpdateAfterBindInputAttachments).maxPerStageUpdateAfterBindResources(maxPerStageUpdateAfterBindResources).maxDescriptorSetUpdateAfterBindSamplers(maxDescriptorSetUpdateAfterBindSamplers).maxDescriptorSetUpdateAfterBindUniformBuffers(maxDescriptorSetUpdateAfterBindUniformBuffers).maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(maxDescriptorSetUpdateAfterBindUniformBuffersDynamic).maxDescriptorSetUpdateAfterBindStorageBuffers(maxDescriptorSetUpdateAfterBindStorageBuffers).maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(maxDescriptorSetUpdateAfterBindStorageBuffersDynamic).maxDescriptorSetUpdateAfterBindSampledImages(maxDescriptorSetUpdateAfterBindSampledImages).maxDescriptorSetUpdateAfterBindStorageImages(maxDescriptorSetUpdateAfterBindStorageImages).maxDescriptorSetUpdateAfterBindInputAttachments(maxDescriptorSetUpdateAfterBindInputAttachments).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes).independentResolveNone(independentResolveNone).independentResolve(independentResolve).filterMinmaxSingleComponentFormats(filterMinmaxSingleComponentFormats).filterMinmaxImageComponentMapping(filterMinmaxImageComponentMapping).maxTimelineSemaphoreValueDifference(maxTimelineSemaphoreValueDifference).framebufferIntegerColorSampleCounts(framebufferIntegerColorSampleCounts); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -448,25 +448,25 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkan12Properties.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceVulkan12Properties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan12Properties pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(this.segment(), value); return this; }
 
     /// {@return `driverID` at the given index}
     /// @param segment the segment of the struct
@@ -494,71 +494,71 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
     /// {@return `driverName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverName, index), ML_driverName); }
+    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment get_driverName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverName, index), ML_driverName); }
     /// {@return `driverName`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverName(segment, 0L); }
+    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment get_driverName(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverName(segment, 0L); }
     /// {@return `driverName`}
-    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverName() { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment()); }
+    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment driverName() { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment()); }
     /// Sets `driverName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_driverName(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverName, index), ML_driverName.byteSize()); }
+    public static void set_driverName(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverName, index), ML_driverName.byteSize()); }
     /// Sets `driverName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_driverName(MemorySegment segment, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(segment, 0L, value); }
+    public static void set_driverName(MemorySegment segment, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(segment, 0L, value); }
     /// Sets `driverName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverName(@CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverName(@CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), value); return this; }
 
     /// {@return `driverInfo` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo); }
+    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment get_driverInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo); }
     /// {@return `driverInfo`}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(segment, 0L); }
+    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment get_driverInfo(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(segment, 0L); }
     /// {@return `driverInfo`}
-    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfo() { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment()); }
+    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment driverInfo() { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment()); }
     /// Sets `driverInfo` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_driverInfo(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo.byteSize()); }
+    public static void set_driverInfo(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo.byteSize()); }
     /// Sets `driverInfo` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_driverInfo(MemorySegment segment, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(segment, 0L, value); }
+    public static void set_driverInfo(MemorySegment segment, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(segment, 0L, value); }
     /// Sets `driverInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverInfo(@CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverInfo(@CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), value); return this; }
 
     /// {@return `conformanceVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkConformanceVersion") java.lang.foreign.MemorySegment get_conformanceVersion(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_conformanceVersion, index), ML_conformanceVersion); }
+    public static @CType("VkConformanceVersion") MemorySegment get_conformanceVersion(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_conformanceVersion, index), ML_conformanceVersion); }
     /// {@return `conformanceVersion`}
     /// @param segment the segment of the struct
-    public static @CType("VkConformanceVersion") java.lang.foreign.MemorySegment get_conformanceVersion(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(segment, 0L); }
+    public static @CType("VkConformanceVersion") MemorySegment get_conformanceVersion(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(segment, 0L); }
     /// {@return `conformanceVersion`}
-    public @CType("VkConformanceVersion") java.lang.foreign.MemorySegment conformanceVersion() { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(this.segment()); }
+    public @CType("VkConformanceVersion") MemorySegment conformanceVersion() { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(this.segment()); }
     /// Sets `conformanceVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_conformanceVersion(MemorySegment segment, long index, @CType("VkConformanceVersion") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_conformanceVersion, index), ML_conformanceVersion.byteSize()); }
+    public static void set_conformanceVersion(MemorySegment segment, long index, @CType("VkConformanceVersion") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_conformanceVersion, index), ML_conformanceVersion.byteSize()); }
     /// Sets `conformanceVersion` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_conformanceVersion(MemorySegment segment, @CType("VkConformanceVersion") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(segment, 0L, value); }
+    public static void set_conformanceVersion(MemorySegment segment, @CType("VkConformanceVersion") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(segment, 0L, value); }
     /// Sets `conformanceVersion` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties conformanceVersion(@CType("VkConformanceVersion") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan12Properties conformanceVersion(@CType("VkConformanceVersion") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(this.segment(), value); return this; }
 
     /// {@return `denormBehaviorIndependence` at the given index}
     /// @param segment the segment of the struct
@@ -1697,12 +1697,12 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `driverID` at the given index}
         /// @param index the index
@@ -1715,30 +1715,30 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends Struct {
 
         /// {@return `driverName` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverNameAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment(), index); }
+        public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment driverNameAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment(), index); }
         /// Sets `driverName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer driverNameAt(long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), index, value); return this; }
+        public Buffer driverNameAt(long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), index, value); return this; }
 
         /// {@return `driverInfo` at the given index}
         /// @param index the index
-        public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfoAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment(), index); }
+        public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment driverInfoAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment(), index); }
         /// Sets `driverInfo` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer driverInfoAt(long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), index, value); return this; }
+        public Buffer driverInfoAt(long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), index, value); return this; }
 
         /// {@return `conformanceVersion` at the given index}
         /// @param index the index
-        public @CType("VkConformanceVersion") java.lang.foreign.MemorySegment conformanceVersionAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(this.segment(), index); }
+        public @CType("VkConformanceVersion") MemorySegment conformanceVersionAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_conformanceVersion(this.segment(), index); }
         /// Sets `conformanceVersion` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer conformanceVersionAt(long index, @CType("VkConformanceVersion") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(this.segment(), index, value); return this; }
+        public Buffer conformanceVersionAt(long index, @CType("VkConformanceVersion") MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_conformanceVersion(this.segment(), index, value); return this; }
 
         /// {@return `denormBehaviorIndependence` at the given index}
         /// @param index the index

@@ -233,7 +233,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1sATI", e); }
     }
 
-    public void VertexStream1svATI(@CType("GLenum") int stream, @CType("const GLshort *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream1svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1svATI");
         try { Handles.MH_glVertexStream1svATI.invokeExact(handles.PFN_glVertexStream1svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1svATI", e); }
@@ -245,7 +245,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1iATI", e); }
     }
 
-    public void VertexStream1ivATI(@CType("GLenum") int stream, @CType("const GLint *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream1ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1ivATI");
         try { Handles.MH_glVertexStream1ivATI.invokeExact(handles.PFN_glVertexStream1ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1ivATI", e); }
@@ -257,7 +257,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1fATI", e); }
     }
 
-    public void VertexStream1fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream1fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fvATI");
         try { Handles.MH_glVertexStream1fvATI.invokeExact(handles.PFN_glVertexStream1fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1fvATI", e); }
@@ -269,7 +269,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1dATI", e); }
     }
 
-    public void VertexStream1dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream1dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dvATI");
         try { Handles.MH_glVertexStream1dvATI.invokeExact(handles.PFN_glVertexStream1dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream1dvATI", e); }
@@ -281,7 +281,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2sATI", e); }
     }
 
-    public void VertexStream2svATI(@CType("GLenum") int stream, @CType("const GLshort *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream2svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2svATI");
         try { Handles.MH_glVertexStream2svATI.invokeExact(handles.PFN_glVertexStream2svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2svATI", e); }
@@ -293,7 +293,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2iATI", e); }
     }
 
-    public void VertexStream2ivATI(@CType("GLenum") int stream, @CType("const GLint *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream2ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2ivATI");
         try { Handles.MH_glVertexStream2ivATI.invokeExact(handles.PFN_glVertexStream2ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2ivATI", e); }
@@ -305,7 +305,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2fATI", e); }
     }
 
-    public void VertexStream2fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream2fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fvATI");
         try { Handles.MH_glVertexStream2fvATI.invokeExact(handles.PFN_glVertexStream2fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2fvATI", e); }
@@ -317,7 +317,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2dATI", e); }
     }
 
-    public void VertexStream2dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream2dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dvATI");
         try { Handles.MH_glVertexStream2dvATI.invokeExact(handles.PFN_glVertexStream2dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream2dvATI", e); }
@@ -329,7 +329,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3sATI", e); }
     }
 
-    public void VertexStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3svATI");
         try { Handles.MH_glVertexStream3svATI.invokeExact(handles.PFN_glVertexStream3svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3svATI", e); }
@@ -341,7 +341,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3iATI", e); }
     }
 
-    public void VertexStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3ivATI");
         try { Handles.MH_glVertexStream3ivATI.invokeExact(handles.PFN_glVertexStream3ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3ivATI", e); }
@@ -353,7 +353,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3fATI", e); }
     }
 
-    public void VertexStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fvATI");
         try { Handles.MH_glVertexStream3fvATI.invokeExact(handles.PFN_glVertexStream3fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3fvATI", e); }
@@ -365,7 +365,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3dATI", e); }
     }
 
-    public void VertexStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dvATI");
         try { Handles.MH_glVertexStream3dvATI.invokeExact(handles.PFN_glVertexStream3dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream3dvATI", e); }
@@ -377,7 +377,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4sATI", e); }
     }
 
-    public void VertexStream4svATI(@CType("GLenum") int stream, @CType("const GLshort *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream4svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4svATI");
         try { Handles.MH_glVertexStream4svATI.invokeExact(handles.PFN_glVertexStream4svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4svATI", e); }
@@ -389,7 +389,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4iATI", e); }
     }
 
-    public void VertexStream4ivATI(@CType("GLenum") int stream, @CType("const GLint *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream4ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4ivATI");
         try { Handles.MH_glVertexStream4ivATI.invokeExact(handles.PFN_glVertexStream4ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4ivATI", e); }
@@ -401,7 +401,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4fATI", e); }
     }
 
-    public void VertexStream4fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream4fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fvATI");
         try { Handles.MH_glVertexStream4fvATI.invokeExact(handles.PFN_glVertexStream4fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4fvATI", e); }
@@ -413,7 +413,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4dATI", e); }
     }
 
-    public void VertexStream4dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") java.lang.foreign.MemorySegment coords) {
+    public void VertexStream4dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dvATI");
         try { Handles.MH_glVertexStream4dvATI.invokeExact(handles.PFN_glVertexStream4dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexStream4dvATI", e); }
@@ -425,7 +425,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3bATI", e); }
     }
 
-    public void NormalStream3bvATI(@CType("GLenum") int stream, @CType("const GLbyte *") java.lang.foreign.MemorySegment coords) {
+    public void NormalStream3bvATI(@CType("GLenum") int stream, @CType("const GLbyte *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3bvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bvATI");
         try { Handles.MH_glNormalStream3bvATI.invokeExact(handles.PFN_glNormalStream3bvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3bvATI", e); }
@@ -437,7 +437,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3sATI", e); }
     }
 
-    public void NormalStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") java.lang.foreign.MemorySegment coords) {
+    public void NormalStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3svATI");
         try { Handles.MH_glNormalStream3svATI.invokeExact(handles.PFN_glNormalStream3svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3svATI", e); }
@@ -449,7 +449,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3iATI", e); }
     }
 
-    public void NormalStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") java.lang.foreign.MemorySegment coords) {
+    public void NormalStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3ivATI");
         try { Handles.MH_glNormalStream3ivATI.invokeExact(handles.PFN_glNormalStream3ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3ivATI", e); }
@@ -461,7 +461,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3fATI", e); }
     }
 
-    public void NormalStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") java.lang.foreign.MemorySegment coords) {
+    public void NormalStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fvATI");
         try { Handles.MH_glNormalStream3fvATI.invokeExact(handles.PFN_glNormalStream3fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3fvATI", e); }
@@ -473,7 +473,7 @@ public final class GLATIVertexStreams {
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3dATI", e); }
     }
 
-    public void NormalStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") java.lang.foreign.MemorySegment coords) {
+    public void NormalStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dvATI");
         try { Handles.MH_glNormalStream3dvATI.invokeExact(handles.PFN_glNormalStream3dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalStream3dvATI", e); }

@@ -16,7 +16,6 @@
 
 package overrungl.opengl
 
-import com.palantir.javapoet.TypeName
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.Text
@@ -403,7 +402,7 @@ fun computeFunctionDescriptor(command: GLCommand): String {
     val paramTypeSpecs = command.params.map { computePType(it.type) }
     return buildString {
         append("FunctionDescriptor.of")
-        if (returnTypeSpec.carrier == TypeName.VOID) {
+        if (returnTypeSpec.carrier == "void") {
             append("Void(")
         } else {
             append("(")

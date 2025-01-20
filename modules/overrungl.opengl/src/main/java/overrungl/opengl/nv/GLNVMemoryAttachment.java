@@ -70,7 +70,7 @@ public final class GLNVMemoryAttachment {
         this.handles = new Handles(func);
     }
 
-    public void GetMemoryObjectDetachedResourcesuivNV(@CType("GLuint") int memory, @CType("GLenum") int pname, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
+    public void GetMemoryObjectDetachedResourcesuivNV(@CType("GLuint") int memory, @CType("GLenum") int pname, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLuint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectDetachedResourcesuivNV");
         try { Handles.MH_glGetMemoryObjectDetachedResourcesuivNV.invokeExact(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV, memory, pname, first, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectDetachedResourcesuivNV", e); }

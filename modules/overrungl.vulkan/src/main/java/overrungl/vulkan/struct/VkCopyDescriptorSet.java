@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### srcSet
-/// [VarHandle][#VH_srcSet] - [Getter][#srcSet()] - [Setter][#srcSet(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_srcSet] - [Getter][#srcSet()] - [Setter][#srcSet(MemorySegment)]
 /// ### srcBinding
 /// [VarHandle][#VH_srcBinding] - [Getter][#srcBinding()] - [Setter][#srcBinding(int)]
 /// ### srcArrayElement
 /// [VarHandle][#VH_srcArrayElement] - [Getter][#srcArrayElement()] - [Setter][#srcArrayElement(int)]
 /// ### dstSet
-/// [VarHandle][#VH_dstSet] - [Getter][#dstSet()] - [Setter][#dstSet(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_dstSet] - [Getter][#dstSet()] - [Setter][#dstSet(MemorySegment)]
 /// ### dstBinding
 /// [VarHandle][#VH_dstBinding] - [Getter][#dstBinding()] - [Setter][#dstBinding(int)]
 /// ### dstArrayElement
@@ -73,15 +73,15 @@ public sealed class VkCopyDescriptorSet extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `srcSet` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `srcSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSet"));
     /// The [VarHandle] of `srcBinding` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_srcBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcBinding"));
     /// The [VarHandle] of `srcArrayElement` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_srcArrayElement = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcArrayElement"));
-    /// The [VarHandle] of `dstSet` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `dstSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSet"));
     /// The [VarHandle] of `dstBinding` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_dstBinding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstBinding"));
@@ -133,7 +133,7 @@ public sealed class VkCopyDescriptorSet extends Struct {
     /// Allocates a `VkCopyDescriptorSet` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCopyDescriptorSet`
-    public static VkCopyDescriptorSet allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment srcSet, @CType("uint32_t") int srcBinding, @CType("uint32_t") int srcArrayElement, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSet, @CType("uint32_t") int dstBinding, @CType("uint32_t") int dstArrayElement, @CType("uint32_t") int descriptorCount) { return alloc(allocator).sType(sType).pNext(pNext).srcSet(srcSet).srcBinding(srcBinding).srcArrayElement(srcArrayElement).dstSet(dstSet).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount); }
+    public static VkCopyDescriptorSet allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDescriptorSet") MemorySegment srcSet, @CType("uint32_t") int srcBinding, @CType("uint32_t") int srcArrayElement, @CType("VkDescriptorSet") MemorySegment dstSet, @CType("uint32_t") int dstBinding, @CType("uint32_t") int dstArrayElement, @CType("uint32_t") int descriptorCount) { return alloc(allocator).sType(sType).pNext(pNext).srcSet(srcSet).srcBinding(srcBinding).srcArrayElement(srcArrayElement).dstSet(dstSet).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -170,48 +170,48 @@ public sealed class VkCopyDescriptorSet extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCopyDescriptorSet.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCopyDescriptorSet.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCopyDescriptorSet.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkCopyDescriptorSet.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCopyDescriptorSet.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyDescriptorSet pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_pNext(this.segment(), value); return this; }
+    public VkCopyDescriptorSet pNext(@CType("const void *") MemorySegment value) { VkCopyDescriptorSet.set_pNext(this.segment(), value); return this; }
 
     /// {@return `srcSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_srcSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_srcSet.get(segment, 0L, index); }
+    public static @CType("VkDescriptorSet") MemorySegment get_srcSet(MemorySegment segment, long index) { return (MemorySegment) VH_srcSet.get(segment, 0L, index); }
     /// {@return `srcSet`}
     /// @param segment the segment of the struct
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_srcSet(MemorySegment segment) { return VkCopyDescriptorSet.get_srcSet(segment, 0L); }
+    public static @CType("VkDescriptorSet") MemorySegment get_srcSet(MemorySegment segment) { return VkCopyDescriptorSet.get_srcSet(segment, 0L); }
     /// {@return `srcSet`}
-    public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment srcSet() { return VkCopyDescriptorSet.get_srcSet(this.segment()); }
+    public @CType("VkDescriptorSet") MemorySegment srcSet() { return VkCopyDescriptorSet.get_srcSet(this.segment()); }
     /// Sets `srcSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_srcSet(MemorySegment segment, long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VH_srcSet.set(segment, 0L, index, value); }
+    public static void set_srcSet(MemorySegment segment, long index, @CType("VkDescriptorSet") MemorySegment value) { VH_srcSet.set(segment, 0L, index, value); }
     /// Sets `srcSet` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_srcSet(MemorySegment segment, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_srcSet(segment, 0L, value); }
+    public static void set_srcSet(MemorySegment segment, @CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_srcSet(segment, 0L, value); }
     /// Sets `srcSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyDescriptorSet srcSet(@CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_srcSet(this.segment(), value); return this; }
+    public VkCopyDescriptorSet srcSet(@CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_srcSet(this.segment(), value); return this; }
 
     /// {@return `srcBinding` at the given index}
     /// @param segment the segment of the struct
@@ -262,25 +262,25 @@ public sealed class VkCopyDescriptorSet extends Struct {
     /// {@return `dstSet` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_dstSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_dstSet.get(segment, 0L, index); }
+    public static @CType("VkDescriptorSet") MemorySegment get_dstSet(MemorySegment segment, long index) { return (MemorySegment) VH_dstSet.get(segment, 0L, index); }
     /// {@return `dstSet`}
     /// @param segment the segment of the struct
-    public static @CType("VkDescriptorSet") java.lang.foreign.MemorySegment get_dstSet(MemorySegment segment) { return VkCopyDescriptorSet.get_dstSet(segment, 0L); }
+    public static @CType("VkDescriptorSet") MemorySegment get_dstSet(MemorySegment segment) { return VkCopyDescriptorSet.get_dstSet(segment, 0L); }
     /// {@return `dstSet`}
-    public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSet() { return VkCopyDescriptorSet.get_dstSet(this.segment()); }
+    public @CType("VkDescriptorSet") MemorySegment dstSet() { return VkCopyDescriptorSet.get_dstSet(this.segment()); }
     /// Sets `dstSet` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_dstSet(MemorySegment segment, long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VH_dstSet.set(segment, 0L, index, value); }
+    public static void set_dstSet(MemorySegment segment, long index, @CType("VkDescriptorSet") MemorySegment value) { VH_dstSet.set(segment, 0L, index, value); }
     /// Sets `dstSet` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_dstSet(MemorySegment segment, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_dstSet(segment, 0L, value); }
+    public static void set_dstSet(MemorySegment segment, @CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_dstSet(segment, 0L, value); }
     /// Sets `dstSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyDescriptorSet dstSet(@CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_dstSet(this.segment(), value); return this; }
+    public VkCopyDescriptorSet dstSet(@CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_dstSet(this.segment(), value); return this; }
 
     /// {@return `dstBinding` at the given index}
     /// @param segment the segment of the struct
@@ -384,21 +384,21 @@ public sealed class VkCopyDescriptorSet extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCopyDescriptorSet.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCopyDescriptorSet.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCopyDescriptorSet.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `srcSet` at the given index}
         /// @param index the index
-        public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment srcSetAt(long index) { return VkCopyDescriptorSet.get_srcSet(this.segment(), index); }
+        public @CType("VkDescriptorSet") MemorySegment srcSetAt(long index) { return VkCopyDescriptorSet.get_srcSet(this.segment(), index); }
         /// Sets `srcSet` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer srcSetAt(long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_srcSet(this.segment(), index, value); return this; }
+        public Buffer srcSetAt(long index, @CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_srcSet(this.segment(), index, value); return this; }
 
         /// {@return `srcBinding` at the given index}
         /// @param index the index
@@ -420,12 +420,12 @@ public sealed class VkCopyDescriptorSet extends Struct {
 
         /// {@return `dstSet` at the given index}
         /// @param index the index
-        public @CType("VkDescriptorSet") java.lang.foreign.MemorySegment dstSetAt(long index) { return VkCopyDescriptorSet.get_dstSet(this.segment(), index); }
+        public @CType("VkDescriptorSet") MemorySegment dstSetAt(long index) { return VkCopyDescriptorSet.get_dstSet(this.segment(), index); }
         /// Sets `dstSet` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer dstSetAt(long index, @CType("VkDescriptorSet") java.lang.foreign.MemorySegment value) { VkCopyDescriptorSet.set_dstSet(this.segment(), index, value); return this; }
+        public Buffer dstSetAt(long index, @CType("VkDescriptorSet") MemorySegment value) { VkCopyDescriptorSet.set_dstSet(this.segment(), index, value); return this; }
 
         /// {@return `dstBinding` at the given index}
         /// @param index the index

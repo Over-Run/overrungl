@@ -45,13 +45,13 @@ public final class GLEXTGpuProgramParameters {
         this.handles = new Handles(func);
     }
 
-    public void ProgramEnvParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ProgramEnvParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
         try { Handles.MH_glProgramEnvParameters4fvEXT.invokeExact(handles.PFN_glProgramEnvParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameters4fvEXT", e); }
     }
 
-    public void ProgramLocalParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ProgramLocalParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");
         try { Handles.MH_glProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glProgramLocalParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameters4fvEXT", e); }

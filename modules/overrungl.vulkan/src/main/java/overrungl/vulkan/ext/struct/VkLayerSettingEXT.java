@@ -26,15 +26,15 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### pLayerName
-/// [VarHandle][#VH_pLayerName] - [Getter][#pLayerName()] - [Setter][#pLayerName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pLayerName] - [Getter][#pLayerName()] - [Setter][#pLayerName(MemorySegment)]
 /// ### pSettingName
-/// [VarHandle][#VH_pSettingName] - [Getter][#pSettingName()] - [Setter][#pSettingName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSettingName] - [Getter][#pSettingName()] - [Setter][#pSettingName(MemorySegment)]
 /// ### type
 /// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(int)]
 /// ### valueCount
 /// [VarHandle][#VH_valueCount] - [Getter][#valueCount()] - [Setter][#valueCount(int)]
 /// ### pValues
-/// [VarHandle][#VH_pValues] - [Getter][#pValues()] - [Setter][#pValues(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pValues] - [Getter][#pValues()] - [Setter][#pValues(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -55,15 +55,15 @@ public sealed class VkLayerSettingEXT extends Struct {
         ValueLayout.JAVA_INT.withName("valueCount"),
         ValueLayout.ADDRESS.withName("pValues")
     );
-    /// The [VarHandle] of `pLayerName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pLayerName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pLayerName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLayerName"));
-    /// The [VarHandle] of `pSettingName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSettingName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSettingName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSettingName"));
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
     /// The [VarHandle] of `valueCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_valueCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("valueCount"));
-    /// The [VarHandle] of `pValues` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pValues"));
 
     /// Creates `VkLayerSettingEXT` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkLayerSettingEXT extends Struct {
     /// Allocates a `VkLayerSettingEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, @CType("const char *") java.lang.foreign.MemorySegment pLayerName, @CType("const char *") java.lang.foreign.MemorySegment pSettingName, @CType("VkLayerSettingTypeEXT") int type, @CType("uint32_t") int valueCount, @CType("const void *") java.lang.foreign.MemorySegment pValues) { return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName).type(type).valueCount(valueCount).pValues(pValues); }
+    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, @CType("const char *") MemorySegment pLayerName, @CType("const char *") MemorySegment pSettingName, @CType("VkLayerSettingTypeEXT") int type, @CType("uint32_t") int valueCount, @CType("const void *") MemorySegment pValues) { return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName).type(type).valueCount(valueCount).pValues(pValues); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -123,48 +123,48 @@ public sealed class VkLayerSettingEXT extends Struct {
     /// {@return `pLayerName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pLayerName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pLayerName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pLayerName(MemorySegment segment, long index) { return (MemorySegment) VH_pLayerName.get(segment, 0L, index); }
     /// {@return `pLayerName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pLayerName(MemorySegment segment) { return VkLayerSettingEXT.get_pLayerName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pLayerName(MemorySegment segment) { return VkLayerSettingEXT.get_pLayerName(segment, 0L); }
     /// {@return `pLayerName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pLayerName() { return VkLayerSettingEXT.get_pLayerName(this.segment()); }
+    public @CType("const char *") MemorySegment pLayerName() { return VkLayerSettingEXT.get_pLayerName(this.segment()); }
     /// Sets `pLayerName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pLayerName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pLayerName.set(segment, 0L, index, value); }
+    public static void set_pLayerName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pLayerName.set(segment, 0L, index, value); }
     /// Sets `pLayerName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pLayerName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pLayerName(segment, 0L, value); }
+    public static void set_pLayerName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pLayerName(segment, 0L, value); }
     /// Sets `pLayerName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLayerSettingEXT pLayerName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pLayerName(this.segment(), value); return this; }
+    public VkLayerSettingEXT pLayerName(@CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pLayerName(this.segment(), value); return this; }
 
     /// {@return `pSettingName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pSettingName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSettingName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pSettingName(MemorySegment segment, long index) { return (MemorySegment) VH_pSettingName.get(segment, 0L, index); }
     /// {@return `pSettingName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pSettingName(MemorySegment segment) { return VkLayerSettingEXT.get_pSettingName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pSettingName(MemorySegment segment) { return VkLayerSettingEXT.get_pSettingName(segment, 0L); }
     /// {@return `pSettingName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pSettingName() { return VkLayerSettingEXT.get_pSettingName(this.segment()); }
+    public @CType("const char *") MemorySegment pSettingName() { return VkLayerSettingEXT.get_pSettingName(this.segment()); }
     /// Sets `pSettingName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSettingName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pSettingName.set(segment, 0L, index, value); }
+    public static void set_pSettingName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pSettingName.set(segment, 0L, index, value); }
     /// Sets `pSettingName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSettingName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pSettingName(segment, 0L, value); }
+    public static void set_pSettingName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pSettingName(segment, 0L, value); }
     /// Sets `pSettingName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLayerSettingEXT pSettingName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pSettingName(this.segment(), value); return this; }
+    public VkLayerSettingEXT pSettingName(@CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pSettingName(this.segment(), value); return this; }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkLayerSettingEXT extends Struct {
     /// {@return `pValues` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pValues(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pValues.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pValues(MemorySegment segment, long index) { return (MemorySegment) VH_pValues.get(segment, 0L, index); }
     /// {@return `pValues`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pValues(MemorySegment segment) { return VkLayerSettingEXT.get_pValues(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pValues(MemorySegment segment) { return VkLayerSettingEXT.get_pValues(segment, 0L); }
     /// {@return `pValues`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pValues() { return VkLayerSettingEXT.get_pValues(this.segment()); }
+    public @CType("const void *") MemorySegment pValues() { return VkLayerSettingEXT.get_pValues(this.segment()); }
     /// Sets `pValues` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pValues(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
+    public static void set_pValues(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
     /// Sets `pValues` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pValues(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pValues(segment, 0L, value); }
+    public static void set_pValues(MemorySegment segment, @CType("const void *") MemorySegment value) { VkLayerSettingEXT.set_pValues(segment, 0L, value); }
     /// Sets `pValues` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLayerSettingEXT pValues(@CType("const void *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pValues(this.segment(), value); return this; }
+    public VkLayerSettingEXT pValues(@CType("const void *") MemorySegment value) { VkLayerSettingEXT.set_pValues(this.segment(), value); return this; }
 
     /// A buffer of [VkLayerSettingEXT].
     public static final class Buffer extends VkLayerSettingEXT {
@@ -259,21 +259,21 @@ public sealed class VkLayerSettingEXT extends Struct {
 
         /// {@return `pLayerName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pLayerNameAt(long index) { return VkLayerSettingEXT.get_pLayerName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pLayerNameAt(long index) { return VkLayerSettingEXT.get_pLayerName(this.segment(), index); }
         /// Sets `pLayerName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pLayerNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pLayerName(this.segment(), index, value); return this; }
+        public Buffer pLayerNameAt(long index, @CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pLayerName(this.segment(), index, value); return this; }
 
         /// {@return `pSettingName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pSettingNameAt(long index) { return VkLayerSettingEXT.get_pSettingName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pSettingNameAt(long index) { return VkLayerSettingEXT.get_pSettingName(this.segment(), index); }
         /// Sets `pSettingName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSettingNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pSettingName(this.segment(), index, value); return this; }
+        public Buffer pSettingNameAt(long index, @CType("const char *") MemorySegment value) { VkLayerSettingEXT.set_pSettingName(this.segment(), index, value); return this; }
 
         /// {@return `type` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkLayerSettingEXT extends Struct {
 
         /// {@return `pValues` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pValuesAt(long index) { return VkLayerSettingEXT.get_pValues(this.segment(), index); }
+        public @CType("const void *") MemorySegment pValuesAt(long index) { return VkLayerSettingEXT.get_pValues(this.segment(), index); }
         /// Sets `pValues` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pValuesAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLayerSettingEXT.set_pValues(this.segment(), index, value); return this; }
+        public Buffer pValuesAt(long index, @CType("const void *") MemorySegment value) { VkLayerSettingEXT.set_pValues(this.segment(), index, value); return this; }
 
     }
 }

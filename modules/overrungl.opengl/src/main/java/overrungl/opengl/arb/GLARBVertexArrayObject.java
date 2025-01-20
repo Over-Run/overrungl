@@ -60,13 +60,13 @@ public final class GLARBVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in glBindVertexArray", e); }
     }
 
-    public void DeleteVertexArrays(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment arrays) {
+    public void DeleteVertexArrays(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment arrays) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArrays");
         try { Handles.MH_glDeleteVertexArrays.invokeExact(handles.PFN_glDeleteVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArrays", e); }
     }
 
-    public void GenVertexArrays(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment arrays) {
+    public void GenVertexArrays(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment arrays) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glGenVertexArrays");
         try { Handles.MH_glGenVertexArrays.invokeExact(handles.PFN_glGenVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in glGenVertexArrays", e); }

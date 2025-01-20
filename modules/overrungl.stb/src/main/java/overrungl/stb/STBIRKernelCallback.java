@@ -31,14 +31,14 @@ public interface STBIRKernelCallback extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIRKernelCallback.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("float") float invoke(@CType("float") float x, @CType("float") float scale, @CType("void*") java.lang.foreign.MemorySegment user_data);
+    @CType("float") float invoke(@CType("float") float x, @CType("float") float scale, @CType("void*") MemorySegment user_data);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("float") float invoke(MemorySegment stub, @CType("float") float x, @CType("float") float scale, @CType("void*") java.lang.foreign.MemorySegment user_data) {
+    static @CType("float") float invoke(MemorySegment stub, @CType("float") float x, @CType("float") float scale, @CType("void*") MemorySegment user_data) {
         try { return (float) HANDLE.invokeExact(stub, x, scale, user_data); }
         catch (Throwable e) { throw new RuntimeException("error in STBIRKernelCallback::invoke (static invoker)", e); }
     }

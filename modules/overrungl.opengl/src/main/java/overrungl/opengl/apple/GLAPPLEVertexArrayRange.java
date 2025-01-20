@@ -56,13 +56,13 @@ public final class GLAPPLEVertexArrayRange {
         this.handles = new Handles(func);
     }
 
-    public void VertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") java.lang.foreign.MemorySegment pointer) {
+    public void VertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeAPPLE");
         try { Handles.MH_glVertexArrayRangeAPPLE.invokeExact(handles.PFN_glVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeAPPLE", e); }
     }
 
-    public void FlushVertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") java.lang.foreign.MemorySegment pointer) {
+    public void FlushVertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glFlushVertexArrayRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeAPPLE");
         try { Handles.MH_glFlushVertexArrayRangeAPPLE.invokeExact(handles.PFN_glFlushVertexArrayRangeAPPLE, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeAPPLE", e); }

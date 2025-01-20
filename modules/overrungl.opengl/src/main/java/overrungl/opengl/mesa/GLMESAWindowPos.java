@@ -139,7 +139,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dMESA", e); }
     }
 
-    public void WindowPos2dvMESA(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2dvMESA(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvMESA");
         try { Handles.MH_glWindowPos2dvMESA.invokeExact(handles.PFN_glWindowPos2dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dvMESA", e); }
@@ -151,7 +151,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fMESA", e); }
     }
 
-    public void WindowPos2fvMESA(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2fvMESA(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvMESA");
         try { Handles.MH_glWindowPos2fvMESA.invokeExact(handles.PFN_glWindowPos2fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fvMESA", e); }
@@ -163,7 +163,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2iMESA", e); }
     }
 
-    public void WindowPos2ivMESA(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2ivMESA(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivMESA");
         try { Handles.MH_glWindowPos2ivMESA.invokeExact(handles.PFN_glWindowPos2ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2ivMESA", e); }
@@ -175,7 +175,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2sMESA", e); }
     }
 
-    public void WindowPos2svMESA(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos2svMESA(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos2svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2svMESA");
         try { Handles.MH_glWindowPos2svMESA.invokeExact(handles.PFN_glWindowPos2svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos2svMESA", e); }
@@ -187,7 +187,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dMESA", e); }
     }
 
-    public void WindowPos3dvMESA(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3dvMESA(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvMESA");
         try { Handles.MH_glWindowPos3dvMESA.invokeExact(handles.PFN_glWindowPos3dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dvMESA", e); }
@@ -199,7 +199,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fMESA", e); }
     }
 
-    public void WindowPos3fvMESA(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3fvMESA(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvMESA");
         try { Handles.MH_glWindowPos3fvMESA.invokeExact(handles.PFN_glWindowPos3fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fvMESA", e); }
@@ -211,7 +211,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3iMESA", e); }
     }
 
-    public void WindowPos3ivMESA(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3ivMESA(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivMESA");
         try { Handles.MH_glWindowPos3ivMESA.invokeExact(handles.PFN_glWindowPos3ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3ivMESA", e); }
@@ -223,7 +223,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3sMESA", e); }
     }
 
-    public void WindowPos3svMESA(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos3svMESA(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos3svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3svMESA");
         try { Handles.MH_glWindowPos3svMESA.invokeExact(handles.PFN_glWindowPos3svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos3svMESA", e); }
@@ -235,7 +235,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4dMESA", e); }
     }
 
-    public void WindowPos4dvMESA(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos4dvMESA(@CType("const GLdouble *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos4dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4dvMESA");
         try { Handles.MH_glWindowPos4dvMESA.invokeExact(handles.PFN_glWindowPos4dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4dvMESA", e); }
@@ -247,7 +247,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4fMESA", e); }
     }
 
-    public void WindowPos4fvMESA(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos4fvMESA(@CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos4fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4fvMESA");
         try { Handles.MH_glWindowPos4fvMESA.invokeExact(handles.PFN_glWindowPos4fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4fvMESA", e); }
@@ -259,7 +259,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4iMESA", e); }
     }
 
-    public void WindowPos4ivMESA(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos4ivMESA(@CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos4ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4ivMESA");
         try { Handles.MH_glWindowPos4ivMESA.invokeExact(handles.PFN_glWindowPos4ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4ivMESA", e); }
@@ -271,7 +271,7 @@ public final class GLMESAWindowPos {
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4sMESA", e); }
     }
 
-    public void WindowPos4svMESA(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
+    public void WindowPos4svMESA(@CType("const GLshort *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glWindowPos4svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4svMESA");
         try { Handles.MH_glWindowPos4svMESA.invokeExact(handles.PFN_glWindowPos4svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in glWindowPos4svMESA", e); }

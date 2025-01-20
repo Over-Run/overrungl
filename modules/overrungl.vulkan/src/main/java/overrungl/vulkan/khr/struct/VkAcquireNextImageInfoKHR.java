@@ -28,15 +28,15 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### swapchain
-/// [VarHandle][#VH_swapchain] - [Getter][#swapchain()] - [Setter][#swapchain(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_swapchain] - [Getter][#swapchain()] - [Setter][#swapchain(MemorySegment)]
 /// ### timeout
 /// [VarHandle][#VH_timeout] - [Getter][#timeout()] - [Setter][#timeout(long)]
 /// ### semaphore
-/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(MemorySegment)]
 /// ### fence
-/// [VarHandle][#VH_fence] - [Getter][#fence()] - [Setter][#fence(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_fence] - [Getter][#fence()] - [Setter][#fence(MemorySegment)]
 /// ### deviceMask
 /// [VarHandle][#VH_deviceMask] - [Getter][#deviceMask()] - [Setter][#deviceMask(int)]
 /// ## Layout
@@ -65,15 +65,15 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
     /// The [VarHandle] of `timeout` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_timeout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timeout"));
-    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
-    /// The [VarHandle] of `fence` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `fence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fence"));
     /// The [VarHandle] of `deviceMask` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_deviceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask"));
@@ -121,7 +121,7 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
     /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAcquireNextImageInfoKHR`
-    public static VkAcquireNextImageInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchain, @CType("uint64_t") long timeout, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("VkFence") java.lang.foreign.MemorySegment fence, @CType("uint32_t") int deviceMask) { return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).timeout(timeout).semaphore(semaphore).fence(fence).deviceMask(deviceMask); }
+    public static VkAcquireNextImageInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("uint64_t") long timeout, @CType("VkSemaphore") MemorySegment semaphore, @CType("VkFence") MemorySegment fence, @CType("uint32_t") int deviceMask) { return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).timeout(timeout).semaphore(semaphore).fence(fence).deviceMask(deviceMask); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,48 +158,48 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAcquireNextImageInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkAcquireNextImageInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAcquireNextImageInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkAcquireNextImageInfoKHR pNext(@CType("const void *") MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `swapchain` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment get_swapchain(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_swapchain.get(segment, 0L, index); }
+    public static @CType("VkSwapchainKHR") MemorySegment get_swapchain(MemorySegment segment, long index) { return (MemorySegment) VH_swapchain.get(segment, 0L, index); }
     /// {@return `swapchain`}
     /// @param segment the segment of the struct
-    public static @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment get_swapchain(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_swapchain(segment, 0L); }
+    public static @CType("VkSwapchainKHR") MemorySegment get_swapchain(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_swapchain(segment, 0L); }
     /// {@return `swapchain`}
-    public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchain() { return VkAcquireNextImageInfoKHR.get_swapchain(this.segment()); }
+    public @CType("VkSwapchainKHR") MemorySegment swapchain() { return VkAcquireNextImageInfoKHR.get_swapchain(this.segment()); }
     /// Sets `swapchain` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_swapchain(MemorySegment segment, long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VH_swapchain.set(segment, 0L, index, value); }
+    public static void set_swapchain(MemorySegment segment, long index, @CType("VkSwapchainKHR") MemorySegment value) { VH_swapchain.set(segment, 0L, index, value); }
     /// Sets `swapchain` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_swapchain(MemorySegment segment, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(segment, 0L, value); }
+    public static void set_swapchain(MemorySegment segment, @CType("VkSwapchainKHR") MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(segment, 0L, value); }
     /// Sets `swapchain` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAcquireNextImageInfoKHR swapchain(@CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(this.segment(), value); return this; }
+    public VkAcquireNextImageInfoKHR swapchain(@CType("VkSwapchainKHR") MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(this.segment(), value); return this; }
 
     /// {@return `timeout` at the given index}
     /// @param segment the segment of the struct
@@ -227,48 +227,48 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
     /// {@return `semaphore` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_semaphore.get(segment, 0L, index); }
+    public static @CType("VkSemaphore") MemorySegment get_semaphore(MemorySegment segment, long index) { return (MemorySegment) VH_semaphore.get(segment, 0L, index); }
     /// {@return `semaphore`}
     /// @param segment the segment of the struct
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_semaphore(segment, 0L); }
+    public static @CType("VkSemaphore") MemorySegment get_semaphore(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_semaphore(segment, 0L); }
     /// {@return `semaphore`}
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkAcquireNextImageInfoKHR.get_semaphore(this.segment()); }
+    public @CType("VkSemaphore") MemorySegment semaphore() { return VkAcquireNextImageInfoKHR.get_semaphore(this.segment()); }
     /// Sets `semaphore` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
+    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
     /// Sets `semaphore` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(segment, 0L, value); }
+    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(segment, 0L, value); }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAcquireNextImageInfoKHR semaphore(@CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(this.segment(), value); return this; }
+    public VkAcquireNextImageInfoKHR semaphore(@CType("VkSemaphore") MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(this.segment(), value); return this; }
 
     /// {@return `fence` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkFence") java.lang.foreign.MemorySegment get_fence(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_fence.get(segment, 0L, index); }
+    public static @CType("VkFence") MemorySegment get_fence(MemorySegment segment, long index) { return (MemorySegment) VH_fence.get(segment, 0L, index); }
     /// {@return `fence`}
     /// @param segment the segment of the struct
-    public static @CType("VkFence") java.lang.foreign.MemorySegment get_fence(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_fence(segment, 0L); }
+    public static @CType("VkFence") MemorySegment get_fence(MemorySegment segment) { return VkAcquireNextImageInfoKHR.get_fence(segment, 0L); }
     /// {@return `fence`}
-    public @CType("VkFence") java.lang.foreign.MemorySegment fence() { return VkAcquireNextImageInfoKHR.get_fence(this.segment()); }
+    public @CType("VkFence") MemorySegment fence() { return VkAcquireNextImageInfoKHR.get_fence(this.segment()); }
     /// Sets `fence` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_fence(MemorySegment segment, long index, @CType("VkFence") java.lang.foreign.MemorySegment value) { VH_fence.set(segment, 0L, index, value); }
+    public static void set_fence(MemorySegment segment, long index, @CType("VkFence") MemorySegment value) { VH_fence.set(segment, 0L, index, value); }
     /// Sets `fence` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_fence(MemorySegment segment, @CType("VkFence") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(segment, 0L, value); }
+    public static void set_fence(MemorySegment segment, @CType("VkFence") MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(segment, 0L, value); }
     /// Sets `fence` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAcquireNextImageInfoKHR fence(@CType("VkFence") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(this.segment(), value); return this; }
+    public VkAcquireNextImageInfoKHR fence(@CType("VkFence") MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(this.segment(), value); return this; }
 
     /// {@return `deviceMask` at the given index}
     /// @param segment the segment of the struct
@@ -326,21 +326,21 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAcquireNextImageInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkAcquireNextImageInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkAcquireNextImageInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `swapchain` at the given index}
         /// @param index the index
-        public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment swapchainAt(long index) { return VkAcquireNextImageInfoKHR.get_swapchain(this.segment(), index); }
+        public @CType("VkSwapchainKHR") MemorySegment swapchainAt(long index) { return VkAcquireNextImageInfoKHR.get_swapchain(this.segment(), index); }
         /// Sets `swapchain` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer swapchainAt(long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(this.segment(), index, value); return this; }
+        public Buffer swapchainAt(long index, @CType("VkSwapchainKHR") MemorySegment value) { VkAcquireNextImageInfoKHR.set_swapchain(this.segment(), index, value); return this; }
 
         /// {@return `timeout` at the given index}
         /// @param index the index
@@ -353,21 +353,21 @@ public sealed class VkAcquireNextImageInfoKHR extends Struct {
 
         /// {@return `semaphore` at the given index}
         /// @param index the index
-        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkAcquireNextImageInfoKHR.get_semaphore(this.segment(), index); }
+        public @CType("VkSemaphore") MemorySegment semaphoreAt(long index) { return VkAcquireNextImageInfoKHR.get_semaphore(this.segment(), index); }
         /// Sets `semaphore` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(this.segment(), index, value); return this; }
+        public Buffer semaphoreAt(long index, @CType("VkSemaphore") MemorySegment value) { VkAcquireNextImageInfoKHR.set_semaphore(this.segment(), index, value); return this; }
 
         /// {@return `fence` at the given index}
         /// @param index the index
-        public @CType("VkFence") java.lang.foreign.MemorySegment fenceAt(long index) { return VkAcquireNextImageInfoKHR.get_fence(this.segment(), index); }
+        public @CType("VkFence") MemorySegment fenceAt(long index) { return VkAcquireNextImageInfoKHR.get_fence(this.segment(), index); }
         /// Sets `fence` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer fenceAt(long index, @CType("VkFence") java.lang.foreign.MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(this.segment(), index, value); return this; }
+        public Buffer fenceAt(long index, @CType("VkFence") MemorySegment value) { VkAcquireNextImageInfoKHR.set_fence(this.segment(), index, value); return this; }
 
         /// {@return `deviceMask` at the given index}
         /// @param index the index

@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### buffer
-/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(MemorySegment)]
 /// ### offset
 /// [VarHandle][#VH_offset] - [Getter][#offset()] - [Setter][#offset(long)]
 /// ## Layout
@@ -43,7 +43,7 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
         ValueLayout.ADDRESS.withName("buffer"),
         ValueLayout.JAVA_LONG.withName("offset")
     );
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
     /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
@@ -91,7 +91,7 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
     /// Allocates a `VkIndirectCommandsStreamNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkIndirectCommandsStreamNV`
-    public static VkIndirectCommandsStreamNV allocInit(SegmentAllocator allocator, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("VkDeviceSize") long offset) { return alloc(allocator).buffer(buffer).offset(offset); }
+    public static VkIndirectCommandsStreamNV allocInit(SegmentAllocator allocator, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset) { return alloc(allocator).buffer(buffer).offset(offset); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -105,25 +105,25 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_buffer.get(segment, 0L, index); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_buffer.get(segment, 0L, index); }
     /// {@return `buffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkIndirectCommandsStreamNV.get_buffer(segment, 0L); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment) { return VkIndirectCommandsStreamNV.get_buffer(segment, 0L); }
     /// {@return `buffer`}
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkIndirectCommandsStreamNV.get_buffer(this.segment()); }
+    public @CType("VkBuffer") MemorySegment buffer() { return VkIndirectCommandsStreamNV.get_buffer(this.segment()); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
+    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(segment, 0L, value); }
+    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(segment, 0L, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsStreamNV buffer(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), value); return this; }
+    public VkIndirectCommandsStreamNV buffer(@CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), value); return this; }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
@@ -172,12 +172,12 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
 
         /// {@return `buffer` at the given index}
         /// @param index the index
-        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkIndirectCommandsStreamNV.get_buffer(this.segment(), index); }
+        public @CType("VkBuffer") MemorySegment bufferAt(long index) { return VkIndirectCommandsStreamNV.get_buffer(this.segment(), index); }
         /// Sets `buffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), index, value); return this; }
+        public Buffer bufferAt(long index, @CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), index, value); return this; }
 
         /// {@return `offset` at the given index}
         /// @param index the index

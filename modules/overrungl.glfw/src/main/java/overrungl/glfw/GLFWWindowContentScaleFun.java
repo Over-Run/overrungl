@@ -31,14 +31,14 @@ public interface GLFWWindowContentScaleFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowContentScaleFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("float") float xscale, @CType("float") float yscale);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("float") float xscale, @CType("float") float yscale);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("float") float xscale, @CType("float") float yscale) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("float") float xscale, @CType("float") float yscale) {
         try { HANDLE.invokeExact(stub, window, xscale, yscale); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowContentScaleFun::invoke (static invoker)", e); }
     }

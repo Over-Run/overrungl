@@ -81,21 +81,21 @@ public final class ALCSOFTLoopback {
         }
     }
 
-    public static @CType("ALCdevice *") java.lang.foreign.MemorySegment alcLoopbackOpenDeviceSOFT(@CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName) {
+    public static @CType("ALCdevice *") MemorySegment alcLoopbackOpenDeviceSOFT(@CType("const ALCchar*") MemorySegment deviceName) {
         if (Handles.MH_alcLoopbackOpenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcLoopbackOpenDeviceSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alcLoopbackOpenDeviceSOFT.invokeExact(Handles.get().PFN_alcLoopbackOpenDeviceSOFT, deviceName);
+            return (MemorySegment) Handles.MH_alcLoopbackOpenDeviceSOFT.invokeExact(Handles.get().PFN_alcLoopbackOpenDeviceSOFT, deviceName);
         } catch (Throwable e) { throw new RuntimeException("error in alcLoopbackOpenDeviceSOFT", e); }
     }
 
-    public static @CType("ALCboolean") boolean alcIsRenderFormatSupportedSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCsizei") int freq, @CType("ALCenum") int channels, @CType("ALCenum") int type) {
+    public static @CType("ALCboolean") boolean alcIsRenderFormatSupportedSOFT(@CType("ALCdevice *") MemorySegment device, @CType("ALCsizei") int freq, @CType("ALCenum") int channels, @CType("ALCenum") int type) {
         if (Handles.MH_alcIsRenderFormatSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcIsRenderFormatSupportedSOFT");
         try {
             return (boolean) Handles.MH_alcIsRenderFormatSupportedSOFT.invokeExact(Handles.get().PFN_alcIsRenderFormatSupportedSOFT, device, freq, channels, type);
         } catch (Throwable e) { throw new RuntimeException("error in alcIsRenderFormatSupportedSOFT", e); }
     }
 
-    public static void alcRenderSamplesSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCvoid *") java.lang.foreign.MemorySegment buffer, @CType("ALCsizei") int samples) {
+    public static void alcRenderSamplesSOFT(@CType("ALCdevice *") MemorySegment device, @CType("ALCvoid *") MemorySegment buffer, @CType("ALCsizei") int samples) {
         if (Handles.MH_alcRenderSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcRenderSamplesSOFT");
         try {
             Handles.MH_alcRenderSamplesSOFT.invokeExact(Handles.get().PFN_alcRenderSamplesSOFT, device, buffer, samples);

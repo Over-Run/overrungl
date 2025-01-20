@@ -85,7 +85,7 @@ public final class STBRectPack {
         }
     }
 
-    public static @CType("int") int stbrp_pack_rects(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects, @CType("int") int num_rects) {
+    public static @CType("int") int stbrp_pack_rects(@CType("stbrp_context *") MemorySegment context, @CType("stbrp_rect *") MemorySegment rects, @CType("int") int num_rects) {
         try {
             return (int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, context, rects, num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
@@ -97,7 +97,7 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
 
-    public static void stbrp_init_target(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") int width, @CType("int") int height, @CType("stbrp_node *") java.lang.foreign.MemorySegment nodes, @CType("int") int num_nodes) {
+    public static void stbrp_init_target(@CType("stbrp_context *") MemorySegment context, @CType("int") int width, @CType("int") int height, @CType("stbrp_node *") MemorySegment nodes, @CType("int") int num_nodes) {
         try {
             Handles.MH_stbrp_init_target.invokeExact(Handles.get().PFN_stbrp_init_target, context, width, height, nodes, num_nodes);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
@@ -109,7 +109,7 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
 
-    public static void stbrp_setup_allow_out_of_mem(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") boolean allow_out_of_mem) {
+    public static void stbrp_setup_allow_out_of_mem(@CType("stbrp_context *") MemorySegment context, @CType("int") boolean allow_out_of_mem) {
         try {
             Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Handles.get().PFN_stbrp_setup_allow_out_of_mem, context, allow_out_of_mem);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
@@ -121,7 +121,7 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
 
-    public static void stbrp_setup_heuristic(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") int heuristic) {
+    public static void stbrp_setup_heuristic(@CType("stbrp_context *") MemorySegment context, @CType("int") int heuristic) {
         try {
             Handles.MH_stbrp_setup_heuristic.invokeExact(Handles.get().PFN_stbrp_setup_heuristic, context, heuristic);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }

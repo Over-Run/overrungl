@@ -31,14 +31,14 @@ public interface GLFWCursorPosFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWCursorPosFun.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xpos, @CType("double") double ypos);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("double") double xpos, @CType("double") double ypos);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xpos, @CType("double") double ypos) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("double") double xpos, @CType("double") double ypos) {
         try { HANDLE.invokeExact(stub, window, xpos, ypos); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWCursorPosFun::invoke (static invoker)", e); }
     }

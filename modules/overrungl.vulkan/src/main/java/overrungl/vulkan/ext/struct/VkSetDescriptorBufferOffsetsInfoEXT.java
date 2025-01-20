@@ -28,19 +28,19 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### stageFlags
 /// [VarHandle][#VH_stageFlags] - [Getter][#stageFlags()] - [Setter][#stageFlags(int)]
 /// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
 /// ### firstSet
 /// [VarHandle][#VH_firstSet] - [Getter][#firstSet()] - [Setter][#firstSet(int)]
 /// ### setCount
 /// [VarHandle][#VH_setCount] - [Getter][#setCount()] - [Setter][#setCount(int)]
 /// ### pBufferIndices
-/// [VarHandle][#VH_pBufferIndices] - [Getter][#pBufferIndices()] - [Setter][#pBufferIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pBufferIndices] - [Getter][#pBufferIndices()] - [Setter][#pBufferIndices(MemorySegment)]
 /// ### pOffsets
-/// [VarHandle][#VH_pOffsets] - [Getter][#pOffsets()] - [Setter][#pOffsets(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pOffsets] - [Getter][#pOffsets()] - [Setter][#pOffsets(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,19 +69,19 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `stageFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageFlags"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
     /// The [VarHandle] of `firstSet` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_firstSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstSet"));
     /// The [VarHandle] of `setCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_setCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("setCount"));
-    /// The [VarHandle] of `pBufferIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pBufferIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pBufferIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBufferIndices"));
-    /// The [VarHandle] of `pOffsets` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pOffsets"));
 
     /// Creates `VkSetDescriptorBufferOffsetsInfoEXT` with the given segment.
@@ -127,7 +127,7 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     /// Allocates a `VkSetDescriptorBufferOffsetsInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSetDescriptorBufferOffsetsInfoEXT`
-    public static VkSetDescriptorBufferOffsetsInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("uint32_t") int firstSet, @CType("uint32_t") int setCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferIndices, @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment pOffsets) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).setCount(setCount).pBufferIndices(pBufferIndices).pOffsets(pOffsets); }
+    public static VkSetDescriptorBufferOffsetsInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") MemorySegment layout, @CType("uint32_t") int firstSet, @CType("uint32_t") int setCount, @CType("const uint32_t *") MemorySegment pBufferIndices, @CType("const VkDeviceSize *") MemorySegment pOffsets) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).setCount(setCount).pBufferIndices(pBufferIndices).pOffsets(pOffsets); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSetDescriptorBufferOffsetsInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSetDescriptorBufferOffsetsInfoEXT pNext(@CType("const void *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -210,25 +210,25 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_layout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(segment, 0L); }
     /// {@return `layout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment layout() { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
+    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(segment, 0L, value); }
+    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(segment, 0L, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSetDescriptorBufferOffsetsInfoEXT layout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(this.segment(), value); return this; }
+    public VkSetDescriptorBufferOffsetsInfoEXT layout(@CType("VkPipelineLayout") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(this.segment(), value); return this; }
 
     /// {@return `firstSet` at the given index}
     /// @param segment the segment of the struct
@@ -279,48 +279,48 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     /// {@return `pBufferIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pBufferIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pBufferIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pBufferIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pBufferIndices.get(segment, 0L, index); }
     /// {@return `pBufferIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pBufferIndices(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pBufferIndices(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(segment, 0L); }
     /// {@return `pBufferIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferIndices() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pBufferIndices() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(this.segment()); }
     /// Sets `pBufferIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pBufferIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pBufferIndices.set(segment, 0L, index, value); }
+    public static void set_pBufferIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pBufferIndices.set(segment, 0L, index, value); }
     /// Sets `pBufferIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pBufferIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(segment, 0L, value); }
+    public static void set_pBufferIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(segment, 0L, value); }
     /// Sets `pBufferIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSetDescriptorBufferOffsetsInfoEXT pBufferIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(this.segment(), value); return this; }
+    public VkSetDescriptorBufferOffsetsInfoEXT pBufferIndices(@CType("const uint32_t *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(this.segment(), value); return this; }
 
     /// {@return `pOffsets` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment get_pOffsets(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pOffsets.get(segment, 0L, index); }
+    public static @CType("const VkDeviceSize *") MemorySegment get_pOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pOffsets.get(segment, 0L, index); }
     /// {@return `pOffsets`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment get_pOffsets(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(segment, 0L); }
+    public static @CType("const VkDeviceSize *") MemorySegment get_pOffsets(MemorySegment segment) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(segment, 0L); }
     /// {@return `pOffsets`}
-    public @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment pOffsets() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(this.segment()); }
+    public @CType("const VkDeviceSize *") MemorySegment pOffsets() { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(this.segment()); }
     /// Sets `pOffsets` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pOffsets(MemorySegment segment, long index, @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment value) { VH_pOffsets.set(segment, 0L, index, value); }
+    public static void set_pOffsets(MemorySegment segment, long index, @CType("const VkDeviceSize *") MemorySegment value) { VH_pOffsets.set(segment, 0L, index, value); }
     /// Sets `pOffsets` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pOffsets(MemorySegment segment, @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(segment, 0L, value); }
+    public static void set_pOffsets(MemorySegment segment, @CType("const VkDeviceSize *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(segment, 0L, value); }
     /// Sets `pOffsets` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSetDescriptorBufferOffsetsInfoEXT pOffsets(@CType("const VkDeviceSize *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(this.segment(), value); return this; }
+    public VkSetDescriptorBufferOffsetsInfoEXT pOffsets(@CType("const VkDeviceSize *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(this.segment(), value); return this; }
 
     /// A buffer of [VkSetDescriptorBufferOffsetsInfoEXT].
     public static final class Buffer extends VkSetDescriptorBufferOffsetsInfoEXT {
@@ -355,12 +355,12 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `stageFlags` at the given index}
         /// @param index the index
@@ -373,12 +373,12 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
 
         /// {@return `layout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_layout(this.segment(), index, value); return this; }
 
         /// {@return `firstSet` at the given index}
         /// @param index the index
@@ -400,21 +400,21 @@ public sealed class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
 
         /// {@return `pBufferIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferIndicesAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pBufferIndicesAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pBufferIndices(this.segment(), index); }
         /// Sets `pBufferIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pBufferIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(this.segment(), index, value); return this; }
+        public Buffer pBufferIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pBufferIndices(this.segment(), index, value); return this; }
 
         /// {@return `pOffsets` at the given index}
         /// @param index the index
-        public @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment pOffsetsAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(this.segment(), index); }
+        public @CType("const VkDeviceSize *") MemorySegment pOffsetsAt(long index) { return VkSetDescriptorBufferOffsetsInfoEXT.get_pOffsets(this.segment(), index); }
         /// Sets `pOffsets` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pOffsetsAt(long index, @CType("const VkDeviceSize *") java.lang.foreign.MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(this.segment(), index, value); return this; }
+        public Buffer pOffsetsAt(long index, @CType("const VkDeviceSize *") MemorySegment value) { VkSetDescriptorBufferOffsetsInfoEXT.set_pOffsets(this.segment(), index, value); return this; }
 
     }
 }

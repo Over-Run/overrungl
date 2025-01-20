@@ -61,25 +61,25 @@ public final class GLATIEnvmapBumpmap {
         this.handles = new Handles(func);
     }
 
-    public void TexBumpParameterivATI(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment param) {
+    public void TexBumpParameterivATI(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexBumpParameterivATI)) throw new SymbolNotFoundError("Symbol not found: glTexBumpParameterivATI");
         try { Handles.MH_glTexBumpParameterivATI.invokeExact(handles.PFN_glTexBumpParameterivATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glTexBumpParameterivATI", e); }
     }
 
-    public void TexBumpParameterfvATI(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment param) {
+    public void TexBumpParameterfvATI(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexBumpParameterfvATI)) throw new SymbolNotFoundError("Symbol not found: glTexBumpParameterfvATI");
         try { Handles.MH_glTexBumpParameterfvATI.invokeExact(handles.PFN_glTexBumpParameterfvATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glTexBumpParameterfvATI", e); }
     }
 
-    public void GetTexBumpParameterivATI(@CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment param) {
+    public void GetTexBumpParameterivATI(@CType("GLenum") int pname, @CType("GLint *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexBumpParameterivATI)) throw new SymbolNotFoundError("Symbol not found: glGetTexBumpParameterivATI");
         try { Handles.MH_glGetTexBumpParameterivATI.invokeExact(handles.PFN_glGetTexBumpParameterivATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexBumpParameterivATI", e); }
     }
 
-    public void GetTexBumpParameterfvATI(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment param) {
+    public void GetTexBumpParameterfvATI(@CType("GLenum") int pname, @CType("GLfloat *") MemorySegment param) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetTexBumpParameterfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetTexBumpParameterfvATI");
         try { Handles.MH_glGetTexBumpParameterfvATI.invokeExact(handles.PFN_glGetTexBumpParameterfvATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in glGetTexBumpParameterfvATI", e); }

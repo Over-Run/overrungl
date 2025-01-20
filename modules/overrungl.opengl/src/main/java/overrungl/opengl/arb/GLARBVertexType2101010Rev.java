@@ -196,7 +196,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1ui", e); }
     }
 
-    public void VertexAttribP1uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP1uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
         try { Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1uiv", e); }
@@ -208,7 +208,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2ui", e); }
     }
 
-    public void VertexAttribP2uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP2uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
         try { Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2uiv", e); }
@@ -220,7 +220,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3ui", e); }
     }
 
-    public void VertexAttribP3uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP3uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
         try { Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3uiv", e); }
@@ -232,7 +232,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4ui", e); }
     }
 
-    public void VertexAttribP4uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexAttribP4uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
         try { Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, normalized, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4uiv", e); }
@@ -244,7 +244,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP2ui", e); }
     }
 
-    public void VertexP2uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP2uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP2uiv");
         try { Handles.MH_glVertexP2uiv.invokeExact(handles.PFN_glVertexP2uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP2uiv", e); }
@@ -256,7 +256,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP3ui", e); }
     }
 
-    public void VertexP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP3uiv");
         try { Handles.MH_glVertexP3uiv.invokeExact(handles.PFN_glVertexP3uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP3uiv", e); }
@@ -268,7 +268,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glVertexP4ui", e); }
     }
 
-    public void VertexP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment value) {
+    public void VertexP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP4uiv");
         try { Handles.MH_glVertexP4uiv.invokeExact(handles.PFN_glVertexP4uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexP4uiv", e); }
@@ -280,7 +280,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP1ui", e); }
     }
 
-    public void TexCoordP1uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP1uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP1uiv");
         try { Handles.MH_glTexCoordP1uiv.invokeExact(handles.PFN_glTexCoordP1uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP1uiv", e); }
@@ -292,7 +292,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP2ui", e); }
     }
 
-    public void TexCoordP2uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP2uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP2uiv");
         try { Handles.MH_glTexCoordP2uiv.invokeExact(handles.PFN_glTexCoordP2uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP2uiv", e); }
@@ -304,7 +304,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP3ui", e); }
     }
 
-    public void TexCoordP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP3uiv");
         try { Handles.MH_glTexCoordP3uiv.invokeExact(handles.PFN_glTexCoordP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP3uiv", e); }
@@ -316,7 +316,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP4ui", e); }
     }
 
-    public void TexCoordP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void TexCoordP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP4uiv");
         try { Handles.MH_glTexCoordP4uiv.invokeExact(handles.PFN_glTexCoordP4uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoordP4uiv", e); }
@@ -328,7 +328,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP1ui", e); }
     }
 
-    public void MultiTexCoordP1uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP1uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP1uiv");
         try { Handles.MH_glMultiTexCoordP1uiv.invokeExact(handles.PFN_glMultiTexCoordP1uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP1uiv", e); }
@@ -340,7 +340,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP2ui", e); }
     }
 
-    public void MultiTexCoordP2uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP2uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP2uiv");
         try { Handles.MH_glMultiTexCoordP2uiv.invokeExact(handles.PFN_glMultiTexCoordP2uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP2uiv", e); }
@@ -352,7 +352,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP3ui", e); }
     }
 
-    public void MultiTexCoordP3uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP3uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP3uiv");
         try { Handles.MH_glMultiTexCoordP3uiv.invokeExact(handles.PFN_glMultiTexCoordP3uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP3uiv", e); }
@@ -364,7 +364,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP4ui", e); }
     }
 
-    public void MultiTexCoordP4uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void MultiTexCoordP4uiv(@CType("GLenum") int texture, @CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP4uiv");
         try { Handles.MH_glMultiTexCoordP4uiv.invokeExact(handles.PFN_glMultiTexCoordP4uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoordP4uiv", e); }
@@ -376,7 +376,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glNormalP3ui", e); }
     }
 
-    public void NormalP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment coords) {
+    public void NormalP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment coords) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormalP3uiv)) throw new SymbolNotFoundError("Symbol not found: glNormalP3uiv");
         try { Handles.MH_glNormalP3uiv.invokeExact(handles.PFN_glNormalP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in glNormalP3uiv", e); }
@@ -388,7 +388,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glColorP3ui", e); }
     }
 
-    public void ColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void ColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP3uiv");
         try { Handles.MH_glColorP3uiv.invokeExact(handles.PFN_glColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glColorP3uiv", e); }
@@ -400,7 +400,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glColorP4ui", e); }
     }
 
-    public void ColorP4uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void ColorP4uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorP4uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP4uiv");
         try { Handles.MH_glColorP4uiv.invokeExact(handles.PFN_glColorP4uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glColorP4uiv", e); }
@@ -412,7 +412,7 @@ public final class GLARBVertexType2101010Rev {
         catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorP3ui", e); }
     }
 
-    public void SecondaryColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") java.lang.foreign.MemorySegment color) {
+    public void SecondaryColorP3uiv(@CType("GLenum") int type, @CType("const GLuint *") MemorySegment color) {
         if (Unmarshal.isNullPointer(handles.PFN_glSecondaryColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorP3uiv");
         try { Handles.MH_glSecondaryColorP3uiv.invokeExact(handles.PFN_glSecondaryColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorP3uiv", e); }

@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### swapchainCount
 /// [VarHandle][#VH_swapchainCount] - [Getter][#swapchainCount()] - [Setter][#swapchainCount(int)]
 /// ### pFences
-/// [VarHandle][#VH_pFences] - [Getter][#pFences()] - [Setter][#pFences(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pFences] - [Getter][#pFences()] - [Setter][#pFences(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
-    /// The [VarHandle] of `pFences` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pFences` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pFences = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFences"));
 
     /// Creates `VkSwapchainPresentFenceInfoEXT` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
     /// Allocates a `VkSwapchainPresentFenceInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSwapchainPresentFenceInfoEXT`
-    public static VkSwapchainPresentFenceInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int swapchainCount, @CType("const VkFence *") java.lang.foreign.MemorySegment pFences) { return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pFences(pFences); }
+    public static VkSwapchainPresentFenceInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int swapchainCount, @CType("const VkFence *") MemorySegment pFences) { return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pFences(pFences); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainPresentFenceInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainPresentFenceInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSwapchainPresentFenceInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSwapchainPresentFenceInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentFenceInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSwapchainPresentFenceInfoEXT pNext(@CType("const void *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `swapchainCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
     /// {@return `pFences` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkFence *") java.lang.foreign.MemorySegment get_pFences(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pFences.get(segment, 0L, index); }
+    public static @CType("const VkFence *") MemorySegment get_pFences(MemorySegment segment, long index) { return (MemorySegment) VH_pFences.get(segment, 0L, index); }
     /// {@return `pFences`}
     /// @param segment the segment of the struct
-    public static @CType("const VkFence *") java.lang.foreign.MemorySegment get_pFences(MemorySegment segment) { return VkSwapchainPresentFenceInfoEXT.get_pFences(segment, 0L); }
+    public static @CType("const VkFence *") MemorySegment get_pFences(MemorySegment segment) { return VkSwapchainPresentFenceInfoEXT.get_pFences(segment, 0L); }
     /// {@return `pFences`}
-    public @CType("const VkFence *") java.lang.foreign.MemorySegment pFences() { return VkSwapchainPresentFenceInfoEXT.get_pFences(this.segment()); }
+    public @CType("const VkFence *") MemorySegment pFences() { return VkSwapchainPresentFenceInfoEXT.get_pFences(this.segment()); }
     /// Sets `pFences` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pFences(MemorySegment segment, long index, @CType("const VkFence *") java.lang.foreign.MemorySegment value) { VH_pFences.set(segment, 0L, index, value); }
+    public static void set_pFences(MemorySegment segment, long index, @CType("const VkFence *") MemorySegment value) { VH_pFences.set(segment, 0L, index, value); }
     /// Sets `pFences` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pFences(MemorySegment segment, @CType("const VkFence *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(segment, 0L, value); }
+    public static void set_pFences(MemorySegment segment, @CType("const VkFence *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(segment, 0L, value); }
     /// Sets `pFences` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentFenceInfoEXT pFences(@CType("const VkFence *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(this.segment(), value); return this; }
+    public VkSwapchainPresentFenceInfoEXT pFences(@CType("const VkFence *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(this.segment(), value); return this; }
 
     /// A buffer of [VkSwapchainPresentFenceInfoEXT].
     public static final class Buffer extends VkSwapchainPresentFenceInfoEXT {
@@ -239,12 +239,12 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainPresentFenceInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSwapchainPresentFenceInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `swapchainCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends Struct {
 
         /// {@return `pFences` at the given index}
         /// @param index the index
-        public @CType("const VkFence *") java.lang.foreign.MemorySegment pFencesAt(long index) { return VkSwapchainPresentFenceInfoEXT.get_pFences(this.segment(), index); }
+        public @CType("const VkFence *") MemorySegment pFencesAt(long index) { return VkSwapchainPresentFenceInfoEXT.get_pFences(this.segment(), index); }
         /// Sets `pFences` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pFencesAt(long index, @CType("const VkFence *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(this.segment(), index, value); return this; }
+        public Buffer pFencesAt(long index, @CType("const VkFence *") MemorySegment value) { VkSwapchainPresentFenceInfoEXT.set_pFences(this.segment(), index, value); return this; }
 
     }
 }

@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### rect
-/// [Byte offset][#OFFSET_rect] - [Memory layout][#ML_rect] - [Getter][#rect()] - [Setter][#rect(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_rect] - [Memory layout][#ML_rect] - [Getter][#rect()] - [Setter][#rect(MemorySegment)]
 /// ### baseArrayLayer
 /// [VarHandle][#VH_baseArrayLayer] - [Getter][#baseArrayLayer()] - [Setter][#baseArrayLayer(int)]
 /// ### layerCount
@@ -99,7 +99,7 @@ public sealed class VkClearRect extends Struct {
     /// Allocates a `VkClearRect` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClearRect`
-    public static VkClearRect allocInit(SegmentAllocator allocator, @CType("VkRect2D") java.lang.foreign.MemorySegment rect, @CType("uint32_t") int baseArrayLayer, @CType("uint32_t") int layerCount) { return alloc(allocator).rect(rect).baseArrayLayer(baseArrayLayer).layerCount(layerCount); }
+    public static VkClearRect allocInit(SegmentAllocator allocator, @CType("VkRect2D") MemorySegment rect, @CType("uint32_t") int baseArrayLayer, @CType("uint32_t") int layerCount) { return alloc(allocator).rect(rect).baseArrayLayer(baseArrayLayer).layerCount(layerCount); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -113,25 +113,25 @@ public sealed class VkClearRect extends Struct {
     /// {@return `rect` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_rect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_rect, index), ML_rect); }
+    public static @CType("VkRect2D") MemorySegment get_rect(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_rect, index), ML_rect); }
     /// {@return `rect`}
     /// @param segment the segment of the struct
-    public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_rect(MemorySegment segment) { return VkClearRect.get_rect(segment, 0L); }
+    public static @CType("VkRect2D") MemorySegment get_rect(MemorySegment segment) { return VkClearRect.get_rect(segment, 0L); }
     /// {@return `rect`}
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment rect() { return VkClearRect.get_rect(this.segment()); }
+    public @CType("VkRect2D") MemorySegment rect() { return VkClearRect.get_rect(this.segment()); }
     /// Sets `rect` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_rect(MemorySegment segment, long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_rect, index), ML_rect.byteSize()); }
+    public static void set_rect(MemorySegment segment, long index, @CType("VkRect2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_rect, index), ML_rect.byteSize()); }
     /// Sets `rect` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_rect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(segment, 0L, value); }
+    public static void set_rect(MemorySegment segment, @CType("VkRect2D") MemorySegment value) { VkClearRect.set_rect(segment, 0L, value); }
     /// Sets `rect` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkClearRect rect(@CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(this.segment(), value); return this; }
+    public VkClearRect rect(@CType("VkRect2D") MemorySegment value) { VkClearRect.set_rect(this.segment(), value); return this; }
 
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
@@ -203,12 +203,12 @@ public sealed class VkClearRect extends Struct {
 
         /// {@return `rect` at the given index}
         /// @param index the index
-        public @CType("VkRect2D") java.lang.foreign.MemorySegment rectAt(long index) { return VkClearRect.get_rect(this.segment(), index); }
+        public @CType("VkRect2D") MemorySegment rectAt(long index) { return VkClearRect.get_rect(this.segment(), index); }
         /// Sets `rect` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer rectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(this.segment(), index, value); return this; }
+        public Buffer rectAt(long index, @CType("VkRect2D") MemorySegment value) { VkClearRect.set_rect(this.segment(), index, value); return this; }
 
         /// {@return `baseArrayLayer` at the given index}
         /// @param index the index

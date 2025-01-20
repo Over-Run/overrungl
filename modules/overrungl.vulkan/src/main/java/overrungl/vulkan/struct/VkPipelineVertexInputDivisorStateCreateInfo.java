@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### vertexBindingDivisorCount
 /// [VarHandle][#VH_vertexBindingDivisorCount] - [Getter][#vertexBindingDivisorCount()] - [Setter][#vertexBindingDivisorCount(int)]
 /// ### pVertexBindingDivisors
-/// [VarHandle][#VH_pVertexBindingDivisors] - [Getter][#pVertexBindingDivisors()] - [Setter][#pVertexBindingDivisors(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVertexBindingDivisors] - [Getter][#pVertexBindingDivisors()] - [Setter][#pVertexBindingDivisors(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -53,11 +53,11 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `vertexBindingDivisorCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_vertexBindingDivisorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingDivisorCount"));
-    /// The [VarHandle] of `pVertexBindingDivisors` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVertexBindingDivisors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVertexBindingDivisors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBindingDivisors"));
 
     /// Creates `VkPipelineVertexInputDivisorStateCreateInfo` with the given segment.
@@ -103,7 +103,7 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
     /// Allocates a `VkPipelineVertexInputDivisorStateCreateInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfo`
-    public static VkPipelineVertexInputDivisorStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int vertexBindingDivisorCount, @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment pVertexBindingDivisors) { return alloc(allocator).sType(sType).pNext(pNext).vertexBindingDivisorCount(vertexBindingDivisorCount).pVertexBindingDivisors(pVertexBindingDivisors); }
+    public static VkPipelineVertexInputDivisorStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int vertexBindingDivisorCount, @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment pVertexBindingDivisors) { return alloc(allocator).sType(sType).pNext(pNext).vertexBindingDivisorCount(vertexBindingDivisorCount).pVertexBindingDivisors(pVertexBindingDivisors); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,25 +140,25 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineVertexInputDivisorStateCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineVertexInputDivisorStateCreateInfo pNext(@CType("const void *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `vertexBindingDivisorCount` at the given index}
     /// @param segment the segment of the struct
@@ -186,25 +186,25 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
     /// {@return `pVertexBindingDivisors` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment get_pVertexBindingDivisors(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVertexBindingDivisors.get(segment, 0L, index); }
+    public static @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment get_pVertexBindingDivisors(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBindingDivisors.get(segment, 0L, index); }
     /// {@return `pVertexBindingDivisors`}
     /// @param segment the segment of the struct
-    public static @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment get_pVertexBindingDivisors(MemorySegment segment) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(segment, 0L); }
+    public static @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment get_pVertexBindingDivisors(MemorySegment segment) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(segment, 0L); }
     /// {@return `pVertexBindingDivisors`}
-    public @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment pVertexBindingDivisors() { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(this.segment()); }
+    public @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment pVertexBindingDivisors() { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(this.segment()); }
     /// Sets `pVertexBindingDivisors` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVertexBindingDivisors(MemorySegment segment, long index, @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment value) { VH_pVertexBindingDivisors.set(segment, 0L, index, value); }
+    public static void set_pVertexBindingDivisors(MemorySegment segment, long index, @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment value) { VH_pVertexBindingDivisors.set(segment, 0L, index, value); }
     /// Sets `pVertexBindingDivisors` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVertexBindingDivisors(MemorySegment segment, @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(segment, 0L, value); }
+    public static void set_pVertexBindingDivisors(MemorySegment segment, @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(segment, 0L, value); }
     /// Sets `pVertexBindingDivisors` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineVertexInputDivisorStateCreateInfo pVertexBindingDivisors(@CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(this.segment(), value); return this; }
+    public VkPipelineVertexInputDivisorStateCreateInfo pVertexBindingDivisors(@CType("const VkVertexInputBindingDivisorDescription *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineVertexInputDivisorStateCreateInfo].
     public static final class Buffer extends VkPipelineVertexInputDivisorStateCreateInfo {
@@ -239,12 +239,12 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `vertexBindingDivisorCount` at the given index}
         /// @param index the index
@@ -257,12 +257,12 @@ public sealed class VkPipelineVertexInputDivisorStateCreateInfo extends Struct {
 
         /// {@return `pVertexBindingDivisors` at the given index}
         /// @param index the index
-        public @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment pVertexBindingDivisorsAt(long index) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(this.segment(), index); }
+        public @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment pVertexBindingDivisorsAt(long index) { return VkPipelineVertexInputDivisorStateCreateInfo.get_pVertexBindingDivisors(this.segment(), index); }
         /// Sets `pVertexBindingDivisors` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVertexBindingDivisorsAt(long index, @CType("const VkVertexInputBindingDivisorDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(this.segment(), index, value); return this; }
+        public Buffer pVertexBindingDivisorsAt(long index, @CType("const VkVertexInputBindingDivisorDescription *") MemorySegment value) { VkPipelineVertexInputDivisorStateCreateInfo.set_pVertexBindingDivisors(this.segment(), index, value); return this; }
 
     }
 }

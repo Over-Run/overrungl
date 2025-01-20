@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### src
-/// [VarHandle][#VH_src] - [Getter][#src()] - [Setter][#src(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_src] - [Getter][#src()] - [Setter][#src(MemorySegment)]
 /// ### dst
-/// [VarHandle][#VH_dst] - [Getter][#dst()] - [Setter][#dst(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_dst] - [Getter][#dst()] - [Setter][#dst(MemorySegment)]
 /// ### mode
 /// [VarHandle][#VH_mode] - [Getter][#mode()] - [Setter][#mode(int)]
 /// ## Layout
@@ -57,11 +57,11 @@ public sealed class VkCopyMicromapInfoEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `src` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `src` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_src = LAYOUT.arrayElementVarHandle(PathElement.groupElement("src"));
-    /// The [VarHandle] of `dst` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `dst` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dst = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dst"));
     /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
@@ -109,7 +109,7 @@ public sealed class VkCopyMicromapInfoEXT extends Struct {
     /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment src, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dst, @CType("VkCopyMicromapModeEXT") int mode) { return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst).mode(mode); }
+    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkMicromapEXT") MemorySegment src, @CType("VkMicromapEXT") MemorySegment dst, @CType("VkCopyMicromapModeEXT") int mode) { return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst).mode(mode); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,71 +146,71 @@ public sealed class VkCopyMicromapInfoEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCopyMicromapInfoEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkCopyMicromapInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMicromapInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkCopyMicromapInfoEXT pNext(@CType("const void *") MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `src` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_src(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_src.get(segment, 0L, index); }
+    public static @CType("VkMicromapEXT") MemorySegment get_src(MemorySegment segment, long index) { return (MemorySegment) VH_src.get(segment, 0L, index); }
     /// {@return `src`}
     /// @param segment the segment of the struct
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_src(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_src(segment, 0L); }
+    public static @CType("VkMicromapEXT") MemorySegment get_src(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_src(segment, 0L); }
     /// {@return `src`}
-    public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment src() { return VkCopyMicromapInfoEXT.get_src(this.segment()); }
+    public @CType("VkMicromapEXT") MemorySegment src() { return VkCopyMicromapInfoEXT.get_src(this.segment()); }
     /// Sets `src` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_src(MemorySegment segment, long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VH_src.set(segment, 0L, index, value); }
+    public static void set_src(MemorySegment segment, long index, @CType("VkMicromapEXT") MemorySegment value) { VH_src.set(segment, 0L, index, value); }
     /// Sets `src` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_src(MemorySegment segment, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_src(segment, 0L, value); }
+    public static void set_src(MemorySegment segment, @CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_src(segment, 0L, value); }
     /// Sets `src` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMicromapInfoEXT src(@CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_src(this.segment(), value); return this; }
+    public VkCopyMicromapInfoEXT src(@CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_src(this.segment(), value); return this; }
 
     /// {@return `dst` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_dst(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_dst.get(segment, 0L, index); }
+    public static @CType("VkMicromapEXT") MemorySegment get_dst(MemorySegment segment, long index) { return (MemorySegment) VH_dst.get(segment, 0L, index); }
     /// {@return `dst`}
     /// @param segment the segment of the struct
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_dst(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_dst(segment, 0L); }
+    public static @CType("VkMicromapEXT") MemorySegment get_dst(MemorySegment segment) { return VkCopyMicromapInfoEXT.get_dst(segment, 0L); }
     /// {@return `dst`}
-    public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dst() { return VkCopyMicromapInfoEXT.get_dst(this.segment()); }
+    public @CType("VkMicromapEXT") MemorySegment dst() { return VkCopyMicromapInfoEXT.get_dst(this.segment()); }
     /// Sets `dst` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_dst(MemorySegment segment, long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VH_dst.set(segment, 0L, index, value); }
+    public static void set_dst(MemorySegment segment, long index, @CType("VkMicromapEXT") MemorySegment value) { VH_dst.set(segment, 0L, index, value); }
     /// Sets `dst` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_dst(MemorySegment segment, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(segment, 0L, value); }
+    public static void set_dst(MemorySegment segment, @CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(segment, 0L, value); }
     /// Sets `dst` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMicromapInfoEXT dst(@CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(this.segment(), value); return this; }
+    public VkCopyMicromapInfoEXT dst(@CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(this.segment(), value); return this; }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
@@ -268,30 +268,30 @@ public sealed class VkCopyMicromapInfoEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCopyMicromapInfoEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCopyMicromapInfoEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCopyMicromapInfoEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `src` at the given index}
         /// @param index the index
-        public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment srcAt(long index) { return VkCopyMicromapInfoEXT.get_src(this.segment(), index); }
+        public @CType("VkMicromapEXT") MemorySegment srcAt(long index) { return VkCopyMicromapInfoEXT.get_src(this.segment(), index); }
         /// Sets `src` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer srcAt(long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_src(this.segment(), index, value); return this; }
+        public Buffer srcAt(long index, @CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_src(this.segment(), index, value); return this; }
 
         /// {@return `dst` at the given index}
         /// @param index the index
-        public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dstAt(long index) { return VkCopyMicromapInfoEXT.get_dst(this.segment(), index); }
+        public @CType("VkMicromapEXT") MemorySegment dstAt(long index) { return VkCopyMicromapInfoEXT.get_dst(this.segment(), index); }
         /// Sets `dst` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer dstAt(long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(this.segment(), index, value); return this; }
+        public Buffer dstAt(long index, @CType("VkMicromapEXT") MemorySegment value) { VkCopyMicromapInfoEXT.set_dst(this.segment(), index, value); return this; }
 
         /// {@return `mode` at the given index}
         /// @param index the index

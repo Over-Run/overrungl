@@ -54,13 +54,13 @@ public final class GLAMDNameGenDelete {
         this.handles = new Handles(func);
     }
 
-    public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") java.lang.foreign.MemorySegment names) {
+    public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") MemorySegment names) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD");
         try { Handles.MH_glGenNamesAMD.invokeExact(handles.PFN_glGenNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
     }
 
-    public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") java.lang.foreign.MemorySegment names) {
+    public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") MemorySegment names) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
         try { Handles.MH_glDeleteNamesAMD.invokeExact(handles.PFN_glDeleteNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }

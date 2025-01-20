@@ -139,25 +139,25 @@ public final class GLNVVertexAttribInteger64bit {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4i64NV", e); }
     }
 
-    public void VertexAttribL1i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL1i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1i64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1i64vNV");
         try { Handles.MH_glVertexAttribL1i64vNV.invokeExact(handles.PFN_glVertexAttribL1i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1i64vNV", e); }
     }
 
-    public void VertexAttribL2i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL2i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL2i64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2i64vNV");
         try { Handles.MH_glVertexAttribL2i64vNV.invokeExact(handles.PFN_glVertexAttribL2i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL2i64vNV", e); }
     }
 
-    public void VertexAttribL3i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL3i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL3i64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3i64vNV");
         try { Handles.MH_glVertexAttribL3i64vNV.invokeExact(handles.PFN_glVertexAttribL3i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL3i64vNV", e); }
     }
 
-    public void VertexAttribL4i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL4i64vNV(@CType("GLuint") int index, @CType("const GLint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL4i64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4i64vNV");
         try { Handles.MH_glVertexAttribL4i64vNV.invokeExact(handles.PFN_glVertexAttribL4i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4i64vNV", e); }
@@ -187,37 +187,37 @@ public final class GLNVVertexAttribInteger64bit {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4ui64NV", e); }
     }
 
-    public void VertexAttribL1ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL1ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vNV");
         try { Handles.MH_glVertexAttribL1ui64vNV.invokeExact(handles.PFN_glVertexAttribL1ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64vNV", e); }
     }
 
-    public void VertexAttribL2ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL2ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL2ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2ui64vNV");
         try { Handles.MH_glVertexAttribL2ui64vNV.invokeExact(handles.PFN_glVertexAttribL2ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL2ui64vNV", e); }
     }
 
-    public void VertexAttribL3ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL3ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL3ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3ui64vNV");
         try { Handles.MH_glVertexAttribL3ui64vNV.invokeExact(handles.PFN_glVertexAttribL3ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL3ui64vNV", e); }
     }
 
-    public void VertexAttribL4ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
+    public void VertexAttribL4ui64vNV(@CType("GLuint") int index, @CType("const GLuint64EXT *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL4ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4ui64vNV");
         try { Handles.MH_glVertexAttribL4ui64vNV.invokeExact(handles.PFN_glVertexAttribL4ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4ui64vNV", e); }
     }
 
-    public void GetVertexAttribLi64vNV(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribLi64vNV(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribLi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLi64vNV");
         try { Handles.MH_glGetVertexAttribLi64vNV.invokeExact(handles.PFN_glGetVertexAttribLi64vNV, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLi64vNV", e); }
     }
 
-    public void GetVertexAttribLui64vNV(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
+    public void GetVertexAttribLui64vNV(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribLui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vNV");
         try { Handles.MH_glGetVertexAttribLui64vNV.invokeExact(handles.PFN_glGetVertexAttribLui64vNV, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLui64vNV", e); }

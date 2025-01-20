@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### surfaceFormat
-/// [Byte offset][#OFFSET_surfaceFormat] - [Memory layout][#ML_surfaceFormat] - [Getter][#surfaceFormat()] - [Setter][#surfaceFormat(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_surfaceFormat] - [Memory layout][#ML_surfaceFormat] - [Getter][#surfaceFormat()] - [Setter][#surfaceFormat(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,7 +49,7 @@ public sealed class VkSurfaceFormat2KHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `surfaceFormat`.
     public static final long OFFSET_surfaceFormat = LAYOUT.byteOffset(PathElement.groupElement("surfaceFormat"));
@@ -99,7 +99,7 @@ public sealed class VkSurfaceFormat2KHR extends Struct {
     /// Allocates a `VkSurfaceFormat2KHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSurfaceFormat2KHR`
-    public static VkSurfaceFormat2KHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment surfaceFormat) { return alloc(allocator).sType(sType).pNext(pNext).surfaceFormat(surfaceFormat); }
+    public static VkSurfaceFormat2KHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkSurfaceFormatKHR") MemorySegment surfaceFormat) { return alloc(allocator).sType(sType).pNext(pNext).surfaceFormat(surfaceFormat); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -136,48 +136,48 @@ public sealed class VkSurfaceFormat2KHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSurfaceFormat2KHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkSurfaceFormat2KHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkSurfaceFormat2KHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkSurfaceFormat2KHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceFormat2KHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(this.segment(), value); return this; }
+    public VkSurfaceFormat2KHR pNext(@CType("void *") MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `surfaceFormat` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment get_surfaceFormat(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_surfaceFormat, index), ML_surfaceFormat); }
+    public static @CType("VkSurfaceFormatKHR") MemorySegment get_surfaceFormat(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_surfaceFormat, index), ML_surfaceFormat); }
     /// {@return `surfaceFormat`}
     /// @param segment the segment of the struct
-    public static @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment get_surfaceFormat(MemorySegment segment) { return VkSurfaceFormat2KHR.get_surfaceFormat(segment, 0L); }
+    public static @CType("VkSurfaceFormatKHR") MemorySegment get_surfaceFormat(MemorySegment segment) { return VkSurfaceFormat2KHR.get_surfaceFormat(segment, 0L); }
     /// {@return `surfaceFormat`}
-    public @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment surfaceFormat() { return VkSurfaceFormat2KHR.get_surfaceFormat(this.segment()); }
+    public @CType("VkSurfaceFormatKHR") MemorySegment surfaceFormat() { return VkSurfaceFormat2KHR.get_surfaceFormat(this.segment()); }
     /// Sets `surfaceFormat` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_surfaceFormat(MemorySegment segment, long index, @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_surfaceFormat, index), ML_surfaceFormat.byteSize()); }
+    public static void set_surfaceFormat(MemorySegment segment, long index, @CType("VkSurfaceFormatKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_surfaceFormat, index), ML_surfaceFormat.byteSize()); }
     /// Sets `surfaceFormat` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_surfaceFormat(MemorySegment segment, @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(segment, 0L, value); }
+    public static void set_surfaceFormat(MemorySegment segment, @CType("VkSurfaceFormatKHR") MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(segment, 0L, value); }
     /// Sets `surfaceFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceFormat2KHR surfaceFormat(@CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(this.segment(), value); return this; }
+    public VkSurfaceFormat2KHR surfaceFormat(@CType("VkSurfaceFormatKHR") MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(this.segment(), value); return this; }
 
     /// A buffer of [VkSurfaceFormat2KHR].
     public static final class Buffer extends VkSurfaceFormat2KHR {
@@ -212,21 +212,21 @@ public sealed class VkSurfaceFormat2KHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSurfaceFormat2KHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkSurfaceFormat2KHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkSurfaceFormat2KHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `surfaceFormat` at the given index}
         /// @param index the index
-        public @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment surfaceFormatAt(long index) { return VkSurfaceFormat2KHR.get_surfaceFormat(this.segment(), index); }
+        public @CType("VkSurfaceFormatKHR") MemorySegment surfaceFormatAt(long index) { return VkSurfaceFormat2KHR.get_surfaceFormat(this.segment(), index); }
         /// Sets `surfaceFormat` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer surfaceFormatAt(long index, @CType("VkSurfaceFormatKHR") java.lang.foreign.MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(this.segment(), index, value); return this; }
+        public Buffer surfaceFormatAt(long index, @CType("VkSurfaceFormatKHR") MemorySegment value) { VkSurfaceFormat2KHR.set_surfaceFormat(this.segment(), index, value); return this; }
 
     }
 }

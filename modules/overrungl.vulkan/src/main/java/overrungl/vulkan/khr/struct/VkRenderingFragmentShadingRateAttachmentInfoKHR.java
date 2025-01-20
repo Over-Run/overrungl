@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### imageView
-/// [VarHandle][#VH_imageView] - [Getter][#imageView()] - [Setter][#imageView(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_imageView] - [Getter][#imageView()] - [Setter][#imageView(MemorySegment)]
 /// ### imageLayout
 /// [VarHandle][#VH_imageLayout] - [Getter][#imageLayout()] - [Setter][#imageLayout(int)]
 /// ### shadingRateAttachmentTexelSize
-/// [Byte offset][#OFFSET_shadingRateAttachmentTexelSize] - [Memory layout][#ML_shadingRateAttachmentTexelSize] - [Getter][#shadingRateAttachmentTexelSize()] - [Setter][#shadingRateAttachmentTexelSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_shadingRateAttachmentTexelSize] - [Memory layout][#ML_shadingRateAttachmentTexelSize] - [Getter][#shadingRateAttachmentTexelSize()] - [Setter][#shadingRateAttachmentTexelSize(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,9 +57,9 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
     /// The [VarHandle] of `imageLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_imageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout"));
@@ -111,7 +111,7 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
     /// Allocates a `VkRenderingFragmentShadingRateAttachmentInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderingFragmentShadingRateAttachmentInfoKHR`
-    public static VkRenderingFragmentShadingRateAttachmentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageView") java.lang.foreign.MemorySegment imageView, @CType("VkImageLayout") int imageLayout, @CType("VkExtent2D") java.lang.foreign.MemorySegment shadingRateAttachmentTexelSize) { return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).imageLayout(imageLayout).shadingRateAttachmentTexelSize(shadingRateAttachmentTexelSize); }
+    public static VkRenderingFragmentShadingRateAttachmentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageView") MemorySegment imageView, @CType("VkImageLayout") int imageLayout, @CType("VkExtent2D") MemorySegment shadingRateAttachmentTexelSize) { return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).imageLayout(imageLayout).shadingRateAttachmentTexelSize(shadingRateAttachmentTexelSize); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -148,48 +148,48 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR pNext(@CType("const void *") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `imageView` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageView(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_imageView.get(segment, 0L, index); }
+    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment, long index) { return (MemorySegment) VH_imageView.get(segment, 0L, index); }
     /// {@return `imageView`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageView(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(segment, 0L); }
+    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(segment, 0L); }
     /// {@return `imageView`}
-    public @CType("VkImageView") java.lang.foreign.MemorySegment imageView() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(this.segment()); }
+    public @CType("VkImageView") MemorySegment imageView() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(this.segment()); }
     /// Sets `imageView` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageView(MemorySegment segment, long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VH_imageView.set(segment, 0L, index, value); }
+    public static void set_imageView(MemorySegment segment, long index, @CType("VkImageView") MemorySegment value) { VH_imageView.set(segment, 0L, index, value); }
     /// Sets `imageView` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageView(MemorySegment segment, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(segment, 0L, value); }
+    public static void set_imageView(MemorySegment segment, @CType("VkImageView") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(segment, 0L, value); }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR imageView(@CType("VkImageView") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(this.segment(), value); return this; }
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR imageView(@CType("VkImageView") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(this.segment(), value); return this; }
 
     /// {@return `imageLayout` at the given index}
     /// @param segment the segment of the struct
@@ -217,25 +217,25 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
     /// {@return `shadingRateAttachmentTexelSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_shadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_shadingRateAttachmentTexelSize, index), ML_shadingRateAttachmentTexelSize); }
+    public static @CType("VkExtent2D") MemorySegment get_shadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_shadingRateAttachmentTexelSize, index), ML_shadingRateAttachmentTexelSize); }
     /// {@return `shadingRateAttachmentTexelSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_shadingRateAttachmentTexelSize(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_shadingRateAttachmentTexelSize(MemorySegment segment) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(segment, 0L); }
     /// {@return `shadingRateAttachmentTexelSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment shadingRateAttachmentTexelSize() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment shadingRateAttachmentTexelSize() { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(this.segment()); }
     /// Sets `shadingRateAttachmentTexelSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_shadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_shadingRateAttachmentTexelSize, index), ML_shadingRateAttachmentTexelSize.byteSize()); }
+    public static void set_shadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_shadingRateAttachmentTexelSize, index), ML_shadingRateAttachmentTexelSize.byteSize()); }
     /// Sets `shadingRateAttachmentTexelSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_shadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(segment, 0L, value); }
+    public static void set_shadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(segment, 0L, value); }
     /// Sets `shadingRateAttachmentTexelSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(this.segment(), value); return this; }
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(@CType("VkExtent2D") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(this.segment(), value); return this; }
 
     /// A buffer of [VkRenderingFragmentShadingRateAttachmentInfoKHR].
     public static final class Buffer extends VkRenderingFragmentShadingRateAttachmentInfoKHR {
@@ -270,21 +270,21 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageView` at the given index}
         /// @param index the index
-        public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(this.segment(), index); }
+        public @CType("VkImageView") MemorySegment imageViewAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_imageView(this.segment(), index); }
         /// Sets `imageView` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageViewAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(this.segment(), index, value); return this; }
+        public Buffer imageViewAt(long index, @CType("VkImageView") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_imageView(this.segment(), index, value); return this; }
 
         /// {@return `imageLayout` at the given index}
         /// @param index the index
@@ -297,12 +297,12 @@ public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Stru
 
         /// {@return `shadingRateAttachmentTexelSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment shadingRateAttachmentTexelSizeAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment shadingRateAttachmentTexelSizeAt(long index) { return VkRenderingFragmentShadingRateAttachmentInfoKHR.get_shadingRateAttachmentTexelSize(this.segment(), index); }
         /// Sets `shadingRateAttachmentTexelSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer shadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        public Buffer shadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkRenderingFragmentShadingRateAttachmentInfoKHR.set_shadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
 
     }
 }

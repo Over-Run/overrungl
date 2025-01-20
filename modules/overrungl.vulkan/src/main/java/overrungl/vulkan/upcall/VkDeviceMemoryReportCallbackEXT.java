@@ -31,14 +31,14 @@ public interface VkDeviceMemoryReportCallbackEXT extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkDeviceMemoryReportCallbackEXT.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("const VkDeviceMemoryReportCallbackDataEXT *") java.lang.foreign.MemorySegment pCallbackData, @CType("void *") java.lang.foreign.MemorySegment pUserData);
+    @CType("void") void invoke(@CType("const VkDeviceMemoryReportCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("const VkDeviceMemoryReportCallbackDataEXT *") java.lang.foreign.MemorySegment pCallbackData, @CType("void *") java.lang.foreign.MemorySegment pUserData) {
+    static @CType("void") void invoke(MemorySegment stub, @CType("const VkDeviceMemoryReportCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData) {
         try { HANDLE.invokeExact(stub, pCallbackData, pUserData); }
         catch (Throwable e) { throw new RuntimeException("error in VkDeviceMemoryReportCallbackEXT::invoke (static invoker)", e); }
     }

@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### formatProperties
-/// [Byte offset][#OFFSET_formatProperties] - [Memory layout][#ML_formatProperties] - [Getter][#formatProperties()] - [Setter][#formatProperties(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_formatProperties] - [Memory layout][#ML_formatProperties] - [Getter][#formatProperties()] - [Setter][#formatProperties(MemorySegment)]
 /// ### imageMipTailFirstLod
 /// [VarHandle][#VH_imageMipTailFirstLod] - [Getter][#imageMipTailFirstLod()] - [Setter][#imageMipTailFirstLod(int)]
 /// ### imageMipTailSize
@@ -111,7 +111,7 @@ public sealed class VkSparseImageMemoryRequirements extends Struct {
     /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatProperties, @CType("uint32_t") int imageMipTailFirstLod, @CType("VkDeviceSize") long imageMipTailSize, @CType("VkDeviceSize") long imageMipTailOffset, @CType("VkDeviceSize") long imageMipTailStride) { return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize).imageMipTailOffset(imageMipTailOffset).imageMipTailStride(imageMipTailStride); }
+    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, @CType("VkSparseImageFormatProperties") MemorySegment formatProperties, @CType("uint32_t") int imageMipTailFirstLod, @CType("VkDeviceSize") long imageMipTailSize, @CType("VkDeviceSize") long imageMipTailOffset, @CType("VkDeviceSize") long imageMipTailStride) { return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize).imageMipTailOffset(imageMipTailOffset).imageMipTailStride(imageMipTailStride); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -125,25 +125,25 @@ public sealed class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `formatProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment get_formatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties); }
+    public static @CType("VkSparseImageFormatProperties") MemorySegment get_formatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties); }
     /// {@return `formatProperties`}
     /// @param segment the segment of the struct
-    public static @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment get_formatProperties(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_formatProperties(segment, 0L); }
+    public static @CType("VkSparseImageFormatProperties") MemorySegment get_formatProperties(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_formatProperties(segment, 0L); }
     /// {@return `formatProperties`}
-    public @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatProperties() { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment()); }
+    public @CType("VkSparseImageFormatProperties") MemorySegment formatProperties() { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment()); }
     /// Sets `formatProperties` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_formatProperties(MemorySegment segment, long index, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties.byteSize()); }
+    public static void set_formatProperties(MemorySegment segment, long index, @CType("VkSparseImageFormatProperties") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties.byteSize()); }
     /// Sets `formatProperties` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_formatProperties(MemorySegment segment, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(segment, 0L, value); }
+    public static void set_formatProperties(MemorySegment segment, @CType("VkSparseImageFormatProperties") MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(segment, 0L, value); }
     /// Sets `formatProperties` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseImageMemoryRequirements formatProperties(@CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), value); return this; }
+    public VkSparseImageMemoryRequirements formatProperties(@CType("VkSparseImageFormatProperties") MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), value); return this; }
 
     /// {@return `imageMipTailFirstLod` at the given index}
     /// @param segment the segment of the struct
@@ -261,12 +261,12 @@ public sealed class VkSparseImageMemoryRequirements extends Struct {
 
         /// {@return `formatProperties` at the given index}
         /// @param index the index
-        public @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatPropertiesAt(long index) { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment(), index); }
+        public @CType("VkSparseImageFormatProperties") MemorySegment formatPropertiesAt(long index) { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment(), index); }
         /// Sets `formatProperties` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer formatPropertiesAt(long index, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), index, value); return this; }
+        public Buffer formatPropertiesAt(long index, @CType("VkSparseImageFormatProperties") MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), index, value); return this; }
 
         /// {@return `imageMipTailFirstLod` at the given index}
         /// @param index the index

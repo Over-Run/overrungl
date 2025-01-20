@@ -259,19 +259,19 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glBlendEquation", e); }
     }
 
-    public void ColorTable(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment table) {
+    public void ColorTable(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment table) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTable)) throw new SymbolNotFoundError("Symbol not found: glColorTable");
         try { Handles.MH_glColorTable.invokeExact(handles.PFN_glColorTable, target, internalformat, width, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTable", e); }
     }
 
-    public void ColorTableParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ColorTableParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTableParameterfv)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameterfv");
         try { Handles.MH_glColorTableParameterfv.invokeExact(handles.PFN_glColorTableParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterfv", e); }
     }
 
-    public void ColorTableParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void ColorTableParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorTableParameteriv)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameteriv");
         try { Handles.MH_glColorTableParameteriv.invokeExact(handles.PFN_glColorTableParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glColorTableParameteriv", e); }
@@ -283,25 +283,25 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glCopyColorTable", e); }
     }
 
-    public void GetColorTable(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment table) {
+    public void GetColorTable(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment table) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTable)) throw new SymbolNotFoundError("Symbol not found: glGetColorTable");
         try { Handles.MH_glGetColorTable.invokeExact(handles.PFN_glGetColorTable, target, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTable", e); }
     }
 
-    public void GetColorTableParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetColorTableParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTableParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfv");
         try { Handles.MH_glGetColorTableParameterfv.invokeExact(handles.PFN_glGetColorTableParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfv", e); }
     }
 
-    public void GetColorTableParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetColorTableParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetColorTableParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameteriv");
         try { Handles.MH_glGetColorTableParameteriv.invokeExact(handles.PFN_glGetColorTableParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameteriv", e); }
     }
 
-    public void ColorSubTable(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLsizei") int count, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
+    public void ColorSubTable(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLsizei") int count, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glColorSubTable)) throw new SymbolNotFoundError("Symbol not found: glColorSubTable");
         try { Handles.MH_glColorSubTable.invokeExact(handles.PFN_glColorSubTable, target, start, count, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in glColorSubTable", e); }
@@ -313,13 +313,13 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glCopyColorSubTable", e); }
     }
 
-    public void ConvolutionFilter1D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment image) {
+    public void ConvolutionFilter1D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment image) {
         if (Unmarshal.isNullPointer(handles.PFN_glConvolutionFilter1D)) throw new SymbolNotFoundError("Symbol not found: glConvolutionFilter1D");
         try { Handles.MH_glConvolutionFilter1D.invokeExact(handles.PFN_glConvolutionFilter1D, target, internalformat, width, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionFilter1D", e); }
     }
 
-    public void ConvolutionFilter2D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment image) {
+    public void ConvolutionFilter2D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment image) {
         if (Unmarshal.isNullPointer(handles.PFN_glConvolutionFilter2D)) throw new SymbolNotFoundError("Symbol not found: glConvolutionFilter2D");
         try { Handles.MH_glConvolutionFilter2D.invokeExact(handles.PFN_glConvolutionFilter2D, target, internalformat, width, height, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionFilter2D", e); }
@@ -331,7 +331,7 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterf", e); }
     }
 
-    public void ConvolutionParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void ConvolutionParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glConvolutionParameterfv)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterfv");
         try { Handles.MH_glConvolutionParameterfv.invokeExact(handles.PFN_glConvolutionParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterfv", e); }
@@ -343,7 +343,7 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameteri", e); }
     }
 
-    public void ConvolutionParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void ConvolutionParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glConvolutionParameteriv)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameteriv");
         try { Handles.MH_glConvolutionParameteriv.invokeExact(handles.PFN_glConvolutionParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameteriv", e); }
@@ -361,67 +361,67 @@ public final class GLARBImaging {
         catch (Throwable e) { throw new RuntimeException("error in glCopyConvolutionFilter2D", e); }
     }
 
-    public void GetConvolutionFilter(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment image) {
+    public void GetConvolutionFilter(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment image) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetConvolutionFilter)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionFilter");
         try { Handles.MH_glGetConvolutionFilter.invokeExact(handles.PFN_glGetConvolutionFilter, target, format, type, image); }
         catch (Throwable e) { throw new RuntimeException("error in glGetConvolutionFilter", e); }
     }
 
-    public void GetConvolutionParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetConvolutionParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetConvolutionParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameterfv");
         try { Handles.MH_glGetConvolutionParameterfv.invokeExact(handles.PFN_glGetConvolutionParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetConvolutionParameterfv", e); }
     }
 
-    public void GetConvolutionParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetConvolutionParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetConvolutionParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameteriv");
         try { Handles.MH_glGetConvolutionParameteriv.invokeExact(handles.PFN_glGetConvolutionParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetConvolutionParameteriv", e); }
     }
 
-    public void GetSeparableFilter(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment row, @CType("void*") java.lang.foreign.MemorySegment column, @CType("void*") java.lang.foreign.MemorySegment span) {
+    public void GetSeparableFilter(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment row, @CType("void*") MemorySegment column, @CType("void*") MemorySegment span) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetSeparableFilter)) throw new SymbolNotFoundError("Symbol not found: glGetSeparableFilter");
         try { Handles.MH_glGetSeparableFilter.invokeExact(handles.PFN_glGetSeparableFilter, target, format, type, row, column, span); }
         catch (Throwable e) { throw new RuntimeException("error in glGetSeparableFilter", e); }
     }
 
-    public void SeparableFilter2D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment row, @CType("const void *") java.lang.foreign.MemorySegment column) {
+    public void SeparableFilter2D(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment row, @CType("const void *") MemorySegment column) {
         if (Unmarshal.isNullPointer(handles.PFN_glSeparableFilter2D)) throw new SymbolNotFoundError("Symbol not found: glSeparableFilter2D");
         try { Handles.MH_glSeparableFilter2D.invokeExact(handles.PFN_glSeparableFilter2D, target, internalformat, width, height, format, type, row, column); }
         catch (Throwable e) { throw new RuntimeException("error in glSeparableFilter2D", e); }
     }
 
-    public void GetHistogram(@CType("GLenum") int target, @CType("GLboolean") boolean reset, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment values) {
+    public void GetHistogram(@CType("GLenum") int target, @CType("GLboolean") boolean reset, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetHistogram)) throw new SymbolNotFoundError("Symbol not found: glGetHistogram");
         try { Handles.MH_glGetHistogram.invokeExact(handles.PFN_glGetHistogram, target, reset, format, type, values); }
         catch (Throwable e) { throw new RuntimeException("error in glGetHistogram", e); }
     }
 
-    public void GetHistogramParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetHistogramParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetHistogramParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterfv");
         try { Handles.MH_glGetHistogramParameterfv.invokeExact(handles.PFN_glGetHistogramParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetHistogramParameterfv", e); }
     }
 
-    public void GetHistogramParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetHistogramParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetHistogramParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameteriv");
         try { Handles.MH_glGetHistogramParameteriv.invokeExact(handles.PFN_glGetHistogramParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetHistogramParameteriv", e); }
     }
 
-    public void GetMinmax(@CType("GLenum") int target, @CType("GLboolean") boolean reset, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment values) {
+    public void GetMinmax(@CType("GLenum") int target, @CType("GLboolean") boolean reset, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") MemorySegment values) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMinmax)) throw new SymbolNotFoundError("Symbol not found: glGetMinmax");
         try { Handles.MH_glGetMinmax.invokeExact(handles.PFN_glGetMinmax, target, reset, format, type, values); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMinmax", e); }
     }
 
-    public void GetMinmaxParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetMinmaxParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMinmaxParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetMinmaxParameterfv");
         try { Handles.MH_glGetMinmaxParameterfv.invokeExact(handles.PFN_glGetMinmaxParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMinmaxParameterfv", e); }
     }
 
-    public void GetMinmaxParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetMinmaxParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMinmaxParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetMinmaxParameteriv");
         try { Handles.MH_glGetMinmaxParameteriv.invokeExact(handles.PFN_glGetMinmaxParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMinmaxParameteriv", e); }

@@ -45,9 +45,9 @@ public final class GLATIMapObjectBuffer {
         this.handles = new Handles(func);
     }
 
-    public @CType("void*") java.lang.foreign.MemorySegment MapObjectBufferATI(@CType("GLuint") int buffer) {
+    public @CType("void*") MemorySegment MapObjectBufferATI(@CType("GLuint") int buffer) {
         if (Unmarshal.isNullPointer(handles.PFN_glMapObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glMapObjectBufferATI");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glMapObjectBufferATI.invokeExact(handles.PFN_glMapObjectBufferATI, buffer); }
+        try { return (MemorySegment) Handles.MH_glMapObjectBufferATI.invokeExact(handles.PFN_glMapObjectBufferATI, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in glMapObjectBufferATI", e); }
     }
 

@@ -49,13 +49,13 @@ public final class GLSGISSharpenTexture {
         this.handles = new Handles(func);
     }
 
-    public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
+    public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment points) {
         if (Unmarshal.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
         try { Handles.MH_glSharpenTexFuncSGIS.invokeExact(handles.PFN_glSharpenTexFuncSGIS, target, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
     }
 
-    public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
+    public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") MemorySegment points) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
         try { Handles.MH_glGetSharpenTexFuncSGIS.invokeExact(handles.PFN_glGetSharpenTexFuncSGIS, target, points); }
         catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }

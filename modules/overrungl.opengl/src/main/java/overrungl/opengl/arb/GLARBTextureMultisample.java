@@ -86,7 +86,7 @@ public final class GLARBTextureMultisample {
         catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisample", e); }
     }
 
-    public void GetMultisamplefv(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
+    public void GetMultisamplefv(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") MemorySegment val) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv");
         try { Handles.MH_glGetMultisamplefv.invokeExact(handles.PFN_glGetMultisamplefv, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefv", e); }

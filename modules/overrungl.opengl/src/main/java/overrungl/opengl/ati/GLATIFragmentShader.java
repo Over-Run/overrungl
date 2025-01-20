@@ -275,7 +275,7 @@ public final class GLATIFragmentShader {
         catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp3ATI", e); }
     }
 
-    public void SetFragmentShaderConstantATI(@CType("GLuint") int dst, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
+    public void SetFragmentShaderConstantATI(@CType("GLuint") int dst, @CType("const GLfloat *") MemorySegment value) {
         if (Unmarshal.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new SymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");
         try { Handles.MH_glSetFragmentShaderConstantATI.invokeExact(handles.PFN_glSetFragmentShaderConstantATI, dst, value); }
         catch (Throwable e) { throw new RuntimeException("error in glSetFragmentShaderConstantATI", e); }

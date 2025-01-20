@@ -52,7 +52,7 @@ public final class GLMESAFramebufferFlipY {
         catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
     }
 
-    public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
         try { Handles.MH_glGetFramebufferParameterivMESA.invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }

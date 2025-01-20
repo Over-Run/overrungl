@@ -25,7 +25,7 @@ public final class ALEXTFOLDBACK {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    public static final java.lang.String AL_EXT_FOLDBACK_NAME = "AL_EXT_FOLDBACK";
+    public static final String AL_EXT_FOLDBACK_NAME = "AL_EXT_FOLDBACK";
     public static final int AL_FOLDBACK_EVENT_BLOCK = 0x4112;
     public static final int AL_FOLDBACK_EVENT_START = 0x4111;
     public static final int AL_FOLDBACK_EVENT_STOP = 0x4113;
@@ -65,7 +65,7 @@ public final class ALEXTFOLDBACK {
         }
     }
 
-    public static void alRequestFoldbackStart(@CType("ALenum") int mode, @CType("ALsizei") int count, @CType("ALsizei") int length, @CType("ALfloat *") java.lang.foreign.MemorySegment mem, @CType("LPALFOLDBACKCALLBACK") java.lang.foreign.MemorySegment callback) {
+    public static void alRequestFoldbackStart(@CType("ALenum") int mode, @CType("ALsizei") int count, @CType("ALsizei") int length, @CType("ALfloat *") MemorySegment mem, @CType("LPALFOLDBACKCALLBACK") MemorySegment callback) {
         if (Handles.MH_alRequestFoldbackStart == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStart");
         try {
             Handles.MH_alRequestFoldbackStart.invokeExact(Handles.get().PFN_alRequestFoldbackStart, mode, count, length, mem, callback);

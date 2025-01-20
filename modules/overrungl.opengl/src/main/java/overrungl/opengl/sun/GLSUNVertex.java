@@ -203,7 +203,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glColor4ubVertex2fSUN", e); }
     }
 
-    public void Color4ubVertex2fvSUN(@CType("const GLubyte *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Color4ubVertex2fvSUN(@CType("const GLubyte *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor4ubVertex2fvSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4ubVertex2fvSUN");
         try { Handles.MH_glColor4ubVertex2fvSUN.invokeExact(handles.PFN_glColor4ubVertex2fvSUN, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glColor4ubVertex2fvSUN", e); }
@@ -215,7 +215,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glColor4ubVertex3fSUN", e); }
     }
 
-    public void Color4ubVertex3fvSUN(@CType("const GLubyte *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Color4ubVertex3fvSUN(@CType("const GLubyte *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor4ubVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4ubVertex3fvSUN");
         try { Handles.MH_glColor4ubVertex3fvSUN.invokeExact(handles.PFN_glColor4ubVertex3fvSUN, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glColor4ubVertex3fvSUN", e); }
@@ -227,7 +227,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glColor3fVertex3fSUN", e); }
     }
 
-    public void Color3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Color3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glColor3fVertex3fvSUN");
         try { Handles.MH_glColor3fVertex3fvSUN.invokeExact(handles.PFN_glColor3fVertex3fvSUN, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glColor3fVertex3fvSUN", e); }
@@ -239,7 +239,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glNormal3fVertex3fSUN", e); }
     }
 
-    public void Normal3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Normal3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glNormal3fVertex3fvSUN");
         try { Handles.MH_glNormal3fVertex3fvSUN.invokeExact(handles.PFN_glNormal3fVertex3fvSUN, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glNormal3fVertex3fvSUN", e); }
@@ -251,7 +251,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glColor4fNormal3fVertex3fSUN", e); }
     }
 
-    public void Color4fNormal3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void Color4fNormal3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glColor4fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4fNormal3fVertex3fvSUN");
         try { Handles.MH_glColor4fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glColor4fNormal3fVertex3fvSUN, c, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glColor4fNormal3fVertex3fvSUN", e); }
@@ -263,7 +263,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fVertex3fSUN", e); }
     }
 
-    public void TexCoord2fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord2fVertex3fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fVertex3fvSUN");
         try { Handles.MH_glTexCoord2fVertex3fvSUN.invokeExact(handles.PFN_glTexCoord2fVertex3fvSUN, tc, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fVertex3fvSUN", e); }
@@ -275,7 +275,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4fVertex4fSUN", e); }
     }
 
-    public void TexCoord4fVertex4fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord4fVertex4fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord4fVertex4fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4fVertex4fvSUN");
         try { Handles.MH_glTexCoord4fVertex4fvSUN.invokeExact(handles.PFN_glTexCoord4fVertex4fvSUN, tc, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4fVertex4fvSUN", e); }
@@ -287,7 +287,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor4ubVertex3fSUN", e); }
     }
 
-    public void TexCoord2fColor4ubVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLubyte *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord2fColor4ubVertex3fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLubyte *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2fColor4ubVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor4ubVertex3fvSUN");
         try { Handles.MH_glTexCoord2fColor4ubVertex3fvSUN.invokeExact(handles.PFN_glTexCoord2fColor4ubVertex3fvSUN, tc, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor4ubVertex3fvSUN", e); }
@@ -299,7 +299,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor3fVertex3fSUN", e); }
     }
 
-    public void TexCoord2fColor3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord2fColor3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2fColor3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor3fVertex3fvSUN");
         try { Handles.MH_glTexCoord2fColor3fVertex3fvSUN.invokeExact(handles.PFN_glTexCoord2fColor3fVertex3fvSUN, tc, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor3fVertex3fvSUN", e); }
@@ -311,7 +311,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fNormal3fVertex3fSUN", e); }
     }
 
-    public void TexCoord2fNormal3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord2fNormal3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fNormal3fVertex3fvSUN");
         try { Handles.MH_glTexCoord2fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glTexCoord2fNormal3fVertex3fvSUN, tc, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fNormal3fVertex3fvSUN", e); }
@@ -323,7 +323,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor4fNormal3fVertex3fSUN", e); }
     }
 
-    public void TexCoord2fColor4fNormal3fVertex3fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord2fColor4fNormal3fVertex3fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2fColor4fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor4fNormal3fVertex3fvSUN");
         try { Handles.MH_glTexCoord2fColor4fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glTexCoord2fColor4fNormal3fVertex3fvSUN, tc, c, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord2fColor4fNormal3fVertex3fvSUN", e); }
@@ -335,7 +335,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4fColor4fNormal3fVertex4fSUN", e); }
     }
 
-    public void TexCoord4fColor4fNormal3fVertex4fvSUN(@CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void TexCoord4fColor4fNormal3fVertex4fvSUN(@CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glTexCoord4fColor4fNormal3fVertex4fvSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4fColor4fNormal3fVertex4fvSUN");
         try { Handles.MH_glTexCoord4fColor4fNormal3fVertex4fvSUN.invokeExact(handles.PFN_glTexCoord4fColor4fNormal3fVertex4fvSUN, tc, c, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glTexCoord4fColor4fNormal3fVertex4fvSUN", e); }
@@ -347,7 +347,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiVertex3fvSUN, rc, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiVertex3fvSUN", e); }
@@ -359,7 +359,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor4ubVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiColor4ubVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLubyte *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiColor4ubVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLubyte *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiColor4ubVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor4ubVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiColor4ubVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiColor4ubVertex3fvSUN, rc, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor4ubVertex3fvSUN", e); }
@@ -371,7 +371,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor3fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiColor3fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiColor3fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiColor3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor3fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiColor3fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiColor3fVertex3fvSUN, rc, c, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor3fVertex3fvSUN", e); }
@@ -383,7 +383,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiNormal3fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiNormal3fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiNormal3fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiNormal3fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiNormal3fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiNormal3fVertex3fvSUN, rc, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiNormal3fVertex3fvSUN", e); }
@@ -395,7 +395,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor4fNormal3fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiColor4fNormal3fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiColor4fNormal3fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiColor4fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiColor4fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiColor4fNormal3fVertex3fvSUN, rc, c, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiColor4fNormal3fVertex3fvSUN", e); }
@@ -407,7 +407,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiTexCoord2fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiTexCoord2fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiTexCoord2fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiTexCoord2fVertex3fvSUN, rc, tc, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fVertex3fvSUN", e); }
@@ -419,7 +419,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, rc, tc, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN", e); }
@@ -431,7 +431,7 @@ public final class GLSUNVertex {
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN", e); }
     }
 
-    public void ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment rc, @CType("const GLfloat *") java.lang.foreign.MemorySegment tc, @CType("const GLfloat *") java.lang.foreign.MemorySegment c, @CType("const GLfloat *") java.lang.foreign.MemorySegment n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
+    public void ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(@CType("const GLuint *") MemorySegment rc, @CType("const GLfloat *") MemorySegment tc, @CType("const GLfloat *") MemorySegment c, @CType("const GLfloat *") MemorySegment n, @CType("const GLfloat *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
         try { Handles.MH_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN.invokeExact(handles.PFN_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN, rc, tc, c, n, v); }
         catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN", e); }

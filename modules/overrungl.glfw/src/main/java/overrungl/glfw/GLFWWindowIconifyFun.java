@@ -31,10 +31,10 @@ public interface GLFWWindowIconifyFun extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowIconifyFun.class, "invoke", DESCRIPTOR);
 
     /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean iconified);
+    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") boolean iconified);
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int iconified) {
+    default void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int iconified) {
         invoke(window, iconified != GLFW.GLFW_FALSE);
     }
 
@@ -43,7 +43,7 @@ public interface GLFWWindowIconifyFun extends Upcall {
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int iconified) {
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int iconified) {
         try { HANDLE.invokeExact(stub, window, iconified); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowIconifyFun::invoke (static invoker)", e); }
     }

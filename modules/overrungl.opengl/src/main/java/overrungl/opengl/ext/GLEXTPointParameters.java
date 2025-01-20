@@ -55,7 +55,7 @@ public final class GLEXTPointParameters {
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterfEXT", e); }
     }
 
-    public void PointParameterfvEXT(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void PointParameterfvEXT(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
         try { Handles.MH_glPointParameterfvEXT.invokeExact(handles.PFN_glPointParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvEXT", e); }

@@ -88,49 +88,49 @@ public final class GLAMDPerformanceMonitor {
         this.handles = new Handles(func);
     }
 
-    public void GetPerfMonitorGroupsAMD(@CType("GLint *") java.lang.foreign.MemorySegment numGroups, @CType("GLsizei") int groupsSize, @CType("GLuint *") java.lang.foreign.MemorySegment groups) {
+    public void GetPerfMonitorGroupsAMD(@CType("GLint *") MemorySegment numGroups, @CType("GLsizei") int groupsSize, @CType("GLuint *") MemorySegment groups) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorGroupsAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupsAMD");
         try { Handles.MH_glGetPerfMonitorGroupsAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupsAMD, numGroups, groupsSize, groups); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorGroupsAMD", e); }
     }
 
-    public void GetPerfMonitorCountersAMD(@CType("GLuint") int group, @CType("GLint *") java.lang.foreign.MemorySegment numCounters, @CType("GLint *") java.lang.foreign.MemorySegment maxActiveCounters, @CType("GLsizei") int counterSize, @CType("GLuint *") java.lang.foreign.MemorySegment counters) {
+    public void GetPerfMonitorCountersAMD(@CType("GLuint") int group, @CType("GLint *") MemorySegment numCounters, @CType("GLint *") MemorySegment maxActiveCounters, @CType("GLsizei") int counterSize, @CType("GLuint *") MemorySegment counters) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorCountersAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCountersAMD");
         try { Handles.MH_glGetPerfMonitorCountersAMD.invokeExact(handles.PFN_glGetPerfMonitorCountersAMD, group, numCounters, maxActiveCounters, counterSize, counters); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorCountersAMD", e); }
     }
 
-    public void GetPerfMonitorGroupStringAMD(@CType("GLuint") int group, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment groupString) {
+    public void GetPerfMonitorGroupStringAMD(@CType("GLuint") int group, @CType("GLsizei") int bufSize, @CType("GLsizei *") MemorySegment length, @CType("GLchar *") MemorySegment groupString) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorGroupStringAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupStringAMD");
         try { Handles.MH_glGetPerfMonitorGroupStringAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupStringAMD, group, bufSize, length, groupString); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorGroupStringAMD", e); }
     }
 
-    public void GetPerfMonitorCounterStringAMD(@CType("GLuint") int group, @CType("GLuint") int counter, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment counterString) {
+    public void GetPerfMonitorCounterStringAMD(@CType("GLuint") int group, @CType("GLuint") int counter, @CType("GLsizei") int bufSize, @CType("GLsizei *") MemorySegment length, @CType("GLchar *") MemorySegment counterString) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorCounterStringAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterStringAMD");
         try { Handles.MH_glGetPerfMonitorCounterStringAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterStringAMD, group, counter, bufSize, length, counterString); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorCounterStringAMD", e); }
     }
 
-    public void GetPerfMonitorCounterInfoAMD(@CType("GLuint") int group, @CType("GLuint") int counter, @CType("GLenum") int pname, @CType("void*") java.lang.foreign.MemorySegment data) {
+    public void GetPerfMonitorCounterInfoAMD(@CType("GLuint") int group, @CType("GLuint") int counter, @CType("GLenum") int pname, @CType("void*") MemorySegment data) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorCounterInfoAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterInfoAMD");
         try { Handles.MH_glGetPerfMonitorCounterInfoAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterInfoAMD, group, counter, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorCounterInfoAMD", e); }
     }
 
-    public void GenPerfMonitorsAMD(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment monitors) {
+    public void GenPerfMonitorsAMD(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment monitors) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenPerfMonitorsAMD)) throw new SymbolNotFoundError("Symbol not found: glGenPerfMonitorsAMD");
         try { Handles.MH_glGenPerfMonitorsAMD.invokeExact(handles.PFN_glGenPerfMonitorsAMD, n, monitors); }
         catch (Throwable e) { throw new RuntimeException("error in glGenPerfMonitorsAMD", e); }
     }
 
-    public void DeletePerfMonitorsAMD(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment monitors) {
+    public void DeletePerfMonitorsAMD(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment monitors) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeletePerfMonitorsAMD)) throw new SymbolNotFoundError("Symbol not found: glDeletePerfMonitorsAMD");
         try { Handles.MH_glDeletePerfMonitorsAMD.invokeExact(handles.PFN_glDeletePerfMonitorsAMD, n, monitors); }
         catch (Throwable e) { throw new RuntimeException("error in glDeletePerfMonitorsAMD", e); }
     }
 
-    public void SelectPerfMonitorCountersAMD(@CType("GLuint") int monitor, @CType("GLboolean") boolean enable, @CType("GLuint") int group, @CType("GLint") int numCounters, @CType("GLuint *") java.lang.foreign.MemorySegment counterList) {
+    public void SelectPerfMonitorCountersAMD(@CType("GLuint") int monitor, @CType("GLboolean") boolean enable, @CType("GLuint") int group, @CType("GLint") int numCounters, @CType("GLuint *") MemorySegment counterList) {
         if (Unmarshal.isNullPointer(handles.PFN_glSelectPerfMonitorCountersAMD)) throw new SymbolNotFoundError("Symbol not found: glSelectPerfMonitorCountersAMD");
         try { Handles.MH_glSelectPerfMonitorCountersAMD.invokeExact(handles.PFN_glSelectPerfMonitorCountersAMD, monitor, enable, group, numCounters, counterList); }
         catch (Throwable e) { throw new RuntimeException("error in glSelectPerfMonitorCountersAMD", e); }
@@ -148,7 +148,7 @@ public final class GLAMDPerformanceMonitor {
         catch (Throwable e) { throw new RuntimeException("error in glEndPerfMonitorAMD", e); }
     }
 
-    public void GetPerfMonitorCounterDataAMD(@CType("GLuint") int monitor, @CType("GLenum") int pname, @CType("GLsizei") int dataSize, @CType("GLuint *") java.lang.foreign.MemorySegment data, @CType("GLint *") java.lang.foreign.MemorySegment bytesWritten) {
+    public void GetPerfMonitorCounterDataAMD(@CType("GLuint") int monitor, @CType("GLenum") int pname, @CType("GLsizei") int dataSize, @CType("GLuint *") MemorySegment data, @CType("GLint *") MemorySegment bytesWritten) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetPerfMonitorCounterDataAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterDataAMD");
         try { Handles.MH_glGetPerfMonitorCounterDataAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterDataAMD, monitor, pname, dataSize, data, bytesWritten); }
         catch (Throwable e) { throw new RuntimeException("error in glGetPerfMonitorCounterDataAMD", e); }

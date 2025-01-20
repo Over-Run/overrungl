@@ -52,7 +52,7 @@ public final class GLATIElementArray {
         this.handles = new Handles(func);
     }
 
-    public void ElementPointerATI(@CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void ElementPointerATI(@CType("GLenum") int type, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glElementPointerATI)) throw new SymbolNotFoundError("Symbol not found: glElementPointerATI");
         try { Handles.MH_glElementPointerATI.invokeExact(handles.PFN_glElementPointerATI, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glElementPointerATI", e); }

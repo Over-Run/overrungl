@@ -45,13 +45,13 @@ public final class GLNVBindlessMultiDrawIndirectCount {
         this.handles = new Handles(func);
     }
 
-    public void MultiDrawArraysIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
+    public void MultiDrawArraysIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV");
         try { Handles.MH_glMultiDrawArraysIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV, mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectBindlessCountNV", e); }
     }
 
-    public void MultiDrawElementsIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
+    public void MultiDrawElementsIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV");
         try { Handles.MH_glMultiDrawElementsIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV, mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectBindlessCountNV", e); }

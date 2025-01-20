@@ -48,7 +48,7 @@ public final class GLNVInternalformatSampleQuery {
         this.handles = new Handles(func);
     }
 
-    public void GetInternalformatSampleivNV(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int samples, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetInternalformatSampleivNV(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int samples, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
         try { Handles.MH_glGetInternalformatSampleivNV.invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetInternalformatSampleivNV", e); }

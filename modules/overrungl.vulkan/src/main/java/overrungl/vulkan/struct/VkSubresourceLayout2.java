@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### subresourceLayout
-/// [Byte offset][#OFFSET_subresourceLayout] - [Memory layout][#ML_subresourceLayout] - [Getter][#subresourceLayout()] - [Setter][#subresourceLayout(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_subresourceLayout] - [Memory layout][#ML_subresourceLayout] - [Getter][#subresourceLayout()] - [Setter][#subresourceLayout(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,7 +49,7 @@ public sealed class VkSubresourceLayout2 extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `subresourceLayout`.
     public static final long OFFSET_subresourceLayout = LAYOUT.byteOffset(PathElement.groupElement("subresourceLayout"));
@@ -99,7 +99,7 @@ public sealed class VkSubresourceLayout2 extends Struct {
     /// Allocates a `VkSubresourceLayout2` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubresourceLayout2`
-    public static VkSubresourceLayout2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment subresourceLayout) { return alloc(allocator).sType(sType).pNext(pNext).subresourceLayout(subresourceLayout); }
+    public static VkSubresourceLayout2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkSubresourceLayout") MemorySegment subresourceLayout) { return alloc(allocator).sType(sType).pNext(pNext).subresourceLayout(subresourceLayout); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -136,48 +136,48 @@ public sealed class VkSubresourceLayout2 extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSubresourceLayout2.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkSubresourceLayout2.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkSubresourceLayout2.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkSubresourceLayout2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkSubresourceLayout2.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubresourceLayout2 pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_pNext(this.segment(), value); return this; }
+    public VkSubresourceLayout2 pNext(@CType("void *") MemorySegment value) { VkSubresourceLayout2.set_pNext(this.segment(), value); return this; }
 
     /// {@return `subresourceLayout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment get_subresourceLayout(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_subresourceLayout, index), ML_subresourceLayout); }
+    public static @CType("VkSubresourceLayout") MemorySegment get_subresourceLayout(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_subresourceLayout, index), ML_subresourceLayout); }
     /// {@return `subresourceLayout`}
     /// @param segment the segment of the struct
-    public static @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment get_subresourceLayout(MemorySegment segment) { return VkSubresourceLayout2.get_subresourceLayout(segment, 0L); }
+    public static @CType("VkSubresourceLayout") MemorySegment get_subresourceLayout(MemorySegment segment) { return VkSubresourceLayout2.get_subresourceLayout(segment, 0L); }
     /// {@return `subresourceLayout`}
-    public @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment subresourceLayout() { return VkSubresourceLayout2.get_subresourceLayout(this.segment()); }
+    public @CType("VkSubresourceLayout") MemorySegment subresourceLayout() { return VkSubresourceLayout2.get_subresourceLayout(this.segment()); }
     /// Sets `subresourceLayout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_subresourceLayout(MemorySegment segment, long index, @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_subresourceLayout, index), ML_subresourceLayout.byteSize()); }
+    public static void set_subresourceLayout(MemorySegment segment, long index, @CType("VkSubresourceLayout") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_subresourceLayout, index), ML_subresourceLayout.byteSize()); }
     /// Sets `subresourceLayout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_subresourceLayout(MemorySegment segment, @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(segment, 0L, value); }
+    public static void set_subresourceLayout(MemorySegment segment, @CType("VkSubresourceLayout") MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(segment, 0L, value); }
     /// Sets `subresourceLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubresourceLayout2 subresourceLayout(@CType("VkSubresourceLayout") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(this.segment(), value); return this; }
+    public VkSubresourceLayout2 subresourceLayout(@CType("VkSubresourceLayout") MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(this.segment(), value); return this; }
 
     /// A buffer of [VkSubresourceLayout2].
     public static final class Buffer extends VkSubresourceLayout2 {
@@ -212,21 +212,21 @@ public sealed class VkSubresourceLayout2 extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSubresourceLayout2.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkSubresourceLayout2.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkSubresourceLayout2.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `subresourceLayout` at the given index}
         /// @param index the index
-        public @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment subresourceLayoutAt(long index) { return VkSubresourceLayout2.get_subresourceLayout(this.segment(), index); }
+        public @CType("VkSubresourceLayout") MemorySegment subresourceLayoutAt(long index) { return VkSubresourceLayout2.get_subresourceLayout(this.segment(), index); }
         /// Sets `subresourceLayout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer subresourceLayoutAt(long index, @CType("VkSubresourceLayout") java.lang.foreign.MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(this.segment(), index, value); return this; }
+        public Buffer subresourceLayoutAt(long index, @CType("VkSubresourceLayout") MemorySegment value) { VkSubresourceLayout2.set_subresourceLayout(this.segment(), index, value); return this; }
 
     }
 }

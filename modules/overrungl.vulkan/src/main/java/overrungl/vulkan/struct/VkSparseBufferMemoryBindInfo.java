@@ -26,11 +26,11 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### buffer
-/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(MemorySegment)]
 /// ### bindCount
 /// [VarHandle][#VH_bindCount] - [Getter][#bindCount()] - [Setter][#bindCount(int)]
 /// ### pBinds
-/// [VarHandle][#VH_pBinds] - [Getter][#pBinds()] - [Setter][#pBinds(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pBinds] - [Getter][#pBinds()] - [Setter][#pBinds(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -47,11 +47,11 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
         ValueLayout.JAVA_INT.withName("bindCount"),
         ValueLayout.ADDRESS.withName("pBinds")
     );
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
     /// The [VarHandle] of `bindCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_bindCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindCount"));
-    /// The [VarHandle] of `pBinds` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pBinds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pBinds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBinds"));
 
     /// Creates `VkSparseBufferMemoryBindInfo` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
     /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSparseBufferMemoryBindInfo`
-    public static VkSparseBufferMemoryBindInfo allocInit(SegmentAllocator allocator, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("uint32_t") int bindCount, @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment pBinds) { return alloc(allocator).buffer(buffer).bindCount(bindCount).pBinds(pBinds); }
+    public static VkSparseBufferMemoryBindInfo allocInit(SegmentAllocator allocator, @CType("VkBuffer") MemorySegment buffer, @CType("uint32_t") int bindCount, @CType("const VkSparseMemoryBind *") MemorySegment pBinds) { return alloc(allocator).buffer(buffer).bindCount(bindCount).pBinds(pBinds); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -111,25 +111,25 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_buffer.get(segment, 0L, index); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_buffer.get(segment, 0L, index); }
     /// {@return `buffer`}
     /// @param segment the segment of the struct
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkSparseBufferMemoryBindInfo.get_buffer(segment, 0L); }
+    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment) { return VkSparseBufferMemoryBindInfo.get_buffer(segment, 0L); }
     /// {@return `buffer`}
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkSparseBufferMemoryBindInfo.get_buffer(this.segment()); }
+    public @CType("VkBuffer") MemorySegment buffer() { return VkSparseBufferMemoryBindInfo.get_buffer(this.segment()); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
+    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(segment, 0L, value); }
+    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(segment, 0L, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseBufferMemoryBindInfo buffer(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(this.segment(), value); return this; }
+    public VkSparseBufferMemoryBindInfo buffer(@CType("VkBuffer") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(this.segment(), value); return this; }
 
     /// {@return `bindCount` at the given index}
     /// @param segment the segment of the struct
@@ -157,25 +157,25 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
     /// {@return `pBinds` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment get_pBinds(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pBinds.get(segment, 0L, index); }
+    public static @CType("const VkSparseMemoryBind *") MemorySegment get_pBinds(MemorySegment segment, long index) { return (MemorySegment) VH_pBinds.get(segment, 0L, index); }
     /// {@return `pBinds`}
     /// @param segment the segment of the struct
-    public static @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment get_pBinds(MemorySegment segment) { return VkSparseBufferMemoryBindInfo.get_pBinds(segment, 0L); }
+    public static @CType("const VkSparseMemoryBind *") MemorySegment get_pBinds(MemorySegment segment) { return VkSparseBufferMemoryBindInfo.get_pBinds(segment, 0L); }
     /// {@return `pBinds`}
-    public @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment pBinds() { return VkSparseBufferMemoryBindInfo.get_pBinds(this.segment()); }
+    public @CType("const VkSparseMemoryBind *") MemorySegment pBinds() { return VkSparseBufferMemoryBindInfo.get_pBinds(this.segment()); }
     /// Sets `pBinds` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pBinds(MemorySegment segment, long index, @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment value) { VH_pBinds.set(segment, 0L, index, value); }
+    public static void set_pBinds(MemorySegment segment, long index, @CType("const VkSparseMemoryBind *") MemorySegment value) { VH_pBinds.set(segment, 0L, index, value); }
     /// Sets `pBinds` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pBinds(MemorySegment segment, @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(segment, 0L, value); }
+    public static void set_pBinds(MemorySegment segment, @CType("const VkSparseMemoryBind *") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(segment, 0L, value); }
     /// Sets `pBinds` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseBufferMemoryBindInfo pBinds(@CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(this.segment(), value); return this; }
+    public VkSparseBufferMemoryBindInfo pBinds(@CType("const VkSparseMemoryBind *") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(this.segment(), value); return this; }
 
     /// A buffer of [VkSparseBufferMemoryBindInfo].
     public static final class Buffer extends VkSparseBufferMemoryBindInfo {
@@ -201,12 +201,12 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
 
         /// {@return `buffer` at the given index}
         /// @param index the index
-        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkSparseBufferMemoryBindInfo.get_buffer(this.segment(), index); }
+        public @CType("VkBuffer") MemorySegment bufferAt(long index) { return VkSparseBufferMemoryBindInfo.get_buffer(this.segment(), index); }
         /// Sets `buffer` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(this.segment(), index, value); return this; }
+        public Buffer bufferAt(long index, @CType("VkBuffer") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_buffer(this.segment(), index, value); return this; }
 
         /// {@return `bindCount` at the given index}
         /// @param index the index
@@ -219,12 +219,12 @@ public sealed class VkSparseBufferMemoryBindInfo extends Struct {
 
         /// {@return `pBinds` at the given index}
         /// @param index the index
-        public @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment pBindsAt(long index) { return VkSparseBufferMemoryBindInfo.get_pBinds(this.segment(), index); }
+        public @CType("const VkSparseMemoryBind *") MemorySegment pBindsAt(long index) { return VkSparseBufferMemoryBindInfo.get_pBinds(this.segment(), index); }
         /// Sets `pBinds` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pBindsAt(long index, @CType("const VkSparseMemoryBind *") java.lang.foreign.MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(this.segment(), index, value); return this; }
+        public Buffer pBindsAt(long index, @CType("const VkSparseMemoryBind *") MemorySegment value) { VkSparseBufferMemoryBindInfo.set_pBinds(this.segment(), index, value); return this; }
 
     }
 }

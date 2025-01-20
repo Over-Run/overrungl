@@ -54,7 +54,7 @@ public final class GLNVPointSprite {
         catch (Throwable e) { throw new RuntimeException("error in glPointParameteriNV", e); }
     }
 
-    public void PointParameterivNV(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void PointParameterivNV(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glPointParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameterivNV");
         try { Handles.MH_glPointParameterivNV.invokeExact(handles.PFN_glPointParameterivNV, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterivNV", e); }

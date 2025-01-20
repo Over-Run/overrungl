@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### minFragmentShadingRateAttachmentTexelSize
-/// [Byte offset][#OFFSET_minFragmentShadingRateAttachmentTexelSize] - [Memory layout][#ML_minFragmentShadingRateAttachmentTexelSize] - [Getter][#minFragmentShadingRateAttachmentTexelSize()] - [Setter][#minFragmentShadingRateAttachmentTexelSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_minFragmentShadingRateAttachmentTexelSize] - [Memory layout][#ML_minFragmentShadingRateAttachmentTexelSize] - [Getter][#minFragmentShadingRateAttachmentTexelSize()] - [Setter][#minFragmentShadingRateAttachmentTexelSize(MemorySegment)]
 /// ### maxFragmentShadingRateAttachmentTexelSize
-/// [Byte offset][#OFFSET_maxFragmentShadingRateAttachmentTexelSize] - [Memory layout][#ML_maxFragmentShadingRateAttachmentTexelSize] - [Getter][#maxFragmentShadingRateAttachmentTexelSize()] - [Setter][#maxFragmentShadingRateAttachmentTexelSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxFragmentShadingRateAttachmentTexelSize] - [Memory layout][#ML_maxFragmentShadingRateAttachmentTexelSize] - [Getter][#maxFragmentShadingRateAttachmentTexelSize()] - [Setter][#maxFragmentShadingRateAttachmentTexelSize(MemorySegment)]
 /// ### maxFragmentShadingRateAttachmentTexelSizeAspectRatio
 /// [VarHandle][#VH_maxFragmentShadingRateAttachmentTexelSizeAspectRatio] - [Getter][#maxFragmentShadingRateAttachmentTexelSizeAspectRatio()] - [Setter][#maxFragmentShadingRateAttachmentTexelSizeAspectRatio(int)]
 /// ### primitiveFragmentShadingRateWithMultipleViewports
@@ -42,7 +42,7 @@ import overrungl.util.*;
 /// ### fragmentShadingRateNonTrivialCombinerOps
 /// [VarHandle][#VH_fragmentShadingRateNonTrivialCombinerOps] - [Getter][#fragmentShadingRateNonTrivialCombinerOps()] - [Setter][#fragmentShadingRateNonTrivialCombinerOps(int)]
 /// ### maxFragmentSize
-/// [Byte offset][#OFFSET_maxFragmentSize] - [Memory layout][#ML_maxFragmentSize] - [Getter][#maxFragmentSize()] - [Setter][#maxFragmentSize(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxFragmentSize] - [Memory layout][#ML_maxFragmentSize] - [Getter][#maxFragmentSize()] - [Setter][#maxFragmentSize(MemorySegment)]
 /// ### maxFragmentSizeAspectRatio
 /// [VarHandle][#VH_maxFragmentSizeAspectRatio] - [Getter][#maxFragmentSizeAspectRatio()] - [Setter][#maxFragmentSizeAspectRatio(int)]
 /// ### maxFragmentShadingRateCoverageSamples
@@ -113,7 +113,7 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `minFragmentShadingRateAttachmentTexelSize`.
     public static final long OFFSET_minFragmentShadingRateAttachmentTexelSize = LAYOUT.byteOffset(PathElement.groupElement("minFragmentShadingRateAttachmentTexelSize"));
@@ -199,7 +199,7 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
     /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSize, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSize, @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewports, @CType("VkBool32") int layeredShadingRateAttachments, @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOps, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSize, @CType("uint32_t") int maxFragmentSizeAspectRatio, @CType("uint32_t") int maxFragmentShadingRateCoverageSamples, @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamples, @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWrites, @CType("VkBool32") int fragmentShadingRateWithSampleMask, @CType("VkBool32") int fragmentShadingRateWithShaderSampleMask, @CType("VkBool32") int fragmentShadingRateWithConservativeRasterization, @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlock, @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocations, @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombiner) { return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock).fragmentShadingRateWithCustomSampleLocations(fragmentShadingRateWithCustomSampleLocations).fragmentShadingRateStrictMultiplyCombiner(fragmentShadingRateStrictMultiplyCombiner); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkExtent2D") MemorySegment minFragmentShadingRateAttachmentTexelSize, @CType("VkExtent2D") MemorySegment maxFragmentShadingRateAttachmentTexelSize, @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewports, @CType("VkBool32") int layeredShadingRateAttachments, @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOps, @CType("VkExtent2D") MemorySegment maxFragmentSize, @CType("uint32_t") int maxFragmentSizeAspectRatio, @CType("uint32_t") int maxFragmentShadingRateCoverageSamples, @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamples, @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWrites, @CType("VkBool32") int fragmentShadingRateWithSampleMask, @CType("VkBool32") int fragmentShadingRateWithShaderSampleMask, @CType("VkBool32") int fragmentShadingRateWithConservativeRasterization, @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlock, @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocations, @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombiner) { return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock).fragmentShadingRateWithCustomSampleLocations(fragmentShadingRateWithCustomSampleLocations).fragmentShadingRateStrictMultiplyCombiner(fragmentShadingRateStrictMultiplyCombiner); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -236,71 +236,71 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minFragmentShadingRateAttachmentTexelSize, index), ML_minFragmentShadingRateAttachmentTexelSize); }
+    public static @CType("VkExtent2D") MemorySegment get_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minFragmentShadingRateAttachmentTexelSize, index), ML_minFragmentShadingRateAttachmentTexelSize); }
     /// {@return `minFragmentShadingRateAttachmentTexelSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(segment, 0L); }
     /// {@return `minFragmentShadingRateAttachmentTexelSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment minFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment()); }
     /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minFragmentShadingRateAttachmentTexelSize, index), ML_minFragmentShadingRateAttachmentTexelSize.byteSize()); }
+    public static void set_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minFragmentShadingRateAttachmentTexelSize, index), ML_minFragmentShadingRateAttachmentTexelSize.byteSize()); }
     /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
+    public static void set_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
     /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSize(@CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), value); return this; }
 
     /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFragmentShadingRateAttachmentTexelSize, index), ML_maxFragmentShadingRateAttachmentTexelSize); }
+    public static @CType("VkExtent2D") MemorySegment get_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFragmentShadingRateAttachmentTexelSize, index), ML_maxFragmentShadingRateAttachmentTexelSize); }
     /// {@return `maxFragmentShadingRateAttachmentTexelSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(segment, 0L); }
     /// {@return `maxFragmentShadingRateAttachmentTexelSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment()); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFragmentShadingRateAttachmentTexelSize, index), ML_maxFragmentShadingRateAttachmentTexelSize.byteSize()); }
+    public static void set_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFragmentShadingRateAttachmentTexelSize, index), ML_maxFragmentShadingRateAttachmentTexelSize.byteSize()); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
+    public static void set_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(@CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), value); return this; }
 
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
@@ -397,25 +397,25 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
     /// {@return `maxFragmentSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFragmentSize, index), ML_maxFragmentSize); }
+    public static @CType("VkExtent2D") MemorySegment get_maxFragmentSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFragmentSize, index), ML_maxFragmentSize); }
     /// {@return `maxFragmentSize`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxFragmentSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(segment, 0L); }
     /// {@return `maxFragmentSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxFragmentSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment()); }
     /// Sets `maxFragmentSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxFragmentSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFragmentSize, index), ML_maxFragmentSize.byteSize()); }
+    public static void set_maxFragmentSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFragmentSize, index), ML_maxFragmentSize.byteSize()); }
     /// Sets `maxFragmentSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxFragmentSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(segment, 0L, value); }
+    public static void set_maxFragmentSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(segment, 0L, value); }
     /// Sets `maxFragmentSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(@CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), value); return this; }
 
     /// {@return `maxFragmentSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
@@ -680,30 +680,30 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
         /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
 
         /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
         /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
 
         /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
         /// @param index the index
@@ -743,12 +743,12 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Str
 
         /// {@return `maxFragmentSize` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxFragmentSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment(), index); }
         /// Sets `maxFragmentSize` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxFragmentSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), index, value); return this; }
+        public Buffer maxFragmentSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), index, value); return this; }
 
         /// {@return `maxFragmentSizeAspectRatio` at the given index}
         /// @param index the index

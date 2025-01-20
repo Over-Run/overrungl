@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### num_units_in_display_tick
 /// [VarHandle][#VH_num_units_in_display_tick] - [Getter][#num_units_in_display_tick()] - [Setter][#num_units_in_display_tick(int)]
 /// ### time_scale
@@ -51,7 +51,7 @@ public sealed class StdVideoAV1TimingInfo extends Struct {
         ValueLayout.JAVA_INT.withName("time_scale"),
         ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `num_units_in_display_tick` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_num_units_in_display_tick = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_display_tick"));
@@ -103,7 +103,7 @@ public sealed class StdVideoAV1TimingInfo extends Struct {
     /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint32_t") int num_units_in_display_tick, @CType("uint32_t") int time_scale, @CType("uint32_t") int num_ticks_per_picture_minus_1) { return alloc(allocator).flags(flags).num_units_in_display_tick(num_units_in_display_tick).time_scale(time_scale).num_ticks_per_picture_minus_1(num_ticks_per_picture_minus_1); }
+    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, @CType("StdVideoAV1TimingInfoFlags") MemorySegment flags, @CType("uint32_t") int num_units_in_display_tick, @CType("uint32_t") int time_scale, @CType("uint32_t") int num_ticks_per_picture_minus_1) { return alloc(allocator).flags(flags).num_units_in_display_tick(num_units_in_display_tick).time_scale(time_scale).num_ticks_per_picture_minus_1(num_ticks_per_picture_minus_1); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -117,25 +117,25 @@ public sealed class StdVideoAV1TimingInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoAV1TimingInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1TimingInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoAV1TimingInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1TimingInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1TimingInfo.get_flags(this.segment()); }
+    public @CType("StdVideoAV1TimingInfoFlags") MemorySegment flags() { return StdVideoAV1TimingInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoAV1TimingInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TimingInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoAV1TimingInfoFlags") MemorySegment value) { StdVideoAV1TimingInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoAV1TimingInfo flags(@CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TimingInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoAV1TimingInfo flags(@CType("StdVideoAV1TimingInfoFlags") MemorySegment value) { StdVideoAV1TimingInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `num_units_in_display_tick` at the given index}
     /// @param segment the segment of the struct
@@ -230,12 +230,12 @@ public sealed class StdVideoAV1TimingInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1TimingInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoAV1TimingInfoFlags") MemorySegment flagsAt(long index) { return StdVideoAV1TimingInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoAV1TimingInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1TimingInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoAV1TimingInfoFlags") MemorySegment value) { StdVideoAV1TimingInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `num_units_in_display_tick` at the given index}
         /// @param index the index

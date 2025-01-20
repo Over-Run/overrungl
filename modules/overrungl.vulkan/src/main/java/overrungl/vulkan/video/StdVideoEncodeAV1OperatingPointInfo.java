@@ -26,7 +26,7 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
 /// ### operating_point_idc
 /// [VarHandle][#VH_operating_point_idc] - [Getter][#operating_point_idc()] - [Setter][#operating_point_idc(short)]
 /// ### seq_level_idx
@@ -63,7 +63,7 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends Struct {
         ValueLayout.JAVA_INT.withName("encoder_buffer_delay"),
         ValueLayout.JAVA_BYTE.withName("initial_display_delay_minus_1")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `operating_point_idc` of type `(MemorySegment base, long baseOffset, long index)short`.
     public static final VarHandle VH_operating_point_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("operating_point_idc"));
@@ -121,7 +121,7 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends Struct {
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
-    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint16_t") short operating_point_idc, @CType("uint8_t") byte seq_level_idx, @CType("uint8_t") byte seq_tier, @CType("uint32_t") int decoder_buffer_delay, @CType("uint32_t") int encoder_buffer_delay, @CType("uint8_t") byte initial_display_delay_minus_1) { return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier).decoder_buffer_delay(decoder_buffer_delay).encoder_buffer_delay(encoder_buffer_delay).initial_display_delay_minus_1(initial_display_delay_minus_1); }
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment flags, @CType("uint16_t") short operating_point_idc, @CType("uint8_t") byte seq_level_idx, @CType("uint8_t") byte seq_tier, @CType("uint32_t") int decoder_buffer_delay, @CType("uint32_t") int encoder_buffer_delay, @CType("uint8_t") byte initial_display_delay_minus_1) { return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier).decoder_buffer_delay(decoder_buffer_delay).encoder_buffer_delay(encoder_buffer_delay).initial_display_delay_minus_1(initial_display_delay_minus_1); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -135,25 +135,25 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends Struct {
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_flags.get(segment, 0L, index); }
+    public static @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
     /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeAV1OperatingPointInfo.get_flags(segment, 0L); }
+    public static @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeAV1OperatingPointInfo.get_flags(segment, 0L); }
     /// {@return `flags`}
-    public @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeAV1OperatingPointInfo.get_flags(this.segment()); }
+    public @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment flags() { return StdVideoEncodeAV1OperatingPointInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
+    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(segment, 0L, value); }
+    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(segment, 0L, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1OperatingPointInfo flags(@CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeAV1OperatingPointInfo flags(@CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(this.segment(), value); return this; }
 
     /// {@return `operating_point_idc` at the given index}
     /// @param segment the segment of the struct
@@ -317,12 +317,12 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends Struct {
 
         /// {@return `flags` at the given index}
         /// @param index the index
-        public @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeAV1OperatingPointInfo.get_flags(this.segment(), index); }
+        public @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeAV1OperatingPointInfo.get_flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeAV1OperatingPointInfoFlags") MemorySegment value) { StdVideoEncodeAV1OperatingPointInfo.set_flags(this.segment(), index, value); return this; }
 
         /// {@return `operating_point_idc` at the given index}
         /// @param index the index

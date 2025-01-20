@@ -59,19 +59,19 @@ public final class GLNVXProgressFence {
         catch (Throwable e) { throw new RuntimeException("error in glCreateProgressFenceNVX", e); }
     }
 
-    public void SignalSemaphoreui64NVX(@CType("GLuint") int signalGpu, @CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") java.lang.foreign.MemorySegment semaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment fenceValueArray) {
+    public void SignalSemaphoreui64NVX(@CType("GLuint") int signalGpu, @CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") MemorySegment semaphoreArray, @CType("const GLuint64 *") MemorySegment fenceValueArray) {
         if (Unmarshal.isNullPointer(handles.PFN_glSignalSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glSignalSemaphoreui64NVX");
         try { Handles.MH_glSignalSemaphoreui64NVX.invokeExact(handles.PFN_glSignalSemaphoreui64NVX, signalGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in glSignalSemaphoreui64NVX", e); }
     }
 
-    public void WaitSemaphoreui64NVX(@CType("GLuint") int waitGpu, @CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") java.lang.foreign.MemorySegment semaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment fenceValueArray) {
+    public void WaitSemaphoreui64NVX(@CType("GLuint") int waitGpu, @CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") MemorySegment semaphoreArray, @CType("const GLuint64 *") MemorySegment fenceValueArray) {
         if (Unmarshal.isNullPointer(handles.PFN_glWaitSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glWaitSemaphoreui64NVX");
         try { Handles.MH_glWaitSemaphoreui64NVX.invokeExact(handles.PFN_glWaitSemaphoreui64NVX, waitGpu, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in glWaitSemaphoreui64NVX", e); }
     }
 
-    public void ClientWaitSemaphoreui64NVX(@CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") java.lang.foreign.MemorySegment semaphoreArray, @CType("const GLuint64 *") java.lang.foreign.MemorySegment fenceValueArray) {
+    public void ClientWaitSemaphoreui64NVX(@CType("GLsizei") int fenceObjectCount, @CType("const GLuint *") MemorySegment semaphoreArray, @CType("const GLuint64 *") MemorySegment fenceValueArray) {
         if (Unmarshal.isNullPointer(handles.PFN_glClientWaitSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glClientWaitSemaphoreui64NVX");
         try { Handles.MH_glClientWaitSemaphoreui64NVX.invokeExact(handles.PFN_glClientWaitSemaphoreui64NVX, fenceObjectCount, semaphoreArray, fenceValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in glClientWaitSemaphoreui64NVX", e); }

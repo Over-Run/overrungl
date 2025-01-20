@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### dataSize
 /// [VarHandle][#VH_dataSize] - [Getter][#dataSize()] - [Setter][#dataSize(long)]
 /// ### pData
-/// [VarHandle][#VH_pData] - [Getter][#pData()] - [Setter][#pData(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pData] - [Getter][#pData()] - [Setter][#pData(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -45,7 +45,7 @@ public sealed class VkPipelineBinaryDataKHR extends Struct {
     );
     /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
-    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
 
     /// Creates `VkPipelineBinaryDataKHR` with the given segment.
@@ -91,7 +91,7 @@ public sealed class VkPipelineBinaryDataKHR extends Struct {
     /// Allocates a `VkPipelineBinaryDataKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineBinaryDataKHR`
-    public static VkPipelineBinaryDataKHR allocInit(SegmentAllocator allocator, @CType("size_t") long dataSize, @CType("void *") java.lang.foreign.MemorySegment pData) { return alloc(allocator).dataSize(dataSize).pData(pData); }
+    public static VkPipelineBinaryDataKHR allocInit(SegmentAllocator allocator, @CType("size_t") long dataSize, @CType("void *") MemorySegment pData) { return alloc(allocator).dataSize(dataSize).pData(pData); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -128,25 +128,25 @@ public sealed class VkPipelineBinaryDataKHR extends Struct {
     /// {@return `pData` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pData(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pData.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
     /// {@return `pData`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pData(MemorySegment segment) { return VkPipelineBinaryDataKHR.get_pData(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pData(MemorySegment segment) { return VkPipelineBinaryDataKHR.get_pData(segment, 0L); }
     /// {@return `pData`}
-    public @CType("void *") java.lang.foreign.MemorySegment pData() { return VkPipelineBinaryDataKHR.get_pData(this.segment()); }
+    public @CType("void *") MemorySegment pData() { return VkPipelineBinaryDataKHR.get_pData(this.segment()); }
     /// Sets `pData` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pData(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
+    public static void set_pData(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
     /// Sets `pData` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pData(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(segment, 0L, value); }
+    public static void set_pData(MemorySegment segment, @CType("void *") MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(segment, 0L, value); }
     /// Sets `pData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryDataKHR pData(@CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(this.segment(), value); return this; }
+    public VkPipelineBinaryDataKHR pData(@CType("void *") MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineBinaryDataKHR].
     public static final class Buffer extends VkPipelineBinaryDataKHR {
@@ -181,12 +181,12 @@ public sealed class VkPipelineBinaryDataKHR extends Struct {
 
         /// {@return `pData` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pDataAt(long index) { return VkPipelineBinaryDataKHR.get_pData(this.segment(), index); }
+        public @CType("void *") MemorySegment pDataAt(long index) { return VkPipelineBinaryDataKHR.get_pData(this.segment(), index); }
         /// Sets `pData` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(this.segment(), index, value); return this; }
+        public Buffer pDataAt(long index, @CType("void *") MemorySegment value) { VkPipelineBinaryDataKHR.set_pData(this.segment(), index, value); return this; }
 
     }
 }

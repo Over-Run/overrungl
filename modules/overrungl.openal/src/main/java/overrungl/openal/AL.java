@@ -680,25 +680,25 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
     }
 
-    public static @CType("const ALchar*") java.lang.foreign.MemorySegment alGetString_(@CType("ALenum") int param) {
+    public static @CType("const ALchar*") MemorySegment alGetString_(@CType("ALenum") int param) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param);
+            return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
-    public static @CType("const ALchar*") java.lang.String alGetString(@CType("ALenum") int param) {
+    public static @CType("const ALchar*") String alGetString(@CType("ALenum") int param) {
         try {
-            return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param));
+            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param));
         } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
-    public static void alGetBooleanv(@CType("ALenum") int param, @Out @CType("ALboolean *") java.lang.foreign.MemorySegment values) {
+    public static void alGetBooleanv(@CType("ALenum") int param, @Out @CType("ALboolean *") MemorySegment values) {
         try {
             Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
     }
 
-    public static void alGetIntegerv(@CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alGetIntegerv(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
         try {
             Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
@@ -712,7 +712,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
     }
 
-    public static void alGetFloatv(@CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alGetFloatv(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
@@ -726,7 +726,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
     }
 
-    public static void alGetDoublev(@CType("ALenum") int param, @Out @CType("ALdouble *") java.lang.foreign.MemorySegment values) {
+    public static void alGetDoublev(@CType("ALenum") int param, @Out @CType("ALdouble *") MemorySegment values) {
         try {
             Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
@@ -770,37 +770,37 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") java.lang.foreign.MemorySegment extname) {
+    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") MemorySegment extname) {
         try {
             return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname);
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") java.lang.String extname) {
+    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") String extname) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, Marshal.marshal(__overrungl_stack, extname));
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    public static @CType("void*") java.lang.foreign.MemorySegment alGetProcAddress(@CType("const ALchar*") java.lang.foreign.MemorySegment fname) {
+    public static @CType("void*") MemorySegment alGetProcAddress(@CType("const ALchar*") MemorySegment fname) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname);
+            return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    public static @CType("void*") java.lang.foreign.MemorySegment alGetProcAddress(@CType("const ALchar*") java.lang.String fname) {
+    public static @CType("void*") MemorySegment alGetProcAddress(@CType("const ALchar*") String fname) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, Marshal.marshal(__overrungl_stack, fname));
+            return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, Marshal.marshal(__overrungl_stack, fname));
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") java.lang.foreign.MemorySegment ename) {
+    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") MemorySegment ename) {
         try {
             return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
-    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") java.lang.String ename) {
+    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") String ename) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, Marshal.marshal(__overrungl_stack, ename));
         } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
@@ -818,7 +818,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
     }
 
-    public static void alListenerfv(@CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alListenerfv(@CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
@@ -836,13 +836,13 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
     }
 
-    public static void alListeneriv(@CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alListeneriv(@CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
         try {
             Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
     }
 
-    public static void alGetListenerf(@CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value) {
+    public static void alGetListenerf(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
         try {
             Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
@@ -856,7 +856,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
     }
 
-    public static void alGetListener3f(@CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value1, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value2, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetListener3f(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
         try {
             Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
@@ -874,7 +874,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
     }
 
-    public static void alGetListenerfv(@CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alGetListenerfv(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
@@ -888,7 +888,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
     }
 
-    public static void alGetListeneri(@CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value) {
+    public static void alGetListeneri(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
         try {
             Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
@@ -902,7 +902,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
     }
 
-    public static void alGetListener3i(@CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value1, @Out @CType("ALint *") java.lang.foreign.MemorySegment value2, @Out @CType("ALint *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetListener3i(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
         try {
             Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
@@ -920,7 +920,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
     }
 
-    public static void alGetListeneriv(@CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alGetListeneriv(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
         try {
             Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
@@ -934,13 +934,13 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
-    public static void alGenSources(@CType("ALsizei") int n, @Out @CType("ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alGenSources(@CType("ALsizei") int n, @Out @CType("ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
-    public static void alDeleteSources(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alDeleteSources(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
@@ -964,7 +964,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
     }
 
-    public static void alSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
@@ -982,13 +982,13 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
     }
 
-    public static void alSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
         try {
             Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
     }
 
-    public static void alGetSourcef(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value) {
+    public static void alGetSourcef(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
         try {
             Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
@@ -1002,7 +1002,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
     }
 
-    public static void alGetSource3f(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value1, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value2, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetSource3f(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
         try {
             Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
@@ -1020,7 +1020,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
     }
 
-    public static void alGetSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alGetSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
@@ -1034,7 +1034,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
     }
 
-    public static void alGetSourcei(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value) {
+    public static void alGetSourcei(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
         try {
             Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
@@ -1048,7 +1048,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
     }
 
-    public static void alGetSource3i(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value1, @Out @CType("ALint *") java.lang.foreign.MemorySegment value2, @Out @CType("ALint *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetSource3i(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
         try {
             Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
@@ -1066,7 +1066,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
     }
 
-    public static void alGetSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alGetSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
         try {
             Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
@@ -1104,49 +1104,49 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
-    public static void alSourcePlayv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alSourcePlayv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
-    public static void alSourceStopv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alSourceStopv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
-    public static void alSourceRewindv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alSourceRewindv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
-    public static void alSourcePausev(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
+    public static void alSourcePausev(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
         try {
             Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
-    public static void alSourceQueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @CType("const ALuint *") java.lang.foreign.MemorySegment buffers) {
+    public static void alSourceQueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @CType("const ALuint *") MemorySegment buffers) {
         try {
             Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
-    public static void alSourceUnqueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @Out @CType("ALuint *") java.lang.foreign.MemorySegment buffers) {
+    public static void alSourceUnqueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @Out @CType("ALuint *") MemorySegment buffers) {
         try {
             Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
-    public static void alGenBuffers(@CType("ALsizei") int n, @Out @CType("ALuint *") java.lang.foreign.MemorySegment buffers) {
+    public static void alGenBuffers(@CType("ALsizei") int n, @Out @CType("ALuint *") MemorySegment buffers) {
         try {
             Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
-    public static void alDeleteBuffers(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment buffers) {
+    public static void alDeleteBuffers(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment buffers) {
         try {
             Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
@@ -1158,7 +1158,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
-    public static void alBufferData(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int samplerate) {
+    public static void alBufferData(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int samplerate) {
         try {
             Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
@@ -1176,7 +1176,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
     }
 
-    public static void alBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
@@ -1194,13 +1194,13 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
     }
 
-    public static void alBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
         try {
             Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
     }
 
-    public static void alGetBufferf(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value) {
+    public static void alGetBufferf(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
         try {
             Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
@@ -1214,7 +1214,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
     }
 
-    public static void alGetBuffer3f(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value1, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value2, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetBuffer3f(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
         try {
             Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
@@ -1232,7 +1232,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
     }
 
-    public static void alGetBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") java.lang.foreign.MemorySegment values) {
+    public static void alGetBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
         try {
             Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
@@ -1246,7 +1246,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
     }
 
-    public static void alGetBufferi(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value) {
+    public static void alGetBufferi(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
         try {
             Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
@@ -1260,7 +1260,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
     }
 
-    public static void alGetBuffer3i(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment value1, @Out @CType("ALint *") java.lang.foreign.MemorySegment value2, @Out @CType("ALint *") java.lang.foreign.MemorySegment value3) {
+    public static void alGetBuffer3i(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
         try {
             Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
@@ -1278,7 +1278,7 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
     }
 
-    public static void alGetBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") java.lang.foreign.MemorySegment values) {
+    public static void alGetBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
         try {
             Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }

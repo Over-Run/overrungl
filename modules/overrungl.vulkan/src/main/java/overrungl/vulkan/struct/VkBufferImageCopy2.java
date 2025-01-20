@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### bufferOffset
 /// [VarHandle][#VH_bufferOffset] - [Getter][#bufferOffset()] - [Setter][#bufferOffset(long)]
 /// ### bufferRowLength
@@ -36,11 +36,11 @@ import overrungl.util.*;
 /// ### bufferImageHeight
 /// [VarHandle][#VH_bufferImageHeight] - [Getter][#bufferImageHeight()] - [Setter][#bufferImageHeight(int)]
 /// ### imageSubresource
-/// [Byte offset][#OFFSET_imageSubresource] - [Memory layout][#ML_imageSubresource] - [Getter][#imageSubresource()] - [Setter][#imageSubresource(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageSubresource] - [Memory layout][#ML_imageSubresource] - [Getter][#imageSubresource()] - [Setter][#imageSubresource(MemorySegment)]
 /// ### imageOffset
-/// [Byte offset][#OFFSET_imageOffset] - [Memory layout][#ML_imageOffset] - [Getter][#imageOffset()] - [Setter][#imageOffset(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageOffset] - [Memory layout][#ML_imageOffset] - [Getter][#imageOffset()] - [Setter][#imageOffset(MemorySegment)]
 /// ### imageExtent
-/// [Byte offset][#OFFSET_imageExtent] - [Memory layout][#ML_imageExtent] - [Getter][#imageExtent()] - [Setter][#imageExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_imageExtent] - [Memory layout][#ML_imageExtent] - [Getter][#imageExtent()] - [Setter][#imageExtent(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,7 +69,7 @@ public sealed class VkBufferImageCopy2 extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `bufferOffset` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_bufferOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferOffset"));
@@ -133,7 +133,7 @@ public sealed class VkBufferImageCopy2 extends Struct {
     /// Allocates a `VkBufferImageCopy2` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferImageCopy2`
-    public static VkBufferImageCopy2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long bufferOffset, @CType("uint32_t") int bufferRowLength, @CType("uint32_t") int bufferImageHeight, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresource, @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffset, @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtent) { return alloc(allocator).sType(sType).pNext(pNext).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset).imageExtent(imageExtent); }
+    public static VkBufferImageCopy2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDeviceSize") long bufferOffset, @CType("uint32_t") int bufferRowLength, @CType("uint32_t") int bufferImageHeight, @CType("VkImageSubresourceLayers") MemorySegment imageSubresource, @CType("VkOffset3D") MemorySegment imageOffset, @CType("VkExtent3D") MemorySegment imageExtent) { return alloc(allocator).sType(sType).pNext(pNext).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset).imageExtent(imageExtent); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -170,25 +170,25 @@ public sealed class VkBufferImageCopy2 extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferImageCopy2.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBufferImageCopy2.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferImageCopy2.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkBufferImageCopy2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBufferImageCopy2.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferImageCopy2 pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_pNext(this.segment(), value); return this; }
+    public VkBufferImageCopy2 pNext(@CType("const void *") MemorySegment value) { VkBufferImageCopy2.set_pNext(this.segment(), value); return this; }
 
     /// {@return `bufferOffset` at the given index}
     /// @param segment the segment of the struct
@@ -262,71 +262,71 @@ public sealed class VkBufferImageCopy2 extends Struct {
     /// {@return `imageSubresource` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_imageSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource); }
+    public static @CType("VkImageSubresourceLayers") MemorySegment get_imageSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource); }
     /// {@return `imageSubresource`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_imageSubresource(MemorySegment segment) { return VkBufferImageCopy2.get_imageSubresource(segment, 0L); }
+    public static @CType("VkImageSubresourceLayers") MemorySegment get_imageSubresource(MemorySegment segment) { return VkBufferImageCopy2.get_imageSubresource(segment, 0L); }
     /// {@return `imageSubresource`}
-    public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresource() { return VkBufferImageCopy2.get_imageSubresource(this.segment()); }
+    public @CType("VkImageSubresourceLayers") MemorySegment imageSubresource() { return VkBufferImageCopy2.get_imageSubresource(this.segment()); }
     /// Sets `imageSubresource` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageSubresource(MemorySegment segment, long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource.byteSize()); }
+    public static void set_imageSubresource(MemorySegment segment, long index, @CType("VkImageSubresourceLayers") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource.byteSize()); }
     /// Sets `imageSubresource` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageSubresource(MemorySegment segment, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(segment, 0L, value); }
+    public static void set_imageSubresource(MemorySegment segment, @CType("VkImageSubresourceLayers") MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(segment, 0L, value); }
     /// Sets `imageSubresource` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferImageCopy2 imageSubresource(@CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(this.segment(), value); return this; }
+    public VkBufferImageCopy2 imageSubresource(@CType("VkImageSubresourceLayers") MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(this.segment(), value); return this; }
 
     /// {@return `imageOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_imageOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset); }
+    public static @CType("VkOffset3D") MemorySegment get_imageOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset); }
     /// {@return `imageOffset`}
     /// @param segment the segment of the struct
-    public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_imageOffset(MemorySegment segment) { return VkBufferImageCopy2.get_imageOffset(segment, 0L); }
+    public static @CType("VkOffset3D") MemorySegment get_imageOffset(MemorySegment segment) { return VkBufferImageCopy2.get_imageOffset(segment, 0L); }
     /// {@return `imageOffset`}
-    public @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffset() { return VkBufferImageCopy2.get_imageOffset(this.segment()); }
+    public @CType("VkOffset3D") MemorySegment imageOffset() { return VkBufferImageCopy2.get_imageOffset(this.segment()); }
     /// Sets `imageOffset` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageOffset(MemorySegment segment, long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset.byteSize()); }
+    public static void set_imageOffset(MemorySegment segment, long index, @CType("VkOffset3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset.byteSize()); }
     /// Sets `imageOffset` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageOffset(MemorySegment segment, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageOffset(segment, 0L, value); }
+    public static void set_imageOffset(MemorySegment segment, @CType("VkOffset3D") MemorySegment value) { VkBufferImageCopy2.set_imageOffset(segment, 0L, value); }
     /// Sets `imageOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferImageCopy2 imageOffset(@CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageOffset(this.segment(), value); return this; }
+    public VkBufferImageCopy2 imageOffset(@CType("VkOffset3D") MemorySegment value) { VkBufferImageCopy2.set_imageOffset(this.segment(), value); return this; }
 
     /// {@return `imageExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent); }
+    public static @CType("VkExtent3D") MemorySegment get_imageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent); }
     /// {@return `imageExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment) { return VkBufferImageCopy2.get_imageExtent(segment, 0L); }
+    public static @CType("VkExtent3D") MemorySegment get_imageExtent(MemorySegment segment) { return VkBufferImageCopy2.get_imageExtent(segment, 0L); }
     /// {@return `imageExtent`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtent() { return VkBufferImageCopy2.get_imageExtent(this.segment()); }
+    public @CType("VkExtent3D") MemorySegment imageExtent() { return VkBufferImageCopy2.get_imageExtent(this.segment()); }
     /// Sets `imageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_imageExtent(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent.byteSize()); }
+    public static void set_imageExtent(MemorySegment segment, long index, @CType("VkExtent3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent.byteSize()); }
     /// Sets `imageExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_imageExtent(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageExtent(segment, 0L, value); }
+    public static void set_imageExtent(MemorySegment segment, @CType("VkExtent3D") MemorySegment value) { VkBufferImageCopy2.set_imageExtent(segment, 0L, value); }
     /// Sets `imageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferImageCopy2 imageExtent(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageExtent(this.segment(), value); return this; }
+    public VkBufferImageCopy2 imageExtent(@CType("VkExtent3D") MemorySegment value) { VkBufferImageCopy2.set_imageExtent(this.segment(), value); return this; }
 
     /// A buffer of [VkBufferImageCopy2].
     public static final class Buffer extends VkBufferImageCopy2 {
@@ -361,12 +361,12 @@ public sealed class VkBufferImageCopy2 extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferImageCopy2.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBufferImageCopy2.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBufferImageCopy2.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `bufferOffset` at the given index}
         /// @param index the index
@@ -397,30 +397,30 @@ public sealed class VkBufferImageCopy2 extends Struct {
 
         /// {@return `imageSubresource` at the given index}
         /// @param index the index
-        public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresourceAt(long index) { return VkBufferImageCopy2.get_imageSubresource(this.segment(), index); }
+        public @CType("VkImageSubresourceLayers") MemorySegment imageSubresourceAt(long index) { return VkBufferImageCopy2.get_imageSubresource(this.segment(), index); }
         /// Sets `imageSubresource` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(this.segment(), index, value); return this; }
+        public Buffer imageSubresourceAt(long index, @CType("VkImageSubresourceLayers") MemorySegment value) { VkBufferImageCopy2.set_imageSubresource(this.segment(), index, value); return this; }
 
         /// {@return `imageOffset` at the given index}
         /// @param index the index
-        public @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffsetAt(long index) { return VkBufferImageCopy2.get_imageOffset(this.segment(), index); }
+        public @CType("VkOffset3D") MemorySegment imageOffsetAt(long index) { return VkBufferImageCopy2.get_imageOffset(this.segment(), index); }
         /// Sets `imageOffset` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageOffset(this.segment(), index, value); return this; }
+        public Buffer imageOffsetAt(long index, @CType("VkOffset3D") MemorySegment value) { VkBufferImageCopy2.set_imageOffset(this.segment(), index, value); return this; }
 
         /// {@return `imageExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkBufferImageCopy2.get_imageExtent(this.segment(), index); }
+        public @CType("VkExtent3D") MemorySegment imageExtentAt(long index) { return VkBufferImageCopy2.get_imageExtent(this.segment(), index); }
         /// Sets `imageExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer imageExtentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkBufferImageCopy2.set_imageExtent(this.segment(), index, value); return this; }
+        public Buffer imageExtentAt(long index, @CType("VkExtent3D") MemorySegment value) { VkBufferImageCopy2.set_imageExtent(this.segment(), index, value); return this; }
 
     }
 }

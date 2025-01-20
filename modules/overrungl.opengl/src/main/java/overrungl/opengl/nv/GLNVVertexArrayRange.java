@@ -56,7 +56,7 @@ public final class GLNVVertexArrayRange {
         catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeNV", e); }
     }
 
-    public void VertexArrayRangeNV(@CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
+    public void VertexArrayRangeNV(@CType("GLsizei") int length, @CType("const void *") MemorySegment pointer) {
         if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV");
         try { Handles.MH_glVertexArrayRangeNV.invokeExact(handles.PFN_glVertexArrayRangeNV, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeNV", e); }

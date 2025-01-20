@@ -45,13 +45,13 @@ public final class GLIBMMultimodeDrawArrays {
         this.handles = new Handles(func);
     }
 
-    public void MultiModeDrawArraysIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
+    public void MultiModeDrawArraysIBM(@CType("const GLenum *") MemorySegment mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
         try { Handles.MH_glMultiModeDrawArraysIBM.invokeExact(handles.PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
     }
 
-    public void MultiModeDrawElementsIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
+    public void MultiModeDrawElementsIBM(@CType("const GLenum *") MemorySegment mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
         try { Handles.MH_glMultiModeDrawElementsIBM.invokeExact(handles.PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }

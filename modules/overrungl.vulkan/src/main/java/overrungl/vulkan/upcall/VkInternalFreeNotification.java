@@ -31,14 +31,14 @@ public interface VkInternalFreeNotification extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkInternalFreeNotification.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("size_t") long size, @CType("VkInternalAllocationType") int allocationType, @CType("VkSystemAllocationScope") int allocationScope);
+    @CType("void") void invoke(@CType("void *") MemorySegment pUserData, @CType("size_t") long size, @CType("VkInternalAllocationType") int allocationType, @CType("VkSystemAllocationScope") int allocationScope);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("size_t") long size, @CType("VkInternalAllocationType") int allocationType, @CType("VkSystemAllocationScope") int allocationScope) {
+    static @CType("void") void invoke(MemorySegment stub, @CType("void *") MemorySegment pUserData, @CType("size_t") long size, @CType("VkInternalAllocationType") int allocationType, @CType("VkSystemAllocationScope") int allocationScope) {
         try { HANDLE.invokeExact(stub, pUserData, size, allocationType, allocationScope); }
         catch (Throwable e) { throw new RuntimeException("error in VkInternalFreeNotification::invoke (static invoker)", e); }
     }

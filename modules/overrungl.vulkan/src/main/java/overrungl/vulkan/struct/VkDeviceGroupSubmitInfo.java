@@ -28,19 +28,19 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### waitSemaphoreCount
 /// [VarHandle][#VH_waitSemaphoreCount] - [Getter][#waitSemaphoreCount()] - [Setter][#waitSemaphoreCount(int)]
 /// ### pWaitSemaphoreDeviceIndices
-/// [VarHandle][#VH_pWaitSemaphoreDeviceIndices] - [Getter][#pWaitSemaphoreDeviceIndices()] - [Setter][#pWaitSemaphoreDeviceIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pWaitSemaphoreDeviceIndices] - [Getter][#pWaitSemaphoreDeviceIndices()] - [Setter][#pWaitSemaphoreDeviceIndices(MemorySegment)]
 /// ### commandBufferCount
 /// [VarHandle][#VH_commandBufferCount] - [Getter][#commandBufferCount()] - [Setter][#commandBufferCount(int)]
 /// ### pCommandBufferDeviceMasks
-/// [VarHandle][#VH_pCommandBufferDeviceMasks] - [Getter][#pCommandBufferDeviceMasks()] - [Setter][#pCommandBufferDeviceMasks(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCommandBufferDeviceMasks] - [Getter][#pCommandBufferDeviceMasks()] - [Setter][#pCommandBufferDeviceMasks(MemorySegment)]
 /// ### signalSemaphoreCount
 /// [VarHandle][#VH_signalSemaphoreCount] - [Getter][#signalSemaphoreCount()] - [Setter][#signalSemaphoreCount(int)]
 /// ### pSignalSemaphoreDeviceIndices
-/// [VarHandle][#VH_pSignalSemaphoreDeviceIndices] - [Getter][#pSignalSemaphoreDeviceIndices()] - [Setter][#pSignalSemaphoreDeviceIndices(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pSignalSemaphoreDeviceIndices] - [Getter][#pSignalSemaphoreDeviceIndices()] - [Setter][#pSignalSemaphoreDeviceIndices(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -69,19 +69,19 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `waitSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_waitSemaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreCount"));
-    /// The [VarHandle] of `pWaitSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pWaitSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWaitSemaphoreDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreDeviceIndices"));
     /// The [VarHandle] of `commandBufferCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_commandBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount"));
-    /// The [VarHandle] of `pCommandBufferDeviceMasks` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCommandBufferDeviceMasks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCommandBufferDeviceMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCommandBufferDeviceMasks"));
     /// The [VarHandle] of `signalSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_signalSemaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreCount"));
-    /// The [VarHandle] of `pSignalSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pSignalSemaphoreDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSignalSemaphoreDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreDeviceIndices"));
 
     /// Creates `VkDeviceGroupSubmitInfo` with the given segment.
@@ -127,7 +127,7 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceGroupSubmitInfo`
-    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int waitSemaphoreCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pWaitSemaphoreDeviceIndices, @CType("uint32_t") int commandBufferCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pCommandBufferDeviceMasks, @CType("uint32_t") int signalSemaphoreCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pSignalSemaphoreDeviceIndices) { return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount).pCommandBufferDeviceMasks(pCommandBufferDeviceMasks).signalSemaphoreCount(signalSemaphoreCount).pSignalSemaphoreDeviceIndices(pSignalSemaphoreDeviceIndices); }
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int waitSemaphoreCount, @CType("const uint32_t *") MemorySegment pWaitSemaphoreDeviceIndices, @CType("uint32_t") int commandBufferCount, @CType("const uint32_t *") MemorySegment pCommandBufferDeviceMasks, @CType("uint32_t") int signalSemaphoreCount, @CType("const uint32_t *") MemorySegment pSignalSemaphoreDeviceIndices) { return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount).pCommandBufferDeviceMasks(pCommandBufferDeviceMasks).signalSemaphoreCount(signalSemaphoreCount).pSignalSemaphoreDeviceIndices(pSignalSemaphoreDeviceIndices); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -164,25 +164,25 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceGroupSubmitInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDeviceGroupSubmitInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupSubmitInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(this.segment(), value); return this; }
+    public VkDeviceGroupSubmitInfo pNext(@CType("const void *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `waitSemaphoreCount` at the given index}
     /// @param segment the segment of the struct
@@ -210,25 +210,25 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     /// {@return `pWaitSemaphoreDeviceIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pWaitSemaphoreDeviceIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pWaitSemaphoreDeviceIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pWaitSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreDeviceIndices.get(segment, 0L, index); }
     /// {@return `pWaitSemaphoreDeviceIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pWaitSemaphoreDeviceIndices(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pWaitSemaphoreDeviceIndices(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(segment, 0L); }
     /// {@return `pWaitSemaphoreDeviceIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pWaitSemaphoreDeviceIndices() { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pWaitSemaphoreDeviceIndices() { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(this.segment()); }
     /// Sets `pWaitSemaphoreDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pWaitSemaphoreDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pWaitSemaphoreDeviceIndices.set(segment, 0L, index, value); }
+    public static void set_pWaitSemaphoreDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pWaitSemaphoreDeviceIndices.set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphoreDeviceIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pWaitSemaphoreDeviceIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(segment, 0L, value); }
+    public static void set_pWaitSemaphoreDeviceIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(segment, 0L, value); }
     /// Sets `pWaitSemaphoreDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupSubmitInfo pWaitSemaphoreDeviceIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(this.segment(), value); return this; }
+    public VkDeviceGroupSubmitInfo pWaitSemaphoreDeviceIndices(@CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(this.segment(), value); return this; }
 
     /// {@return `commandBufferCount` at the given index}
     /// @param segment the segment of the struct
@@ -256,25 +256,25 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     /// {@return `pCommandBufferDeviceMasks` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCommandBufferDeviceMasks(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCommandBufferDeviceMasks.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pCommandBufferDeviceMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pCommandBufferDeviceMasks.get(segment, 0L, index); }
     /// {@return `pCommandBufferDeviceMasks`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pCommandBufferDeviceMasks(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pCommandBufferDeviceMasks(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(segment, 0L); }
     /// {@return `pCommandBufferDeviceMasks`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCommandBufferDeviceMasks() { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pCommandBufferDeviceMasks() { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(this.segment()); }
     /// Sets `pCommandBufferDeviceMasks` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCommandBufferDeviceMasks(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pCommandBufferDeviceMasks.set(segment, 0L, index, value); }
+    public static void set_pCommandBufferDeviceMasks(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pCommandBufferDeviceMasks.set(segment, 0L, index, value); }
     /// Sets `pCommandBufferDeviceMasks` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCommandBufferDeviceMasks(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(segment, 0L, value); }
+    public static void set_pCommandBufferDeviceMasks(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(segment, 0L, value); }
     /// Sets `pCommandBufferDeviceMasks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupSubmitInfo pCommandBufferDeviceMasks(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(this.segment(), value); return this; }
+    public VkDeviceGroupSubmitInfo pCommandBufferDeviceMasks(@CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(this.segment(), value); return this; }
 
     /// {@return `signalSemaphoreCount` at the given index}
     /// @param segment the segment of the struct
@@ -302,25 +302,25 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
     /// {@return `pSignalSemaphoreDeviceIndices` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pSignalSemaphoreDeviceIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSignalSemaphoreDeviceIndices.get(segment, 0L, index); }
+    public static @CType("const uint32_t *") MemorySegment get_pSignalSemaphoreDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreDeviceIndices.get(segment, 0L, index); }
     /// {@return `pSignalSemaphoreDeviceIndices`}
     /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pSignalSemaphoreDeviceIndices(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(segment, 0L); }
+    public static @CType("const uint32_t *") MemorySegment get_pSignalSemaphoreDeviceIndices(MemorySegment segment) { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(segment, 0L); }
     /// {@return `pSignalSemaphoreDeviceIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pSignalSemaphoreDeviceIndices() { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(this.segment()); }
+    public @CType("const uint32_t *") MemorySegment pSignalSemaphoreDeviceIndices() { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(this.segment()); }
     /// Sets `pSignalSemaphoreDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pSignalSemaphoreDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pSignalSemaphoreDeviceIndices.set(segment, 0L, index, value); }
+    public static void set_pSignalSemaphoreDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pSignalSemaphoreDeviceIndices.set(segment, 0L, index, value); }
     /// Sets `pSignalSemaphoreDeviceIndices` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pSignalSemaphoreDeviceIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(segment, 0L, value); }
+    public static void set_pSignalSemaphoreDeviceIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(segment, 0L, value); }
     /// Sets `pSignalSemaphoreDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupSubmitInfo pSignalSemaphoreDeviceIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(this.segment(), value); return this; }
+    public VkDeviceGroupSubmitInfo pSignalSemaphoreDeviceIndices(@CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(this.segment(), value); return this; }
 
     /// A buffer of [VkDeviceGroupSubmitInfo].
     public static final class Buffer extends VkDeviceGroupSubmitInfo {
@@ -355,12 +355,12 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceGroupSubmitInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDeviceGroupSubmitInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `waitSemaphoreCount` at the given index}
         /// @param index the index
@@ -373,12 +373,12 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
 
         /// {@return `pWaitSemaphoreDeviceIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pWaitSemaphoreDeviceIndicesAt(long index) { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pWaitSemaphoreDeviceIndicesAt(long index) { return VkDeviceGroupSubmitInfo.get_pWaitSemaphoreDeviceIndices(this.segment(), index); }
         /// Sets `pWaitSemaphoreDeviceIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pWaitSemaphoreDeviceIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(this.segment(), index, value); return this; }
+        public Buffer pWaitSemaphoreDeviceIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pWaitSemaphoreDeviceIndices(this.segment(), index, value); return this; }
 
         /// {@return `commandBufferCount` at the given index}
         /// @param index the index
@@ -391,12 +391,12 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
 
         /// {@return `pCommandBufferDeviceMasks` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pCommandBufferDeviceMasksAt(long index) { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pCommandBufferDeviceMasksAt(long index) { return VkDeviceGroupSubmitInfo.get_pCommandBufferDeviceMasks(this.segment(), index); }
         /// Sets `pCommandBufferDeviceMasks` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCommandBufferDeviceMasksAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(this.segment(), index, value); return this; }
+        public Buffer pCommandBufferDeviceMasksAt(long index, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pCommandBufferDeviceMasks(this.segment(), index, value); return this; }
 
         /// {@return `signalSemaphoreCount` at the given index}
         /// @param index the index
@@ -409,12 +409,12 @@ public sealed class VkDeviceGroupSubmitInfo extends Struct {
 
         /// {@return `pSignalSemaphoreDeviceIndices` at the given index}
         /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pSignalSemaphoreDeviceIndicesAt(long index) { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(this.segment(), index); }
+        public @CType("const uint32_t *") MemorySegment pSignalSemaphoreDeviceIndicesAt(long index) { return VkDeviceGroupSubmitInfo.get_pSignalSemaphoreDeviceIndices(this.segment(), index); }
         /// Sets `pSignalSemaphoreDeviceIndices` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pSignalSemaphoreDeviceIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(this.segment(), index, value); return this; }
+        public Buffer pSignalSemaphoreDeviceIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkDeviceGroupSubmitInfo.set_pSignalSemaphoreDeviceIndices(this.segment(), index, value); return this; }
 
     }
 }

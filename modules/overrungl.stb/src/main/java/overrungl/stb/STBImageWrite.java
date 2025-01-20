@@ -130,121 +130,121 @@ public final class STBImageWrite {
         }
     }
 
-    public static @CType("int") boolean stbi_write_png(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int stride_in_bytes) {
+    public static @CType("int") boolean stbi_write_png(@CType("const char*") MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int stride_in_bytes) {
         try {
             return (boolean) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, filename, w, h, comp, data, stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
     }
 
-    public static @CType("int") boolean stbi_write_png(@CType("const char*") java.lang.String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int stride_in_bytes) {
+    public static @CType("int") boolean stbi_write_png(@CType("const char*") String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int stride_in_bytes) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, Marshal.marshal(__overrungl_stack, filename), w, h, comp, data, stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
     }
 
-    public static @CType("int") boolean stbi_write_bmp(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_bmp(@CType("const char*") MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, filename, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
     }
 
-    public static @CType("int") boolean stbi_write_bmp(@CType("const char*") java.lang.String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_bmp(@CType("const char*") String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, Marshal.marshal(__overrungl_stack, filename), w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
     }
 
-    public static @CType("int") boolean stbi_write_tga(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_tga(@CType("const char*") MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, filename, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
     }
 
-    public static @CType("int") boolean stbi_write_tga(@CType("const char*") java.lang.String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_tga(@CType("const char*") String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, Marshal.marshal(__overrungl_stack, filename), w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
     }
 
-    public static @CType("int") boolean stbi_write_hdr(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_hdr(@CType("const char*") MemorySegment filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, filename, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
     }
 
-    public static @CType("int") boolean stbi_write_hdr(@CType("const char*") java.lang.String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_hdr(@CType("const char*") String filename, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, Marshal.marshal(__overrungl_stack, filename), w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
     }
 
-    public static @CType("int") boolean stbi_write_jpg(@CType("const char*") java.lang.foreign.MemorySegment filename, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int quality) {
+    public static @CType("int") boolean stbi_write_jpg(@CType("const char*") MemorySegment filename, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int quality) {
         try {
             return (boolean) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, filename, x, y, comp, data, quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
     }
 
-    public static @CType("int") boolean stbi_write_jpg(@CType("const char*") java.lang.String filename, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int quality) {
+    public static @CType("int") boolean stbi_write_jpg(@CType("const char*") String filename, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int quality) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, Marshal.marshal(__overrungl_stack, filename), x, y, comp, data, quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
     }
 
-    public static @CType("int") boolean stbi_write_png_to_func(@CType("stbi_write_func *") java.lang.foreign.MemorySegment func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int stride_in_bytes) {
+    public static @CType("int") boolean stbi_write_png_to_func(@CType("stbi_write_func *") MemorySegment func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int stride_in_bytes) {
         try {
             return (boolean) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, func, context, w, h, comp, data, stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_png_to_func(java.lang.foreign.Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int stride_in_bytes) {
+    public static @CType("int") boolean stbi_write_png_to_func(Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int stride_in_bytes) {
         try {
             return (boolean) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, arena, Marshal.marshal(arena, func), context, w, h, comp, data, stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_bmp_to_func(@CType("stbi_write_func *") java.lang.foreign.MemorySegment func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_bmp_to_func(@CType("stbi_write_func *") MemorySegment func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, func, context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_bmp_to_func(java.lang.foreign.Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_bmp_to_func(Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, arena, Marshal.marshal(arena, func), context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_tga_to_func(@CType("stbi_write_func *") java.lang.foreign.MemorySegment func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_tga_to_func(@CType("stbi_write_func *") MemorySegment func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, func, context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_tga_to_func(java.lang.foreign.Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_tga_to_func(Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, arena, Marshal.marshal(arena, func), context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_hdr_to_func(@CType("stbi_write_func *") java.lang.foreign.MemorySegment func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_hdr_to_func(@CType("stbi_write_func *") MemorySegment func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, func, context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_hdr_to_func(java.lang.foreign.Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data) {
+    public static @CType("int") boolean stbi_write_hdr_to_func(Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") MemorySegment context, @CType("int") int w, @CType("int") int h, @CType("int") int comp, @CType("const void*") MemorySegment data) {
         try {
             return (boolean) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, arena, Marshal.marshal(arena, func), context, w, h, comp, data);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_jpg_to_func(@CType("stbi_write_func *") java.lang.foreign.MemorySegment func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int quality) {
+    public static @CType("int") boolean stbi_write_jpg_to_func(@CType("stbi_write_func *") MemorySegment func, @CType("void*") MemorySegment context, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int quality) {
         try {
             return (boolean) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, func, context, x, y, comp, data, quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }
     }
 
-    public static @CType("int") boolean stbi_write_jpg_to_func(java.lang.foreign.Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") java.lang.foreign.MemorySegment context, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") java.lang.foreign.MemorySegment data, @CType("int") int quality) {
+    public static @CType("int") boolean stbi_write_jpg_to_func(Arena arena, @CType("stbi_write_func *") overrungl.stb.STBIWriteFunc func, @CType("void*") MemorySegment context, @CType("int") int x, @CType("int") int y, @CType("int") int comp, @CType("const void*") MemorySegment data, @CType("int") int quality) {
         try {
             return (boolean) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, arena, Marshal.marshal(arena, func), context, x, y, comp, data, quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }

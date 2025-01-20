@@ -53,13 +53,13 @@ public final class GLSGISDetailTexture {
         this.handles = new Handles(func);
     }
 
-    public void DetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
+    public void DetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment points) {
         if (Unmarshal.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
         try { Handles.MH_glDetailTexFuncSGIS.invokeExact(handles.PFN_glDetailTexFuncSGIS, target, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
     }
 
-    public void GetDetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
+    public void GetDetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") MemorySegment points) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
         try { Handles.MH_glGetDetailTexFuncSGIS.invokeExact(handles.PFN_glGetDetailTexFuncSGIS, target, points); }
         catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }

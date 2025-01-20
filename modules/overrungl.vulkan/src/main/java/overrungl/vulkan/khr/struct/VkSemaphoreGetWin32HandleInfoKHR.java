@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### semaphore
-/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(MemorySegment)]
 /// ### handleType
 /// [VarHandle][#VH_handleType] - [Getter][#handleType()] - [Setter][#handleType(int)]
 /// ## Layout
@@ -53,9 +53,9 @@ public sealed class VkSemaphoreGetWin32HandleInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
     /// The [VarHandle] of `handleType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_handleType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handleType"));
@@ -103,7 +103,7 @@ public sealed class VkSemaphoreGetWin32HandleInfoKHR extends Struct {
     /// Allocates a `VkSemaphoreGetWin32HandleInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSemaphoreGetWin32HandleInfoKHR`
-    public static VkSemaphoreGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleType) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType); }
+    public static VkSemaphoreGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSemaphore") MemorySegment semaphore, @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleType) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -140,48 +140,48 @@ public sealed class VkSemaphoreGetWin32HandleInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreGetWin32HandleInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkSemaphoreGetWin32HandleInfoKHR pNext(@CType("const void *") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `semaphore` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_semaphore.get(segment, 0L, index); }
+    public static @CType("VkSemaphore") MemorySegment get_semaphore(MemorySegment segment, long index) { return (MemorySegment) VH_semaphore.get(segment, 0L, index); }
     /// {@return `semaphore`}
     /// @param segment the segment of the struct
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(segment, 0L); }
+    public static @CType("VkSemaphore") MemorySegment get_semaphore(MemorySegment segment) { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(segment, 0L); }
     /// {@return `semaphore`}
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(this.segment()); }
+    public @CType("VkSemaphore") MemorySegment semaphore() { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(this.segment()); }
     /// Sets `semaphore` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
+    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
     /// Sets `semaphore` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(segment, 0L, value); }
+    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(segment, 0L, value); }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreGetWin32HandleInfoKHR semaphore(@CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(this.segment(), value); return this; }
+    public VkSemaphoreGetWin32HandleInfoKHR semaphore(@CType("VkSemaphore") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(this.segment(), value); return this; }
 
     /// {@return `handleType` at the given index}
     /// @param segment the segment of the struct
@@ -239,21 +239,21 @@ public sealed class VkSemaphoreGetWin32HandleInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSemaphoreGetWin32HandleInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `semaphore` at the given index}
         /// @param index the index
-        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(this.segment(), index); }
+        public @CType("VkSemaphore") MemorySegment semaphoreAt(long index) { return VkSemaphoreGetWin32HandleInfoKHR.get_semaphore(this.segment(), index); }
         /// Sets `semaphore` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(this.segment(), index, value); return this; }
+        public Buffer semaphoreAt(long index, @CType("VkSemaphore") MemorySegment value) { VkSemaphoreGetWin32HandleInfoKHR.set_semaphore(this.segment(), index, value); return this; }
 
         /// {@return `handleType` at the given index}
         /// @param index the index

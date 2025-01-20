@@ -71,13 +71,13 @@ public final class GLAPPLEFence {
         this.handles = new Handles(func);
     }
 
-    public void GenFencesAPPLE(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void GenFencesAPPLE(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glGenFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGenFencesAPPLE");
         try { Handles.MH_glGenFencesAPPLE.invokeExact(handles.PFN_glGenFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glGenFencesAPPLE", e); }
     }
 
-    public void DeleteFencesAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
+    public void DeleteFencesAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment fences) {
         if (Unmarshal.isNullPointer(handles.PFN_glDeleteFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesAPPLE");
         try { Handles.MH_glDeleteFencesAPPLE.invokeExact(handles.PFN_glDeleteFencesAPPLE, n, fences); }
         catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesAPPLE", e); }

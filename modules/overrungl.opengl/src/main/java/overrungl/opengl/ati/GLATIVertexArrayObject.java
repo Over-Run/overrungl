@@ -93,7 +93,7 @@ public final class GLATIVertexArrayObject {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLuint") int NewObjectBufferATI(@CType("GLsizei") int size, @CType("const void *") java.lang.foreign.MemorySegment pointer, @CType("GLenum") int usage) {
+    public @CType("GLuint") int NewObjectBufferATI(@CType("GLsizei") int size, @CType("const void *") MemorySegment pointer, @CType("GLenum") int usage) {
         if (Unmarshal.isNullPointer(handles.PFN_glNewObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glNewObjectBufferATI");
         try { return (int) Handles.MH_glNewObjectBufferATI.invokeExact(handles.PFN_glNewObjectBufferATI, size, pointer, usage); }
         catch (Throwable e) { throw new RuntimeException("error in glNewObjectBufferATI", e); }
@@ -105,19 +105,19 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in glIsObjectBufferATI", e); }
     }
 
-    public void UpdateObjectBufferATI(@CType("GLuint") int buffer, @CType("GLuint") int offset, @CType("GLsizei") int size, @CType("const void *") java.lang.foreign.MemorySegment pointer, @CType("GLenum") int preserve) {
+    public void UpdateObjectBufferATI(@CType("GLuint") int buffer, @CType("GLuint") int offset, @CType("GLsizei") int size, @CType("const void *") MemorySegment pointer, @CType("GLenum") int preserve) {
         if (Unmarshal.isNullPointer(handles.PFN_glUpdateObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glUpdateObjectBufferATI");
         try { Handles.MH_glUpdateObjectBufferATI.invokeExact(handles.PFN_glUpdateObjectBufferATI, buffer, offset, size, pointer, preserve); }
         catch (Throwable e) { throw new RuntimeException("error in glUpdateObjectBufferATI", e); }
     }
 
-    public void GetObjectBufferfvATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetObjectBufferfvATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetObjectBufferfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferfvATI");
         try { Handles.MH_glGetObjectBufferfvATI.invokeExact(handles.PFN_glGetObjectBufferfvATI, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferfvATI", e); }
     }
 
-    public void GetObjectBufferivATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetObjectBufferivATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetObjectBufferivATI)) throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferivATI");
         try { Handles.MH_glGetObjectBufferivATI.invokeExact(handles.PFN_glGetObjectBufferivATI, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferivATI", e); }
@@ -135,13 +135,13 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in glArrayObjectATI", e); }
     }
 
-    public void GetArrayObjectfvATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetArrayObjectfvATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectfvATI");
         try { Handles.MH_glGetArrayObjectfvATI.invokeExact(handles.PFN_glGetArrayObjectfvATI, array, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectfvATI", e); }
     }
 
-    public void GetArrayObjectivATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetArrayObjectivATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectivATI");
         try { Handles.MH_glGetArrayObjectivATI.invokeExact(handles.PFN_glGetArrayObjectivATI, array, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectivATI", e); }
@@ -153,13 +153,13 @@ public final class GLATIVertexArrayObject {
         catch (Throwable e) { throw new RuntimeException("error in glVariantArrayObjectATI", e); }
     }
 
-    public void GetVariantArrayObjectfvATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void GetVariantArrayObjectfvATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVariantArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectfvATI");
         try { Handles.MH_glGetVariantArrayObjectfvATI.invokeExact(handles.PFN_glGetVariantArrayObjectfvATI, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectfvATI", e); }
     }
 
-    public void GetVariantArrayObjectivATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+    public void GetVariantArrayObjectivATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetVariantArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectivATI");
         try { Handles.MH_glGetVariantArrayObjectivATI.invokeExact(handles.PFN_glGetVariantArrayObjectivATI, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectivATI", e); }

@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### shadingRatePaletteEntryCount
 /// [VarHandle][#VH_shadingRatePaletteEntryCount] - [Getter][#shadingRatePaletteEntryCount()] - [Setter][#shadingRatePaletteEntryCount(int)]
 /// ### pShadingRatePaletteEntries
-/// [VarHandle][#VH_pShadingRatePaletteEntries] - [Getter][#pShadingRatePaletteEntries()] - [Setter][#pShadingRatePaletteEntries(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pShadingRatePaletteEntries] - [Getter][#pShadingRatePaletteEntries()] - [Setter][#pShadingRatePaletteEntries(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -45,7 +45,7 @@ public sealed class VkShadingRatePaletteNV extends Struct {
     );
     /// The [VarHandle] of `shadingRatePaletteEntryCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_shadingRatePaletteEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRatePaletteEntryCount"));
-    /// The [VarHandle] of `pShadingRatePaletteEntries` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pShadingRatePaletteEntries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pShadingRatePaletteEntries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShadingRatePaletteEntries"));
 
     /// Creates `VkShadingRatePaletteNV` with the given segment.
@@ -91,7 +91,7 @@ public sealed class VkShadingRatePaletteNV extends Struct {
     /// Allocates a `VkShadingRatePaletteNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkShadingRatePaletteNV`
-    public static VkShadingRatePaletteNV allocInit(SegmentAllocator allocator, @CType("uint32_t") int shadingRatePaletteEntryCount, @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment pShadingRatePaletteEntries) { return alloc(allocator).shadingRatePaletteEntryCount(shadingRatePaletteEntryCount).pShadingRatePaletteEntries(pShadingRatePaletteEntries); }
+    public static VkShadingRatePaletteNV allocInit(SegmentAllocator allocator, @CType("uint32_t") int shadingRatePaletteEntryCount, @CType("const VkShadingRatePaletteEntryNV *") MemorySegment pShadingRatePaletteEntries) { return alloc(allocator).shadingRatePaletteEntryCount(shadingRatePaletteEntryCount).pShadingRatePaletteEntries(pShadingRatePaletteEntries); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -128,25 +128,25 @@ public sealed class VkShadingRatePaletteNV extends Struct {
     /// {@return `pShadingRatePaletteEntries` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment get_pShadingRatePaletteEntries(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pShadingRatePaletteEntries.get(segment, 0L, index); }
+    public static @CType("const VkShadingRatePaletteEntryNV *") MemorySegment get_pShadingRatePaletteEntries(MemorySegment segment, long index) { return (MemorySegment) VH_pShadingRatePaletteEntries.get(segment, 0L, index); }
     /// {@return `pShadingRatePaletteEntries`}
     /// @param segment the segment of the struct
-    public static @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment get_pShadingRatePaletteEntries(MemorySegment segment) { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(segment, 0L); }
+    public static @CType("const VkShadingRatePaletteEntryNV *") MemorySegment get_pShadingRatePaletteEntries(MemorySegment segment) { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(segment, 0L); }
     /// {@return `pShadingRatePaletteEntries`}
-    public @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment pShadingRatePaletteEntries() { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(this.segment()); }
+    public @CType("const VkShadingRatePaletteEntryNV *") MemorySegment pShadingRatePaletteEntries() { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(this.segment()); }
     /// Sets `pShadingRatePaletteEntries` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pShadingRatePaletteEntries(MemorySegment segment, long index, @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment value) { VH_pShadingRatePaletteEntries.set(segment, 0L, index, value); }
+    public static void set_pShadingRatePaletteEntries(MemorySegment segment, long index, @CType("const VkShadingRatePaletteEntryNV *") MemorySegment value) { VH_pShadingRatePaletteEntries.set(segment, 0L, index, value); }
     /// Sets `pShadingRatePaletteEntries` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pShadingRatePaletteEntries(MemorySegment segment, @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(segment, 0L, value); }
+    public static void set_pShadingRatePaletteEntries(MemorySegment segment, @CType("const VkShadingRatePaletteEntryNV *") MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(segment, 0L, value); }
     /// Sets `pShadingRatePaletteEntries` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShadingRatePaletteNV pShadingRatePaletteEntries(@CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(this.segment(), value); return this; }
+    public VkShadingRatePaletteNV pShadingRatePaletteEntries(@CType("const VkShadingRatePaletteEntryNV *") MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(this.segment(), value); return this; }
 
     /// A buffer of [VkShadingRatePaletteNV].
     public static final class Buffer extends VkShadingRatePaletteNV {
@@ -181,12 +181,12 @@ public sealed class VkShadingRatePaletteNV extends Struct {
 
         /// {@return `pShadingRatePaletteEntries` at the given index}
         /// @param index the index
-        public @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment pShadingRatePaletteEntriesAt(long index) { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(this.segment(), index); }
+        public @CType("const VkShadingRatePaletteEntryNV *") MemorySegment pShadingRatePaletteEntriesAt(long index) { return VkShadingRatePaletteNV.get_pShadingRatePaletteEntries(this.segment(), index); }
         /// Sets `pShadingRatePaletteEntries` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pShadingRatePaletteEntriesAt(long index, @CType("const VkShadingRatePaletteEntryNV *") java.lang.foreign.MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(this.segment(), index, value); return this; }
+        public Buffer pShadingRatePaletteEntriesAt(long index, @CType("const VkShadingRatePaletteEntryNV *") MemorySegment value) { VkShadingRatePaletteNV.set_pShadingRatePaletteEntries(this.segment(), index, value); return this; }
 
     }
 }

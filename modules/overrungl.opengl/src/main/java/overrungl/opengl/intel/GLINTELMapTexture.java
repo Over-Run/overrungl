@@ -65,9 +65,9 @@ public final class GLINTELMapTexture {
         catch (Throwable e) { throw new RuntimeException("error in glUnmapTexture2DINTEL", e); }
     }
 
-    public @CType("void*") java.lang.foreign.MemorySegment MapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLbitfield") int access, @CType("GLint *") java.lang.foreign.MemorySegment stride, @CType("GLenum *") java.lang.foreign.MemorySegment layout) {
+    public @CType("void*") MemorySegment MapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLbitfield") int access, @CType("GLint *") MemorySegment stride, @CType("GLenum *") MemorySegment layout) {
         if (Unmarshal.isNullPointer(handles.PFN_glMapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glMapTexture2DINTEL.invokeExact(handles.PFN_glMapTexture2DINTEL, texture, level, access, stride, layout); }
+        try { return (MemorySegment) Handles.MH_glMapTexture2DINTEL.invokeExact(handles.PFN_glMapTexture2DINTEL, texture, level, access, stride, layout); }
         catch (Throwable e) { throw new RuntimeException("error in glMapTexture2DINTEL", e); }
     }
 

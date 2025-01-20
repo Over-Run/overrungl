@@ -31,15 +31,15 @@ public interface VkAllocationFunction extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(VkAllocationFunction.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    @CType("void *") java.lang.foreign.MemorySegment invoke(@CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("size_t") long size, @CType("size_t") long alignment, @CType("VkSystemAllocationScope") int allocationScope);
+    @CType("void *") MemorySegment invoke(@CType("void *") MemorySegment pUserData, @CType("size_t") long size, @CType("size_t") long alignment, @CType("VkSystemAllocationScope") int allocationScope);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static @CType("void *") java.lang.foreign.MemorySegment invoke(MemorySegment stub, @CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("size_t") long size, @CType("size_t") long alignment, @CType("VkSystemAllocationScope") int allocationScope) {
-        try { return (java.lang.foreign.MemorySegment) HANDLE.invokeExact(stub, pUserData, size, alignment, allocationScope); }
+    static @CType("void *") MemorySegment invoke(MemorySegment stub, @CType("void *") MemorySegment pUserData, @CType("size_t") long size, @CType("size_t") long alignment, @CType("VkSystemAllocationScope") int allocationScope) {
+        try { return (MemorySegment) HANDLE.invokeExact(stub, pUserData, size, alignment, allocationScope); }
         catch (Throwable e) { throw new RuntimeException("error in VkAllocationFunction::invoke (static invoker)", e); }
     }
 

@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### pAttributes
-/// [VarHandle][#VH_pAttributes] - [Getter][#pAttributes()] - [Setter][#pAttributes(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pAttributes] - [Getter][#pAttributes()] - [Setter][#pAttributes(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkExportMemorySciBufInfoNV extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pAttributes` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pAttributes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pAttributes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAttributes"));
 
     /// Creates `VkExportMemorySciBufInfoNV` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkExportMemorySciBufInfoNV extends Struct {
     /// Allocates a `VkExportMemorySciBufInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMemorySciBufInfoNV`
-    public static VkExportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment pAttributes) { return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes); }
+    public static VkExportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("NvSciBufAttrList") MemorySegment pAttributes) { return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkExportMemorySciBufInfoNV extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMemorySciBufInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkExportMemorySciBufInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMemorySciBufInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkExportMemorySciBufInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMemorySciBufInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkExportMemorySciBufInfoNV pNext(@CType("const void *") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `pAttributes` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment get_pAttributes(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pAttributes.get(segment, 0L, index); }
+    public static @CType("NvSciBufAttrList") MemorySegment get_pAttributes(MemorySegment segment, long index) { return (MemorySegment) VH_pAttributes.get(segment, 0L, index); }
     /// {@return `pAttributes`}
     /// @param segment the segment of the struct
-    public static @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment get_pAttributes(MemorySegment segment) { return VkExportMemorySciBufInfoNV.get_pAttributes(segment, 0L); }
+    public static @CType("NvSciBufAttrList") MemorySegment get_pAttributes(MemorySegment segment) { return VkExportMemorySciBufInfoNV.get_pAttributes(segment, 0L); }
     /// {@return `pAttributes`}
-    public @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment pAttributes() { return VkExportMemorySciBufInfoNV.get_pAttributes(this.segment()); }
+    public @CType("NvSciBufAttrList") MemorySegment pAttributes() { return VkExportMemorySciBufInfoNV.get_pAttributes(this.segment()); }
     /// Sets `pAttributes` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pAttributes(MemorySegment segment, long index, @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment value) { VH_pAttributes.set(segment, 0L, index, value); }
+    public static void set_pAttributes(MemorySegment segment, long index, @CType("NvSciBufAttrList") MemorySegment value) { VH_pAttributes.set(segment, 0L, index, value); }
     /// Sets `pAttributes` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pAttributes(MemorySegment segment, @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(segment, 0L, value); }
+    public static void set_pAttributes(MemorySegment segment, @CType("NvSciBufAttrList") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(segment, 0L, value); }
     /// Sets `pAttributes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMemorySciBufInfoNV pAttributes(@CType("NvSciBufAttrList") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(this.segment(), value); return this; }
+    public VkExportMemorySciBufInfoNV pAttributes(@CType("NvSciBufAttrList") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(this.segment(), value); return this; }
 
     /// A buffer of [VkExportMemorySciBufInfoNV].
     public static final class Buffer extends VkExportMemorySciBufInfoNV {
@@ -210,21 +210,21 @@ public sealed class VkExportMemorySciBufInfoNV extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMemorySciBufInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkExportMemorySciBufInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `pAttributes` at the given index}
         /// @param index the index
-        public @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment pAttributesAt(long index) { return VkExportMemorySciBufInfoNV.get_pAttributes(this.segment(), index); }
+        public @CType("NvSciBufAttrList") MemorySegment pAttributesAt(long index) { return VkExportMemorySciBufInfoNV.get_pAttributes(this.segment(), index); }
         /// Sets `pAttributes` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pAttributesAt(long index, @CType("NvSciBufAttrList") java.lang.foreign.MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(this.segment(), index, value); return this; }
+        public Buffer pAttributesAt(long index, @CType("NvSciBufAttrList") MemorySegment value) { VkExportMemorySciBufInfoNV.set_pAttributes(this.segment(), index, value); return this; }
 
     }
 }

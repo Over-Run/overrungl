@@ -67,7 +67,7 @@ public final class GLOESSinglePrecision {
         catch (Throwable e) { throw new RuntimeException("error in glClearDepthfOES", e); }
     }
 
-    public void ClipPlanefOES(@CType("GLenum") int plane, @CType("const GLfloat *") java.lang.foreign.MemorySegment equation) {
+    public void ClipPlanefOES(@CType("GLenum") int plane, @CType("const GLfloat *") MemorySegment equation) {
         if (Unmarshal.isNullPointer(handles.PFN_glClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES");
         try { Handles.MH_glClipPlanefOES.invokeExact(handles.PFN_glClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glClipPlanefOES", e); }
@@ -85,7 +85,7 @@ public final class GLOESSinglePrecision {
         catch (Throwable e) { throw new RuntimeException("error in glFrustumfOES", e); }
     }
 
-    public void GetClipPlanefOES(@CType("GLenum") int plane, @CType("GLfloat *") java.lang.foreign.MemorySegment equation) {
+    public void GetClipPlanefOES(@CType("GLenum") int plane, @CType("GLfloat *") MemorySegment equation) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
         try { Handles.MH_glGetClipPlanefOES.invokeExact(handles.PFN_glGetClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanefOES", e); }

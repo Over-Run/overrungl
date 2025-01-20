@@ -45,13 +45,13 @@ public final class GLEXTExternalBuffer {
         this.handles = new Handles(func);
     }
 
-    public void BufferStorageExternalEXT(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLeglClientBufferEXT") java.lang.foreign.MemorySegment clientBuffer, @CType("GLbitfield") int flags) {
+    public void BufferStorageExternalEXT(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLeglClientBufferEXT") MemorySegment clientBuffer, @CType("GLbitfield") int flags) {
         if (Unmarshal.isNullPointer(handles.PFN_glBufferStorageExternalEXT)) throw new SymbolNotFoundError("Symbol not found: glBufferStorageExternalEXT");
         try { Handles.MH_glBufferStorageExternalEXT.invokeExact(handles.PFN_glBufferStorageExternalEXT, target, offset, size, clientBuffer, flags); }
         catch (Throwable e) { throw new RuntimeException("error in glBufferStorageExternalEXT", e); }
     }
 
-    public void NamedBufferStorageExternalEXT(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLeglClientBufferEXT") java.lang.foreign.MemorySegment clientBuffer, @CType("GLbitfield") int flags) {
+    public void NamedBufferStorageExternalEXT(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLeglClientBufferEXT") MemorySegment clientBuffer, @CType("GLbitfield") int flags) {
         if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferStorageExternalEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageExternalEXT");
         try { Handles.MH_glNamedBufferStorageExternalEXT.invokeExact(handles.PFN_glNamedBufferStorageExternalEXT, buffer, offset, size, clientBuffer, flags); }
         catch (Throwable e) { throw new RuntimeException("error in glNamedBufferStorageExternalEXT", e); }

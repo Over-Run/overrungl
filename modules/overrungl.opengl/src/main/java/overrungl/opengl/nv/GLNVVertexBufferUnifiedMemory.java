@@ -176,7 +176,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         catch (Throwable e) { throw new RuntimeException("error in glVertexAttribIFormatNV", e); }
     }
 
-    public void GetIntegerui64i_vNV(@CType("GLenum") int value, @CType("GLuint") int index, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment result) {
+    public void GetIntegerui64i_vNV(@CType("GLenum") int value, @CType("GLuint") int index, @CType("GLuint64EXT *") MemorySegment result) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetIntegerui64i_vNV)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64i_vNV");
         try { Handles.MH_glGetIntegerui64i_vNV.invokeExact(handles.PFN_glGetIntegerui64i_vNV, value, index, result); }
         catch (Throwable e) { throw new RuntimeException("error in glGetIntegerui64i_vNV", e); }

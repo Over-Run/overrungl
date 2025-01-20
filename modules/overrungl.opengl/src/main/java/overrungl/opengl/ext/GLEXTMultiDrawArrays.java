@@ -45,13 +45,13 @@ public final class GLEXTMultiDrawArrays {
         this.handles = new Handles(func);
     }
 
-    public void MultiDrawArraysEXT(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount) {
+    public void MultiDrawArraysEXT(@CType("GLenum") int mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
         try { Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysEXT", e); }
     }
 
-    public void MultiDrawElementsEXT(@CType("GLenum") int mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
+    public void MultiDrawElementsEXT(@CType("GLenum") int mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int primcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
         try { Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsEXT", e); }

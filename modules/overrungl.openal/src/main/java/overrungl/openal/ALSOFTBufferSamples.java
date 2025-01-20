@@ -115,21 +115,21 @@ public final class ALSOFTBufferSamples {
         }
     }
 
-    public static void alBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALuint") int samplerate, @CType("ALenum") int internalformat, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
+    public static void alBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALuint") int samplerate, @CType("ALenum") int internalformat, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") MemorySegment data) {
         if (Handles.MH_alBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSamplesSOFT");
         try {
             Handles.MH_alBufferSamplesSOFT.invokeExact(Handles.get().PFN_alBufferSamplesSOFT, buffer, samplerate, internalformat, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSamplesSOFT", e); }
     }
 
-    public static void alBufferSubSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
+    public static void alBufferSubSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") MemorySegment data) {
         if (Handles.MH_alBufferSubSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubSamplesSOFT");
         try {
             Handles.MH_alBufferSubSamplesSOFT.invokeExact(Handles.get().PFN_alBufferSubSamplesSOFT, buffer, offset, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSubSamplesSOFT", e); }
     }
 
-    public static void alGetBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("ALvoid *") java.lang.foreign.MemorySegment data) {
+    public static void alGetBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("ALvoid *") MemorySegment data) {
         if (Handles.MH_alGetBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBufferSamplesSOFT");
         try {
             Handles.MH_alGetBufferSamplesSOFT.invokeExact(Handles.get().PFN_alGetBufferSamplesSOFT, buffer, offset, samples, channels, type, data);

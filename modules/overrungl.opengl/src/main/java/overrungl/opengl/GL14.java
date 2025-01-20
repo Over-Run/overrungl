@@ -107,13 +107,13 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparate", e); }
     }
 
-    public void MultiDrawArrays(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int drawcount) {
+    public void MultiDrawArrays(@CType("GLenum") int mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int drawcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArrays");
         try { Handles.MH_glMultiDrawArrays.invokeExact(handles.PFN_glMultiDrawArrays, mode, first, count, drawcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArrays", e); }
     }
 
-    public void MultiDrawElements(@CType("GLenum") int mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int drawcount) {
+    public void MultiDrawElements(@CType("GLenum") int mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int drawcount) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElements)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElements");
         try { Handles.MH_glMultiDrawElements.invokeExact(handles.PFN_glMultiDrawElements, mode, count, type, indices, drawcount); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElements", e); }
@@ -125,7 +125,7 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterf", e); }
     }
 
-    public void PointParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+    public void PointParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfv");
         try { Handles.MH_glPointParameterfv.invokeExact(handles.PFN_glPointParameterfv, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glPointParameterfv", e); }
@@ -137,7 +137,7 @@ public class GL14 extends GL13 {
         catch (Throwable e) { throw new RuntimeException("error in glPointParameteri", e); }
     }
 
-    public void PointParameteriv(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+    public void PointParameteriv(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
         if (Unmarshal.isNullPointer(handles.PFN_glPointParameteriv)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriv");
         try { Handles.MH_glPointParameteriv.invokeExact(handles.PFN_glPointParameteriv, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in glPointParameteriv", e); }

@@ -16,8 +16,6 @@
 
 package overrungl.gen
 
-import com.palantir.javapoet.TypeName
-
 enum class AllocatorRequirement {
     NO,
     STACK,
@@ -47,11 +45,11 @@ data class DowncallMethod(
     val functionDescriptor: String by lazy {
         buildString {
             append("FunctionDescriptor.of")
-            if (returnType.carrier == TypeName.VOID) {
+            if (returnType.carrier == "void") {
                 append("Void")
             }
             append("(")
-            if (returnType.carrier != TypeName.VOID) {
+            if (returnType.carrier != "void") {
                 append(returnType.layout)
                 if (parameters.isNotEmpty()) {
                     append(", ")
@@ -89,7 +87,7 @@ data class DowncallParameter(
 
     fun marshalRef(overload: Boolean): Boolean = ref && type.selectTypeName(overload) != MemorySegment_
 
-    fun toString(typeName: TypeName): String {
+    fun toString(typeName: String): String {
         return buildString {
             if (ref) {
                 append("@Out ")

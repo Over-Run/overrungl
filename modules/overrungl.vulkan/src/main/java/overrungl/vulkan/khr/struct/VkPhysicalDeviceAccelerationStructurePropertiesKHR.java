@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### maxGeometryCount
 /// [VarHandle][#VH_maxGeometryCount] - [Getter][#maxGeometryCount()] - [Setter][#maxGeometryCount(long)]
 /// ### maxInstanceCount
@@ -77,7 +77,7 @@ public sealed class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends S
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `maxGeometryCount` of type `(MemorySegment base, long baseOffset, long index)long`.
     public static final VarHandle VH_maxGeometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryCount"));
@@ -139,7 +139,7 @@ public sealed class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends S
     /// Allocates a `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceAccelerationStructurePropertiesKHR`
-    public static VkPhysicalDeviceAccelerationStructurePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint64_t") long maxGeometryCount, @CType("uint64_t") long maxInstanceCount, @CType("uint64_t") long maxPrimitiveCount, @CType("uint32_t") int maxPerStageDescriptorAccelerationStructures, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindAccelerationStructures, @CType("uint32_t") int maxDescriptorSetAccelerationStructures, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindAccelerationStructures, @CType("uint32_t") int minAccelerationStructureScratchOffsetAlignment) { return alloc(allocator).sType(sType).pNext(pNext).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount).maxPrimitiveCount(maxPrimitiveCount).maxPerStageDescriptorAccelerationStructures(maxPerStageDescriptorAccelerationStructures).maxPerStageDescriptorUpdateAfterBindAccelerationStructures(maxPerStageDescriptorUpdateAfterBindAccelerationStructures).maxDescriptorSetAccelerationStructures(maxDescriptorSetAccelerationStructures).maxDescriptorSetUpdateAfterBindAccelerationStructures(maxDescriptorSetUpdateAfterBindAccelerationStructures).minAccelerationStructureScratchOffsetAlignment(minAccelerationStructureScratchOffsetAlignment); }
+    public static VkPhysicalDeviceAccelerationStructurePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint64_t") long maxGeometryCount, @CType("uint64_t") long maxInstanceCount, @CType("uint64_t") long maxPrimitiveCount, @CType("uint32_t") int maxPerStageDescriptorAccelerationStructures, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindAccelerationStructures, @CType("uint32_t") int maxDescriptorSetAccelerationStructures, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindAccelerationStructures, @CType("uint32_t") int minAccelerationStructureScratchOffsetAlignment) { return alloc(allocator).sType(sType).pNext(pNext).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount).maxPrimitiveCount(maxPrimitiveCount).maxPerStageDescriptorAccelerationStructures(maxPerStageDescriptorAccelerationStructures).maxPerStageDescriptorUpdateAfterBindAccelerationStructures(maxPerStageDescriptorUpdateAfterBindAccelerationStructures).maxDescriptorSetAccelerationStructures(maxDescriptorSetAccelerationStructures).maxDescriptorSetUpdateAfterBindAccelerationStructures(maxDescriptorSetUpdateAfterBindAccelerationStructures).minAccelerationStructureScratchOffsetAlignment(minAccelerationStructureScratchOffsetAlignment); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -176,25 +176,25 @@ public sealed class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends S
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(segment, 0L); }
+    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(this.segment()); }
+    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `maxGeometryCount` at the given index}
     /// @param segment the segment of the struct
@@ -413,12 +413,12 @@ public sealed class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends S
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(this.segment(), index); }
+        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceAccelerationStructurePropertiesKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceAccelerationStructurePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxGeometryCount` at the given index}
         /// @param index the index

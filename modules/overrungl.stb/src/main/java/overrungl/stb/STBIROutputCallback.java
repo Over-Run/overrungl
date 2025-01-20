@@ -31,14 +31,14 @@ public interface STBIROutputCallback extends Upcall {
     MethodHandle HANDLE = Upcall.findTarget(STBIROutputCallback.class, "invoke", DESCRIPTOR);
 
     /// The target method of the upcall.
-    void invoke(@CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context);
+    void invoke(@CType("void const *") MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") MemorySegment context);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
     /// A static invoker of the target method.
     /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context) {
+    static void invoke(MemorySegment stub, @CType("void const *") MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") MemorySegment context) {
         try { HANDLE.invokeExact(stub, output_ptr, num_pixels, y, context); }
         catch (Throwable e) { throw new RuntimeException("error in STBIROutputCallback::invoke (static invoker)", e); }
     }

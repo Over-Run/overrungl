@@ -52,7 +52,7 @@ public final class ALCSOFTReopenDevice {
         }
     }
 
-    public static @CType("ALCboolean") boolean alcReopenDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
+    public static @CType("ALCboolean") boolean alcReopenDeviceSOFT(@CType("ALCdevice *") MemorySegment device, @CType("const ALCchar*") MemorySegment deviceName, @CType("const ALCint *") MemorySegment attribs) {
         if (Handles.MH_alcReopenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcReopenDeviceSOFT");
         try {
             return (boolean) Handles.MH_alcReopenDeviceSOFT.invokeExact(Handles.get().PFN_alcReopenDeviceSOFT, device, deviceName, attribs);

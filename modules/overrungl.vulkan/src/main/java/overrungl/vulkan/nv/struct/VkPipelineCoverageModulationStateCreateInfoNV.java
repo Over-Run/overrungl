@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### coverageModulationMode
@@ -38,7 +38,7 @@ import overrungl.util.*;
 /// ### coverageModulationTableCount
 /// [VarHandle][#VH_coverageModulationTableCount] - [Getter][#coverageModulationTableCount()] - [Setter][#coverageModulationTableCount(int)]
 /// ### pCoverageModulationTable
-/// [VarHandle][#VH_pCoverageModulationTable] - [Getter][#pCoverageModulationTable()] - [Setter][#pCoverageModulationTable(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCoverageModulationTable] - [Getter][#pCoverageModulationTable()] - [Setter][#pCoverageModulationTable(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,7 +65,7 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
@@ -75,7 +75,7 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
     public static final VarHandle VH_coverageModulationTableEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableEnable"));
     /// The [VarHandle] of `coverageModulationTableCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_coverageModulationTableCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageModulationTableCount"));
-    /// The [VarHandle] of `pCoverageModulationTable` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCoverageModulationTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCoverageModulationTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCoverageModulationTable"));
 
     /// Creates `VkPipelineCoverageModulationStateCreateInfoNV` with the given segment.
@@ -121,7 +121,7 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
     /// Allocates a `VkPipelineCoverageModulationStateCreateInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCoverageModulationStateCreateInfoNV`
-    public static VkPipelineCoverageModulationStateCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineCoverageModulationStateCreateFlagsNV") int flags, @CType("VkCoverageModulationModeNV") int coverageModulationMode, @CType("VkBool32") int coverageModulationTableEnable, @CType("uint32_t") int coverageModulationTableCount, @CType("const float *") java.lang.foreign.MemorySegment pCoverageModulationTable) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).coverageModulationMode(coverageModulationMode).coverageModulationTableEnable(coverageModulationTableEnable).coverageModulationTableCount(coverageModulationTableCount).pCoverageModulationTable(pCoverageModulationTable); }
+    public static VkPipelineCoverageModulationStateCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineCoverageModulationStateCreateFlagsNV") int flags, @CType("VkCoverageModulationModeNV") int coverageModulationMode, @CType("VkBool32") int coverageModulationTableEnable, @CType("uint32_t") int coverageModulationTableCount, @CType("const float *") MemorySegment pCoverageModulationTable) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).coverageModulationMode(coverageModulationMode).coverageModulationTableEnable(coverageModulationTableEnable).coverageModulationTableCount(coverageModulationTableCount).pCoverageModulationTable(pCoverageModulationTable); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,25 +158,25 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCoverageModulationStateCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkPipelineCoverageModulationStateCreateInfoNV pNext(@CType("const void *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -273,25 +273,25 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
     /// {@return `pCoverageModulationTable` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const float *") java.lang.foreign.MemorySegment get_pCoverageModulationTable(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCoverageModulationTable.get(segment, 0L, index); }
+    public static @CType("const float *") MemorySegment get_pCoverageModulationTable(MemorySegment segment, long index) { return (MemorySegment) VH_pCoverageModulationTable.get(segment, 0L, index); }
     /// {@return `pCoverageModulationTable`}
     /// @param segment the segment of the struct
-    public static @CType("const float *") java.lang.foreign.MemorySegment get_pCoverageModulationTable(MemorySegment segment) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(segment, 0L); }
+    public static @CType("const float *") MemorySegment get_pCoverageModulationTable(MemorySegment segment) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(segment, 0L); }
     /// {@return `pCoverageModulationTable`}
-    public @CType("const float *") java.lang.foreign.MemorySegment pCoverageModulationTable() { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(this.segment()); }
+    public @CType("const float *") MemorySegment pCoverageModulationTable() { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(this.segment()); }
     /// Sets `pCoverageModulationTable` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCoverageModulationTable(MemorySegment segment, long index, @CType("const float *") java.lang.foreign.MemorySegment value) { VH_pCoverageModulationTable.set(segment, 0L, index, value); }
+    public static void set_pCoverageModulationTable(MemorySegment segment, long index, @CType("const float *") MemorySegment value) { VH_pCoverageModulationTable.set(segment, 0L, index, value); }
     /// Sets `pCoverageModulationTable` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCoverageModulationTable(MemorySegment segment, @CType("const float *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(segment, 0L, value); }
+    public static void set_pCoverageModulationTable(MemorySegment segment, @CType("const float *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(segment, 0L, value); }
     /// Sets `pCoverageModulationTable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCoverageModulationStateCreateInfoNV pCoverageModulationTable(@CType("const float *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(this.segment(), value); return this; }
+    public VkPipelineCoverageModulationStateCreateInfoNV pCoverageModulationTable(@CType("const float *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(this.segment(), value); return this; }
 
     /// A buffer of [VkPipelineCoverageModulationStateCreateInfoNV].
     public static final class Buffer extends VkPipelineCoverageModulationStateCreateInfoNV {
@@ -326,12 +326,12 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -371,12 +371,12 @@ public sealed class VkPipelineCoverageModulationStateCreateInfoNV extends Struct
 
         /// {@return `pCoverageModulationTable` at the given index}
         /// @param index the index
-        public @CType("const float *") java.lang.foreign.MemorySegment pCoverageModulationTableAt(long index) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(this.segment(), index); }
+        public @CType("const float *") MemorySegment pCoverageModulationTableAt(long index) { return VkPipelineCoverageModulationStateCreateInfoNV.get_pCoverageModulationTable(this.segment(), index); }
         /// Sets `pCoverageModulationTable` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCoverageModulationTableAt(long index, @CType("const float *") java.lang.foreign.MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(this.segment(), index, value); return this; }
+        public Buffer pCoverageModulationTableAt(long index, @CType("const float *") MemorySegment value) { VkPipelineCoverageModulationStateCreateInfoNV.set_pCoverageModulationTable(this.segment(), index, value); return this; }
 
     }
 }

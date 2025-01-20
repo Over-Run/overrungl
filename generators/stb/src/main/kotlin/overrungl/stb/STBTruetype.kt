@@ -16,11 +16,10 @@
 
 package overrungl.stb
 
-import com.palantir.javapoet.ClassName
 import overrungl.gen.*
 
 val const_char_ptr_ptr = address c "const char **"
-private val _STBRPRect = ClassName.get(stbPackage, "STBRPRect")
+private val _STBRPRect = "$stbPackage.STBRPRect"
 val stbrp_rect_ptr = CustomTypeSpec(
     carrier = MemorySegment_,
     javaType = _STBRPRect,

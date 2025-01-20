@@ -28,17 +28,17 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### stageFlags
 /// [VarHandle][#VH_stageFlags] - [Getter][#stageFlags()] - [Setter][#stageFlags(int)]
 /// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
 /// ### set
 /// [VarHandle][#VH_set] - [Getter][#set()] - [Setter][#set(int)]
 /// ### descriptorWriteCount
 /// [VarHandle][#VH_descriptorWriteCount] - [Getter][#descriptorWriteCount()] - [Setter][#descriptorWriteCount(int)]
 /// ### pDescriptorWrites
-/// [VarHandle][#VH_pDescriptorWrites] - [Getter][#pDescriptorWrites()] - [Setter][#pDescriptorWrites(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pDescriptorWrites] - [Getter][#pDescriptorWrites()] - [Setter][#pDescriptorWrites(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -65,17 +65,17 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `stageFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_stageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageFlags"));
-    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
     /// The [VarHandle] of `set` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
     /// The [VarHandle] of `descriptorWriteCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_descriptorWriteCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorWriteCount"));
-    /// The [VarHandle] of `pDescriptorWrites` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pDescriptorWrites` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDescriptorWrites = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorWrites"));
 
     /// Creates `VkPushDescriptorSetInfo` with the given segment.
@@ -121,7 +121,7 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
     /// Allocates a `VkPushDescriptorSetInfo` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPushDescriptorSetInfo`
-    public static VkPushDescriptorSetInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("uint32_t") int set, @CType("uint32_t") int descriptorWriteCount, @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorWrites) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).set(set).descriptorWriteCount(descriptorWriteCount).pDescriptorWrites(pDescriptorWrites); }
+    public static VkPushDescriptorSetInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkShaderStageFlags") int stageFlags, @CType("VkPipelineLayout") MemorySegment layout, @CType("uint32_t") int set, @CType("uint32_t") int descriptorWriteCount, @CType("const VkWriteDescriptorSet *") MemorySegment pDescriptorWrites) { return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).set(set).descriptorWriteCount(descriptorWriteCount).pDescriptorWrites(pDescriptorWrites); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -158,25 +158,25 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPushDescriptorSetInfo.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPushDescriptorSetInfo.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPushDescriptorSetInfo.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkPushDescriptorSetInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushDescriptorSetInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(this.segment(), value); return this; }
+    public VkPushDescriptorSetInfo pNext(@CType("const void *") MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(this.segment(), value); return this; }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -204,25 +204,25 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_layout.get(segment, 0L, index); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
     /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkPushDescriptorSetInfo.get_layout(segment, 0L); }
+    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkPushDescriptorSetInfo.get_layout(segment, 0L); }
     /// {@return `layout`}
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkPushDescriptorSetInfo.get_layout(this.segment()); }
+    public @CType("VkPipelineLayout") MemorySegment layout() { return VkPushDescriptorSetInfo.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
+    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_layout(segment, 0L, value); }
+    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkPushDescriptorSetInfo.set_layout(segment, 0L, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushDescriptorSetInfo layout(@CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_layout(this.segment(), value); return this; }
+    public VkPushDescriptorSetInfo layout(@CType("VkPipelineLayout") MemorySegment value) { VkPushDescriptorSetInfo.set_layout(this.segment(), value); return this; }
 
     /// {@return `set` at the given index}
     /// @param segment the segment of the struct
@@ -273,25 +273,25 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
     /// {@return `pDescriptorWrites` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment get_pDescriptorWrites(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDescriptorWrites.get(segment, 0L, index); }
+    public static @CType("const VkWriteDescriptorSet *") MemorySegment get_pDescriptorWrites(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorWrites.get(segment, 0L, index); }
     /// {@return `pDescriptorWrites`}
     /// @param segment the segment of the struct
-    public static @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment get_pDescriptorWrites(MemorySegment segment) { return VkPushDescriptorSetInfo.get_pDescriptorWrites(segment, 0L); }
+    public static @CType("const VkWriteDescriptorSet *") MemorySegment get_pDescriptorWrites(MemorySegment segment) { return VkPushDescriptorSetInfo.get_pDescriptorWrites(segment, 0L); }
     /// {@return `pDescriptorWrites`}
-    public @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorWrites() { return VkPushDescriptorSetInfo.get_pDescriptorWrites(this.segment()); }
+    public @CType("const VkWriteDescriptorSet *") MemorySegment pDescriptorWrites() { return VkPushDescriptorSetInfo.get_pDescriptorWrites(this.segment()); }
     /// Sets `pDescriptorWrites` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pDescriptorWrites(MemorySegment segment, long index, @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment value) { VH_pDescriptorWrites.set(segment, 0L, index, value); }
+    public static void set_pDescriptorWrites(MemorySegment segment, long index, @CType("const VkWriteDescriptorSet *") MemorySegment value) { VH_pDescriptorWrites.set(segment, 0L, index, value); }
     /// Sets `pDescriptorWrites` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pDescriptorWrites(MemorySegment segment, @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(segment, 0L, value); }
+    public static void set_pDescriptorWrites(MemorySegment segment, @CType("const VkWriteDescriptorSet *") MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(segment, 0L, value); }
     /// Sets `pDescriptorWrites` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPushDescriptorSetInfo pDescriptorWrites(@CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(this.segment(), value); return this; }
+    public VkPushDescriptorSetInfo pDescriptorWrites(@CType("const VkWriteDescriptorSet *") MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(this.segment(), value); return this; }
 
     /// A buffer of [VkPushDescriptorSetInfo].
     public static final class Buffer extends VkPushDescriptorSetInfo {
@@ -326,12 +326,12 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPushDescriptorSetInfo.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPushDescriptorSetInfo.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPushDescriptorSetInfo.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `stageFlags` at the given index}
         /// @param index the index
@@ -344,12 +344,12 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
 
         /// {@return `layout` at the given index}
         /// @param index the index
-        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkPushDescriptorSetInfo.get_layout(this.segment(), index); }
+        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkPushDescriptorSetInfo.get_layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkPushDescriptorSetInfo.set_layout(this.segment(), index, value); return this; }
 
         /// {@return `set` at the given index}
         /// @param index the index
@@ -371,12 +371,12 @@ public sealed class VkPushDescriptorSetInfo extends Struct {
 
         /// {@return `pDescriptorWrites` at the given index}
         /// @param index the index
-        public @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment pDescriptorWritesAt(long index) { return VkPushDescriptorSetInfo.get_pDescriptorWrites(this.segment(), index); }
+        public @CType("const VkWriteDescriptorSet *") MemorySegment pDescriptorWritesAt(long index) { return VkPushDescriptorSetInfo.get_pDescriptorWrites(this.segment(), index); }
         /// Sets `pDescriptorWrites` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pDescriptorWritesAt(long index, @CType("const VkWriteDescriptorSet *") java.lang.foreign.MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(this.segment(), index, value); return this; }
+        public Buffer pDescriptorWritesAt(long index, @CType("const VkWriteDescriptorSet *") MemorySegment value) { VkPushDescriptorSetInfo.set_pDescriptorWrites(this.segment(), index, value); return this; }
 
     }
 }

@@ -76,19 +76,19 @@ public class GL46 extends GL45 {
         this.handles = new Handles(func);
     }
 
-    public void SpecializeShader(@CType("GLuint") int shader, @CType("const GLchar *") java.lang.foreign.MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantIndex, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantValue) {
+    public void SpecializeShader(@CType("GLuint") int shader, @CType("const GLchar *") MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") MemorySegment pConstantIndex, @CType("const GLuint *") MemorySegment pConstantValue) {
         if (Unmarshal.isNullPointer(handles.PFN_glSpecializeShader)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShader");
         try { Handles.MH_glSpecializeShader.invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in glSpecializeShader", e); }
     }
 
-    public void MultiDrawArraysIndirectCount(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
+    public void MultiDrawArraysIndirectCount(@CType("GLenum") int mode, @CType("const void *") MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
         try { Handles.MH_glMultiDrawArraysIndirectCount.invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCount", e); }
     }
 
-    public void MultiDrawElementsIndirectCount(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
+    public void MultiDrawElementsIndirectCount(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
         if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
         try { Handles.MH_glMultiDrawElementsIndirectCount.invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCount", e); }

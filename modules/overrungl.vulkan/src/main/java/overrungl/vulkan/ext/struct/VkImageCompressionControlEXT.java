@@ -28,13 +28,13 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### compressionControlPlaneCount
 /// [VarHandle][#VH_compressionControlPlaneCount] - [Getter][#compressionControlPlaneCount()] - [Setter][#compressionControlPlaneCount(int)]
 /// ### pFixedRateFlags
-/// [VarHandle][#VH_pFixedRateFlags] - [Getter][#pFixedRateFlags()] - [Setter][#pFixedRateFlags(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pFixedRateFlags] - [Getter][#pFixedRateFlags()] - [Setter][#pFixedRateFlags(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,13 +57,13 @@ public sealed class VkImageCompressionControlEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
     /// The [VarHandle] of `compressionControlPlaneCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_compressionControlPlaneCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compressionControlPlaneCount"));
-    /// The [VarHandle] of `pFixedRateFlags` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pFixedRateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pFixedRateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFixedRateFlags"));
 
     /// Creates `VkImageCompressionControlEXT` with the given segment.
@@ -109,7 +109,7 @@ public sealed class VkImageCompressionControlEXT extends Struct {
     /// Allocates a `VkImageCompressionControlEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageCompressionControlEXT`
-    public static VkImageCompressionControlEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageCompressionFlagsEXT") int flags, @CType("uint32_t") int compressionControlPlaneCount, @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment pFixedRateFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).compressionControlPlaneCount(compressionControlPlaneCount).pFixedRateFlags(pFixedRateFlags); }
+    public static VkImageCompressionControlEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageCompressionFlagsEXT") int flags, @CType("uint32_t") int compressionControlPlaneCount, @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment pFixedRateFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).compressionControlPlaneCount(compressionControlPlaneCount).pFixedRateFlags(pFixedRateFlags); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -146,25 +146,25 @@ public sealed class VkImageCompressionControlEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageCompressionControlEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImageCompressionControlEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageCompressionControlEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkImageCompressionControlEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImageCompressionControlEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageCompressionControlEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pNext(this.segment(), value); return this; }
+    public VkImageCompressionControlEXT pNext(@CType("const void *") MemorySegment value) { VkImageCompressionControlEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -215,25 +215,25 @@ public sealed class VkImageCompressionControlEXT extends Struct {
     /// {@return `pFixedRateFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment get_pFixedRateFlags(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pFixedRateFlags.get(segment, 0L, index); }
+    public static @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment get_pFixedRateFlags(MemorySegment segment, long index) { return (MemorySegment) VH_pFixedRateFlags.get(segment, 0L, index); }
     /// {@return `pFixedRateFlags`}
     /// @param segment the segment of the struct
-    public static @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment get_pFixedRateFlags(MemorySegment segment) { return VkImageCompressionControlEXT.get_pFixedRateFlags(segment, 0L); }
+    public static @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment get_pFixedRateFlags(MemorySegment segment) { return VkImageCompressionControlEXT.get_pFixedRateFlags(segment, 0L); }
     /// {@return `pFixedRateFlags`}
-    public @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment pFixedRateFlags() { return VkImageCompressionControlEXT.get_pFixedRateFlags(this.segment()); }
+    public @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment pFixedRateFlags() { return VkImageCompressionControlEXT.get_pFixedRateFlags(this.segment()); }
     /// Sets `pFixedRateFlags` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pFixedRateFlags(MemorySegment segment, long index, @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment value) { VH_pFixedRateFlags.set(segment, 0L, index, value); }
+    public static void set_pFixedRateFlags(MemorySegment segment, long index, @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment value) { VH_pFixedRateFlags.set(segment, 0L, index, value); }
     /// Sets `pFixedRateFlags` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pFixedRateFlags(MemorySegment segment, @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(segment, 0L, value); }
+    public static void set_pFixedRateFlags(MemorySegment segment, @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(segment, 0L, value); }
     /// Sets `pFixedRateFlags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageCompressionControlEXT pFixedRateFlags(@CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(this.segment(), value); return this; }
+    public VkImageCompressionControlEXT pFixedRateFlags(@CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(this.segment(), value); return this; }
 
     /// A buffer of [VkImageCompressionControlEXT].
     public static final class Buffer extends VkImageCompressionControlEXT {
@@ -268,12 +268,12 @@ public sealed class VkImageCompressionControlEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageCompressionControlEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImageCompressionControlEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImageCompressionControlEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -295,12 +295,12 @@ public sealed class VkImageCompressionControlEXT extends Struct {
 
         /// {@return `pFixedRateFlags` at the given index}
         /// @param index the index
-        public @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment pFixedRateFlagsAt(long index) { return VkImageCompressionControlEXT.get_pFixedRateFlags(this.segment(), index); }
+        public @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment pFixedRateFlagsAt(long index) { return VkImageCompressionControlEXT.get_pFixedRateFlags(this.segment(), index); }
         /// Sets `pFixedRateFlags` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pFixedRateFlagsAt(long index, @CType("VkImageCompressionFixedRateFlagsEXT *") java.lang.foreign.MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(this.segment(), index, value); return this; }
+        public Buffer pFixedRateFlagsAt(long index, @CType("VkImageCompressionFixedRateFlagsEXT *") MemorySegment value) { VkImageCompressionControlEXT.set_pFixedRateFlags(this.segment(), index, value); return this; }
 
     }
 }

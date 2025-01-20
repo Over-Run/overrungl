@@ -53,7 +53,7 @@ public final class GLNVScissorExclusive {
         catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
     }
 
-    public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
+    public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment v) {
         if (Unmarshal.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
         try { Handles.MH_glScissorExclusiveArrayvNV.invokeExact(handles.PFN_glScissorExclusiveArrayvNV, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }

@@ -28,27 +28,27 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### pMessageIdName
-/// [VarHandle][#VH_pMessageIdName] - [Getter][#pMessageIdName()] - [Setter][#pMessageIdName(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pMessageIdName] - [Getter][#pMessageIdName()] - [Setter][#pMessageIdName(MemorySegment)]
 /// ### messageIdNumber
 /// [VarHandle][#VH_messageIdNumber] - [Getter][#messageIdNumber()] - [Setter][#messageIdNumber(int)]
 /// ### pMessage
-/// [VarHandle][#VH_pMessage] - [Getter][#pMessage()] - [Setter][#pMessage(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pMessage] - [Getter][#pMessage()] - [Setter][#pMessage(MemorySegment)]
 /// ### queueLabelCount
 /// [VarHandle][#VH_queueLabelCount] - [Getter][#queueLabelCount()] - [Setter][#queueLabelCount(int)]
 /// ### pQueueLabels
-/// [VarHandle][#VH_pQueueLabels] - [Getter][#pQueueLabels()] - [Setter][#pQueueLabels(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pQueueLabels] - [Getter][#pQueueLabels()] - [Setter][#pQueueLabels(MemorySegment)]
 /// ### cmdBufLabelCount
 /// [VarHandle][#VH_cmdBufLabelCount] - [Getter][#cmdBufLabelCount()] - [Setter][#cmdBufLabelCount(int)]
 /// ### pCmdBufLabels
-/// [VarHandle][#VH_pCmdBufLabels] - [Getter][#pCmdBufLabels()] - [Setter][#pCmdBufLabels(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pCmdBufLabels] - [Getter][#pCmdBufLabels()] - [Setter][#pCmdBufLabels(MemorySegment)]
 /// ### objectCount
 /// [VarHandle][#VH_objectCount] - [Getter][#objectCount()] - [Setter][#objectCount(int)]
 /// ### pObjects
-/// [VarHandle][#VH_pObjects] - [Getter][#pObjects()] - [Setter][#pObjects(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pObjects] - [Getter][#pObjects()] - [Setter][#pObjects(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -85,27 +85,27 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `pMessageIdName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pMessageIdName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMessageIdName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMessageIdName"));
     /// The [VarHandle] of `messageIdNumber` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_messageIdNumber = LAYOUT.arrayElementVarHandle(PathElement.groupElement("messageIdNumber"));
-    /// The [VarHandle] of `pMessage` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pMessage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMessage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMessage"));
     /// The [VarHandle] of `queueLabelCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_queueLabelCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueLabelCount"));
-    /// The [VarHandle] of `pQueueLabels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pQueueLabels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pQueueLabels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueueLabels"));
     /// The [VarHandle] of `cmdBufLabelCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_cmdBufLabelCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cmdBufLabelCount"));
-    /// The [VarHandle] of `pCmdBufLabels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pCmdBufLabels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pCmdBufLabels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCmdBufLabels"));
     /// The [VarHandle] of `objectCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_objectCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectCount"));
-    /// The [VarHandle] of `pObjects` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pObjects` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pObjects = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pObjects"));
 
     /// Creates `VkDebugUtilsMessengerCallbackDataEXT` with the given segment.
@@ -151,7 +151,7 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// Allocates a `VkDebugUtilsMessengerCallbackDataEXT` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDebugUtilsMessengerCallbackDataEXT`
-    public static VkDebugUtilsMessengerCallbackDataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDebugUtilsMessengerCallbackDataFlagsEXT") int flags, @CType("const char *") java.lang.foreign.MemorySegment pMessageIdName, @CType("int32_t") int messageIdNumber, @CType("const char *") java.lang.foreign.MemorySegment pMessage, @CType("uint32_t") int queueLabelCount, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pQueueLabels, @CType("uint32_t") int cmdBufLabelCount, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pCmdBufLabels, @CType("uint32_t") int objectCount, @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment pObjects) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pMessageIdName(pMessageIdName).messageIdNumber(messageIdNumber).pMessage(pMessage).queueLabelCount(queueLabelCount).pQueueLabels(pQueueLabels).cmdBufLabelCount(cmdBufLabelCount).pCmdBufLabels(pCmdBufLabels).objectCount(objectCount).pObjects(pObjects); }
+    public static VkDebugUtilsMessengerCallbackDataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDebugUtilsMessengerCallbackDataFlagsEXT") int flags, @CType("const char *") MemorySegment pMessageIdName, @CType("int32_t") int messageIdNumber, @CType("const char *") MemorySegment pMessage, @CType("uint32_t") int queueLabelCount, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pQueueLabels, @CType("uint32_t") int cmdBufLabelCount, @CType("const VkDebugUtilsLabelEXT *") MemorySegment pCmdBufLabels, @CType("uint32_t") int objectCount, @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment pObjects) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pMessageIdName(pMessageIdName).messageIdNumber(messageIdNumber).pMessage(pMessage).queueLabelCount(queueLabelCount).pQueueLabels(pQueueLabels).cmdBufLabelCount(cmdBufLabelCount).pCmdBufLabels(pCmdBufLabels).objectCount(objectCount).pObjects(pObjects); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -188,25 +188,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pNext(@CType("const void *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -234,25 +234,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pMessageIdName` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pMessageIdName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pMessageIdName.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pMessageIdName(MemorySegment segment, long index) { return (MemorySegment) VH_pMessageIdName.get(segment, 0L, index); }
     /// {@return `pMessageIdName`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pMessageIdName(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pMessageIdName(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(segment, 0L); }
     /// {@return `pMessageIdName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pMessageIdName() { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(this.segment()); }
+    public @CType("const char *") MemorySegment pMessageIdName() { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(this.segment()); }
     /// Sets `pMessageIdName` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pMessageIdName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pMessageIdName.set(segment, 0L, index, value); }
+    public static void set_pMessageIdName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pMessageIdName.set(segment, 0L, index, value); }
     /// Sets `pMessageIdName` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pMessageIdName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(segment, 0L, value); }
+    public static void set_pMessageIdName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(segment, 0L, value); }
     /// Sets `pMessageIdName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pMessageIdName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pMessageIdName(@CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(this.segment(), value); return this; }
 
     /// {@return `messageIdNumber` at the given index}
     /// @param segment the segment of the struct
@@ -280,25 +280,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pMessage` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pMessage(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pMessage.get(segment, 0L, index); }
+    public static @CType("const char *") MemorySegment get_pMessage(MemorySegment segment, long index) { return (MemorySegment) VH_pMessage.get(segment, 0L, index); }
     /// {@return `pMessage`}
     /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pMessage(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(segment, 0L); }
+    public static @CType("const char *") MemorySegment get_pMessage(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(segment, 0L); }
     /// {@return `pMessage`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pMessage() { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(this.segment()); }
+    public @CType("const char *") MemorySegment pMessage() { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(this.segment()); }
     /// Sets `pMessage` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pMessage(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pMessage.set(segment, 0L, index, value); }
+    public static void set_pMessage(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pMessage.set(segment, 0L, index, value); }
     /// Sets `pMessage` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pMessage(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(segment, 0L, value); }
+    public static void set_pMessage(MemorySegment segment, @CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(segment, 0L, value); }
     /// Sets `pMessage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pMessage(@CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pMessage(@CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(this.segment(), value); return this; }
 
     /// {@return `queueLabelCount` at the given index}
     /// @param segment the segment of the struct
@@ -326,25 +326,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pQueueLabels` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment get_pQueueLabels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pQueueLabels.get(segment, 0L, index); }
+    public static @CType("const VkDebugUtilsLabelEXT *") MemorySegment get_pQueueLabels(MemorySegment segment, long index) { return (MemorySegment) VH_pQueueLabels.get(segment, 0L, index); }
     /// {@return `pQueueLabels`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment get_pQueueLabels(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(segment, 0L); }
+    public static @CType("const VkDebugUtilsLabelEXT *") MemorySegment get_pQueueLabels(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(segment, 0L); }
     /// {@return `pQueueLabels`}
-    public @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pQueueLabels() { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(this.segment()); }
+    public @CType("const VkDebugUtilsLabelEXT *") MemorySegment pQueueLabels() { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(this.segment()); }
     /// Sets `pQueueLabels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pQueueLabels(MemorySegment segment, long index, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VH_pQueueLabels.set(segment, 0L, index, value); }
+    public static void set_pQueueLabels(MemorySegment segment, long index, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VH_pQueueLabels.set(segment, 0L, index, value); }
     /// Sets `pQueueLabels` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pQueueLabels(MemorySegment segment, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(segment, 0L, value); }
+    public static void set_pQueueLabels(MemorySegment segment, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(segment, 0L, value); }
     /// Sets `pQueueLabels` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pQueueLabels(@CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pQueueLabels(@CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(this.segment(), value); return this; }
 
     /// {@return `cmdBufLabelCount` at the given index}
     /// @param segment the segment of the struct
@@ -372,25 +372,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pCmdBufLabels` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment get_pCmdBufLabels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCmdBufLabels.get(segment, 0L, index); }
+    public static @CType("const VkDebugUtilsLabelEXT *") MemorySegment get_pCmdBufLabels(MemorySegment segment, long index) { return (MemorySegment) VH_pCmdBufLabels.get(segment, 0L, index); }
     /// {@return `pCmdBufLabels`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment get_pCmdBufLabels(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(segment, 0L); }
+    public static @CType("const VkDebugUtilsLabelEXT *") MemorySegment get_pCmdBufLabels(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(segment, 0L); }
     /// {@return `pCmdBufLabels`}
-    public @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pCmdBufLabels() { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(this.segment()); }
+    public @CType("const VkDebugUtilsLabelEXT *") MemorySegment pCmdBufLabels() { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(this.segment()); }
     /// Sets `pCmdBufLabels` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pCmdBufLabels(MemorySegment segment, long index, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VH_pCmdBufLabels.set(segment, 0L, index, value); }
+    public static void set_pCmdBufLabels(MemorySegment segment, long index, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VH_pCmdBufLabels.set(segment, 0L, index, value); }
     /// Sets `pCmdBufLabels` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pCmdBufLabels(MemorySegment segment, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(segment, 0L, value); }
+    public static void set_pCmdBufLabels(MemorySegment segment, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(segment, 0L, value); }
     /// Sets `pCmdBufLabels` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pCmdBufLabels(@CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pCmdBufLabels(@CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(this.segment(), value); return this; }
 
     /// {@return `objectCount` at the given index}
     /// @param segment the segment of the struct
@@ -418,25 +418,25 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// {@return `pObjects` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment get_pObjects(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pObjects.get(segment, 0L, index); }
+    public static @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment get_pObjects(MemorySegment segment, long index) { return (MemorySegment) VH_pObjects.get(segment, 0L, index); }
     /// {@return `pObjects`}
     /// @param segment the segment of the struct
-    public static @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment get_pObjects(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(segment, 0L); }
+    public static @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment get_pObjects(MemorySegment segment) { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(segment, 0L); }
     /// {@return `pObjects`}
-    public @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment pObjects() { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(this.segment()); }
+    public @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment pObjects() { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(this.segment()); }
     /// Sets `pObjects` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pObjects(MemorySegment segment, long index, @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pObjects.set(segment, 0L, index, value); }
+    public static void set_pObjects(MemorySegment segment, long index, @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment value) { VH_pObjects.set(segment, 0L, index, value); }
     /// Sets `pObjects` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pObjects(MemorySegment segment, @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(segment, 0L, value); }
+    public static void set_pObjects(MemorySegment segment, @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(segment, 0L, value); }
     /// Sets `pObjects` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsMessengerCallbackDataEXT pObjects(@CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(this.segment(), value); return this; }
+    public VkDebugUtilsMessengerCallbackDataEXT pObjects(@CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(this.segment(), value); return this; }
 
     /// A buffer of [VkDebugUtilsMessengerCallbackDataEXT].
     public static final class Buffer extends VkDebugUtilsMessengerCallbackDataEXT {
@@ -471,12 +471,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index
@@ -489,12 +489,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pMessageIdName` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pMessageIdNameAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(this.segment(), index); }
+        public @CType("const char *") MemorySegment pMessageIdNameAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessageIdName(this.segment(), index); }
         /// Sets `pMessageIdName` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pMessageIdNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(this.segment(), index, value); return this; }
+        public Buffer pMessageIdNameAt(long index, @CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessageIdName(this.segment(), index, value); return this; }
 
         /// {@return `messageIdNumber` at the given index}
         /// @param index the index
@@ -507,12 +507,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pMessage` at the given index}
         /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pMessageAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(this.segment(), index); }
+        public @CType("const char *") MemorySegment pMessageAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pMessage(this.segment(), index); }
         /// Sets `pMessage` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pMessageAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(this.segment(), index, value); return this; }
+        public Buffer pMessageAt(long index, @CType("const char *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pMessage(this.segment(), index, value); return this; }
 
         /// {@return `queueLabelCount` at the given index}
         /// @param index the index
@@ -525,12 +525,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pQueueLabels` at the given index}
         /// @param index the index
-        public @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pQueueLabelsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(this.segment(), index); }
+        public @CType("const VkDebugUtilsLabelEXT *") MemorySegment pQueueLabelsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pQueueLabels(this.segment(), index); }
         /// Sets `pQueueLabels` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pQueueLabelsAt(long index, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(this.segment(), index, value); return this; }
+        public Buffer pQueueLabelsAt(long index, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pQueueLabels(this.segment(), index, value); return this; }
 
         /// {@return `cmdBufLabelCount` at the given index}
         /// @param index the index
@@ -543,12 +543,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pCmdBufLabels` at the given index}
         /// @param index the index
-        public @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment pCmdBufLabelsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(this.segment(), index); }
+        public @CType("const VkDebugUtilsLabelEXT *") MemorySegment pCmdBufLabelsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pCmdBufLabels(this.segment(), index); }
         /// Sets `pCmdBufLabels` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pCmdBufLabelsAt(long index, @CType("const VkDebugUtilsLabelEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(this.segment(), index, value); return this; }
+        public Buffer pCmdBufLabelsAt(long index, @CType("const VkDebugUtilsLabelEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pCmdBufLabels(this.segment(), index, value); return this; }
 
         /// {@return `objectCount` at the given index}
         /// @param index the index
@@ -561,12 +561,12 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
 
         /// {@return `pObjects` at the given index}
         /// @param index the index
-        public @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment pObjectsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(this.segment(), index); }
+        public @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment pObjectsAt(long index) { return VkDebugUtilsMessengerCallbackDataEXT.get_pObjects(this.segment(), index); }
         /// Sets `pObjects` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pObjectsAt(long index, @CType("const VkDebugUtilsObjectNameInfoEXT *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(this.segment(), index, value); return this; }
+        public Buffer pObjectsAt(long index, @CType("const VkDebugUtilsObjectNameInfoEXT *") MemorySegment value) { VkDebugUtilsMessengerCallbackDataEXT.set_pObjects(this.segment(), index, value); return this; }
 
     }
 }

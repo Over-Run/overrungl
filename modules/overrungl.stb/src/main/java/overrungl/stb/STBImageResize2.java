@@ -237,133 +237,133 @@ public final class STBImageResize2 {
         }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbir_resize_uint8_srgb(@CType("const unsigned char *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    public static @CType("unsigned char *") MemorySegment stbir_resize_uint8_srgb(@CType("const unsigned char *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
-    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbir_resize_uint8_linear(@CType("const unsigned char *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    public static @CType("unsigned char *") MemorySegment stbir_resize_uint8_linear(@CType("const unsigned char *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
-    public static @CType("float*") java.lang.foreign.MemorySegment stbir_resize_float_linear(@CType("const float *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("float*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    public static @CType("float*") MemorySegment stbir_resize_float_linear(@CType("const float *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("float*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
-    public static @CType("void*") java.lang.foreign.MemorySegment stbir_resize(@CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type, @CType("stbir_edge") int edge, @CType("stbir_filter") int filter) {
+    public static @CType("void*") MemorySegment stbir_resize(@CType("const void*") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type, @CType("stbir_edge") int edge, @CType("stbir_filter") int filter) {
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize.invokeExact(Handles.get().PFN_stbir_resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter);
+            return (MemorySegment) Handles.MH_stbir_resize.invokeExact(Handles.get().PFN_stbir_resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize", e); }
     }
 
-    public static void stbir_resize_init(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type) {
+    public static void stbir_resize_init(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("const void*") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type) {
         try {
             Handles.MH_stbir_resize_init.invokeExact(Handles.get().PFN_stbir_resize_init, resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_init", e); }
     }
 
-    public static void stbir_set_datatypes(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_datatype") int input_type, @CType("stbir_datatype") int output_type) {
+    public static void stbir_set_datatypes(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_datatype") int input_type, @CType("stbir_datatype") int output_type) {
         try {
             Handles.MH_stbir_set_datatypes.invokeExact(Handles.get().PFN_stbir_set_datatypes, resize, input_type, output_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_datatypes", e); }
     }
 
-    public static void stbir_set_pixel_callbacks(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment input_cb, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment output_cb) {
+    public static void stbir_set_pixel_callbacks(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_input_callback *") MemorySegment input_cb, @CType("stbir_output_callback *") MemorySegment output_cb) {
         try {
             Handles.MH_stbir_set_pixel_callbacks.invokeExact(Handles.get().PFN_stbir_set_pixel_callbacks, resize, input_cb, output_cb);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_callbacks", e); }
     }
 
-    public static void stbir_set_user_data(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("void*") java.lang.foreign.MemorySegment user_data) {
+    public static void stbir_set_user_data(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("void*") MemorySegment user_data) {
         try {
             Handles.MH_stbir_set_user_data.invokeExact(Handles.get().PFN_stbir_set_user_data, resize, user_data);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_user_data", e); }
     }
 
-    public static void stbir_set_buffer_ptrs(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_stride_in_bytes) {
+    public static void stbir_set_buffer_ptrs(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("const void*") MemorySegment input_pixels, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_stride_in_bytes) {
         try {
             Handles.MH_stbir_set_buffer_ptrs.invokeExact(Handles.get().PFN_stbir_set_buffer_ptrs, resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_buffer_ptrs", e); }
     }
 
-    public static @CType("int") boolean stbir_set_pixel_layouts(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_pixel_layout") int input_pixel_layout, @CType("stbir_pixel_layout") int output_pixel_layout) {
+    public static @CType("int") boolean stbir_set_pixel_layouts(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_pixel_layout") int input_pixel_layout, @CType("stbir_pixel_layout") int output_pixel_layout) {
         try {
             return (boolean) Handles.MH_stbir_set_pixel_layouts.invokeExact(Handles.get().PFN_stbir_set_pixel_layouts, resize, input_pixel_layout, output_pixel_layout);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_layouts", e); }
     }
 
-    public static @CType("int") boolean stbir_set_edgemodes(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge) {
+    public static @CType("int") boolean stbir_set_edgemodes(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge) {
         try {
             return (boolean) Handles.MH_stbir_set_edgemodes.invokeExact(Handles.get().PFN_stbir_set_edgemodes, resize, horizontal_edge, vertical_edge);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_edgemodes", e); }
     }
 
-    public static @CType("int") boolean stbir_set_filters(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter) {
+    public static @CType("int") boolean stbir_set_filters(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter) {
         try {
             return (boolean) Handles.MH_stbir_set_filters.invokeExact(Handles.get().PFN_stbir_set_filters, resize, horizontal_filter, vertical_filter);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filters", e); }
     }
 
-    public static @CType("int") boolean stbir_set_filter_callbacks(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment horizontal_filter, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment horizontal_support, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment vertical_filter, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment vertical_support) {
+    public static @CType("int") boolean stbir_set_filter_callbacks(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir__kernel_callback *") MemorySegment horizontal_filter, @CType("stbir__support_callback *") MemorySegment horizontal_support, @CType("stbir__kernel_callback *") MemorySegment vertical_filter, @CType("stbir__support_callback *") MemorySegment vertical_support) {
         try {
             return (boolean) Handles.MH_stbir_set_filter_callbacks.invokeExact(Handles.get().PFN_stbir_set_filter_callbacks, resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filter_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbir_set_pixel_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
+    public static @CType("int") boolean stbir_set_pixel_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
         try {
             return (boolean) Handles.MH_stbir_set_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_pixel_subrect, resize, subx, suby, subw, subh);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_input_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("double") double s0, @CType("double") double t0, @CType("double") double s1, @CType("double") double t1) {
+    public static @CType("int") boolean stbir_set_input_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("double") double s0, @CType("double") double t0, @CType("double") double s1, @CType("double") double t1) {
         try {
             return (boolean) Handles.MH_stbir_set_input_subrect.invokeExact(Handles.get().PFN_stbir_set_input_subrect, resize, s0, t0, s1, t1);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_input_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_output_pixel_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
+    public static @CType("int") boolean stbir_set_output_pixel_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
         try {
             return (boolean) Handles.MH_stbir_set_output_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_output_pixel_subrect, resize, subx, suby, subw, subh);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_non_pm_alpha_speed_over_quality(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int non_pma_alpha_speed_over_quality) {
+    public static @CType("int") boolean stbir_set_non_pm_alpha_speed_over_quality(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int non_pma_alpha_speed_over_quality) {
         try {
             return (boolean) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(Handles.get().PFN_stbir_set_non_pm_alpha_speed_over_quality, resize, non_pma_alpha_speed_over_quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
-    public static @CType("int") boolean stbir_build_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
+    public static @CType("int") boolean stbir_build_samplers(@CType("STBIR_RESIZE *") MemorySegment resize) {
         try {
             return (boolean) Handles.MH_stbir_build_samplers.invokeExact(Handles.get().PFN_stbir_build_samplers, resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
-    public static void stbir_free_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
+    public static void stbir_free_samplers(@CType("STBIR_RESIZE *") MemorySegment resize) {
         try {
             Handles.MH_stbir_free_samplers.invokeExact(Handles.get().PFN_stbir_free_samplers, resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
-    public static @CType("int") boolean stbir_resize_extended(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
+    public static @CType("int") boolean stbir_resize_extended(@CType("STBIR_RESIZE *") MemorySegment resize) {
         try {
             return (boolean) Handles.MH_stbir_resize_extended.invokeExact(Handles.get().PFN_stbir_resize_extended, resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
-    public static @CType("int") boolean stbir_build_samplers_with_splits(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int try_splits) {
+    public static @CType("int") boolean stbir_build_samplers_with_splits(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int try_splits) {
         try {
             return (boolean) Handles.MH_stbir_build_samplers_with_splits.invokeExact(Handles.get().PFN_stbir_build_samplers_with_splits, resize, try_splits);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
-    public static @CType("int") boolean stbir_resize_extended_split(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int split_start, @CType("int") int split_count) {
+    public static @CType("int") boolean stbir_resize_extended_split(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int split_start, @CType("int") int split_count) {
         try {
             return (boolean) Handles.MH_stbir_resize_extended_splits.invokeExact(Handles.get().PFN_stbir_resize_extended_splits, resize, split_start, split_count);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended_splits", e); }

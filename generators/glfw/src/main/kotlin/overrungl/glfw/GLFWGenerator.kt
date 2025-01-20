@@ -16,15 +16,14 @@
 
 package overrungl.glfw
 
-import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
 const val glfwPackage = "overrungl.glfw"
 const val glfwLookup = "GLFWInternal.lookup()"
 
 val glfw_boolean = CustomTypeSpec(
-    carrier = TypeName.INT,
-    javaType = TypeName.BOOLEAN,
+    carrier = "int",
+    javaType = "boolean",
     processor = object : ValueProcessor {
         override fun marshal(context: ProcessorContext) {
             val builder = context.builder

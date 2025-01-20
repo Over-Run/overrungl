@@ -28,17 +28,17 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### queueFamilyIndex
 /// [VarHandle][#VH_queueFamilyIndex] - [Getter][#queueFamilyIndex()] - [Setter][#queueFamilyIndex(int)]
 /// ### flags
 /// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ### pVideoProfile
-/// [VarHandle][#VH_pVideoProfile] - [Getter][#pVideoProfile()] - [Setter][#pVideoProfile(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pVideoProfile] - [Getter][#pVideoProfile()] - [Setter][#pVideoProfile(MemorySegment)]
 /// ### pictureFormat
 /// [VarHandle][#VH_pictureFormat] - [Getter][#pictureFormat()] - [Setter][#pictureFormat(int)]
 /// ### maxCodedExtent
-/// [Byte offset][#OFFSET_maxCodedExtent] - [Memory layout][#ML_maxCodedExtent] - [Getter][#maxCodedExtent()] - [Setter][#maxCodedExtent(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxCodedExtent] - [Memory layout][#ML_maxCodedExtent] - [Getter][#maxCodedExtent()] - [Setter][#maxCodedExtent(MemorySegment)]
 /// ### referencePictureFormat
 /// [VarHandle][#VH_referencePictureFormat] - [Getter][#referencePictureFormat()] - [Setter][#referencePictureFormat(int)]
 /// ### maxDpbSlots
@@ -46,7 +46,7 @@ import overrungl.util.*;
 /// ### maxActiveReferencePictures
 /// [VarHandle][#VH_maxActiveReferencePictures] - [Getter][#maxActiveReferencePictures()] - [Setter][#maxActiveReferencePictures(int)]
 /// ### pStdHeaderVersion
-/// [VarHandle][#VH_pStdHeaderVersion] - [Getter][#pStdHeaderVersion()] - [Setter][#pStdHeaderVersion(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pStdHeaderVersion] - [Getter][#pStdHeaderVersion()] - [Setter][#pStdHeaderVersion(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -81,13 +81,13 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `queueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_queueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndex"));
     /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `pVideoProfile` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pVideoProfile` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVideoProfile = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVideoProfile"));
     /// The [VarHandle] of `pictureFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_pictureFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pictureFormat"));
@@ -101,7 +101,7 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     public static final VarHandle VH_maxDpbSlots = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDpbSlots"));
     /// The [VarHandle] of `maxActiveReferencePictures` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxActiveReferencePictures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxActiveReferencePictures"));
-    /// The [VarHandle] of `pStdHeaderVersion` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pStdHeaderVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStdHeaderVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdHeaderVersion"));
 
     /// Creates `VkVideoSessionCreateInfoKHR` with the given segment.
@@ -147,7 +147,7 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     /// Allocates a `VkVideoSessionCreateInfoKHR` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoSessionCreateInfoKHR`
-    public static VkVideoSessionCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int queueFamilyIndex, @CType("VkVideoSessionCreateFlagsKHR") int flags, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfile, @CType("VkFormat") int pictureFormat, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxCodedExtent, @CType("VkFormat") int referencePictureFormat, @CType("uint32_t") int maxDpbSlots, @CType("uint32_t") int maxActiveReferencePictures, @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment pStdHeaderVersion) { return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).flags(flags).pVideoProfile(pVideoProfile).pictureFormat(pictureFormat).maxCodedExtent(maxCodedExtent).referencePictureFormat(referencePictureFormat).maxDpbSlots(maxDpbSlots).maxActiveReferencePictures(maxActiveReferencePictures).pStdHeaderVersion(pStdHeaderVersion); }
+    public static VkVideoSessionCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int queueFamilyIndex, @CType("VkVideoSessionCreateFlagsKHR") int flags, @CType("const VkVideoProfileInfoKHR *") MemorySegment pVideoProfile, @CType("VkFormat") int pictureFormat, @CType("VkExtent2D") MemorySegment maxCodedExtent, @CType("VkFormat") int referencePictureFormat, @CType("uint32_t") int maxDpbSlots, @CType("uint32_t") int maxActiveReferencePictures, @CType("const VkExtensionProperties *") MemorySegment pStdHeaderVersion) { return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).flags(flags).pVideoProfile(pVideoProfile).pictureFormat(pictureFormat).maxCodedExtent(maxCodedExtent).referencePictureFormat(referencePictureFormat).maxDpbSlots(maxDpbSlots).maxActiveReferencePictures(maxActiveReferencePictures).pStdHeaderVersion(pStdHeaderVersion); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -184,25 +184,25 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoSessionCreateInfoKHR.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkVideoSessionCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoSessionCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoSessionCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `queueFamilyIndex` at the given index}
     /// @param segment the segment of the struct
@@ -253,25 +253,25 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     /// {@return `pVideoProfile` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment get_pVideoProfile(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVideoProfile.get(segment, 0L, index); }
+    public static @CType("const VkVideoProfileInfoKHR *") MemorySegment get_pVideoProfile(MemorySegment segment, long index) { return (MemorySegment) VH_pVideoProfile.get(segment, 0L, index); }
     /// {@return `pVideoProfile`}
     /// @param segment the segment of the struct
-    public static @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment get_pVideoProfile(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(segment, 0L); }
+    public static @CType("const VkVideoProfileInfoKHR *") MemorySegment get_pVideoProfile(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(segment, 0L); }
     /// {@return `pVideoProfile`}
-    public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfile() { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(this.segment()); }
+    public @CType("const VkVideoProfileInfoKHR *") MemorySegment pVideoProfile() { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(this.segment()); }
     /// Sets `pVideoProfile` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pVideoProfile(MemorySegment segment, long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VH_pVideoProfile.set(segment, 0L, index, value); }
+    public static void set_pVideoProfile(MemorySegment segment, long index, @CType("const VkVideoProfileInfoKHR *") MemorySegment value) { VH_pVideoProfile.set(segment, 0L, index, value); }
     /// Sets `pVideoProfile` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pVideoProfile(MemorySegment segment, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(segment, 0L, value); }
+    public static void set_pVideoProfile(MemorySegment segment, @CType("const VkVideoProfileInfoKHR *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(segment, 0L, value); }
     /// Sets `pVideoProfile` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoSessionCreateInfoKHR pVideoProfile(@CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(this.segment(), value); return this; }
+    public VkVideoSessionCreateInfoKHR pVideoProfile(@CType("const VkVideoProfileInfoKHR *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(this.segment(), value); return this; }
 
     /// {@return `pictureFormat` at the given index}
     /// @param segment the segment of the struct
@@ -299,25 +299,25 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     /// {@return `maxCodedExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxCodedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxCodedExtent, index), ML_maxCodedExtent); }
+    public static @CType("VkExtent2D") MemorySegment get_maxCodedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxCodedExtent, index), ML_maxCodedExtent); }
     /// {@return `maxCodedExtent`}
     /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxCodedExtent(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(segment, 0L); }
+    public static @CType("VkExtent2D") MemorySegment get_maxCodedExtent(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(segment, 0L); }
     /// {@return `maxCodedExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxCodedExtent() { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(this.segment()); }
+    public @CType("VkExtent2D") MemorySegment maxCodedExtent() { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(this.segment()); }
     /// Sets `maxCodedExtent` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxCodedExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxCodedExtent, index), ML_maxCodedExtent.byteSize()); }
+    public static void set_maxCodedExtent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxCodedExtent, index), ML_maxCodedExtent.byteSize()); }
     /// Sets `maxCodedExtent` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxCodedExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(segment, 0L, value); }
+    public static void set_maxCodedExtent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(segment, 0L, value); }
     /// Sets `maxCodedExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoSessionCreateInfoKHR maxCodedExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(this.segment(), value); return this; }
+    public VkVideoSessionCreateInfoKHR maxCodedExtent(@CType("VkExtent2D") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(this.segment(), value); return this; }
 
     /// {@return `referencePictureFormat` at the given index}
     /// @param segment the segment of the struct
@@ -391,25 +391,25 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
     /// {@return `pStdHeaderVersion` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment get_pStdHeaderVersion(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStdHeaderVersion.get(segment, 0L, index); }
+    public static @CType("const VkExtensionProperties *") MemorySegment get_pStdHeaderVersion(MemorySegment segment, long index) { return (MemorySegment) VH_pStdHeaderVersion.get(segment, 0L, index); }
     /// {@return `pStdHeaderVersion`}
     /// @param segment the segment of the struct
-    public static @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment get_pStdHeaderVersion(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(segment, 0L); }
+    public static @CType("const VkExtensionProperties *") MemorySegment get_pStdHeaderVersion(MemorySegment segment) { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(segment, 0L); }
     /// {@return `pStdHeaderVersion`}
-    public @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment pStdHeaderVersion() { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(this.segment()); }
+    public @CType("const VkExtensionProperties *") MemorySegment pStdHeaderVersion() { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(this.segment()); }
     /// Sets `pStdHeaderVersion` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pStdHeaderVersion(MemorySegment segment, long index, @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment value) { VH_pStdHeaderVersion.set(segment, 0L, index, value); }
+    public static void set_pStdHeaderVersion(MemorySegment segment, long index, @CType("const VkExtensionProperties *") MemorySegment value) { VH_pStdHeaderVersion.set(segment, 0L, index, value); }
     /// Sets `pStdHeaderVersion` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pStdHeaderVersion(MemorySegment segment, @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(segment, 0L, value); }
+    public static void set_pStdHeaderVersion(MemorySegment segment, @CType("const VkExtensionProperties *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(segment, 0L, value); }
     /// Sets `pStdHeaderVersion` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoSessionCreateInfoKHR pStdHeaderVersion(@CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(this.segment(), value); return this; }
+    public VkVideoSessionCreateInfoKHR pStdHeaderVersion(@CType("const VkExtensionProperties *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(this.segment(), value); return this; }
 
     /// A buffer of [VkVideoSessionCreateInfoKHR].
     public static final class Buffer extends VkVideoSessionCreateInfoKHR {
@@ -444,12 +444,12 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoSessionCreateInfoKHR.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoSessionCreateInfoKHR.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `queueFamilyIndex` at the given index}
         /// @param index the index
@@ -471,12 +471,12 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
 
         /// {@return `pVideoProfile` at the given index}
         /// @param index the index
-        public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfileAt(long index) { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(this.segment(), index); }
+        public @CType("const VkVideoProfileInfoKHR *") MemorySegment pVideoProfileAt(long index) { return VkVideoSessionCreateInfoKHR.get_pVideoProfile(this.segment(), index); }
         /// Sets `pVideoProfile` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pVideoProfileAt(long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(this.segment(), index, value); return this; }
+        public Buffer pVideoProfileAt(long index, @CType("const VkVideoProfileInfoKHR *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pVideoProfile(this.segment(), index, value); return this; }
 
         /// {@return `pictureFormat` at the given index}
         /// @param index the index
@@ -489,12 +489,12 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
 
         /// {@return `maxCodedExtent` at the given index}
         /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxCodedExtentAt(long index) { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(this.segment(), index); }
+        public @CType("VkExtent2D") MemorySegment maxCodedExtentAt(long index) { return VkVideoSessionCreateInfoKHR.get_maxCodedExtent(this.segment(), index); }
         /// Sets `maxCodedExtent` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer maxCodedExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(this.segment(), index, value); return this; }
+        public Buffer maxCodedExtentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_maxCodedExtent(this.segment(), index, value); return this; }
 
         /// {@return `referencePictureFormat` at the given index}
         /// @param index the index
@@ -525,12 +525,12 @@ public sealed class VkVideoSessionCreateInfoKHR extends Struct {
 
         /// {@return `pStdHeaderVersion` at the given index}
         /// @param index the index
-        public @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment pStdHeaderVersionAt(long index) { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(this.segment(), index); }
+        public @CType("const VkExtensionProperties *") MemorySegment pStdHeaderVersionAt(long index) { return VkVideoSessionCreateInfoKHR.get_pStdHeaderVersion(this.segment(), index); }
         /// Sets `pStdHeaderVersion` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pStdHeaderVersionAt(long index, @CType("const VkExtensionProperties *") java.lang.foreign.MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(this.segment(), index, value); return this; }
+        public Buffer pStdHeaderVersionAt(long index, @CType("const VkExtensionProperties *") MemorySegment value) { VkVideoSessionCreateInfoKHR.set_pStdHeaderVersion(this.segment(), index, value); return this; }
 
     }
 }

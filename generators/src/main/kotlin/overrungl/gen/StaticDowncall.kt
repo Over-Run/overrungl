@@ -16,7 +16,6 @@
 
 package overrungl.gen
 
-import com.palantir.javapoet.TypeName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -204,7 +203,7 @@ class StaticDowncall(
             // methods
             methods.forEach { m ->
                 val chosenReturnType = m.returnType.selectTypeName(m.overload)
-                val returnVoid = chosenReturnType == TypeName.VOID
+                val returnVoid = chosenReturnType == "void"
                 sb.appendLine(
                     "    public static ${m.returnType.typeNameWithC(chosenReturnType)} ${m.name}(${
                         m.parameters.joinToString { p ->

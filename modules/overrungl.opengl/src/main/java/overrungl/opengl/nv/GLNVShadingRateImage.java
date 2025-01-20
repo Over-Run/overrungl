@@ -92,13 +92,13 @@ public final class GLNVShadingRateImage {
         catch (Throwable e) { throw new RuntimeException("error in glBindShadingRateImageNV", e); }
     }
 
-    public void GetShadingRateImagePaletteNV(@CType("GLuint") int viewport, @CType("GLuint") int entry, @CType("GLenum *") java.lang.foreign.MemorySegment rate) {
+    public void GetShadingRateImagePaletteNV(@CType("GLuint") int viewport, @CType("GLuint") int entry, @CType("GLenum *") MemorySegment rate) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateImagePaletteNV");
         try { Handles.MH_glGetShadingRateImagePaletteNV.invokeExact(handles.PFN_glGetShadingRateImagePaletteNV, viewport, entry, rate); }
         catch (Throwable e) { throw new RuntimeException("error in glGetShadingRateImagePaletteNV", e); }
     }
 
-    public void GetShadingRateSampleLocationivNV(@CType("GLenum") int rate, @CType("GLuint") int samples, @CType("GLuint") int index, @CType("GLint *") java.lang.foreign.MemorySegment location) {
+    public void GetShadingRateSampleLocationivNV(@CType("GLenum") int rate, @CType("GLuint") int samples, @CType("GLuint") int index, @CType("GLint *") MemorySegment location) {
         if (Unmarshal.isNullPointer(handles.PFN_glGetShadingRateSampleLocationivNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateSampleLocationivNV");
         try { Handles.MH_glGetShadingRateSampleLocationivNV.invokeExact(handles.PFN_glGetShadingRateSampleLocationivNV, rate, samples, index, location); }
         catch (Throwable e) { throw new RuntimeException("error in glGetShadingRateSampleLocationivNV", e); }
@@ -110,7 +110,7 @@ public final class GLNVShadingRateImage {
         catch (Throwable e) { throw new RuntimeException("error in glShadingRateImageBarrierNV", e); }
     }
 
-    public void ShadingRateImagePaletteNV(@CType("GLuint") int viewport, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLenum *") java.lang.foreign.MemorySegment rates) {
+    public void ShadingRateImagePaletteNV(@CType("GLuint") int viewport, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLenum *") MemorySegment rates) {
         if (Unmarshal.isNullPointer(handles.PFN_glShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateImagePaletteNV");
         try { Handles.MH_glShadingRateImagePaletteNV.invokeExact(handles.PFN_glShadingRateImagePaletteNV, viewport, first, count, rates); }
         catch (Throwable e) { throw new RuntimeException("error in glShadingRateImagePaletteNV", e); }
@@ -122,7 +122,7 @@ public final class GLNVShadingRateImage {
         catch (Throwable e) { throw new RuntimeException("error in glShadingRateSampleOrderNV", e); }
     }
 
-    public void ShadingRateSampleOrderCustomNV(@CType("GLenum") int rate, @CType("GLuint") int samples, @CType("const GLint *") java.lang.foreign.MemorySegment locations) {
+    public void ShadingRateSampleOrderCustomNV(@CType("GLenum") int rate, @CType("GLuint") int samples, @CType("const GLint *") MemorySegment locations) {
         if (Unmarshal.isNullPointer(handles.PFN_glShadingRateSampleOrderCustomNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateSampleOrderCustomNV");
         try { Handles.MH_glShadingRateSampleOrderCustomNV.invokeExact(handles.PFN_glShadingRateSampleOrderCustomNV, rate, samples, locations); }
         catch (Throwable e) { throw new RuntimeException("error in glShadingRateSampleOrderCustomNV", e); }

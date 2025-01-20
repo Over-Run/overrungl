@@ -26,11 +26,11 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### triangles
-/// [Byte offset][#OFFSET_triangles] - [Memory layout][#ML_triangles] - [Getter][#triangles()] - [Setter][#triangles(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_triangles] - [Memory layout][#ML_triangles] - [Getter][#triangles()] - [Setter][#triangles(MemorySegment)]
 /// ### aabbs
-/// [Byte offset][#OFFSET_aabbs] - [Memory layout][#ML_aabbs] - [Getter][#aabbs()] - [Setter][#aabbs(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_aabbs] - [Memory layout][#ML_aabbs] - [Getter][#aabbs()] - [Setter][#aabbs(MemorySegment)]
 /// ### instances
-/// [Byte offset][#OFFSET_instances] - [Memory layout][#ML_instances] - [Getter][#instances()] - [Setter][#instances(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_instances] - [Memory layout][#ML_instances] - [Getter][#instances()] - [Setter][#instances(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -112,71 +112,71 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends Union {
     /// {@return `triangles` at the given index}
     /// @param segment the segment of the union
     /// @param index   the index
-    public static @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment get_triangles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_triangles, index), ML_triangles); }
+    public static @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment get_triangles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_triangles, index), ML_triangles); }
     /// {@return `triangles`}
     /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment get_triangles(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_triangles(segment, 0L); }
+    public static @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment get_triangles(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_triangles(segment, 0L); }
     /// {@return `triangles`}
-    public @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment triangles() { return VkAccelerationStructureGeometryDataKHR.get_triangles(this.segment()); }
+    public @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment triangles() { return VkAccelerationStructureGeometryDataKHR.get_triangles(this.segment()); }
     /// Sets `triangles` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
-    public static void set_triangles(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_triangles, index), ML_triangles.byteSize()); }
+    public static void set_triangles(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_triangles, index), ML_triangles.byteSize()); }
     /// Sets `triangles` with the given value.
     /// @param segment the segment of the union
     /// @param value   the value
-    public static void set_triangles(MemorySegment segment, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(segment, 0L, value); }
+    public static void set_triangles(MemorySegment segment, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(segment, 0L, value); }
     /// Sets `triangles` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryDataKHR triangles(@CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryDataKHR triangles(@CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(this.segment(), value); return this; }
 
     /// {@return `aabbs` at the given index}
     /// @param segment the segment of the union
     /// @param index   the index
-    public static @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment get_aabbs(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_aabbs, index), ML_aabbs); }
+    public static @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment get_aabbs(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_aabbs, index), ML_aabbs); }
     /// {@return `aabbs`}
     /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment get_aabbs(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_aabbs(segment, 0L); }
+    public static @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment get_aabbs(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_aabbs(segment, 0L); }
     /// {@return `aabbs`}
-    public @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment aabbs() { return VkAccelerationStructureGeometryDataKHR.get_aabbs(this.segment()); }
+    public @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment aabbs() { return VkAccelerationStructureGeometryDataKHR.get_aabbs(this.segment()); }
     /// Sets `aabbs` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
-    public static void set_aabbs(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_aabbs, index), ML_aabbs.byteSize()); }
+    public static void set_aabbs(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_aabbs, index), ML_aabbs.byteSize()); }
     /// Sets `aabbs` with the given value.
     /// @param segment the segment of the union
     /// @param value   the value
-    public static void set_aabbs(MemorySegment segment, @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(segment, 0L, value); }
+    public static void set_aabbs(MemorySegment segment, @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(segment, 0L, value); }
     /// Sets `aabbs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryDataKHR aabbs(@CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryDataKHR aabbs(@CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(this.segment(), value); return this; }
 
     /// {@return `instances` at the given index}
     /// @param segment the segment of the union
     /// @param index   the index
-    public static @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment get_instances(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_instances, index), ML_instances); }
+    public static @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment get_instances(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_instances, index), ML_instances); }
     /// {@return `instances`}
     /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment get_instances(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_instances(segment, 0L); }
+    public static @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment get_instances(MemorySegment segment) { return VkAccelerationStructureGeometryDataKHR.get_instances(segment, 0L); }
     /// {@return `instances`}
-    public @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment instances() { return VkAccelerationStructureGeometryDataKHR.get_instances(this.segment()); }
+    public @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment instances() { return VkAccelerationStructureGeometryDataKHR.get_instances(this.segment()); }
     /// Sets `instances` with the given value at the given index.
     /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
-    public static void set_instances(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_instances, index), ML_instances.byteSize()); }
+    public static void set_instances(MemorySegment segment, long index, @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_instances, index), ML_instances.byteSize()); }
     /// Sets `instances` with the given value.
     /// @param segment the segment of the union
     /// @param value   the value
-    public static void set_instances(MemorySegment segment, @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(segment, 0L, value); }
+    public static void set_instances(MemorySegment segment, @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(segment, 0L, value); }
     /// Sets `instances` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryDataKHR instances(@CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryDataKHR instances(@CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(this.segment(), value); return this; }
 
     /// A buffer of [VkAccelerationStructureGeometryDataKHR].
     public static final class Buffer extends VkAccelerationStructureGeometryDataKHR {
@@ -202,30 +202,30 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends Union {
 
         /// {@return `triangles` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment trianglesAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_triangles(this.segment(), index); }
+        public @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment trianglesAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_triangles(this.segment(), index); }
         /// Sets `triangles` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer trianglesAt(long index, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(this.segment(), index, value); return this; }
+        public Buffer trianglesAt(long index, @CType("VkAccelerationStructureGeometryTrianglesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_triangles(this.segment(), index, value); return this; }
 
         /// {@return `aabbs` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment aabbsAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_aabbs(this.segment(), index); }
+        public @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment aabbsAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_aabbs(this.segment(), index); }
         /// Sets `aabbs` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer aabbsAt(long index, @CType("VkAccelerationStructureGeometryAabbsDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(this.segment(), index, value); return this; }
+        public Buffer aabbsAt(long index, @CType("VkAccelerationStructureGeometryAabbsDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_aabbs(this.segment(), index, value); return this; }
 
         /// {@return `instances` at the given index}
         /// @param index the index
-        public @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment instancesAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_instances(this.segment(), index); }
+        public @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment instancesAt(long index) { return VkAccelerationStructureGeometryDataKHR.get_instances(this.segment(), index); }
         /// Sets `instances` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer instancesAt(long index, @CType("VkAccelerationStructureGeometryInstancesDataKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(this.segment(), index, value); return this; }
+        public Buffer instancesAt(long index, @CType("VkAccelerationStructureGeometryInstancesDataKHR") MemorySegment value) { VkAccelerationStructureGeometryDataKHR.set_instances(this.segment(), index, value); return this; }
 
     }
 }

@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ### sType
 /// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
 /// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
 /// ### handle
-/// [VarHandle][#VH_handle] - [Getter][#handle()] - [Setter][#handle(java.lang.foreign.MemorySegment)]
+/// [VarHandle][#VH_handle] - [Getter][#handle()] - [Setter][#handle(MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,9 +49,9 @@ public sealed class VkSemaphoreSciSyncPoolCreateInfoNV extends Struct {
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The [VarHandle] of `handle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_handle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle"));
 
     /// Creates `VkSemaphoreSciSyncPoolCreateInfoNV` with the given segment.
@@ -97,7 +97,7 @@ public sealed class VkSemaphoreSciSyncPoolCreateInfoNV extends Struct {
     /// Allocates a `VkSemaphoreSciSyncPoolCreateInfoNV` with the given segment allocator and the initializing arguments.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSemaphoreSciSyncPoolCreateInfoNV`
-    public static VkSemaphoreSciSyncPoolCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("NvSciSyncObj") java.lang.foreign.MemorySegment handle) { return alloc(allocator).sType(sType).pNext(pNext).handle(handle); }
+    public static VkSemaphoreSciSyncPoolCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("NvSciSyncObj") MemorySegment handle) { return alloc(allocator).sType(sType).pNext(pNext).handle(handle); }
 
     /// Copies from the given source.
     /// @param src the source
@@ -134,48 +134,48 @@ public sealed class VkSemaphoreSciSyncPoolCreateInfoNV extends Struct {
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
     /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(segment, 0L); }
+    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(segment, 0L); }
     /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(this.segment()); }
+    public @CType("const void *") MemorySegment pNext() { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(segment, 0L, value); }
+    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(segment, 0L, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSciSyncPoolCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkSemaphoreSciSyncPoolCreateInfoNV pNext(@CType("const void *") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(this.segment(), value); return this; }
 
     /// {@return `handle` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("NvSciSyncObj") java.lang.foreign.MemorySegment get_handle(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_handle.get(segment, 0L, index); }
+    public static @CType("NvSciSyncObj") MemorySegment get_handle(MemorySegment segment, long index) { return (MemorySegment) VH_handle.get(segment, 0L, index); }
     /// {@return `handle`}
     /// @param segment the segment of the struct
-    public static @CType("NvSciSyncObj") java.lang.foreign.MemorySegment get_handle(MemorySegment segment) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(segment, 0L); }
+    public static @CType("NvSciSyncObj") MemorySegment get_handle(MemorySegment segment) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(segment, 0L); }
     /// {@return `handle`}
-    public @CType("NvSciSyncObj") java.lang.foreign.MemorySegment handle() { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(this.segment()); }
+    public @CType("NvSciSyncObj") MemorySegment handle() { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(this.segment()); }
     /// Sets `handle` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_handle(MemorySegment segment, long index, @CType("NvSciSyncObj") java.lang.foreign.MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
+    public static void set_handle(MemorySegment segment, long index, @CType("NvSciSyncObj") MemorySegment value) { VH_handle.set(segment, 0L, index, value); }
     /// Sets `handle` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_handle(MemorySegment segment, @CType("NvSciSyncObj") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(segment, 0L, value); }
+    public static void set_handle(MemorySegment segment, @CType("NvSciSyncObj") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(segment, 0L, value); }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSciSyncPoolCreateInfoNV handle(@CType("NvSciSyncObj") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(this.segment(), value); return this; }
+    public VkSemaphoreSciSyncPoolCreateInfoNV handle(@CType("NvSciSyncObj") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(this.segment(), value); return this; }
 
     /// A buffer of [VkSemaphoreSciSyncPoolCreateInfoNV].
     public static final class Buffer extends VkSemaphoreSciSyncPoolCreateInfoNV {
@@ -210,21 +210,21 @@ public sealed class VkSemaphoreSciSyncPoolCreateInfoNV extends Struct {
 
         /// {@return `pNext` at the given index}
         /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(this.segment(), index); }
+        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
 
         /// {@return `handle` at the given index}
         /// @param index the index
-        public @CType("NvSciSyncObj") java.lang.foreign.MemorySegment handleAt(long index) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(this.segment(), index); }
+        public @CType("NvSciSyncObj") MemorySegment handleAt(long index) { return VkSemaphoreSciSyncPoolCreateInfoNV.get_handle(this.segment(), index); }
         /// Sets `handle` with the given value at the given index.
         /// @param index the index
         /// @param value the value
         /// @return `this`
-        public Buffer handleAt(long index, @CType("NvSciSyncObj") java.lang.foreign.MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(this.segment(), index, value); return this; }
+        public Buffer handleAt(long index, @CType("NvSciSyncObj") MemorySegment value) { VkSemaphoreSciSyncPoolCreateInfoNV.set_handle(this.segment(), index, value); return this; }
 
     }
 }
