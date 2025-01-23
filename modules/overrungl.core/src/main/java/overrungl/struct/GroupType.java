@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024-2025 Overrun Organization
+ * Copyright (c) 2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,31 +17,28 @@
 package overrungl.struct;
 
 import overrungl.util.Addressable;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
+import java.lang.foreign.GroupLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.StructLayout;
 
-/// A representation of a C structure. Subclasses should declare a [StructLayout].
+/// ## Group type
 ///
-/// ## Non-opaque structs
-/// Non-opaque structs usually declare [VarHandle][java.lang.invoke.VarHandle]s for each member.
-/// For by-value-struct members, byte offsets are declared.
+/// This class represents both C structures and unions. The subclasses should declare a [GroupLayout] instance.
 ///
 /// @author squid233
 /// @since 0.1.0
-@Deprecated
-public abstract class Struct implements Addressable {
+public abstract class GroupType implements Addressable {
     private final MemorySegment segment;
-    private final StructLayout layout;
+    private final GroupLayout layout;
 
-    /// The constructor which accepts a backing segment and the layout of a `Struct` instance.
+    /// A constructor that accepts a backing segment and the layout of a `GroupType` instance.
     ///
     /// Subclasses should pass their own layout to this constructor.
     ///
     /// @param segment the backing segment
-    /// @param layout  the layout of the struct
-    public Struct(MemorySegment segment, StructLayout layout) {
+    /// @param layout  the layout of the group type
+    public GroupType(MemorySegment segment, GroupLayout layout) {
         this.segment = segment;
         this.layout = layout;
     }
@@ -51,28 +48,28 @@ public abstract class Struct implements Addressable {
     /// @param segment the segment which contains a buffer of struct
     /// @param layout  the layout of the struct
     /// @return the estimated element count of the struct buffer
-    public static long estimateCount(MemorySegment segment, StructLayout layout) {
-        if (Unmarshal.isNullPointer(segment)) {
+    public static long estimateCount(MemorySegment segment, GroupLayout layout) {
+        if (MemoryUtil.isNullPointer(segment)) {
             return 0;
         }
         return segment.byteSize() / layout.byteSize();
     }
 
-    /// Estimates the element count of this struct buffer.
+    /// Estimates the element count of this group type buffer.
     ///
-    /// @return the estimated element count of the struct buffer
+    /// @return the estimated element count of the group type buffer
     public long estimateCount() {
         return estimateCount(segment, layout);
     }
 
-    /// {@return the segment of this struct}
+    /// {@return the segment of this group type}
     @Override
     public MemorySegment segment() {
         return segment;
     }
 
-    /// {@return the layout of this struct}
-    public StructLayout structLayout() {
+    /// {@return the layout of this group type}
+    public GroupLayout groupLayout() {
         return layout;
     }
 }

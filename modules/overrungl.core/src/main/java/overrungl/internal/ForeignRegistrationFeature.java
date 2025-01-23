@@ -19,7 +19,7 @@ package overrungl.internal;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeForeignAccess;
 
-import static overrungl.util.MemoryUtil.Descriptors.*;
+import static overrungl.util.MemoryUtil.*;
 
 /**
  * @author squid233

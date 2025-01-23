@@ -128,4 +128,36 @@ public final class RuntimeHelper {
     public static MethodHandle downcall(FunctionDescriptor descriptor) {
         return LINKER.downcallHandle(descriptor);
     }
+
+    /// Converts upcall target name
+    ///
+    /// @param name       the original name
+    /// @param descriptor the descriptor
+    /// @return the converted name
+    public static String upcallTarget(String name, FunctionDescriptor descriptor) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(name);
+        builder.append(descriptor.returnLayout().map(RuntimeHelper::descriptorLayoutToChar).orElse('V'));
+        for (MemoryLayout argumentLayout : descriptor.argumentLayouts()) {
+            builder.append(descriptorLayoutToChar(argumentLayout));
+        }
+        return builder.toString();
+    }
+
+    private static char descriptorLayoutToChar(MemoryLayout layout) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw new IllegalArgumentException("Not a value layout: " + layout);
+        }
+        return switch (valueLayout) {
+            case AddressLayout _ -> 'P';
+            case ValueLayout.OfBoolean _ -> 'Z';
+            case ValueLayout.OfChar _ -> 'C';
+            case ValueLayout.OfByte _ -> 'B';
+            case ValueLayout.OfShort _ -> 'S';
+            case ValueLayout.OfInt _ -> 'I';
+            case ValueLayout.OfLong _ -> 'J';
+            case ValueLayout.OfFloat _ -> 'F';
+            case ValueLayout.OfDouble _ -> 'D';
+        };
+    }
 }

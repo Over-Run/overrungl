@@ -15,48 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### allocate
-/// [VarHandle][#VH_allocate] - [Getter][#allocate()] - [Setter][#allocate(MemorySegment)]
-/// ### reallocate
-/// [VarHandle][#VH_reallocate] - [Getter][#reallocate()] - [Setter][#reallocate(MemorySegment)]
-/// ### deallocate
-/// [VarHandle][#VH_deallocate] - [Getter][#deallocate()] - [Setter][#deallocate(MemorySegment)]
-/// ### user
-/// [VarHandle][#VH_user] - [Getter][#user()] - [Setter][#user(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct GLFWallocator {
-///     GLFWallocatefun allocate;
-///     GLFWreallocatefun reallocate;
-///     GLFWdeallocatefun deallocate;
-///     void* user;
-/// } GLFWAllocator;
 /// ```
-public sealed class GLFWAllocator extends Struct {
-    /// The struct layout of `GLFWallocator`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+/// struct GLFWAllocator {
+///     void* (*GLFWAllocateFun)(size_t size, void* user) allocate;
+///     void* (*GLFWReallocateFun)(void* block, size_t size, void* user) reallocate;
+///     void (*GLFWDeallocateFun)(void* block, void* user) deallocate;
+///     void* user;
+/// };
+/// ```
+public sealed class GLFWAllocator extends GroupType {
+    /// The struct layout of `GLFWAllocator`.
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("allocate"),
         ValueLayout.ADDRESS.withName("reallocate"),
         ValueLayout.ADDRESS.withName("deallocate"),
         ValueLayout.ADDRESS.withName("user")
     );
+    /// The byte offset of `allocate`.
+    public static final long OFFSET_allocate = LAYOUT.byteOffset(PathElement.groupElement("allocate"));
+    /// The memory layout of `allocate`.
+    public static final MemoryLayout LAYOUT_allocate = LAYOUT.select(PathElement.groupElement("allocate"));
     /// The [VarHandle] of `allocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_allocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("allocate"));
+    /// The byte offset of `reallocate`.
+    public static final long OFFSET_reallocate = LAYOUT.byteOffset(PathElement.groupElement("reallocate"));
+    /// The memory layout of `reallocate`.
+    public static final MemoryLayout LAYOUT_reallocate = LAYOUT.select(PathElement.groupElement("reallocate"));
     /// The [VarHandle] of `reallocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_reallocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reallocate"));
+    /// The byte offset of `deallocate`.
+    public static final long OFFSET_deallocate = LAYOUT.byteOffset(PathElement.groupElement("deallocate"));
+    /// The memory layout of `deallocate`.
+    public static final MemoryLayout LAYOUT_deallocate = LAYOUT.select(PathElement.groupElement("deallocate"));
     /// The [VarHandle] of `deallocate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deallocate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deallocate"));
+    /// The byte offset of `user`.
+    public static final long OFFSET_user = LAYOUT.byteOffset(PathElement.groupElement("user"));
+    /// The memory layout of `user`.
+    public static final MemoryLayout LAYOUT_user = LAYOUT.select(PathElement.groupElement("user"));
     /// The [VarHandle] of `user` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_user = LAYOUT.arrayElementVarHandle(PathElement.groupElement("user"));
 
@@ -67,19 +73,14 @@ public sealed class GLFWAllocator extends Struct {
     /// Creates `GLFWAllocator` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWAllocator of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWAllocator(segment); }
-
-    /// Creates `GLFWAllocator` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `GLFWAllocator` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWAllocator ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWAllocator(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static GLFWAllocator ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWAllocator(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `GLFWAllocator` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class GLFWAllocator extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `GLFWAllocator` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class GLFWAllocator extends Struct {
     /// @return the allocated `GLFWAllocator`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `GLFWAllocator` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `GLFWAllocator`
-    public static GLFWAllocator allocInit(SegmentAllocator allocator, @CType("GLFWallocatefun") MemorySegment allocate, @CType("GLFWreallocatefun") MemorySegment reallocate, @CType("GLFWdeallocatefun") MemorySegment deallocate, @CType("void*") MemorySegment user) { return alloc(allocator).allocate(allocate).reallocate(reallocate).deallocate(deallocate).user(user); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class GLFWAllocator extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `allocate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("GLFWallocatefun") MemorySegment get_allocate(MemorySegment segment, long index) { return (MemorySegment) VH_allocate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment allocate(MemorySegment segment, long index) { return (MemorySegment) VH_allocate.get(segment, 0L, index); }
     /// {@return `allocate`}
-    /// @param segment the segment of the struct
-    public static @CType("GLFWallocatefun") MemorySegment get_allocate(MemorySegment segment) { return GLFWAllocator.get_allocate(segment, 0L); }
-    /// {@return `allocate`}
-    public @CType("GLFWallocatefun") MemorySegment allocate() { return GLFWAllocator.get_allocate(this.segment()); }
+    public MemorySegment allocate() { return allocate(this.segment(), 0L); }
     /// Sets `allocate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_allocate(MemorySegment segment, long index, @CType("GLFWallocatefun") MemorySegment value) { VH_allocate.set(segment, 0L, index, value); }
-    /// Sets `allocate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_allocate(MemorySegment segment, @CType("GLFWallocatefun") MemorySegment value) { GLFWAllocator.set_allocate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void allocate(MemorySegment segment, long index, MemorySegment value) { VH_allocate.set(segment, 0L, index, value); }
     /// Sets `allocate` with the given value.
     /// @param value the value
     /// @return `this`
-    public GLFWAllocator allocate(@CType("GLFWallocatefun") MemorySegment value) { GLFWAllocator.set_allocate(this.segment(), value); return this; }
+    public GLFWAllocator allocate(MemorySegment value) { allocate(this.segment(), 0L, value); return this; }
 
     /// {@return `reallocate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("GLFWreallocatefun") MemorySegment get_reallocate(MemorySegment segment, long index) { return (MemorySegment) VH_reallocate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment reallocate(MemorySegment segment, long index) { return (MemorySegment) VH_reallocate.get(segment, 0L, index); }
     /// {@return `reallocate`}
-    /// @param segment the segment of the struct
-    public static @CType("GLFWreallocatefun") MemorySegment get_reallocate(MemorySegment segment) { return GLFWAllocator.get_reallocate(segment, 0L); }
-    /// {@return `reallocate`}
-    public @CType("GLFWreallocatefun") MemorySegment reallocate() { return GLFWAllocator.get_reallocate(this.segment()); }
+    public MemorySegment reallocate() { return reallocate(this.segment(), 0L); }
     /// Sets `reallocate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_reallocate(MemorySegment segment, long index, @CType("GLFWreallocatefun") MemorySegment value) { VH_reallocate.set(segment, 0L, index, value); }
-    /// Sets `reallocate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_reallocate(MemorySegment segment, @CType("GLFWreallocatefun") MemorySegment value) { GLFWAllocator.set_reallocate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void reallocate(MemorySegment segment, long index, MemorySegment value) { VH_reallocate.set(segment, 0L, index, value); }
     /// Sets `reallocate` with the given value.
     /// @param value the value
     /// @return `this`
-    public GLFWAllocator reallocate(@CType("GLFWreallocatefun") MemorySegment value) { GLFWAllocator.set_reallocate(this.segment(), value); return this; }
+    public GLFWAllocator reallocate(MemorySegment value) { reallocate(this.segment(), 0L, value); return this; }
 
     /// {@return `deallocate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("GLFWdeallocatefun") MemorySegment get_deallocate(MemorySegment segment, long index) { return (MemorySegment) VH_deallocate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment deallocate(MemorySegment segment, long index) { return (MemorySegment) VH_deallocate.get(segment, 0L, index); }
     /// {@return `deallocate`}
-    /// @param segment the segment of the struct
-    public static @CType("GLFWdeallocatefun") MemorySegment get_deallocate(MemorySegment segment) { return GLFWAllocator.get_deallocate(segment, 0L); }
-    /// {@return `deallocate`}
-    public @CType("GLFWdeallocatefun") MemorySegment deallocate() { return GLFWAllocator.get_deallocate(this.segment()); }
+    public MemorySegment deallocate() { return deallocate(this.segment(), 0L); }
     /// Sets `deallocate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deallocate(MemorySegment segment, long index, @CType("GLFWdeallocatefun") MemorySegment value) { VH_deallocate.set(segment, 0L, index, value); }
-    /// Sets `deallocate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deallocate(MemorySegment segment, @CType("GLFWdeallocatefun") MemorySegment value) { GLFWAllocator.set_deallocate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deallocate(MemorySegment segment, long index, MemorySegment value) { VH_deallocate.set(segment, 0L, index, value); }
     /// Sets `deallocate` with the given value.
     /// @param value the value
     /// @return `this`
-    public GLFWAllocator deallocate(@CType("GLFWdeallocatefun") MemorySegment value) { GLFWAllocator.set_deallocate(this.segment(), value); return this; }
+    public GLFWAllocator deallocate(MemorySegment value) { deallocate(this.segment(), 0L, value); return this; }
 
     /// {@return `user` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void*") MemorySegment get_user(MemorySegment segment, long index) { return (MemorySegment) VH_user.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment user(MemorySegment segment, long index) { return (MemorySegment) VH_user.get(segment, 0L, index); }
     /// {@return `user`}
-    /// @param segment the segment of the struct
-    public static @CType("void*") MemorySegment get_user(MemorySegment segment) { return GLFWAllocator.get_user(segment, 0L); }
-    /// {@return `user`}
-    public @CType("void*") MemorySegment user() { return GLFWAllocator.get_user(this.segment()); }
+    public MemorySegment user() { return user(this.segment(), 0L); }
     /// Sets `user` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_user(MemorySegment segment, long index, @CType("void*") MemorySegment value) { VH_user.set(segment, 0L, index, value); }
-    /// Sets `user` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_user(MemorySegment segment, @CType("void*") MemorySegment value) { GLFWAllocator.set_user(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void user(MemorySegment segment, long index, MemorySegment value) { VH_user.set(segment, 0L, index, value); }
     /// Sets `user` with the given value.
     /// @param value the value
     /// @return `this`
-    public GLFWAllocator user(@CType("void*") MemorySegment value) { GLFWAllocator.set_user(this.segment(), value); return this; }
+    public GLFWAllocator user(MemorySegment value) { user(this.segment(), 0L, value); return this; }
 
     /// A buffer of [GLFWAllocator].
     public static final class Buffer extends GLFWAllocator {
@@ -229,40 +197,40 @@ public sealed class GLFWAllocator extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `allocate` at the given index}
-        /// @param index the index
-        public @CType("GLFWallocatefun") MemorySegment allocateAt(long index) { return GLFWAllocator.get_allocate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment allocateAt(long index) { return allocate(this.segment(), index); }
         /// Sets `allocate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer allocateAt(long index, @CType("GLFWallocatefun") MemorySegment value) { GLFWAllocator.set_allocate(this.segment(), index, value); return this; }
+        public Buffer allocateAt(long index, MemorySegment value) { allocate(this.segment(), index, value); return this; }
 
         /// {@return `reallocate` at the given index}
-        /// @param index the index
-        public @CType("GLFWreallocatefun") MemorySegment reallocateAt(long index) { return GLFWAllocator.get_reallocate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment reallocateAt(long index) { return reallocate(this.segment(), index); }
         /// Sets `reallocate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer reallocateAt(long index, @CType("GLFWreallocatefun") MemorySegment value) { GLFWAllocator.set_reallocate(this.segment(), index, value); return this; }
+        public Buffer reallocateAt(long index, MemorySegment value) { reallocate(this.segment(), index, value); return this; }
 
         /// {@return `deallocate` at the given index}
-        /// @param index the index
-        public @CType("GLFWdeallocatefun") MemorySegment deallocateAt(long index) { return GLFWAllocator.get_deallocate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment deallocateAt(long index) { return deallocate(this.segment(), index); }
         /// Sets `deallocate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deallocateAt(long index, @CType("GLFWdeallocatefun") MemorySegment value) { GLFWAllocator.set_deallocate(this.segment(), index, value); return this; }
+        public Buffer deallocateAt(long index, MemorySegment value) { deallocate(this.segment(), index, value); return this; }
 
         /// {@return `user` at the given index}
-        /// @param index the index
-        public @CType("void*") MemorySegment userAt(long index) { return GLFWAllocator.get_user(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment userAt(long index) { return user(this.segment(), index); }
         /// Sets `user` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer userAt(long index, @CType("void*") MemorySegment value) { GLFWAllocator.set_user(this.segment(), index, value); return this; }
+        public Buffer userAt(long index, MemorySegment value) { user(this.segment(), index, value); return this; }
 
     }
 }

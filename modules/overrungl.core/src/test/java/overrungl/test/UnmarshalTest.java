@@ -33,14 +33,6 @@ import static overrungl.test.Util.*;
  */
 public class UnmarshalTest {
     @Test
-    void unmarshalAsString() {
-        try (Arena arena = Arena.ofConfined()) {
-            MemorySegment segment = arena.allocateFrom(TEST_STRING_U8);
-            assertEquals(TEST_STRING_U8, Unmarshal.unmarshalAsString(segment));
-        }
-    }
-
-    @Test
     void unmarshalStringPointer() {
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment segment = arena.allocateFrom(ADDRESS, arena.allocateFrom(TEST_STRING_U8));

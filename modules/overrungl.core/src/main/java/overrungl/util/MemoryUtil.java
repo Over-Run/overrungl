@@ -20,39 +20,41 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.util.CanonicalTypes.SIZE_T;
 
-/**
- * The standard-C memory allocator.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// Utilities of memory segment.
+///
+/// TODO: Add documentation
+///
+/// @author squid233
+/// @since 0.1.0
 public final class MemoryUtil {
-    // TODO size_t might be 32-bit
-    public static final class Descriptors {
-        public static final FunctionDescriptor
-            FD_malloc = FunctionDescriptor.of(ADDRESS, JAVA_LONG),
-            FD_calloc = FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG),
-            FD_realloc = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG),
-            FD_free = FunctionDescriptor.ofVoid(ADDRESS),
-            FD_memcpy = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
-            FD_memmove = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
-            FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG);
-    }
+    //region C-standard memory allocator
+
+    public static final FunctionDescriptor
+        FD_malloc = FunctionDescriptor.of(ADDRESS, SIZE_T),
+        FD_calloc = FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T),
+        FD_realloc = FunctionDescriptor.of(ADDRESS, ADDRESS, SIZE_T),
+        FD_free = FunctionDescriptor.ofVoid(ADDRESS),
+        FD_memcpy = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
+        FD_memmove = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
+        FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, SIZE_T);
 
     private static final class Handles {
         private static final Linker LINKER = Linker.nativeLinker();
         private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
         private static final MethodHandle
-            m_malloc = downcall("malloc", Descriptors.FD_malloc),
-            m_calloc = downcall("calloc", Descriptors.FD_calloc),
-            m_realloc = downcall("realloc", Descriptors.FD_realloc),
-            m_free = downcall("free", Descriptors.FD_free),
-            m_memcpy = downcall("memcpy", Descriptors.FD_memcpy),
-            m_memmove = downcall("memmove", Descriptors.FD_memmove),
-            m_memset = downcall("memset", Descriptors.FD_memset);
+            m_malloc = downcall("malloc", FD_malloc),
+            m_calloc = downcall("calloc", FD_calloc),
+            m_realloc = downcall("realloc", FD_realloc),
+            m_free = downcall("free", FD_free),
+            m_memcpy = downcall("memcpy", FD_memcpy),
+            m_memmove = downcall("memmove", FD_memmove),
+            m_memset = downcall("memset", FD_memset);
 
         private static MethodHandle downcall(String name, FunctionDescriptor function) {
             return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
@@ -107,8 +109,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            return ((MemorySegment) Handles.m_malloc.invokeExact(size))
-                .reinterpret(size);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ -> (MemorySegment) Handles.m_malloc.invokeExact(Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_malloc.invokeExact(size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -140,8 +146,13 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            return ((MemorySegment) Handles.m_calloc.invokeExact(number, size))
-                .reinterpret(byteSize);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_calloc.invokeExact(Math.toIntExact(number), Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_calloc.invokeExact(number, size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(byteSize);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -194,8 +205,12 @@ public final class MemoryUtil {
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
-            return ((MemorySegment) Handles.m_realloc.invokeExact(mem, size))
-                .reinterpret(size);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ -> (MemorySegment) Handles.m_realloc.invokeExact(mem, Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_realloc.invokeExact(mem, size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -215,7 +230,7 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (Unmarshal.isNullPointer(memblock)) return;
+        if (isNullPointer(memblock)) return;
         try {
             Handles.m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -239,7 +254,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -264,7 +284,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) Handles.m_memmove.invokeExact(dest, src, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memmove.invokeExact(dest, src, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memmove.invokeExact(dest, src, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -287,7 +312,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            final var _ = (MemorySegment) Handles.m_memset.invokeExact(dest, c, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memset.invokeExact(dest, c, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memset.invokeExact(dest, c, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -307,5 +337,197 @@ public final class MemoryUtil {
             checkAlignment(byteAlignment);
             return calloc(byteSize, 1).reinterpret(arena, MemoryUtil::free);
         };
+    }
+
+    //endregion
+
+    //region Downcall utils
+
+    /// Allocates a string with the given segment allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param string    the string
+    /// @param charset   the charset of the string; defaults to UTF-8
+    /// @return the allocated segment
+    public static MemorySegment allocString(SegmentAllocator allocator, String string, Charset charset) {
+        if (string == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(string, charset);
+    }
+
+    /// Allocates a string with the given segment allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param string    the string
+    /// @return the allocated segment
+    public static MemorySegment allocString(SegmentAllocator allocator, String string) {
+        if (string == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(string);
+    }
+
+    /// Allocates a string with the [auto arena][Arena#ofAuto()].
+    ///
+    /// The allocated segment is managed with the garbage collector,
+    /// and you should only use it if its usage doesn't hold it.
+    ///
+    /// @param string  the string
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the allocated segment
+    public static MemorySegment allocString(String string, Charset charset) {
+        return allocString(Arena.ofAuto(), string, charset);
+    }
+
+    /// Allocates a string encoded with UTF-8 with the [auto arena][Arena#ofAuto()].
+    ///
+    /// The allocated segment is managed with the garbage collector,
+    /// and you should only use it if its usage doesn't hold it.
+    ///
+    /// @param string the string
+    /// @return the allocated segment
+    public static MemorySegment allocString(String string) {
+        return allocString(Arena.ofAuto(), string);
+    }
+
+    private static byte toByteExact(long value) {
+        if ((byte) value != value) {
+            throw new ArithmeticException("byte overflow");
+        }
+        return (byte) value;
+    }
+
+    private static char toCharExact(long value) {
+        if ((char) value != value) {
+            throw new ArithmeticException("char overflow");
+        }
+        return (char) value;
+    }
+
+    private static short toShortExact(long value) {
+        if ((short) value != value) {
+            throw new ArithmeticException("short overflow");
+        }
+        return (short) value;
+    }
+
+    /// Converts a `long` to another type whose size might be smaller than `long`. This is usually used by `long` and `size_t`.
+    ///
+    /// @param layout the actual value layout of the result
+    /// @param value  the value to be converted
+    /// @return the result
+    public static Object narrowingLong(MemoryLayout layout, long value) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> toByteExact(value);
+            case OfChar _ -> toCharExact(value);
+            case OfShort _ -> toShortExact(value);
+            case OfInt _ -> Math.toIntExact(value);
+            case OfLong _ -> value;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    /// Converts a `int` to another type whose size might be smaller than `int`. This is usually used by `wchar_t`.
+    ///
+    /// @param layout the actual value layout of the result
+    /// @param value  the value to be converted
+    /// @return the result
+    public static Object narrowingInt(MemoryLayout layout, int value) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> toByteExact(value);
+            case OfChar _ -> toCharExact(value);
+            case OfShort _ -> toShortExact(value);
+            case OfInt _, OfLong _ -> value;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    //endregion
+
+    //region Upcall utils
+
+    /**
+     * The max string size.
+     */
+    public static final long STR_SIZE = Integer.MAX_VALUE - 8;
+    /**
+     * The address layout which dereferences a string with {@linkplain #STR_SIZE the max size}.
+     */
+    public static final AddressLayout STR_LAYOUT = ADDRESS.withTargetLayout(
+        MemoryLayout.sequenceLayout(STR_SIZE, JAVA_BYTE)
+    );
+
+    /**
+     * {@return {@code true} if the given segment is a null pointer; {@code false} otherwise}
+     *
+     * @param segment the native segment
+     */
+    public static boolean isNullPointer(@Nullable MemorySegment segment) {
+        return segment == null || segment.equals(MemorySegment.NULL);
+    }
+
+    /// Gets the string from the given segment.
+    ///
+    /// The segment will be reinterpreted if it is a zero-length segment.
+    ///
+    /// @param segment the segment
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the string; or `null` if _`segment`_ is `NULL`
+    public static String nativeString(MemorySegment segment, Charset charset) {
+        if (isNullPointer(segment)) return null;
+        return (segment.byteSize() == 0 ? segment.reinterpret(STR_SIZE) : segment)
+            .getString(0, charset);
+    }
+
+    /// Gets the string encoded with UTF-8 from the given segment.
+    ///
+    /// The segment will be reinterpreted if it is a zero-length segment.
+    ///
+    /// @param segment the segment
+    /// @return the string; or `null` if _`segment`_ is `NULL`
+    public static String nativeString(MemorySegment segment) {
+        return nativeString(segment, StandardCharsets.UTF_8);
+    }
+
+    /// Converts an integer to `long`. This is usually used by `long` and `size_t`.
+    ///
+    /// @param layout the actual value layout of _`o`_
+    /// @param o      the integer to be converted
+    /// @return the result
+    public static long wideningToLong(MemoryLayout layout, Object o) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _, OfChar _, OfShort _, OfInt _, OfLong _ -> (long) o;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    /// Converts an integer to `int`. This is usually used by `wchar_t`.
+    ///
+    /// @param layout the actual value layout of _`o`_
+    /// @param o      the integer to be converted
+    /// @return the result
+    public static int wideningToInt(MemoryLayout layout, Object o) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _, OfChar _, OfShort _, OfInt _ -> (int) o;
+            case OfLong _ -> Math.toIntExact((long) o);
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    //endregion
+
+    // other
+
+    private static IllegalArgumentException notValueLayout(MemoryLayout layout) {
+        return new IllegalArgumentException("Not a value layout: " + layout);
     }
 }

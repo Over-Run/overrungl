@@ -15,39 +15,41 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature
+/// ```
+/// typedef void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event);
+/// ```
 @FunctionalInterface
 public interface GLFWMonitorFun extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLFWMonitorFun.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLFWMonitorFun.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `GLFWMonitorFun`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLFWMonitorFun func) { return func.stub(arena); }
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWmonitor*") MemorySegment monitor, @CType("int") int event);
+    void invoke(MemorySegment monitor, int event);
+
+    /// The target method of the upcall.
+    default void invoke_(MemorySegment monitor, int event) {
+        invoke(monitor, event);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWmonitor*") MemorySegment monitor, @CType("int") int event) {
-        try { HANDLE.invokeExact(stub, monitor, event); }
-        catch (Throwable e) { throw new RuntimeException("error in GLFWMonitorFun::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLFWMonitorFun wrap(MemorySegment stub) {
-        return (monitor, event) ->
-            invoke(stub, monitor, event);
-    }
 }

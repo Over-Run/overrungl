@@ -15,39 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature
+/// ```
+/// typedef void* (*GLFWReallocateFun)(void* block, size_t size, void* user);
+/// ```
 @FunctionalInterface
 public interface GLFWReallocateFun extends Upcall {
     /// The function descriptor.
-    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLFWReallocateFun.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLFWReallocateFun.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
+
+    /// Allocates `GLFWReallocateFun`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLFWReallocateFun func) { return func.stub(arena); }
 
     /// The target method of the upcall.
-    @CType("void*") MemorySegment invoke(@CType("void*") MemorySegment block, @CType("size_t") long size, @CType("void*") MemorySegment user);
+    MemorySegment invoke(MemorySegment block, long size, MemorySegment user);
+
+    /// The target method of the upcall. Chosen at runtime.
+    default MemorySegment invokePPIP(MemorySegment block, int size, MemorySegment user) {
+        return invoke(block, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
+    }
+
+    /// The target method of the upcall. Chosen at runtime.
+    default MemorySegment invokePPJP(MemorySegment block, long size, MemorySegment user) {
+        return invoke(block, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("void*") MemorySegment invoke(MemorySegment stub, @CType("void*") MemorySegment block, @CType("size_t") long size, @CType("void*") MemorySegment user) {
-        try { return (MemorySegment) HANDLE.invokeExact(stub, block, size, user); }
-        catch (Throwable e) { throw new RuntimeException("error in GLFWReallocateFun::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLFWReallocateFun wrap(MemorySegment stub) {
-        return (block, size, user) ->
-            invoke(stub, block, size, user);
-    }
 }

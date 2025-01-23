@@ -113,6 +113,7 @@ class StaticDowncall(
 
         val sb = StringBuilder()
 
+        sb.append("    ")
         sb.appendLine(formatter_off)
 
         // fields
@@ -309,6 +310,7 @@ class StaticDowncall(
             }
         }
 
+        sb.append("    ")
         sb.appendLine(formatter_on)
 
         val replaceSrc = if (writeWholeFile) wholeFile.toString() else Files.readString(path)

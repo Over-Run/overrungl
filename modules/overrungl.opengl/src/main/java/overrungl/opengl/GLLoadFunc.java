@@ -16,7 +16,8 @@
 
 package overrungl.opengl;
 
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 
@@ -39,7 +40,19 @@ public interface GLLoadFunc {
      * @param name the name of the function.
      * @return the function pointer.
      */
-    MemorySegment invoke(String name);
+    MemorySegment invoke(MemorySegment name);
+
+    /**
+     * Gets the function pointer of the given GL function.
+     *
+     * @param name the name of the function.
+     * @return the function pointer.
+     */
+    default MemorySegment invoke(String name) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            return MemoryUtil.allocString(stack, name);
+        }
+    }
 
     /**
      * Gets the function pointer of the given GL function.
@@ -50,10 +63,10 @@ public interface GLLoadFunc {
      */
     default MemorySegment invoke(String name, String... aliases) {
         MemorySegment p = invoke(name);
-        if (!Unmarshal.isNullPointer(p)) return p;
+        if (!MemoryUtil.isNullPointer(p)) return p;
         for (String alias : aliases) {
             MemorySegment p1 = invoke(alias);
-            if (!Unmarshal.isNullPointer(p1)) return p1;
+            if (!MemoryUtil.isNullPointer(p1)) return p1;
             break;
         }
         return MemorySegment.NULL;

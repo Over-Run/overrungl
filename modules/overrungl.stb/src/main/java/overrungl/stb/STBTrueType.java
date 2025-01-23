@@ -21,6 +21,7 @@ import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
 import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -1118,7 +1119,7 @@ public final class STBTrueType {
             MemorySegment pLength = stack.allocate(ValueLayout.JAVA_INT);
             var res = stbtt_GetFontNameString(Marshal.marshal(font), pLength, platformID, encodingID, languageID, nameID);
             int length = pLength.get(ValueLayout.JAVA_INT, 0L);
-            return Unmarshal.unmarshalAsString(res,
+            return MemoryUtil.nativeString(res,
                 stbtt_CompareUTF8toUTF16_bigendian(res, length, res, length) ?
                     StandardCharsets.UTF_8 :
                     StandardCharsets.UTF_16BE);

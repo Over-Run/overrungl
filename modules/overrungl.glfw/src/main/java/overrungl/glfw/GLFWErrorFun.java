@@ -15,45 +15,41 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature
+/// ```
+/// typedef void (*GLFWErrorFun)(int error_code, const char* description);
+/// ```
 @FunctionalInterface
 public interface GLFWErrorFun extends Upcall {
     /// The function descriptor.
-    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLFWErrorFun.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLFWErrorFun.class, "invoke_", DESCRIPTOR);
 
-    /// The interface target method of the upcall.
-    void invoke(@CType("int") int error_code, @CType("const char*") String description);
+    /// Allocates `GLFWErrorFun`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLFWErrorFun func) { return func.stub(arena); }
 
     /// The target method of the upcall.
-    default void invoke(@CType("int") int error_code, @CType("const char*") MemorySegment description) {
-        invoke(error_code, Unmarshal.unmarshalAsString(description));
+    void invoke(int error_code, MemorySegment description);
+
+    /// The target method of the upcall.
+    default void invoke_(int error_code, MemorySegment description) {
+        invoke(error_code, description);
     }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("int") int error_code, @CType("const char*") MemorySegment description) {
-        try { HANDLE.invokeExact(stub, error_code, description); }
-        catch (Throwable e) { throw new RuntimeException("error in GLFWErrorFun::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLFWErrorFun wrap(MemorySegment stub) {
-        return (error_code, description) -> { try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            invoke(stub, error_code, Marshal.marshal(__overrungl_stack, description));
-        } };
-    }
 }

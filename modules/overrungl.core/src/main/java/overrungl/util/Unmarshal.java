@@ -34,6 +34,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated
 public final class Unmarshal {
     /**
      * The max string size.

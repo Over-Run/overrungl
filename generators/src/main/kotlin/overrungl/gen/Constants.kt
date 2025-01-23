@@ -39,5 +39,5 @@ val commentedFileHeader = """
 const val GENERATOR_BEGIN = "//region ---[BEGIN GENERATOR BEGIN]---"
 const val GENERATOR_END = "//endregion ---[END GENERATOR END]---"
 
-const val formatter_off = "    //@formatter:off"
-const val formatter_on = "    //@formatter:on"
+const val formatter_off = "//@formatter:off"
+const val formatter_on = "//@formatter:on"

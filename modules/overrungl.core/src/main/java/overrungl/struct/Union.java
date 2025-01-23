@@ -26,6 +26,7 @@ import java.lang.foreign.UnionLayout;
 ///
 /// @author squid233
 /// @since 0.1.0
+@Deprecated
 public abstract class Union implements Addressable {
     private final MemorySegment segment;
     private final UnionLayout layout;

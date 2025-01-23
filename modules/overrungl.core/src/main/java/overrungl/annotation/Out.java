@@ -26,5 +26,6 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.PARAMETER)
+@Deprecated
 public @interface Out {
 }

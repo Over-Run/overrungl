@@ -15,39 +15,41 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature
+/// ```
+/// typedef void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods);
+/// ```
 @FunctionalInterface
 public interface GLFWKeyFun extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLFWKeyFun.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLFWKeyFun.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `GLFWKeyFun`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLFWKeyFun func) { return func.stub(arena); }
 
     /// The target method of the upcall.
-    void invoke(@CType("GLFWwindow*") MemorySegment window, @CType("int") int key, @CType("int") int scancode, @CType("int") int action, @CType("int") int mods);
+    void invoke(MemorySegment window, int key, int scancode, int action, int mods);
+
+    /// The target method of the upcall.
+    default void invoke_(MemorySegment window, int key, int scancode, int action, int mods) {
+        invoke(window, key, scancode, action, mods);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") MemorySegment window, @CType("int") int key, @CType("int") int scancode, @CType("int") int action, @CType("int") int mods) {
-        try { HANDLE.invokeExact(stub, window, key, scancode, action, mods); }
-        catch (Throwable e) { throw new RuntimeException("error in GLFWKeyFun::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLFWKeyFun wrap(MemorySegment stub) {
-        return (window, key, scancode, action, mods) ->
-            invoke(stub, window, key, scancode, action, mods);
-    }
 }

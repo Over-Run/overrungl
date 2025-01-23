@@ -18,15 +18,13 @@ package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.timer.Timer;
-import overrungl.glfw.GLFW;
-import overrungl.glfw.GLFWCallbacks;
-import overrungl.glfw.GLFWErrorCallback;
+import overrungl.glfw.*;
 import overrungl.joml.Matrixn;
 import overrungl.opengl.*;
 import overrungl.opengl.amd.GLAMDDebugOutput;
 import overrungl.opengl.arb.GLARBDebugOutput;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
@@ -46,6 +44,7 @@ public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
     private static final boolean VSYNC = true;
+    private Arena windowArena;
     private MemorySegment window;
     private GL gl;
     private int program;
@@ -70,8 +69,8 @@ public class GL33Test {
         gl.DeleteBuffers(ebo);
         gl.DeleteBuffers(mbo);
 
-        GLFWCallbacks.free(window);
         glfwDestroyWindow(window);
+        windowArena.close();
         debugProc.close();
 
         glfwTerminate();
@@ -79,7 +78,7 @@ public class GL33Test {
     }
 
     private void init() {
-        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint().stub(Arena.global()));
         if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
@@ -88,16 +87,17 @@ public class GL33Test {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
-        window = glfwCreateWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
-        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
+        windowArena = Arena.ofConfined();
+        window = glfwCreateWindow(640, 480, MemoryUtil.allocString(WND_TITLE), MemorySegment.NULL, MemorySegment.NULL);
+        if (MemoryUtil.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
+        glfwSetKeyCallback(window, GLFWKeyFun.alloc(windowArena, (_, key, _, action, _) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                 glfwSetWindowShouldClose(window, true);
             }
-        });
-        glfwSetFramebufferSizeCallback(window, (_, width, height) ->
-            gl.Viewport(0, 0, width, height));
-        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        }));
+        glfwSetFramebufferSizeCallback(window, GLFWFramebufferSizeFun.alloc(windowArena, (_, width, height) ->
+            gl.Viewport(0, 0, width, height)));
+        var vidMode = GLFWVidMode.ofNative(glfwGetVideoMode(glfwGetPrimaryMonitor()));
         if (vidMode != null) {
             try (var stack = MemoryStack.pushLocal()) {
                 MemorySegment width = stack.ints(0);
@@ -261,7 +261,7 @@ public class GL33Test {
 
                 glfwPollEvents();
 
-                timer.calcFPS(fps -> glfwSetWindowTitle(window, WND_TITLE + " FPS: " + fps));
+                timer.calcFPS(fps -> glfwSetWindowTitle(window, MemoryUtil.allocString(WND_TITLE + " FPS: " + fps)));
             }
         }
     }

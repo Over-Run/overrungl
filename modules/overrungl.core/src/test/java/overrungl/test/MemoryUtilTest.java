@@ -26,6 +26,7 @@ import java.lang.foreign.ValueLayout;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static overrungl.test.Util.TEST_STRING_U8;
 
 /**
  * @author squid233
@@ -71,5 +72,13 @@ public class MemoryUtilTest {
             assertEquals(42, segment.get(ValueLayout.JAVA_INT, 0L));
         }
         assertFalse(scope.isAlive());
+    }
+
+    @Test
+    void nativeString() {
+        try (Arena arena = Arena.ofConfined()) {
+            MemorySegment segment = arena.allocateFrom(TEST_STRING_U8);
+            assertEquals(TEST_STRING_U8, MemoryUtil.nativeString(segment));
+        }
     }
 }

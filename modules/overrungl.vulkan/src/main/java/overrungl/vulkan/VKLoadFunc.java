@@ -16,9 +16,8 @@
 
 package overrungl.vulkan;
 
-import overrungl.util.Marshal;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 
@@ -53,7 +52,7 @@ public interface VKLoadFunc {
     /// @return the function pointer.
     default MemorySegment invoke(MemorySegment segment, String name) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return invoke(segment, Marshal.marshal(stack, name));
+            return invoke(segment, MemoryUtil.allocString(stack, name));
         }
     }
 
@@ -66,10 +65,10 @@ public interface VKLoadFunc {
     /// @return the function pointer.
     default MemorySegment invoke(MemorySegment segment, String name, String... aliases) {
         MemorySegment p = invoke(segment, name);
-        if (!Unmarshal.isNullPointer(p)) return p;
+        if (!MemoryUtil.isNullPointer(p)) return p;
         for (String alias : aliases) {
             MemorySegment p1 = invoke(segment, alias);
-            if (!Unmarshal.isNullPointer(p1)) return p1;
+            if (!MemoryUtil.isNullPointer(p1)) return p1;
             break;
         }
         return MemorySegment.NULL;

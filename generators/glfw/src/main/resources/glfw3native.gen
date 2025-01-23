@@ -1,0 +1,54 @@
+// glfw3native.h
+
+using GLFWmonitor = struct GLFWmonitor;
+using GLFWwindow = struct GLFWwindow;
+
+using HWND = void*;
+using HGLRC = void*;
+using CGDirectDisplayID = uint32_t;
+using id = void*;
+using XID = unsigned long;
+using Display = int; // enum Display {}
+using RRCrtc = XID;
+using RROutput = XID;
+using Window = XID;
+using GLXContext = struct GLXContext;
+using GLXWindow = XID;
+using EGLDisplay = void*;
+using EGLContext = void*;
+using EGLSurface = void*;
+using OSMesaContext = struct OSMesaContext *;
+
+fn opt const char* glfwGetWin32Adapter(GLFWmonitor* monitor);
+fn opt const char* glfwGetWin32Monitor(GLFWmonitor* monitor);
+fn opt HWND glfwGetWin32Window(GLFWwindow* window);
+
+fn opt HGLRC glfwGetWGLContext(GLFWwindow* window);
+
+fn opt CGDirectDisplayID glfwGetCocoaMonitor(GLFWmonitor* monitor);
+fn opt id glfwGetCocoaWindow(GLFWwindow* window);
+fn opt id glfwGetCocoaView(GLFWwindow* window);
+
+fn opt id glfwGetNSGLContext(GLFWwindow* window);
+
+fn opt Display* glfwGetX11Display();
+fn opt RRCrtc glfwGetX11Adapter(GLFWmonitor* monitor);
+fn opt RROutput glfwGetX11Monitor(GLFWmonitor* monitor);
+fn opt Window glfwGetX11Window(GLFWwindow* window);
+fn opt void glfwSetX11SelectionString(const char* string);
+fn opt const char* glfwGetX11SelectionString();
+
+fn opt GLXContext glfwGetGLXContext(GLFWwindow* window);
+fn opt GLXWindow glfwGetGLXWindow(GLFWwindow* window);
+
+fn opt struct wl_display* glfwGetWaylandDisplay();
+fn opt struct wl_output* glfwGetWaylandMonitor(GLFWmonitor* monitor);
+fn opt struct wl_surface* glfwGetWaylandWindow(GLFWwindow* window);
+
+fn opt EGLDisplay glfwGetEGLDisplay();
+fn opt EGLContext glfwGetEGLContext(GLFWwindow* window);
+fn opt EGLSurface glfwGetEGLSurface(GLFWwindow* window);
+
+fn opt int glfwGetOSMesaColorBuffer(GLFWwindow* window, int* width, int* height, int* format, void** buffer);
+fn opt int glfwGetOSMesaDepthBuffer(GLFWwindow* window, int* width, int* height, int* bytesPerValue, void** buffer);
+fn opt OSMesaContext glfwGetOSMesaContext(GLFWwindow* window);

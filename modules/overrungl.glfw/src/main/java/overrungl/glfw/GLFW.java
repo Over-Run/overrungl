@@ -16,20 +16,12 @@
 
 package overrungl.glfw;
 
-import overrungl.annotation.CType;
-import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.Marshal;
-import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
 
-import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-
-import static java.lang.foreign.ValueLayout.*;
 
 /// The GLFW binding.
 ///
@@ -41,233 +33,222 @@ public final class GLFW {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    public static final int
-        GLFW_VERSION_MAJOR = 3,
-        GLFW_VERSION_MINOR = 5,
-        GLFW_VERSION_REVISION = 0;
+    public static final int GLFW_VERSION_MAJOR = 3;
+    public static final int GLFW_VERSION_MINOR = 5;
+    public static final int GLFW_VERSION_REVISION = 0;
     public static final int GLFW_TRUE = 1;
     public static final int GLFW_FALSE = 0;
-    public static final int
-        GLFW_RELEASE = 0,
-        GLFW_PRESS = 1,
-        GLFW_REPEAT = 2;
-    public static final int
-        GLFW_HAT_CENTERED = 0,
-        GLFW_HAT_UP = 1,
-        GLFW_HAT_RIGHT = 2,
-        GLFW_HAT_DOWN = 4,
-        GLFW_HAT_LEFT = 8,
-        GLFW_HAT_RIGHT_UP = (GLFW_HAT_RIGHT | GLFW_HAT_UP),
-        GLFW_HAT_RIGHT_DOWN = (GLFW_HAT_RIGHT | GLFW_HAT_DOWN),
-        GLFW_HAT_LEFT_UP = (GLFW_HAT_LEFT | GLFW_HAT_UP),
-        GLFW_HAT_LEFT_DOWN = (GLFW_HAT_LEFT | GLFW_HAT_DOWN);
+    public static final int GLFW_RELEASE = 0;
+    public static final int GLFW_PRESS = 1;
+    public static final int GLFW_REPEAT = 2;
+    public static final int GLFW_HAT_CENTERED = 0;
+    public static final int GLFW_HAT_UP = 1;
+    public static final int GLFW_HAT_RIGHT = 2;
+    public static final int GLFW_HAT_DOWN = 4;
+    public static final int GLFW_HAT_LEFT = 8;
+    public static final int GLFW_HAT_RIGHT_UP = (GLFW_HAT_RIGHT | GLFW_HAT_UP);
+    public static final int GLFW_HAT_RIGHT_DOWN = (GLFW_HAT_RIGHT | GLFW_HAT_DOWN);
+    public static final int GLFW_HAT_LEFT_UP = (GLFW_HAT_LEFT | GLFW_HAT_UP);
+    public static final int GLFW_HAT_LEFT_DOWN = (GLFW_HAT_LEFT | GLFW_HAT_DOWN);
     public static final int GLFW_KEY_UNKNOWN = -1;
-    public static final int
-        GLFW_KEY_SPACE = 32,
-        GLFW_KEY_APOSTROPHE = 39,
-        GLFW_KEY_COMMA = 44,
-        GLFW_KEY_MINUS = 45,
-        GLFW_KEY_PERIOD = 46,
-        GLFW_KEY_SLASH = 47,
-        GLFW_KEY_0 = 48,
-        GLFW_KEY_1 = 49,
-        GLFW_KEY_2 = 50,
-        GLFW_KEY_3 = 51,
-        GLFW_KEY_4 = 52,
-        GLFW_KEY_5 = 53,
-        GLFW_KEY_6 = 54,
-        GLFW_KEY_7 = 55,
-        GLFW_KEY_8 = 56,
-        GLFW_KEY_9 = 57,
-        GLFW_KEY_SEMICOLON = 59,
-        GLFW_KEY_EQUAL = 61,
-        GLFW_KEY_A = 65,
-        GLFW_KEY_B = 66,
-        GLFW_KEY_C = 67,
-        GLFW_KEY_D = 68,
-        GLFW_KEY_E = 69,
-        GLFW_KEY_F = 70,
-        GLFW_KEY_G = 71,
-        GLFW_KEY_H = 72,
-        GLFW_KEY_I = 73,
-        GLFW_KEY_J = 74,
-        GLFW_KEY_K = 75,
-        GLFW_KEY_L = 76,
-        GLFW_KEY_M = 77,
-        GLFW_KEY_N = 78,
-        GLFW_KEY_O = 79,
-        GLFW_KEY_P = 80,
-        GLFW_KEY_Q = 81,
-        GLFW_KEY_R = 82,
-        GLFW_KEY_S = 83,
-        GLFW_KEY_T = 84,
-        GLFW_KEY_U = 85,
-        GLFW_KEY_V = 86,
-        GLFW_KEY_W = 87,
-        GLFW_KEY_X = 88,
-        GLFW_KEY_Y = 89,
-        GLFW_KEY_Z = 90,
-        GLFW_KEY_LEFT_BRACKET = 91,
-        GLFW_KEY_BACKSLASH = 92,
-        GLFW_KEY_RIGHT_BRACKET = 93,
-        GLFW_KEY_GRAVE_ACCENT = 96,
-        GLFW_KEY_WORLD_1 = 161,
-        GLFW_KEY_WORLD_2 = 162;
-    public static final int
-        GLFW_KEY_ESCAPE = 256,
-        GLFW_KEY_ENTER = 257,
-        GLFW_KEY_TAB = 258,
-        GLFW_KEY_BACKSPACE = 259,
-        GLFW_KEY_INSERT = 260,
-        GLFW_KEY_DELETE = 261,
-        GLFW_KEY_RIGHT = 262,
-        GLFW_KEY_LEFT = 263,
-        GLFW_KEY_DOWN = 264,
-        GLFW_KEY_UP = 265,
-        GLFW_KEY_PAGE_UP = 266,
-        GLFW_KEY_PAGE_DOWN = 267,
-        GLFW_KEY_HOME = 268,
-        GLFW_KEY_END = 269,
-        GLFW_KEY_CAPS_LOCK = 280,
-        GLFW_KEY_SCROLL_LOCK = 281,
-        GLFW_KEY_NUM_LOCK = 282,
-        GLFW_KEY_PRINT_SCREEN = 283,
-        GLFW_KEY_PAUSE = 284,
-        GLFW_KEY_F1 = 290,
-        GLFW_KEY_F2 = 291,
-        GLFW_KEY_F3 = 292,
-        GLFW_KEY_F4 = 293,
-        GLFW_KEY_F5 = 294,
-        GLFW_KEY_F6 = 295,
-        GLFW_KEY_F7 = 296,
-        GLFW_KEY_F8 = 297,
-        GLFW_KEY_F9 = 298,
-        GLFW_KEY_F10 = 299,
-        GLFW_KEY_F11 = 300,
-        GLFW_KEY_F12 = 301,
-        GLFW_KEY_F13 = 302,
-        GLFW_KEY_F14 = 303,
-        GLFW_KEY_F15 = 304,
-        GLFW_KEY_F16 = 305,
-        GLFW_KEY_F17 = 306,
-        GLFW_KEY_F18 = 307,
-        GLFW_KEY_F19 = 308,
-        GLFW_KEY_F20 = 309,
-        GLFW_KEY_F21 = 310,
-        GLFW_KEY_F22 = 311,
-        GLFW_KEY_F23 = 312,
-        GLFW_KEY_F24 = 313,
-        GLFW_KEY_F25 = 314,
-        GLFW_KEY_KP_0 = 320,
-        GLFW_KEY_KP_1 = 321,
-        GLFW_KEY_KP_2 = 322,
-        GLFW_KEY_KP_3 = 323,
-        GLFW_KEY_KP_4 = 324,
-        GLFW_KEY_KP_5 = 325,
-        GLFW_KEY_KP_6 = 326,
-        GLFW_KEY_KP_7 = 327,
-        GLFW_KEY_KP_8 = 328,
-        GLFW_KEY_KP_9 = 329,
-        GLFW_KEY_KP_DECIMAL = 330,
-        GLFW_KEY_KP_DIVIDE = 331,
-        GLFW_KEY_KP_MULTIPLY = 332,
-        GLFW_KEY_KP_SUBTRACT = 333,
-        GLFW_KEY_KP_ADD = 334,
-        GLFW_KEY_KP_ENTER = 335,
-        GLFW_KEY_KP_EQUAL = 336,
-        GLFW_KEY_LEFT_SHIFT = 340,
-        GLFW_KEY_LEFT_CONTROL = 341,
-        GLFW_KEY_LEFT_ALT = 342,
-        GLFW_KEY_LEFT_SUPER = 343,
-        GLFW_KEY_RIGHT_SHIFT = 344,
-        GLFW_KEY_RIGHT_CONTROL = 345,
-        GLFW_KEY_RIGHT_ALT = 346,
-        GLFW_KEY_RIGHT_SUPER = 347,
-        GLFW_KEY_MENU = 348;
+    public static final int GLFW_KEY_SPACE = 32;
+    public static final int GLFW_KEY_APOSTROPHE = 39;
+    public static final int GLFW_KEY_COMMA = 44;
+    public static final int GLFW_KEY_MINUS = 45;
+    public static final int GLFW_KEY_PERIOD = 46;
+    public static final int GLFW_KEY_SLASH = 47;
+    public static final int GLFW_KEY_0 = 48;
+    public static final int GLFW_KEY_1 = 49;
+    public static final int GLFW_KEY_2 = 50;
+    public static final int GLFW_KEY_3 = 51;
+    public static final int GLFW_KEY_4 = 52;
+    public static final int GLFW_KEY_5 = 53;
+    public static final int GLFW_KEY_6 = 54;
+    public static final int GLFW_KEY_7 = 55;
+    public static final int GLFW_KEY_8 = 56;
+    public static final int GLFW_KEY_9 = 57;
+    public static final int GLFW_KEY_SEMICOLON = 59;
+    public static final int GLFW_KEY_EQUAL = 61;
+    public static final int GLFW_KEY_A = 65;
+    public static final int GLFW_KEY_B = 66;
+    public static final int GLFW_KEY_C = 67;
+    public static final int GLFW_KEY_D = 68;
+    public static final int GLFW_KEY_E = 69;
+    public static final int GLFW_KEY_F = 70;
+    public static final int GLFW_KEY_G = 71;
+    public static final int GLFW_KEY_H = 72;
+    public static final int GLFW_KEY_I = 73;
+    public static final int GLFW_KEY_J = 74;
+    public static final int GLFW_KEY_K = 75;
+    public static final int GLFW_KEY_L = 76;
+    public static final int GLFW_KEY_M = 77;
+    public static final int GLFW_KEY_N = 78;
+    public static final int GLFW_KEY_O = 79;
+    public static final int GLFW_KEY_P = 80;
+    public static final int GLFW_KEY_Q = 81;
+    public static final int GLFW_KEY_R = 82;
+    public static final int GLFW_KEY_S = 83;
+    public static final int GLFW_KEY_T = 84;
+    public static final int GLFW_KEY_U = 85;
+    public static final int GLFW_KEY_V = 86;
+    public static final int GLFW_KEY_W = 87;
+    public static final int GLFW_KEY_X = 88;
+    public static final int GLFW_KEY_Y = 89;
+    public static final int GLFW_KEY_Z = 90;
+    public static final int GLFW_KEY_LEFT_BRACKET = 91;
+    public static final int GLFW_KEY_BACKSLASH = 92;
+    public static final int GLFW_KEY_RIGHT_BRACKET = 93;
+    public static final int GLFW_KEY_GRAVE_ACCENT = 96;
+    public static final int GLFW_KEY_WORLD_1 = 161;
+    public static final int GLFW_KEY_WORLD_2 = 162;
+    public static final int GLFW_KEY_ESCAPE = 256;
+    public static final int GLFW_KEY_ENTER = 257;
+    public static final int GLFW_KEY_TAB = 258;
+    public static final int GLFW_KEY_BACKSPACE = 259;
+    public static final int GLFW_KEY_INSERT = 260;
+    public static final int GLFW_KEY_DELETE = 261;
+    public static final int GLFW_KEY_RIGHT = 262;
+    public static final int GLFW_KEY_LEFT = 263;
+    public static final int GLFW_KEY_DOWN = 264;
+    public static final int GLFW_KEY_UP = 265;
+    public static final int GLFW_KEY_PAGE_UP = 266;
+    public static final int GLFW_KEY_PAGE_DOWN = 267;
+    public static final int GLFW_KEY_HOME = 268;
+    public static final int GLFW_KEY_END = 269;
+    public static final int GLFW_KEY_CAPS_LOCK = 280;
+    public static final int GLFW_KEY_SCROLL_LOCK = 281;
+    public static final int GLFW_KEY_NUM_LOCK = 282;
+    public static final int GLFW_KEY_PRINT_SCREEN = 283;
+    public static final int GLFW_KEY_PAUSE = 284;
+    public static final int GLFW_KEY_F1 = 290;
+    public static final int GLFW_KEY_F2 = 291;
+    public static final int GLFW_KEY_F3 = 292;
+    public static final int GLFW_KEY_F4 = 293;
+    public static final int GLFW_KEY_F5 = 294;
+    public static final int GLFW_KEY_F6 = 295;
+    public static final int GLFW_KEY_F7 = 296;
+    public static final int GLFW_KEY_F8 = 297;
+    public static final int GLFW_KEY_F9 = 298;
+    public static final int GLFW_KEY_F10 = 299;
+    public static final int GLFW_KEY_F11 = 300;
+    public static final int GLFW_KEY_F12 = 301;
+    public static final int GLFW_KEY_F13 = 302;
+    public static final int GLFW_KEY_F14 = 303;
+    public static final int GLFW_KEY_F15 = 304;
+    public static final int GLFW_KEY_F16 = 305;
+    public static final int GLFW_KEY_F17 = 306;
+    public static final int GLFW_KEY_F18 = 307;
+    public static final int GLFW_KEY_F19 = 308;
+    public static final int GLFW_KEY_F20 = 309;
+    public static final int GLFW_KEY_F21 = 310;
+    public static final int GLFW_KEY_F22 = 311;
+    public static final int GLFW_KEY_F23 = 312;
+    public static final int GLFW_KEY_F24 = 313;
+    public static final int GLFW_KEY_F25 = 314;
+    public static final int GLFW_KEY_KP_0 = 320;
+    public static final int GLFW_KEY_KP_1 = 321;
+    public static final int GLFW_KEY_KP_2 = 322;
+    public static final int GLFW_KEY_KP_3 = 323;
+    public static final int GLFW_KEY_KP_4 = 324;
+    public static final int GLFW_KEY_KP_5 = 325;
+    public static final int GLFW_KEY_KP_6 = 326;
+    public static final int GLFW_KEY_KP_7 = 327;
+    public static final int GLFW_KEY_KP_8 = 328;
+    public static final int GLFW_KEY_KP_9 = 329;
+    public static final int GLFW_KEY_KP_DECIMAL = 330;
+    public static final int GLFW_KEY_KP_DIVIDE = 331;
+    public static final int GLFW_KEY_KP_MULTIPLY = 332;
+    public static final int GLFW_KEY_KP_SUBTRACT = 333;
+    public static final int GLFW_KEY_KP_ADD = 334;
+    public static final int GLFW_KEY_KP_ENTER = 335;
+    public static final int GLFW_KEY_KP_EQUAL = 336;
+    public static final int GLFW_KEY_LEFT_SHIFT = 340;
+    public static final int GLFW_KEY_LEFT_CONTROL = 341;
+    public static final int GLFW_KEY_LEFT_ALT = 342;
+    public static final int GLFW_KEY_LEFT_SUPER = 343;
+    public static final int GLFW_KEY_RIGHT_SHIFT = 344;
+    public static final int GLFW_KEY_RIGHT_CONTROL = 345;
+    public static final int GLFW_KEY_RIGHT_ALT = 346;
+    public static final int GLFW_KEY_RIGHT_SUPER = 347;
+    public static final int GLFW_KEY_MENU = 348;
     public static final int GLFW_KEY_LAST = GLFW_KEY_MENU;
-    public static final int
-        GLFW_MOD_SHIFT = 0x0001,
-        GLFW_MOD_CONTROL = 0x0002,
-        GLFW_MOD_ALT = 0x0004,
-        GLFW_MOD_SUPER = 0x0008,
-        GLFW_MOD_CAPS_LOCK = 0x0010,
-        GLFW_MOD_NUM_LOCK = 0x0020;
-    public static final int
-        GLFW_MOUSE_BUTTON_1 = 0,
-        GLFW_MOUSE_BUTTON_2 = 1,
-        GLFW_MOUSE_BUTTON_3 = 2,
-        GLFW_MOUSE_BUTTON_4 = 3,
-        GLFW_MOUSE_BUTTON_5 = 4,
-        GLFW_MOUSE_BUTTON_6 = 5,
-        GLFW_MOUSE_BUTTON_7 = 6,
-        GLFW_MOUSE_BUTTON_8 = 7,
-        GLFW_MOUSE_BUTTON_LAST = GLFW_MOUSE_BUTTON_8,
-        GLFW_MOUSE_BUTTON_LEFT = GLFW_MOUSE_BUTTON_1,
-        GLFW_MOUSE_BUTTON_RIGHT = GLFW_MOUSE_BUTTON_2,
-        GLFW_MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_3;
-    public static final int
-        GLFW_JOYSTICK_1 = 0,
-        GLFW_JOYSTICK_2 = 1,
-        GLFW_JOYSTICK_3 = 2,
-        GLFW_JOYSTICK_4 = 3,
-        GLFW_JOYSTICK_5 = 4,
-        GLFW_JOYSTICK_6 = 5,
-        GLFW_JOYSTICK_7 = 6,
-        GLFW_JOYSTICK_8 = 7,
-        GLFW_JOYSTICK_9 = 8,
-        GLFW_JOYSTICK_10 = 9,
-        GLFW_JOYSTICK_11 = 10,
-        GLFW_JOYSTICK_12 = 11,
-        GLFW_JOYSTICK_13 = 12,
-        GLFW_JOYSTICK_14 = 13,
-        GLFW_JOYSTICK_15 = 14,
-        GLFW_JOYSTICK_16 = 15,
-        GLFW_JOYSTICK_LAST = GLFW_JOYSTICK_16;
-    public static final int
-        GLFW_GAMEPAD_BUTTON_A = 0,
-        GLFW_GAMEPAD_BUTTON_B = 1,
-        GLFW_GAMEPAD_BUTTON_X = 2,
-        GLFW_GAMEPAD_BUTTON_Y = 3,
-        GLFW_GAMEPAD_BUTTON_LEFT_BUMPER = 4,
-        GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER = 5,
-        GLFW_GAMEPAD_BUTTON_BACK = 6,
-        GLFW_GAMEPAD_BUTTON_START = 7,
-        GLFW_GAMEPAD_BUTTON_GUIDE = 8,
-        GLFW_GAMEPAD_BUTTON_LEFT_THUMB = 9,
-        GLFW_GAMEPAD_BUTTON_RIGHT_THUMB = 10,
-        GLFW_GAMEPAD_BUTTON_DPAD_UP = 11,
-        GLFW_GAMEPAD_BUTTON_DPAD_RIGHT = 12,
-        GLFW_GAMEPAD_BUTTON_DPAD_DOWN = 13,
-        GLFW_GAMEPAD_BUTTON_DPAD_LEFT = 14,
-        GLFW_GAMEPAD_BUTTON_LAST = GLFW_GAMEPAD_BUTTON_DPAD_LEFT,
-        GLFW_GAMEPAD_BUTTON_CROSS = GLFW_GAMEPAD_BUTTON_A,
-        GLFW_GAMEPAD_BUTTON_CIRCLE = GLFW_GAMEPAD_BUTTON_B,
-        GLFW_GAMEPAD_BUTTON_SQUARE = GLFW_GAMEPAD_BUTTON_X,
-        GLFW_GAMEPAD_BUTTON_TRIANGLE = GLFW_GAMEPAD_BUTTON_Y;
-    public static final int
-        GLFW_GAMEPAD_AXIS_LEFT_X = 0,
-        GLFW_GAMEPAD_AXIS_LEFT_Y = 1,
-        GLFW_GAMEPAD_AXIS_RIGHT_X = 2,
-        GLFW_GAMEPAD_AXIS_RIGHT_Y = 3,
-        GLFW_GAMEPAD_AXIS_LEFT_TRIGGER = 4,
-        GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER = 5,
-        GLFW_GAMEPAD_AXIS_LAST = GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
-    public static final int
-        GLFW_NO_ERROR = 0,
-        GLFW_NOT_INITIALIZED = 0x00010001,
-        GLFW_NO_CURRENT_CONTEXT = 0x00010002,
-        GLFW_INVALID_ENUM = 0x00010003,
-        GLFW_INVALID_VALUE = 0x00010004,
-        GLFW_OUT_OF_MEMORY = 0x00010005,
-        GLFW_API_UNAVAILABLE = 0x00010006,
-        GLFW_VERSION_UNAVAILABLE = 0x00010007,
-        GLFW_PLATFORM_ERROR = 0x00010008,
-        GLFW_FORMAT_UNAVAILABLE = 0x00010009,
-        GLFW_NO_WINDOW_CONTEXT = 0x0001000A,
-        GLFW_CURSOR_UNAVAILABLE = 0x0001000B,
-        GLFW_FEATURE_UNAVAILABLE = 0x0001000C,
-        GLFW_FEATURE_UNIMPLEMENTED = 0x0001000D,
-        GLFW_PLATFORM_UNAVAILABLE = 0x0001000E;
+    public static final int GLFW_MOD_SHIFT = 0x0001;
+    public static final int GLFW_MOD_CONTROL = 0x0002;
+    public static final int GLFW_MOD_ALT = 0x0004;
+    public static final int GLFW_MOD_SUPER = 0x0008;
+    public static final int GLFW_MOD_CAPS_LOCK = 0x0010;
+    public static final int GLFW_MOD_NUM_LOCK = 0x0020;
+    public static final int GLFW_MOUSE_BUTTON_1 = 0;
+    public static final int GLFW_MOUSE_BUTTON_2 = 1;
+    public static final int GLFW_MOUSE_BUTTON_3 = 2;
+    public static final int GLFW_MOUSE_BUTTON_4 = 3;
+    public static final int GLFW_MOUSE_BUTTON_5 = 4;
+    public static final int GLFW_MOUSE_BUTTON_6 = 5;
+    public static final int GLFW_MOUSE_BUTTON_7 = 6;
+    public static final int GLFW_MOUSE_BUTTON_8 = 7;
+    public static final int GLFW_MOUSE_BUTTON_LAST = GLFW_MOUSE_BUTTON_8;
+    public static final int GLFW_MOUSE_BUTTON_LEFT = GLFW_MOUSE_BUTTON_1;
+    public static final int GLFW_MOUSE_BUTTON_RIGHT = GLFW_MOUSE_BUTTON_2;
+    public static final int GLFW_MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_3;
+    public static final int GLFW_JOYSTICK_1 = 0;
+    public static final int GLFW_JOYSTICK_2 = 1;
+    public static final int GLFW_JOYSTICK_3 = 2;
+    public static final int GLFW_JOYSTICK_4 = 3;
+    public static final int GLFW_JOYSTICK_5 = 4;
+    public static final int GLFW_JOYSTICK_6 = 5;
+    public static final int GLFW_JOYSTICK_7 = 6;
+    public static final int GLFW_JOYSTICK_8 = 7;
+    public static final int GLFW_JOYSTICK_9 = 8;
+    public static final int GLFW_JOYSTICK_10 = 9;
+    public static final int GLFW_JOYSTICK_11 = 10;
+    public static final int GLFW_JOYSTICK_12 = 11;
+    public static final int GLFW_JOYSTICK_13 = 12;
+    public static final int GLFW_JOYSTICK_14 = 13;
+    public static final int GLFW_JOYSTICK_15 = 14;
+    public static final int GLFW_JOYSTICK_16 = 15;
+    public static final int GLFW_JOYSTICK_LAST = GLFW_JOYSTICK_16;
+    public static final int GLFW_GAMEPAD_BUTTON_A = 0;
+    public static final int GLFW_GAMEPAD_BUTTON_B = 1;
+    public static final int GLFW_GAMEPAD_BUTTON_X = 2;
+    public static final int GLFW_GAMEPAD_BUTTON_Y = 3;
+    public static final int GLFW_GAMEPAD_BUTTON_LEFT_BUMPER = 4;
+    public static final int GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER = 5;
+    public static final int GLFW_GAMEPAD_BUTTON_BACK = 6;
+    public static final int GLFW_GAMEPAD_BUTTON_START = 7;
+    public static final int GLFW_GAMEPAD_BUTTON_GUIDE = 8;
+    public static final int GLFW_GAMEPAD_BUTTON_LEFT_THUMB = 9;
+    public static final int GLFW_GAMEPAD_BUTTON_RIGHT_THUMB = 10;
+    public static final int GLFW_GAMEPAD_BUTTON_DPAD_UP = 11;
+    public static final int GLFW_GAMEPAD_BUTTON_DPAD_RIGHT = 12;
+    public static final int GLFW_GAMEPAD_BUTTON_DPAD_DOWN = 13;
+    public static final int GLFW_GAMEPAD_BUTTON_DPAD_LEFT = 14;
+    public static final int GLFW_GAMEPAD_BUTTON_LAST = GLFW_GAMEPAD_BUTTON_DPAD_LEFT;
+    public static final int GLFW_GAMEPAD_BUTTON_CROSS = GLFW_GAMEPAD_BUTTON_A;
+    public static final int GLFW_GAMEPAD_BUTTON_CIRCLE = GLFW_GAMEPAD_BUTTON_B;
+    public static final int GLFW_GAMEPAD_BUTTON_SQUARE = GLFW_GAMEPAD_BUTTON_X;
+    public static final int GLFW_GAMEPAD_BUTTON_TRIANGLE = GLFW_GAMEPAD_BUTTON_Y;
+    public static final int GLFW_GAMEPAD_AXIS_LEFT_X = 0;
+    public static final int GLFW_GAMEPAD_AXIS_LEFT_Y = 1;
+    public static final int GLFW_GAMEPAD_AXIS_RIGHT_X = 2;
+    public static final int GLFW_GAMEPAD_AXIS_RIGHT_Y = 3;
+    public static final int GLFW_GAMEPAD_AXIS_LEFT_TRIGGER = 4;
+    public static final int GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER = 5;
+    public static final int GLFW_GAMEPAD_AXIS_LAST = GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
+    public static final int GLFW_NO_ERROR = 0;
+    public static final int GLFW_NOT_INITIALIZED = 0x00010001;
+    public static final int GLFW_NO_CURRENT_CONTEXT = 0x00010002;
+    public static final int GLFW_INVALID_ENUM = 0x00010003;
+    public static final int GLFW_INVALID_VALUE = 0x00010004;
+    public static final int GLFW_OUT_OF_MEMORY = 0x00010005;
+    public static final int GLFW_API_UNAVAILABLE = 0x00010006;
+    public static final int GLFW_VERSION_UNAVAILABLE = 0x00010007;
+    public static final int GLFW_PLATFORM_ERROR = 0x00010008;
+    public static final int GLFW_FORMAT_UNAVAILABLE = 0x00010009;
+    public static final int GLFW_NO_WINDOW_CONTEXT = 0x0001000A;
+    public static final int GLFW_CURSOR_UNAVAILABLE = 0x0001000B;
+    public static final int GLFW_FEATURE_UNAVAILABLE = 0x0001000C;
+    public static final int GLFW_FEATURE_UNIMPLEMENTED = 0x0001000D;
+    public static final int GLFW_PLATFORM_UNAVAILABLE = 0x0001000E;
     public static final int GLFW_FOCUSED = 0x00020001;
     public static final int GLFW_ICONIFIED = 0x00020002;
     public static final int GLFW_RESIZABLE = 0x00020003;
@@ -321,65 +302,54 @@ public final class GLFW {
     public static final int GLFW_WIN32_KEYBOARD_MENU = 0x00025001;
     public static final int GLFW_WIN32_SHOWDEFAULT = 0x00025002;
     public static final int GLFW_WAYLAND_APP_ID = 0x00026001;
-    public static final int
-        GLFW_NO_API = 0,
-        GLFW_OPENGL_API = 0x00030001,
-        GLFW_OPENGL_ES_API = 0x00030002;
-    public static final int
-        GLFW_NO_ROBUSTNESS = 0,
-        GLFW_NO_RESET_NOTIFICATION = 0x00031001,
-        GLFW_LOSE_CONTEXT_ON_RESET = 0x00031002;
-    public static final int
-        GLFW_OPENGL_ANY_PROFILE = 0,
-        GLFW_OPENGL_CORE_PROFILE = 0x00032001,
-        GLFW_OPENGL_COMPAT_PROFILE = 0x00032002;
-    public static final int
-        GLFW_CURSOR = 0x00033001,
-        GLFW_STICKY_KEYS = 0x00033002,
-        GLFW_STICKY_MOUSE_BUTTONS = 0x00033003,
-        GLFW_LOCK_KEY_MODS = 0x00033004,
-        GLFW_RAW_MOUSE_MOTION = 0x00033005,
-        GLFW_UNLIMITED_MOUSE_BUTTONS = 0x00033006;
-    public static final int
-        GLFW_CURSOR_NORMAL = 0x00034001,
-        GLFW_CURSOR_HIDDEN = 0x00034002,
-        GLFW_CURSOR_DISABLED = 0x00034003,
-        GLFW_CURSOR_CAPTURED = 0x00034004;
-    public static final int
-        GLFW_ANY_RELEASE_BEHAVIOR = 0,
-        GLFW_RELEASE_BEHAVIOR_FLUSH = 0x00035001,
-        GLFW_RELEASE_BEHAVIOR_NONE = 0x00035002;
-    public static final int
-        GLFW_NATIVE_CONTEXT_API = 0x00036001,
-        GLFW_EGL_CONTEXT_API = 0x00036002,
-        GLFW_OSMESA_CONTEXT_API = 0x00036003;
-    public static final int
-        GLFW_ANGLE_PLATFORM_TYPE_NONE = 0x00037001,
-        GLFW_ANGLE_PLATFORM_TYPE_OPENGL = 0x00037002,
-        GLFW_ANGLE_PLATFORM_TYPE_OPENGLES = 0x00037003,
-        GLFW_ANGLE_PLATFORM_TYPE_D3D9 = 0x00037004,
-        GLFW_ANGLE_PLATFORM_TYPE_D3D11 = 0x00037005,
-        GLFW_ANGLE_PLATFORM_TYPE_VULKAN = 0x00037007,
-        GLFW_ANGLE_PLATFORM_TYPE_METAL = 0x00037008;
-    public static final int
-        GLFW_WAYLAND_PREFER_LIBDECOR = 0x00038001,
-        GLFW_WAYLAND_DISABLE_LIBDECOR = 0x00038002;
-    public static final int
-        GLFW_ANY_POSITION = 0x80000000;
-    public static final int
-        GLFW_ARROW_CURSOR = 0x00036001,
-        GLFW_IBEAM_CURSOR = 0x00036002,
-        GLFW_CROSSHAIR_CURSOR = 0x00036003,
-        GLFW_POINTING_HAND_CURSOR = 0x00036004,
-        GLFW_RESIZE_EW_CURSOR = 0x00036005,
-        GLFW_RESIZE_NS_CURSOR = 0x00036006,
-        GLFW_RESIZE_NWSE_CURSOR = 0x00036007,
-        GLFW_RESIZE_NESW_CURSOR = 0x00036008,
-        GLFW_RESIZE_ALL_CURSOR = 0x00036009,
-        GLFW_NOT_ALLOWED_CURSOR = 0x0003600A,
-        GLFW_HRESIZE_CURSOR = GLFW_RESIZE_EW_CURSOR,
-        GLFW_VRESIZE_CURSOR = GLFW_RESIZE_NS_CURSOR,
-        GLFW_HAND_CURSOR = GLFW_POINTING_HAND_CURSOR;
+    public static final int GLFW_NO_API = 0;
+    public static final int GLFW_OPENGL_API = 0x00030001;
+    public static final int GLFW_OPENGL_ES_API = 0x00030002;
+    public static final int GLFW_NO_ROBUSTNESS = 0;
+    public static final int GLFW_NO_RESET_NOTIFICATION = 0x00031001;
+    public static final int GLFW_LOSE_CONTEXT_ON_RESET = 0x00031002;
+    public static final int GLFW_OPENGL_ANY_PROFILE = 0;
+    public static final int GLFW_OPENGL_CORE_PROFILE = 0x00032001;
+    public static final int GLFW_OPENGL_COMPAT_PROFILE = 0x00032002;
+    public static final int GLFW_CURSOR = 0x00033001;
+    public static final int GLFW_STICKY_KEYS = 0x00033002;
+    public static final int GLFW_STICKY_MOUSE_BUTTONS = 0x00033003;
+    public static final int GLFW_LOCK_KEY_MODS = 0x00033004;
+    public static final int GLFW_RAW_MOUSE_MOTION = 0x00033005;
+    public static final int GLFW_UNLIMITED_MOUSE_BUTTONS = 0x00033006;
+    public static final int GLFW_CURSOR_NORMAL = 0x00034001;
+    public static final int GLFW_CURSOR_HIDDEN = 0x00034002;
+    public static final int GLFW_CURSOR_DISABLED = 0x00034003;
+    public static final int GLFW_CURSOR_CAPTURED = 0x00034004;
+    public static final int GLFW_ANY_RELEASE_BEHAVIOR = 0;
+    public static final int GLFW_RELEASE_BEHAVIOR_FLUSH = 0x00035001;
+    public static final int GLFW_RELEASE_BEHAVIOR_NONE = 0x00035002;
+    public static final int GLFW_NATIVE_CONTEXT_API = 0x00036001;
+    public static final int GLFW_EGL_CONTEXT_API = 0x00036002;
+    public static final int GLFW_OSMESA_CONTEXT_API = 0x00036003;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_NONE = 0x00037001;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_OPENGL = 0x00037002;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_OPENGLES = 0x00037003;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_D3D9 = 0x00037004;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_D3D11 = 0x00037005;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_VULKAN = 0x00037007;
+    public static final int GLFW_ANGLE_PLATFORM_TYPE_METAL = 0x00037008;
+    public static final int GLFW_WAYLAND_PREFER_LIBDECOR = 0x00038001;
+    public static final int GLFW_WAYLAND_DISABLE_LIBDECOR = 0x00038002;
+    public static final int GLFW_ANY_POSITION = 0x80000000;
+    public static final int GLFW_ARROW_CURSOR = 0x00036001;
+    public static final int GLFW_IBEAM_CURSOR = 0x00036002;
+    public static final int GLFW_CROSSHAIR_CURSOR = 0x00036003;
+    public static final int GLFW_POINTING_HAND_CURSOR = 0x00036004;
+    public static final int GLFW_RESIZE_EW_CURSOR = 0x00036005;
+    public static final int GLFW_RESIZE_NS_CURSOR = 0x00036006;
+    public static final int GLFW_RESIZE_NWSE_CURSOR = 0x00036007;
+    public static final int GLFW_RESIZE_NESW_CURSOR = 0x00036008;
+    public static final int GLFW_RESIZE_ALL_CURSOR = 0x00036009;
+    public static final int GLFW_NOT_ALLOWED_CURSOR = 0x0003600A;
+    public static final int GLFW_HRESIZE_CURSOR = GLFW_RESIZE_EW_CURSOR;
+    public static final int GLFW_VRESIZE_CURSOR = GLFW_RESIZE_NS_CURSOR;
+    public static final int GLFW_HAND_CURSOR = GLFW_POINTING_HAND_CURSOR;
     public static final int GLFW_CONNECTED = 0x00040001;
     public static final int GLFW_DISCONNECTED = 0x00040002;
     public static final int GLFW_JOYSTICK_HAT_BUTTONS = 0x00050001;
@@ -389,13 +359,12 @@ public final class GLFW {
     public static final int GLFW_COCOA_MENUBAR = 0x00051002;
     public static final int GLFW_X11_XCB_VULKAN_SURFACE = 0x00052001;
     public static final int GLFW_WAYLAND_LIBDECOR = 0x00053001;
-    public static final int
-        GLFW_ANY_PLATFORM = 0x00060000,
-        GLFW_PLATFORM_WIN32 = 0x00060001,
-        GLFW_PLATFORM_COCOA = 0x00060002,
-        GLFW_PLATFORM_WAYLAND = 0x00060003,
-        GLFW_PLATFORM_X11 = 0x00060004,
-        GLFW_PLATFORM_NULL = 0x00060005;
+    public static final int GLFW_ANY_PLATFORM = 0x00060000;
+    public static final int GLFW_PLATFORM_WIN32 = 0x00060001;
+    public static final int GLFW_PLATFORM_COCOA = 0x00060002;
+    public static final int GLFW_PLATFORM_WAYLAND = 0x00060003;
+    public static final int GLFW_PLATFORM_X11 = 0x00060004;
+    public static final int GLFW_PLATFORM_NULL = 0x00060005;
     public static final int GLFW_DONT_CARE = -1;
     //endregion
     /// Method handles.
@@ -407,13 +376,13 @@ public final class GLFW {
         /// The method handle of `glfwInitHint`.
         public static final MethodHandle MH_glfwInitHint = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `glfwInitAllocator`.
-        public static final MethodHandle MH_glfwInitAllocator = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWAllocator.LAYOUT)));
+        public static final MethodHandle MH_glfwInitAllocator = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `glfwInitVulkanLoader`.
         public static final MethodHandle MH_glfwInitVulkanLoader = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `glfwGetVersion`.
         public static final MethodHandle MH_glfwGetVersion = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetVersionString`.
-        public static final MethodHandle MH_glfwGetVersionString = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwGetVersionString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The method handle of `glfwGetError`.
         public static final MethodHandle MH_glfwGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetErrorCallback`.
@@ -435,7 +404,7 @@ public final class GLFW {
         /// The method handle of `glfwGetMonitorContentScale`.
         public static final MethodHandle MH_glfwGetMonitorContentScale = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetMonitorName`.
-        public static final MethodHandle MH_glfwGetMonitorName = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetMonitorName = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetMonitorUserPointer`.
         public static final MethodHandle MH_glfwSetMonitorUserPointer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetMonitorUserPointer`.
@@ -445,21 +414,21 @@ public final class GLFW {
         /// The method handle of `glfwGetVideoModes`.
         public static final MethodHandle MH_glfwGetVideoModes = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetVideoMode`.
-        public static final MethodHandle MH_glfwGetVideoMode = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWVidMode.LAYOUT), ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetVideoMode = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetGamma`.
         public static final MethodHandle MH_glfwSetGamma = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT));
         /// The method handle of `glfwGetGammaRamp`.
-        public static final MethodHandle MH_glfwGetGammaRamp = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWGammaRamp.LAYOUT), ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetGammaRamp = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetGammaRamp`.
-        public static final MethodHandle MH_glfwSetGammaRamp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWGammaRamp.LAYOUT)));
+        public static final MethodHandle MH_glfwSetGammaRamp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwDefaultWindowHints`.
         public static final MethodHandle MH_glfwDefaultWindowHints = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `glfwWindowHint`.
         public static final MethodHandle MH_glfwWindowHint = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `glfwWindowHintString`.
-        public static final MethodHandle MH_glfwWindowHintString = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwWindowHintString = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwCreateWindow`.
-        public static final MethodHandle MH_glfwCreateWindow = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwCreateWindow = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwDestroyWindow`.
         public static final MethodHandle MH_glfwDestroyWindow = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `glfwWindowShouldClose`.
@@ -467,11 +436,11 @@ public final class GLFW {
         /// The method handle of `glfwSetWindowShouldClose`.
         public static final MethodHandle MH_glfwSetWindowShouldClose = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetWindowTitle`.
-        public static final MethodHandle MH_glfwGetWindowTitle = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetWindowTitle = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetWindowTitle`.
-        public static final MethodHandle MH_glfwSetWindowTitle = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwSetWindowTitle = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetWindowIcon`.
-        public static final MethodHandle MH_glfwSetWindowIcon = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWImage.LAYOUT)));
+        public static final MethodHandle MH_glfwSetWindowIcon = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetWindowPos`.
         public static final MethodHandle MH_glfwGetWindowPos = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetWindowPos`.
@@ -553,7 +522,7 @@ public final class GLFW {
         /// The method handle of `glfwRawMouseMotionSupported`.
         public static final MethodHandle MH_glfwRawMouseMotionSupported = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetKeyName`.
-        public static final MethodHandle MH_glfwGetKeyName = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwGetKeyName = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetKeyScancode`.
         public static final MethodHandle MH_glfwGetKeyScancode = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetKey`.
@@ -565,7 +534,7 @@ public final class GLFW {
         /// The method handle of `glfwSetCursorPos`.
         public static final MethodHandle MH_glfwSetCursorPos = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         /// The method handle of `glfwCreateCursor`.
-        public static final MethodHandle MH_glfwCreateCursor = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWImage.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwCreateCursor = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `glfwCreateStandardCursor`.
         public static final MethodHandle MH_glfwCreateStandardCursor = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwDestroyCursor`.
@@ -595,9 +564,9 @@ public final class GLFW {
         /// The method handle of `glfwGetJoystickHats`.
         public static final MethodHandle MH_glfwGetJoystickHats = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetJoystickName`.
-        public static final MethodHandle MH_glfwGetJoystickName = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwGetJoystickName = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetJoystickGUID`.
-        public static final MethodHandle MH_glfwGetJoystickGUID = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwGetJoystickGUID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwSetJoystickUserPointer`.
         public static final MethodHandle MH_glfwSetJoystickUserPointer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetJoystickUserPointer`.
@@ -607,15 +576,15 @@ public final class GLFW {
         /// The method handle of `glfwSetJoystickCallback`.
         public static final MethodHandle MH_glfwSetJoystickCallback = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwUpdateGamepadMappings`.
-        public static final MethodHandle MH_glfwUpdateGamepadMappings = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwUpdateGamepadMappings = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetGamepadName`.
-        public static final MethodHandle MH_glfwGetGamepadName = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwGetGamepadName = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetGamepadState`.
-        public static final MethodHandle MH_glfwGetGamepadState = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.glfw.GLFWGamepadState.LAYOUT)));
+        public static final MethodHandle MH_glfwGetGamepadState = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwSetClipboardString`.
-        public static final MethodHandle MH_glfwSetClipboardString = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwSetClipboardString = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetClipboardString`.
-        public static final MethodHandle MH_glfwGetClipboardString = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwGetClipboardString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetTime`.
         public static final MethodHandle MH_glfwGetTime = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_DOUBLE));
         /// The method handle of `glfwSetTime`.
@@ -633,15 +602,15 @@ public final class GLFW {
         /// The method handle of `glfwSwapInterval`.
         public static final MethodHandle MH_glfwSwapInterval = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         /// The method handle of `glfwExtensionSupported`.
-        public static final MethodHandle MH_glfwExtensionSupported = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwExtensionSupported = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetProcAddress`.
-        public static final MethodHandle MH_glfwGetProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwGetProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwVulkanSupported`.
         public static final MethodHandle MH_glfwVulkanSupported = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
         /// The method handle of `glfwGetRequiredInstanceExtensions`.
         public static final MethodHandle MH_glfwGetRequiredInstanceExtensions = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetInstanceProcAddress`.
-        public static final MethodHandle MH_glfwGetInstanceProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwGetInstanceProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `glfwGetPhysicalDevicePresentationSupport`.
         public static final MethodHandle MH_glfwGetPhysicalDevicePresentationSupport = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwCreateWindowSurface`.
@@ -1028,1076 +997,1231 @@ public final class GLFW {
         }
     }
 
-    public static @CType("int") boolean glfwInit() {
+    /// Signature:
+    /// ```
+    /// int glfwInit();
+    /// ```
+    public static boolean glfwInit() {
         try {
-            return (int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwInit", e); }
     }
 
+    /// Signature:
+    /// ```
+    /// void glfwTerminate();
+    /// ```
     public static void glfwTerminate() {
         try {
             Handles.MH_glfwTerminate.invokeExact(Handles.get().PFN_glfwTerminate);
         } catch (Throwable e) { throw new RuntimeException("error in glfwTerminate", e); }
     }
 
-    public static void glfwInitHint(@CType("int") int hint, @CType("int") int value) {
+    /// Signature:
+    /// ```
+    /// void glfwInitHint(int hint, int value);
+    /// ```
+    public static void glfwInitHint(int hint, int value) {
         try {
             Handles.MH_glfwInitHint.invokeExact(Handles.get().PFN_glfwInitHint, hint, value);
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitHint", e); }
     }
 
-    public static void glfwInitAllocator(@CType("const GLFWallocator*") MemorySegment allocator) {
+    /// Signature:
+    /// ```
+    /// void glfwInitAllocator(const GLFWallocator* allocator);
+    /// ```
+    public static void glfwInitAllocator(MemorySegment allocator) {
         try {
             Handles.MH_glfwInitAllocator.invokeExact(Handles.get().PFN_glfwInitAllocator, allocator);
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitAllocator", e); }
     }
 
-    public static void glfwInitAllocator(@CType("const GLFWallocator*") overrungl.glfw.GLFWAllocator allocator) {
-        try {
-            Handles.MH_glfwInitAllocator.invokeExact(Handles.get().PFN_glfwInitAllocator, Marshal.marshal(allocator));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwInitAllocator", e); }
-    }
-
-    public static void glfwInitVulkanLoader(@CType("PFN_vkGetInstanceProcAddr") MemorySegment loader) {
+    /// Signature:
+    /// ```
+    /// void glfwInitVulkanLoader(void* loader);
+    /// ```
+    public static void glfwInitVulkanLoader(MemorySegment loader) {
         try {
             Handles.MH_glfwInitVulkanLoader.invokeExact(Handles.get().PFN_glfwInitVulkanLoader, loader);
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitVulkanLoader", e); }
     }
 
-    public static void glfwGetVersion(@Out @CType("int*") MemorySegment major, @Out @CType("int*") MemorySegment minor, @Out @CType("int*") MemorySegment rev) {
+    /// Signature:
+    /// ```
+    /// void glfwGetVersion(int* major, int* minor, int* rev);
+    /// ```
+    public static void glfwGetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
         try {
             Handles.MH_glfwGetVersion.invokeExact(Handles.get().PFN_glfwGetVersion, major, minor, rev);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersion", e); }
     }
 
-    public static void glfwGetVersion(@Out @CType("int*") int[] major, @Out @CType("int*") int[] minor, @Out @CType("int*") int[] rev) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_major = Marshal.marshal(__overrungl_stack, major);
-            var __overrungl_ref_minor = Marshal.marshal(__overrungl_stack, minor);
-            var __overrungl_ref_rev = Marshal.marshal(__overrungl_stack, rev);
-            Handles.MH_glfwGetVersion.invokeExact(Handles.get().PFN_glfwGetVersion, __overrungl_ref_major, __overrungl_ref_minor, __overrungl_ref_rev);
-            Unmarshal.copy(__overrungl_ref_major, major);
-            Unmarshal.copy(__overrungl_ref_minor, minor);
-            Unmarshal.copy(__overrungl_ref_rev, rev);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersion", e); }
-    }
-
-    public static @CType("const char*") MemorySegment glfwGetVersionString_() {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetVersionString();
+    /// ```
+    public static MemorySegment glfwGetVersionString() {
         try {
             return (MemorySegment) Handles.MH_glfwGetVersionString.invokeExact(Handles.get().PFN_glfwGetVersionString);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersionString", e); }
     }
 
-    public static @CType("const char*") String glfwGetVersionString() {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetVersionString.invokeExact(Handles.get().PFN_glfwGetVersionString));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersionString", e); }
-    }
-
-    public static @CType("int") int glfwGetError(@Out @CType("const char**") MemorySegment description) {
+    /// Signature:
+    /// ```
+    /// int glfwGetError(const char** description);
+    /// ```
+    public static int glfwGetError(MemorySegment description) {
         try {
             return (int) Handles.MH_glfwGetError.invokeExact(Handles.get().PFN_glfwGetError, description);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetError", e); }
     }
 
-    public static @CType("int") int glfwGetError(@Out @CType("const char**") String[] description) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_description = Marshal.marshal(__overrungl_stack, description);
-            var __overrungl_result = (int) Handles.MH_glfwGetError.invokeExact(Handles.get().PFN_glfwGetError, __overrungl_ref_description);
-            Unmarshal.copy(__overrungl_ref_description, description);
-            return __overrungl_result;
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetError", e); }
-    }
-
-    public static @CType("GLFWerrorfun") MemorySegment glfwSetErrorCallback(@CType("GLFWerrorfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWErrorFun)(int error_code, const char* description) glfwSetErrorCallback(void (*GLFWErrorFun)(int error_code, const char* description) callback);
+    /// ```
+    public static MemorySegment glfwSetErrorCallback(MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetErrorCallback.invokeExact(Handles.get().PFN_glfwSetErrorCallback, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetErrorCallback", e); }
     }
 
-    public static @CType("GLFWerrorfun") MemorySegment glfwSetErrorCallback(@CType("GLFWerrorfun") overrungl.glfw.GLFWErrorFun callback) {
-        return glfwSetErrorCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
-    }
-
-    public static @CType("int") int glfwGetPlatform() {
+    /// Signature:
+    /// ```
+    /// int glfwGetPlatform();
+    /// ```
+    public static int glfwGetPlatform() {
         try {
             return (int) Handles.MH_glfwGetPlatform.invokeExact(Handles.get().PFN_glfwGetPlatform);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPlatform", e); }
     }
 
-    public static @CType("int") boolean glfwPlatformSupported(@CType("int") int platform) {
+    /// Signature:
+    /// ```
+    /// int glfwPlatformSupported(int platform);
+    /// ```
+    public static boolean glfwPlatformSupported(int platform) {
         try {
-            return (int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwPlatformSupported", e); }
     }
 
-    public static @CType("GLFWmonitor**") MemorySegment glfwGetMonitors(@Out @CType("int*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// GLFWmonitor** glfwGetMonitors(int* count);
+    /// ```
+    public static MemorySegment glfwGetMonitors(MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetMonitors.invokeExact(Handles.get().PFN_glfwGetMonitors, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitors", e); }
     }
 
-    public static @CType("GLFWmonitor*") MemorySegment glfwGetPrimaryMonitor() {
+    /// Signature:
+    /// ```
+    /// GLFWmonitor* glfwGetPrimaryMonitor();
+    /// ```
+    public static MemorySegment glfwGetPrimaryMonitor() {
         try {
             return (MemorySegment) Handles.MH_glfwGetPrimaryMonitor.invokeExact(Handles.get().PFN_glfwGetPrimaryMonitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPrimaryMonitor", e); }
     }
 
-    public static void glfwGetMonitorPos(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") MemorySegment xpos, @Out @CType("int*") MemorySegment ypos) {
+    /// Signature:
+    /// ```
+    /// void glfwGetMonitorPos(GLFWmonitor* monitor, int* xpos, int* ypos);
+    /// ```
+    public static void glfwGetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
         try {
             Handles.MH_glfwGetMonitorPos.invokeExact(Handles.get().PFN_glfwGetMonitorPos, monitor, xpos, ypos);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPos", e); }
     }
 
-    public static void glfwGetMonitorPos(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") int[] xpos, @Out @CType("int*") int[] ypos) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
-            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
-            Handles.MH_glfwGetMonitorPos.invokeExact(Handles.get().PFN_glfwGetMonitorPos, monitor, __overrungl_ref_xpos, __overrungl_ref_ypos);
-            Unmarshal.copy(__overrungl_ref_xpos, xpos);
-            Unmarshal.copy(__overrungl_ref_ypos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPos", e); }
-    }
-
-    public static void glfwGetMonitorWorkarea(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") MemorySegment xpos, @Out @CType("int*") MemorySegment ypos, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height) {
+    /// Signature:
+    /// ```
+    /// void glfwGetMonitorWorkarea(GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height);
+    /// ```
+    public static void glfwGetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
         try {
             Handles.MH_glfwGetMonitorWorkarea.invokeExact(Handles.get().PFN_glfwGetMonitorWorkarea, monitor, xpos, ypos, width, height);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorWorkarea", e); }
     }
 
-    public static void glfwGetMonitorWorkarea(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") int[] xpos, @Out @CType("int*") int[] ypos, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
-            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
-            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
-            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
-            Handles.MH_glfwGetMonitorWorkarea.invokeExact(Handles.get().PFN_glfwGetMonitorWorkarea, monitor, __overrungl_ref_xpos, __overrungl_ref_ypos, __overrungl_ref_width, __overrungl_ref_height);
-            Unmarshal.copy(__overrungl_ref_xpos, xpos);
-            Unmarshal.copy(__overrungl_ref_ypos, ypos);
-            Unmarshal.copy(__overrungl_ref_width, width);
-            Unmarshal.copy(__overrungl_ref_height, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorWorkarea", e); }
-    }
-
-    public static void glfwGetMonitorPhysicalSize(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") MemorySegment widthMM, @Out @CType("int*") MemorySegment heightMM) {
+    /// Signature:
+    /// ```
+    /// void glfwGetMonitorPhysicalSize(GLFWmonitor* monitor, int* widthMM, int* heightMM);
+    /// ```
+    public static void glfwGetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
         try {
             Handles.MH_glfwGetMonitorPhysicalSize.invokeExact(Handles.get().PFN_glfwGetMonitorPhysicalSize, monitor, widthMM, heightMM);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPhysicalSize", e); }
     }
 
-    public static void glfwGetMonitorPhysicalSize(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") int[] widthMM, @Out @CType("int*") int[] heightMM) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_widthMM = Marshal.marshal(__overrungl_stack, widthMM);
-            var __overrungl_ref_heightMM = Marshal.marshal(__overrungl_stack, heightMM);
-            Handles.MH_glfwGetMonitorPhysicalSize.invokeExact(Handles.get().PFN_glfwGetMonitorPhysicalSize, monitor, __overrungl_ref_widthMM, __overrungl_ref_heightMM);
-            Unmarshal.copy(__overrungl_ref_widthMM, widthMM);
-            Unmarshal.copy(__overrungl_ref_heightMM, heightMM);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPhysicalSize", e); }
-    }
-
-    public static void glfwGetMonitorContentScale(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("float*") MemorySegment xscale, @Out @CType("float*") MemorySegment yscale) {
+    /// Signature:
+    /// ```
+    /// void glfwGetMonitorContentScale(GLFWmonitor* monitor, float* xscale, float* yscale);
+    /// ```
+    public static void glfwGetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
         try {
             Handles.MH_glfwGetMonitorContentScale.invokeExact(Handles.get().PFN_glfwGetMonitorContentScale, monitor, xscale, yscale);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorContentScale", e); }
     }
 
-    public static void glfwGetMonitorContentScale(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("float*") float[] xscale, @Out @CType("float*") float[] yscale) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xscale = Marshal.marshal(__overrungl_stack, xscale);
-            var __overrungl_ref_yscale = Marshal.marshal(__overrungl_stack, yscale);
-            Handles.MH_glfwGetMonitorContentScale.invokeExact(Handles.get().PFN_glfwGetMonitorContentScale, monitor, __overrungl_ref_xscale, __overrungl_ref_yscale);
-            Unmarshal.copy(__overrungl_ref_xscale, xscale);
-            Unmarshal.copy(__overrungl_ref_yscale, yscale);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorContentScale", e); }
-    }
-
-    public static @CType("const char*") MemorySegment glfwGetMonitorName_(@CType("GLFWmonitor*") MemorySegment monitor) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetMonitorName(GLFWmonitor* monitor);
+    /// ```
+    public static MemorySegment glfwGetMonitorName(MemorySegment monitor) {
         try {
             return (MemorySegment) Handles.MH_glfwGetMonitorName.invokeExact(Handles.get().PFN_glfwGetMonitorName, monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorName", e); }
     }
 
-    public static @CType("const char*") String glfwGetMonitorName(@CType("GLFWmonitor*") MemorySegment monitor) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetMonitorName.invokeExact(Handles.get().PFN_glfwGetMonitorName, monitor));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorName", e); }
-    }
-
-    public static void glfwSetMonitorUserPointer(@CType("GLFWmonitor*") MemorySegment monitor, @CType("void*") MemorySegment pointer) {
+    /// Signature:
+    /// ```
+    /// void glfwSetMonitorUserPointer(GLFWmonitor* monitor, void* pointer);
+    /// ```
+    public static void glfwSetMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
         try {
             Handles.MH_glfwSetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwSetMonitorUserPointer, monitor, pointer);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorUserPointer", e); }
     }
 
-    public static @CType("void*") MemorySegment glfwGetMonitorUserPointer(@CType("GLFWmonitor*") MemorySegment monitor) {
+    /// Signature:
+    /// ```
+    /// void* glfwGetMonitorUserPointer(GLFWmonitor* monitor);
+    /// ```
+    public static MemorySegment glfwGetMonitorUserPointer(MemorySegment monitor) {
         try {
             return (MemorySegment) Handles.MH_glfwGetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwGetMonitorUserPointer, monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorUserPointer", e); }
     }
 
-    public static @CType("GLFWmonitorfun") MemorySegment glfwSetMonitorCallback(@CType("GLFWmonitorfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) glfwSetMonitorCallback(void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) callback);
+    /// ```
+    public static MemorySegment glfwSetMonitorCallback(MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetMonitorCallback.invokeExact(Handles.get().PFN_glfwSetMonitorCallback, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorCallback", e); }
     }
 
-    public static @CType("GLFWmonitorfun") MemorySegment glfwSetMonitorCallback(@CType("GLFWmonitorfun") overrungl.glfw.GLFWMonitorFun callback) {
-        return glfwSetMonitorCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
-    }
-
-    public static @CType("const GLFWvidmode*") MemorySegment glfwGetVideoModes(@CType("GLFWmonitor*") MemorySegment monitor, @Out @CType("int*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* monitor, int* count);
+    /// ```
+    public static MemorySegment glfwGetVideoModes(MemorySegment monitor, MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetVideoModes.invokeExact(Handles.get().PFN_glfwGetVideoModes, monitor, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoModes", e); }
     }
 
-    public static @CType("const GLFWvidmode*") MemorySegment glfwGetVideoMode_(@CType("GLFWmonitor*") MemorySegment monitor) {
+    /// Signature:
+    /// ```
+    /// const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* monitor);
+    /// ```
+    public static MemorySegment glfwGetVideoMode(MemorySegment monitor) {
         try {
             return (MemorySegment) Handles.MH_glfwGetVideoMode.invokeExact(Handles.get().PFN_glfwGetVideoMode, monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoMode", e); }
     }
 
-    public static @CType("const GLFWvidmode*") overrungl.glfw.GLFWVidMode glfwGetVideoMode(@CType("GLFWmonitor*") MemorySegment monitor) {
-        try {
-            return overrungl.glfw.GLFWVidMode.of((MemorySegment) Handles.MH_glfwGetVideoMode.invokeExact(Handles.get().PFN_glfwGetVideoMode, monitor));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoMode", e); }
-    }
-
-    public static void glfwSetGamma(@CType("GLFWmonitor*") MemorySegment monitor, @CType("float") float gamma) {
+    /// Signature:
+    /// ```
+    /// void glfwSetGamma(GLFWmonitor* monitor, float gamma);
+    /// ```
+    public static void glfwSetGamma(MemorySegment monitor, float gamma) {
         try {
             Handles.MH_glfwSetGamma.invokeExact(Handles.get().PFN_glfwSetGamma, monitor, gamma);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetGamma", e); }
     }
 
-    public static @CType("const GLFWgammaramp*") MemorySegment glfwGetGammaRamp_(@CType("GLFWmonitor*") MemorySegment monitor) {
+    /// Signature:
+    /// ```
+    /// const GLFWgammaramp* glfwGetGammaRamp(GLFWmonitor* monitor);
+    /// ```
+    public static MemorySegment glfwGetGammaRamp(MemorySegment monitor) {
         try {
             return (MemorySegment) Handles.MH_glfwGetGammaRamp.invokeExact(Handles.get().PFN_glfwGetGammaRamp, monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGammaRamp", e); }
     }
 
-    public static @CType("const GLFWgammaramp*") overrungl.glfw.GLFWGammaRamp glfwGetGammaRamp(@CType("GLFWmonitor*") MemorySegment monitor) {
-        try {
-            return overrungl.glfw.GLFWGammaRamp.of((MemorySegment) Handles.MH_glfwGetGammaRamp.invokeExact(Handles.get().PFN_glfwGetGammaRamp, monitor));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGammaRamp", e); }
-    }
-
-    public static void glfwSetGammaRamp(@CType("GLFWmonitor*") MemorySegment monitor, @CType("const GLFWgammaramp*") MemorySegment ramp) {
+    /// Signature:
+    /// ```
+    /// void glfwSetGammaRamp(GLFWmonitor* monitor, const GLFWgammaramp* ramp);
+    /// ```
+    public static void glfwSetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
         try {
             Handles.MH_glfwSetGammaRamp.invokeExact(Handles.get().PFN_glfwSetGammaRamp, monitor, ramp);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetGammaRamp", e); }
     }
 
-    public static void glfwSetGammaRamp(@CType("GLFWmonitor*") MemorySegment monitor, @CType("const GLFWgammaramp*") overrungl.glfw.GLFWGammaRamp ramp) {
-        try {
-            Handles.MH_glfwSetGammaRamp.invokeExact(Handles.get().PFN_glfwSetGammaRamp, monitor, Marshal.marshal(ramp));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetGammaRamp", e); }
-    }
-
+    /// Signature:
+    /// ```
+    /// void glfwDefaultWindowHints();
+    /// ```
     public static void glfwDefaultWindowHints() {
         try {
             Handles.MH_glfwDefaultWindowHints.invokeExact(Handles.get().PFN_glfwDefaultWindowHints);
         } catch (Throwable e) { throw new RuntimeException("error in glfwDefaultWindowHints", e); }
     }
 
-    public static void glfwWindowHint(@CType("int") int hint, @CType("int") int value) {
+    /// Signature:
+    /// ```
+    /// void glfwWindowHint(int hint, int value);
+    /// ```
+    public static void glfwWindowHint(int hint, int value) {
         try {
             Handles.MH_glfwWindowHint.invokeExact(Handles.get().PFN_glfwWindowHint, hint, value);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHint", e); }
     }
 
-    public static void glfwWindowHintString(@CType("int") int hint, @CType("const char*") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void glfwWindowHintString(int hint, const char* value);
+    /// ```
+    public static void glfwWindowHintString(int hint, MemorySegment value) {
         try {
             Handles.MH_glfwWindowHintString.invokeExact(Handles.get().PFN_glfwWindowHintString, hint, value);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHintString", e); }
     }
 
-    public static void glfwWindowHintString(@CType("int") int hint, @CType("const char*") String value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            Handles.MH_glfwWindowHintString.invokeExact(Handles.get().PFN_glfwWindowHintString, hint, Marshal.marshal(__overrungl_stack, value));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHintString", e); }
-    }
-
-    public static @CType("GLFWwindow*") MemorySegment glfwCreateWindow(@CType("int") int width, @CType("int") int height, @CType("const char*") MemorySegment title, @CType("GLFWmonitor*") MemorySegment monitor, @CType("GLFWwindow*") MemorySegment share) {
+    /// Signature:
+    /// ```
+    /// GLFWwindow* glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
+    /// ```
+    public static MemorySegment glfwCreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
         try {
             return (MemorySegment) Handles.MH_glfwCreateWindow.invokeExact(Handles.get().PFN_glfwCreateWindow, width, height, title, monitor, share);
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindow", e); }
     }
 
-    public static @CType("GLFWwindow*") MemorySegment glfwCreateWindow(@CType("int") int width, @CType("int") int height, @CType("const char*") String title, @CType("GLFWmonitor*") MemorySegment monitor, @CType("GLFWwindow*") MemorySegment share) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (MemorySegment) Handles.MH_glfwCreateWindow.invokeExact(Handles.get().PFN_glfwCreateWindow, width, height, Marshal.marshal(__overrungl_stack, title), monitor, share);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindow", e); }
-    }
-
-    public static void glfwDestroyWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwDestroyWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwDestroyWindow(MemorySegment window) {
         try {
             Handles.MH_glfwDestroyWindow.invokeExact(Handles.get().PFN_glfwDestroyWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyWindow", e); }
     }
 
-    public static @CType("int") boolean glfwWindowShouldClose(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// int glfwWindowShouldClose(GLFWwindow* window);
+    /// ```
+    public static boolean glfwWindowShouldClose(MemorySegment window) {
         try {
-            return (int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowShouldClose", e); }
     }
 
-    public static void glfwSetWindowShouldClose(@CType("GLFWwindow*") MemorySegment window, @CType("int") boolean value) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowShouldClose(GLFWwindow* window, int value);
+    /// ```
+    public static void glfwSetWindowShouldClose(MemorySegment window, boolean value) {
         try {
-            Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, value ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE);
+            Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE));
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowShouldClose", e); }
     }
 
-    public static @CType("const char*") MemorySegment glfwGetWindowTitle_(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetWindowTitle(GLFWwindow* window);
+    /// ```
+    public static MemorySegment glfwGetWindowTitle(MemorySegment window) {
         try {
             return (MemorySegment) Handles.MH_glfwGetWindowTitle.invokeExact(Handles.get().PFN_glfwGetWindowTitle, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowTitle", e); }
     }
 
-    public static @CType("const char*") String glfwGetWindowTitle(@CType("GLFWwindow*") MemorySegment window) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetWindowTitle.invokeExact(Handles.get().PFN_glfwGetWindowTitle, window));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowTitle", e); }
-    }
-
-    public static void glfwSetWindowTitle(@CType("GLFWwindow*") MemorySegment window, @CType("const char*") MemorySegment title) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowTitle(GLFWwindow* window, const char* title);
+    /// ```
+    public static void glfwSetWindowTitle(MemorySegment window, MemorySegment title) {
         try {
             Handles.MH_glfwSetWindowTitle.invokeExact(Handles.get().PFN_glfwSetWindowTitle, window, title);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowTitle", e); }
     }
 
-    public static void glfwSetWindowTitle(@CType("GLFWwindow*") MemorySegment window, @CType("const char*") String title) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            Handles.MH_glfwSetWindowTitle.invokeExact(Handles.get().PFN_glfwSetWindowTitle, window, Marshal.marshal(__overrungl_stack, title));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowTitle", e); }
-    }
-
-    public static void glfwSetWindowIcon(@CType("GLFWwindow*") MemorySegment window, @CType("int") int count, @CType("const GLFWimage*") MemorySegment images) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowIcon(GLFWwindow* window, int count, const GLFWimage* images);
+    /// ```
+    public static void glfwSetWindowIcon(MemorySegment window, int count, MemorySegment images) {
         try {
             Handles.MH_glfwSetWindowIcon.invokeExact(Handles.get().PFN_glfwSetWindowIcon, window, count, images);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIcon", e); }
     }
 
-    public static void glfwSetWindowIcon(@CType("GLFWwindow*") MemorySegment window, @CType("int") int count, @CType("const GLFWimage*") overrungl.glfw.GLFWImage images) {
-        try {
-            Handles.MH_glfwSetWindowIcon.invokeExact(Handles.get().PFN_glfwSetWindowIcon, window, count, Marshal.marshal(images));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIcon", e); }
-    }
-
-    public static void glfwGetWindowPos(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") MemorySegment xpos, @Out @CType("int*") MemorySegment ypos) {
+    /// Signature:
+    /// ```
+    /// void glfwGetWindowPos(GLFWwindow* window, int* xpos, int* ypos);
+    /// ```
+    public static void glfwGetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
             Handles.MH_glfwGetWindowPos.invokeExact(Handles.get().PFN_glfwGetWindowPos, window, xpos, ypos);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowPos", e); }
     }
 
-    public static void glfwGetWindowPos(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") int[] xpos, @Out @CType("int*") int[] ypos) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
-            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
-            Handles.MH_glfwGetWindowPos.invokeExact(Handles.get().PFN_glfwGetWindowPos, window, __overrungl_ref_xpos, __overrungl_ref_ypos);
-            Unmarshal.copy(__overrungl_ref_xpos, xpos);
-            Unmarshal.copy(__overrungl_ref_ypos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowPos", e); }
-    }
-
-    public static void glfwSetWindowPos(@CType("GLFWwindow*") MemorySegment window, @CType("int") int xpos, @CType("int") int ypos) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos);
+    /// ```
+    public static void glfwSetWindowPos(MemorySegment window, int xpos, int ypos) {
         try {
             Handles.MH_glfwSetWindowPos.invokeExact(Handles.get().PFN_glfwSetWindowPos, window, xpos, ypos);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPos", e); }
     }
 
-    public static void glfwGetWindowSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height) {
+    /// Signature:
+    /// ```
+    /// void glfwGetWindowSize(GLFWwindow* window, int* width, int* height);
+    /// ```
+    public static void glfwGetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
             Handles.MH_glfwGetWindowSize.invokeExact(Handles.get().PFN_glfwGetWindowSize, window, width, height);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowSize", e); }
     }
 
-    public static void glfwGetWindowSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
-            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
-            Handles.MH_glfwGetWindowSize.invokeExact(Handles.get().PFN_glfwGetWindowSize, window, __overrungl_ref_width, __overrungl_ref_height);
-            Unmarshal.copy(__overrungl_ref_width, width);
-            Unmarshal.copy(__overrungl_ref_height, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowSize", e); }
-    }
-
-    public static void glfwSetWindowSizeLimits(@CType("GLFWwindow*") MemorySegment window, @CType("int") int minwidth, @CType("int") int minheight, @CType("int") int maxwidth, @CType("int") int maxheight) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight);
+    /// ```
+    public static void glfwSetWindowSizeLimits(MemorySegment window, int minwidth, int minheight, int maxwidth, int maxheight) {
         try {
             Handles.MH_glfwSetWindowSizeLimits.invokeExact(Handles.get().PFN_glfwSetWindowSizeLimits, window, minwidth, minheight, maxwidth, maxheight);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeLimits", e); }
     }
 
-    public static void glfwSetWindowAspectRatio(@CType("GLFWwindow*") MemorySegment window, @CType("int") int numer, @CType("int") int denom) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowAspectRatio(GLFWwindow* window, int numer, int denom);
+    /// ```
+    public static void glfwSetWindowAspectRatio(MemorySegment window, int numer, int denom) {
         try {
             Handles.MH_glfwSetWindowAspectRatio.invokeExact(Handles.get().PFN_glfwSetWindowAspectRatio, window, numer, denom);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAspectRatio", e); }
     }
 
-    public static void glfwSetWindowSize(@CType("GLFWwindow*") MemorySegment window, @CType("int") int width, @CType("int") int height) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowSize(GLFWwindow* window, int width, int height);
+    /// ```
+    public static void glfwSetWindowSize(MemorySegment window, int width, int height) {
         try {
             Handles.MH_glfwSetWindowSize.invokeExact(Handles.get().PFN_glfwSetWindowSize, window, width, height);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSize", e); }
     }
 
-    public static void glfwGetFramebufferSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") MemorySegment width, @Out @CType("int*") MemorySegment height) {
+    /// Signature:
+    /// ```
+    /// void glfwGetFramebufferSize(GLFWwindow* window, int* width, int* height);
+    /// ```
+    public static void glfwGetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
             Handles.MH_glfwGetFramebufferSize.invokeExact(Handles.get().PFN_glfwGetFramebufferSize, window, width, height);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetFramebufferSize", e); }
     }
 
-    public static void glfwGetFramebufferSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
-            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
-            Handles.MH_glfwGetFramebufferSize.invokeExact(Handles.get().PFN_glfwGetFramebufferSize, window, __overrungl_ref_width, __overrungl_ref_height);
-            Unmarshal.copy(__overrungl_ref_width, width);
-            Unmarshal.copy(__overrungl_ref_height, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetFramebufferSize", e); }
-    }
-
-    public static void glfwGetWindowFrameSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") MemorySegment left, @Out @CType("int*") MemorySegment top, @Out @CType("int*") MemorySegment right, @Out @CType("int*") MemorySegment bottom) {
+    /// Signature:
+    /// ```
+    /// void glfwGetWindowFrameSize(GLFWwindow* window, int* left, int* top, int* right, int* bottom);
+    /// ```
+    public static void glfwGetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
         try {
             Handles.MH_glfwGetWindowFrameSize.invokeExact(Handles.get().PFN_glfwGetWindowFrameSize, window, left, top, right, bottom);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowFrameSize", e); }
     }
 
-    public static void glfwGetWindowFrameSize(@CType("GLFWwindow*") MemorySegment window, @Out @CType("int*") int[] left, @Out @CType("int*") int[] top, @Out @CType("int*") int[] right, @Out @CType("int*") int[] bottom) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_left = Marshal.marshal(__overrungl_stack, left);
-            var __overrungl_ref_top = Marshal.marshal(__overrungl_stack, top);
-            var __overrungl_ref_right = Marshal.marshal(__overrungl_stack, right);
-            var __overrungl_ref_bottom = Marshal.marshal(__overrungl_stack, bottom);
-            Handles.MH_glfwGetWindowFrameSize.invokeExact(Handles.get().PFN_glfwGetWindowFrameSize, window, __overrungl_ref_left, __overrungl_ref_top, __overrungl_ref_right, __overrungl_ref_bottom);
-            Unmarshal.copy(__overrungl_ref_left, left);
-            Unmarshal.copy(__overrungl_ref_top, top);
-            Unmarshal.copy(__overrungl_ref_right, right);
-            Unmarshal.copy(__overrungl_ref_bottom, bottom);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowFrameSize", e); }
-    }
-
-    public static void glfwGetWindowContentScale(@CType("GLFWwindow*") MemorySegment window, @Out @CType("float*") MemorySegment xscale, @Out @CType("float*") MemorySegment yscale) {
+    /// Signature:
+    /// ```
+    /// void glfwGetWindowContentScale(GLFWwindow* window, float* xscale, float* yscale);
+    /// ```
+    public static void glfwGetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
         try {
             Handles.MH_glfwGetWindowContentScale.invokeExact(Handles.get().PFN_glfwGetWindowContentScale, window, xscale, yscale);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowContentScale", e); }
     }
 
-    public static void glfwGetWindowContentScale(@CType("GLFWwindow*") MemorySegment window, @Out @CType("float*") float[] xscale, @Out @CType("float*") float[] yscale) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xscale = Marshal.marshal(__overrungl_stack, xscale);
-            var __overrungl_ref_yscale = Marshal.marshal(__overrungl_stack, yscale);
-            Handles.MH_glfwGetWindowContentScale.invokeExact(Handles.get().PFN_glfwGetWindowContentScale, window, __overrungl_ref_xscale, __overrungl_ref_yscale);
-            Unmarshal.copy(__overrungl_ref_xscale, xscale);
-            Unmarshal.copy(__overrungl_ref_yscale, yscale);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowContentScale", e); }
-    }
-
-    public static @CType("float") float glfwGetWindowOpacity(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// float glfwGetWindowOpacity(GLFWwindow* window);
+    /// ```
+    public static float glfwGetWindowOpacity(MemorySegment window) {
         try {
             return (float) Handles.MH_glfwGetWindowOpacity.invokeExact(Handles.get().PFN_glfwGetWindowOpacity, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowOpacity", e); }
     }
 
-    public static void glfwSetWindowOpacity(@CType("GLFWwindow*") MemorySegment window, @CType("float") float opacity) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowOpacity(GLFWwindow* window, float opacity);
+    /// ```
+    public static void glfwSetWindowOpacity(MemorySegment window, float opacity) {
         try {
             Handles.MH_glfwSetWindowOpacity.invokeExact(Handles.get().PFN_glfwSetWindowOpacity, window, opacity);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowOpacity", e); }
     }
 
-    public static void glfwIconifyWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwIconifyWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwIconifyWindow(MemorySegment window) {
         try {
             Handles.MH_glfwIconifyWindow.invokeExact(Handles.get().PFN_glfwIconifyWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwIconifyWindow", e); }
     }
 
-    public static void glfwRestoreWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwRestoreWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwRestoreWindow(MemorySegment window) {
         try {
             Handles.MH_glfwRestoreWindow.invokeExact(Handles.get().PFN_glfwRestoreWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwRestoreWindow", e); }
     }
 
-    public static void glfwMaximizeWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwMaximizeWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwMaximizeWindow(MemorySegment window) {
         try {
             Handles.MH_glfwMaximizeWindow.invokeExact(Handles.get().PFN_glfwMaximizeWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwMaximizeWindow", e); }
     }
 
-    public static void glfwShowWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwShowWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwShowWindow(MemorySegment window) {
         try {
             Handles.MH_glfwShowWindow.invokeExact(Handles.get().PFN_glfwShowWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwShowWindow", e); }
     }
 
-    public static void glfwHideWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwHideWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwHideWindow(MemorySegment window) {
         try {
             Handles.MH_glfwHideWindow.invokeExact(Handles.get().PFN_glfwHideWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwHideWindow", e); }
     }
 
-    public static void glfwFocusWindow(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwFocusWindow(GLFWwindow* window);
+    /// ```
+    public static void glfwFocusWindow(MemorySegment window) {
         try {
             Handles.MH_glfwFocusWindow.invokeExact(Handles.get().PFN_glfwFocusWindow, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwFocusWindow", e); }
     }
 
-    public static void glfwRequestWindowAttention(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwRequestWindowAttention(GLFWwindow* window);
+    /// ```
+    public static void glfwRequestWindowAttention(MemorySegment window) {
         try {
             Handles.MH_glfwRequestWindowAttention.invokeExact(Handles.get().PFN_glfwRequestWindowAttention, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwRequestWindowAttention", e); }
     }
 
-    public static @CType("GLFWmonitor*") MemorySegment glfwGetWindowMonitor(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// GLFWmonitor* glfwGetWindowMonitor(GLFWwindow* window);
+    /// ```
+    public static MemorySegment glfwGetWindowMonitor(MemorySegment window) {
         try {
             return (MemorySegment) Handles.MH_glfwGetWindowMonitor.invokeExact(Handles.get().PFN_glfwGetWindowMonitor, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowMonitor", e); }
     }
 
-    public static void glfwSetWindowMonitor(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWmonitor*") MemorySegment monitor, @CType("int") int xpos, @CType("int") int ypos, @CType("int") int width, @CType("int") int height, @CType("int") int refreshRate) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate);
+    /// ```
+    public static void glfwSetWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
             Handles.MH_glfwSetWindowMonitor.invokeExact(Handles.get().PFN_glfwSetWindowMonitor, window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMonitor", e); }
     }
 
-    public static @CType("int") int glfwGetWindowAttrib(@CType("GLFWwindow*") MemorySegment window, @CType("int") int attrib) {
+    /// Signature:
+    /// ```
+    /// int glfwGetWindowAttrib(GLFWwindow* window, int attrib);
+    /// ```
+    public static int glfwGetWindowAttrib(MemorySegment window, int attrib) {
         try {
             return (int) Handles.MH_glfwGetWindowAttrib.invokeExact(Handles.get().PFN_glfwGetWindowAttrib, window, attrib);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowAttrib", e); }
     }
 
-    public static void glfwSetWindowAttrib(@CType("GLFWwindow*") MemorySegment window, @CType("int") int attrib, @CType("int") int value) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value);
+    /// ```
+    public static void glfwSetWindowAttrib(MemorySegment window, int attrib, int value) {
         try {
             Handles.MH_glfwSetWindowAttrib.invokeExact(Handles.get().PFN_glfwSetWindowAttrib, window, attrib, value);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAttrib", e); }
     }
 
-    public static void glfwSetWindowUserPointer(@CType("GLFWwindow*") MemorySegment window, @CType("void*") MemorySegment pointer) {
+    /// Signature:
+    /// ```
+    /// void glfwSetWindowUserPointer(GLFWwindow* window, void* pointer);
+    /// ```
+    public static void glfwSetWindowUserPointer(MemorySegment window, MemorySegment pointer) {
         try {
             Handles.MH_glfwSetWindowUserPointer.invokeExact(Handles.get().PFN_glfwSetWindowUserPointer, window, pointer);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowUserPointer", e); }
     }
 
-    public static @CType("void*") MemorySegment glfwGetWindowUserPointer(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void* glfwGetWindowUserPointer(GLFWwindow* window);
+    /// ```
+    public static MemorySegment glfwGetWindowUserPointer(MemorySegment window) {
         try {
             return (MemorySegment) Handles.MH_glfwGetWindowUserPointer.invokeExact(Handles.get().PFN_glfwGetWindowUserPointer, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowUserPointer", e); }
     }
 
-    public static @CType("GLFWwindowposfun") MemorySegment glfwSetWindowPosCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowposfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) glfwSetWindowPosCallback(GLFWwindow* window, void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowPosCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowPosCallback.invokeExact(Handles.get().PFN_glfwSetWindowPosCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPosCallback", e); }
     }
 
-    public static @CType("GLFWwindowposfun") MemorySegment glfwSetWindowPosCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowposfun") overrungl.glfw.GLFWWindowPosFun callback) {
-        return glfwSetWindowPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowsizefun") MemorySegment glfwSetWindowSizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowsizefun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) glfwSetWindowSizeCallback(GLFWwindow* window, void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowSizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowSizeCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeCallback", e); }
     }
 
-    public static @CType("GLFWwindowsizefun") MemorySegment glfwSetWindowSizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowsizefun") overrungl.glfw.GLFWWindowSizeFun callback) {
-        return glfwSetWindowSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowclosefun") MemorySegment glfwSetWindowCloseCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowclosefun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowCloseFun)(GLFWwindow* window) glfwSetWindowCloseCallback(GLFWwindow* window, void (*GLFWWindowCloseFun)(GLFWwindow* window) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowCloseCallback.invokeExact(Handles.get().PFN_glfwSetWindowCloseCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowCloseCallback", e); }
     }
 
-    public static @CType("GLFWwindowclosefun") MemorySegment glfwSetWindowCloseCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowclosefun") overrungl.glfw.GLFWWindowCloseFun callback) {
-        return glfwSetWindowCloseCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowrefreshfun") MemorySegment glfwSetWindowRefreshCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowrefreshfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowRefreshFun)(GLFWwindow* window) glfwSetWindowRefreshCallback(GLFWwindow* window, void (*GLFWWindowRefreshFun)(GLFWwindow* window) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowRefreshCallback.invokeExact(Handles.get().PFN_glfwSetWindowRefreshCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowRefreshCallback", e); }
     }
 
-    public static @CType("GLFWwindowrefreshfun") MemorySegment glfwSetWindowRefreshCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowrefreshfun") overrungl.glfw.GLFWWindowRefreshFun callback) {
-        return glfwSetWindowRefreshCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowfocusfun") MemorySegment glfwSetWindowFocusCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowfocusfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) glfwSetWindowFocusCallback(GLFWwindow* window, void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowFocusCallback.invokeExact(Handles.get().PFN_glfwSetWindowFocusCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowFocusCallback", e); }
     }
 
-    public static @CType("GLFWwindowfocusfun") MemorySegment glfwSetWindowFocusCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowfocusfun") overrungl.glfw.GLFWWindowFocusFun callback) {
-        return glfwSetWindowFocusCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowiconifyfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) glfwSetWindowIconifyCallback(GLFWwindow* window, void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowIconifyCallback.invokeExact(Handles.get().PFN_glfwSetWindowIconifyCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIconifyCallback", e); }
     }
 
-    public static @CType("GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowiconifyfun") overrungl.glfw.GLFWWindowIconifyFun callback) {
-        return glfwSetWindowIconifyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowmaximizefun") MemorySegment glfwSetWindowMaximizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowmaximizefun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) glfwSetWindowMaximizeCallback(GLFWwindow* window, void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowMaximizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowMaximizeCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMaximizeCallback", e); }
     }
 
-    public static @CType("GLFWwindowmaximizefun") MemorySegment glfwSetWindowMaximizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowmaximizefun") overrungl.glfw.GLFWWindowMaximizeFun callback) {
-        return glfwSetWindowMaximizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWframebuffersizefun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) glfwSetFramebufferSizeCallback(GLFWwindow* window, void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) callback);
+    /// ```
+    public static MemorySegment glfwSetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetFramebufferSizeCallback.invokeExact(Handles.get().PFN_glfwSetFramebufferSizeCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetFramebufferSizeCallback", e); }
     }
 
-    public static @CType("GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWframebuffersizefun") overrungl.glfw.GLFWFramebufferSizeFun callback) {
-        return glfwSetFramebufferSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWwindowcontentscalefun") MemorySegment glfwSetWindowContentScaleCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowcontentscalefun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) glfwSetWindowContentScaleCallback(GLFWwindow* window, void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) callback);
+    /// ```
+    public static MemorySegment glfwSetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetWindowContentScaleCallback.invokeExact(Handles.get().PFN_glfwSetWindowContentScaleCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowContentScaleCallback", e); }
     }
 
-    public static @CType("GLFWwindowcontentscalefun") MemorySegment glfwSetWindowContentScaleCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWwindowcontentscalefun") overrungl.glfw.GLFWWindowContentScaleFun callback) {
-        return glfwSetWindowContentScaleCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
+    /// Signature:
+    /// ```
+    /// void glfwPollEvents();
+    /// ```
     public static void glfwPollEvents() {
         try {
             Handles.MH_glfwPollEvents.invokeExact(Handles.get().PFN_glfwPollEvents);
         } catch (Throwable e) { throw new RuntimeException("error in glfwPollEvents", e); }
     }
 
+    /// Signature:
+    /// ```
+    /// void glfwWaitEvents();
+    /// ```
     public static void glfwWaitEvents() {
         try {
             Handles.MH_glfwWaitEvents.invokeExact(Handles.get().PFN_glfwWaitEvents);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEvents", e); }
     }
 
-    public static void glfwWaitEventsTimeout(@CType("double") double timeout) {
+    /// Signature:
+    /// ```
+    /// void glfwWaitEventsTimeout(double timeout);
+    /// ```
+    public static void glfwWaitEventsTimeout(double timeout) {
         try {
             Handles.MH_glfwWaitEventsTimeout.invokeExact(Handles.get().PFN_glfwWaitEventsTimeout, timeout);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEventsTimeout", e); }
     }
 
+    /// Signature:
+    /// ```
+    /// void glfwPostEmptyEvent();
+    /// ```
     public static void glfwPostEmptyEvent() {
         try {
             Handles.MH_glfwPostEmptyEvent.invokeExact(Handles.get().PFN_glfwPostEmptyEvent);
         } catch (Throwable e) { throw new RuntimeException("error in glfwPostEmptyEvent", e); }
     }
 
-    public static @CType("int") int glfwGetInputMode(@CType("GLFWwindow*") MemorySegment window, @CType("int") int mode) {
+    /// Signature:
+    /// ```
+    /// int glfwGetInputMode(GLFWwindow* window, int mode);
+    /// ```
+    public static int glfwGetInputMode(MemorySegment window, int mode) {
         try {
             return (int) Handles.MH_glfwGetInputMode.invokeExact(Handles.get().PFN_glfwGetInputMode, window, mode);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetInputMode", e); }
     }
 
-    public static void glfwSetInputMode(@CType("GLFWwindow*") MemorySegment window, @CType("int") int mode, @CType("int") int value) {
+    /// Signature:
+    /// ```
+    /// void glfwSetInputMode(GLFWwindow* window, int mode, int value);
+    /// ```
+    public static void glfwSetInputMode(MemorySegment window, int mode, int value) {
         try {
             Handles.MH_glfwSetInputMode.invokeExact(Handles.get().PFN_glfwSetInputMode, window, mode, value);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetInputMode", e); }
     }
 
-    public static @CType("int") boolean glfwRawMouseMotionSupported() {
+    /// Signature:
+    /// ```
+    /// int glfwRawMouseMotionSupported();
+    /// ```
+    public static boolean glfwRawMouseMotionSupported() {
         try {
-            return (int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwRawMouseMotionSupported", e); }
     }
 
-    public static @CType("const char*") MemorySegment glfwGetKeyName_(@CType("int") int key, @CType("int") int scancode) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetKeyName(int key, int scancode);
+    /// ```
+    public static MemorySegment glfwGetKeyName(int key, int scancode) {
         try {
             return (MemorySegment) Handles.MH_glfwGetKeyName.invokeExact(Handles.get().PFN_glfwGetKeyName, key, scancode);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyName", e); }
     }
 
-    public static @CType("const char*") String glfwGetKeyName(@CType("int") int key, @CType("int") int scancode) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetKeyName.invokeExact(Handles.get().PFN_glfwGetKeyName, key, scancode));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyName", e); }
-    }
-
-    public static @CType("int") int glfwGetKeyScancode(@CType("int") int key) {
+    /// Signature:
+    /// ```
+    /// int glfwGetKeyScancode(int key);
+    /// ```
+    public static int glfwGetKeyScancode(int key) {
         try {
             return (int) Handles.MH_glfwGetKeyScancode.invokeExact(Handles.get().PFN_glfwGetKeyScancode, key);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyScancode", e); }
     }
 
-    public static @CType("int") int glfwGetKey(@CType("GLFWwindow*") MemorySegment window, @CType("int") int key) {
+    /// Signature:
+    /// ```
+    /// int glfwGetKey(GLFWwindow* window, int key);
+    /// ```
+    public static int glfwGetKey(MemorySegment window, int key) {
         try {
             return (int) Handles.MH_glfwGetKey.invokeExact(Handles.get().PFN_glfwGetKey, window, key);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKey", e); }
     }
 
-    public static @CType("int") int glfwGetMouseButton(@CType("GLFWwindow*") MemorySegment window, @CType("int") int button) {
+    /// Signature:
+    /// ```
+    /// int glfwGetMouseButton(GLFWwindow* window, int button);
+    /// ```
+    public static int glfwGetMouseButton(MemorySegment window, int button) {
         try {
             return (int) Handles.MH_glfwGetMouseButton.invokeExact(Handles.get().PFN_glfwGetMouseButton, window, button);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMouseButton", e); }
     }
 
-    public static void glfwGetCursorPos(@CType("GLFWwindow*") MemorySegment window, @Out @CType("double*") MemorySegment xpos, @Out @CType("double*") MemorySegment ypos) {
+    /// Signature:
+    /// ```
+    /// void glfwGetCursorPos(GLFWwindow* window, double* xpos, double* ypos);
+    /// ```
+    public static void glfwGetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
             Handles.MH_glfwGetCursorPos.invokeExact(Handles.get().PFN_glfwGetCursorPos, window, xpos, ypos);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCursorPos", e); }
     }
 
-    public static void glfwGetCursorPos(@CType("GLFWwindow*") MemorySegment window, @Out @CType("double*") double[] xpos, @Out @CType("double*") double[] ypos) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
-            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
-            Handles.MH_glfwGetCursorPos.invokeExact(Handles.get().PFN_glfwGetCursorPos, window, __overrungl_ref_xpos, __overrungl_ref_ypos);
-            Unmarshal.copy(__overrungl_ref_xpos, xpos);
-            Unmarshal.copy(__overrungl_ref_ypos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCursorPos", e); }
-    }
-
-    public static void glfwSetCursorPos(@CType("GLFWwindow*") MemorySegment window, @CType("double") double xpos, @CType("double") double ypos) {
+    /// Signature:
+    /// ```
+    /// void glfwSetCursorPos(GLFWwindow* window, double xpos, double ypos);
+    /// ```
+    public static void glfwSetCursorPos(MemorySegment window, double xpos, double ypos) {
         try {
             Handles.MH_glfwSetCursorPos.invokeExact(Handles.get().PFN_glfwSetCursorPos, window, xpos, ypos);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPos", e); }
     }
 
-    public static @CType("GLFWcursor*") MemorySegment glfwCreateCursor(@CType("const GLFWimage*") MemorySegment image, @CType("int") int xhot, @CType("int") int yhot) {
+    /// Signature:
+    /// ```
+    /// GLFWcursor* glfwCreateCursor(const GLFWimage* image, int xhot, int yhot);
+    /// ```
+    public static MemorySegment glfwCreateCursor(MemorySegment image, int xhot, int yhot) {
         try {
             return (MemorySegment) Handles.MH_glfwCreateCursor.invokeExact(Handles.get().PFN_glfwCreateCursor, image, xhot, yhot);
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateCursor", e); }
     }
 
-    public static @CType("GLFWcursor*") MemorySegment glfwCreateStandardCursor(@CType("int") int shape) {
+    /// Signature:
+    /// ```
+    /// GLFWcursor* glfwCreateStandardCursor(int shape);
+    /// ```
+    public static MemorySegment glfwCreateStandardCursor(int shape) {
         try {
             return (MemorySegment) Handles.MH_glfwCreateStandardCursor.invokeExact(Handles.get().PFN_glfwCreateStandardCursor, shape);
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateStandardCursor", e); }
     }
 
-    public static void glfwDestroyCursor(@CType("GLFWcursor*") MemorySegment cursor) {
+    /// Signature:
+    /// ```
+    /// void glfwDestroyCursor(GLFWcursor* cursor);
+    /// ```
+    public static void glfwDestroyCursor(MemorySegment cursor) {
         try {
             Handles.MH_glfwDestroyCursor.invokeExact(Handles.get().PFN_glfwDestroyCursor, cursor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyCursor", e); }
     }
 
-    public static void glfwSetCursor(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcursor*") MemorySegment cursor) {
+    /// Signature:
+    /// ```
+    /// void glfwSetCursor(GLFWwindow* window, GLFWcursor* cursor);
+    /// ```
+    public static void glfwSetCursor(MemorySegment window, MemorySegment cursor) {
         try {
             Handles.MH_glfwSetCursor.invokeExact(Handles.get().PFN_glfwSetCursor, window, cursor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursor", e); }
     }
 
-    public static @CType("GLFWkeyfun") MemorySegment glfwSetKeyCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWkeyfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) glfwSetKeyCallback(GLFWwindow* window, void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) callback);
+    /// ```
+    public static MemorySegment glfwSetKeyCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetKeyCallback.invokeExact(Handles.get().PFN_glfwSetKeyCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetKeyCallback", e); }
     }
 
-    public static @CType("GLFWkeyfun") MemorySegment glfwSetKeyCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWkeyfun") overrungl.glfw.GLFWKeyFun callback) {
-        return glfwSetKeyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWcharfun") MemorySegment glfwSetCharCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcharfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) glfwSetCharCallback(GLFWwindow* window, void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) callback);
+    /// ```
+    public static MemorySegment glfwSetCharCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetCharCallback.invokeExact(Handles.get().PFN_glfwSetCharCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCharCallback", e); }
     }
 
-    public static @CType("GLFWcharfun") MemorySegment glfwSetCharCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcharfun") overrungl.glfw.GLFWCharFun callback) {
-        return glfwSetCharCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWmousebuttonfun") MemorySegment glfwSetMouseButtonCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWmousebuttonfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) glfwSetMouseButtonCallback(GLFWwindow* window, void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) callback);
+    /// ```
+    public static MemorySegment glfwSetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetMouseButtonCallback.invokeExact(Handles.get().PFN_glfwSetMouseButtonCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMouseButtonCallback", e); }
     }
 
-    public static @CType("GLFWmousebuttonfun") MemorySegment glfwSetMouseButtonCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWmousebuttonfun") overrungl.glfw.GLFWMouseButtonFun callback) {
-        return glfwSetMouseButtonCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWcursorposfun") MemorySegment glfwSetCursorPosCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcursorposfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) glfwSetCursorPosCallback(GLFWwindow* window, void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) callback);
+    /// ```
+    public static MemorySegment glfwSetCursorPosCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetCursorPosCallback.invokeExact(Handles.get().PFN_glfwSetCursorPosCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPosCallback", e); }
     }
 
-    public static @CType("GLFWcursorposfun") MemorySegment glfwSetCursorPosCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcursorposfun") overrungl.glfw.GLFWCursorPosFun callback) {
-        return glfwSetCursorPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWcursorenterfun") MemorySegment glfwSetCursorEnterCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcursorenterfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) glfwSetCursorEnterCallback(GLFWwindow* window, void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) callback);
+    /// ```
+    public static MemorySegment glfwSetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetCursorEnterCallback.invokeExact(Handles.get().PFN_glfwSetCursorEnterCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorEnterCallback", e); }
     }
 
-    public static @CType("GLFWcursorenterfun") MemorySegment glfwSetCursorEnterCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWcursorenterfun") overrungl.glfw.GLFWCursorEnterFun callback) {
-        return glfwSetCursorEnterCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWscrollfun") MemorySegment glfwSetScrollCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWscrollfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) glfwSetScrollCallback(GLFWwindow* window, void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) callback);
+    /// ```
+    public static MemorySegment glfwSetScrollCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetScrollCallback.invokeExact(Handles.get().PFN_glfwSetScrollCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetScrollCallback", e); }
     }
 
-    public static @CType("GLFWscrollfun") MemorySegment glfwSetScrollCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWscrollfun") overrungl.glfw.GLFWScrollFun callback) {
-        return glfwSetScrollCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("GLFWdropfun") MemorySegment glfwSetDropCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWdropfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) glfwSetDropCallback(GLFWwindow* window, void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) callback);
+    /// ```
+    public static MemorySegment glfwSetDropCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetDropCallback.invokeExact(Handles.get().PFN_glfwSetDropCallback, window, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetDropCallback", e); }
     }
 
-    public static @CType("GLFWdropfun") MemorySegment glfwSetDropCallback(@CType("GLFWwindow*") MemorySegment window, @CType("GLFWdropfun") overrungl.glfw.GLFWDropFun callback) {
-        return glfwSetDropCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
-    }
-
-    public static @CType("int") boolean glfwJoystickPresent(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// int glfwJoystickPresent(int jid);
+    /// ```
+    public static boolean glfwJoystickPresent(int jid) {
         try {
-            return (int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickPresent", e); }
     }
 
-    public static @CType("const float*") MemorySegment glfwGetJoystickAxes(@CType("int") int jid, @Out @CType("int*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// const float* glfwGetJoystickAxes(int jid, int* count);
+    /// ```
+    public static MemorySegment glfwGetJoystickAxes(int jid, MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickAxes.invokeExact(Handles.get().PFN_glfwGetJoystickAxes, jid, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickAxes", e); }
     }
 
-    public static @CType("const unsigned char*") MemorySegment glfwGetJoystickButtons(@CType("int") int jid, @Out @CType("int*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// const unsigned char* glfwGetJoystickButtons(int jid, int* count);
+    /// ```
+    public static MemorySegment glfwGetJoystickButtons(int jid, MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickButtons.invokeExact(Handles.get().PFN_glfwGetJoystickButtons, jid, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickButtons", e); }
     }
 
-    public static @CType("const unsigned char*") MemorySegment glfwGetJoystickHats(@CType("int") int jid, @Out @CType("int*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// const unsigned char* glfwGetJoystickHats(int jid, int* count);
+    /// ```
+    public static MemorySegment glfwGetJoystickHats(int jid, MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickHats.invokeExact(Handles.get().PFN_glfwGetJoystickHats, jid, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickHats", e); }
     }
 
-    public static @CType("const char*") MemorySegment glfwGetJoystickName_(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetJoystickName(int jid);
+    /// ```
+    public static MemorySegment glfwGetJoystickName(int jid) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickName.invokeExact(Handles.get().PFN_glfwGetJoystickName, jid);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickName", e); }
     }
 
-    public static @CType("const char*") String glfwGetJoystickName(@CType("int") int jid) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetJoystickName.invokeExact(Handles.get().PFN_glfwGetJoystickName, jid));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickName", e); }
-    }
-
-    public static @CType("const char*") MemorySegment glfwGetJoystickGUID_(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetJoystickGUID(int jid);
+    /// ```
+    public static MemorySegment glfwGetJoystickGUID(int jid) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickGUID.invokeExact(Handles.get().PFN_glfwGetJoystickGUID, jid);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickGUID", e); }
     }
 
-    public static @CType("const char*") String glfwGetJoystickGUID(@CType("int") int jid) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetJoystickGUID.invokeExact(Handles.get().PFN_glfwGetJoystickGUID, jid));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickGUID", e); }
-    }
-
-    public static void glfwSetJoystickUserPointer(@CType("int") int jid, @CType("void*") MemorySegment pointer) {
+    /// Signature:
+    /// ```
+    /// void glfwSetJoystickUserPointer(int jid, void* pointer);
+    /// ```
+    public static void glfwSetJoystickUserPointer(int jid, MemorySegment pointer) {
         try {
             Handles.MH_glfwSetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwSetJoystickUserPointer, jid, pointer);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickUserPointer", e); }
     }
 
-    public static @CType("void*") MemorySegment glfwGetJoystickUserPointer(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// void* glfwGetJoystickUserPointer(int jid);
+    /// ```
+    public static MemorySegment glfwGetJoystickUserPointer(int jid) {
         try {
             return (MemorySegment) Handles.MH_glfwGetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwGetJoystickUserPointer, jid);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickUserPointer", e); }
     }
 
-    public static @CType("int") boolean glfwJoystickIsGamepad(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// int glfwJoystickIsGamepad(int jid);
+    /// ```
+    public static boolean glfwJoystickIsGamepad(int jid) {
         try {
-            return (int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickIsGamepad", e); }
     }
 
-    public static @CType("GLFWjoystickfun") MemorySegment glfwSetJoystickCallback(@CType("GLFWjoystickfun") MemorySegment callback) {
+    /// Signature:
+    /// ```
+    /// void (*GLFWJoystickFun)(int jid, int event) glfwSetJoystickCallback(void (*GLFWJoystickFun)(int jid, int event) callback);
+    /// ```
+    public static MemorySegment glfwSetJoystickCallback(MemorySegment callback) {
         try {
             return (MemorySegment) Handles.MH_glfwSetJoystickCallback.invokeExact(Handles.get().PFN_glfwSetJoystickCallback, callback);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickCallback", e); }
     }
 
-    public static @CType("GLFWjoystickfun") MemorySegment glfwSetJoystickCallback(@CType("GLFWjoystickfun") overrungl.glfw.GLFWJoystickFun callback) {
-        return glfwSetJoystickCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
-    }
-
-    public static @CType("int") boolean glfwUpdateGamepadMappings(@CType("const char*") MemorySegment string) {
+    /// Signature:
+    /// ```
+    /// int glfwUpdateGamepadMappings(const char* string);
+    /// ```
+    public static boolean glfwUpdateGamepadMappings(MemorySegment string) {
         try {
-            return (int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
     }
 
-    public static @CType("int") boolean glfwUpdateGamepadMappings(@CType("const char*") String string) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, Marshal.marshal(__overrungl_stack, string)) != GLFW.GLFW_FALSE;
-        } catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
-    }
-
-    public static @CType("const char*") MemorySegment glfwGetGamepadName_(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetGamepadName(int jid);
+    /// ```
+    public static MemorySegment glfwGetGamepadName(int jid) {
         try {
             return (MemorySegment) Handles.MH_glfwGetGamepadName.invokeExact(Handles.get().PFN_glfwGetGamepadName, jid);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadName", e); }
     }
 
-    public static @CType("const char*") String glfwGetGamepadName(@CType("int") int jid) {
+    /// Signature:
+    /// ```
+    /// int glfwGetGamepadState(int jid, GLFWgamepadstate* state);
+    /// ```
+    public static boolean glfwGetGamepadState(int jid, MemorySegment state) {
         try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetGamepadName.invokeExact(Handles.get().PFN_glfwGetGamepadName, jid));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadName", e); }
-    }
-
-    public static @CType("int") boolean glfwGetGamepadState(@CType("int") int jid, @CType("GLFWgamepadstate*") MemorySegment state) {
-        try {
-            return (int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
     }
 
-    public static @CType("int") boolean glfwGetGamepadState(@CType("int") int jid, @CType("GLFWgamepadstate*") overrungl.glfw.GLFWGamepadState state) {
-        try {
-            return (int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, Marshal.marshal(state)) != GLFW.GLFW_FALSE;
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
-    }
-
-    public static void glfwSetClipboardString(@CType("GLFWwindow*") MemorySegment window, @CType("const char*") MemorySegment string) {
+    /// Signature:
+    /// ```
+    /// void glfwSetClipboardString(GLFWwindow* window, const char* string);
+    /// ```
+    public static void glfwSetClipboardString(MemorySegment window, MemorySegment string) {
         try {
             Handles.MH_glfwSetClipboardString.invokeExact(Handles.get().PFN_glfwSetClipboardString, window, string);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetClipboardString", e); }
     }
 
-    public static void glfwSetClipboardString(@CType("GLFWwindow*") MemorySegment window, @CType("const char*") String string) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            Handles.MH_glfwSetClipboardString.invokeExact(Handles.get().PFN_glfwSetClipboardString, window, Marshal.marshal(__overrungl_stack, string));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetClipboardString", e); }
-    }
-
-    public static @CType("const char*") MemorySegment glfwGetClipboardString_(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// const char* glfwGetClipboardString(GLFWwindow* window);
+    /// ```
+    public static MemorySegment glfwGetClipboardString(MemorySegment window) {
         try {
             return (MemorySegment) Handles.MH_glfwGetClipboardString.invokeExact(Handles.get().PFN_glfwGetClipboardString, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetClipboardString", e); }
     }
 
-    public static @CType("const char*") String glfwGetClipboardString(@CType("GLFWwindow*") MemorySegment window) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_glfwGetClipboardString.invokeExact(Handles.get().PFN_glfwGetClipboardString, window));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetClipboardString", e); }
-    }
-
-    public static @CType("double") double glfwGetTime() {
+    /// Signature:
+    /// ```
+    /// double glfwGetTime();
+    /// ```
+    public static double glfwGetTime() {
         try {
             return (double) Handles.MH_glfwGetTime.invokeExact(Handles.get().PFN_glfwGetTime);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTime", e); }
     }
 
-    public static void glfwSetTime(@CType("double") double time) {
+    /// Signature:
+    /// ```
+    /// void glfwSetTime(double time);
+    /// ```
+    public static void glfwSetTime(double time) {
         try {
             Handles.MH_glfwSetTime.invokeExact(Handles.get().PFN_glfwSetTime, time);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetTime", e); }
     }
 
-    public static @CType("uint64_t") long glfwGetTimerValue() {
+    /// Signature:
+    /// ```
+    /// uint64_t glfwGetTimerValue();
+    /// ```
+    public static long glfwGetTimerValue() {
         try {
             return (long) Handles.MH_glfwGetTimerValue.invokeExact(Handles.get().PFN_glfwGetTimerValue);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerValue", e); }
     }
 
-    public static @CType("uint64_t") long glfwGetTimerFrequency() {
+    /// Signature:
+    /// ```
+    /// uint64_t glfwGetTimerFrequency();
+    /// ```
+    public static long glfwGetTimerFrequency() {
         try {
             return (long) Handles.MH_glfwGetTimerFrequency.invokeExact(Handles.get().PFN_glfwGetTimerFrequency);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerFrequency", e); }
     }
 
-    public static void glfwMakeContextCurrent(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwMakeContextCurrent(GLFWwindow* window);
+    /// ```
+    public static void glfwMakeContextCurrent(MemorySegment window) {
         try {
             Handles.MH_glfwMakeContextCurrent.invokeExact(Handles.get().PFN_glfwMakeContextCurrent, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwMakeContextCurrent", e); }
     }
 
-    public static @CType("GLFWwindow*") MemorySegment glfwGetCurrentContext() {
+    /// Signature:
+    /// ```
+    /// GLFWwindow* glfwGetCurrentContext();
+    /// ```
+    public static MemorySegment glfwGetCurrentContext() {
         try {
             return (MemorySegment) Handles.MH_glfwGetCurrentContext.invokeExact(Handles.get().PFN_glfwGetCurrentContext);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCurrentContext", e); }
     }
 
-    public static void glfwSwapBuffers(@CType("GLFWwindow*") MemorySegment window) {
+    /// Signature:
+    /// ```
+    /// void glfwSwapBuffers(GLFWwindow* window);
+    /// ```
+    public static void glfwSwapBuffers(MemorySegment window) {
         try {
             Handles.MH_glfwSwapBuffers.invokeExact(Handles.get().PFN_glfwSwapBuffers, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSwapBuffers", e); }
     }
 
-    public static void glfwSwapInterval(@CType("int") int interval) {
+    /// Signature:
+    /// ```
+    /// void glfwSwapInterval(int interval);
+    /// ```
+    public static void glfwSwapInterval(int interval) {
         try {
             Handles.MH_glfwSwapInterval.invokeExact(Handles.get().PFN_glfwSwapInterval, interval);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSwapInterval", e); }
     }
 
-    public static @CType("int") boolean glfwExtensionSupported(@CType("const char*") MemorySegment extension) {
+    /// Signature:
+    /// ```
+    /// int glfwExtensionSupported(const char* extension);
+    /// ```
+    public static boolean glfwExtensionSupported(MemorySegment extension) {
         try {
-            return (int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
     }
 
-    public static @CType("int") boolean glfwExtensionSupported(@CType("const char*") String extension) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, Marshal.marshal(__overrungl_stack, extension)) != GLFW.GLFW_FALSE;
-        } catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
-    }
-
-    public static @CType("GLFWglproc") MemorySegment glfwGetProcAddress(@CType("const char*") MemorySegment procname) {
+    /// Signature:
+    /// ```
+    /// void* glfwGetProcAddress(const char* procname);
+    /// ```
+    public static MemorySegment glfwGetProcAddress(MemorySegment procname) {
         try {
             return (MemorySegment) Handles.MH_glfwGetProcAddress.invokeExact(Handles.get().PFN_glfwGetProcAddress, procname);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetProcAddress", e); }
     }
 
-    public static @CType("GLFWglproc") MemorySegment glfwGetProcAddress(@CType("const char*") String procname) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (MemorySegment) Handles.MH_glfwGetProcAddress.invokeExact(Handles.get().PFN_glfwGetProcAddress, Marshal.marshal(__overrungl_stack, procname));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetProcAddress", e); }
-    }
-
-    public static @CType("int") boolean glfwVulkanSupported() {
+    /// Signature:
+    /// ```
+    /// int glfwVulkanSupported();
+    /// ```
+    public static boolean glfwVulkanSupported() {
         try {
-            return (int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwVulkanSupported", e); }
     }
 
-    public static @CType("const char**") MemorySegment glfwGetRequiredInstanceExtensions(@Out @CType("uint32_t*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
+    /// ```
+    public static MemorySegment glfwGetRequiredInstanceExtensions(MemorySegment count) {
         try {
             return (MemorySegment) Handles.MH_glfwGetRequiredInstanceExtensions.invokeExact(Handles.get().PFN_glfwGetRequiredInstanceExtensions, count);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetRequiredInstanceExtensions", e); }
     }
 
-    public static @CType("GLFWvkproc") MemorySegment glfwGetInstanceProcAddress(@CType("VkInstance") MemorySegment instance, @CType("const char*") MemorySegment procname) {
+    /// Signature:
+    /// ```
+    /// void* glfwGetInstanceProcAddress(void* instance, const char* procname);
+    /// ```
+    public static MemorySegment glfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procname) {
         try {
             return (MemorySegment) Handles.MH_glfwGetInstanceProcAddress.invokeExact(Handles.get().PFN_glfwGetInstanceProcAddress, instance, procname);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetInstanceProcAddress", e); }
     }
 
-    public static @CType("GLFWvkproc") MemorySegment glfwGetInstanceProcAddress(@CType("VkInstance") MemorySegment instance, @CType("const char*") String procname) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (MemorySegment) Handles.MH_glfwGetInstanceProcAddress.invokeExact(Handles.get().PFN_glfwGetInstanceProcAddress, instance, Marshal.marshal(__overrungl_stack, procname));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetInstanceProcAddress", e); }
-    }
-
-    public static @CType("int") boolean glfwGetPhysicalDevicePresentationSupport(@CType("VkInstance") MemorySegment instance, @CType("VkPhysicalDevice") MemorySegment device, @CType("uint32_t") int queuefamily) {
+    /// Signature:
+    /// ```
+    /// int glfwGetPhysicalDevicePresentationSupport(void* instance, void* device, uint32_t queuefamily);
+    /// ```
+    public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queuefamily) {
         try {
-            return (int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily) != GLFW.GLFW_FALSE;
+            return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != GLFW.GLFW_FALSE);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPhysicalDevicePresentationSupport", e); }
     }
 
-    public static @CType("VkResult") int glfwCreateWindowSurface(@CType("VkInstance") MemorySegment instance, @CType("GLFWwindow*") MemorySegment window, @CType("const VkAllocationCallbacks*") MemorySegment allocator, @Out @CType("VkSurfaceKHR*") MemorySegment surface) {
+    /// Signature:
+    /// ```
+    /// int glfwCreateWindowSurface(void* instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
+    /// ```
+    public static int glfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
         try {
             return (int) Handles.MH_glfwCreateWindowSurface.invokeExact(Handles.get().PFN_glfwCreateWindowSurface, instance, window, allocator, surface);
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindowSurface", e); }
@@ -2107,58 +2231,6 @@ public final class GLFW {
     //endregion ---[END GENERATOR END]---
 
     private GLFW() {
-    }
-
-    public static MemorySegment[] glfwGetMonitors() {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetMonitors(c);
-            return Unmarshal.unmarshalAsAddressArray(segment.reinterpret(ADDRESS.scale(0, c.get(JAVA_INT, 0))));
-        }
-    }
-
-    public static GLFWVidMode glfwGetVideoModes(MemorySegment monitor) {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetVideoModes(monitor, c);
-            return new GLFWVidMode(segment.reinterpret(GLFWVidMode.LAYOUT.scale(0, c.get(JAVA_INT, 0))));
-        }
-    }
-
-    public static void glfwSetWindowIcon(MemorySegment window, GLFWImage images) {
-        glfwSetWindowIcon(window, images != null ? Math.toIntExact(images.estimateCount()) : 0, images);
-    }
-
-    public static float[] glfwGetJoystickAxes(int jid) {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetJoystickAxes(jid, c);
-            return Unmarshal.unmarshalAsFloatArray(segment.reinterpret(JAVA_FLOAT.scale(0, c.get(JAVA_INT, 0))));
-        }
-    }
-
-    public static byte[] glfwGetJoystickButtons(int jid) {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetJoystickButtons(jid, c);
-            return Unmarshal.unmarshalAsByteArray(segment.reinterpret(JAVA_BYTE.scale(0, c.get(JAVA_INT, 0))));
-        }
-    }
-
-    public static byte[] glfwGetJoystickHats(int jid) {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetJoystickHats(jid, c);
-            return Unmarshal.unmarshalAsByteArray(segment.reinterpret(JAVA_BYTE.scale(0, c.get(JAVA_INT, 0))));
-        }
-    }
-
-    public static String[] glfwGetRequiredInstanceExtensions() {
-        try (var stack = MemoryStack.pushLocal()) {
-            MemorySegment c = stack.allocate(JAVA_INT);
-            MemorySegment segment = glfwGetRequiredInstanceExtensions(c);
-            return Unmarshal.unmarshalAsStringArray(segment.reinterpret(ADDRESS.scale(0, c.get(JAVA_INT, 0))));
-        }
     }
 
     /**

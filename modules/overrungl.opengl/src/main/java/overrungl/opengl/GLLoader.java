@@ -17,7 +17,7 @@
 package overrungl.opengl;
 
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -46,7 +46,7 @@ final class GLLoader {
     GLLoader(GLLoadFunc func) {
         this.func = func;
         this.glGetString = func.invoke("glGetString");
-        this.hasGL = !Unmarshal.isNullPointer(glGetString);
+        this.hasGL = !MemoryUtil.isNullPointer(glGetString);
     }
 
     private static int makeVersion(int major, int minor) {
@@ -70,7 +70,7 @@ final class GLLoader {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
-        String version = Unmarshal.unmarshalAsString(pVersion);
+        String version = MemoryUtil.nativeString(pVersion);
         if (version == null) return 0;
         for (String prefix : prefixes) {
             if (version.startsWith(prefix)) {
@@ -106,7 +106,7 @@ final class GLLoader {
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }
-            String s = Unmarshal.unmarshalAsString(segment);
+            String s = MemoryUtil.nativeString(segment);
             if (s != null) {
                 exts = s.split(" ");
                 Arrays.sort(exts);
@@ -114,7 +114,7 @@ final class GLLoader {
         } else {
             MemorySegment glGetStringi = func.invoke("glGetStringi");
             MemorySegment glGetIntegerv = func.invoke("glGetIntegerv");
-            if (Unmarshal.isNullPointer(glGetStringi) || Unmarshal.isNullPointer(glGetIntegerv)) {
+            if (MemoryUtil.isNullPointer(glGetStringi) || MemoryUtil.isNullPointer(glGetIntegerv)) {
                 return GetExtensions.FAIL;
             }
             int numExtsI;
@@ -133,7 +133,7 @@ final class GLLoader {
             if (extsI == null) return GetExtensions.FAIL;
             try {
                 for (int index = 0; index < numExtsI; index++) {
-                    extsI[index] = Unmarshal.unmarshalAsString((MemorySegment) GL30.Handles.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
+                    extsI[index] = MemoryUtil.nativeString((MemorySegment) GL30.Handles.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
                 }
             } catch (Throwable e) {
                 throw new RuntimeException(e);
