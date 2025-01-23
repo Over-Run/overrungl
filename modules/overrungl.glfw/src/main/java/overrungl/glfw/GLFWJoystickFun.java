@@ -24,7 +24,7 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature
+/// Signature:
 /// ```
 /// typedef void (*GLFWJoystickFun)(int jid, int event);
 /// ```
@@ -39,7 +39,10 @@ public interface GLFWJoystickFun extends Upcall {
     /// @param arena the arena
     /// @param func  the function
     /// @return the upcall stub
-    static MemorySegment alloc(Arena arena, GLFWJoystickFun func) { return func.stub(arena); }
+    static MemorySegment alloc(Arena arena, GLFWJoystickFun func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
     void invoke(int jid, int event);

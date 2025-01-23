@@ -283,7 +283,7 @@ public final class GLFWNative {
     public static long glfwGetX11Adapter(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Adapter)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Adapter");
         try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Adapter.invokeWithArguments(Handles.get().PFN_glfwGetX11Adapter, monitor));
+            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Adapter.invoke(Handles.get().PFN_glfwGetX11Adapter, monitor));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Adapter", e); }
     }
 
@@ -294,7 +294,7 @@ public final class GLFWNative {
     public static long glfwGetX11Monitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Monitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Monitor");
         try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Monitor.invokeWithArguments(Handles.get().PFN_glfwGetX11Monitor, monitor));
+            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Monitor.invoke(Handles.get().PFN_glfwGetX11Monitor, monitor));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Monitor", e); }
     }
 
@@ -305,7 +305,7 @@ public final class GLFWNative {
     public static long glfwGetX11Window(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Window)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Window");
         try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Window.invokeWithArguments(Handles.get().PFN_glfwGetX11Window, window));
+            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Window.invoke(Handles.get().PFN_glfwGetX11Window, window));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Window", e); }
     }
 
@@ -349,7 +349,7 @@ public final class GLFWNative {
     public static long glfwGetGLXWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXWindow");
         try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetGLXWindow.invokeWithArguments(Handles.get().PFN_glfwGetGLXWindow, window));
+            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetGLXWindow.invoke(Handles.get().PFN_glfwGetGLXWindow, window));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
     }
 

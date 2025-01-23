@@ -16,22 +16,24 @@
 
 package overrungl.nfd;
 
-import overrungl.annotation.CType;
-import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
-import overrungl.struct.Struct;
-import overrungl.util.Marshal;
-import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
+import overrungl.util.*;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.Charset;
 
 /// Native File Dialog Extended binding.
 ///
 /// See the [source repository](https://github.com/btzy/nativefiledialog-extended) for basic usages.
+///
+/// ## Important
+///
+/// NFD uses UTF-16 on Windows. You should use [NFD#allocString(SegmentAllocator, String)] and [NFD#nativeString(MemorySegment)]
+/// instead of the version of [MemoryUtil].
 ///
 /// @author squid233
 /// @since 0.1.0
@@ -39,16 +41,14 @@ public final class NFD {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    public static final int
-        NFD_ERROR = 0,
-        NFD_OKAY = 1,
-        NFD_CANCEL = 2;
-    public static final int
-        NFD_WINDOW_HANDLE_TYPE_UNSET = 0,
-        NFD_WINDOW_HANDLE_TYPE_WINDOWS = 1,
-        NFD_WINDOW_HANDLE_TYPE_COCOA = 2,
-        NFD_WINDOW_HANDLE_TYPE_X11 = 3;
     public static final int NFD_INTERFACE_VERSION = 1;
+    public static final int NFD_ERROR = 0;
+    public static final int NFD_OKAY = 1;
+    public static final int NFD_CANCEL = 2;
+    public static final int NFD_WINDOW_HANDLE_TYPE_UNSET = 0;
+    public static final int NFD_WINDOW_HANDLE_TYPE_WINDOWS = 1;
+    public static final int NFD_WINDOW_HANDLE_TYPE_COCOA = 2;
+    public static final int NFD_WINDOW_HANDLE_TYPE_X11 = 3;
     //endregion
     /// Method handles.
     public static final class Handles {
@@ -59,35 +59,35 @@ public final class NFD {
         /// The method handle of `NFD_Quit`.
         public static final MethodHandle MH_NFD_Quit = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `NFD_OpenDialogN`.
-        public static final MethodHandle MH_NFD_OpenDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_OpenDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `NFD_OpenDialogN_With_Impl`.
-        public static final MethodHandle MH_NFD_OpenDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_OpenDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_OpenDialogMultipleN`.
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_OpenDialogMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `NFD_OpenDialogMultipleN_With_Impl`.
-        public static final MethodHandle MH_NFD_OpenDialogMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_OpenDialogMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_SaveDialogN`.
-        public static final MethodHandle MH_NFD_SaveDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_SaveDialogN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_SaveDialogN_With_Impl`.
-        public static final MethodHandle MH_NFD_SaveDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_SaveDialogN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderN`.
-        public static final MethodHandle MH_NFD_PickFolderN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_PickFolderN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderN_With_Impl`.
-        public static final MethodHandle MH_NFD_PickFolderN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_PickFolderN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderMultipleN`.
-        public static final MethodHandle MH_NFD_PickFolderMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_PickFolderMultipleN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PickFolderMultipleN_With_Impl`.
-        public static final MethodHandle MH_NFD_PickFolderMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_PickFolderMultipleN_With_Impl = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_GetError`.
-        public static final MethodHandle MH_NFD_GetError = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_GetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The method handle of `NFD_ClearError`.
         public static final MethodHandle MH_NFD_ClearError = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         /// The method handle of `NFD_PathSet_GetCount`.
         public static final MethodHandle MH_NFD_PathSet_GetCount = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_GetPathN`.
-        public static final MethodHandle MH_NFD_PathSet_GetPathN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_NFD_PathSet_GetPathN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, NFDInternal.nfdpathsetsize_t, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_FreePathN`.
-        public static final MethodHandle MH_NFD_PathSet_FreePathN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_NFD_PathSet_FreePathN = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_GetEnum`.
         public static final MethodHandle MH_NFD_PathSet_GetEnum = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `NFD_PathSet_FreeEnum`.
@@ -175,168 +175,261 @@ public final class NFD {
         }
     }
 
-    public static void NFD_FreePath(@CType("nfdnchar_t*") MemorySegment filePath) {
+    /// Signature:
+    /// ```
+    /// void NFD_FreePathN(nfdnchar_t* filePath);
+    /// ```
+    public static void NFD_FreePath(MemorySegment filePath) {
         try {
             Handles.MH_NFD_FreePathN.invokeExact(Handles.get().PFN_NFD_FreePathN, filePath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_FreePathN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_FreePath", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_Init() {
+    /// Signature:
+    /// ```
+    /// int NFD_Init();
+    /// ```
+    public static int NFD_Init() {
         try {
             return (int) Handles.MH_NFD_Init.invokeExact(Handles.get().PFN_NFD_Init);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_Init", e); }
     }
 
+    /// Signature:
+    /// ```
+    /// void NFD_Quit();
+    /// ```
     public static void NFD_Quit() {
         try {
             Handles.MH_NFD_Quit.invokeExact(Handles.get().PFN_NFD_Quit);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_Quit", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
+    /// ```
+    public static int NFD_OpenDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_OpenDialogN.invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdopendialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// ```
+    public static int NFD_OpenDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try {
-            return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invokeExact(Handles.get().PFN_NFD_OpenDialogN_With_Impl, version, outPath, args);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogN_With_Impl", e); }
+            return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialog_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdopendialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// ```
+    public static int NFD_OpenDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
+    /// ```
+    public static int NFD_OpenDialogMultiple(MemorySegment outPaths, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_OpenDialogMultipleN.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultipleN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdopendialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialogMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// ```
+    public static int NFD_OpenDialogMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try {
-            return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, version, outPaths, args);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultipleN_With_Impl", e); }
+            return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_OpenDialogMultiple_With(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdopendialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// ```
+    public static int NFD_OpenDialogMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath, @CType("const nfdnchar_t*") MemorySegment defaultName) {
+    /// Signature:
+    /// ```
+    /// int NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
+    /// ```
+    public static int NFD_SaveDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName) {
         try {
             return (int) Handles.MH_NFD_SaveDialogN.invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialogN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdsavedialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_SaveDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// ```
+    public static int NFD_SaveDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try {
-            return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invokeExact(Handles.get().PFN_NFD_SaveDialogN_With_Impl, version, outPath, args);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialogN_With_Impl", e); }
+            return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invoke(Handles.get().PFN_NFD_SaveDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_SaveDialog_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdsavedialognargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// ```
+    public static int NFD_SaveDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
+    /// ```
+    public static int NFD_PickFolder(MemorySegment outPath, MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_PickFolderN.invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder_With_Impl(@CType("nfdversion_t") int version, @CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolderN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// ```
+    public static int NFD_PickFolder_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try {
-            return (int) Handles.MH_NFD_PickFolderN_With_Impl.invokeExact(Handles.get().PFN_NFD_PickFolderN_With_Impl, version, outPath, args);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderN_With_Impl", e); }
+            return (int) Handles.MH_NFD_PickFolderN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolder_With(@CType("nfdnchar_t**") MemorySegment outPath, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// ```
+    public static int NFD_PickFolder_With(MemorySegment outPath, MemorySegment args) {
         return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
+    /// ```
+    public static int NFD_PickFolderMultiple(MemorySegment outPaths, MemorySegment defaultPath) {
         try {
             return (int) Handles.MH_NFD_PickFolderMultipleN.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultipleN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With_Impl(@CType("nfdversion_t") int version, @CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolderMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// ```
+    public static int NFD_PickFolderMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try {
-            return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, version, outPaths, args);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultipleN_With_Impl", e); }
+            return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple_With_Impl", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PickFolderMultiple_With(@CType("const nfdpathset_t**") MemorySegment outPaths, @CType("const nfdpickfoldernargs_t*") MemorySegment args) {
+    /// Signature:
+    /// ```
+    /// int NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// ```
+    public static int NFD_PickFolderMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    public static @CType("const char*") MemorySegment NFD_GetError_() {
+    /// Signature:
+    /// ```
+    /// const char* NFD_GetError();
+    /// ```
+    public static MemorySegment NFD_GetError() {
         try {
             return (MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }
 
-    public static @CType("const char*") String NFD_GetError() {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_NFD_GetError.invokeExact(Handles.get().PFN_NFD_GetError));
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
-    }
-
+    /// Signature:
+    /// ```
+    /// void NFD_ClearError();
+    /// ```
     public static void NFD_ClearError() {
         try {
             Handles.MH_NFD_ClearError.invokeExact(Handles.get().PFN_NFD_ClearError);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_ClearError", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") MemorySegment pathSet, @Out @CType("nfdpathsetsize_t*") MemorySegment count) {
+    /// Signature:
+    /// ```
+    /// int NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
+    /// ```
+    public static int NFD_PathSet_GetCount(MemorySegment pathSet, MemorySegment count) {
         try {
             return (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetCount(@CType("const nfdpathset_t*") MemorySegment pathSet, @Out long[] count) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_count = Marshal.marshal(__overrungl_stack, count);
-            var __overrungl_result = (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, __overrungl_ref_count);
-            Unmarshal.copy(__overrungl_ref_count, count);
-            return __overrungl_result;
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
-    }
-
-    public static @CType("nfdresult_t") int NFD_PathSet_GetPath(@CType("const nfdpathset_t*") MemorySegment pathSet, @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") MemorySegment outPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, size_t index, nfdnchar_t** outPath);
+    /// ```
+    public static int NFD_PathSet_GetPath(MemorySegment pathSet, long index, MemorySegment outPath) {
         try {
-            return (int) Handles.MH_NFD_PathSet_GetPathN.invokeExact(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, index, outPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPathN", e); }
+            return (int) Handles.MH_NFD_PathSet_GetPathN.invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, index), outPath);
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPath", e); }
     }
 
-    public static void NFD_PathSet_FreePath(@CType("const nfdnchar_t*") MemorySegment filePath) {
+    /// Signature:
+    /// ```
+    /// void NFD_PathSet_FreePathN(const nfdnchar_t* filePath);
+    /// ```
+    public static void NFD_PathSet_FreePath(MemorySegment filePath) {
         try {
             Handles.MH_NFD_PathSet_FreePathN.invokeExact(Handles.get().PFN_NFD_PathSet_FreePathN, filePath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreePathN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreePath", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_GetEnum(@CType("const nfdpathset_t*") MemorySegment pathSet, @CType("nfdpathsetenum_t*") MemorySegment outEnumerator) {
+    /// Signature:
+    /// ```
+    /// int NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
+    /// ```
+    public static int NFD_PathSet_GetEnum(MemorySegment pathSet, MemorySegment outEnumerator) {
         try {
             return (int) Handles.MH_NFD_PathSet_GetEnum.invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetEnum", e); }
     }
 
-    public static void NFD_PathSet_FreeEnum(@CType("nfdpathsetenum_t*") MemorySegment enumerator) {
+    /// Signature:
+    /// ```
+    /// void NFD_PathSet_FreeEnum(nfdpathsetenum_t* enumerator);
+    /// ```
+    public static void NFD_PathSet_FreeEnum(MemorySegment enumerator) {
         try {
             Handles.MH_NFD_PathSet_FreeEnum.invokeExact(Handles.get().PFN_NFD_PathSet_FreeEnum, enumerator);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreeEnum", e); }
     }
 
-    public static @CType("nfdresult_t") int NFD_PathSet_EnumNext(@CType("nfdpathsetenum_t*") MemorySegment enumerator, @CType("nfdnchar_t**") MemorySegment outPath) {
+    /// Signature:
+    /// ```
+    /// int NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
+    /// ```
+    public static int NFD_PathSet_EnumNext(MemorySegment enumerator, MemorySegment outPath) {
         try {
             return (int) Handles.MH_NFD_PathSet_EnumNextN.invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath);
-        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_EnumNextN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_EnumNext", e); }
     }
 
-    public static void NFD_PathSet_Free(@CType("const nfdpathset_t*") MemorySegment pathSet) {
+    /// Signature:
+    /// ```
+    /// void NFD_PathSet_Free(const nfdpathset_t* pathSet);
+    /// ```
+    public static void NFD_PathSet_Free(MemorySegment pathSet) {
         try {
             Handles.MH_NFD_PathSet_Free.invokeExact(Handles.get().PFN_NFD_PathSet_Free, pathSet);
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_Free", e); }
@@ -348,131 +441,13 @@ public final class NFD {
     private NFD() {
     }
 
-    public static int NFD_OpenDialog(String[] outPath, NFDFilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_OpenDialog(seg, Marshal.marshal(filterList), filterItemCount(filterList), NFDInternal.marshalString(stack, defaultPath));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
+    public static final Charset NFD_CHARSET = NFDInternal.nfdCharset;
+
+    public static MemorySegment allocString(SegmentAllocator allocator, String string) {
+        return MemoryUtil.allocString(allocator, string, NFD_CHARSET);
     }
 
-    public static int NFD_OpenDialog_With(String[] outPath, NFDOpenDialogArgs args) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_OpenDialog_With(seg, Marshal.marshal(args));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_OpenDialogMultiple(MemorySegment outPaths, NFDFilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return NFD_OpenDialogMultiple(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), NFDInternal.marshalString(stack, defaultPath));
-        }
-    }
-
-    public static int NFD_OpenDialogMultiple_With(MemorySegment outPaths, NFDOpenDialogArgs args) {
-        return NFD_OpenDialogMultiple_With(outPaths, Marshal.marshal(args));
-    }
-
-    public static int NFD_SaveDialog(String[] outPath, NFDFilterItem filterList, String defaultPath, String defaultName) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_SaveDialog(seg, Marshal.marshal(filterList), filterItemCount(filterList), NFDInternal.marshalString(stack, defaultPath), NFDInternal.marshalString(stack, defaultName));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_SaveDialog_With(String[] outPath, NFDSaveDialogArgs args) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_SaveDialog_With(seg, Marshal.marshal(args));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_PickFolder(String[] outPath, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_PickFolder(seg, NFDInternal.marshalString(stack, defaultPath));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_PickFolder_With(String[] outPath, NFDPickFolderArgs args) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_PickFolder_With(seg, Marshal.marshal(args));
-            if (result == NFD_OKAY) {
-                copyOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_PickFolderMultiple(MemorySegment outPaths, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return NFD_PickFolderMultiple(outPaths, NFDInternal.marshalString(stack, defaultPath));
-        }
-    }
-
-    public static int NFD_PickFolderMultiple_With(MemorySegment outPaths, NFDPickFolderArgs args) {
-        return NFD_PickFolderMultiple_With(outPaths, Marshal.marshal(args));
-    }
-
-    public static int NFD_PathSet_GetPath(MemorySegment pathSet, long index, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_PathSet_GetPath(pathSet, index, seg);
-            if (result == NFD_OKAY) {
-                copyPathSetOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    public static int NFD_PathSet_EnumNext(MemorySegment enumerator, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var seg = NFDInternal.marshalString(stack, outPath);
-            int result = NFD_PathSet_EnumNext(enumerator, seg);
-            if (result == NFD_OKAY) {
-                copyPathSetOutPath(seg, outPath);
-            }
-            return result;
-        }
-    }
-
-    private static int filterItemCount(Struct struct) {
-        return struct != null ? Math.toIntExact(struct.estimateCount()) : 0;
-    }
-
-    private static void copyOutPath(MemorySegment src, String[] outPath) {
-        Unmarshal.copy(src, outPath, NFDInternal.nfdCharset);
-        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
-        if (!Unmarshal.isNullPointer(segment)) {
-            NFD_FreePath(segment);
-        }
-    }
-
-    private static void copyPathSetOutPath(MemorySegment src, String[] outPath) {
-        Unmarshal.copy(src, outPath, NFDInternal.nfdCharset);
-        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
-        if (!Unmarshal.isNullPointer(segment)) {
-            NFD_PathSet_FreePath(segment);
-        }
+    public static String nativeString(MemorySegment segment) {
+        return MemoryUtil.nativeString(segment, NFD_CHARSET);
     }
 }

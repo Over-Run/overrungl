@@ -15,52 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.nfd;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### filterList
-/// [VarHandle][#VH_filterList] - [Getter][#filterList()] - [Setter][#filterList(MemorySegment)]
-/// ### filterCount
-/// [VarHandle][#VH_filterCount] - [Getter][#filterCount()] - [Setter][#filterCount(int)]
-/// ### defaultPath
-/// [VarHandle][#VH_defaultPath] - [Getter][#defaultPath()] - [Setter][#defaultPath(MemorySegment)]
-/// ### parentWindow
-/// [Byte offset][#OFFSET_parentWindow] - [Memory layout][#ML_parentWindow] - [Getter][#parentWindow()] - [Setter][#parentWindow(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct nfdopendialognargs_t {
-///     const nfdnfilteritem_t* filterList;
-///     nfdfiltersize_t filterCount;
-///     const nfdnchar_t* defaultPath;
-///     nfdwindowhandle_t parentWindow;
-/// } NFDOpenDialogArgs;
 /// ```
-public sealed class NFDOpenDialogArgs extends Struct {
-    /// The struct layout of `nfdopendialognargs_t`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+/// struct NFDOpenDialogArgs {
+///     const nfdnfilteritem_t* filterList;
+///     unsigned int filterCount;
+///     const nfdnchar_t* defaultPath;
+///     NFDWindowHandle parentWindow;
+/// };
+/// ```
+public sealed class NFDOpenDialogArgs extends GroupType {
+    /// The struct layout of `NFDOpenDialogArgs`.
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("filterList"),
         ValueLayout.JAVA_INT.withName("filterCount"),
-        Unmarshal.STR_LAYOUT.withName("defaultPath"),
-        overrungl.nfd.NFDWindowHandle.LAYOUT.withName("parentWindow")
+        ValueLayout.ADDRESS.withName("defaultPath"),
+        NFDWindowHandle.LAYOUT.withName("parentWindow")
     );
+    /// The byte offset of `filterList`.
+    public static final long OFFSET_filterList = LAYOUT.byteOffset(PathElement.groupElement("filterList"));
+    /// The memory layout of `filterList`.
+    public static final MemoryLayout LAYOUT_filterList = LAYOUT.select(PathElement.groupElement("filterList"));
     /// The [VarHandle] of `filterList` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_filterList = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterList"));
-    /// The [VarHandle] of `filterCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `filterCount`.
+    public static final long OFFSET_filterCount = LAYOUT.byteOffset(PathElement.groupElement("filterCount"));
+    /// The memory layout of `filterCount`.
+    public static final MemoryLayout LAYOUT_filterCount = LAYOUT.select(PathElement.groupElement("filterCount"));
+    /// The [VarHandle] of `filterCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_filterCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCount"));
+    /// The byte offset of `defaultPath`.
+    public static final long OFFSET_defaultPath = LAYOUT.byteOffset(PathElement.groupElement("defaultPath"));
+    /// The memory layout of `defaultPath`.
+    public static final MemoryLayout LAYOUT_defaultPath = LAYOUT.select(PathElement.groupElement("defaultPath"));
     /// The [VarHandle] of `defaultPath` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultPath = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath"));
     /// The byte offset of `parentWindow`.
     public static final long OFFSET_parentWindow = LAYOUT.byteOffset(PathElement.groupElement("parentWindow"));
     /// The memory layout of `parentWindow`.
-    public static final MemoryLayout ML_parentWindow = LAYOUT.select(PathElement.groupElement("parentWindow"));
+    public static final MemoryLayout LAYOUT_parentWindow = LAYOUT.select(PathElement.groupElement("parentWindow"));
 
     /// Creates `NFDOpenDialogArgs` with the given segment.
     /// @param segment the memory segment
@@ -69,19 +71,14 @@ public sealed class NFDOpenDialogArgs extends Struct {
     /// Creates `NFDOpenDialogArgs` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static NFDOpenDialogArgs of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new NFDOpenDialogArgs(segment); }
-
-    /// Creates `NFDOpenDialogArgs` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `NFDOpenDialogArgs` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static NFDOpenDialogArgs ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new NFDOpenDialogArgs(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static NFDOpenDialogArgs ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new NFDOpenDialogArgs(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `NFDOpenDialogArgs` with the given segment.
     ///
@@ -89,7 +86,7 @@ public sealed class NFDOpenDialogArgs extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `NFDOpenDialogArgs` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -102,11 +99,6 @@ public sealed class NFDOpenDialogArgs extends Struct {
     /// @return the allocated `NFDOpenDialogArgs`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `NFDOpenDialogArgs`
-    public static NFDOpenDialogArgs allocInit(SegmentAllocator allocator, @CType("const nfdnfilteritem_t*") MemorySegment filterList, @CType("nfdfiltersize_t") int filterCount, @CType("const nfdnchar_t*") MemorySegment defaultPath, @CType("nfdwindowhandle_t") MemorySegment parentWindow) { return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).parentWindow(parentWindow); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -114,99 +106,71 @@ public sealed class NFDOpenDialogArgs extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const nfdnfilteritem_t*") MemorySegment get_filterList(MemorySegment segment, long index) { return (MemorySegment) VH_filterList.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment filterList(MemorySegment segment, long index) { return (MemorySegment) VH_filterList.get(segment, 0L, index); }
     /// {@return `filterList`}
-    /// @param segment the segment of the struct
-    public static @CType("const nfdnfilteritem_t*") MemorySegment get_filterList(MemorySegment segment) { return NFDOpenDialogArgs.get_filterList(segment, 0L); }
-    /// {@return `filterList`}
-    public @CType("const nfdnfilteritem_t*") MemorySegment filterList() { return NFDOpenDialogArgs.get_filterList(this.segment()); }
+    public MemorySegment filterList() { return filterList(this.segment(), 0L); }
     /// Sets `filterList` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_filterList(MemorySegment segment, long index, @CType("const nfdnfilteritem_t*") MemorySegment value) { VH_filterList.set(segment, 0L, index, value); }
-    /// Sets `filterList` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_filterList(MemorySegment segment, @CType("const nfdnfilteritem_t*") MemorySegment value) { NFDOpenDialogArgs.set_filterList(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void filterList(MemorySegment segment, long index, MemorySegment value) { VH_filterList.set(segment, 0L, index, value); }
     /// Sets `filterList` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDOpenDialogArgs filterList(@CType("const nfdnfilteritem_t*") MemorySegment value) { NFDOpenDialogArgs.set_filterList(this.segment(), value); return this; }
+    public NFDOpenDialogArgs filterList(MemorySegment value) { filterList(this.segment(), 0L, value); return this; }
 
     /// {@return `filterCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("nfdfiltersize_t") int get_filterCount(MemorySegment segment, long index) { return (int) VH_filterCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int filterCount(MemorySegment segment, long index) { return (int) VH_filterCount.get(segment, 0L, index); }
     /// {@return `filterCount`}
-    /// @param segment the segment of the struct
-    public static @CType("nfdfiltersize_t") int get_filterCount(MemorySegment segment) { return NFDOpenDialogArgs.get_filterCount(segment, 0L); }
-    /// {@return `filterCount`}
-    public @CType("nfdfiltersize_t") int filterCount() { return NFDOpenDialogArgs.get_filterCount(this.segment()); }
+    public int filterCount() { return filterCount(this.segment(), 0L); }
     /// Sets `filterCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_filterCount(MemorySegment segment, long index, @CType("nfdfiltersize_t") int value) { VH_filterCount.set(segment, 0L, index, value); }
-    /// Sets `filterCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_filterCount(MemorySegment segment, @CType("nfdfiltersize_t") int value) { NFDOpenDialogArgs.set_filterCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void filterCount(MemorySegment segment, long index, int value) { VH_filterCount.set(segment, 0L, index, value); }
     /// Sets `filterCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDOpenDialogArgs filterCount(@CType("nfdfiltersize_t") int value) { NFDOpenDialogArgs.set_filterCount(this.segment(), value); return this; }
+    public NFDOpenDialogArgs filterCount(int value) { filterCount(this.segment(), 0L, value); return this; }
 
     /// {@return `defaultPath` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const nfdnchar_t*") MemorySegment get_defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment defaultPath(MemorySegment segment, long index) { return (MemorySegment) VH_defaultPath.get(segment, 0L, index); }
     /// {@return `defaultPath`}
-    /// @param segment the segment of the struct
-    public static @CType("const nfdnchar_t*") MemorySegment get_defaultPath(MemorySegment segment) { return NFDOpenDialogArgs.get_defaultPath(segment, 0L); }
-    /// {@return `defaultPath`}
-    public @CType("const nfdnchar_t*") MemorySegment defaultPath() { return NFDOpenDialogArgs.get_defaultPath(this.segment()); }
+    public MemorySegment defaultPath() { return defaultPath(this.segment(), 0L); }
     /// Sets `defaultPath` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_defaultPath(MemorySegment segment, long index, @CType("const nfdnchar_t*") MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
-    /// Sets `defaultPath` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_defaultPath(MemorySegment segment, @CType("const nfdnchar_t*") MemorySegment value) { NFDOpenDialogArgs.set_defaultPath(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void defaultPath(MemorySegment segment, long index, MemorySegment value) { VH_defaultPath.set(segment, 0L, index, value); }
     /// Sets `defaultPath` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDOpenDialogArgs defaultPath(@CType("const nfdnchar_t*") MemorySegment value) { NFDOpenDialogArgs.set_defaultPath(this.segment(), value); return this; }
+    public NFDOpenDialogArgs defaultPath(MemorySegment value) { defaultPath(this.segment(), 0L, value); return this; }
 
     /// {@return `parentWindow` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("nfdwindowhandle_t") MemorySegment get_parentWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment parentWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_parentWindow, index), LAYOUT_parentWindow); }
     /// {@return `parentWindow`}
-    /// @param segment the segment of the struct
-    public static @CType("nfdwindowhandle_t") MemorySegment get_parentWindow(MemorySegment segment) { return NFDOpenDialogArgs.get_parentWindow(segment, 0L); }
-    /// {@return `parentWindow`}
-    public @CType("nfdwindowhandle_t") MemorySegment parentWindow() { return NFDOpenDialogArgs.get_parentWindow(this.segment()); }
+    public MemorySegment parentWindow() { return parentWindow(this.segment(), 0L); }
     /// Sets `parentWindow` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_parentWindow(MemorySegment segment, long index, @CType("nfdwindowhandle_t") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow.byteSize()); }
-    /// Sets `parentWindow` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_parentWindow(MemorySegment segment, @CType("nfdwindowhandle_t") MemorySegment value) { NFDOpenDialogArgs.set_parentWindow(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void parentWindow(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_parentWindow, index), LAYOUT_parentWindow.byteSize()); }
     /// Sets `parentWindow` with the given value.
     /// @param value the value
     /// @return `this`
-    public NFDOpenDialogArgs parentWindow(@CType("nfdwindowhandle_t") MemorySegment value) { NFDOpenDialogArgs.set_parentWindow(this.segment(), value); return this; }
+    public NFDOpenDialogArgs parentWindow(MemorySegment value) { parentWindow(this.segment(), 0L, value); return this; }
 
     /// A buffer of [NFDOpenDialogArgs].
     public static final class Buffer extends NFDOpenDialogArgs {
@@ -231,40 +195,40 @@ public sealed class NFDOpenDialogArgs extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `filterList` at the given index}
-        /// @param index the index
-        public @CType("const nfdnfilteritem_t*") MemorySegment filterListAt(long index) { return NFDOpenDialogArgs.get_filterList(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment filterListAt(long index) { return filterList(this.segment(), index); }
         /// Sets `filterList` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer filterListAt(long index, @CType("const nfdnfilteritem_t*") MemorySegment value) { NFDOpenDialogArgs.set_filterList(this.segment(), index, value); return this; }
+        public Buffer filterListAt(long index, MemorySegment value) { filterList(this.segment(), index, value); return this; }
 
         /// {@return `filterCount` at the given index}
-        /// @param index the index
-        public @CType("nfdfiltersize_t") int filterCountAt(long index) { return NFDOpenDialogArgs.get_filterCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int filterCountAt(long index) { return filterCount(this.segment(), index); }
         /// Sets `filterCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer filterCountAt(long index, @CType("nfdfiltersize_t") int value) { NFDOpenDialogArgs.set_filterCount(this.segment(), index, value); return this; }
+        public Buffer filterCountAt(long index, int value) { filterCount(this.segment(), index, value); return this; }
 
         /// {@return `defaultPath` at the given index}
-        /// @param index the index
-        public @CType("const nfdnchar_t*") MemorySegment defaultPathAt(long index) { return NFDOpenDialogArgs.get_defaultPath(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment defaultPathAt(long index) { return defaultPath(this.segment(), index); }
         /// Sets `defaultPath` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer defaultPathAt(long index, @CType("const nfdnchar_t*") MemorySegment value) { NFDOpenDialogArgs.set_defaultPath(this.segment(), index, value); return this; }
+        public Buffer defaultPathAt(long index, MemorySegment value) { defaultPath(this.segment(), index, value); return this; }
 
         /// {@return `parentWindow` at the given index}
-        /// @param index the index
-        public @CType("nfdwindowhandle_t") MemorySegment parentWindowAt(long index) { return NFDOpenDialogArgs.get_parentWindow(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment parentWindowAt(long index) { return parentWindow(this.segment(), index); }
         /// Sets `parentWindow` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer parentWindowAt(long index, @CType("nfdwindowhandle_t") MemorySegment value) { NFDOpenDialogArgs.set_parentWindow(this.segment(), index, value); return this; }
+        public Buffer parentWindowAt(long index, MemorySegment value) { parentWindow(this.segment(), index, value); return this; }
 
     }
 }

@@ -24,5 +24,7 @@ data class DefinitionFunction(
     val returnType: DefinitionType,
     val name: String,
     val parameters: List<DefTypeNamePair>,
-    val optional: Boolean
+    val optional: Boolean,
+    val entrypoint: String,
+    val body: String?
 )

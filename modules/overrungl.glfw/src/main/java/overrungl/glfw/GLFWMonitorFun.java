@@ -24,7 +24,7 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature
+/// Signature:
 /// ```
 /// typedef void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event);
 /// ```
@@ -39,7 +39,10 @@ public interface GLFWMonitorFun extends Upcall {
     /// @param arena the arena
     /// @param func  the function
     /// @return the upcall stub
-    static MemorySegment alloc(Arena arena, GLFWMonitorFun func) { return func.stub(arena); }
+    static MemorySegment alloc(Arena arena, GLFWMonitorFun func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
     void invoke(MemorySegment monitor, int event);

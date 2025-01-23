@@ -24,7 +24,7 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature
+/// Signature:
 /// ```
 /// typedef void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized);
 /// ```
@@ -39,7 +39,10 @@ public interface GLFWWindowMaximizeFun extends Upcall {
     /// @param arena the arena
     /// @param func  the function
     /// @return the upcall stub
-    static MemorySegment alloc(Arena arena, GLFWWindowMaximizeFun func) { return func.stub(arena); }
+    static MemorySegment alloc(Arena arena, GLFWWindowMaximizeFun func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
     void invoke(MemorySegment window, boolean maximized);

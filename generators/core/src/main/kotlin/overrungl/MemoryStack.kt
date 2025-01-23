@@ -52,7 +52,7 @@ fun memoryStack() {
                 |    /// @param values the values
                 |    /// @return the allocated segment
                 |    public MemorySegment ${it.methodName}(${it.typeName}... values) {
-                |        return Marshal.marshal(this, values);
+                |        return MemoryUtil.allocArray(this, values);
                 |    }
                 |
             """.trimMargin()

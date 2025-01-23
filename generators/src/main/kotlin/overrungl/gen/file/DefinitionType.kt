@@ -153,6 +153,19 @@ data class CustomDefType(
     override val processor: DefTypeProcessor
 ) : DefinitionType
 
+data class EnumType(
+    val nameValues: List<Pair<String, Int>>
+) : DefinitionType {
+    override val originalName: String
+        get() = "int"
+    override val javaType: String
+        get() = "int"
+    override val memoryLayout: DefTypeMemoryLayout
+        get() = c_int.memoryLayout
+    override val processor: DefTypeProcessor
+        get() = c_int.processor
+}
+
 
 const val BYTE_LAYOUT = "ValueLayout.JAVA_BYTE"
 const val SHORT_LAYOUT = "ValueLayout.JAVA_SHORT"

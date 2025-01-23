@@ -348,7 +348,7 @@ public final class MemoryUtil {
     /// @param allocator the allocator
     /// @param string    the string
     /// @param charset   the charset of the string; defaults to UTF-8
-    /// @return the allocated segment
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
     public static MemorySegment allocString(SegmentAllocator allocator, String string, Charset charset) {
         if (string == null) return MemorySegment.NULL;
         return allocator.allocateFrom(string, charset);
@@ -358,7 +358,7 @@ public final class MemoryUtil {
     ///
     /// @param allocator the allocator
     /// @param string    the string
-    /// @return the allocated segment
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
     public static MemorySegment allocString(SegmentAllocator allocator, String string) {
         if (string == null) return MemorySegment.NULL;
         return allocator.allocateFrom(string);
@@ -371,7 +371,7 @@ public final class MemoryUtil {
     ///
     /// @param string  the string
     /// @param charset the charset of the string; defaults to UTF-8
-    /// @return the allocated segment
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
     public static MemorySegment allocString(String string, Charset charset) {
         return allocString(Arena.ofAuto(), string, charset);
     }
@@ -382,9 +382,117 @@ public final class MemoryUtil {
     /// and you should only use it if its usage doesn't hold it.
     ///
     /// @param string the string
-    /// @return the allocated segment
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
     public static MemorySegment allocString(String string) {
         return allocString(Arena.ofAuto(), string);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, char[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_CHAR, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, byte[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_BYTE, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, short[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_SHORT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, int[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_INT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, long[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_LONG, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, float[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_FLOAT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, double[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_DOUBLE, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, MemorySegment[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            segment.setAtIndex(ADDRESS, i, arr[i]);
+        }
+        return segment;
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @param charset   the charset of the string
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr, Charset charset) {
+        if (arr == null) return MemorySegment.NULL;
+        MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            segment.setAtIndex(ADDRESS, i, allocString(allocator, arr[i], charset));
+        }
+        return segment;
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr) {
+        return allocArray(allocator, arr, StandardCharsets.UTF_8);
     }
 
     private static byte toByteExact(long value) {

@@ -57,7 +57,7 @@ class DefinitionFile(filename: String) {
                 |import overrungl.upcall.*;
                 |import overrungl.util.*;
                 |
-                |/// Signature
+                |/// Signature:
                 |/// ```
                 |/// typedef ${upcallType.originalName};
                 |/// ```
@@ -102,7 +102,10 @@ class DefinitionFile(filename: String) {
                 |    /// @param arena the arena
                 |    /// @param func  the function
                 |    /// @return the upcall stub
-                |    static MemorySegment alloc(Arena arena, $className func) { return func.stub(arena); }
+                |    static MemorySegment alloc(Arena arena, $className func) {
+                |        if (func == null) return MemorySegment.NULL;
+                |        return func.stub(arena);
+                |    }
                 |
             """.trimMargin()
         )
@@ -132,11 +135,11 @@ class DefinitionFile(filename: String) {
             }
             sb.appendLine(
                 "${
-                upcallType.returnType.processor.processDowncall(
-                    "invoke(${
-                    upcallType.parameters.joinToString { p -> p.type.processor.processUpcall(p.name) }
-                })")
-            };")
+                    upcallType.returnType.processor.processDowncall(
+                        "invoke(${
+                            upcallType.parameters.joinToString { p -> p.type.processor.processUpcall(p.name) }
+                        })")
+                };")
             sb.appendLine("    }")
             sb.appendLine()
         }
@@ -390,10 +393,14 @@ class DefinitionFile(filename: String) {
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine(
-                    "    public static ${member.type.memoryLayout.carrier(null)} ${member.name}(MemorySegment segment, long index) {" +
-                        " return (${member.type.memoryLayout.carrier(null)}) VH_${member.name}.get(segment, 0L, index); }"
-                )
+                sb.append("    public static ${member.type.javaType} ${member.name}(MemorySegment segment, long index) { return ")
+                sb.append(member.type.processor.processUpcall(buildString {
+                    if (member.type !is DynamicValueType) {
+                        append("(${member.type.memoryLayout.carrier(null)}) ")
+                    }
+                    append("VH_${member.name}.get(segment, 0L, index)")
+                }))
+                sb.appendLine("; }")
             }
 
             // instance getters
@@ -417,7 +424,7 @@ class DefinitionFile(filename: String) {
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine("    public ${member.type.memoryLayout.carrier(null)} ${member.name}() { return ${member.name}(this.segment(), 0L); }")
+                sb.appendLine("    public ${member.type.javaType} ${member.name}() { return ${member.name}(this.segment(), 0L); }")
             }
 
             // static setters
@@ -454,14 +461,8 @@ class DefinitionFile(filename: String) {
                     sb.appendLine(", value); }")
                 }
             } else {
-                sb.appendLine(
-                    "    public static void ${member.name}(MemorySegment segment, long index, ${
-                        member.type.memoryLayout.carrier(
-                            null
-                        )
-                    } value) {" +
-                        " VH_${member.name}.set(segment, 0L, index, value); }"
-                )
+                sb.append("    public static void ${member.name}(MemorySegment segment, long index, ${member.type.javaType} value) {")
+                sb.appendLine(" VH_${member.name}.set(segment, 0L, index, ${member.type.processor.processDowncall("value")}); }")
             }
 
             // instance setters
@@ -493,7 +494,7 @@ class DefinitionFile(filename: String) {
                     sb.appendLine(", value); return this; }")
                 }
             } else {
-                sb.appendLine("    public $className ${member.name}(${member.type.memoryLayout.carrier(null)} value) { ${member.name}(this.segment(), 0L, value); return this; }")
+                sb.appendLine("    public $className ${member.name}(${member.type.javaType} value) { ${member.name}(this.segment(), 0L, value); return this; }")
             }
 
             sb.appendLine()
@@ -567,7 +568,7 @@ class DefinitionFile(filename: String) {
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine("        public ${member.type.memoryLayout.carrier(null)} ${member.name}At(long index) { return ${member.name}(this.segment(), index); }")
+                sb.appendLine("        public ${member.type.javaType} ${member.name}At(long index) { return ${member.name}(this.segment(), index); }")
             }
 
             // instance setters
@@ -605,7 +606,7 @@ class DefinitionFile(filename: String) {
                 }
             } else {
                 sb.appendLine(
-                    "        public Buffer ${member.name}At(long index, ${member.type.memoryLayout.carrier(null)} value) {" +
+                    "        public Buffer ${member.name}At(long index, ${member.type.javaType} value) {" +
                         " ${member.name}(this.segment(), index, value); return this; }"
                 )
             }
@@ -644,42 +645,53 @@ class DefinitionFile(filename: String) {
                 "    public static final ${interpreter.inferenceType(value)} $name = ${interpreter.stringify(value)};"
             )
         }
+        interpreter.enums.forEach { (name, value) ->
+            sb.appendLine(
+                "    public static final int $name = $value;"
+            )
+        }
         sb.appendLine("    //endregion")
 
         sb.appendLine("    /// Method handles.")
         sb.appendLine("    public static final class Handles {")
         // method handles
-        interpreter.functions.forEach { (name, func) ->
-            sb.appendLine("        /// The method handle of `$name`.")
-            val functionDescriptor = buildString {
-                append("FunctionDescriptor.of")
-                if (func.returnType is VoidType) {
-                    append("Void(${func.parameters.joinToString { it.memoryLayoutWithDimensions.memoryLayout!! }}")
-                } else {
-                    append("(")
-                    append(func.returnType.memoryLayout.memoryLayout)
-                    func.parameters.forEach {
-                        append(", ")
-                        append(it.memoryLayoutWithDimensions.memoryLayout)
+        interpreter.functions.forEach { (entrypoint, func) ->
+            if (func.body == null) {
+                sb.appendLine("        /// The method handle of `$entrypoint`.")
+                val functionDescriptor = buildString {
+                    append("FunctionDescriptor.of")
+                    if (func.returnType is VoidType) {
+                        append("Void(${func.parameters.joinToString { it.memoryLayoutWithDimensions.memoryLayout!! }}")
+                    } else {
+                        append("(")
+                        append(func.returnType.memoryLayout.memoryLayout)
+                        func.parameters.forEach {
+                            append(", ")
+                            append(it.memoryLayoutWithDimensions.memoryLayout)
+                        }
                     }
+                    append(")")
                 }
-                append(")")
+                sb.appendLine("        public static final MethodHandle MH_$entrypoint = RuntimeHelper.downcall($functionDescriptor);")
+                nativeImageDowncallDescriptors.add(functionDescriptor)
             }
-            sb.appendLine("        public static final MethodHandle MH_$name = RuntimeHelper.downcall($functionDescriptor);")
-            nativeImageDowncallDescriptors.add(functionDescriptor)
         }
         // function addresses
-        interpreter.functions.forEach { (name, _) ->
-            sb.appendLine("        /// The function address of `$name`.")
-            sb.appendLine("        public final MemorySegment PFN_$name;")
+        interpreter.functions.forEach { (entrypoint, func) ->
+            if (func.body == null) {
+                sb.appendLine("        /// The function address of `$entrypoint`.")
+                sb.appendLine("        public final MemorySegment PFN_$entrypoint;")
+            }
         }
         sb.appendLine("        private Handles() {")
-        interpreter.functions.forEach { (name, func) ->
-            sb.append("            PFN_$name = $symbolLookup.")
-            if (func.optional) {
-                sb.appendLine("""find("$name").orElse(MemorySegment.NULL);""")
-            } else {
-                sb.appendLine("""findOrThrow("$name");""")
+        interpreter.functions.forEach { (entrypoint, func) ->
+            if (func.body == null) {
+                sb.append("            PFN_$entrypoint = $symbolLookup.")
+                if (func.optional) {
+                    sb.appendLine("""find("$entrypoint").orElse(MemorySegment.NULL);""")
+                } else {
+                    sb.appendLine("""findOrThrow("$entrypoint");""")
+                }
             }
         }
         sb.appendLine("        }")
@@ -700,7 +712,7 @@ class DefinitionFile(filename: String) {
         sb.appendLine()
 
         // functions
-        interpreter.functions.forEach { (name, func) ->
+        interpreter.functions.forEach { (entrypoint, func) ->
             val hasDynamicType = func.returnType is DynamicValueType ||
                 func.parameters.any { it.memoryLayoutWithDimensions is DefTypeDynamicValueLayout }
 
@@ -708,7 +720,7 @@ class DefinitionFile(filename: String) {
                 """
                     |    /// Signature:
                     |    /// ```
-                    |    /// ${func.returnType.originalName} ${func.name}(${
+                    |    /// ${func.returnType.originalName} ${func.entrypoint}(${
                     func.parameters.joinToString { p ->
                         "${p.type.originalName} ${p.name}${
                             if (p.dimensions.isNotEmpty()) p.dimensions.joinToString("") { "[$it]" }
@@ -720,33 +732,37 @@ class DefinitionFile(filename: String) {
                 """.trimMargin()
             )
             sb.appendLine(
-                "    public static ${func.returnType.javaType} $name(${
+                "    public static ${func.returnType.javaType} ${func.name}(${
                     func.parameters.joinToString { p -> "${p.type.javaType} ${p.name}" }
                 }) {")
-            if (func.optional) {
-                sb.appendLine("""        if (MemoryUtil.isNullPointer(Handles.get().PFN_$name)) throw new SymbolNotFoundError("Symbol not found: $name");""")
-            }
-            sb.appendLine("        try {")
-            sb.append("            ")
-            if (func.returnType !is VoidType) {
-                sb.append("return ")
-            }
-            sb.append(func.returnType.processor.processUpcall(buildString {
+            if (func.body != null) {
+                sb.appendLine(func.body.prependIndent("        "))
+            } else {
+                if (func.optional) {
+                    sb.appendLine("""        if (MemoryUtil.isNullPointer(Handles.get().PFN_$entrypoint)) throw new SymbolNotFoundError("Symbol not found: $entrypoint");""")
+                }
+                sb.appendLine("        try {")
+                sb.append("            ")
                 if (func.returnType !is VoidType) {
-                    if (func.returnType !is DynamicValueType) {
-                        // the actual type doesn't matter
-                        append("(${func.returnType.memoryLayout.carrier(null)}) ")
+                    sb.append("return ")
+                }
+                sb.append(func.returnType.processor.processUpcall(buildString {
+                    if (func.returnType !is VoidType) {
+                        if (func.returnType !is DynamicValueType) {
+                            // the actual type doesn't matter
+                            append("(${func.returnType.memoryLayout.carrier(null)}) ")
+                        }
                     }
-                }
-                append("Handles.MH_$name.${if (hasDynamicType) "invokeWithArguments" else "invokeExact"}(Handles.get().PFN_$name")
-                func.parameters.forEach { p ->
-                    append(", ")
-                    append(p.type.processor.processDowncall(p.name))
-                }
-                append(")")
-            }))
-            sb.appendLine(";")
-            sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in $name", e); }""")
+                    append("Handles.MH_$entrypoint.${if (hasDynamicType) "invoke" else "invokeExact"}(Handles.get().PFN_$entrypoint")
+                    func.parameters.forEach { p ->
+                        append(", ")
+                        append(p.type.processor.processDowncall(p.name))
+                    }
+                    append(")")
+                }))
+                sb.appendLine(";")
+                sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${func.name}", e); }""")
+            }
             sb.appendLine("    }")
             sb.appendLine()
         }
@@ -782,662 +798,4 @@ class DefinitionFile(filename: String) {
         }
         compileDowncall(packageName, className, symbolLookup, writeWholeFile)
     }
-}
-
-private val preprocessors = mapOf(
-    "#define" to TokenType.DEFINE
-)
-private val keywords = mapOf(
-    "const" to TokenType.CONST,
-    "fn" to TokenType.FN,
-    "java" to TokenType.JAVA,
-    "opt" to TokenType.OPTIONAL,
-    "struct" to TokenType.STRUCT,
-    "upcall" to TokenType.UPCALL,
-    "using" to TokenType.USING
-)
-
-private class Lexer(private val source: String) {
-    private var start = 0
-    private var current = 0
-    private var line = 1
-    private val tokens = mutableListOf<Token>()
-
-    fun tokenize(): List<Token> {
-        while (!isAtEnd()) {
-            start = current
-            scanTokens()
-        }
-        tokens.add(Token(TokenType.EOF, line, ""))
-        return tokens
-    }
-
-    private fun isAtEnd(): Boolean = current == source.length
-    private fun advance(): Int = if (isAtEnd()) -1 else source.codePointAt(current++)
-    private fun peek(): Int = if (isAtEnd()) -1 else source.codePointAt(current)
-    private fun peekNext(): Int = if (current + 1 >= source.length) -1 else source.codePointAt(current + 1)
-    private fun previous(): Int = if (current < 1) -1 else source.codePointAt(current - 1)
-    private fun match(ch: Int): Boolean {
-        if (isAtEnd()) return false
-        if (peek() != ch) return false
-        current++
-        return true
-    }
-
-    private fun addToken(type: TokenType) {
-        tokens.add(Token(type, line, source.substring(start, current)))
-    }
-
-    private fun isDigit(ch: Int): Boolean = ch >= '0'.code && ch <= '9'.code
-    private fun isHexDigit(ch: Int): Boolean =
-        (ch >= '0'.code && ch <= '9'.code)
-            || (ch >= 'A'.code && ch <= 'F'.code)
-            || (ch >= 'a'.code && ch <= 'f'.code)
-
-    private fun reportError(message: String): Nothing {
-        error("$message at line $line")
-    }
-
-    fun scanTokens() {
-        when (val ch = advance()) {
-            '('.code -> addToken(TokenType.LEFT_PARENTHESIS)
-            ')'.code -> addToken(TokenType.RIGHT_PARENTHESIS)
-            '['.code -> addToken(TokenType.LEFT_BRACKET)
-            ']'.code -> addToken(TokenType.RIGHT_BRACKET)
-            '{'.code -> addToken(TokenType.LEFT_BRACE)
-            '}'.code -> addToken(TokenType.RIGHT_BRACE)
-            ':'.code -> addToken(TokenType.COLON)
-            ';'.code -> addToken(TokenType.SEMICOLON)
-            ','.code -> addToken(TokenType.COMMA)
-            '.'.code -> addToken(TokenType.DOT)
-            '-'.code -> addToken(TokenType.MINUS)
-            '*'.code -> addToken(TokenType.STAR)
-            '/'.code -> {
-                if (match('/'.code)) {
-                    while (peek() != '\n'.code && !isAtEnd()) {
-                        advance()
-                    }
-                } else {
-                    addToken(TokenType.SLASH)
-                }
-            }
-
-            '|'.code -> addToken(TokenType.PIPE)
-            '='.code -> addToken(TokenType.EQUAL)
-            '#'.code -> scanPreprocessor()
-            '\n'.code -> line++
-
-            else -> {
-                if (Character.isWhitespace(ch)) {
-                    return
-                } else if (isDigit(ch)) {
-                    scanNumber()
-                } else if (Character.isJavaIdentifierStart(ch)) {
-                    scanIdentifier()
-                } else {
-                    reportError("unexpected char '${ch.toChar()}'")
-                }
-            }
-        }
-    }
-
-    fun scanPreprocessor() {
-        while (Character.isJavaIdentifierPart(peek())) {
-            advance()
-        }
-        addToken(preprocessors[source.substring(start, current)]!!)
-    }
-
-    fun scanNumber() {
-        var hex = false
-        var floatingPoint = false
-        if (previous() == '0'.code && (peek() == 'x'.code || peek() == 'X'.code) && isDigit(peekNext())) {
-            advance()
-            hex = true
-        }
-        if (hex) {
-            while (isHexDigit(peek())) {
-                advance()
-            }
-        } else {
-            while (isDigit(peek())) {
-                advance()
-            }
-        }
-        if (peek() == '.'.code && isDigit(peekNext())) {
-            if (!hex) {
-                floatingPoint = true
-                advance()
-                while (isDigit(peek())) {
-                    advance()
-                }
-            } else {
-                reportError("can't combine floating point with hex")
-            }
-        }
-        if (floatingPoint) {
-            addToken(TokenType.FLOATING_POINT)
-        } else if (hex) {
-            addToken(TokenType.HEX_INTEGER)
-        } else {
-            addToken(TokenType.DEC_INTEGER)
-        }
-    }
-
-    fun scanIdentifier() {
-        while (Character.isJavaIdentifierPart(peek())) {
-            advance()
-        }
-        addToken(keywords.getOrDefault(source.substring(start, current), TokenType.IDENTIFIER))
-    }
-}
-
-private enum class TokenType {
-    EOF,
-
-    // characters
-    LEFT_PARENTHESIS,
-    RIGHT_PARENTHESIS,
-    LEFT_BRACKET,
-    RIGHT_BRACKET,
-    LEFT_BRACE,
-    RIGHT_BRACE,
-    COLON,
-    SEMICOLON,
-    COMMA,
-    DOT,
-
-    // operators
-    MINUS,
-    STAR,
-    SLASH,
-    PIPE,
-    EQUAL,
-
-    // preprocessors
-    DEFINE,
-
-    // literals
-    DEC_INTEGER,
-    HEX_INTEGER,
-    FLOATING_POINT,
-
-    // keywords
-    CONST,
-    FN,
-    JAVA,
-    OPTIONAL,
-    STRUCT,
-    UPCALL,
-    USING,
-
-    // other
-    IDENTIFIER,
-}
-
-private data class Token(val type: TokenType, val line: Int, val lexeme: String)
-
-
-private class Parser(private val tokens: List<Token>) {
-    private var current = 0
-
-    fun parse(): List<Statement> {
-        val list = mutableListOf<Statement>()
-        while (!isAtEnd()) {
-            list.add(declaration())
-        }
-        return list
-    }
-
-    private fun isAtEnd(): Boolean = current >= tokens.size || tokens[current].type == TokenType.EOF
-    private fun advance(): Token? = if (isAtEnd()) null else tokens[current++]
-    private fun peek(): Token? = if (isAtEnd()) null else tokens[current]
-    private fun previous(): Token? = if (current < 1) null else tokens[current - 1]
-    private fun check(type: TokenType): Boolean = peek()?.type == type
-    private fun match(vararg types: TokenType): Boolean {
-        types.forEach {
-            if (check(it)) {
-                advance()
-                return true
-            }
-        }
-        return false
-    }
-
-    private fun consume(message: String, vararg types: TokenType): Token {
-        if (!match(*types)) {
-            reportError(message)
-        }
-        return previous()!!
-    }
-
-    private fun reportError(message: String): Nothing {
-        error("$message at ${peek()}")
-    }
-
-    private fun declaration(): Statement {
-        if (match(TokenType.DEFINE)) return define()
-        if (match(TokenType.USING)) return using()
-        if (match(TokenType.FN)) return functionDeclaration()
-
-        return statement()
-    }
-
-    private fun define(): Statement {
-        val name = consume("expect identifier", TokenType.IDENTIFIER)
-        val value = expression()
-        return DefinePreprocessor(name, value)
-    }
-
-    private fun using(): Statement {
-        // usingStatement = "using" identifier = typeExpression terminator
-        val name = consume("expect identifier", TokenType.IDENTIFIER)
-        consume("expect '='", TokenType.EQUAL)
-        val type = typeExpression()
-        consume("expect ';'", TokenType.SEMICOLON)
-        return UsingStatement(name, type)
-    }
-
-    private fun functionDeclaration(): Statement {
-        var optional = false
-        if (match(TokenType.OPTIONAL)) {
-            optional = true
-        }
-        val previous = current
-        while (!isAtEnd() && !check(TokenType.LEFT_PARENTHESIS) && !check(TokenType.SEMICOLON)) {
-            advance()
-        }
-        val funcNameIndex = current - 1
-        current = previous
-        val type = typeExpression(funcNameIndex)
-        val name = consume("expect identifier", TokenType.IDENTIFIER)
-        val parameters = parameterList()
-        consume("expect ';'", TokenType.SEMICOLON)
-        return FunctionDeclaration(type, name, parameters, optional)
-    }
-
-    private fun parameterList(): List<TypeNamePair> {
-        consume("expect '('", TokenType.LEFT_PARENTHESIS)
-        val parameters = mutableListOf<TypeNamePair>()
-        if (!check(TokenType.RIGHT_PARENTHESIS)) {
-            do {
-                val startParamIndex = current
-                while (!isAtEnd() && !check(TokenType.COMMA) && !check(TokenType.RIGHT_PARENTHESIS) && !check(TokenType.LEFT_BRACKET)) {
-                    advance()
-                }
-                val paramNameIndex = current - 1
-                current = startParamIndex
-                val paramType = typeExpression(paramNameIndex)
-                val paramName = consume("expect identifier", TokenType.IDENTIFIER)
-                val dims = mutableListOf<Long>()
-                while (match(TokenType.LEFT_BRACKET)) {
-                    if (match(TokenType.DEC_INTEGER, TokenType.HEX_INTEGER)) {
-                        val dim = previous()!!
-                        when (dim.type) {
-                            TokenType.DEC_INTEGER -> dims.add(dim.lexeme.toLong())
-                            TokenType.HEX_INTEGER -> dims.add(dim.lexeme.toLong(16))
-                            else -> error(dim)
-                        }
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                    } else {
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                        ((paramType as TypeExpression).components as MutableList).add(PointerExpression)
-                    }
-                }
-                parameters.add(TypeNamePair(paramType, paramName, dims))
-            } while (match(TokenType.COMMA))
-        }
-        consume("expect ')'", TokenType.RIGHT_PARENTHESIS)
-        return parameters
-    }
-
-    private fun statement(): Statement {
-        return ExpressionStatement(expression())
-    }
-
-    private fun typeExpression(scanUntil: Int = tokens.size): Expression {
-        // typeExpression = "const"? rawType ("const" | "*")*
-        // we don't use const in Java, but we capture it to show in CType.
-
-        val list = mutableListOf<Expression>()
-
-        if (match(TokenType.CONST)) list.add(ConstExpression)
-        list.add(rawType(scanUntil))
-        while (match(TokenType.CONST, TokenType.STAR)) {
-            val previous = previous()!!
-            when (previous.type) {
-                TokenType.CONST -> list.add(ConstExpression)
-                TokenType.STAR -> list.add(PointerExpression)
-                else -> TODO(previous.toString())
-            }
-        }
-
-        return TypeExpression(list)
-    }
-
-    private fun rawType(scanUntil: Int = tokens.size): Expression {
-        if (check(TokenType.IDENTIFIER)) {
-            val sb = StringBuilder()
-            var i = 0
-            while (current < scanUntil && match(TokenType.IDENTIFIER)) {
-                if (i > 0) sb.append(" ")
-                sb.append(previous()!!.lexeme)
-                i++
-            }
-            return TypeReferenceExpression(sb.toString())
-        } else if (match(TokenType.STRUCT)) {
-            return structExpression()
-        } else if (match(TokenType.UPCALL)) {
-            return upcallExpression()
-        } else if (match(TokenType.JAVA)) {
-            return JavaTypeExpression(consume("expect identifier", TokenType.IDENTIFIER))
-        }
-        reportError("expect identifier, 'struct', 'upcall' or 'java'")
-    }
-
-    private fun structExpression(): Expression {
-        // structExpression = "struct" identifier memberList?
-        // memberList = "{" member* "}"
-        // member = typeExpression identifier dims? ";"
-        val name = consume("expect identifier", TokenType.IDENTIFIER)
-        var opaque = true
-        val members = mutableListOf<TypeNamePair>()
-        if (match(TokenType.LEFT_BRACE)) {
-            opaque = false
-            while (!isAtEnd() && !check(TokenType.RIGHT_BRACE)) {
-                // name
-                val previous = current
-                while (!isAtEnd() && !check(TokenType.LEFT_BRACKET) && !check(TokenType.SEMICOLON) && !check(TokenType.LEFT_BRACE)) {
-                    advance()
-                }
-                val memberNameIndex = current - 1
-                current = previous
-                val memberType = typeExpression(memberNameIndex)
-                val memberName = consume("expect identifier", TokenType.IDENTIFIER)
-                val dims = mutableListOf<Long>()
-                while (match(TokenType.LEFT_BRACKET)) {
-                    if (match(TokenType.DEC_INTEGER, TokenType.HEX_INTEGER)) {
-                        val dim = previous()!!
-                        when (dim.type) {
-                            TokenType.DEC_INTEGER -> dims.add(dim.lexeme.toLong())
-                            TokenType.HEX_INTEGER -> dims.add(dim.lexeme.toLong(16))
-                            else -> error(dim)
-                        }
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                    } else {
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                        ((memberType as TypeExpression).components as MutableList).add(PointerExpression)
-                    }
-                }
-                consume("expect ';'", TokenType.SEMICOLON)
-                members.add(TypeNamePair(memberType, memberName, dims))
-            }
-            consume("expect '}'", TokenType.RIGHT_BRACE)
-        }
-        return StructExpression(name, opaque, members)
-    }
-
-    private fun upcallExpression(): Expression {
-        // upcallExpression = "upcall" typeExpression identifier "(" parameters? ")"
-        val startUpcallIndex = current
-        while (!isAtEnd() && !check(TokenType.LEFT_PARENTHESIS)) {
-            advance()
-        }
-        val upcallNameIndex = current - 1
-        current = startUpcallIndex
-        val type = typeExpression(upcallNameIndex)
-        val name = consume("expect identifier", TokenType.IDENTIFIER)
-        val parameters = parameterList()
-        return UpcallExpression(type, name, parameters)
-    }
-
-    private fun expression(): Expression {
-        return bitwise()
-    }
-
-    private fun bitwise(): Expression {
-        val left = unary()
-        if (match(TokenType.PIPE)) {
-            val operator = previous()!!
-            val right = unary()
-            return BinaryExpression(left, operator, right)
-        }
-        return left
-    }
-
-    private fun unary(): Expression {
-        if (match(TokenType.MINUS)) {
-            val operator = previous()!!
-            val right = unary()
-            return UnaryExpression(operator, right)
-        }
-        return primary()
-    }
-
-    private fun primary(): Expression {
-        if (match(TokenType.DEC_INTEGER, TokenType.HEX_INTEGER)) {
-            val previous = previous()!!
-            return when (previous.type) {
-                TokenType.DEC_INTEGER -> IntegerExpression(previous.lexeme, 10)
-                TokenType.HEX_INTEGER -> IntegerExpression(previous.lexeme, 16)
-                else -> throw AssertionError()
-            }
-        }
-        if (match(TokenType.FLOATING_POINT)) return FloatingPointExpression(previous()!!.lexeme)
-        if (match(TokenType.IDENTIFIER)) return ReferenceExpression(previous()!!.lexeme)
-
-        if (match(TokenType.LEFT_PARENTHESIS)) {
-            val expression = expression()
-            consume("expect ')'", TokenType.RIGHT_PARENTHESIS)
-            return ParenthesisExpression(expression)
-        }
-
-        reportError("expect expression")
-    }
-}
-
-private sealed interface Statement
-private data class DefinePreprocessor(val name: Token, val value: Expression) : Statement
-private data class UsingStatement(val name: Token, val oldType: Expression) : Statement
-private data class FunctionDeclaration(
-    val returnType: Expression,
-    val name: Token,
-    val parameters: List<TypeNamePair>,
-    val optional: Boolean
-) : Statement
-
-private data class ExpressionStatement(val expression: Expression) : Statement
-
-private sealed interface Expression
-private data class IntegerExpression(val lexeme: String, val radix: Int) : Expression
-private data class FloatingPointExpression(val lexeme: String) : Expression
-private data class ParenthesisExpression(val expression: Expression) : Expression
-private data class UnaryExpression(val operator: Token, val right: Expression) : Expression
-private data class BinaryExpression(val left: Expression, val operator: Token, val right: Expression) : Expression
-private data class ReferenceExpression(val name: String) : Expression
-private data object ConstExpression : Expression
-private data object PointerExpression : Expression
-private data class TypeReferenceExpression(val name: String) : Expression
-private data class TypeExpression(val components: List<Expression>) : Expression
-private data class StructExpression(val name: Token, val opaque: Boolean, val members: List<TypeNamePair>) : Expression
-private data class UpcallExpression(
-    val type: Expression,
-    val name: Token,
-    val parameters: List<TypeNamePair>
-) : Expression
-
-private data class JavaTypeExpression(val name: Token) : Expression
-
-private data class TypeNamePair(val type: Expression, val name: Token, val dimensions: List<Long>)
-
-
-private class Interpreter {
-    val macros = mutableMapOf<String, Expression>()
-    val using = mutableMapOf<String, DefinitionType>()
-    val structs = mutableMapOf<String, GroupLayoutType>()
-    val upcalls = mutableMapOf<String, UpcallType>()
-    val functions = mutableMapOf<String, DefinitionFunction>()
-
-    fun interpret(statements: List<Statement>) {
-        statements.forEach { execute(it) }
-    }
-
-    private fun execute(statement: Statement) {
-        when (statement) {
-            is DefinePreprocessor -> macros[statement.name.lexeme] = statement.value
-            is UsingStatement -> using[statement.name.lexeme] = evaluate(statement.oldType) as DefinitionType
-            is FunctionDeclaration -> functions[statement.name.lexeme] = DefinitionFunction(
-                evaluate(statement.returnType) as DefinitionType,
-                statement.name.lexeme,
-                statement.parameters.map(::convertTypeNamePair),
-                statement.optional
-            )
-
-            is ExpressionStatement -> evaluate(statement.expression)
-        }
-    }
-
-    fun stringify(expression: Expression): String {
-        return when (expression) {
-            is IntegerExpression -> expression.lexeme
-            is FloatingPointExpression -> expression.lexeme
-            is ParenthesisExpression -> "(${stringify(expression.expression)})"
-            is UnaryExpression -> "${expression.operator.lexeme}${stringify(expression.right)}"
-            is BinaryExpression -> "${stringify(expression.left)} ${expression.operator.lexeme} ${stringify(expression.right)}"
-            is ReferenceExpression -> expression.name
-            is ConstExpression -> "const"
-            is PointerExpression -> "*"
-            is TypeReferenceExpression -> expression.name
-            is TypeExpression -> definitionType(expression.components).originalName
-            is StructExpression -> expression.name.lexeme
-            is UpcallExpression -> "${stringify(expression.type)} (*${expression.name.lexeme})(${
-                expression.parameters.joinToString { p ->
-                    "${stringify(p.type)} ${p.name.lexeme}"
-                }
-            })"
-
-            is JavaTypeExpression -> registeredType[expression.name.lexeme]?.originalName
-                ?: error("unknown type at ${expression.name}")
-        }
-    }
-
-    fun inferenceType(expression: Expression): String {
-        return when (expression) {
-            is IntegerExpression -> "int" // TODO long
-            is FloatingPointExpression -> "double" // TODO float
-            is ParenthesisExpression -> inferenceType(expression.expression)
-            is UnaryExpression -> inferenceType(expression.right)
-            is BinaryExpression -> inferenceType(expression.left)
-            is ReferenceExpression -> inferenceType(
-                macros[expression.name] ?: error("symbol not found: ${expression.name}")
-            )
-
-            else -> TODO(expression.toString())
-        }
-    }
-
-    private fun evaluate(expression: Expression): Any {
-        return when (expression) {
-            is TypeExpression -> definitionType(expression.components)
-
-            else -> TODO(expression.toString())
-        }
-    }
-
-    private fun definitionType(typeComponents: List<Expression>): DefinitionType {
-        var previous: Expression? = null
-        val originalNameComp = StringBuilder()
-        var type: DefinitionType? = null
-        typeComponents.forEach {
-            val stringify = stringify(it)
-            when (it) {
-                ConstExpression -> {
-                    when (previous) {
-                        null -> {}
-                        ConstExpression,
-                        PointerExpression,
-                        is TypeReferenceExpression,
-                        is StructExpression,
-                        is UpcallExpression -> originalNameComp.append(" ")
-
-                        else -> TODO(previous.toString())
-                    }
-                    originalNameComp.append(stringify)
-                }
-
-                PointerExpression -> {
-                    when (previous) {
-                        null,
-                        PointerExpression,
-                        is TypeReferenceExpression -> {
-                        }
-
-                        ConstExpression,
-                        is StructExpression -> originalNameComp.append(" ")
-
-                        else -> TODO(previous.toString())
-                    }
-                    originalNameComp.append(stringify)
-                    type = PointerType(originalNameComp.toString(), type!!)
-                }
-
-                is TypeReferenceExpression -> {
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> TODO(previous.toString())
-                    }
-                    originalNameComp.append(stringify)
-                    type = using.getOrElse(it.name) { findBuiltinType(it.name) } ?: error("unknown type ${it.name}")
-                }
-
-                is StructExpression -> {
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> TODO(previous.toString())
-                    }
-                    originalNameComp.append(stringify)
-                    val t = GroupLayoutType(
-                        stringify,
-                        it.opaque,
-                        it.members.map(::convertTypeNamePair),
-                        GroupTypeKind.STRUCT
-                    )
-                    type = t
-                    structs[stringify] = t
-                }
-
-                is UpcallExpression -> {
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> TODO(previous.toString())
-                    }
-                    originalNameComp.append(stringify)
-                    val upcallType = UpcallType(
-                        stringify,
-                        it.name.lexeme,
-                        evaluate(it.type) as DefinitionType,
-                        it.parameters.map(::convertTypeNamePair)
-                    )
-                    type = upcallType
-                    upcalls[stringify] = upcallType
-                }
-
-                is JavaTypeExpression -> type = registeredType[it.name.lexeme] ?: error("unknown type at ${it.name}")
-
-                else -> TODO(it.toString())
-            }
-            previous = it
-        }
-        return type!!
-    }
-
-    private fun convertTypeNamePair(pair: TypeNamePair): DefTypeNamePair =
-        DefTypeNamePair(
-            evaluate(pair.type) as DefinitionType,
-            pair.name.lexeme,
-            pair.dimensions
-        )
 }
