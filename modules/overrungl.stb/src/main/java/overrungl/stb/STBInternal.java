@@ -39,7 +39,7 @@ final class STBInternal {
     }
 
     static MemorySegment findIntOrThrow(String name) {
-        return lookup.findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
+        return lookup().findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
     }
 
     static SymbolLookup lookup() {

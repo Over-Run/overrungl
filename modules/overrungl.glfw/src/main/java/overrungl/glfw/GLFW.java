@@ -1003,7 +1003,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwInit() {
         try {
-            return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwInit", e); }
     }
 
@@ -1103,7 +1103,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwPlatformSupported(int platform) {
         try {
-            return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwPlatformSupported", e); }
     }
 
@@ -1313,7 +1313,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwWindowShouldClose(MemorySegment window) {
         try {
-            return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowShouldClose", e); }
     }
 
@@ -1323,7 +1323,7 @@ public final class GLFW {
     /// ```
     public static void glfwSetWindowShouldClose(MemorySegment window, boolean value) {
         try {
-            Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE));
+            Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? 1 : 0));
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowShouldClose", e); }
     }
 
@@ -1753,7 +1753,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwRawMouseMotionSupported() {
         try {
-            return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwRawMouseMotionSupported", e); }
     }
 
@@ -1933,7 +1933,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwJoystickPresent(int jid) {
         try {
-            return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickPresent", e); }
     }
 
@@ -2013,7 +2013,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwJoystickIsGamepad(int jid) {
         try {
-            return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickIsGamepad", e); }
     }
 
@@ -2033,7 +2033,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwUpdateGamepadMappings(MemorySegment string) {
         try {
-            return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
     }
 
@@ -2053,7 +2053,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwGetGamepadState(int jid, MemorySegment state) {
         try {
-            return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
     }
 
@@ -2163,7 +2163,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwExtensionSupported(MemorySegment extension) {
         try {
-            return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
     }
 
@@ -2183,7 +2183,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwVulkanSupported() {
         try {
-            return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwVulkanSupported", e); }
     }
 
@@ -2213,7 +2213,7 @@ public final class GLFW {
     /// ```
     public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queuefamily) {
         try {
-            return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != GLFW.GLFW_FALSE);
+            return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPhysicalDevicePresentationSupport", e); }
     }
 

@@ -15,39 +15,44 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature:
+/// ```
+/// typedef void (*STBIROutputCallback)(void const * output_ptr, int num_pixels, int y, void* context);
+/// ```
 @FunctionalInterface
 public interface STBIROutputCallback extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(STBIROutputCallback.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(STBIROutputCallback.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `STBIROutputCallback`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, STBIROutputCallback func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    void invoke(@CType("void const *") MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") MemorySegment context);
+    void invoke(MemorySegment output_ptr, int num_pixels, int y, MemorySegment context);
+
+    /// The target method of the upcall.
+    default void invoke_(MemorySegment output_ptr, int num_pixels, int y, MemorySegment context) {
+        invoke(output_ptr, num_pixels, y, context);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("void const *") MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") MemorySegment context) {
-        try { HANDLE.invokeExact(stub, output_ptr, num_pixels, y, context); }
-        catch (Throwable e) { throw new RuntimeException("error in STBIROutputCallback::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static STBIROutputCallback wrap(MemorySegment stub) {
-        return (output_ptr, num_pixels, y, context) ->
-            invoke(stub, output_ptr, num_pixels, y, context);
-    }
 }

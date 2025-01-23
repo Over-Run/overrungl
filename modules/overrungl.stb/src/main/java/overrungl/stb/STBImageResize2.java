@@ -16,7 +16,6 @@
 
 package overrungl.stb;
 
-import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -32,56 +31,56 @@ public final class STBImageResize2 {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    public static final int
-        STBIR_1CHANNEL = 1,
-        STBIR_2CHANNEL = 2,
-        STBIR_RGB = 3,
-        STBIR_BGR = 0,
-        STBIR_4CHANNEL = 5,
-        STBIR_RGBA = 4,
-        STBIR_BGRA = 6,
-        STBIR_ARGB = 7,
-        STBIR_ABGR = 8,
-        STBIR_RA = 9,
-        STBIR_AR = 10,
-        STBIR_RGBA_PM = 11,
-        STBIR_BGRA_PM = 12,
-        STBIR_ARGB_PM = 13,
-        STBIR_ABGR_PM = 14,
-        STBIR_RA_PM = 15,
-        STBIR_AR_PM = 16,
-        STBIR_RGBA_NO_AW = 11,
-        STBIR_BGRA_NO_AW = 12,
-        STBIR_ARGB_NO_AW = 13,
-        STBIR_ABGR_NO_AW = 14,
-        STBIR_RA_NO_AW = 15,
-        STBIR_AR_NO_AW = 16;
-    public static final int
-        STBIR_EDGE_CLAMP = 0,
-        STBIR_EDGE_REFLECT = 1,
-        STBIR_EDGE_WRAP = 2,
-        STBIR_EDGE_ZERO = 3;
-    public static final int
-        STBIR_FILTER_DEFAULT = 0,
-        STBIR_FILTER_BOX = 1,
-        STBIR_FILTER_TRIANGLE = 2,
-        STBIR_FILTER_CUBICBSPLINE = 3,
-        STBIR_FILTER_CATMULLROM = 4,
-        STBIR_FILTER_MITCHELL = 5,
-        STBIR_FILTER_POINT_SAMPLE = 6,
-        STBIR_FILTER_OTHER = 7;
-    public static final int
-        STBIR_TYPE_UINT8 = 0,
-        STBIR_TYPE_UINT8_SRGB = 1,
-        STBIR_TYPE_UINT8_SRGB_ALPHA = 2,
-        STBIR_TYPE_UINT16 = 3,
-        STBIR_TYPE_FLOAT = 4,
-        STBIR_TYPE_HALF_FLOAT = 5;
+    public static final int STBIR_1CHANNEL = 1;
+    public static final int STBIR_2CHANNEL = 2;
+    public static final int STBIR_RGB = 3;
+    public static final int STBIR_BGR = 0;
+    public static final int STBIR_4CHANNEL = 5;
+    public static final int STBIR_RGBA = 4;
+    public static final int STBIR_BGRA = 6;
+    public static final int STBIR_ARGB = 7;
+    public static final int STBIR_ABGR = 8;
+    public static final int STBIR_RA = 9;
+    public static final int STBIR_AR = 10;
+    public static final int STBIR_RGBA_PM = 11;
+    public static final int STBIR_BGRA_PM = 12;
+    public static final int STBIR_ARGB_PM = 13;
+    public static final int STBIR_ABGR_PM = 14;
+    public static final int STBIR_RA_PM = 15;
+    public static final int STBIR_AR_PM = 16;
+    public static final int STBIR_RGBA_NO_AW = 11;
+    public static final int STBIR_BGRA_NO_AW = 12;
+    public static final int STBIR_ARGB_NO_AW = 13;
+    public static final int STBIR_ABGR_NO_AW = 14;
+    public static final int STBIR_RA_NO_AW = 15;
+    public static final int STBIR_AR_NO_AW = 16;
+    public static final int STBIR_EDGE_CLAMP = 0;
+    public static final int STBIR_EDGE_REFLECT = 1;
+    public static final int STBIR_EDGE_WRAP = 2;
+    public static final int STBIR_EDGE_ZERO = 3;
+    public static final int STBIR_FILTER_DEFAULT = 0;
+    public static final int STBIR_FILTER_BOX = 1;
+    public static final int STBIR_FILTER_TRIANGLE = 2;
+    public static final int STBIR_FILTER_CUBICBSPLINE = 3;
+    public static final int STBIR_FILTER_CATMULLROM = 4;
+    public static final int STBIR_FILTER_MITCHELL = 5;
+    public static final int STBIR_FILTER_POINT_SAMPLE = 6;
+    public static final int STBIR_FILTER_OTHER = 7;
+    public static final int STBIR_TYPE_UINT8 = 0;
+    public static final int STBIR_TYPE_UINT8_SRGB = 1;
+    public static final int STBIR_TYPE_UINT8_SRGB_ALPHA = 2;
+    public static final int STBIR_TYPE_UINT16 = 3;
+    public static final int STBIR_TYPE_FLOAT = 4;
+    public static final int STBIR_TYPE_HALF_FLOAT = 5;
     //endregion
     /// Method handles.
     public static final class Handles {
         /// The method handle of `stbir_resize_uint8_srgb`.
         public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize_uint8_linear`.
+        public static final MethodHandle MH_stbir_resize_uint8_linear = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize_float_linear`.
+        public static final MethodHandle MH_stbir_resize_float_linear = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_resize`.
         public static final MethodHandle MH_stbir_resize = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_resize_init`.
@@ -95,33 +94,37 @@ public final class STBImageResize2 {
         /// The method handle of `stbir_set_buffer_ptrs`.
         public static final MethodHandle MH_stbir_set_buffer_ptrs = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_pixel_layouts`.
-        public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_edgemodes`.
-        public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_filters`.
-        public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_filter_callbacks`.
-        public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbir_set_pixel_subrect`.
-        public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_input_subrect`.
-        public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         /// The method handle of `stbir_set_output_pixel_subrect`.
-        public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_set_non_pm_alpha_speed_over_quality`.
-        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbir_build_samplers`.
-        public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbir_free_samplers`.
         public static final MethodHandle MH_stbir_free_samplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `stbir_resize_extended`.
-        public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbir_build_samplers_with_splits`.
-        public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        /// The method handle of `stbir_resize_extended_splits`.
-        public static final MethodHandle MH_stbir_resize_extended_splits = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize_extended_split`.
+        public static final MethodHandle MH_stbir_resize_extended_split = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The function address of `stbir_resize_uint8_srgb`.
         public final MemorySegment PFN_stbir_resize_uint8_srgb;
+        /// The function address of `stbir_resize_uint8_linear`.
+        public final MemorySegment PFN_stbir_resize_uint8_linear;
+        /// The function address of `stbir_resize_float_linear`.
+        public final MemorySegment PFN_stbir_resize_float_linear;
         /// The function address of `stbir_resize`.
         public final MemorySegment PFN_stbir_resize;
         /// The function address of `stbir_resize_init`.
@@ -158,10 +161,12 @@ public final class STBImageResize2 {
         public final MemorySegment PFN_stbir_resize_extended;
         /// The function address of `stbir_build_samplers_with_splits`.
         public final MemorySegment PFN_stbir_build_samplers_with_splits;
-        /// The function address of `stbir_resize_extended_splits`.
-        public final MemorySegment PFN_stbir_resize_extended_splits;
+        /// The function address of `stbir_resize_extended_split`.
+        public final MemorySegment PFN_stbir_resize_extended_split;
         private Handles() {
             PFN_stbir_resize_uint8_srgb = STBInternal.lookup().findOrThrow("stbir_resize_uint8_srgb");
+            PFN_stbir_resize_uint8_linear = STBInternal.lookup().findOrThrow("stbir_resize_uint8_linear");
+            PFN_stbir_resize_float_linear = STBInternal.lookup().findOrThrow("stbir_resize_float_linear");
             PFN_stbir_resize = STBInternal.lookup().findOrThrow("stbir_resize");
             PFN_stbir_resize_init = STBInternal.lookup().findOrThrow("stbir_resize_init");
             PFN_stbir_set_datatypes = STBInternal.lookup().findOrThrow("stbir_set_datatypes");
@@ -180,7 +185,7 @@ public final class STBImageResize2 {
             PFN_stbir_free_samplers = STBInternal.lookup().findOrThrow("stbir_free_samplers");
             PFN_stbir_resize_extended = STBInternal.lookup().findOrThrow("stbir_resize_extended");
             PFN_stbir_build_samplers_with_splits = STBInternal.lookup().findOrThrow("stbir_build_samplers_with_splits");
-            PFN_stbir_resize_extended_splits = STBInternal.lookup().findOrThrow("stbir_resize_extended_splits");
+            PFN_stbir_resize_extended_split = STBInternal.lookup().findOrThrow("stbir_resize_extended_split");
         }
         private static volatile Handles instance;
         private static Handles get() {
@@ -193,136 +198,224 @@ public final class STBImageResize2 {
         }
     }
 
-    public static @CType("unsigned char *") MemorySegment stbir_resize_uint8_srgb(@CType("const unsigned char *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    /// Signature:
+    /// ```
+    /// unsigned char* stbir_resize_uint8_srgb(const unsigned char* input_pixels, int input_w, int input_h, int input_stride_in_bytes, unsigned char* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
+    /// ```
+    public static MemorySegment stbir_resize_uint8_srgb(MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try {
             return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
-    public static @CType("unsigned char *") MemorySegment stbir_resize_uint8_linear(@CType("const unsigned char *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    /// Signature:
+    /// ```
+    /// unsigned char* stbir_resize_uint8_linear(const unsigned char* input_pixels, int input_w, int input_h, int input_stride_in_bytes, unsigned char* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
+    /// ```
+    public static MemorySegment stbir_resize_uint8_linear(MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try {
-            return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
-        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
+            return (MemorySegment) Handles.MH_stbir_resize_uint8_linear.invokeExact(Handles.get().PFN_stbir_resize_uint8_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_linear", e); }
     }
 
-    public static @CType("float*") MemorySegment stbir_resize_float_linear(@CType("const float *") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("float*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
+    /// Signature:
+    /// ```
+    /// float* stbir_resize_float_linear(const float* input_pixels, int input_w, int input_h, int input_stride_in_bytes, float* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
+    /// ```
+    public static MemorySegment stbir_resize_float_linear(MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type) {
         try {
-            return (MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(Handles.get().PFN_stbir_resize_uint8_srgb, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
-        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
+            return (MemorySegment) Handles.MH_stbir_resize_float_linear.invokeExact(Handles.get().PFN_stbir_resize_float_linear, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_float_linear", e); }
     }
 
-    public static @CType("void*") MemorySegment stbir_resize(@CType("const void*") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type, @CType("stbir_edge") int edge, @CType("stbir_filter") int filter) {
+    /// Signature:
+    /// ```
+    /// void* stbir_resize(const void* input_pixels, int input_w, int input_h, int input_stride_in_bytes, void* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type, int edge, int filter);
+    /// ```
+    public static MemorySegment stbir_resize(MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type, int edge, int filter) {
         try {
             return (MemorySegment) Handles.MH_stbir_resize.invokeExact(Handles.get().PFN_stbir_resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize", e); }
     }
 
-    public static void stbir_resize_init(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("const void*") MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type) {
+    /// Signature:
+    /// ```
+    /// void stbir_resize_init(STBIR_RESIZE* resize, const void* input_pixels, int input_w, int input_h, int input_stride_in_bytes, void* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type);
+    /// ```
+    public static void stbir_resize_init(MemorySegment resize, MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes, MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type) {
         try {
             Handles.MH_stbir_resize_init.invokeExact(Handles.get().PFN_stbir_resize_init, resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_init", e); }
     }
 
-    public static void stbir_set_datatypes(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_datatype") int input_type, @CType("stbir_datatype") int output_type) {
+    /// Signature:
+    /// ```
+    /// void stbir_set_datatypes(STBIR_RESIZE* resize, int input_type, int output_type);
+    /// ```
+    public static void stbir_set_datatypes(MemorySegment resize, int input_type, int output_type) {
         try {
             Handles.MH_stbir_set_datatypes.invokeExact(Handles.get().PFN_stbir_set_datatypes, resize, input_type, output_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_datatypes", e); }
     }
 
-    public static void stbir_set_pixel_callbacks(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_input_callback *") MemorySegment input_cb, @CType("stbir_output_callback *") MemorySegment output_cb) {
+    /// Signature:
+    /// ```
+    /// void stbir_set_pixel_callbacks(STBIR_RESIZE* resize, stbir_input_callback* input_cb, stbir_output_callback* output_cb);
+    /// ```
+    public static void stbir_set_pixel_callbacks(MemorySegment resize, MemorySegment input_cb, MemorySegment output_cb) {
         try {
             Handles.MH_stbir_set_pixel_callbacks.invokeExact(Handles.get().PFN_stbir_set_pixel_callbacks, resize, input_cb, output_cb);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_callbacks", e); }
     }
 
-    public static void stbir_set_user_data(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("void*") MemorySegment user_data) {
+    /// Signature:
+    /// ```
+    /// void stbir_set_user_data(STBIR_RESIZE* resize, void* user_data);
+    /// ```
+    public static void stbir_set_user_data(MemorySegment resize, MemorySegment user_data) {
         try {
             Handles.MH_stbir_set_user_data.invokeExact(Handles.get().PFN_stbir_set_user_data, resize, user_data);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_user_data", e); }
     }
 
-    public static void stbir_set_buffer_ptrs(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("const void*") MemorySegment input_pixels, @CType("int") int input_stride_in_bytes, @CType("void*") MemorySegment output_pixels, @CType("int") int output_stride_in_bytes) {
+    /// Signature:
+    /// ```
+    /// void stbir_set_buffer_ptrs(STBIR_RESIZE* resize, const void* input_pixels, int input_stride_in_bytes, void* output_pixels, int output_stride_in_bytes);
+    /// ```
+    public static void stbir_set_buffer_ptrs(MemorySegment resize, MemorySegment input_pixels, int input_stride_in_bytes, MemorySegment output_pixels, int output_stride_in_bytes) {
         try {
             Handles.MH_stbir_set_buffer_ptrs.invokeExact(Handles.get().PFN_stbir_set_buffer_ptrs, resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_buffer_ptrs", e); }
     }
 
-    public static @CType("int") boolean stbir_set_pixel_layouts(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_pixel_layout") int input_pixel_layout, @CType("stbir_pixel_layout") int output_pixel_layout) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_pixel_layouts(STBIR_RESIZE* resize, int input_pixel_layout, int output_pixel_layout);
+    /// ```
+    public static boolean stbir_set_pixel_layouts(MemorySegment resize, int input_pixel_layout, int output_pixel_layout) {
         try {
-            return (boolean) Handles.MH_stbir_set_pixel_layouts.invokeExact(Handles.get().PFN_stbir_set_pixel_layouts, resize, input_pixel_layout, output_pixel_layout);
+            return (((int) Handles.MH_stbir_set_pixel_layouts.invokeExact(Handles.get().PFN_stbir_set_pixel_layouts, resize, input_pixel_layout, output_pixel_layout)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_layouts", e); }
     }
 
-    public static @CType("int") boolean stbir_set_edgemodes(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_edgemodes(STBIR_RESIZE* resize, int horizontal_edge, int vertical_edge);
+    /// ```
+    public static boolean stbir_set_edgemodes(MemorySegment resize, int horizontal_edge, int vertical_edge) {
         try {
-            return (boolean) Handles.MH_stbir_set_edgemodes.invokeExact(Handles.get().PFN_stbir_set_edgemodes, resize, horizontal_edge, vertical_edge);
+            return (((int) Handles.MH_stbir_set_edgemodes.invokeExact(Handles.get().PFN_stbir_set_edgemodes, resize, horizontal_edge, vertical_edge)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_edgemodes", e); }
     }
 
-    public static @CType("int") boolean stbir_set_filters(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_filters(STBIR_RESIZE* resize, int horizontal_filter, int vertical_filter);
+    /// ```
+    public static boolean stbir_set_filters(MemorySegment resize, int horizontal_filter, int vertical_filter) {
         try {
-            return (boolean) Handles.MH_stbir_set_filters.invokeExact(Handles.get().PFN_stbir_set_filters, resize, horizontal_filter, vertical_filter);
+            return (((int) Handles.MH_stbir_set_filters.invokeExact(Handles.get().PFN_stbir_set_filters, resize, horizontal_filter, vertical_filter)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filters", e); }
     }
 
-    public static @CType("int") boolean stbir_set_filter_callbacks(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("stbir__kernel_callback *") MemorySegment horizontal_filter, @CType("stbir__support_callback *") MemorySegment horizontal_support, @CType("stbir__kernel_callback *") MemorySegment vertical_filter, @CType("stbir__support_callback *") MemorySegment vertical_support) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_filter_callbacks(STBIR_RESIZE* resize, stbir__kernel_callback* horizontal_filter, stbir__support_callback* horizontal_support, stbir__kernel_callback* vertical_filter, stbir__support_callback* vertical_support);
+    /// ```
+    public static boolean stbir_set_filter_callbacks(MemorySegment resize, MemorySegment horizontal_filter, MemorySegment horizontal_support, MemorySegment vertical_filter, MemorySegment vertical_support) {
         try {
-            return (boolean) Handles.MH_stbir_set_filter_callbacks.invokeExact(Handles.get().PFN_stbir_set_filter_callbacks, resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support);
+            return (((int) Handles.MH_stbir_set_filter_callbacks.invokeExact(Handles.get().PFN_stbir_set_filter_callbacks, resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filter_callbacks", e); }
     }
 
-    public static @CType("int") boolean stbir_set_pixel_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_pixel_subrect(STBIR_RESIZE* resize, int subx, int suby, int subw, int subh);
+    /// ```
+    public static boolean stbir_set_pixel_subrect(MemorySegment resize, int subx, int suby, int subw, int subh) {
         try {
-            return (boolean) Handles.MH_stbir_set_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_pixel_subrect, resize, subx, suby, subw, subh);
+            return (((int) Handles.MH_stbir_set_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_pixel_subrect, resize, subx, suby, subw, subh)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_input_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("double") double s0, @CType("double") double t0, @CType("double") double s1, @CType("double") double t1) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_input_subrect(STBIR_RESIZE* resize, double s0, double t0, double s1, double t1);
+    /// ```
+    public static boolean stbir_set_input_subrect(MemorySegment resize, double s0, double t0, double s1, double t1) {
         try {
-            return (boolean) Handles.MH_stbir_set_input_subrect.invokeExact(Handles.get().PFN_stbir_set_input_subrect, resize, s0, t0, s1, t1);
+            return (((int) Handles.MH_stbir_set_input_subrect.invokeExact(Handles.get().PFN_stbir_set_input_subrect, resize, s0, t0, s1, t1)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_input_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_output_pixel_subrect(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_output_pixel_subrect(STBIR_RESIZE* resize, int subx, int suby, int subw, int subh);
+    /// ```
+    public static boolean stbir_set_output_pixel_subrect(MemorySegment resize, int subx, int suby, int subw, int subh) {
         try {
-            return (boolean) Handles.MH_stbir_set_output_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_output_pixel_subrect, resize, subx, suby, subw, subh);
+            return (((int) Handles.MH_stbir_set_output_pixel_subrect.invokeExact(Handles.get().PFN_stbir_set_output_pixel_subrect, resize, subx, suby, subw, subh)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
-    public static @CType("int") boolean stbir_set_non_pm_alpha_speed_over_quality(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int non_pma_alpha_speed_over_quality) {
+    /// Signature:
+    /// ```
+    /// int stbir_set_non_pm_alpha_speed_over_quality(STBIR_RESIZE* resize, int non_pma_alpha_speed_over_quality);
+    /// ```
+    public static boolean stbir_set_non_pm_alpha_speed_over_quality(MemorySegment resize, int non_pma_alpha_speed_over_quality) {
         try {
-            return (boolean) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(Handles.get().PFN_stbir_set_non_pm_alpha_speed_over_quality, resize, non_pma_alpha_speed_over_quality);
+            return (((int) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(Handles.get().PFN_stbir_set_non_pm_alpha_speed_over_quality, resize, non_pma_alpha_speed_over_quality)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
-    public static @CType("int") boolean stbir_build_samplers(@CType("STBIR_RESIZE *") MemorySegment resize) {
+    /// Signature:
+    /// ```
+    /// int stbir_build_samplers(STBIR_RESIZE* resize);
+    /// ```
+    public static boolean stbir_build_samplers(MemorySegment resize) {
         try {
-            return (boolean) Handles.MH_stbir_build_samplers.invokeExact(Handles.get().PFN_stbir_build_samplers, resize);
+            return (((int) Handles.MH_stbir_build_samplers.invokeExact(Handles.get().PFN_stbir_build_samplers, resize)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
-    public static void stbir_free_samplers(@CType("STBIR_RESIZE *") MemorySegment resize) {
+    /// Signature:
+    /// ```
+    /// void stbir_free_samplers(STBIR_RESIZE* resize);
+    /// ```
+    public static void stbir_free_samplers(MemorySegment resize) {
         try {
             Handles.MH_stbir_free_samplers.invokeExact(Handles.get().PFN_stbir_free_samplers, resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
-    public static @CType("int") boolean stbir_resize_extended(@CType("STBIR_RESIZE *") MemorySegment resize) {
+    /// Signature:
+    /// ```
+    /// int stbir_resize_extended(STBIR_RESIZE* resize);
+    /// ```
+    public static boolean stbir_resize_extended(MemorySegment resize) {
         try {
-            return (boolean) Handles.MH_stbir_resize_extended.invokeExact(Handles.get().PFN_stbir_resize_extended, resize);
+            return (((int) Handles.MH_stbir_resize_extended.invokeExact(Handles.get().PFN_stbir_resize_extended, resize)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
-    public static @CType("int") boolean stbir_build_samplers_with_splits(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int try_splits) {
+    /// Signature:
+    /// ```
+    /// int stbir_build_samplers_with_splits(STBIR_RESIZE* resize, int try_splits);
+    /// ```
+    public static boolean stbir_build_samplers_with_splits(MemorySegment resize, int try_splits) {
         try {
-            return (boolean) Handles.MH_stbir_build_samplers_with_splits.invokeExact(Handles.get().PFN_stbir_build_samplers_with_splits, resize, try_splits);
+            return (((int) Handles.MH_stbir_build_samplers_with_splits.invokeExact(Handles.get().PFN_stbir_build_samplers_with_splits, resize, try_splits)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
-    public static @CType("int") boolean stbir_resize_extended_split(@CType("STBIR_RESIZE *") MemorySegment resize, @CType("int") int split_start, @CType("int") int split_count) {
+    /// Signature:
+    /// ```
+    /// int stbir_resize_extended_split(STBIR_RESIZE* resize, int split_start, int split_count);
+    /// ```
+    public static boolean stbir_resize_extended_split(MemorySegment resize, int split_start, int split_count) {
         try {
-            return (boolean) Handles.MH_stbir_resize_extended_splits.invokeExact(Handles.get().PFN_stbir_resize_extended_splits, resize, split_start, split_count);
-        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended_splits", e); }
+            return (((int) Handles.MH_stbir_resize_extended_split.invokeExact(Handles.get().PFN_stbir_resize_extended_split, resize, split_start, split_count)) != 0);
+        } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended_split", e); }
     }
 
     //@formatter:on

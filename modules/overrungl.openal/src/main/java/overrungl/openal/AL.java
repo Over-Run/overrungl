@@ -16,12 +16,8 @@
 
 package overrungl.openal;
 
-import overrungl.annotation.CType;
-import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.Marshal;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
@@ -55,11 +51,10 @@ public final class AL {
     public static final int AL_MAX_GAIN = 0x100E;
     public static final int AL_ORIENTATION = 0x100F;
     public static final int AL_SOURCE_STATE = 0x1010;
-    public static final int
-        AL_INITIAL = 0x1011,
-        AL_PLAYING = 0x1012,
-        AL_PAUSED = 0x1013,
-        AL_STOPPED = 0x1014;
+    public static final int AL_INITIAL = 0x1011;
+    public static final int AL_PLAYING = 0x1012;
+    public static final int AL_PAUSED = 0x1013;
+    public static final int AL_STOPPED = 0x1014;
     public static final int AL_BUFFERS_QUEUED = 0x1015;
     public static final int AL_BUFFERS_PROCESSED = 0x1016;
     public static final int AL_REFERENCE_DISTANCE = 0x1020;
@@ -70,10 +65,9 @@ public final class AL {
     public static final int AL_SAMPLE_OFFSET = 0x1025;
     public static final int AL_BYTE_OFFSET = 0x1026;
     public static final int AL_SOURCE_TYPE = 0x1027;
-    public static final int
-        AL_STATIC = 0x1028,
-        AL_STREAMING = 0x1029,
-        AL_UNDETERMINED = 0x1030;
+    public static final int AL_STATIC = 0x1028;
+    public static final int AL_STREAMING = 0x1029;
+    public static final int AL_UNDETERMINED = 0x1030;
     public static final int AL_FORMAT_MONO8 = 0x1100;
     public static final int AL_FORMAT_MONO16 = 0x1101;
     public static final int AL_FORMAT_STEREO8 = 0x1102;
@@ -82,10 +76,9 @@ public final class AL {
     public static final int AL_BITS = 0x2002;
     public static final int AL_CHANNELS = 0x2003;
     public static final int AL_SIZE = 0x2004;
-    public static final int
-        AL_UNUSED = 0x2010,
-        AL_PENDING = 0x2011,
-        AL_PROCESSED = 0x2012;
+    public static final int AL_UNUSED = 0x2010;
+    public static final int AL_PENDING = 0x2011;
+    public static final int AL_PROCESSED = 0x2012;
     public static final int AL_NO_ERROR = 0;
     public static final int AL_INVALID_NAME = 0xA001;
     public static final int AL_INVALID_ENUM = 0xA002;
@@ -100,13 +93,12 @@ public final class AL {
     public static final int AL_DOPPLER_VELOCITY = 0xC001;
     public static final int AL_SPEED_OF_SOUND = 0xC003;
     public static final int AL_DISTANCE_MODEL = 0xD000;
-    public static final int
-        AL_INVERSE_DISTANCE = 0xD001,
-        AL_INVERSE_DISTANCE_CLAMPED = 0xD002,
-        AL_LINEAR_DISTANCE = 0xD003,
-        AL_LINEAR_DISTANCE_CLAMPED = 0xD004,
-        AL_EXPONENT_DISTANCE = 0xD005,
-        AL_EXPONENT_DISTANCE_CLAMPED = 0xD006;
+    public static final int AL_INVERSE_DISTANCE = 0xD001;
+    public static final int AL_INVERSE_DISTANCE_CLAMPED = 0xD002;
+    public static final int AL_LINEAR_DISTANCE = 0xD003;
+    public static final int AL_LINEAR_DISTANCE_CLAMPED = 0xD004;
+    public static final int AL_EXPONENT_DISTANCE = 0xD005;
+    public static final int AL_EXPONENT_DISTANCE_CLAMPED = 0xD006;
     //endregion
     /// Method handles.
     public static final class Handles {
@@ -115,7 +107,7 @@ public final class AL {
         /// The method handle of `alDisable`.
         public static final MethodHandle MH_alDisable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         /// The method handle of `alIsEnabled`.
-        public static final MethodHandle MH_alIsEnabled = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsEnabled = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         /// The method handle of `alDopplerFactor`.
         public static final MethodHandle MH_alDopplerFactor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `alDopplerVelocity`.
@@ -125,7 +117,7 @@ public final class AL {
         /// The method handle of `alDistanceModel`.
         public static final MethodHandle MH_alDistanceModel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         /// The method handle of `alGetString`.
-        public static final MethodHandle MH_alGetString = RuntimeHelper.downcall(FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `alGetBooleanv`.
         public static final MethodHandle MH_alGetBooleanv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alGetIntegerv`.
@@ -135,7 +127,7 @@ public final class AL {
         /// The method handle of `alGetDoublev`.
         public static final MethodHandle MH_alGetDoublev = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alGetBoolean`.
-        public static final MethodHandle MH_alGetBoolean = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alGetBoolean = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         /// The method handle of `alGetInteger`.
         public static final MethodHandle MH_alGetInteger = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alGetFloat`.
@@ -145,11 +137,11 @@ public final class AL {
         /// The method handle of `alGetError`.
         public static final MethodHandle MH_alGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
         /// The method handle of `alIsExtensionPresent`.
-        public static final MethodHandle MH_alIsExtensionPresent = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alIsExtensionPresent = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
         /// The method handle of `alGetProcAddress`.
-        public static final MethodHandle MH_alGetProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alGetEnumValue`.
-        public static final MethodHandle MH_alGetEnumValue = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_alGetEnumValue = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alListenerf`.
         public static final MethodHandle MH_alListenerf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         /// The method handle of `alListener3f`.
@@ -179,7 +171,7 @@ public final class AL {
         /// The method handle of `alDeleteSources`.
         public static final MethodHandle MH_alDeleteSources = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alIsSource`.
-        public static final MethodHandle MH_alIsSource = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsSource = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         /// The method handle of `alSourcef`.
         public static final MethodHandle MH_alSourcef = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         /// The method handle of `alSource3f`.
@@ -229,7 +221,7 @@ public final class AL {
         /// The method handle of `alDeleteBuffers`.
         public static final MethodHandle MH_alDeleteBuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alIsBuffer`.
-        public static final MethodHandle MH_alIsBuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alIsBuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         /// The method handle of `alBufferData`.
         public static final MethodHandle MH_alBufferData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alBufferf`.
@@ -488,657 +480,733 @@ public final class AL {
         }
     }
 
-    public static void alEnable(@CType("ALenum") int capability) {
+    /// Signature:
+    /// ```
+    /// void alEnable(int capability);
+    /// ```
+    public static void alEnable(int capability) {
         try {
             Handles.MH_alEnable.invokeExact(Handles.get().PFN_alEnable, capability);
         } catch (Throwable e) { throw new RuntimeException("error in alEnable", e); }
     }
 
-    public static void alDisable(@CType("ALenum") int capability) {
+    /// Signature:
+    /// ```
+    /// void alDisable(int capability);
+    /// ```
+    public static void alDisable(int capability) {
         try {
             Handles.MH_alDisable.invokeExact(Handles.get().PFN_alDisable, capability);
         } catch (Throwable e) { throw new RuntimeException("error in alDisable", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsEnabled(@CType("ALenum") int capability) {
+    /// Signature:
+    /// ```
+    /// char alIsEnabled(int capability);
+    /// ```
+    public static byte alIsEnabled(int capability) {
         try {
-            return (boolean) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability);
+            return (byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability);
         } catch (Throwable e) { throw new RuntimeException("error in alIsEnabled", e); }
     }
 
-    public static void alDopplerFactor(@CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alDopplerFactor(float value);
+    /// ```
+    public static void alDopplerFactor(float value) {
         try {
             Handles.MH_alDopplerFactor.invokeExact(Handles.get().PFN_alDopplerFactor, value);
         } catch (Throwable e) { throw new RuntimeException("error in alDopplerFactor", e); }
     }
 
-    public static void alDopplerVelocity(@CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alDopplerVelocity(float value);
+    /// ```
+    public static void alDopplerVelocity(float value) {
         try {
             Handles.MH_alDopplerVelocity.invokeExact(Handles.get().PFN_alDopplerVelocity, value);
         } catch (Throwable e) { throw new RuntimeException("error in alDopplerVelocity", e); }
     }
 
-    public static void alSpeedOfSound(@CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alSpeedOfSound(float value);
+    /// ```
+    public static void alSpeedOfSound(float value) {
         try {
             Handles.MH_alSpeedOfSound.invokeExact(Handles.get().PFN_alSpeedOfSound, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSpeedOfSound", e); }
     }
 
-    public static void alDistanceModel(@CType("ALenum") int distanceModel) {
+    /// Signature:
+    /// ```
+    /// void alDistanceModel(int distanceModel);
+    /// ```
+    public static void alDistanceModel(int distanceModel) {
         try {
             Handles.MH_alDistanceModel.invokeExact(Handles.get().PFN_alDistanceModel, distanceModel);
         } catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
     }
 
-    public static @CType("const ALchar*") MemorySegment alGetString_(@CType("ALenum") int param) {
+    /// Signature:
+    /// ```
+    /// const ALchar* alGetString(int param);
+    /// ```
+    public static MemorySegment alGetString(int param) {
         try {
             return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
-    public static @CType("const ALchar*") String alGetString(@CType("ALenum") int param) {
-        try {
-            return Unmarshal.unmarshalAsString((MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param));
-        } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
-    }
-
-    public static void alGetBooleanv(@CType("ALenum") int param, @Out @CType("ALboolean *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetBooleanv(int param, ALboolean* values);
+    /// ```
+    public static void alGetBooleanv(int param, MemorySegment values) {
         try {
             Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
     }
 
-    public static void alGetIntegerv(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetIntegerv(int param, ALint* values);
+    /// ```
+    public static void alGetIntegerv(int param, MemorySegment values) {
         try {
             Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
     }
 
-    public static void alGetIntegerv(@CType("ALenum") int param, @Out @CType("ALint *") int[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
-    }
-
-    public static void alGetFloatv(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetFloatv(int param, ALfloat* values);
+    /// ```
+    public static void alGetFloatv(int param, MemorySegment values) {
         try {
             Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
     }
 
-    public static void alGetFloatv(@CType("ALenum") int param, @Out @CType("ALfloat *") float[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
-    }
-
-    public static void alGetDoublev(@CType("ALenum") int param, @Out @CType("ALdouble *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetDoublev(int param, ALdouble* values);
+    /// ```
+    public static void alGetDoublev(int param, MemorySegment values) {
         try {
             Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
     }
 
-    public static void alGetDoublev(@CType("ALenum") int param, @Out @CType("ALdouble *") double[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
-    }
-
-    public static @CType("ALboolean") boolean alGetBoolean(@CType("ALenum") int param) {
+    /// Signature:
+    /// ```
+    /// char alGetBoolean(int param);
+    /// ```
+    public static byte alGetBoolean(int param) {
         try {
-            return (boolean) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param);
+            return (byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBoolean", e); }
     }
 
-    public static @CType("ALint") int alGetInteger(@CType("ALenum") int param) {
+    /// Signature:
+    /// ```
+    /// int alGetInteger(int param);
+    /// ```
+    public static int alGetInteger(int param) {
         try {
             return (int) Handles.MH_alGetInteger.invokeExact(Handles.get().PFN_alGetInteger, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetInteger", e); }
     }
 
-    public static @CType("ALfloat") float alGetFloat(@CType("ALenum") int param) {
+    /// Signature:
+    /// ```
+    /// float alGetFloat(int param);
+    /// ```
+    public static float alGetFloat(int param) {
         try {
             return (float) Handles.MH_alGetFloat.invokeExact(Handles.get().PFN_alGetFloat, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloat", e); }
     }
 
-    public static @CType("ALdouble") double alGetDouble(@CType("ALenum") int param) {
+    /// Signature:
+    /// ```
+    /// double alGetDouble(int param);
+    /// ```
+    public static double alGetDouble(int param) {
         try {
             return (double) Handles.MH_alGetDouble.invokeExact(Handles.get().PFN_alGetDouble, param);
         } catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
     }
 
-    public static @CType("ALenum") int alGetError() {
+    /// Signature:
+    /// ```
+    /// int alGetError();
+    /// ```
+    public static int alGetError() {
         try {
             return (int) Handles.MH_alGetError.invokeExact(Handles.get().PFN_alGetError);
         } catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") MemorySegment extname) {
+    /// Signature:
+    /// ```
+    /// char alIsExtensionPresent(const ALchar* extname);
+    /// ```
+    public static byte alIsExtensionPresent(MemorySegment extname) {
         try {
-            return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname);
+            return (byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname);
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") String extname) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, Marshal.marshal(__overrungl_stack, extname));
-        } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
-    }
-
-    public static @CType("void*") MemorySegment alGetProcAddress(@CType("const ALchar*") MemorySegment fname) {
+    /// Signature:
+    /// ```
+    /// void* alGetProcAddress(const ALchar* fname);
+    /// ```
+    public static MemorySegment alGetProcAddress(MemorySegment fname) {
         try {
             return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    public static @CType("void*") MemorySegment alGetProcAddress(@CType("const ALchar*") String fname) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, Marshal.marshal(__overrungl_stack, fname));
-        } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
-    }
-
-    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") MemorySegment ename) {
+    /// Signature:
+    /// ```
+    /// int alGetEnumValue(const ALchar* ename);
+    /// ```
+    public static int alGetEnumValue(MemorySegment ename) {
         try {
             return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
-    public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") String ename) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, Marshal.marshal(__overrungl_stack, ename));
-        } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
-    }
-
-    public static void alListenerf(@CType("ALenum") int param, @CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alListenerf(int param, float value);
+    /// ```
+    public static void alListenerf(int param, float value) {
         try {
             Handles.MH_alListenerf.invokeExact(Handles.get().PFN_alListenerf, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alListenerf", e); }
     }
 
-    public static void alListener3f(@CType("ALenum") int param, @CType("ALfloat") float value1, @CType("ALfloat") float value2, @CType("ALfloat") float value3) {
+    /// Signature:
+    /// ```
+    /// void alListener3f(int param, float value1, float value2, float value3);
+    /// ```
+    public static void alListener3f(int param, float value1, float value2, float value3) {
         try {
             Handles.MH_alListener3f.invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
     }
 
-    public static void alListenerfv(@CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alListenerfv(int param, const ALfloat* values);
+    /// ```
+    public static void alListenerfv(int param, MemorySegment values) {
         try {
             Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
     }
 
-    public static void alListeneri(@CType("ALenum") int param, @CType("ALint") int value) {
+    /// Signature:
+    /// ```
+    /// void alListeneri(int param, int value);
+    /// ```
+    public static void alListeneri(int param, int value) {
         try {
             Handles.MH_alListeneri.invokeExact(Handles.get().PFN_alListeneri, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alListeneri", e); }
     }
 
-    public static void alListener3i(@CType("ALenum") int param, @CType("ALint") int value1, @CType("ALint") int value2, @CType("ALint") int value3) {
+    /// Signature:
+    /// ```
+    /// void alListener3i(int param, int value1, int value2, int value3);
+    /// ```
+    public static void alListener3i(int param, int value1, int value2, int value3) {
         try {
             Handles.MH_alListener3i.invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
     }
 
-    public static void alListeneriv(@CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alListeneriv(int param, const ALint* values);
+    /// ```
+    public static void alListeneriv(int param, MemorySegment values) {
         try {
             Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
     }
 
-    public static void alGetListenerf(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetListenerf(int param, ALfloat* value);
+    /// ```
+    public static void alGetListenerf(int param, MemorySegment value) {
         try {
             Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
     }
 
-    public static void alGetListenerf(@CType("ALenum") int param, @Out @CType("ALfloat *") float[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
-    }
-
-    public static void alGetListener3f(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetListener3f(int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// ```
+    public static void alGetListener3f(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
     }
 
-    public static void alGetListener3f(@CType("ALenum") int param, @Out @CType("ALfloat *") float[] value1, @Out @CType("ALfloat *") float[] value2, @Out @CType("ALfloat *") float[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
-    }
-
-    public static void alGetListenerfv(@CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetListenerfv(int param, ALfloat* values);
+    /// ```
+    public static void alGetListenerfv(int param, MemorySegment values) {
         try {
             Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
     }
 
-    public static void alGetListenerfv(@CType("ALenum") int param, @Out @CType("ALfloat *") float[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
-    }
-
-    public static void alGetListeneri(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetListeneri(int param, ALint* value);
+    /// ```
+    public static void alGetListeneri(int param, MemorySegment value) {
         try {
             Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
     }
 
-    public static void alGetListeneri(@CType("ALenum") int param, @Out @CType("ALint *") int[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
-    }
-
-    public static void alGetListener3i(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetListener3i(int param, ALint* value1, ALint* value2, ALint* value3);
+    /// ```
+    public static void alGetListener3i(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
     }
 
-    public static void alGetListener3i(@CType("ALenum") int param, @Out @CType("ALint *") int[] value1, @Out @CType("ALint *") int[] value2, @Out @CType("ALint *") int[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
-    }
-
-    public static void alGetListeneriv(@CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetListeneriv(int param, ALint* values);
+    /// ```
+    public static void alGetListeneriv(int param, MemorySegment values) {
         try {
             Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
-    public static void alGetListeneriv(@CType("ALenum") int param, @Out @CType("ALint *") int[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
-    }
-
-    public static void alGenSources(@CType("ALsizei") int n, @Out @CType("ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alGenSources(int n, ALuint* sources);
+    /// ```
+    public static void alGenSources(int n, MemorySegment sources) {
         try {
             Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
-    public static void alDeleteSources(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alDeleteSources(int n, const ALuint* sources);
+    /// ```
+    public static void alDeleteSources(int n, MemorySegment sources) {
         try {
             Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsSource(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// char alIsSource(unsigned int source);
+    /// ```
+    public static byte alIsSource(int source) {
         try {
-            return (boolean) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source);
+            return (byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source);
         } catch (Throwable e) { throw new RuntimeException("error in alIsSource", e); }
     }
 
-    public static void alSourcef(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alSourcef(unsigned int source, int param, float value);
+    /// ```
+    public static void alSourcef(int source, int param, float value) {
         try {
             Handles.MH_alSourcef.invokeExact(Handles.get().PFN_alSourcef, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcef", e); }
     }
 
-    public static void alSource3f(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALfloat") float value1, @CType("ALfloat") float value2, @CType("ALfloat") float value3) {
+    /// Signature:
+    /// ```
+    /// void alSource3f(unsigned int source, int param, float value1, float value2, float value3);
+    /// ```
+    public static void alSource3f(int source, int param, float value1, float value2, float value3) {
         try {
             Handles.MH_alSource3f.invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
     }
 
-    public static void alSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alSourcefv(unsigned int source, int param, const ALfloat* values);
+    /// ```
+    public static void alSourcefv(int source, int param, MemorySegment values) {
         try {
             Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
     }
 
-    public static void alSourcei(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint") int value) {
+    /// Signature:
+    /// ```
+    /// void alSourcei(unsigned int source, int param, int value);
+    /// ```
+    public static void alSourcei(int source, int param, int value) {
         try {
             Handles.MH_alSourcei.invokeExact(Handles.get().PFN_alSourcei, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei", e); }
     }
 
-    public static void alSource3i(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint") int value1, @CType("ALint") int value2, @CType("ALint") int value3) {
+    /// Signature:
+    /// ```
+    /// void alSource3i(unsigned int source, int param, int value1, int value2, int value3);
+    /// ```
+    public static void alSource3i(int source, int param, int value1, int value2, int value3) {
         try {
             Handles.MH_alSource3i.invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
     }
 
-    public static void alSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alSourceiv(unsigned int source, int param, const ALint* values);
+    /// ```
+    public static void alSourceiv(int source, int param, MemorySegment values) {
         try {
             Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
     }
 
-    public static void alGetSourcef(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetSourcef(unsigned int source, int param, ALfloat* value);
+    /// ```
+    public static void alGetSourcef(int source, int param, MemorySegment value) {
         try {
             Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
     }
 
-    public static void alGetSourcef(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
-    }
-
-    public static void alGetSource3f(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetSource3f(unsigned int source, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// ```
+    public static void alGetSource3f(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
     }
 
-    public static void alGetSource3f(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] value1, @Out @CType("ALfloat *") float[] value2, @Out @CType("ALfloat *") float[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
-    }
-
-    public static void alGetSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetSourcefv(unsigned int source, int param, ALfloat* values);
+    /// ```
+    public static void alGetSourcefv(int source, int param, MemorySegment values) {
         try {
             Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
     }
 
-    public static void alGetSourcefv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
-    }
-
-    public static void alGetSourcei(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetSourcei(unsigned int source, int param, ALint* value);
+    /// ```
+    public static void alGetSourcei(int source, int param, MemorySegment value) {
         try {
             Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
     }
 
-    public static void alGetSourcei(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") int[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
-    }
-
-    public static void alGetSource3i(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetSource3i(unsigned int source, int param, ALint* value1, ALint* value2, ALint* value3);
+    /// ```
+    public static void alGetSource3i(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
     }
 
-    public static void alGetSource3i(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") int[] value1, @Out @CType("ALint *") int[] value2, @Out @CType("ALint *") int[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
-    }
-
-    public static void alGetSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetSourceiv(unsigned int source, int param, ALint* values);
+    /// ```
+    public static void alGetSourceiv(int source, int param, MemorySegment values) {
         try {
             Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
     }
 
-    public static void alGetSourceiv(@CType("ALuint") int source, @CType("ALenum") int param, @Out @CType("ALint *") int[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
-    }
-
-    public static void alSourcePlay(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// void alSourcePlay(unsigned int source);
+    /// ```
+    public static void alSourcePlay(int source) {
         try {
             Handles.MH_alSourcePlay.invokeExact(Handles.get().PFN_alSourcePlay, source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
     }
 
-    public static void alSourceStop(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// void alSourceStop(unsigned int source);
+    /// ```
+    public static void alSourceStop(int source) {
         try {
             Handles.MH_alSourceStop.invokeExact(Handles.get().PFN_alSourceStop, source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
     }
 
-    public static void alSourceRewind(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// void alSourceRewind(unsigned int source);
+    /// ```
+    public static void alSourceRewind(int source) {
         try {
             Handles.MH_alSourceRewind.invokeExact(Handles.get().PFN_alSourceRewind, source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
     }
 
-    public static void alSourcePause(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// void alSourcePause(unsigned int source);
+    /// ```
+    public static void alSourcePause(int source) {
         try {
             Handles.MH_alSourcePause.invokeExact(Handles.get().PFN_alSourcePause, source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
-    public static void alSourcePlayv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alSourcePlayv(int n, const ALuint* sources);
+    /// ```
+    public static void alSourcePlayv(int n, MemorySegment sources) {
         try {
             Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
-    public static void alSourceStopv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alSourceStopv(int n, const ALuint* sources);
+    /// ```
+    public static void alSourceStopv(int n, MemorySegment sources) {
         try {
             Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
-    public static void alSourceRewindv(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alSourceRewindv(int n, const ALuint* sources);
+    /// ```
+    public static void alSourceRewindv(int n, MemorySegment sources) {
         try {
             Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
-    public static void alSourcePausev(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment sources) {
+    /// Signature:
+    /// ```
+    /// void alSourcePausev(int n, const ALuint* sources);
+    /// ```
+    public static void alSourcePausev(int n, MemorySegment sources) {
         try {
             Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
-    public static void alSourceQueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @CType("const ALuint *") MemorySegment buffers) {
+    /// Signature:
+    /// ```
+    /// void alSourceQueueBuffers(unsigned int source, int nb, const ALuint* buffers);
+    /// ```
+    public static void alSourceQueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
             Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
-    public static void alSourceUnqueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @Out @CType("ALuint *") MemorySegment buffers) {
+    /// Signature:
+    /// ```
+    /// void alSourceUnqueueBuffers(unsigned int source, int nb, ALuint* buffers);
+    /// ```
+    public static void alSourceUnqueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
             Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
-    public static void alGenBuffers(@CType("ALsizei") int n, @Out @CType("ALuint *") MemorySegment buffers) {
+    /// Signature:
+    /// ```
+    /// void alGenBuffers(int n, ALuint* buffers);
+    /// ```
+    public static void alGenBuffers(int n, MemorySegment buffers) {
         try {
             Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
-    public static void alDeleteBuffers(@CType("ALsizei") int n, @CType("const ALuint *") MemorySegment buffers) {
+    /// Signature:
+    /// ```
+    /// void alDeleteBuffers(int n, const ALuint* buffers);
+    /// ```
+    public static void alDeleteBuffers(int n, MemorySegment buffers) {
         try {
             Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
     }
 
-    public static @CType("ALboolean") boolean alIsBuffer(@CType("ALuint") int source) {
+    /// Signature:
+    /// ```
+    /// char alIsBuffer(unsigned int buffer);
+    /// ```
+    public static byte alIsBuffer(int buffer) {
         try {
-            return (boolean) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, source);
+            return (byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer);
         } catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
-    public static void alBufferData(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int samplerate) {
+    /// Signature:
+    /// ```
+    /// void alBufferData(unsigned int buffer, int format, const ALvoid* data, int size, int samplerate);
+    /// ```
+    public static void alBufferData(int buffer, int format, MemorySegment data, int size, int samplerate) {
         try {
             Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
     }
 
-    public static void alBufferf(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALfloat") float value) {
+    /// Signature:
+    /// ```
+    /// void alBufferf(unsigned int buffer, int param, float value);
+    /// ```
+    public static void alBufferf(int buffer, int param, float value) {
         try {
             Handles.MH_alBufferf.invokeExact(Handles.get().PFN_alBufferf, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferf", e); }
     }
 
-    public static void alBuffer3f(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALfloat") float value1, @CType("ALfloat") float value2, @CType("ALfloat") float value3) {
+    /// Signature:
+    /// ```
+    /// void alBuffer3f(unsigned int buffer, int param, float value1, float value2, float value3);
+    /// ```
+    public static void alBuffer3f(int buffer, int param, float value1, float value2, float value3) {
         try {
             Handles.MH_alBuffer3f.invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
     }
 
-    public static void alBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alBufferfv(unsigned int buffer, int param, const ALfloat* values);
+    /// ```
+    public static void alBufferfv(int buffer, int param, MemorySegment values) {
         try {
             Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
     }
 
-    public static void alBufferi(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALint") int value) {
+    /// Signature:
+    /// ```
+    /// void alBufferi(unsigned int buffer, int param, int value);
+    /// ```
+    public static void alBufferi(int buffer, int param, int value) {
         try {
             Handles.MH_alBufferi.invokeExact(Handles.get().PFN_alBufferi, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferi", e); }
     }
 
-    public static void alBuffer3i(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("ALint") int value1, @CType("ALint") int value2, @CType("ALint") int value3) {
+    /// Signature:
+    /// ```
+    /// void alBuffer3i(unsigned int buffer, int param, int value1, int value2, int value3);
+    /// ```
+    public static void alBuffer3i(int buffer, int param, int value1, int value2, int value3) {
         try {
             Handles.MH_alBuffer3i.invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
     }
 
-    public static void alBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @CType("const ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alBufferiv(unsigned int buffer, int param, const ALint* values);
+    /// ```
+    public static void alBufferiv(int buffer, int param, MemorySegment values) {
         try {
             Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
     }
 
-    public static void alGetBufferf(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetBufferf(unsigned int buffer, int param, ALfloat* value);
+    /// ```
+    public static void alGetBufferf(int buffer, int param, MemorySegment value) {
         try {
             Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
     }
 
-    public static void alGetBufferf(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
-    }
-
-    public static void alGetBuffer3f(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment value1, @Out @CType("ALfloat *") MemorySegment value2, @Out @CType("ALfloat *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetBuffer3f(unsigned int buffer, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// ```
+    public static void alGetBuffer3f(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
     }
 
-    public static void alGetBuffer3f(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] value1, @Out @CType("ALfloat *") float[] value2, @Out @CType("ALfloat *") float[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
-    }
-
-    public static void alGetBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetBufferfv(unsigned int buffer, int param, ALfloat* values);
+    /// ```
+    public static void alGetBufferfv(int buffer, int param, MemorySegment values) {
         try {
             Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
     }
 
-    public static void alGetBufferfv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALfloat *") float[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
-    }
-
-    public static void alGetBufferi(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value) {
+    /// Signature:
+    /// ```
+    /// void alGetBufferi(unsigned int buffer, int param, ALint* value);
+    /// ```
+    public static void alGetBufferi(int buffer, int param, MemorySegment value) {
         try {
             Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
     }
 
-    public static void alGetBufferi(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") int[] value) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value = Marshal.marshal(__overrungl_stack, value);
-            Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, __overrungl_ref_value);
-            Unmarshal.copy(__overrungl_ref_value, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
-    }
-
-    public static void alGetBuffer3i(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment value1, @Out @CType("ALint *") MemorySegment value2, @Out @CType("ALint *") MemorySegment value3) {
+    /// Signature:
+    /// ```
+    /// void alGetBuffer3i(unsigned int buffer, int param, ALint* value1, ALint* value2, ALint* value3);
+    /// ```
+    public static void alGetBuffer3i(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
             Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
     }
 
-    public static void alGetBuffer3i(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") int[] value1, @Out @CType("ALint *") int[] value2, @Out @CType("ALint *") int[] value3) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_value1 = Marshal.marshal(__overrungl_stack, value1);
-            var __overrungl_ref_value2 = Marshal.marshal(__overrungl_stack, value2);
-            var __overrungl_ref_value3 = Marshal.marshal(__overrungl_stack, value3);
-            Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, __overrungl_ref_value1, __overrungl_ref_value2, __overrungl_ref_value3);
-            Unmarshal.copy(__overrungl_ref_value1, value1);
-            Unmarshal.copy(__overrungl_ref_value2, value2);
-            Unmarshal.copy(__overrungl_ref_value3, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
-    }
-
-    public static void alGetBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") MemorySegment values) {
+    /// Signature:
+    /// ```
+    /// void alGetBufferiv(unsigned int buffer, int param, ALint* values);
+    /// ```
+    public static void alGetBufferiv(int buffer, int param, MemorySegment values) {
         try {
             Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }
-    }
-
-    public static void alGetBufferiv(@CType("ALuint") int buffer, @CType("ALenum") int param, @Out @CType("ALint *") int[] values) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            var __overrungl_ref_values = Marshal.marshal(__overrungl_stack, values);
-            Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, __overrungl_ref_values);
-            Unmarshal.copy(__overrungl_ref_values, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }
     }
 

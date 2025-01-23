@@ -1,0 +1,147 @@
+// stb_vorbis.c
+
+using FILE = void*; // define as opaque struct
+
+using stb_vorbis_alloc = struct STBVorbisAlloc
+{
+   char *alloc_buffer;
+   int   alloc_buffer_length_in_bytes;
+};
+
+using stb_vorbis = struct stb_vorbis;
+
+using stb_vorbis_info = struct STBVorbisInfo
+{
+   unsigned int sample_rate;
+   int channels;
+
+   unsigned int setup_memory_required;
+   unsigned int setup_temp_memory_required;
+   unsigned int temp_memory_required;
+
+   int max_frame_size;
+};
+
+using stb_vorbis_comment = struct STBVorbisComment
+{
+   char *vendor;
+
+   int comment_list_length;
+   char **comment_list;
+};
+
+// get general information about the file
+fn stb_vorbis_info stb_vorbis_get_info(stb_vorbis *f);
+
+// get ogg comments
+fn stb_vorbis_comment stb_vorbis_get_comment(stb_vorbis *f);
+
+// get the last error detected (clears it, too)
+fn int stb_vorbis_get_error(stb_vorbis *f);
+
+// close an ogg vorbis file and free all memory in use
+fn void stb_vorbis_close(stb_vorbis *f);
+
+// this function returns the offset (in samples) from the beginning of the
+// file that will be returned by the next decode, if it is known, or -1
+// otherwise. after a flush_pushdata() call, this may take a while before
+// it becomes valid again.
+// NOT WORKING YET after a seek with PULLDATA API
+fn int stb_vorbis_get_sample_offset(stb_vorbis *f);
+
+// returns the current seek point within the file, or offset from the beginning
+// of the memory buffer. In pushdata mode it returns 0.
+fn unsigned int stb_vorbis_get_file_offset(stb_vorbis *f);
+
+///////////   PUSHDATA API
+
+fn stb_vorbis *stb_vorbis_open_pushdata(
+         const unsigned char * datablock, int datablock_length_in_bytes,
+         int *datablock_memory_consumed_in_bytes,
+         int *error,
+         const stb_vorbis_alloc *alloc_buffer);
+
+fn int stb_vorbis_decode_frame_pushdata(
+         stb_vorbis *f,
+         const unsigned char *datablock, int datablock_length_in_bytes,
+         int *channels,             // place to write number of float * buffers
+         float ***output,           // place to write float ** array of float * buffers
+         int *samples               // place to write number of output samples
+     );
+
+fn void stb_vorbis_flush_pushdata(stb_vorbis *f);
+
+
+//////////   PULLING INPUT API
+
+fn int stb_vorbis_decode_filename(const char *filename, int *channels, int *sample_rate, short **output);
+
+fn int stb_vorbis_decode_memory(const unsigned char *mem, int len, int *channels, int *sample_rate, short **output);
+
+fn stb_vorbis * stb_vorbis_open_memory(const unsigned char *data, int len,
+                                  int *error, const stb_vorbis_alloc *alloc_buffer);
+
+fn stb_vorbis * stb_vorbis_open_filename(const char *filename,
+                                  int *error, const stb_vorbis_alloc *alloc_buffer);
+
+fn stb_vorbis * stb_vorbis_open_file(FILE *f, int close_handle_on_close,
+                                  int *error, const stb_vorbis_alloc *alloc_buffer);
+
+fn stb_vorbis * stb_vorbis_open_file_section(FILE *f, int close_handle_on_close,
+                int *error, const stb_vorbis_alloc *alloc_buffer, unsigned int len);
+
+fn int stb_vorbis_seek_frame(stb_vorbis *f, unsigned int sample_number);
+fn int stb_vorbis_seek(stb_vorbis *f, unsigned int sample_number);
+
+fn int stb_vorbis_seek_start(stb_vorbis *f);
+
+fn unsigned int stb_vorbis_stream_length_in_samples(stb_vorbis *f);
+fn float        stb_vorbis_stream_length_in_seconds(stb_vorbis *f);
+
+fn int stb_vorbis_get_frame_float(stb_vorbis *f, int *channels, float ***output);
+
+fn int stb_vorbis_get_frame_short_interleaved(stb_vorbis *f, int num_c, short *buffer, int num_shorts);
+fn int stb_vorbis_get_frame_short            (stb_vorbis *f, int num_c, short **buffer, int num_samples);
+
+fn int stb_vorbis_get_samples_float_interleaved(stb_vorbis *f, int channels, float *buffer, int num_floats);
+fn int stb_vorbis_get_samples_float(stb_vorbis *f, int channels, float **buffer, int num_samples);
+
+fn int stb_vorbis_get_samples_short_interleaved(stb_vorbis *f, int channels, short *buffer, int num_shorts);
+fn int stb_vorbis_get_samples_short(stb_vorbis *f, int channels, short **buffer, int num_samples);
+
+////////   ERROR CODES
+
+using STBVorbisError = enum
+{
+   VORBIS__no_error,
+
+   VORBIS_need_more_data=1,             // not a real error
+
+   VORBIS_invalid_api_mixing,           // can't mix API modes
+   VORBIS_outofmem,                     // not enough memory
+   VORBIS_feature_not_supported,        // uses floor 0
+   VORBIS_too_many_channels,            // STB_VORBIS_MAX_CHANNELS is too small
+   VORBIS_file_open_failure,            // fopen() failed
+   VORBIS_seek_without_length,          // can't seek in unknown-length file
+
+   VORBIS_unexpected_eof=10,            // file is truncated?
+   VORBIS_seek_invalid,                 // seek past EOF
+
+   // decoding errors (corrupt/invalid stream) -- you probably
+   // don't care about the exact details of these
+
+   // vorbis errors:
+   VORBIS_invalid_setup=20,
+   VORBIS_invalid_stream,
+
+   // ogg errors:
+   VORBIS_missing_capture_pattern=30,
+   VORBIS_invalid_stream_structure_version,
+   VORBIS_continued_packet_flag_invalid,
+   VORBIS_incorrect_stream_serial_number,
+   VORBIS_invalid_first_page,
+   VORBIS_bad_packet_type,
+   VORBIS_cant_find_last_page,
+   VORBIS_seek_failed,
+   VORBIS_ogg_skeleton_not_supported
+};

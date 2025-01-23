@@ -1,0 +1,59 @@
+// stb_rect_pack.h
+
+using STBbool = java STBbool;
+
+using stbrp_context = struct stbrp_context;
+using stbrp_node    = struct stbrp_node;
+using stbrp_rect    = struct stbrp_rect;
+
+using stbrp_coord = int;
+
+#define STBRP__MAXVAL  0x7fffffff
+
+fn STBbool stbrp_pack_rects (stbrp_context *context, stbrp_rect *rects, int num_rects);
+
+using stbrp_rect = struct STBRPRect
+{
+   // reserved for your use:
+   int            id;
+
+   // input:
+   stbrp_coord    w, h;
+
+   // output:
+   stbrp_coord    x, y;
+   int            was_packed;  // non-zero if valid packing
+
+}; // 16 bytes, nominally
+
+fn void stbrp_init_target (stbrp_context *context, int width, int height, stbrp_node *nodes, int num_nodes);
+
+fn void stbrp_setup_allow_out_of_mem (stbrp_context *context, int allow_out_of_mem);
+
+fn void stbrp_setup_heuristic (stbrp_context *context, int heuristic);
+
+enum
+{
+   STBRP_HEURISTIC_Skyline_default=0,
+   STBRP_HEURISTIC_Skyline_BL_sortHeight = STBRP_HEURISTIC_Skyline_default,
+   STBRP_HEURISTIC_Skyline_BF_sortHeight
+};
+
+using stbrp_node = struct STBRPNode
+{
+   stbrp_coord  x,y;
+   stbrp_node  *next;
+};
+
+using stbrp_context = struct STBRPContext
+{
+   int width;
+   int height;
+   int align;
+   int init_mode;
+   int heuristic;
+   int num_nodes;
+   stbrp_node *active_head;
+   stbrp_node *free_head;
+   stbrp_node extra[2]; // we allocate two extra nodes so optimal user-node-count is 'width' not 'width+2'
+};

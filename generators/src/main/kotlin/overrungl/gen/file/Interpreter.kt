@@ -41,7 +41,7 @@ internal class Interpreter {
                 statement.body?.joinToString(separator = "\n", transform = ::stringifyStatement)
             )
 
-            is EnumDeclaration -> enums.putAll(statement.enumExpression.nameValues)
+            is EnumDeclaration -> evaluate(statement.enumExpression)
 
             is ExpressionStatement -> evaluate(statement.expression)
 
@@ -111,6 +111,40 @@ internal class Interpreter {
     private fun evaluate(expression: Expression): Any {
         return when (expression) {
             is TypeExpression -> definitionType(expression.components)
+            is IntegerExpression -> {
+                if (expression.radix == 16) return expression.lexeme.substring(2).toInt(16)
+                else expression.lexeme.toInt(expression.radix)
+            }
+
+            is ReferenceExpression -> {
+                val macro = macros[expression.name]
+                if (macro != null) {
+                    return evaluate(macro)
+                }
+                if (enums.containsKey(expression.name)) {
+                    return enums[expression.name]!!
+                }
+                error("symbol not found: ${expression.name}")
+            }
+
+            is EnumExpression -> {
+                val nameValues = mutableListOf<Pair<String, Int>>()
+                var currentValue = 0
+                expression.nameValues.map { (k, v) ->
+                    if (v == null) {
+                        nameValues.add(k to currentValue)
+                        enums[k] = currentValue
+                        currentValue++
+                    } else {
+                        val i = evaluate(v) as Int
+                        nameValues.add(k to i)
+                        enums[k] = i
+                        currentValue = i + 1
+                    }
+                }
+                val enumType = EnumType(nameValues)
+                return enumType
+            }
 
             else -> error(expression)
         }
@@ -120,10 +154,10 @@ internal class Interpreter {
         var previous: Expression? = null
         val originalNameComp = StringBuilder()
         var type: DefinitionType? = null
-        typeComponents.forEach {
-            when (it) {
+        typeComponents.forEach { expression ->
+            when (expression) {
                 ConstExpression -> {
-                    val stringify = stringify(it)
+                    val stringify = stringify(expression)
                     when (previous) {
                         null -> {}
                         ConstExpression,
@@ -138,7 +172,7 @@ internal class Interpreter {
                 }
 
                 PointerExpression -> {
-                    val stringify = stringify(it)
+                    val stringify = stringify(expression)
                     when (previous) {
                         null,
                         PointerExpression,
@@ -155,18 +189,19 @@ internal class Interpreter {
                 }
 
                 is TypeReferenceExpression -> {
-                    val stringify = stringify(it)
+                    val stringify = stringify(expression)
                     when (previous) {
                         null -> {}
                         ConstExpression -> originalNameComp.append(" ")
                         else -> error(previous.toString())
                     }
                     originalNameComp.append(stringify)
-                    type = using.getOrElse(it.name) { findBuiltinType(it.name) } ?: error("unknown type ${it.name}")
+                    type = using.getOrElse(expression.name) { findBuiltinType(expression.name) }
+                        ?: error("unknown type ${expression.name} at ${expression.token}")
                 }
 
                 is StructExpression -> {
-                    val stringify = stringify(it)
+                    val stringify = stringify(expression)
                     when (previous) {
                         null -> {}
                         ConstExpression -> originalNameComp.append(" ")
@@ -175,8 +210,8 @@ internal class Interpreter {
                     originalNameComp.append(stringify)
                     val t = GroupLayoutType(
                         stringify,
-                        it.opaque,
-                        it.members.map(::convertTypeNamePair),
+                        expression.opaque,
+                        expression.members.map(::convertTypeNamePair),
                         GroupTypeKind.STRUCT
                     )
                     type = t
@@ -184,7 +219,7 @@ internal class Interpreter {
                 }
 
                 is UpcallExpression -> {
-                    val stringify = stringify(it)
+                    val stringify = stringify(expression)
                     when (previous) {
                         null -> {}
                         ConstExpression -> originalNameComp.append(" ")
@@ -193,25 +228,22 @@ internal class Interpreter {
                     originalNameComp.append(stringify)
                     val upcallType = UpcallType(
                         stringify,
-                        it.name.lexeme,
-                        evaluate(it.type) as DefinitionType,
-                        it.parameters.map(::convertTypeNamePair)
+                        expression.name.lexeme,
+                        evaluate(expression.type) as DefinitionType,
+                        expression.parameters.map(::convertTypeNamePair)
                     )
                     type = upcallType
                     upcalls[stringify] = upcallType
                 }
 
-                is JavaTypeExpression -> type = registeredType[it.name.lexeme] ?: error("unknown type at ${it.name}")
+                is JavaTypeExpression -> type =
+                    registeredType[expression.name.lexeme] ?: error("unknown type at ${expression.name}")
 
-                is EnumExpression -> {
-                    val enumType = EnumType(it.nameValues)
-                    type = enumType
-                    enums.putAll(it.nameValues)
-                }
+                is EnumExpression -> type = evaluate(expression) as DefinitionType
 
-                else -> error(it)
+                else -> error(expression)
             }
-            previous = it
+            previous = expression
         }
         return type!!
     }

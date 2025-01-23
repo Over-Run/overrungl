@@ -335,10 +335,10 @@ public final class GLFWNative {
     /// ```
     /// GLXContext glfwGetGLXContext(GLFWwindow* window);
     /// ```
-    public static MemorySegment glfwGetGLXContext(MemorySegment window) {
+    public static MemorySegment glfwGetGLXContext(SegmentAllocator __allocator, MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXContext");
         try {
-            return (MemorySegment) Handles.MH_glfwGetGLXContext.invokeExact(Handles.get().PFN_glfwGetGLXContext, window);
+            return (MemorySegment) Handles.MH_glfwGetGLXContext.invokeExact(Handles.get().PFN_glfwGetGLXContext, __allocator, window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXContext", e); }
     }
 

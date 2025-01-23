@@ -126,7 +126,7 @@ internal class Lexer(private val source: String) {
     private fun scanNumber() {
         var hex = false
         var floatingPoint = false
-        if (previous() == '0'.code && (peek() == 'x'.code || peek() == 'X'.code) && isDigit(peekNext())) {
+        if (previous() == '0'.code && (peek() == 'x'.code || peek() == 'X'.code) && isHexDigit(peekNext())) {
             advance()
             hex = true
         }

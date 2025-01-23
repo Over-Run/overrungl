@@ -17,13 +17,9 @@
 package overrungl.openal
 
 import overrungl.gen.*
+import overrungl.gen.file.*
 
 val ALboolean = jboolean c "ALboolean"
-val ALchar = char c "ALchar"
-val ALbyte = char c "ALbyte"
-val ALubyte = uchar c "ALubyte"
-val ALshort = short c "ALshort"
-val ALushort = ushort c "ALushort"
 val ALint = int c "ALint"
 val ALuint = uint c "ALuint"
 val ALsizei = int c "ALsizei"
@@ -57,49 +53,62 @@ val ALCdevice_ptr = address c "ALCdevice *"
 val ALCcontext_ptr = address c "ALCcontext *"
 
 val ALCboolean = jboolean c "ALCboolean"
-val ALCchar = char c "ALCchar"
-val ALCbyte = char c "ALCbyte"
-val ALCubyte = uchar c "ALCubyte"
-val ALCshort = short c "ALCshort"
-val ALCushort = ushort c "ALCushort"
-val ALCint = int c "ALCint"
-val ALCuint = uint c "ALCuint"
 val ALCsizei = int c "ALCsizei"
 val ALCenum = int c "ALCenum"
-val ALCfloat = float c "ALCfloat"
-val ALCdouble = double c "ALCdouble"
 
 val ALCvoid_ptr = address c "ALCvoid *"
-val ALCint_ptr = jint_array c "ALCint *"
 
-val const_ALCvoid_ptr = address c "const ALCvoid *"
 val const_ALCchar_ptr = string_u8 c "const ALCchar*"
 val const_ALCint_ptr = address c "const ALCint *"
 val const_ALCenum_ptr = address c "const ALCenum *"
 
 val ALint64SOFT = jlong c "ALint64SOFT"
-val ALuint64SOFT = jlong c "ALuint64SOFT"
 val ALint64SOFT_ptr = address c "ALint64SOFT *"
-val ALuint64SOFT_ptr = address c "ALuint64SOFT *"
 val const_ALint64SOFT_ptr = address c "const ALint64SOFT *"
-val const_ALuint64SOFT_ptr = address c "const ALuint64SOFT *"
 
-val ALCint64SOFT = jlong c "ALCint64SOFT"
-val ALCuint64SOFT = jlong c "ALCuint64SOFT"
 val ALCint64SOFT_ptr = address c "ALCint64SOFT *"
-val ALCuint64SOFT_ptr = address c "ALCuint64SOFT *"
-val const_ALCint64SOFT_ptr = address c "const ALCint64SOFT *"
-val const_ALCuint64SOFT_ptr = address c "const ALCuint64SOFT *"
 
 
 const val alPackage = "overrungl.openal"
 const val alLookup = "ALInternal.lookup()"
 
 fun main() {
-    AL()
-    ALC()
     alext()
     efx()
+
+    registerDefType("ALboolean", c_char)
+    registerDefType("ALchar", c_char)
+    registerDefType("ALbyte", c_signed_char)
+    registerDefType("ALubyte", c_unsigned_char)
+    registerDefType("ALshort", c_short)
+    registerDefType("ALushort", c_unsigned_short)
+    registerDefType("ALint", c_int)
+    registerDefType("ALuint", c_unsigned_int)
+    registerDefType("ALsizei", c_int)
+    registerDefType("ALenum", c_int)
+    registerDefType("ALfloat", c_float)
+    registerDefType("ALdouble", c_double)
+    registerDefType("ALvoid", VoidType)
+
+    registerDefType("ALCboolean", c_char)
+    registerDefType("ALCchar", c_char)
+    registerDefType("ALCbyte", c_signed_char)
+    registerDefType("ALCubyte", c_unsigned_char)
+    registerDefType("ALCshort", c_short)
+    registerDefType("ALCushort", c_unsigned_short)
+    registerDefType("ALCint", c_int)
+    registerDefType("ALCuint", c_unsigned_int)
+    registerDefType("ALCsizei", c_int)
+    registerDefType("ALCenum", c_int)
+    registerDefType("ALCfloat", c_float)
+    registerDefType("ALCdouble", c_double)
+    registerDefType("ALCvoid", VoidType)
+
+    registerDefType("_alsoft_int64_t", int64_t)
+    registerDefType("_alsoft_uint64_t", overrungl.gen.file.uint64_t)
+
+    DefinitionFile("al.gen").compile(alPackage, "AL", alLookup)
+    DefinitionFile("alc.gen").compile(alPackage, "ALC", alLookup)
 
     writeNativeImageRegistration(alPackage)
 }

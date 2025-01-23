@@ -733,7 +733,10 @@ class DefinitionFile(filename: String) {
             )
             sb.appendLine(
                 "    public static ${func.returnType.javaType} ${func.name}(${
-                    func.parameters.joinToString { p -> "${p.type.javaType} ${p.name}" }
+                    if (func.requireAllocator) "SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
+                    else ""
+                }${
+                    func.parameters.joinToString { p -> "${if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType} ${p.name}" }
                 }) {")
             if (func.body != null) {
                 sb.appendLine(func.body.prependIndent("        "))
@@ -754,6 +757,9 @@ class DefinitionFile(filename: String) {
                         }
                     }
                     append("Handles.MH_$entrypoint.${if (hasDynamicType) "invoke" else "invokeExact"}(Handles.get().PFN_$entrypoint")
+                    if (func.requireAllocator) {
+                        append(", __allocator")
+                    }
                     func.parameters.forEach { p ->
                         append(", ")
                         append(p.type.processor.processDowncall(p.name))

@@ -16,28 +16,24 @@
 
 package overrungl.stb
 
-import overrungl.gen.address
-import overrungl.gen.jboolean
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.file.int_boolean
+import overrungl.gen.file.registerDefType
 import overrungl.gen.writeNativeImageRegistration
 
 const val stbPackage = "overrungl.stb"
 const val stbLookup = "STBInternal.lookup()"
 
-val boolean_int = jboolean c "int"
-val uchar_ptr = address c "unsigned char *"
-val const_uchar_ptr = address c "const unsigned char *"
-
-val int_ptr_ptr = address c "int**"
-
 fun main() {
-    STBEasyFont()
-    STBImage()
-    STBImageResize2()
-    STBImageWrite()
-    STBPerlin()
-    STBRectPack()
-    STBTruetype()
-    STBVorbis()
+    registerDefType("STBbool", int_boolean)
+    DefinitionFile("stb_easy_font.gen").compile(stbPackage, "STBEasyFont", stbLookup)
+    DefinitionFile("stb_image.gen").compile(stbPackage, "STBImage", stbLookup)
+    DefinitionFile("stb_image_resize2.gen").compile(stbPackage, "STBImageResize2", stbLookup)
+    DefinitionFile("stb_image_write.gen").compile(stbPackage, "STBImageWrite", stbLookup)
+    DefinitionFile("stb_perlin.gen").compile(stbPackage, "STBPerlin", stbLookup)
+    DefinitionFile("stb_rect_pack.gen").compile(stbPackage, "STBRectPack", stbLookup)
+    DefinitionFile("stb_truetype.gen").compile(stbPackage, "STBTruetype", stbLookup)
+    DefinitionFile("stb_vorbis.gen").compile(stbPackage, "STBVorbis", stbLookup)
 
     writeNativeImageRegistration(stbPackage)
 }

@@ -15,39 +15,44 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature:
+/// ```
+/// typedef float (*STBIRKernelCallback)(float x, float scale, void* user_data);
+/// ```
 @FunctionalInterface
 public interface STBIRKernelCallback extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(STBIRKernelCallback.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(STBIRKernelCallback.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `STBIRKernelCallback`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, STBIRKernelCallback func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("float") float invoke(@CType("float") float x, @CType("float") float scale, @CType("void*") MemorySegment user_data);
+    float invoke(float x, float scale, MemorySegment user_data);
+
+    /// The target method of the upcall.
+    default float invoke_(float x, float scale, MemorySegment user_data) {
+        return invoke(x, scale, user_data);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("float") float invoke(MemorySegment stub, @CType("float") float x, @CType("float") float scale, @CType("void*") MemorySegment user_data) {
-        try { return (float) HANDLE.invokeExact(stub, x, scale, user_data); }
-        catch (Throwable e) { throw new RuntimeException("error in STBIRKernelCallback::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static STBIRKernelCallback wrap(MemorySegment stub) {
-        return (x, scale, user_data) ->
-            invoke(stub, x, scale, user_data);
-    }
 }

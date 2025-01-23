@@ -234,6 +234,7 @@ val c_long = dynamic(
 val c_long_long = value("long long", "long", LONG_LAYOUT, 'J')
 val c_float = value("float", "float", FLOAT_LAYOUT, 'F')
 val c_double = value("double", "double", DOUBLE_LAYOUT, 'D')
+val c_signed_char = value("signed char", "byte", BYTE_LAYOUT, 'B')
 val c_unsigned_char = value("unsigned char", "byte", BYTE_LAYOUT, 'B')
 val c_unsigned_short = value("unsigned short", "short", SHORT_LAYOUT, 'S')
 val c_unsigned_int = value("unsigned int", "int", INT_LAYOUT, 'I')
@@ -285,3 +286,30 @@ val wchar_t = dynamic(
 fun findBuiltinType(name: String): DefinitionType? {
     return builtinType[name]
 }
+
+val int_boolean = CustomDefType(
+    "int",
+    "boolean",
+    c_int.memoryLayout,
+    object : DefTypeProcessor {
+        override fun processDowncall(originalValue: String): String =
+            "(($originalValue) ? 1 : 0)"
+
+        override fun processUpcall(originalValue: String): String {
+            return "(($originalValue) != 0)"
+        }
+    }
+)
+val char_boolean = CustomDefType(
+    "char",
+    "boolean",
+    c_char.memoryLayout,
+    object : DefTypeProcessor {
+        override fun processDowncall(originalValue: String): String =
+            "(($originalValue) ? (byte)1 : (byte)0)"
+
+        override fun processUpcall(originalValue: String): String {
+            return "(($originalValue) != 0)"
+        }
+    }
+)

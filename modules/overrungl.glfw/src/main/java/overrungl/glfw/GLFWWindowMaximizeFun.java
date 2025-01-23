@@ -49,7 +49,7 @@ public interface GLFWWindowMaximizeFun extends Upcall {
 
     /// The target method of the upcall.
     default void invoke_(MemorySegment window, int maximized) {
-        invoke(window, ((maximized) != GLFW.GLFW_FALSE));
+        invoke(window, ((maximized) != 0));
     }
 
     @Override

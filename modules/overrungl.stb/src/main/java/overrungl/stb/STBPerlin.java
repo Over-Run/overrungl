@@ -16,7 +16,6 @@
 
 package overrungl.stb;
 
-import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -78,37 +77,61 @@ public final class STBPerlin {
         }
     }
 
-    public static @CType("float") float stb_perlin_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap);
+    /// ```
+    public static float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap) {
         try {
             return (float) Handles.MH_stb_perlin_noise3.invokeExact(Handles.get().PFN_stb_perlin_noise3, x, y, z, x_wrap, y_wrap, z_wrap);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
     }
 
-    public static @CType("float") float stb_perlin_noise3_seed(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap, @CType("int") int seed) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed);
+    /// ```
+    public static float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed) {
         try {
             return (float) Handles.MH_stb_perlin_noise3_seed.invokeExact(Handles.get().PFN_stb_perlin_noise3_seed, x, y, z, x_wrap, y_wrap, z_wrap, seed);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
     }
 
-    public static @CType("float") float stb_perlin_ridge_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("float") float offset, @CType("int") int octaves) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
+    /// ```
+    public static float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves) {
         try {
             return (float) Handles.MH_stb_perlin_ridge_noise3.invokeExact(Handles.get().PFN_stb_perlin_ridge_noise3, x, y, z, lacunarity, gain, offset, octaves);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
     }
 
-    public static @CType("float") float stb_perlin_fbm_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("int") int octaves) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
+    /// ```
+    public static float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
         try {
             return (float) Handles.MH_stb_perlin_fbm_noise3.invokeExact(Handles.get().PFN_stb_perlin_fbm_noise3, x, y, z, lacunarity, gain, octaves);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
     }
 
-    public static @CType("float") float stb_perlin_turbulence_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("int") int octaves) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
+    /// ```
+    public static float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
         try {
             return (float) Handles.MH_stb_perlin_turbulence_noise3.invokeExact(Handles.get().PFN_stb_perlin_turbulence_noise3, x, y, z, lacunarity, gain, octaves);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
     }
 
-    public static @CType("float") float stb_perlin_noise3_wrap_nonpow2(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap, @CType("unsigned char") byte seed) {
+    /// Signature:
+    /// ```
+    /// float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, unsigned char seed);
+    /// ```
+    public static float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, byte seed) {
         try {
             return (float) Handles.MH_stb_perlin_noise3_wrap_nonpow2.invokeExact(Handles.get().PFN_stb_perlin_noise3_wrap_nonpow2, x, y, z, x_wrap, y_wrap, z_wrap, seed);
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_wrap_nonpow2", e); }

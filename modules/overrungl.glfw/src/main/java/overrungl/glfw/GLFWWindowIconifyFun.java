@@ -49,7 +49,7 @@ public interface GLFWWindowIconifyFun extends Upcall {
 
     /// The target method of the upcall.
     default void invoke_(MemorySegment window, int iconified) {
-        invoke(window, ((iconified) != GLFW.GLFW_FALSE));
+        invoke(window, ((iconified) != 0));
     }
 
     @Override

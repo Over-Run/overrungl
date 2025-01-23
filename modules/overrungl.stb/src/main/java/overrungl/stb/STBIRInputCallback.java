@@ -15,39 +15,44 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature:
+/// ```
+/// typedef void const * (*STBIRInputCallback)(void* optional_output, void const * input_ptr, int num_pixels, int x, int y, void* context);
+/// ```
 @FunctionalInterface
 public interface STBIRInputCallback extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(STBIRInputCallback.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(STBIRInputCallback.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `STBIRInputCallback`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, STBIRInputCallback func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("void const *") MemorySegment invoke(@CType("void*") MemorySegment optional_output, @CType("void const *") MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") MemorySegment context);
+    MemorySegment invoke(MemorySegment optional_output, MemorySegment input_ptr, int num_pixels, int x, int y, MemorySegment context);
+
+    /// The target method of the upcall.
+    default MemorySegment invoke_(MemorySegment optional_output, MemorySegment input_ptr, int num_pixels, int x, int y, MemorySegment context) {
+        return invoke(optional_output, input_ptr, num_pixels, x, y, context);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("void const *") MemorySegment invoke(MemorySegment stub, @CType("void*") MemorySegment optional_output, @CType("void const *") MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") MemorySegment context) {
-        try { return (MemorySegment) HANDLE.invokeExact(stub, optional_output, input_ptr, num_pixels, x, y, context); }
-        catch (Throwable e) { throw new RuntimeException("error in STBIRInputCallback::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static STBIRInputCallback wrap(MemorySegment stub) {
-        return (optional_output, input_ptr, num_pixels, x, y, context) ->
-            invoke(stub, optional_output, input_ptr, num_pixels, x, y, context);
-    }
 }

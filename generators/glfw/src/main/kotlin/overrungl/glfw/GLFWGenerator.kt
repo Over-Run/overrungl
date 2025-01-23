@@ -16,28 +16,16 @@
 
 package overrungl.glfw
 
-import overrungl.gen.file.*
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.file.int_boolean
+import overrungl.gen.file.registerDefType
 import overrungl.gen.writeNativeImageRegistration
 
 const val glfwPackage = "overrungl.glfw"
 const val glfwLookup = "GLFWInternal.lookup()"
 
 fun main() {
-    registerDefType(
-        "GLFWboolean",
-        CustomDefType(
-            "int",
-            "boolean",
-            c_int.memoryLayout,
-            object : DefTypeProcessor {
-                override fun processDowncall(originalValue: String): String =
-                    "(($originalValue) ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE)"
-
-                override fun processUpcall(originalValue: String): String {
-                    return "(($originalValue) != GLFW.GLFW_FALSE)"
-                }
-            }
-        ))
+    registerDefType("GLFWboolean", int_boolean)
     DefinitionFile("glfw3.gen").compile(glfwPackage, "GLFW", glfwLookup)
     DefinitionFile("glfw3native.gen").compile(glfwPackage, "GLFWNative", glfwLookup)
 

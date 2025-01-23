@@ -49,7 +49,7 @@ public interface GLFWCursorEnterFun extends Upcall {
 
     /// The target method of the upcall.
     default void invoke_(MemorySegment window, int entered) {
-        invoke(window, ((entered) != GLFW.GLFW_FALSE));
+        invoke(window, ((entered) != 0));
     }
 
     @Override

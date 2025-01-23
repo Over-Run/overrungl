@@ -27,4 +27,7 @@ data class DefinitionFunction(
     val optional: Boolean,
     val entrypoint: String,
     val body: String?
-)
+) {
+    val requireAllocator: Boolean
+        get() = returnType is GroupLayoutType
+}

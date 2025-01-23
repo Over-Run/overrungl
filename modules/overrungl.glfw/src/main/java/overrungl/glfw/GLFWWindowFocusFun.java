@@ -49,7 +49,7 @@ public interface GLFWWindowFocusFun extends Upcall {
 
     /// The target method of the upcall.
     default void invoke_(MemorySegment window, int focused) {
-        invoke(window, ((focused) != GLFW.GLFW_FALSE));
+        invoke(window, ((focused) != 0));
     }
 
     @Override

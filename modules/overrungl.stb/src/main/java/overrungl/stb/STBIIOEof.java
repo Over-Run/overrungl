@@ -15,14 +15,19 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// Signature:
+/// ```
+/// typedef int (*STBIIOEof)(void* user);
+/// ```
 @FunctionalInterface
 public interface STBIIOEof extends Upcall {
     /// The function descriptor.
@@ -30,29 +35,24 @@ public interface STBIIOEof extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(STBIIOEof.class, "invoke_", DESCRIPTOR);
 
-    /// The interface target method of the upcall.
-    boolean invoke(@CType("void*") MemorySegment user);
+    /// Allocates `STBIIOEof`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, STBIIOEof func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    default @CType("int") int invoke_(@CType("void*") MemorySegment user) {
-        return invoke(user) ? 1 : 0;
+    boolean invoke(MemorySegment user);
+
+    /// The target method of the upcall.
+    default int invoke_(MemorySegment user) {
+        return ((invoke(user)) ? 1 : 0);
     }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("int") int invoke(MemorySegment stub, @CType("void*") MemorySegment user) {
-        try { return (int) HANDLE.invokeExact(stub, user); }
-        catch (Throwable e) { throw new RuntimeException("error in STBIIOEof::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static STBIIOEof wrap(MemorySegment stub) {
-        return (user) ->
-            invoke(stub, user) != 0;
-    }
 }

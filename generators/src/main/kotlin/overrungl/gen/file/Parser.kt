@@ -153,7 +153,7 @@ internal class Parser(private val tokens: List<Token>) {
         return ExpressionStatement(expression())
     }
 
-    private fun returnStatement() :Statement{
+    private fun returnStatement(): Statement {
         val value = expression()
         consume("expect ';'", TokenType.SEMICOLON)
         return ReturnStatement(value)
@@ -188,7 +188,7 @@ internal class Parser(private val tokens: List<Token>) {
                 sb.append(previous()!!.lexeme)
                 i++
             }
-            return TypeReferenceExpression(sb.toString())
+            return TypeReferenceExpression(sb.toString(), previous()!!)
         } else if (match(TokenType.STRUCT)) {
             return structExpression()
         } else if (match(TokenType.UPCALL)) {
@@ -211,32 +211,37 @@ internal class Parser(private val tokens: List<Token>) {
         if (match(TokenType.LEFT_BRACE)) {
             opaque = false
             while (!isAtEnd() && !check(TokenType.RIGHT_BRACE)) {
-                // name
+                // type
                 val previous = current
-                while (!isAtEnd() && !check(TokenType.LEFT_BRACKET) && !check(TokenType.SEMICOLON) && !check(TokenType.LEFT_BRACE)) {
+                while (!isAtEnd()
+                    && !check(TokenType.LEFT_BRACKET)
+                    && !check(TokenType.SEMICOLON)
+                    && !check(TokenType.COMMA)) {
                     advance()
                 }
                 val memberNameIndex = current - 1
                 current = previous
                 val memberType = typeExpression(memberNameIndex)
-                val memberName = consume("expect identifier", TokenType.IDENTIFIER)
-                val dims = mutableListOf<Long>()
-                while (match(TokenType.LEFT_BRACKET)) {
-                    if (match(TokenType.DEC_INTEGER, TokenType.HEX_INTEGER)) {
-                        val dim = previous()!!
-                        when (dim.type) {
-                            TokenType.DEC_INTEGER -> dims.add(dim.lexeme.toLong())
-                            TokenType.HEX_INTEGER -> dims.add(dim.lexeme.toLong(16))
-                            else -> error(dim)
+                do {
+                    val memberName = consume("expect identifier", TokenType.IDENTIFIER)
+                    val dims = mutableListOf<Long>()
+                    while (match(TokenType.LEFT_BRACKET)) {
+                        if (match(TokenType.DEC_INTEGER, TokenType.HEX_INTEGER)) {
+                            val dim = previous()!!
+                            when (dim.type) {
+                                TokenType.DEC_INTEGER -> dims.add(dim.lexeme.toLong())
+                                TokenType.HEX_INTEGER -> dims.add(dim.lexeme.toLong(16))
+                                else -> error(dim)
+                            }
+                            consume("expect ']'", TokenType.RIGHT_BRACKET)
+                        } else {
+                            consume("expect ']'", TokenType.RIGHT_BRACKET)
+                            ((memberType as TypeExpression).components as MutableList).add(PointerExpression)
                         }
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                    } else {
-                        consume("expect ']'", TokenType.RIGHT_BRACKET)
-                        ((memberType as TypeExpression).components as MutableList).add(PointerExpression)
                     }
-                }
+                    members.add(TypeNamePair(memberType, memberName, dims))
+                } while (match(TokenType.COMMA))
                 consume("expect ';'", TokenType.SEMICOLON)
-                members.add(TypeNamePair(memberType, memberName, dims))
             }
             consume("expect '}'", TokenType.RIGHT_BRACE)
         }
@@ -259,22 +264,14 @@ internal class Parser(private val tokens: List<Token>) {
 
     private fun enumExpression(): Expression {
         consume("expect '{'", TokenType.LEFT_BRACE)
-        val pairs = mutableListOf<Pair<String, Int>>()
-        var currentValue = 0
+        val pairs = mutableListOf<Pair<String, Expression?>>()
         while (!isAtEnd() && !check(TokenType.RIGHT_BRACE)) {
             val name = consume("expect identifier", TokenType.IDENTIFIER)
             if (match(TokenType.EQUAL)) {
-                currentValue = if (match(TokenType.DEC_INTEGER)) {
-                    previous()!!.lexeme.toInt()
-                } else if (match(TokenType.HEX_INTEGER)) {
-                    previous()!!.lexeme.toInt(16)
-                } else {
-                    reportError("expect integer")
-                }
-                pairs.add(name.lexeme to currentValue)
+                val expression = expression()
+                pairs.add(name.lexeme to expression)
             } else {
-                pairs.add(name.lexeme to currentValue)
-                currentValue++
+                pairs.add(name.lexeme to null)
             }
             if (check(TokenType.COMMA)) {
                 advance()
@@ -380,7 +377,7 @@ internal data class BinaryExpression(val left: Expression, val operator: Token, 
 internal data class ReferenceExpression(val name: String) : Expression
 internal data object ConstExpression : Expression
 internal data object PointerExpression : Expression
-internal data class TypeReferenceExpression(val name: String) : Expression
+internal data class TypeReferenceExpression(val name: String, val token: Token) : Expression
 internal data class TypeExpression(val components: List<Expression>) : Expression
 
 internal data class TypeNamePair(val type: Expression, val name: Token, val dimensions: List<Long>)
@@ -393,5 +390,5 @@ internal data class UpcallExpression(
 
 
 internal data class JavaTypeExpression(val name: Token) : Expression
-internal data class EnumExpression(val nameValues: List<Pair<String, Int>>) : Expression
+internal data class EnumExpression(val nameValues: List<Pair<String, Expression?>>) : Expression
 internal data class FunctionCallExpression(val callee: Expression, val arguments: List<Expression>) : Expression

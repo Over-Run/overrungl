@@ -1,0 +1,7 @@
+// stb_easy_font.h
+
+fn float stb_easy_font_get_spacing();
+fn void stb_easy_font_spacing(float spacing);
+fn int stb_easy_font_print(float x, float y, char *text, unsigned char color[4], void *vertex_buffer, int vbuf_size);
+fn int stb_easy_font_width(char *text);
+fn int stb_easy_font_height(char *text);

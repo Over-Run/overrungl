@@ -1,0 +1,153 @@
+// stb_image_resize2.h
+
+using STBbool = java STBbool;
+
+using stbir_uint8  = uint8_t;
+using stbir_uint16 = uint16_t;
+using stbir_uint32 = uint32_t;
+using stbir_uint64 = uint64_t;
+
+using stbir_pixel_layout = enum
+{
+  STBIR_1CHANNEL = 1,
+  STBIR_2CHANNEL = 2,
+  STBIR_RGB      = 3,               // 3-chan, with order specified (for channel flipping)
+  STBIR_BGR      = 0,               // 3-chan, with order specified (for channel flipping)
+  STBIR_4CHANNEL = 5,
+
+  STBIR_RGBA = 4,                   // alpha formats, where alpha is NOT premultiplied into color channels
+  STBIR_BGRA = 6,
+  STBIR_ARGB = 7,
+  STBIR_ABGR = 8,
+  STBIR_RA   = 9,
+  STBIR_AR   = 10,
+
+  STBIR_RGBA_PM = 11,               // alpha formats, where alpha is premultiplied into color channels
+  STBIR_BGRA_PM = 12,
+  STBIR_ARGB_PM = 13,
+  STBIR_ABGR_PM = 14,
+  STBIR_RA_PM   = 15,
+  STBIR_AR_PM   = 16,
+
+  STBIR_RGBA_NO_AW = 11,            // alpha formats, where NO alpha weighting is applied at all!
+  STBIR_BGRA_NO_AW = 12,            //   these are just synonyms for the _PM flags (which also do
+  STBIR_ARGB_NO_AW = 13,            //   no alpha weighting). These names just make it more clear
+  STBIR_ABGR_NO_AW = 14,            //   for some folks).
+  STBIR_RA_NO_AW   = 15,
+  STBIR_AR_NO_AW   = 16,
+
+};
+
+fn unsigned char * stbir_resize_uint8_srgb( const unsigned char *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
+                                                  unsigned char *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
+                                                  stbir_pixel_layout pixel_type );
+
+fn unsigned char * stbir_resize_uint8_linear( const unsigned char *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
+                                                    unsigned char *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
+                                                    stbir_pixel_layout pixel_type );
+
+fn float * stbir_resize_float_linear( const float *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
+                                            float *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
+                                            stbir_pixel_layout pixel_type );
+
+using stbir_edge = enum
+{
+  STBIR_EDGE_CLAMP   = 0,
+  STBIR_EDGE_REFLECT = 1,
+  STBIR_EDGE_WRAP    = 2,  // this edge mode is slower and uses more memory
+  STBIR_EDGE_ZERO    = 3,
+};
+
+using stbir_filter = enum
+{
+  STBIR_FILTER_DEFAULT      = 0,  // use same filter type that easy-to-use API chooses
+  STBIR_FILTER_BOX          = 1,  // A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios
+  STBIR_FILTER_TRIANGLE     = 2,  // On upsampling, produces same results as bilinear texture filtering
+  STBIR_FILTER_CUBICBSPLINE = 3,  // The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque
+  STBIR_FILTER_CATMULLROM   = 4,  // An interpolating cubic spline
+  STBIR_FILTER_MITCHELL     = 5,  // Mitchell-Netrevalli filter with B=1/3, C=1/3
+  STBIR_FILTER_POINT_SAMPLE = 6,  // Simple point sampling
+  STBIR_FILTER_OTHER        = 7,  // User callback specified
+};
+
+using stbir_datatype = enum
+{
+  STBIR_TYPE_UINT8            = 0,
+  STBIR_TYPE_UINT8_SRGB       = 1,
+  STBIR_TYPE_UINT8_SRGB_ALPHA = 2,  // alpha channel, when present, should also be SRGB (this is very unusual)
+  STBIR_TYPE_UINT16           = 3,
+  STBIR_TYPE_FLOAT            = 4,
+  STBIR_TYPE_HALF_FLOAT       = 5
+};
+
+fn void *  stbir_resize( const void *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
+                               void *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
+                         stbir_pixel_layout pixel_layout, stbir_datatype data_type,
+                         stbir_edge edge, stbir_filter filter );
+
+using stbir_input_callback = upcall void const * STBIRInputCallback( void * optional_output, void const * input_ptr, int num_pixels, int x, int y, void * context );
+using stbir_output_callback = upcall void STBIROutputCallback( void const * output_ptr, int num_pixels, int y, void * context );
+using stbir__kernel_callback = upcall float STBIRKernelCallback( float x, float scale, void * user_data );
+using stbir__support_callback = upcall float STBIRSupportCallback( float scale, void * user_data );
+
+using stbir__info = struct stbir__info;
+
+using STBIR_RESIZE = struct STBIR_RESIZE  // use the stbir_resize_init and stbir_override functions to set these values for future compatibility
+{
+  void * user_data;
+  void const * input_pixels;
+  int input_w, input_h;
+  double input_s0, input_t0, input_s1, input_t1;
+  stbir_input_callback * input_cb;
+  void * output_pixels;
+  int output_w, output_h;
+  int output_subx, output_suby, output_subw, output_subh;
+  stbir_output_callback * output_cb;
+  int input_stride_in_bytes;
+  int output_stride_in_bytes;
+  int splits;
+  int fast_alpha;
+  int needs_rebuild;
+  int called_alloc;
+  stbir_pixel_layout input_pixel_layout_public;
+  stbir_pixel_layout output_pixel_layout_public;
+  stbir_datatype input_data_type;
+  stbir_datatype output_data_type;
+  stbir_filter horizontal_filter, vertical_filter;
+  stbir_edge horizontal_edge, vertical_edge;
+  stbir__kernel_callback * horizontal_filter_kernel; stbir__support_callback * horizontal_filter_support;
+  stbir__kernel_callback * vertical_filter_kernel; stbir__support_callback * vertical_filter_support;
+  stbir__info * samplers;
+};
+
+fn void stbir_resize_init( STBIR_RESIZE * resize,
+                           const void *input_pixels,  int input_w,  int input_h, int input_stride_in_bytes, // stride can be zero
+                                 void *output_pixels, int output_w, int output_h, int output_stride_in_bytes, // stride can be zero
+                           stbir_pixel_layout pixel_layout, stbir_datatype data_type );
+
+fn void stbir_set_datatypes( STBIR_RESIZE * resize, stbir_datatype input_type, stbir_datatype output_type );
+fn void stbir_set_pixel_callbacks( STBIR_RESIZE * resize, stbir_input_callback * input_cb, stbir_output_callback * output_cb );   // no callbacks by default
+fn void stbir_set_user_data( STBIR_RESIZE * resize, void * user_data );                                               // pass back STBIR_RESIZE* by default
+fn void stbir_set_buffer_ptrs( STBIR_RESIZE * resize, const void * input_pixels, int input_stride_in_bytes, void * output_pixels, int output_stride_in_bytes );
+
+fn STBbool stbir_set_pixel_layouts( STBIR_RESIZE * resize, stbir_pixel_layout input_pixel_layout, stbir_pixel_layout output_pixel_layout );  // sets new buffer layouts
+fn STBbool stbir_set_edgemodes( STBIR_RESIZE * resize, stbir_edge horizontal_edge, stbir_edge vertical_edge );       // CLAMP by default
+
+fn STBbool stbir_set_filters( STBIR_RESIZE * resize, stbir_filter horizontal_filter, stbir_filter vertical_filter ); // STBIR_DEFAULT_FILTER_UPSAMPLE/DOWNSAMPLE by default
+fn STBbool stbir_set_filter_callbacks( STBIR_RESIZE * resize, stbir__kernel_callback * horizontal_filter, stbir__support_callback * horizontal_support, stbir__kernel_callback * vertical_filter, stbir__support_callback * vertical_support );
+
+fn STBbool stbir_set_pixel_subrect( STBIR_RESIZE * resize, int subx, int suby, int subw, int subh );        // sets both sub-regions (full regions by default)
+fn STBbool stbir_set_input_subrect( STBIR_RESIZE * resize, double s0, double t0, double s1, double t1 );    // sets input sub-region (full region by default)
+fn STBbool stbir_set_output_pixel_subrect( STBIR_RESIZE * resize, int subx, int suby, int subw, int subh ); // sets output sub-region (full region by default)
+
+fn STBbool stbir_set_non_pm_alpha_speed_over_quality( STBIR_RESIZE * resize, int non_pma_alpha_speed_over_quality );
+
+fn STBbool stbir_build_samplers( STBIR_RESIZE * resize );
+
+fn void stbir_free_samplers( STBIR_RESIZE * resize );
+
+fn STBbool stbir_resize_extended( STBIR_RESIZE * resize );
+
+fn STBbool stbir_build_samplers_with_splits( STBIR_RESIZE * resize, int try_splits );
+
+fn STBbool stbir_resize_extended_split( STBIR_RESIZE * resize, int split_start, int split_count );
