@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -44,10 +43,13 @@ public final class GLNVInternalformatSampleQuery {
         this.handles = new Handles(func);
     }
 
-    public void GetInternalformatSampleivNV(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int samples, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
+    /// ```
+    /// void glGetInternalformatSampleivNV(unsigned int target, unsigned int internalformat, int samples, unsigned int pname, int count, GLint* params);
+    /// ```
+    public void GetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
         try { Handles.MH_glGetInternalformatSampleivNV.invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformatSampleivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetInternalformatSampleivNV", e); }
     }
 
 }

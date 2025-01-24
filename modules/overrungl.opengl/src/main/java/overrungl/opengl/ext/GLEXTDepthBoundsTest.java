@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLEXTDepthBoundsTest {
         this.handles = new Handles(func);
     }
 
-    public void DepthBoundsEXT(@CType("GLclampd") double zmin, @CType("GLclampd") double zmax) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
+    /// ```
+    /// void glDepthBoundsEXT(double zmin, double zmax);
+    /// ```
+    public void DepthBoundsEXT(double zmin, double zmax) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
         try { Handles.MH_glDepthBoundsEXT.invokeExact(handles.PFN_glDepthBoundsEXT, zmin, zmax); }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DepthBoundsEXT", e); }
     }
 
 }

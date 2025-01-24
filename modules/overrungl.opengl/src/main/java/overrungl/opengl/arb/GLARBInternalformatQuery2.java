@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -171,10 +170,13 @@ public final class GLARBInternalformatQuery2 {
         this.handles = new Handles(func);
     }
 
-    public void GetInternalformati64v(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
+    /// ```
+    /// void glGetInternalformati64v(unsigned int target, unsigned int internalformat, unsigned int pname, int count, GLint64* params);
+    /// ```
+    public void GetInternalformati64v(int target, int internalformat, int pname, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
         try { Handles.MH_glGetInternalformati64v.invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformati64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetInternalformati64v", e); }
     }
 
 }

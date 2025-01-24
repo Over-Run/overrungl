@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,16 +45,22 @@ public final class GLAPPLETextureRange {
         this.handles = new Handles(func);
     }
 
-    public void TextureRangeAPPLE(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
+    /// ```
+    /// void glTextureRangeAPPLE(unsigned int target, int length, const void* pointer);
+    /// ```
+    public void TextureRangeAPPLE(int target, int length, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
         try { Handles.MH_glTextureRangeAPPLE.invokeExact(handles.PFN_glTextureRangeAPPLE, target, length, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureRangeAPPLE", e); }
     }
 
-    public void GetTexParameterPointervAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void **") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
+    /// ```
+    /// void glGetTexParameterPointervAPPLE(unsigned int target, unsigned int pname, void** params);
+    /// ```
+    public void GetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
         try { Handles.MH_glGetTexParameterPointervAPPLE.invokeExact(handles.PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexParameterPointervAPPLE", e); }
     }
 
 }

@@ -194,7 +194,7 @@ internal class Parser(private val tokens: List<Token>) {
             when (previous.type) {
                 CONST -> list.add(ConstExpression)
                 STAR -> list.add(PointerExpression)
-                else -> TODO(previous.toString())
+                else -> error(previous)
             }
         }
 
@@ -284,7 +284,11 @@ internal class Parser(private val tokens: List<Token>) {
         val type = typeExpression(upcallNameIndex)
         val name = consume("expect identifier", IDENTIFIER)
         val parameters = parameterList()
-        return UpcallExpression(type, name, parameters)
+        var pkgName: Token? = null
+        if (match(PACKAGE)) {
+            pkgName = consume("expect string", STRING)
+        }
+        return UpcallExpression(type, name, parameters, pkgName)
     }
 
     private fun enumExpression(): Expression {
@@ -406,7 +410,8 @@ internal data class StructExpression(val name: Token, val opaque: Boolean, val m
 internal data class UpcallExpression(
     val type: Expression,
     val name: Token,
-    val parameters: List<TypeNamePair>
+    val parameters: List<TypeNamePair>,
+    val packageName: Token?
 ) : Expression
 
 

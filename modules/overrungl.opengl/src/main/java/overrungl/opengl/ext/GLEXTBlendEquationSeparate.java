@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLEXTBlendEquationSeparate {
         this.handles = new Handles(func);
     }
 
-    public void BlendEquationSeparateEXT(@CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
+    /// ```
+    /// void glBlendEquationSeparateEXT(unsigned int modeRGB, unsigned int modeAlpha);
+    /// ```
+    public void BlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
         try { Handles.MH_glBlendEquationSeparateEXT.invokeExact(handles.PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateEXT", e); }
     }
 
 }

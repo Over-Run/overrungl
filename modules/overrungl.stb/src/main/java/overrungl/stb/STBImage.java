@@ -269,387 +269,344 @@ public final class STBImage {
     /// stbi_uc* stbi_load_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_from_memory.invokeExact(Handles.get().PFN_stbi_load_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_memory", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_from_memory.invokeExact(Handles.get().PFN_stbi_load_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_memory", e); }
     }
 
     /// ```
     /// stbi_uc* stbi_load_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
     }
 
     /// ```
     /// stbi_uc* stbi_load(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, filename, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load.invokeExact(Handles.get().PFN_stbi_load, filename, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
     }
 
     /// ```
     /// stbi_uc* stbi_load_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_from_file.invokeExact(Handles.get().PFN_stbi_load_from_file, f, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_from_file.invokeExact(Handles.get().PFN_stbi_load_from_file, f, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file", e); }
     }
 
     /// ```
     /// stbi_uc* stbi_load_gif_from_memory(stbi_uc const * buffer, int len, int** delays, int* x, int* y, int* z, int* comp, int req_comp);
     /// ```
     public static MemorySegment stbi_load_gif_from_memory(MemorySegment buffer, int len, MemorySegment delays, MemorySegment x, MemorySegment y, MemorySegment z, MemorySegment comp, int req_comp) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_gif_from_memory.invokeExact(Handles.get().PFN_stbi_load_gif_from_memory, buffer, len, delays, x, y, z, comp, req_comp);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_gif_from_memory", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_gif_from_memory.invokeExact(Handles.get().PFN_stbi_load_gif_from_memory, buffer, len, delays, x, y, z, comp, req_comp); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_gif_from_memory", e); }
     }
 
     /// ```
     /// stbi_us* stbi_load_16_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_16_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_16_from_memory.invokeExact(Handles.get().PFN_stbi_load_16_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_memory", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_16_from_memory.invokeExact(Handles.get().PFN_stbi_load_16_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_memory", e); }
     }
 
     /// ```
     /// stbi_us* stbi_load_16_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_16_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_16_from_callbacks.invokeExact(Handles.get().PFN_stbi_load_16_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
     }
 
     /// ```
     /// stbi_us* stbi_load_16(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_16(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, filename, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_16.invokeExact(Handles.get().PFN_stbi_load_16, filename, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
     }
 
     /// ```
     /// stbi_us* stbi_load_from_file_16(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_load_from_file_16(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_load_from_file_16.invokeExact(Handles.get().PFN_stbi_load_from_file_16, f, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file_16", e); }
+        try { return (MemorySegment) Handles.MH_stbi_load_from_file_16.invokeExact(Handles.get().PFN_stbi_load_from_file_16, f, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file_16", e); }
     }
 
     /// ```
     /// float* stbi_loadf_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_loadf_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_loadf_from_memory.invokeExact(Handles.get().PFN_stbi_loadf_from_memory, buffer, len, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_memory", e); }
+        try { return (MemorySegment) Handles.MH_stbi_loadf_from_memory.invokeExact(Handles.get().PFN_stbi_loadf_from_memory, buffer, len, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_memory", e); }
     }
 
     /// ```
     /// float* stbi_loadf_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_loadf_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
+        try { return (MemorySegment) Handles.MH_stbi_loadf_from_callbacks.invokeExact(Handles.get().PFN_stbi_loadf_from_callbacks, clbk, user, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
     }
 
     /// ```
     /// float* stbi_loadf(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_loadf(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, filename, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf", e); }
+        try { return (MemorySegment) Handles.MH_stbi_loadf.invokeExact(Handles.get().PFN_stbi_loadf, filename, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_loadf", e); }
     }
 
     /// ```
     /// float* stbi_loadf_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
     public static MemorySegment stbi_loadf_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment channels_in_file, int desired_channels) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_loadf_from_file.invokeExact(Handles.get().PFN_stbi_loadf_from_file, f, x, y, channels_in_file, desired_channels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_file", e); }
+        try { return (MemorySegment) Handles.MH_stbi_loadf_from_file.invokeExact(Handles.get().PFN_stbi_loadf_from_file, f, x, y, channels_in_file, desired_channels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_file", e); }
     }
 
     /// ```
     /// void stbi_hdr_to_ldr_gamma(float gamma);
     /// ```
     public static void stbi_hdr_to_ldr_gamma(float gamma) {
-        try {
-            Handles.MH_stbi_hdr_to_ldr_gamma.invokeExact(Handles.get().PFN_stbi_hdr_to_ldr_gamma, gamma);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_gamma", e); }
+        try { Handles.MH_stbi_hdr_to_ldr_gamma.invokeExact(Handles.get().PFN_stbi_hdr_to_ldr_gamma, gamma); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_gamma", e); }
     }
 
     /// ```
     /// void stbi_hdr_to_ldr_scale(float scale);
     /// ```
     public static void stbi_hdr_to_ldr_scale(float scale) {
-        try {
-            Handles.MH_stbi_hdr_to_ldr_scale.invokeExact(Handles.get().PFN_stbi_hdr_to_ldr_scale, scale);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_scale", e); }
+        try { Handles.MH_stbi_hdr_to_ldr_scale.invokeExact(Handles.get().PFN_stbi_hdr_to_ldr_scale, scale); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_scale", e); }
     }
 
     /// ```
     /// void stbi_ldr_to_hdr_gamma(float gamma);
     /// ```
     public static void stbi_ldr_to_hdr_gamma(float gamma) {
-        try {
-            Handles.MH_stbi_ldr_to_hdr_gamma.invokeExact(Handles.get().PFN_stbi_ldr_to_hdr_gamma, gamma);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_gamma", e); }
+        try { Handles.MH_stbi_ldr_to_hdr_gamma.invokeExact(Handles.get().PFN_stbi_ldr_to_hdr_gamma, gamma); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_gamma", e); }
     }
 
     /// ```
     /// void stbi_ldr_to_hdr_scale(float scale);
     /// ```
     public static void stbi_ldr_to_hdr_scale(float scale) {
-        try {
-            Handles.MH_stbi_ldr_to_hdr_scale.invokeExact(Handles.get().PFN_stbi_ldr_to_hdr_scale, scale);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_scale", e); }
+        try { Handles.MH_stbi_ldr_to_hdr_scale.invokeExact(Handles.get().PFN_stbi_ldr_to_hdr_scale, scale); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_scale", e); }
     }
 
     /// ```
     /// int stbi_is_hdr_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
     public static boolean stbi_is_hdr_from_callbacks(MemorySegment clbk, MemorySegment user) {
-        try {
-            return (((int) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, clbk, user)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
+        try { return (((int) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, clbk, user)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
     }
 
     /// ```
     /// int stbi_is_hdr_from_memory(stbi_uc const * buffer, int len);
     /// ```
     public static boolean stbi_is_hdr_from_memory(MemorySegment buffer, int len) {
-        try {
-            return (((int) Handles.MH_stbi_is_hdr_from_memory.invokeExact(Handles.get().PFN_stbi_is_hdr_from_memory, buffer, len)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_memory", e); }
+        try { return (((int) Handles.MH_stbi_is_hdr_from_memory.invokeExact(Handles.get().PFN_stbi_is_hdr_from_memory, buffer, len)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_memory", e); }
     }
 
     /// ```
     /// int stbi_is_hdr(char const * filename);
     /// ```
     public static boolean stbi_is_hdr(MemorySegment filename) {
-        try {
-            return (((int) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, filename)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
+        try { return (((int) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, filename)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
     /// ```
     /// int stbi_is_hdr_from_file(FILE* f);
     /// ```
     public static boolean stbi_is_hdr_from_file(MemorySegment f) {
-        try {
-            return (((int) Handles.MH_stbi_is_hdr_from_file.invokeExact(Handles.get().PFN_stbi_is_hdr_from_file, f)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_file", e); }
+        try { return (((int) Handles.MH_stbi_is_hdr_from_file.invokeExact(Handles.get().PFN_stbi_is_hdr_from_file, f)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_file", e); }
     }
 
     /// ```
     /// const char* stbi_failure_reason();
     /// ```
     public static MemorySegment stbi_failure_reason() {
-        try {
-            return (MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
+        try { return (MemorySegment) Handles.MH_stbi_failure_reason.invokeExact(Handles.get().PFN_stbi_failure_reason); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
     /// ```
     /// void stbi_image_free(void* retval_from_stbi_load);
     /// ```
     public static void stbi_image_free(MemorySegment retval_from_stbi_load) {
-        try {
-            Handles.MH_stbi_image_free.invokeExact(Handles.get().PFN_stbi_image_free, retval_from_stbi_load);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_image_free", e); }
+        try { Handles.MH_stbi_image_free.invokeExact(Handles.get().PFN_stbi_image_free, retval_from_stbi_load); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_image_free", e); }
     }
 
     /// ```
     /// int stbi_info_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment comp) {
-        try {
-            return (((int) Handles.MH_stbi_info_from_memory.invokeExact(Handles.get().PFN_stbi_info_from_memory, buffer, len, x, y, comp)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_memory", e); }
+        try { return (((int) Handles.MH_stbi_info_from_memory.invokeExact(Handles.get().PFN_stbi_info_from_memory, buffer, len, x, y, comp)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_memory", e); }
     }
 
     /// ```
     /// int stbi_info_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment comp) {
-        try {
-            return (((int) Handles.MH_stbi_info_from_callbacks.invokeExact(Handles.get().PFN_stbi_info_from_callbacks, clbk, user, x, y, comp)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
+        try { return (((int) Handles.MH_stbi_info_from_callbacks.invokeExact(Handles.get().PFN_stbi_info_from_callbacks, clbk, user, x, y, comp)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
     }
 
     /// ```
     /// int stbi_is_16_bit_from_memory(stbi_uc const * buffer, int len);
     /// ```
     public static boolean stbi_is_16_bit_from_memory(MemorySegment buffer, int len) {
-        try {
-            return (((int) Handles.MH_stbi_is_16_bit_from_memory.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_memory, buffer, len)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_memory", e); }
+        try { return (((int) Handles.MH_stbi_is_16_bit_from_memory.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_memory, buffer, len)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_memory", e); }
     }
 
     /// ```
     /// int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
     public static boolean stbi_is_16_bit_from_callbacks(MemorySegment clbk, MemorySegment user) {
-        try {
-            return (((int) Handles.MH_stbi_is_16_bit_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_callbacks, clbk, user)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_callbacks", e); }
+        try { return (((int) Handles.MH_stbi_is_16_bit_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_callbacks, clbk, user)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_callbacks", e); }
     }
 
     /// ```
     /// int stbi_info(char const * filename, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment comp) {
-        try {
-            return (((int) Handles.MH_stbi_info.invokeExact(Handles.get().PFN_stbi_info, filename, x, y, comp)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
+        try { return (((int) Handles.MH_stbi_info.invokeExact(Handles.get().PFN_stbi_info, filename, x, y, comp)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
     }
 
     /// ```
     /// int stbi_info_from_file(FILE* f, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment comp) {
-        try {
-            return (((int) Handles.MH_stbi_info_from_file.invokeExact(Handles.get().PFN_stbi_info_from_file, f, x, y, comp)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_file", e); }
+        try { return (((int) Handles.MH_stbi_info_from_file.invokeExact(Handles.get().PFN_stbi_info_from_file, f, x, y, comp)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_file", e); }
     }
 
     /// ```
     /// int stbi_is_16_bit(char const * filename);
     /// ```
     public static boolean stbi_is_16_bit(MemorySegment filename) {
-        try {
-            return (((int) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, filename)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
+        try { return (((int) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, filename)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
     }
 
     /// ```
     /// int stbi_is_16_bit_from_file(FILE* f);
     /// ```
     public static boolean stbi_is_16_bit_from_file(MemorySegment f) {
-        try {
-            return (((int) Handles.MH_stbi_is_16_bit_from_file.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_file, f)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_file", e); }
+        try { return (((int) Handles.MH_stbi_is_16_bit_from_file.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_file, f)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_file", e); }
     }
 
     /// ```
     /// void stbi_set_unpremultiply_on_load(int flag_true_if_should_unpremultiply);
     /// ```
     public static void stbi_set_unpremultiply_on_load(boolean flag_true_if_should_unpremultiply) {
-        try {
-            Handles.MH_stbi_set_unpremultiply_on_load.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load, ((flag_true_if_should_unpremultiply) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load", e); }
+        try { Handles.MH_stbi_set_unpremultiply_on_load.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load, ((flag_true_if_should_unpremultiply) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load", e); }
     }
 
     /// ```
     /// void stbi_convert_iphone_png_to_rgb(int flag_true_if_should_convert);
     /// ```
     public static void stbi_convert_iphone_png_to_rgb(boolean flag_true_if_should_convert) {
-        try {
-            Handles.MH_stbi_convert_iphone_png_to_rgb.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb, ((flag_true_if_should_convert) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb", e); }
+        try { Handles.MH_stbi_convert_iphone_png_to_rgb.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb, ((flag_true_if_should_convert) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb", e); }
     }
 
     /// ```
     /// void stbi_set_flip_vertically_on_load(int flag_true_if_should_flip);
     /// ```
     public static void stbi_set_flip_vertically_on_load(boolean flag_true_if_should_flip) {
-        try {
-            Handles.MH_stbi_set_flip_vertically_on_load.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load, ((flag_true_if_should_flip) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
+        try { Handles.MH_stbi_set_flip_vertically_on_load.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load, ((flag_true_if_should_flip) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
     }
 
     /// ```
     /// void stbi_set_unpremultiply_on_load_thread(int flag_true_if_should_unpremultiply);
     /// ```
     public static void stbi_set_unpremultiply_on_load_thread(boolean flag_true_if_should_unpremultiply) {
-        try {
-            Handles.MH_stbi_set_unpremultiply_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load_thread, ((flag_true_if_should_unpremultiply) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load_thread", e); }
+        try { Handles.MH_stbi_set_unpremultiply_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load_thread, ((flag_true_if_should_unpremultiply) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load_thread", e); }
     }
 
     /// ```
     /// void stbi_convert_iphone_png_to_rgb_thread(int flag_true_if_should_convert);
     /// ```
     public static void stbi_convert_iphone_png_to_rgb_thread(boolean flag_true_if_should_convert) {
-        try {
-            Handles.MH_stbi_convert_iphone_png_to_rgb_thread.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb_thread, ((flag_true_if_should_convert) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb_thread", e); }
+        try { Handles.MH_stbi_convert_iphone_png_to_rgb_thread.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb_thread, ((flag_true_if_should_convert) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb_thread", e); }
     }
 
     /// ```
     /// void stbi_set_flip_vertically_on_load_thread(int flag_true_if_should_flip);
     /// ```
     public static void stbi_set_flip_vertically_on_load_thread(boolean flag_true_if_should_flip) {
-        try {
-            Handles.MH_stbi_set_flip_vertically_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load_thread, ((flag_true_if_should_flip) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load_thread", e); }
+        try { Handles.MH_stbi_set_flip_vertically_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load_thread, ((flag_true_if_should_flip) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load_thread", e); }
     }
 
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize(const char* buffer, int len, int initial_size, int* outlen);
     /// ```
     public static MemorySegment stbi_zlib_decode_malloc_guesssize(MemorySegment buffer, int len, int initial_size, MemorySegment outlen) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize, buffer, len, initial_size, outlen);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
+        try { return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize, buffer, len, initial_size, outlen); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
     }
 
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize_headerflag(const char* buffer, int len, int initial_size, int* outlen, int parse_header);
     /// ```
     public static MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(MemorySegment buffer, int len, int initial_size, MemorySegment outlen, int parse_header) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize_headerflag, buffer, len, initial_size, outlen, parse_header);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
+        try { return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc_guesssize_headerflag, buffer, len, initial_size, outlen, parse_header); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
     }
 
     /// ```
     /// char* stbi_zlib_decode_malloc(const char* buffer, int len, int* outlen);
     /// ```
     public static MemorySegment stbi_zlib_decode_malloc(MemorySegment buffer, int len, MemorySegment outlen) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc, buffer, len, outlen);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
+        try { return (MemorySegment) Handles.MH_stbi_zlib_decode_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_malloc, buffer, len, outlen); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
     }
 
     /// ```
     /// int stbi_zlib_decode_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```
     public static int stbi_zlib_decode_buffer(MemorySegment obuffer, int olen, MemorySegment ibuffer, int ilen) {
-        try {
-            return (int) Handles.MH_stbi_zlib_decode_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_buffer, obuffer, olen, ibuffer, ilen);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
+        try { return (int) Handles.MH_stbi_zlib_decode_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_buffer, obuffer, olen, ibuffer, ilen); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
     }
 
     /// ```
     /// char* stbi_zlib_decode_noheader_malloc(const char* buffer, int len, int* outlen);
     /// ```
     public static MemorySegment stbi_zlib_decode_noheader_malloc(MemorySegment buffer, int len, MemorySegment outlen) {
-        try {
-            return (MemorySegment) Handles.MH_stbi_zlib_decode_noheader_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_malloc, buffer, len, outlen);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
+        try { return (MemorySegment) Handles.MH_stbi_zlib_decode_noheader_malloc.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_malloc, buffer, len, outlen); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
     }
 
     /// ```
     /// int stbi_zlib_decode_noheader_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```
     public static int stbi_zlib_decode_noheader_buffer(MemorySegment obuffer, int olen, MemorySegment ibuffer, int ilen) {
-        try {
-            return (int) Handles.MH_stbi_zlib_decode_noheader_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_buffer, obuffer, olen, ibuffer, ilen);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_buffer", e); }
+        try { return (int) Handles.MH_stbi_zlib_decode_noheader_buffer.invokeExact(Handles.get().PFN_stbi_zlib_decode_noheader_buffer, obuffer, olen, ibuffer, ilen); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_buffer", e); }
     }
 
     //@formatter:on

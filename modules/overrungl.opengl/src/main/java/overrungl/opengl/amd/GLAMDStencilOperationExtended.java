@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLAMDStencilOperationExtended {
         this.handles = new Handles(func);
     }
 
-    public void StencilOpValueAMD(@CType("GLenum") int face, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glStencilOpValueAMD)) throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD");
+    /// ```
+    /// void glStencilOpValueAMD(unsigned int face, unsigned int value);
+    /// ```
+    public void StencilOpValueAMD(int face, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpValueAMD)) throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD");
         try { Handles.MH_glStencilOpValueAMD.invokeExact(handles.PFN_glStencilOpValueAMD, face, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glStencilOpValueAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in StencilOpValueAMD", e); }
     }
 
 }

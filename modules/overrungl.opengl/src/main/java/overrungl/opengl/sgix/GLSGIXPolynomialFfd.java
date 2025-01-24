@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -52,28 +51,40 @@ public final class GLSGIXPolynomialFfd {
         this.handles = new Handles(func);
     }
 
-    public void DeformationMap3dSGIX(@CType("GLenum") int target, @CType("GLdouble") double u1, @CType("GLdouble") double u2, @CType("GLint") int ustride, @CType("GLint") int uorder, @CType("GLdouble") double v1, @CType("GLdouble") double v2, @CType("GLint") int vstride, @CType("GLint") int vorder, @CType("GLdouble") double w1, @CType("GLdouble") double w2, @CType("GLint") int wstride, @CType("GLint") int worder, @CType("const GLdouble *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeformationMap3dSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3dSGIX");
+    /// ```
+    /// void glDeformationMap3dSGIX(unsigned int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, const GLdouble* points);
+    /// ```
+    public void DeformationMap3dSGIX(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3dSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3dSGIX");
         try { Handles.MH_glDeformationMap3dSGIX.invokeExact(handles.PFN_glDeformationMap3dSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeformationMap3dSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeformationMap3dSGIX", e); }
     }
 
-    public void DeformationMap3fSGIX(@CType("GLenum") int target, @CType("GLfloat") float u1, @CType("GLfloat") float u2, @CType("GLint") int ustride, @CType("GLint") int uorder, @CType("GLfloat") float v1, @CType("GLfloat") float v2, @CType("GLint") int vstride, @CType("GLint") int vorder, @CType("GLfloat") float w1, @CType("GLfloat") float w2, @CType("GLint") int wstride, @CType("GLint") int worder, @CType("const GLfloat *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeformationMap3fSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3fSGIX");
+    /// ```
+    /// void glDeformationMap3fSGIX(unsigned int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, const GLfloat* points);
+    /// ```
+    public void DeformationMap3fSGIX(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3fSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3fSGIX");
         try { Handles.MH_glDeformationMap3fSGIX.invokeExact(handles.PFN_glDeformationMap3fSGIX, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeformationMap3fSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeformationMap3fSGIX", e); }
     }
 
-    public void DeformSGIX(@CType("GLbitfield") int mask) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeformSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformSGIX");
+    /// ```
+    /// void glDeformSGIX(unsigned int mask);
+    /// ```
+    public void DeformSGIX(int mask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeformSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformSGIX");
         try { Handles.MH_glDeformSGIX.invokeExact(handles.PFN_glDeformSGIX, mask); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeformSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeformSGIX", e); }
     }
 
-    public void LoadIdentityDeformationMapSGIX(@CType("GLbitfield") int mask) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLoadIdentityDeformationMapSGIX)) throw new SymbolNotFoundError("Symbol not found: glLoadIdentityDeformationMapSGIX");
+    /// ```
+    /// void glLoadIdentityDeformationMapSGIX(unsigned int mask);
+    /// ```
+    public void LoadIdentityDeformationMapSGIX(int mask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLoadIdentityDeformationMapSGIX)) throw new SymbolNotFoundError("Symbol not found: glLoadIdentityDeformationMapSGIX");
         try { Handles.MH_glLoadIdentityDeformationMapSGIX.invokeExact(handles.PFN_glLoadIdentityDeformationMapSGIX, mask); }
-        catch (Throwable e) { throw new RuntimeException("error in glLoadIdentityDeformationMapSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LoadIdentityDeformationMapSGIX", e); }
     }
 
 }

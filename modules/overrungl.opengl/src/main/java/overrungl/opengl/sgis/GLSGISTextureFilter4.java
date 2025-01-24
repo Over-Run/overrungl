@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,16 +41,22 @@ public final class GLSGISTextureFilter4 {
         this.handles = new Handles(func);
     }
 
-    public void GetTexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLfloat *") MemorySegment weights) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
+    /// ```
+    /// void glGetTexFilterFuncSGIS(unsigned int target, unsigned int filter, GLfloat* weights);
+    /// ```
+    public void GetTexFilterFuncSGIS(int target, int filter, MemorySegment weights) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
         try { Handles.MH_glGetTexFilterFuncSGIS.invokeExact(handles.PFN_glGetTexFilterFuncSGIS, target, filter, weights); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexFilterFuncSGIS", e); }
     }
 
-    public void TexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment weights) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");
+    /// ```
+    /// void glTexFilterFuncSGIS(unsigned int target, unsigned int filter, int n, const GLfloat* weights);
+    /// ```
+    public void TexFilterFuncSGIS(int target, int filter, int n, MemorySegment weights) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");
         try { Handles.MH_glTexFilterFuncSGIS.invokeExact(handles.PFN_glTexFilterFuncSGIS, target, filter, n, weights); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexFilterFuncSGIS", e); }
     }
 
 }

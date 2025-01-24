@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -60,7 +59,7 @@ public final class GLNVVertexBufferUnifiedMemory {
         public static final MethodHandle MH_glEdgeFlagFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glSecondaryColorFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glFogCoordFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glVertexAttribIFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glGetIntegerui64i_vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBufferAddressRangeNV;
@@ -95,76 +94,112 @@ public final class GLNVVertexBufferUnifiedMemory {
         this.handles = new Handles(func);
     }
 
-    public void BufferAddressRangeNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLuint64EXT") long address, @CType("GLsizeiptr") long length) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBufferAddressRangeNV)) throw new SymbolNotFoundError("Symbol not found: glBufferAddressRangeNV");
+    /// ```
+    /// void glBufferAddressRangeNV(unsigned int pname, unsigned int index, uint64_t address, signed long long length);
+    /// ```
+    public void BufferAddressRangeNV(int pname, int index, long address, long length) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBufferAddressRangeNV)) throw new SymbolNotFoundError("Symbol not found: glBufferAddressRangeNV");
         try { Handles.MH_glBufferAddressRangeNV.invokeExact(handles.PFN_glBufferAddressRangeNV, pname, index, address, length); }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferAddressRangeNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BufferAddressRangeNV", e); }
     }
 
-    public void VertexFormatNV(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexFormatNV");
+    /// ```
+    /// void glVertexFormatNV(int size, unsigned int type, int stride);
+    /// ```
+    public void VertexFormatNV(int size, int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexFormatNV");
         try { Handles.MH_glVertexFormatNV.invokeExact(handles.PFN_glVertexFormatNV, size, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexFormatNV", e); }
     }
 
-    public void NormalFormatNV(@CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalFormatNV)) throw new SymbolNotFoundError("Symbol not found: glNormalFormatNV");
+    /// ```
+    /// void glNormalFormatNV(unsigned int type, int stride);
+    /// ```
+    public void NormalFormatNV(int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalFormatNV)) throw new SymbolNotFoundError("Symbol not found: glNormalFormatNV");
         try { Handles.MH_glNormalFormatNV.invokeExact(handles.PFN_glNormalFormatNV, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalFormatNV", e); }
     }
 
-    public void ColorFormatNV(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glColorFormatNV");
+    /// ```
+    /// void glColorFormatNV(int size, unsigned int type, int stride);
+    /// ```
+    public void ColorFormatNV(int size, int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glColorFormatNV");
         try { Handles.MH_glColorFormatNV.invokeExact(handles.PFN_glColorFormatNV, size, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glColorFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ColorFormatNV", e); }
     }
 
-    public void IndexFormatNV(@CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIndexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glIndexFormatNV");
+    /// ```
+    /// void glIndexFormatNV(unsigned int type, int stride);
+    /// ```
+    public void IndexFormatNV(int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glIndexFormatNV");
         try { Handles.MH_glIndexFormatNV.invokeExact(handles.PFN_glIndexFormatNV, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glIndexFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in IndexFormatNV", e); }
     }
 
-    public void TexCoordFormatNV(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoordFormatNV");
+    /// ```
+    /// void glTexCoordFormatNV(int size, unsigned int type, int stride);
+    /// ```
+    public void TexCoordFormatNV(int size, int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoordFormatNV");
         try { Handles.MH_glTexCoordFormatNV.invokeExact(handles.PFN_glTexCoordFormatNV, size, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoordFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoordFormatNV", e); }
     }
 
-    public void EdgeFlagFormatNV(@CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEdgeFlagFormatNV)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagFormatNV");
+    /// ```
+    /// void glEdgeFlagFormatNV(int stride);
+    /// ```
+    public void EdgeFlagFormatNV(int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEdgeFlagFormatNV)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagFormatNV");
         try { Handles.MH_glEdgeFlagFormatNV.invokeExact(handles.PFN_glEdgeFlagFormatNV, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glEdgeFlagFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EdgeFlagFormatNV", e); }
     }
 
-    public void SecondaryColorFormatNV(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSecondaryColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorFormatNV");
+    /// ```
+    /// void glSecondaryColorFormatNV(int size, unsigned int type, int stride);
+    /// ```
+    public void SecondaryColorFormatNV(int size, int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorFormatNV");
         try { Handles.MH_glSecondaryColorFormatNV.invokeExact(handles.PFN_glSecondaryColorFormatNV, size, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SecondaryColorFormatNV", e); }
     }
 
-    public void FogCoordFormatNV(@CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFogCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glFogCoordFormatNV");
+    /// ```
+    /// void glFogCoordFormatNV(unsigned int type, int stride);
+    /// ```
+    public void FogCoordFormatNV(int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glFogCoordFormatNV");
         try { Handles.MH_glFogCoordFormatNV.invokeExact(handles.PFN_glFogCoordFormatNV, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoordFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FogCoordFormatNV", e); }
     }
 
-    public void VertexAttribFormatNV(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormatNV");
-        try { Handles.MH_glVertexAttribFormatNV.invokeExact(handles.PFN_glVertexAttribFormatNV, index, size, type, normalized, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribFormatNV", e); }
+    /// ```
+    /// void glVertexAttribFormatNV(unsigned int index, int size, unsigned int type, GLboolean normalized, int stride);
+    /// ```
+    public void VertexAttribFormatNV(int index, int size, int type, boolean normalized, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormatNV");
+        try { Handles.MH_glVertexAttribFormatNV.invokeExact(handles.PFN_glVertexAttribFormatNV, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribFormatNV", e); }
     }
 
-    public void VertexAttribIFormatNV(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribIFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormatNV");
+    /// ```
+    /// void glVertexAttribIFormatNV(unsigned int index, int size, unsigned int type, int stride);
+    /// ```
+    public void VertexAttribIFormatNV(int index, int size, int type, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormatNV");
         try { Handles.MH_glVertexAttribIFormatNV.invokeExact(handles.PFN_glVertexAttribIFormatNV, index, size, type, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribIFormatNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribIFormatNV", e); }
     }
 
-    public void GetIntegerui64i_vNV(@CType("GLenum") int value, @CType("GLuint") int index, @CType("GLuint64EXT *") MemorySegment result) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetIntegerui64i_vNV)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64i_vNV");
+    /// ```
+    /// void glGetIntegerui64i_vNV(unsigned int value, unsigned int index, GLuint64EXT* result);
+    /// ```
+    public void GetIntegerui64i_vNV(int value, int index, MemorySegment result) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerui64i_vNV)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64i_vNV");
         try { Handles.MH_glGetIntegerui64i_vNV.invokeExact(handles.PFN_glGetIntegerui64i_vNV, value, index, result); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetIntegerui64i_vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetIntegerui64i_vNV", e); }
     }
 
 }

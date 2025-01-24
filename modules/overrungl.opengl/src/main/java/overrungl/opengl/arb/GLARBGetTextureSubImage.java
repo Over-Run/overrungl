@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLARBGetTextureSubImage {
         this.handles = new Handles(func);
     }
 
-    public void GetTextureSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("GLsizei") int bufSize, @CType("void*") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureSubImage)) throw new SymbolNotFoundError("Symbol not found: glGetTextureSubImage");
+    /// ```
+    /// void glGetTextureSubImage(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, int bufSize, void* pixels);
+    /// ```
+    public void GetTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureSubImage)) throw new SymbolNotFoundError("Symbol not found: glGetTextureSubImage");
         try { Handles.MH_glGetTextureSubImage.invokeExact(handles.PFN_glGetTextureSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureSubImage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureSubImage", e); }
     }
 
-    public void GetCompressedTextureSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int bufSize, @CType("void*") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetCompressedTextureSubImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureSubImage");
+    /// ```
+    /// void glGetCompressedTextureSubImage(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, void* pixels);
+    /// ```
+    public void GetCompressedTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureSubImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureSubImage");
         try { Handles.MH_glGetCompressedTextureSubImage.invokeExact(handles.PFN_glGetCompressedTextureSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTextureSubImage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetCompressedTextureSubImage", e); }
     }
 
 }

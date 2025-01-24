@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -65,34 +64,49 @@ public final class GLARBES2Compatibility {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glReleaseShaderCompiler();
+    /// ```
     public void ReleaseShaderCompiler() {
-        if (Unmarshal.isNullPointer(handles.PFN_glReleaseShaderCompiler)) throw new SymbolNotFoundError("Symbol not found: glReleaseShaderCompiler");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReleaseShaderCompiler)) throw new SymbolNotFoundError("Symbol not found: glReleaseShaderCompiler");
         try { Handles.MH_glReleaseShaderCompiler.invokeExact(handles.PFN_glReleaseShaderCompiler); }
-        catch (Throwable e) { throw new RuntimeException("error in glReleaseShaderCompiler", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReleaseShaderCompiler", e); }
     }
 
-    public void ShaderBinary(@CType("GLsizei") int count, @CType("const GLuint *") MemorySegment shaders, @CType("GLenum") int binaryFormat, @CType("const void *") MemorySegment binary, @CType("GLsizei") int length) {
-        if (Unmarshal.isNullPointer(handles.PFN_glShaderBinary)) throw new SymbolNotFoundError("Symbol not found: glShaderBinary");
+    /// ```
+    /// void glShaderBinary(int count, const GLuint* shaders, unsigned int binaryFormat, const void* binary, int length);
+    /// ```
+    public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new SymbolNotFoundError("Symbol not found: glShaderBinary");
         try { Handles.MH_glShaderBinary.invokeExact(handles.PFN_glShaderBinary, count, shaders, binaryFormat, binary, length); }
-        catch (Throwable e) { throw new RuntimeException("error in glShaderBinary", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ShaderBinary", e); }
     }
 
-    public void GetShaderPrecisionFormat(@CType("GLenum") int shadertype, @CType("GLenum") int precisiontype, @CType("GLint *") MemorySegment range, @CType("GLint *") MemorySegment precision) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new SymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
+    /// ```
+    /// void glGetShaderPrecisionFormat(unsigned int shadertype, unsigned int precisiontype, GLint* range, GLint* precision);
+    /// ```
+    public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new SymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
         try { Handles.MH_glGetShaderPrecisionFormat.invokeExact(handles.PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetShaderPrecisionFormat", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetShaderPrecisionFormat", e); }
     }
 
-    public void DepthRangef(@CType("GLfloat") float n, @CType("GLfloat") float f) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDepthRangef)) throw new SymbolNotFoundError("Symbol not found: glDepthRangef");
+    /// ```
+    /// void glDepthRangef(float n, float f);
+    /// ```
+    public void DepthRangef(float n, float f) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangef)) throw new SymbolNotFoundError("Symbol not found: glDepthRangef");
         try { Handles.MH_glDepthRangef.invokeExact(handles.PFN_glDepthRangef, n, f); }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthRangef", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DepthRangef", e); }
     }
 
-    public void ClearDepthf(@CType("GLfloat") float d) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearDepthf)) throw new SymbolNotFoundError("Symbol not found: glClearDepthf");
+    /// ```
+    /// void glClearDepthf(float d);
+    /// ```
+    public void ClearDepthf(float d) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthf)) throw new SymbolNotFoundError("Symbol not found: glClearDepthf");
         try { Handles.MH_glClearDepthf.invokeExact(handles.PFN_glClearDepthf, d); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearDepthf", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearDepthf", e); }
     }
 
 }

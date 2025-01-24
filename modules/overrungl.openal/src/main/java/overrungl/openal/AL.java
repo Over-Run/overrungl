@@ -484,657 +484,584 @@ public final class AL {
     /// void alEnable(int capability);
     /// ```
     public static void alEnable(int capability) {
-        try {
-            Handles.MH_alEnable.invokeExact(Handles.get().PFN_alEnable, capability);
-        } catch (Throwable e) { throw new RuntimeException("error in alEnable", e); }
+        try { Handles.MH_alEnable.invokeExact(Handles.get().PFN_alEnable, capability); }
+        catch (Throwable e) { throw new RuntimeException("error in alEnable", e); }
     }
 
     /// ```
     /// void alDisable(int capability);
     /// ```
     public static void alDisable(int capability) {
-        try {
-            Handles.MH_alDisable.invokeExact(Handles.get().PFN_alDisable, capability);
-        } catch (Throwable e) { throw new RuntimeException("error in alDisable", e); }
+        try { Handles.MH_alDisable.invokeExact(Handles.get().PFN_alDisable, capability); }
+        catch (Throwable e) { throw new RuntimeException("error in alDisable", e); }
     }
 
     /// ```
-    /// char alIsEnabled(int capability);
+    /// ALboolean alIsEnabled(int capability);
     /// ```
     public static boolean alIsEnabled(int capability) {
-        try {
-            return (((byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in alIsEnabled", e); }
+        try { return (((byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in alIsEnabled", e); }
     }
 
     /// ```
     /// void alDopplerFactor(float value);
     /// ```
     public static void alDopplerFactor(float value) {
-        try {
-            Handles.MH_alDopplerFactor.invokeExact(Handles.get().PFN_alDopplerFactor, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alDopplerFactor", e); }
+        try { Handles.MH_alDopplerFactor.invokeExact(Handles.get().PFN_alDopplerFactor, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alDopplerFactor", e); }
     }
 
     /// ```
     /// void alDopplerVelocity(float value);
     /// ```
     public static void alDopplerVelocity(float value) {
-        try {
-            Handles.MH_alDopplerVelocity.invokeExact(Handles.get().PFN_alDopplerVelocity, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alDopplerVelocity", e); }
+        try { Handles.MH_alDopplerVelocity.invokeExact(Handles.get().PFN_alDopplerVelocity, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alDopplerVelocity", e); }
     }
 
     /// ```
     /// void alSpeedOfSound(float value);
     /// ```
     public static void alSpeedOfSound(float value) {
-        try {
-            Handles.MH_alSpeedOfSound.invokeExact(Handles.get().PFN_alSpeedOfSound, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alSpeedOfSound", e); }
+        try { Handles.MH_alSpeedOfSound.invokeExact(Handles.get().PFN_alSpeedOfSound, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alSpeedOfSound", e); }
     }
 
     /// ```
     /// void alDistanceModel(int distanceModel);
     /// ```
     public static void alDistanceModel(int distanceModel) {
-        try {
-            Handles.MH_alDistanceModel.invokeExact(Handles.get().PFN_alDistanceModel, distanceModel);
-        } catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
+        try { Handles.MH_alDistanceModel.invokeExact(Handles.get().PFN_alDistanceModel, distanceModel); }
+        catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
     }
 
     /// ```
     /// const ALchar* alGetString(int param);
     /// ```
     public static MemorySegment alGetString(int param) {
-        try {
-            return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
+        try { return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
     /// ```
     /// void alGetBooleanv(int param, ALboolean* values);
     /// ```
     public static void alGetBooleanv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
+        try { Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
     }
 
     /// ```
     /// void alGetIntegerv(int param, ALint* values);
     /// ```
     public static void alGetIntegerv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
+        try { Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
     }
 
     /// ```
     /// void alGetFloatv(int param, ALfloat* values);
     /// ```
     public static void alGetFloatv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
+        try { Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
     }
 
     /// ```
     /// void alGetDoublev(int param, ALdouble* values);
     /// ```
     public static void alGetDoublev(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
+        try { Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
     }
 
     /// ```
-    /// char alGetBoolean(int param);
+    /// ALboolean alGetBoolean(int param);
     /// ```
     public static boolean alGetBoolean(int param) {
-        try {
-            return (((byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBoolean", e); }
+        try { return (((byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBoolean", e); }
     }
 
     /// ```
     /// int alGetInteger(int param);
     /// ```
     public static int alGetInteger(int param) {
-        try {
-            return (int) Handles.MH_alGetInteger.invokeExact(Handles.get().PFN_alGetInteger, param);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetInteger", e); }
+        try { return (int) Handles.MH_alGetInteger.invokeExact(Handles.get().PFN_alGetInteger, param); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetInteger", e); }
     }
 
     /// ```
     /// float alGetFloat(int param);
     /// ```
     public static float alGetFloat(int param) {
-        try {
-            return (float) Handles.MH_alGetFloat.invokeExact(Handles.get().PFN_alGetFloat, param);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetFloat", e); }
+        try { return (float) Handles.MH_alGetFloat.invokeExact(Handles.get().PFN_alGetFloat, param); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetFloat", e); }
     }
 
     /// ```
     /// double alGetDouble(int param);
     /// ```
     public static double alGetDouble(int param) {
-        try {
-            return (double) Handles.MH_alGetDouble.invokeExact(Handles.get().PFN_alGetDouble, param);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
+        try { return (double) Handles.MH_alGetDouble.invokeExact(Handles.get().PFN_alGetDouble, param); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
     }
 
     /// ```
     /// int alGetError();
     /// ```
     public static int alGetError() {
-        try {
-            return (int) Handles.MH_alGetError.invokeExact(Handles.get().PFN_alGetError);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
+        try { return (int) Handles.MH_alGetError.invokeExact(Handles.get().PFN_alGetError); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
     /// ```
-    /// char alIsExtensionPresent(const ALchar* extname);
+    /// ALboolean alIsExtensionPresent(const ALchar* extname);
     /// ```
     public static boolean alIsExtensionPresent(MemorySegment extname) {
-        try {
-            return (((byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
+        try { return (((byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
     /// ```
     /// void* alGetProcAddress(const ALchar* fname);
     /// ```
     public static MemorySegment alGetProcAddress(MemorySegment fname) {
-        try {
-            return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
+        try { return (MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Handles.get().PFN_alGetProcAddress, fname); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
     /// ```
     /// int alGetEnumValue(const ALchar* ename);
     /// ```
     public static int alGetEnumValue(MemorySegment ename) {
-        try {
-            return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
+        try { return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
     /// ```
     /// void alListenerf(int param, float value);
     /// ```
     public static void alListenerf(int param, float value) {
-        try {
-            Handles.MH_alListenerf.invokeExact(Handles.get().PFN_alListenerf, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alListenerf", e); }
+        try { Handles.MH_alListenerf.invokeExact(Handles.get().PFN_alListenerf, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alListenerf", e); }
     }
 
     /// ```
     /// void alListener3f(int param, float value1, float value2, float value3);
     /// ```
     public static void alListener3f(int param, float value1, float value2, float value3) {
-        try {
-            Handles.MH_alListener3f.invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
+        try { Handles.MH_alListener3f.invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
     }
 
     /// ```
     /// void alListenerfv(int param, const ALfloat* values);
     /// ```
     public static void alListenerfv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
+        try { Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
     }
 
     /// ```
     /// void alListeneri(int param, int value);
     /// ```
     public static void alListeneri(int param, int value) {
-        try {
-            Handles.MH_alListeneri.invokeExact(Handles.get().PFN_alListeneri, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alListeneri", e); }
+        try { Handles.MH_alListeneri.invokeExact(Handles.get().PFN_alListeneri, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alListeneri", e); }
     }
 
     /// ```
     /// void alListener3i(int param, int value1, int value2, int value3);
     /// ```
     public static void alListener3i(int param, int value1, int value2, int value3) {
-        try {
-            Handles.MH_alListener3i.invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
+        try { Handles.MH_alListener3i.invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
     }
 
     /// ```
     /// void alListeneriv(int param, const ALint* values);
     /// ```
     public static void alListeneriv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
+        try { Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
     }
 
     /// ```
     /// void alGetListenerf(int param, ALfloat* value);
     /// ```
     public static void alGetListenerf(int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
+        try { Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
     }
 
     /// ```
     /// void alGetListener3f(int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetListener3f(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
+        try { Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
     }
 
     /// ```
     /// void alGetListenerfv(int param, ALfloat* values);
     /// ```
     public static void alGetListenerfv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
+        try { Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
     }
 
     /// ```
     /// void alGetListeneri(int param, ALint* value);
     /// ```
     public static void alGetListeneri(int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
+        try { Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
     }
 
     /// ```
     /// void alGetListener3i(int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetListener3i(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
+        try { Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
     }
 
     /// ```
     /// void alGetListeneriv(int param, ALint* values);
     /// ```
     public static void alGetListeneriv(int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
+        try { Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
     /// ```
     /// void alGenSources(int n, ALuint* sources);
     /// ```
     public static void alGenSources(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
+        try { Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
     /// ```
     /// void alDeleteSources(int n, const ALuint* sources);
     /// ```
     public static void alDeleteSources(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
+        try { Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
     }
 
     /// ```
-    /// char alIsSource(unsigned int source);
+    /// ALboolean alIsSource(unsigned int source);
     /// ```
     public static boolean alIsSource(int source) {
-        try {
-            return (((byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in alIsSource", e); }
+        try { return (((byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in alIsSource", e); }
     }
 
     /// ```
     /// void alSourcef(unsigned int source, int param, float value);
     /// ```
     public static void alSourcef(int source, int param, float value) {
-        try {
-            Handles.MH_alSourcef.invokeExact(Handles.get().PFN_alSourcef, source, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcef", e); }
+        try { Handles.MH_alSourcef.invokeExact(Handles.get().PFN_alSourcef, source, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcef", e); }
     }
 
     /// ```
     /// void alSource3f(unsigned int source, int param, float value1, float value2, float value3);
     /// ```
     public static void alSource3f(int source, int param, float value1, float value2, float value3) {
-        try {
-            Handles.MH_alSource3f.invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
+        try { Handles.MH_alSource3f.invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
     }
 
     /// ```
     /// void alSourcefv(unsigned int source, int param, const ALfloat* values);
     /// ```
     public static void alSourcefv(int source, int param, MemorySegment values) {
-        try {
-            Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
+        try { Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
     }
 
     /// ```
     /// void alSourcei(unsigned int source, int param, int value);
     /// ```
     public static void alSourcei(int source, int param, int value) {
-        try {
-            Handles.MH_alSourcei.invokeExact(Handles.get().PFN_alSourcei, source, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcei", e); }
+        try { Handles.MH_alSourcei.invokeExact(Handles.get().PFN_alSourcei, source, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcei", e); }
     }
 
     /// ```
     /// void alSource3i(unsigned int source, int param, int value1, int value2, int value3);
     /// ```
     public static void alSource3i(int source, int param, int value1, int value2, int value3) {
-        try {
-            Handles.MH_alSource3i.invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
+        try { Handles.MH_alSource3i.invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
     }
 
     /// ```
     /// void alSourceiv(unsigned int source, int param, const ALint* values);
     /// ```
     public static void alSourceiv(int source, int param, MemorySegment values) {
-        try {
-            Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
+        try { Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
     }
 
     /// ```
     /// void alGetSourcef(unsigned int source, int param, ALfloat* value);
     /// ```
     public static void alGetSourcef(int source, int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
+        try { Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
     }
 
     /// ```
     /// void alGetSource3f(unsigned int source, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetSource3f(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
+        try { Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
     }
 
     /// ```
     /// void alGetSourcefv(unsigned int source, int param, ALfloat* values);
     /// ```
     public static void alGetSourcefv(int source, int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
+        try { Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
     }
 
     /// ```
     /// void alGetSourcei(unsigned int source, int param, ALint* value);
     /// ```
     public static void alGetSourcei(int source, int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
+        try { Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
     }
 
     /// ```
     /// void alGetSource3i(unsigned int source, int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetSource3i(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
+        try { Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
     }
 
     /// ```
     /// void alGetSourceiv(unsigned int source, int param, ALint* values);
     /// ```
     public static void alGetSourceiv(int source, int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
+        try { Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
     }
 
     /// ```
     /// void alSourcePlay(unsigned int source);
     /// ```
     public static void alSourcePlay(int source) {
-        try {
-            Handles.MH_alSourcePlay.invokeExact(Handles.get().PFN_alSourcePlay, source);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
+        try { Handles.MH_alSourcePlay.invokeExact(Handles.get().PFN_alSourcePlay, source); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
     }
 
     /// ```
     /// void alSourceStop(unsigned int source);
     /// ```
     public static void alSourceStop(int source) {
-        try {
-            Handles.MH_alSourceStop.invokeExact(Handles.get().PFN_alSourceStop, source);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
+        try { Handles.MH_alSourceStop.invokeExact(Handles.get().PFN_alSourceStop, source); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
     }
 
     /// ```
     /// void alSourceRewind(unsigned int source);
     /// ```
     public static void alSourceRewind(int source) {
-        try {
-            Handles.MH_alSourceRewind.invokeExact(Handles.get().PFN_alSourceRewind, source);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
+        try { Handles.MH_alSourceRewind.invokeExact(Handles.get().PFN_alSourceRewind, source); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
     }
 
     /// ```
     /// void alSourcePause(unsigned int source);
     /// ```
     public static void alSourcePause(int source) {
-        try {
-            Handles.MH_alSourcePause.invokeExact(Handles.get().PFN_alSourcePause, source);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
+        try { Handles.MH_alSourcePause.invokeExact(Handles.get().PFN_alSourcePause, source); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
     /// ```
     /// void alSourcePlayv(int n, const ALuint* sources);
     /// ```
     public static void alSourcePlayv(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
+        try { Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
     /// ```
     /// void alSourceStopv(int n, const ALuint* sources);
     /// ```
     public static void alSourceStopv(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
+        try { Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
     /// ```
     /// void alSourceRewindv(int n, const ALuint* sources);
     /// ```
     public static void alSourceRewindv(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
+        try { Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
     /// ```
     /// void alSourcePausev(int n, const ALuint* sources);
     /// ```
     public static void alSourcePausev(int n, MemorySegment sources) {
-        try {
-            Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
+        try { Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
     /// ```
     /// void alSourceQueueBuffers(unsigned int source, int nb, const ALuint* buffers);
     /// ```
     public static void alSourceQueueBuffers(int source, int nb, MemorySegment buffers) {
-        try {
-            Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
+        try { Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
     /// ```
     /// void alSourceUnqueueBuffers(unsigned int source, int nb, ALuint* buffers);
     /// ```
     public static void alSourceUnqueueBuffers(int source, int nb, MemorySegment buffers) {
-        try {
-            Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers);
-        } catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
+        try { Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers); }
+        catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
     /// ```
     /// void alGenBuffers(int n, ALuint* buffers);
     /// ```
     public static void alGenBuffers(int n, MemorySegment buffers) {
-        try {
-            Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers);
-        } catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
+        try { Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers); }
+        catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
     /// ```
     /// void alDeleteBuffers(int n, const ALuint* buffers);
     /// ```
     public static void alDeleteBuffers(int n, MemorySegment buffers) {
-        try {
-            Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers);
-        } catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
+        try { Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers); }
+        catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
     }
 
     /// ```
-    /// char alIsBuffer(unsigned int buffer);
+    /// ALboolean alIsBuffer(unsigned int buffer);
     /// ```
     public static boolean alIsBuffer(int buffer) {
-        try {
-            return (((byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
+        try { return (((byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
     /// ```
     /// void alBufferData(unsigned int buffer, int format, const ALvoid* data, int size, int samplerate);
     /// ```
     public static void alBufferData(int buffer, int format, MemorySegment data, int size, int samplerate) {
-        try {
-            Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate);
-        } catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
+        try { Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate); }
+        catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
     }
 
     /// ```
     /// void alBufferf(unsigned int buffer, int param, float value);
     /// ```
     public static void alBufferf(int buffer, int param, float value) {
-        try {
-            Handles.MH_alBufferf.invokeExact(Handles.get().PFN_alBufferf, buffer, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alBufferf", e); }
+        try { Handles.MH_alBufferf.invokeExact(Handles.get().PFN_alBufferf, buffer, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alBufferf", e); }
     }
 
     /// ```
     /// void alBuffer3f(unsigned int buffer, int param, float value1, float value2, float value3);
     /// ```
     public static void alBuffer3f(int buffer, int param, float value1, float value2, float value3) {
-        try {
-            Handles.MH_alBuffer3f.invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
+        try { Handles.MH_alBuffer3f.invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
     }
 
     /// ```
     /// void alBufferfv(unsigned int buffer, int param, const ALfloat* values);
     /// ```
     public static void alBufferfv(int buffer, int param, MemorySegment values) {
-        try {
-            Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
+        try { Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
     }
 
     /// ```
     /// void alBufferi(unsigned int buffer, int param, int value);
     /// ```
     public static void alBufferi(int buffer, int param, int value) {
-        try {
-            Handles.MH_alBufferi.invokeExact(Handles.get().PFN_alBufferi, buffer, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alBufferi", e); }
+        try { Handles.MH_alBufferi.invokeExact(Handles.get().PFN_alBufferi, buffer, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alBufferi", e); }
     }
 
     /// ```
     /// void alBuffer3i(unsigned int buffer, int param, int value1, int value2, int value3);
     /// ```
     public static void alBuffer3i(int buffer, int param, int value1, int value2, int value3) {
-        try {
-            Handles.MH_alBuffer3i.invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
+        try { Handles.MH_alBuffer3i.invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
     }
 
     /// ```
     /// void alBufferiv(unsigned int buffer, int param, const ALint* values);
     /// ```
     public static void alBufferiv(int buffer, int param, MemorySegment values) {
-        try {
-            Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
+        try { Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
     }
 
     /// ```
     /// void alGetBufferf(unsigned int buffer, int param, ALfloat* value);
     /// ```
     public static void alGetBufferf(int buffer, int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
+        try { Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
     }
 
     /// ```
     /// void alGetBuffer3f(unsigned int buffer, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetBuffer3f(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
+        try { Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
     }
 
     /// ```
     /// void alGetBufferfv(unsigned int buffer, int param, ALfloat* values);
     /// ```
     public static void alGetBufferfv(int buffer, int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
+        try { Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
     }
 
     /// ```
     /// void alGetBufferi(unsigned int buffer, int param, ALint* value);
     /// ```
     public static void alGetBufferi(int buffer, int param, MemorySegment value) {
-        try {
-            Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
+        try { Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
     }
 
     /// ```
     /// void alGetBuffer3i(unsigned int buffer, int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetBuffer3i(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
-        try {
-            Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
+        try { Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
     }
 
     /// ```
     /// void alGetBufferiv(unsigned int buffer, int param, ALint* values);
     /// ```
     public static void alGetBufferiv(int buffer, int param, MemorySegment values) {
-        try {
-            Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values);
-        } catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }
+        try { Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values); }
+        catch (Throwable e) { throw new RuntimeException("error in alGetBufferiv", e); }
     }
 
     //@formatter:on

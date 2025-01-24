@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -53,22 +52,31 @@ public final class GLEXTLightTexture {
         this.handles = new Handles(func);
     }
 
-    public void ApplyTextureEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glApplyTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glApplyTextureEXT");
+    /// ```
+    /// void glApplyTextureEXT(unsigned int mode);
+    /// ```
+    public void ApplyTextureEXT(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glApplyTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glApplyTextureEXT");
         try { Handles.MH_glApplyTextureEXT.invokeExact(handles.PFN_glApplyTextureEXT, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glApplyTextureEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ApplyTextureEXT", e); }
     }
 
-    public void TextureLightEXT(@CType("GLenum") int pname) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureLightEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureLightEXT");
+    /// ```
+    /// void glTextureLightEXT(unsigned int pname);
+    /// ```
+    public void TextureLightEXT(int pname) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureLightEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureLightEXT");
         try { Handles.MH_glTextureLightEXT.invokeExact(handles.PFN_glTextureLightEXT, pname); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureLightEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureLightEXT", e); }
     }
 
-    public void TextureMaterialEXT(@CType("GLenum") int face, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureMaterialEXT");
+    /// ```
+    /// void glTextureMaterialEXT(unsigned int face, unsigned int mode);
+    /// ```
+    public void TextureMaterialEXT(int face, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureMaterialEXT");
         try { Handles.MH_glTextureMaterialEXT.invokeExact(handles.PFN_glTextureMaterialEXT, face, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureMaterialEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureMaterialEXT", e); }
     }
 
 }

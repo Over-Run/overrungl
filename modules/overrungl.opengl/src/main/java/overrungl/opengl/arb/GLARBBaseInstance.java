@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,22 +42,31 @@ public final class GLARBBaseInstance {
         this.handles = new Handles(func);
     }
 
-    public void DrawArraysInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawArraysInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance");
+    /// ```
+    /// void glDrawArraysInstancedBaseInstance(unsigned int mode, int first, int count, int instancecount, unsigned int baseinstance);
+    /// ```
+    public void DrawArraysInstancedBaseInstance(int mode, int first, int count, int instancecount, int baseinstance) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance");
         try { Handles.MH_glDrawArraysInstancedBaseInstance.invokeExact(handles.PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedBaseInstance", e); }
     }
 
-    public void DrawElementsInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
+    /// ```
+    /// void glDrawElementsInstancedBaseInstance(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, unsigned int baseinstance);
+    /// ```
+    public void DrawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int baseinstance) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
         try { Handles.MH_glDrawElementsInstancedBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseInstance", e); }
     }
 
-    public void DrawElementsInstancedBaseVertexBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLint") int basevertex, @CType("GLuint") int baseinstance) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
+    /// ```
+    /// void glDrawElementsInstancedBaseVertexBaseInstance(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, int basevertex, unsigned int baseinstance);
+    /// ```
+    public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
         try { Handles.MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseVertexBaseInstance", e); }
     }
 
 }

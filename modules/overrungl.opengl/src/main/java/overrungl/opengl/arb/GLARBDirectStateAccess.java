@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -54,7 +53,7 @@ public final class GLARBDirectStateAccess {
         public static final MethodHandle MH_glClearNamedBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glMapNamedBuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glMapNamedBufferRange = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUnmapNamedBuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUnmapNamedBuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glFlushMappedNamedBufferRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glGetNamedBufferParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGetNamedBufferParameteri64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -88,8 +87,8 @@ public final class GLARBDirectStateAccess {
         public static final MethodHandle MH_glTextureStorage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glTextureStorage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glTextureStorage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTextureStorage2DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
-        public static final MethodHandle MH_glTextureStorage3DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glTextureStorage2DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glTextureStorage3DMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public static final MethodHandle MH_glTextureSubImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glTextureSubImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glTextureSubImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -122,7 +121,7 @@ public final class GLARBDirectStateAccess {
         public static final MethodHandle MH_glVertexArrayVertexBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glVertexArrayVertexBuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glVertexArrayAttribBinding = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexArrayAttribFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexArrayAttribFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glVertexArrayAttribIFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glVertexArrayAttribLFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glVertexArrayBindingDivisor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
@@ -330,586 +329,877 @@ public final class GLARBDirectStateAccess {
         this.handles = new Handles(func);
     }
 
-    public void CreateTransformFeedbacks(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateTransformFeedbacks)) throw new SymbolNotFoundError("Symbol not found: glCreateTransformFeedbacks");
+    /// ```
+    /// void glCreateTransformFeedbacks(int n, GLuint* ids);
+    /// ```
+    public void CreateTransformFeedbacks(int n, MemorySegment ids) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateTransformFeedbacks)) throw new SymbolNotFoundError("Symbol not found: glCreateTransformFeedbacks");
         try { Handles.MH_glCreateTransformFeedbacks.invokeExact(handles.PFN_glCreateTransformFeedbacks, n, ids); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateTransformFeedbacks", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateTransformFeedbacks", e); }
     }
 
-    public void TransformFeedbackBufferBase(@CType("GLuint") int xfb, @CType("GLuint") int index, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTransformFeedbackBufferBase)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackBufferBase");
+    /// ```
+    /// void glTransformFeedbackBufferBase(unsigned int xfb, unsigned int index, unsigned int buffer);
+    /// ```
+    public void TransformFeedbackBufferBase(int xfb, int index, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackBufferBase)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackBufferBase");
         try { Handles.MH_glTransformFeedbackBufferBase.invokeExact(handles.PFN_glTransformFeedbackBufferBase, xfb, index, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTransformFeedbackBufferBase", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackBufferBase", e); }
     }
 
-    public void TransformFeedbackBufferRange(@CType("GLuint") int xfb, @CType("GLuint") int index, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTransformFeedbackBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackBufferRange");
+    /// ```
+    /// void glTransformFeedbackBufferRange(unsigned int xfb, unsigned int index, unsigned int buffer, signed long long offset, signed long long size);
+    /// ```
+    public void TransformFeedbackBufferRange(int xfb, int index, int buffer, long offset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackBufferRange");
         try { Handles.MH_glTransformFeedbackBufferRange.invokeExact(handles.PFN_glTransformFeedbackBufferRange, xfb, index, buffer, offset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glTransformFeedbackBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackBufferRange", e); }
     }
 
-    public void GetTransformFeedbackiv(@CType("GLuint") int xfb, @CType("GLenum") int pname, @CType("GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTransformFeedbackiv)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackiv");
+    /// ```
+    /// void glGetTransformFeedbackiv(unsigned int xfb, unsigned int pname, GLint* param);
+    /// ```
+    public void GetTransformFeedbackiv(int xfb, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackiv)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackiv");
         try { Handles.MH_glGetTransformFeedbackiv.invokeExact(handles.PFN_glGetTransformFeedbackiv, xfb, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTransformFeedbackiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbackiv", e); }
     }
 
-    public void GetTransformFeedbacki_v(@CType("GLuint") int xfb, @CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTransformFeedbacki_v)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbacki_v");
+    /// ```
+    /// void glGetTransformFeedbacki_v(unsigned int xfb, unsigned int pname, unsigned int index, GLint* param);
+    /// ```
+    public void GetTransformFeedbacki_v(int xfb, int pname, int index, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbacki_v)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbacki_v");
         try { Handles.MH_glGetTransformFeedbacki_v.invokeExact(handles.PFN_glGetTransformFeedbacki_v, xfb, pname, index, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTransformFeedbacki_v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbacki_v", e); }
     }
 
-    public void GetTransformFeedbacki64_v(@CType("GLuint") int xfb, @CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLint64 *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTransformFeedbacki64_v)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbacki64_v");
+    /// ```
+    /// void glGetTransformFeedbacki64_v(unsigned int xfb, unsigned int pname, unsigned int index, GLint64* param);
+    /// ```
+    public void GetTransformFeedbacki64_v(int xfb, int pname, int index, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbacki64_v)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbacki64_v");
         try { Handles.MH_glGetTransformFeedbacki64_v.invokeExact(handles.PFN_glGetTransformFeedbacki64_v, xfb, pname, index, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTransformFeedbacki64_v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbacki64_v", e); }
     }
 
-    public void CreateBuffers(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment buffers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateBuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateBuffers");
+    /// ```
+    /// void glCreateBuffers(int n, GLuint* buffers);
+    /// ```
+    public void CreateBuffers(int n, MemorySegment buffers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateBuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateBuffers");
         try { Handles.MH_glCreateBuffers.invokeExact(handles.PFN_glCreateBuffers, n, buffers); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateBuffers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateBuffers", e); }
     }
 
-    public void NamedBufferStorage(@CType("GLuint") int buffer, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data, @CType("GLbitfield") int flags) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorage");
+    /// ```
+    /// void glNamedBufferStorage(unsigned int buffer, signed long long size, const void* data, unsigned int flags);
+    /// ```
+    public void NamedBufferStorage(int buffer, long size, MemorySegment data, int flags) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorage");
         try { Handles.MH_glNamedBufferStorage.invokeExact(handles.PFN_glNamedBufferStorage, buffer, size, data, flags); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferStorage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorage", e); }
     }
 
-    public void NamedBufferData(@CType("GLuint") int buffer, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data, @CType("GLenum") int usage) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferData)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferData");
+    /// ```
+    /// void glNamedBufferData(unsigned int buffer, signed long long size, const void* data, unsigned int usage);
+    /// ```
+    public void NamedBufferData(int buffer, long size, MemorySegment data, int usage) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferData)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferData");
         try { Handles.MH_glNamedBufferData.invokeExact(handles.PFN_glNamedBufferData, buffer, size, data, usage); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedBufferData", e); }
     }
 
-    public void NamedBufferSubData(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferSubData");
+    /// ```
+    /// void glNamedBufferSubData(unsigned int buffer, signed long long offset, signed long long size, const void* data);
+    /// ```
+    public void NamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferSubData");
         try { Handles.MH_glNamedBufferSubData.invokeExact(handles.PFN_glNamedBufferSubData, buffer, offset, size, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedBufferSubData", e); }
     }
 
-    public void CopyNamedBufferSubData(@CType("GLuint") int readBuffer, @CType("GLuint") int writeBuffer, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyNamedBufferSubData");
+    /// ```
+    /// void glCopyNamedBufferSubData(unsigned int readBuffer, unsigned int writeBuffer, signed long long readOffset, signed long long writeOffset, signed long long size);
+    /// ```
+    public void CopyNamedBufferSubData(int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyNamedBufferSubData");
         try { Handles.MH_glCopyNamedBufferSubData.invokeExact(handles.PFN_glCopyNamedBufferSubData, readBuffer, writeBuffer, readOffset, writeOffset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyNamedBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyNamedBufferSubData", e); }
     }
 
-    public void ClearNamedBufferData(@CType("GLuint") int buffer, @CType("GLenum") int internalformat, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferData");
+    /// ```
+    /// void glClearNamedBufferData(unsigned int buffer, unsigned int internalformat, unsigned int format, unsigned int type, const void* data);
+    /// ```
+    public void ClearNamedBufferData(int buffer, int internalformat, int format, int type, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferData");
         try { Handles.MH_glClearNamedBufferData.invokeExact(handles.PFN_glClearNamedBufferData, buffer, internalformat, format, type, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedBufferData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferData", e); }
     }
 
-    public void ClearNamedBufferSubData(@CType("GLuint") int buffer, @CType("GLenum") int internalformat, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferSubData");
+    /// ```
+    /// void glClearNamedBufferSubData(unsigned int buffer, unsigned int internalformat, signed long long offset, signed long long size, unsigned int format, unsigned int type, const void* data);
+    /// ```
+    public void ClearNamedBufferSubData(int buffer, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferSubData");
         try { Handles.MH_glClearNamedBufferSubData.invokeExact(handles.PFN_glClearNamedBufferSubData, buffer, internalformat, offset, size, format, type, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedBufferSubData", e); }
     }
 
-    public @CType("void*") MemorySegment MapNamedBuffer(@CType("GLuint") int buffer, @CType("GLenum") int access) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapNamedBuffer)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBuffer");
+    /// ```
+    /// void* glMapNamedBuffer(unsigned int buffer, unsigned int access);
+    /// ```
+    public MemorySegment MapNamedBuffer(int buffer, int access) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBuffer)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBuffer");
         try { return (MemorySegment) Handles.MH_glMapNamedBuffer.invokeExact(handles.PFN_glMapNamedBuffer, buffer, access); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapNamedBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapNamedBuffer", e); }
     }
 
-    public @CType("void*") MemorySegment MapNamedBufferRange(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length, @CType("GLbitfield") int access) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapNamedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBufferRange");
+    /// ```
+    /// void* glMapNamedBufferRange(unsigned int buffer, signed long long offset, signed long long length, unsigned int access);
+    /// ```
+    public MemorySegment MapNamedBufferRange(int buffer, long offset, long length, int access) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBufferRange");
         try { return (MemorySegment) Handles.MH_glMapNamedBufferRange.invokeExact(handles.PFN_glMapNamedBufferRange, buffer, offset, length, access); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapNamedBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapNamedBufferRange", e); }
     }
 
-    public @CType("GLboolean") boolean UnmapNamedBuffer(@CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUnmapNamedBuffer)) throw new SymbolNotFoundError("Symbol not found: glUnmapNamedBuffer");
-        try { return (boolean) Handles.MH_glUnmapNamedBuffer.invokeExact(handles.PFN_glUnmapNamedBuffer, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glUnmapNamedBuffer", e); }
+    /// ```
+    /// GLboolean glUnmapNamedBuffer(unsigned int buffer);
+    /// ```
+    public boolean UnmapNamedBuffer(int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUnmapNamedBuffer)) throw new SymbolNotFoundError("Symbol not found: glUnmapNamedBuffer");
+        try { return (((byte) Handles.MH_glUnmapNamedBuffer.invokeExact(handles.PFN_glUnmapNamedBuffer, buffer)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in UnmapNamedBuffer", e); }
     }
 
-    public void FlushMappedNamedBufferRange(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFlushMappedNamedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedNamedBufferRange");
+    /// ```
+    /// void glFlushMappedNamedBufferRange(unsigned int buffer, signed long long offset, signed long long length);
+    /// ```
+    public void FlushMappedNamedBufferRange(int buffer, long offset, long length) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedNamedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedNamedBufferRange");
         try { Handles.MH_glFlushMappedNamedBufferRange.invokeExact(handles.PFN_glFlushMappedNamedBufferRange, buffer, offset, length); }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedNamedBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FlushMappedNamedBufferRange", e); }
     }
 
-    public void GetNamedBufferParameteriv(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedBufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameteriv");
+    /// ```
+    /// void glGetNamedBufferParameteriv(unsigned int buffer, unsigned int pname, GLint* params);
+    /// ```
+    public void GetNamedBufferParameteriv(int buffer, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameteriv");
         try { Handles.MH_glGetNamedBufferParameteriv.invokeExact(handles.PFN_glGetNamedBufferParameteriv, buffer, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameteriv", e); }
     }
 
-    public void GetNamedBufferParameteri64v(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedBufferParameteri64v)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameteri64v");
+    /// ```
+    /// void glGetNamedBufferParameteri64v(unsigned int buffer, unsigned int pname, GLint64* params);
+    /// ```
+    public void GetNamedBufferParameteri64v(int buffer, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameteri64v)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameteri64v");
         try { Handles.MH_glGetNamedBufferParameteri64v.invokeExact(handles.PFN_glGetNamedBufferParameteri64v, buffer, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferParameteri64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameteri64v", e); }
     }
 
-    public void GetNamedBufferPointerv(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("void **") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedBufferPointerv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferPointerv");
+    /// ```
+    /// void glGetNamedBufferPointerv(unsigned int buffer, unsigned int pname, void** params);
+    /// ```
+    public void GetNamedBufferPointerv(int buffer, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferPointerv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferPointerv");
         try { Handles.MH_glGetNamedBufferPointerv.invokeExact(handles.PFN_glGetNamedBufferPointerv, buffer, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferPointerv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferPointerv", e); }
     }
 
-    public void GetNamedBufferSubData(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("void*") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferSubData");
+    /// ```
+    /// void glGetNamedBufferSubData(unsigned int buffer, signed long long offset, signed long long size, void* data);
+    /// ```
+    public void GetNamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferSubData");
         try { Handles.MH_glGetNamedBufferSubData.invokeExact(handles.PFN_glGetNamedBufferSubData, buffer, offset, size, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferSubData", e); }
     }
 
-    public void CreateFramebuffers(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment framebuffers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateFramebuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateFramebuffers");
+    /// ```
+    /// void glCreateFramebuffers(int n, GLuint* framebuffers);
+    /// ```
+    public void CreateFramebuffers(int n, MemorySegment framebuffers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateFramebuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateFramebuffers");
         try { Handles.MH_glCreateFramebuffers.invokeExact(handles.PFN_glCreateFramebuffers, n, framebuffers); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateFramebuffers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateFramebuffers", e); }
     }
 
-    public void NamedFramebufferRenderbuffer(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLenum") int renderbuffertarget, @CType("GLuint") int renderbuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferRenderbuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferRenderbuffer");
+    /// ```
+    /// void glNamedFramebufferRenderbuffer(unsigned int framebuffer, unsigned int attachment, unsigned int renderbuffertarget, unsigned int renderbuffer);
+    /// ```
+    public void NamedFramebufferRenderbuffer(int framebuffer, int attachment, int renderbuffertarget, int renderbuffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferRenderbuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferRenderbuffer");
         try { Handles.MH_glNamedFramebufferRenderbuffer.invokeExact(handles.PFN_glNamedFramebufferRenderbuffer, framebuffer, attachment, renderbuffertarget, renderbuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferRenderbuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferRenderbuffer", e); }
     }
 
-    public void NamedFramebufferParameteri(@CType("GLuint") int framebuffer, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferParameteri");
+    /// ```
+    /// void glNamedFramebufferParameteri(unsigned int framebuffer, unsigned int pname, int param);
+    /// ```
+    public void NamedFramebufferParameteri(int framebuffer, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferParameteri");
         try { Handles.MH_glNamedFramebufferParameteri.invokeExact(handles.PFN_glNamedFramebufferParameteri, framebuffer, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferParameteri", e); }
     }
 
-    public void NamedFramebufferTexture(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferTexture)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTexture");
+    /// ```
+    /// void glNamedFramebufferTexture(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level);
+    /// ```
+    public void NamedFramebufferTexture(int framebuffer, int attachment, int texture, int level) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTexture");
         try { Handles.MH_glNamedFramebufferTexture.invokeExact(handles.PFN_glNamedFramebufferTexture, framebuffer, attachment, texture, level); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferTexture", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTexture", e); }
     }
 
-    public void NamedFramebufferTextureLayer(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int layer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferTextureLayer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureLayer");
+    /// ```
+    /// void glNamedFramebufferTextureLayer(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level, int layer);
+    /// ```
+    public void NamedFramebufferTextureLayer(int framebuffer, int attachment, int texture, int level, int layer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureLayer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureLayer");
         try { Handles.MH_glNamedFramebufferTextureLayer.invokeExact(handles.PFN_glNamedFramebufferTextureLayer, framebuffer, attachment, texture, level, layer); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferTextureLayer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureLayer", e); }
     }
 
-    public void NamedFramebufferDrawBuffer(@CType("GLuint") int framebuffer, @CType("GLenum") int buf) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferDrawBuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferDrawBuffer");
+    /// ```
+    /// void glNamedFramebufferDrawBuffer(unsigned int framebuffer, unsigned int buf);
+    /// ```
+    public void NamedFramebufferDrawBuffer(int framebuffer, int buf) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferDrawBuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferDrawBuffer");
         try { Handles.MH_glNamedFramebufferDrawBuffer.invokeExact(handles.PFN_glNamedFramebufferDrawBuffer, framebuffer, buf); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferDrawBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferDrawBuffer", e); }
     }
 
-    public void NamedFramebufferDrawBuffers(@CType("GLuint") int framebuffer, @CType("GLsizei") int n, @CType("const GLenum *") MemorySegment bufs) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferDrawBuffers)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferDrawBuffers");
+    /// ```
+    /// void glNamedFramebufferDrawBuffers(unsigned int framebuffer, int n, const GLenum* bufs);
+    /// ```
+    public void NamedFramebufferDrawBuffers(int framebuffer, int n, MemorySegment bufs) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferDrawBuffers)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferDrawBuffers");
         try { Handles.MH_glNamedFramebufferDrawBuffers.invokeExact(handles.PFN_glNamedFramebufferDrawBuffers, framebuffer, n, bufs); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferDrawBuffers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferDrawBuffers", e); }
     }
 
-    public void NamedFramebufferReadBuffer(@CType("GLuint") int framebuffer, @CType("GLenum") int src) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferReadBuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferReadBuffer");
+    /// ```
+    /// void glNamedFramebufferReadBuffer(unsigned int framebuffer, unsigned int src);
+    /// ```
+    public void NamedFramebufferReadBuffer(int framebuffer, int src) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferReadBuffer)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferReadBuffer");
         try { Handles.MH_glNamedFramebufferReadBuffer.invokeExact(handles.PFN_glNamedFramebufferReadBuffer, framebuffer, src); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferReadBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferReadBuffer", e); }
     }
 
-    public void InvalidateNamedFramebufferData(@CType("GLuint") int framebuffer, @CType("GLsizei") int numAttachments, @CType("const GLenum *") MemorySegment attachments) {
-        if (Unmarshal.isNullPointer(handles.PFN_glInvalidateNamedFramebufferData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferData");
+    /// ```
+    /// void glInvalidateNamedFramebufferData(unsigned int framebuffer, int numAttachments, const GLenum* attachments);
+    /// ```
+    public void InvalidateNamedFramebufferData(int framebuffer, int numAttachments, MemorySegment attachments) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateNamedFramebufferData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferData");
         try { Handles.MH_glInvalidateNamedFramebufferData.invokeExact(handles.PFN_glInvalidateNamedFramebufferData, framebuffer, numAttachments, attachments); }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateNamedFramebufferData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in InvalidateNamedFramebufferData", e); }
     }
 
-    public void InvalidateNamedFramebufferSubData(@CType("GLuint") int framebuffer, @CType("GLsizei") int numAttachments, @CType("const GLenum *") MemorySegment attachments, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glInvalidateNamedFramebufferSubData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferSubData");
+    /// ```
+    /// void glInvalidateNamedFramebufferSubData(unsigned int framebuffer, int numAttachments, const GLenum* attachments, int x, int y, int width, int height);
+    /// ```
+    public void InvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateNamedFramebufferSubData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateNamedFramebufferSubData");
         try { Handles.MH_glInvalidateNamedFramebufferSubData.invokeExact(handles.PFN_glInvalidateNamedFramebufferSubData, framebuffer, numAttachments, attachments, x, y, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateNamedFramebufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in InvalidateNamedFramebufferSubData", e); }
     }
 
-    public void ClearNamedFramebufferiv(@CType("GLuint") int framebuffer, @CType("GLenum") int buffer, @CType("GLint") int drawbuffer, @CType("const GLint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedFramebufferiv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferiv");
+    /// ```
+    /// void glClearNamedFramebufferiv(unsigned int framebuffer, unsigned int buffer, int drawbuffer, const GLint* value);
+    /// ```
+    public void ClearNamedFramebufferiv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferiv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferiv");
         try { Handles.MH_glClearNamedFramebufferiv.invokeExact(handles.PFN_glClearNamedFramebufferiv, framebuffer, buffer, drawbuffer, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedFramebufferiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferiv", e); }
     }
 
-    public void ClearNamedFramebufferuiv(@CType("GLuint") int framebuffer, @CType("GLenum") int buffer, @CType("GLint") int drawbuffer, @CType("const GLuint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedFramebufferuiv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferuiv");
+    /// ```
+    /// void glClearNamedFramebufferuiv(unsigned int framebuffer, unsigned int buffer, int drawbuffer, const GLuint* value);
+    /// ```
+    public void ClearNamedFramebufferuiv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferuiv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferuiv");
         try { Handles.MH_glClearNamedFramebufferuiv.invokeExact(handles.PFN_glClearNamedFramebufferuiv, framebuffer, buffer, drawbuffer, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedFramebufferuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferuiv", e); }
     }
 
-    public void ClearNamedFramebufferfv(@CType("GLuint") int framebuffer, @CType("GLenum") int buffer, @CType("GLint") int drawbuffer, @CType("const GLfloat *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedFramebufferfv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferfv");
+    /// ```
+    /// void glClearNamedFramebufferfv(unsigned int framebuffer, unsigned int buffer, int drawbuffer, const GLfloat* value);
+    /// ```
+    public void ClearNamedFramebufferfv(int framebuffer, int buffer, int drawbuffer, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferfv)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferfv");
         try { Handles.MH_glClearNamedFramebufferfv.invokeExact(handles.PFN_glClearNamedFramebufferfv, framebuffer, buffer, drawbuffer, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedFramebufferfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferfv", e); }
     }
 
-    public void ClearNamedFramebufferfi(@CType("GLuint") int framebuffer, @CType("GLenum") int buffer, @CType("GLint") int drawbuffer, @CType("GLfloat") float depth, @CType("GLint") int stencil) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearNamedFramebufferfi)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferfi");
+    /// ```
+    /// void glClearNamedFramebufferfi(unsigned int framebuffer, unsigned int buffer, int drawbuffer, float depth, int stencil);
+    /// ```
+    public void ClearNamedFramebufferfi(int framebuffer, int buffer, int drawbuffer, float depth, int stencil) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedFramebufferfi)) throw new SymbolNotFoundError("Symbol not found: glClearNamedFramebufferfi");
         try { Handles.MH_glClearNamedFramebufferfi.invokeExact(handles.PFN_glClearNamedFramebufferfi, framebuffer, buffer, drawbuffer, depth, stencil); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearNamedFramebufferfi", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearNamedFramebufferfi", e); }
     }
 
-    public void BlitNamedFramebuffer(@CType("GLuint") int readFramebuffer, @CType("GLuint") int drawFramebuffer, @CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlitNamedFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glBlitNamedFramebuffer");
+    /// ```
+    /// void glBlitNamedFramebuffer(unsigned int readFramebuffer, unsigned int drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, unsigned int mask, unsigned int filter);
+    /// ```
+    public void BlitNamedFramebuffer(int readFramebuffer, int drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlitNamedFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glBlitNamedFramebuffer");
         try { Handles.MH_glBlitNamedFramebuffer.invokeExact(handles.PFN_glBlitNamedFramebuffer, readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitNamedFramebuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlitNamedFramebuffer", e); }
     }
 
-    public @CType("GLenum") int CheckNamedFramebufferStatus(@CType("GLuint") int framebuffer, @CType("GLenum") int target) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCheckNamedFramebufferStatus)) throw new SymbolNotFoundError("Symbol not found: glCheckNamedFramebufferStatus");
+    /// ```
+    /// unsigned int glCheckNamedFramebufferStatus(unsigned int framebuffer, unsigned int target);
+    /// ```
+    public int CheckNamedFramebufferStatus(int framebuffer, int target) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCheckNamedFramebufferStatus)) throw new SymbolNotFoundError("Symbol not found: glCheckNamedFramebufferStatus");
         try { return (int) Handles.MH_glCheckNamedFramebufferStatus.invokeExact(handles.PFN_glCheckNamedFramebufferStatus, framebuffer, target); }
-        catch (Throwable e) { throw new RuntimeException("error in glCheckNamedFramebufferStatus", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CheckNamedFramebufferStatus", e); }
     }
 
-    public void GetNamedFramebufferParameteriv(@CType("GLuint") int framebuffer, @CType("GLenum") int pname, @CType("GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameteriv");
+    /// ```
+    /// void glGetNamedFramebufferParameteriv(unsigned int framebuffer, unsigned int pname, GLint* param);
+    /// ```
+    public void GetNamedFramebufferParameteriv(int framebuffer, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameteriv");
         try { Handles.MH_glGetNamedFramebufferParameteriv.invokeExact(handles.PFN_glGetNamedFramebufferParameteriv, framebuffer, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedFramebufferParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferParameteriv", e); }
     }
 
-    public void GetNamedFramebufferAttachmentParameteriv(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameteriv");
+    /// ```
+    /// void glGetNamedFramebufferAttachmentParameteriv(unsigned int framebuffer, unsigned int attachment, unsigned int pname, GLint* params);
+    /// ```
+    public void GetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameteriv");
         try { Handles.MH_glGetNamedFramebufferAttachmentParameteriv.invokeExact(handles.PFN_glGetNamedFramebufferAttachmentParameteriv, framebuffer, attachment, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedFramebufferAttachmentParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferAttachmentParameteriv", e); }
     }
 
-    public void CreateRenderbuffers(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment renderbuffers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateRenderbuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateRenderbuffers");
+    /// ```
+    /// void glCreateRenderbuffers(int n, GLuint* renderbuffers);
+    /// ```
+    public void CreateRenderbuffers(int n, MemorySegment renderbuffers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateRenderbuffers)) throw new SymbolNotFoundError("Symbol not found: glCreateRenderbuffers");
         try { Handles.MH_glCreateRenderbuffers.invokeExact(handles.PFN_glCreateRenderbuffers, n, renderbuffers); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateRenderbuffers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateRenderbuffers", e); }
     }
 
-    public void NamedRenderbufferStorage(@CType("GLuint") int renderbuffer, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedRenderbufferStorage)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorage");
+    /// ```
+    /// void glNamedRenderbufferStorage(unsigned int renderbuffer, unsigned int internalformat, int width, int height);
+    /// ```
+    public void NamedRenderbufferStorage(int renderbuffer, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorage)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorage");
         try { Handles.MH_glNamedRenderbufferStorage.invokeExact(handles.PFN_glNamedRenderbufferStorage, renderbuffer, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedRenderbufferStorage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorage", e); }
     }
 
-    public void NamedRenderbufferStorageMultisample(@CType("GLuint") int renderbuffer, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisample)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisample");
+    /// ```
+    /// void glNamedRenderbufferStorageMultisample(unsigned int renderbuffer, int samples, unsigned int internalformat, int width, int height);
+    /// ```
+    public void NamedRenderbufferStorageMultisample(int renderbuffer, int samples, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisample)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisample");
         try { Handles.MH_glNamedRenderbufferStorageMultisample.invokeExact(handles.PFN_glNamedRenderbufferStorageMultisample, renderbuffer, samples, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedRenderbufferStorageMultisample", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisample", e); }
     }
 
-    public void GetNamedRenderbufferParameteriv(@CType("GLuint") int renderbuffer, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetNamedRenderbufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameteriv");
+    /// ```
+    /// void glGetNamedRenderbufferParameteriv(unsigned int renderbuffer, unsigned int pname, GLint* params);
+    /// ```
+    public void GetNamedRenderbufferParameteriv(int renderbuffer, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedRenderbufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameteriv");
         try { Handles.MH_glGetNamedRenderbufferParameteriv.invokeExact(handles.PFN_glGetNamedRenderbufferParameteriv, renderbuffer, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedRenderbufferParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetNamedRenderbufferParameteriv", e); }
     }
 
-    public void CreateTextures(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("GLuint *") MemorySegment textures) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateTextures)) throw new SymbolNotFoundError("Symbol not found: glCreateTextures");
+    /// ```
+    /// void glCreateTextures(unsigned int target, int n, GLuint* textures);
+    /// ```
+    public void CreateTextures(int target, int n, MemorySegment textures) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateTextures)) throw new SymbolNotFoundError("Symbol not found: glCreateTextures");
         try { Handles.MH_glCreateTextures.invokeExact(handles.PFN_glCreateTextures, target, n, textures); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateTextures", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateTextures", e); }
     }
 
-    public void TextureBuffer(@CType("GLuint") int texture, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureBuffer)) throw new SymbolNotFoundError("Symbol not found: glTextureBuffer");
+    /// ```
+    /// void glTextureBuffer(unsigned int texture, unsigned int internalformat, unsigned int buffer);
+    /// ```
+    public void TextureBuffer(int texture, int internalformat, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureBuffer)) throw new SymbolNotFoundError("Symbol not found: glTextureBuffer");
         try { Handles.MH_glTextureBuffer.invokeExact(handles.PFN_glTextureBuffer, texture, internalformat, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureBuffer", e); }
     }
 
-    public void TextureBufferRange(@CType("GLuint") int texture, @CType("GLenum") int internalformat, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTextureBufferRange");
+    /// ```
+    /// void glTextureBufferRange(unsigned int texture, unsigned int internalformat, unsigned int buffer, signed long long offset, signed long long size);
+    /// ```
+    public void TextureBufferRange(int texture, int internalformat, int buffer, long offset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTextureBufferRange");
         try { Handles.MH_glTextureBufferRange.invokeExact(handles.PFN_glTextureBufferRange, texture, internalformat, buffer, offset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureBufferRange", e); }
     }
 
-    public void TextureStorage1D(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage1D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1D");
+    /// ```
+    /// void glTextureStorage1D(unsigned int texture, int levels, unsigned int internalformat, int width);
+    /// ```
+    public void TextureStorage1D(int texture, int levels, int internalformat, int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage1D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1D");
         try { Handles.MH_glTextureStorage1D.invokeExact(handles.PFN_glTextureStorage1D, texture, levels, internalformat, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage1D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage1D", e); }
     }
 
-    public void TextureStorage2D(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage2D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2D");
+    /// ```
+    /// void glTextureStorage2D(unsigned int texture, int levels, unsigned int internalformat, int width, int height);
+    /// ```
+    public void TextureStorage2D(int texture, int levels, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2D");
         try { Handles.MH_glTextureStorage2D.invokeExact(handles.PFN_glTextureStorage2D, texture, levels, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage2D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage2D", e); }
     }
 
-    public void TextureStorage3D(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage3D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3D");
+    /// ```
+    /// void glTextureStorage3D(unsigned int texture, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// ```
+    public void TextureStorage3D(int texture, int levels, int internalformat, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3D)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3D");
         try { Handles.MH_glTextureStorage3D.invokeExact(handles.PFN_glTextureStorage3D, texture, levels, internalformat, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage3D", e); }
     }
 
-    public void TextureStorage2DMultisample(@CType("GLuint") int texture, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedsamplelocations) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DMultisample");
-        try { Handles.MH_glTextureStorage2DMultisample.invokeExact(handles.PFN_glTextureStorage2DMultisample, texture, samples, internalformat, width, height, fixedsamplelocations); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage2DMultisample", e); }
+    /// ```
+    /// void glTextureStorage2DMultisample(unsigned int texture, int samples, unsigned int internalformat, int width, int height, GLboolean fixedsamplelocations);
+    /// ```
+    public void TextureStorage2DMultisample(int texture, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DMultisample");
+        try { Handles.MH_glTextureStorage2DMultisample.invokeExact(handles.PFN_glTextureStorage2DMultisample, texture, samples, internalformat, width, height, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DMultisample", e); }
     }
 
-    public void TextureStorage3DMultisample(@CType("GLuint") int texture, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedsamplelocations) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DMultisample");
-        try { Handles.MH_glTextureStorage3DMultisample.invokeExact(handles.PFN_glTextureStorage3DMultisample, texture, samples, internalformat, width, height, depth, fixedsamplelocations); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage3DMultisample", e); }
+    /// ```
+    /// void glTextureStorage3DMultisample(unsigned int texture, int samples, unsigned int internalformat, int width, int height, int depth, GLboolean fixedsamplelocations);
+    /// ```
+    public void TextureStorage3DMultisample(int texture, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DMultisample");
+        try { Handles.MH_glTextureStorage3DMultisample.invokeExact(handles.PFN_glTextureStorage3DMultisample, texture, samples, internalformat, width, height, depth, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DMultisample", e); }
     }
 
-    public void TextureSubImage1D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage1D");
+    /// ```
+    /// void glTextureSubImage1D(unsigned int texture, int level, int xoffset, int width, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage1D");
         try { Handles.MH_glTextureSubImage1D.invokeExact(handles.PFN_glTextureSubImage1D, texture, level, xoffset, width, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureSubImage1D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureSubImage1D", e); }
     }
 
-    public void TextureSubImage2D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage2D");
+    /// ```
+    /// void glTextureSubImage2D(unsigned int texture, int level, int xoffset, int yoffset, int width, int height, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage2D");
         try { Handles.MH_glTextureSubImage2D.invokeExact(handles.PFN_glTextureSubImage2D, texture, level, xoffset, yoffset, width, height, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureSubImage2D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureSubImage2D", e); }
     }
 
-    public void TextureSubImage3D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage3D");
+    /// ```
+    /// void glTextureSubImage3D(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage3D");
         try { Handles.MH_glTextureSubImage3D.invokeExact(handles.PFN_glTextureSubImage3D, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureSubImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureSubImage3D", e); }
     }
 
-    public void CompressedTextureSubImage1D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1D");
+    /// ```
+    /// void glCompressedTextureSubImage1D(unsigned int texture, int level, int xoffset, int width, unsigned int format, int imageSize, const void* data);
+    /// ```
+    public void CompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1D");
         try { Handles.MH_glCompressedTextureSubImage1D.invokeExact(handles.PFN_glCompressedTextureSubImage1D, texture, level, xoffset, width, format, imageSize, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glCompressedTextureSubImage1D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage1D", e); }
     }
 
-    public void CompressedTextureSubImage2D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2D");
+    /// ```
+    /// void glCompressedTextureSubImage2D(unsigned int texture, int level, int xoffset, int yoffset, int width, int height, unsigned int format, int imageSize, const void* data);
+    /// ```
+    public void CompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2D");
         try { Handles.MH_glCompressedTextureSubImage2D.invokeExact(handles.PFN_glCompressedTextureSubImage2D, texture, level, xoffset, yoffset, width, height, format, imageSize, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glCompressedTextureSubImage2D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage2D", e); }
     }
 
-    public void CompressedTextureSubImage3D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCompressedTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3D");
+    /// ```
+    /// void glCompressedTextureSubImage3D(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, int imageSize, const void* data);
+    /// ```
+    public void CompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3D");
         try { Handles.MH_glCompressedTextureSubImage3D.invokeExact(handles.PFN_glCompressedTextureSubImage3D, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glCompressedTextureSubImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CompressedTextureSubImage3D", e); }
     }
 
-    public void CopyTextureSubImage1D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage1D");
+    /// ```
+    /// void glCopyTextureSubImage1D(unsigned int texture, int level, int xoffset, int x, int y, int width);
+    /// ```
+    public void CopyTextureSubImage1D(int texture, int level, int xoffset, int x, int y, int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage1D");
         try { Handles.MH_glCopyTextureSubImage1D.invokeExact(handles.PFN_glCopyTextureSubImage1D, texture, level, xoffset, x, y, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTextureSubImage1D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage1D", e); }
     }
 
-    public void CopyTextureSubImage2D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage2D");
+    /// ```
+    /// void glCopyTextureSubImage2D(unsigned int texture, int level, int xoffset, int yoffset, int x, int y, int width, int height);
+    /// ```
+    public void CopyTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage2D");
         try { Handles.MH_glCopyTextureSubImage2D.invokeExact(handles.PFN_glCopyTextureSubImage2D, texture, level, xoffset, yoffset, x, y, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTextureSubImage2D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage2D", e); }
     }
 
-    public void CopyTextureSubImage3D(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage3D");
+    /// ```
+    /// void glCopyTextureSubImage3D(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    /// ```
+    public void CopyTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage3D");
         try { Handles.MH_glCopyTextureSubImage3D.invokeExact(handles.PFN_glCopyTextureSubImage3D, texture, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTextureSubImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyTextureSubImage3D", e); }
     }
 
-    public void TextureParameterf(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameterf)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterf");
+    /// ```
+    /// void glTextureParameterf(unsigned int texture, unsigned int pname, float param);
+    /// ```
+    public void TextureParameterf(int texture, int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterf)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterf");
         try { Handles.MH_glTextureParameterf.invokeExact(handles.PFN_glTextureParameterf, texture, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameterf", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameterf", e); }
     }
 
-    public void TextureParameterfv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameterfv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterfv");
+    /// ```
+    /// void glTextureParameterfv(unsigned int texture, unsigned int pname, const GLfloat* param);
+    /// ```
+    public void TextureParameterfv(int texture, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterfv");
         try { Handles.MH_glTextureParameterfv.invokeExact(handles.PFN_glTextureParameterfv, texture, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameterfv", e); }
     }
 
-    public void TextureParameteri(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameteri)) throw new SymbolNotFoundError("Symbol not found: glTextureParameteri");
+    /// ```
+    /// void glTextureParameteri(unsigned int texture, unsigned int pname, int param);
+    /// ```
+    public void TextureParameteri(int texture, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameteri)) throw new SymbolNotFoundError("Symbol not found: glTextureParameteri");
         try { Handles.MH_glTextureParameteri.invokeExact(handles.PFN_glTextureParameteri, texture, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameteri", e); }
     }
 
-    public void TextureParameterIiv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIiv");
+    /// ```
+    /// void glTextureParameterIiv(unsigned int texture, unsigned int pname, const GLint* params);
+    /// ```
+    public void TextureParameterIiv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIiv");
         try { Handles.MH_glTextureParameterIiv.invokeExact(handles.PFN_glTextureParameterIiv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameterIiv", e); }
     }
 
-    public void TextureParameterIuiv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("const GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIuiv");
+    /// ```
+    /// void glTextureParameterIuiv(unsigned int texture, unsigned int pname, const GLuint* params);
+    /// ```
+    public void TextureParameterIuiv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIuiv");
         try { Handles.MH_glTextureParameterIuiv.invokeExact(handles.PFN_glTextureParameterIuiv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameterIuiv", e); }
     }
 
-    public void TextureParameteriv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureParameteriv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameteriv");
+    /// ```
+    /// void glTextureParameteriv(unsigned int texture, unsigned int pname, const GLint* param);
+    /// ```
+    public void TextureParameteriv(int texture, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameteriv)) throw new SymbolNotFoundError("Symbol not found: glTextureParameteriv");
         try { Handles.MH_glTextureParameteriv.invokeExact(handles.PFN_glTextureParameteriv, texture, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureParameteriv", e); }
     }
 
-    public void GenerateTextureMipmap(@CType("GLuint") int texture) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGenerateTextureMipmap)) throw new SymbolNotFoundError("Symbol not found: glGenerateTextureMipmap");
+    /// ```
+    /// void glGenerateTextureMipmap(unsigned int texture);
+    /// ```
+    public void GenerateTextureMipmap(int texture) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenerateTextureMipmap)) throw new SymbolNotFoundError("Symbol not found: glGenerateTextureMipmap");
         try { Handles.MH_glGenerateTextureMipmap.invokeExact(handles.PFN_glGenerateTextureMipmap, texture); }
-        catch (Throwable e) { throw new RuntimeException("error in glGenerateTextureMipmap", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GenerateTextureMipmap", e); }
     }
 
-    public void BindTextureUnit(@CType("GLuint") int unit, @CType("GLuint") int texture) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindTextureUnit)) throw new SymbolNotFoundError("Symbol not found: glBindTextureUnit");
+    /// ```
+    /// void glBindTextureUnit(unsigned int unit, unsigned int texture);
+    /// ```
+    public void BindTextureUnit(int unit, int texture) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureUnit)) throw new SymbolNotFoundError("Symbol not found: glBindTextureUnit");
         try { Handles.MH_glBindTextureUnit.invokeExact(handles.PFN_glBindTextureUnit, unit, texture); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindTextureUnit", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindTextureUnit", e); }
     }
 
-    public void GetTextureImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int format, @CType("GLenum") int type, @CType("GLsizei") int bufSize, @CType("void*") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureImage)) throw new SymbolNotFoundError("Symbol not found: glGetTextureImage");
+    /// ```
+    /// void glGetTextureImage(unsigned int texture, int level, unsigned int format, unsigned int type, int bufSize, void* pixels);
+    /// ```
+    public void GetTextureImage(int texture, int level, int format, int type, int bufSize, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureImage)) throw new SymbolNotFoundError("Symbol not found: glGetTextureImage");
         try { Handles.MH_glGetTextureImage.invokeExact(handles.PFN_glGetTextureImage, texture, level, format, type, bufSize, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureImage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureImage", e); }
     }
 
-    public void GetCompressedTextureImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLsizei") int bufSize, @CType("void*") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetCompressedTextureImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureImage");
+    /// ```
+    /// void glGetCompressedTextureImage(unsigned int texture, int level, int bufSize, void* pixels);
+    /// ```
+    public void GetCompressedTextureImage(int texture, int level, int bufSize, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureImage");
         try { Handles.MH_glGetCompressedTextureImage.invokeExact(handles.PFN_glGetCompressedTextureImage, texture, level, bufSize, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTextureImage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetCompressedTextureImage", e); }
     }
 
-    public void GetTextureLevelParameterfv(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureLevelParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfv");
+    /// ```
+    /// void glGetTextureLevelParameterfv(unsigned int texture, int level, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetTextureLevelParameterfv(int texture, int level, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfv");
         try { Handles.MH_glGetTextureLevelParameterfv.invokeExact(handles.PFN_glGetTextureLevelParameterfv, texture, level, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureLevelParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameterfv", e); }
     }
 
-    public void GetTextureLevelParameteriv(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureLevelParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameteriv");
+    /// ```
+    /// void glGetTextureLevelParameteriv(unsigned int texture, int level, unsigned int pname, GLint* params);
+    /// ```
+    public void GetTextureLevelParameteriv(int texture, int level, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameteriv");
         try { Handles.MH_glGetTextureLevelParameteriv.invokeExact(handles.PFN_glGetTextureLevelParameteriv, texture, level, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureLevelParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureLevelParameteriv", e); }
     }
 
-    public void GetTextureParameterfv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterfv");
+    /// ```
+    /// void glGetTextureParameterfv(unsigned int texture, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetTextureParameterfv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterfv");
         try { Handles.MH_glGetTextureParameterfv.invokeExact(handles.PFN_glGetTextureParameterfv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterfv", e); }
     }
 
-    public void GetTextureParameterIiv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIiv");
+    /// ```
+    /// void glGetTextureParameterIiv(unsigned int texture, unsigned int pname, GLint* params);
+    /// ```
+    public void GetTextureParameterIiv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIiv");
         try { Handles.MH_glGetTextureParameterIiv.invokeExact(handles.PFN_glGetTextureParameterIiv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIiv", e); }
     }
 
-    public void GetTextureParameterIuiv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIuiv");
+    /// ```
+    /// void glGetTextureParameterIuiv(unsigned int texture, unsigned int pname, GLuint* params);
+    /// ```
+    public void GetTextureParameterIuiv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIuiv");
         try { Handles.MH_glGetTextureParameterIuiv.invokeExact(handles.PFN_glGetTextureParameterIuiv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureParameterIuiv", e); }
     }
 
-    public void GetTextureParameteriv(@CType("GLuint") int texture, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTextureParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameteriv");
+    /// ```
+    /// void glGetTextureParameteriv(unsigned int texture, unsigned int pname, GLint* params);
+    /// ```
+    public void GetTextureParameteriv(int texture, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameteriv");
         try { Handles.MH_glGetTextureParameteriv.invokeExact(handles.PFN_glGetTextureParameteriv, texture, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTextureParameteriv", e); }
     }
 
-    public void CreateVertexArrays(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment arrays) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glCreateVertexArrays");
+    /// ```
+    /// void glCreateVertexArrays(int n, GLuint* arrays);
+    /// ```
+    public void CreateVertexArrays(int n, MemorySegment arrays) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glCreateVertexArrays");
         try { Handles.MH_glCreateVertexArrays.invokeExact(handles.PFN_glCreateVertexArrays, n, arrays); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateVertexArrays", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateVertexArrays", e); }
     }
 
-    public void DisableVertexArrayAttrib(@CType("GLuint") int vaobj, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDisableVertexArrayAttrib)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexArrayAttrib");
+    /// ```
+    /// void glDisableVertexArrayAttrib(unsigned int vaobj, unsigned int index);
+    /// ```
+    public void DisableVertexArrayAttrib(int vaobj, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexArrayAttrib)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexArrayAttrib");
         try { Handles.MH_glDisableVertexArrayAttrib.invokeExact(handles.PFN_glDisableVertexArrayAttrib, vaobj, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glDisableVertexArrayAttrib", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DisableVertexArrayAttrib", e); }
     }
 
-    public void EnableVertexArrayAttrib(@CType("GLuint") int vaobj, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEnableVertexArrayAttrib)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexArrayAttrib");
+    /// ```
+    /// void glEnableVertexArrayAttrib(unsigned int vaobj, unsigned int index);
+    /// ```
+    public void EnableVertexArrayAttrib(int vaobj, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexArrayAttrib)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexArrayAttrib");
         try { Handles.MH_glEnableVertexArrayAttrib.invokeExact(handles.PFN_glEnableVertexArrayAttrib, vaobj, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glEnableVertexArrayAttrib", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EnableVertexArrayAttrib", e); }
     }
 
-    public void VertexArrayElementBuffer(@CType("GLuint") int vaobj, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayElementBuffer)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayElementBuffer");
+    /// ```
+    /// void glVertexArrayElementBuffer(unsigned int vaobj, unsigned int buffer);
+    /// ```
+    public void VertexArrayElementBuffer(int vaobj, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayElementBuffer)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayElementBuffer");
         try { Handles.MH_glVertexArrayElementBuffer.invokeExact(handles.PFN_glVertexArrayElementBuffer, vaobj, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayElementBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayElementBuffer", e); }
     }
 
-    public void VertexArrayVertexBuffer(@CType("GLuint") int vaobj, @CType("GLuint") int bindingindex, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayVertexBuffer)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexBuffer");
+    /// ```
+    /// void glVertexArrayVertexBuffer(unsigned int vaobj, unsigned int bindingindex, unsigned int buffer, signed long long offset, int stride);
+    /// ```
+    public void VertexArrayVertexBuffer(int vaobj, int bindingindex, int buffer, long offset, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexBuffer)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexBuffer");
         try { Handles.MH_glVertexArrayVertexBuffer.invokeExact(handles.PFN_glVertexArrayVertexBuffer, vaobj, bindingindex, buffer, offset, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayVertexBuffer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBuffer", e); }
     }
 
-    public void VertexArrayVertexBuffers(@CType("GLuint") int vaobj, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment buffers, @CType("const GLintptr *") MemorySegment offsets, @CType("const GLsizei *") MemorySegment strides) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayVertexBuffers)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexBuffers");
+    /// ```
+    /// void glVertexArrayVertexBuffers(unsigned int vaobj, unsigned int first, int count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
+    /// ```
+    public void VertexArrayVertexBuffers(int vaobj, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexBuffers)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexBuffers");
         try { Handles.MH_glVertexArrayVertexBuffers.invokeExact(handles.PFN_glVertexArrayVertexBuffers, vaobj, first, count, buffers, offsets, strides); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayVertexBuffers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayVertexBuffers", e); }
     }
 
-    public void VertexArrayAttribBinding(@CType("GLuint") int vaobj, @CType("GLuint") int attribindex, @CType("GLuint") int bindingindex) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayAttribBinding)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribBinding");
+    /// ```
+    /// void glVertexArrayAttribBinding(unsigned int vaobj, unsigned int attribindex, unsigned int bindingindex);
+    /// ```
+    public void VertexArrayAttribBinding(int vaobj, int attribindex, int bindingindex) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayAttribBinding)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribBinding");
         try { Handles.MH_glVertexArrayAttribBinding.invokeExact(handles.PFN_glVertexArrayAttribBinding, vaobj, attribindex, bindingindex); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayAttribBinding", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribBinding", e); }
     }
 
-    public void VertexArrayAttribFormat(@CType("GLuint") int vaobj, @CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int relativeoffset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayAttribFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribFormat");
-        try { Handles.MH_glVertexArrayAttribFormat.invokeExact(handles.PFN_glVertexArrayAttribFormat, vaobj, attribindex, size, type, normalized, relativeoffset); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayAttribFormat", e); }
+    /// ```
+    /// void glVertexArrayAttribFormat(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, GLboolean normalized, unsigned int relativeoffset);
+    /// ```
+    public void VertexArrayAttribFormat(int vaobj, int attribindex, int size, int type, boolean normalized, int relativeoffset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayAttribFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribFormat");
+        try { Handles.MH_glVertexArrayAttribFormat.invokeExact(handles.PFN_glVertexArrayAttribFormat, vaobj, attribindex, size, type, ((normalized) ? (byte)1 : (byte)0), relativeoffset); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribFormat", e); }
     }
 
-    public void VertexArrayAttribIFormat(@CType("GLuint") int vaobj, @CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLuint") int relativeoffset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayAttribIFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribIFormat");
+    /// ```
+    /// void glVertexArrayAttribIFormat(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, unsigned int relativeoffset);
+    /// ```
+    public void VertexArrayAttribIFormat(int vaobj, int attribindex, int size, int type, int relativeoffset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayAttribIFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribIFormat");
         try { Handles.MH_glVertexArrayAttribIFormat.invokeExact(handles.PFN_glVertexArrayAttribIFormat, vaobj, attribindex, size, type, relativeoffset); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayAttribIFormat", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribIFormat", e); }
     }
 
-    public void VertexArrayAttribLFormat(@CType("GLuint") int vaobj, @CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLuint") int relativeoffset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayAttribLFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribLFormat");
+    /// ```
+    /// void glVertexArrayAttribLFormat(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, unsigned int relativeoffset);
+    /// ```
+    public void VertexArrayAttribLFormat(int vaobj, int attribindex, int size, int type, int relativeoffset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayAttribLFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayAttribLFormat");
         try { Handles.MH_glVertexArrayAttribLFormat.invokeExact(handles.PFN_glVertexArrayAttribLFormat, vaobj, attribindex, size, type, relativeoffset); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayAttribLFormat", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayAttribLFormat", e); }
     }
 
-    public void VertexArrayBindingDivisor(@CType("GLuint") int vaobj, @CType("GLuint") int bindingindex, @CType("GLuint") int divisor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexArrayBindingDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayBindingDivisor");
+    /// ```
+    /// void glVertexArrayBindingDivisor(unsigned int vaobj, unsigned int bindingindex, unsigned int divisor);
+    /// ```
+    public void VertexArrayBindingDivisor(int vaobj, int bindingindex, int divisor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayBindingDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayBindingDivisor");
         try { Handles.MH_glVertexArrayBindingDivisor.invokeExact(handles.PFN_glVertexArrayBindingDivisor, vaobj, bindingindex, divisor); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayBindingDivisor", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexArrayBindingDivisor", e); }
     }
 
-    public void GetVertexArrayiv(@CType("GLuint") int vaobj, @CType("GLenum") int pname, @CType("GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexArrayiv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayiv");
+    /// ```
+    /// void glGetVertexArrayiv(unsigned int vaobj, unsigned int pname, GLint* param);
+    /// ```
+    public void GetVertexArrayiv(int vaobj, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayiv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayiv");
         try { Handles.MH_glGetVertexArrayiv.invokeExact(handles.PFN_glGetVertexArrayiv, vaobj, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexArrayiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayiv", e); }
     }
 
-    public void GetVertexArrayIndexediv(@CType("GLuint") int vaobj, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexArrayIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIndexediv");
+    /// ```
+    /// void glGetVertexArrayIndexediv(unsigned int vaobj, unsigned int index, unsigned int pname, GLint* param);
+    /// ```
+    public void GetVertexArrayIndexediv(int vaobj, int index, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIndexediv");
         try { Handles.MH_glGetVertexArrayIndexediv.invokeExact(handles.PFN_glGetVertexArrayIndexediv, vaobj, index, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexArrayIndexediv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIndexediv", e); }
     }
 
-    public void GetVertexArrayIndexed64iv(@CType("GLuint") int vaobj, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexArrayIndexed64iv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIndexed64iv");
+    /// ```
+    /// void glGetVertexArrayIndexed64iv(unsigned int vaobj, unsigned int index, unsigned int pname, GLint64* param);
+    /// ```
+    public void GetVertexArrayIndexed64iv(int vaobj, int index, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIndexed64iv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIndexed64iv");
         try { Handles.MH_glGetVertexArrayIndexed64iv.invokeExact(handles.PFN_glGetVertexArrayIndexed64iv, vaobj, index, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexArrayIndexed64iv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVertexArrayIndexed64iv", e); }
     }
 
-    public void CreateSamplers(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment samplers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateSamplers)) throw new SymbolNotFoundError("Symbol not found: glCreateSamplers");
+    /// ```
+    /// void glCreateSamplers(int n, GLuint* samplers);
+    /// ```
+    public void CreateSamplers(int n, MemorySegment samplers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateSamplers)) throw new SymbolNotFoundError("Symbol not found: glCreateSamplers");
         try { Handles.MH_glCreateSamplers.invokeExact(handles.PFN_glCreateSamplers, n, samplers); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateSamplers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateSamplers", e); }
     }
 
-    public void CreateProgramPipelines(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment pipelines) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateProgramPipelines)) throw new SymbolNotFoundError("Symbol not found: glCreateProgramPipelines");
+    /// ```
+    /// void glCreateProgramPipelines(int n, GLuint* pipelines);
+    /// ```
+    public void CreateProgramPipelines(int n, MemorySegment pipelines) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgramPipelines)) throw new SymbolNotFoundError("Symbol not found: glCreateProgramPipelines");
         try { Handles.MH_glCreateProgramPipelines.invokeExact(handles.PFN_glCreateProgramPipelines, n, pipelines); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateProgramPipelines", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateProgramPipelines", e); }
     }
 
-    public void CreateQueries(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("GLuint *") MemorySegment ids) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateQueries)) throw new SymbolNotFoundError("Symbol not found: glCreateQueries");
+    /// ```
+    /// void glCreateQueries(unsigned int target, int n, GLuint* ids);
+    /// ```
+    public void CreateQueries(int target, int n, MemorySegment ids) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateQueries)) throw new SymbolNotFoundError("Symbol not found: glCreateQueries");
         try { Handles.MH_glCreateQueries.invokeExact(handles.PFN_glCreateQueries, target, n, ids); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateQueries", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateQueries", e); }
     }
 
-    public void GetQueryBufferObjecti64v(@CType("GLuint") int id, @CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLintptr") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryBufferObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjecti64v");
+    /// ```
+    /// void glGetQueryBufferObjecti64v(unsigned int id, unsigned int buffer, unsigned int pname, signed long long offset);
+    /// ```
+    public void GetQueryBufferObjecti64v(int id, int buffer, int pname, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryBufferObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjecti64v");
         try { Handles.MH_glGetQueryBufferObjecti64v.invokeExact(handles.PFN_glGetQueryBufferObjecti64v, id, buffer, pname, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryBufferObjecti64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjecti64v", e); }
     }
 
-    public void GetQueryBufferObjectiv(@CType("GLuint") int id, @CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLintptr") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryBufferObjectiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectiv");
+    /// ```
+    /// void glGetQueryBufferObjectiv(unsigned int id, unsigned int buffer, unsigned int pname, signed long long offset);
+    /// ```
+    public void GetQueryBufferObjectiv(int id, int buffer, int pname, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryBufferObjectiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectiv");
         try { Handles.MH_glGetQueryBufferObjectiv.invokeExact(handles.PFN_glGetQueryBufferObjectiv, id, buffer, pname, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryBufferObjectiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjectiv", e); }
     }
 
-    public void GetQueryBufferObjectui64v(@CType("GLuint") int id, @CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLintptr") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryBufferObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectui64v");
+    /// ```
+    /// void glGetQueryBufferObjectui64v(unsigned int id, unsigned int buffer, unsigned int pname, signed long long offset);
+    /// ```
+    public void GetQueryBufferObjectui64v(int id, int buffer, int pname, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryBufferObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectui64v");
         try { Handles.MH_glGetQueryBufferObjectui64v.invokeExact(handles.PFN_glGetQueryBufferObjectui64v, id, buffer, pname, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryBufferObjectui64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjectui64v", e); }
     }
 
-    public void GetQueryBufferObjectuiv(@CType("GLuint") int id, @CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLintptr") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryBufferObjectuiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectuiv");
+    /// ```
+    /// void glGetQueryBufferObjectuiv(unsigned int id, unsigned int buffer, unsigned int pname, signed long long offset);
+    /// ```
+    public void GetQueryBufferObjectuiv(int id, int buffer, int pname, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryBufferObjectuiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryBufferObjectuiv");
         try { Handles.MH_glGetQueryBufferObjectuiv.invokeExact(handles.PFN_glGetQueryBufferObjectuiv, id, buffer, pname, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryBufferObjectuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryBufferObjectuiv", e); }
     }
 
 }

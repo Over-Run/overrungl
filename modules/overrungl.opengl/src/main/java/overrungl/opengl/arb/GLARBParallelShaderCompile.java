@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLARBParallelShaderCompile {
         this.handles = new Handles(func);
     }
 
-    public void MaxShaderCompilerThreadsARB(@CType("GLuint") int count) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsARB)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsARB");
+    /// ```
+    /// void glMaxShaderCompilerThreadsARB(unsigned int count);
+    /// ```
+    public void MaxShaderCompilerThreadsARB(int count) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsARB)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsARB");
         try { Handles.MH_glMaxShaderCompilerThreadsARB.invokeExact(handles.PFN_glMaxShaderCompilerThreadsARB, count); }
-        catch (Throwable e) { throw new RuntimeException("error in glMaxShaderCompilerThreadsARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MaxShaderCompilerThreadsARB", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -37,10 +36,13 @@ public final class GLSGIXIglooInterface {
         this.handles = new Handles(func);
     }
 
-    public void IglooInterfaceSGIX(@CType("GLenum") int pname, @CType("const void *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIglooInterfaceSGIX)) throw new SymbolNotFoundError("Symbol not found: glIglooInterfaceSGIX");
+    /// ```
+    /// void glIglooInterfaceSGIX(unsigned int pname, const void* params);
+    /// ```
+    public void IglooInterfaceSGIX(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIglooInterfaceSGIX)) throw new SymbolNotFoundError("Symbol not found: glIglooInterfaceSGIX");
         try { Handles.MH_glIglooInterfaceSGIX.invokeExact(handles.PFN_glIglooInterfaceSGIX, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glIglooInterfaceSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in IglooInterfaceSGIX", e); }
     }
 
 }

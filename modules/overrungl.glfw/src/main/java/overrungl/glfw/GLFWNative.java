@@ -182,9 +182,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWin32Adapter(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWin32Adapter)) throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Adapter");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWin32Adapter.invokeExact(Handles.get().PFN_glfwGetWin32Adapter, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Adapter", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWin32Adapter.invokeExact(Handles.get().PFN_glfwGetWin32Adapter, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Adapter", e); }
     }
 
     /// ```
@@ -192,9 +191,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWin32Monitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWin32Monitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Monitor");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWin32Monitor.invokeExact(Handles.get().PFN_glfwGetWin32Monitor, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Monitor", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWin32Monitor.invokeExact(Handles.get().PFN_glfwGetWin32Monitor, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Monitor", e); }
     }
 
     /// ```
@@ -202,9 +200,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWin32Window(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWin32Window)) throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Window");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWin32Window.invokeExact(Handles.get().PFN_glfwGetWin32Window, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Window", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWin32Window.invokeExact(Handles.get().PFN_glfwGetWin32Window, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Window", e); }
     }
 
     /// ```
@@ -212,9 +209,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetWGLContext");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWGLContext.invokeExact(Handles.get().PFN_glfwGetWGLContext, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWGLContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWGLContext.invokeExact(Handles.get().PFN_glfwGetWGLContext, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWGLContext", e); }
     }
 
     /// ```
@@ -222,9 +218,8 @@ public final class GLFWNative {
     /// ```
     public static int glfwGetCocoaMonitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaMonitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaMonitor");
-        try {
-            return (int) Handles.MH_glfwGetCocoaMonitor.invokeExact(Handles.get().PFN_glfwGetCocoaMonitor, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaMonitor", e); }
+        try { return (int) Handles.MH_glfwGetCocoaMonitor.invokeExact(Handles.get().PFN_glfwGetCocoaMonitor, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaMonitor", e); }
     }
 
     /// ```
@@ -232,9 +227,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetCocoaWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaWindow");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetCocoaWindow.invokeExact(Handles.get().PFN_glfwGetCocoaWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaWindow", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetCocoaWindow.invokeExact(Handles.get().PFN_glfwGetCocoaWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaWindow", e); }
     }
 
     /// ```
@@ -242,9 +236,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetCocoaView(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaView)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaView");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetCocoaView.invokeExact(Handles.get().PFN_glfwGetCocoaView, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaView", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetCocoaView.invokeExact(Handles.get().PFN_glfwGetCocoaView, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaView", e); }
     }
 
     /// ```
@@ -252,9 +245,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetNSGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetNSGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetNSGLContext");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetNSGLContext.invokeExact(Handles.get().PFN_glfwGetNSGLContext, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetNSGLContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetNSGLContext.invokeExact(Handles.get().PFN_glfwGetNSGLContext, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetNSGLContext", e); }
     }
 
     /// ```
@@ -262,9 +254,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetX11Display() {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Display)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Display");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetX11Display.invokeExact(Handles.get().PFN_glfwGetX11Display);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Display", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetX11Display.invokeExact(Handles.get().PFN_glfwGetX11Display); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Display", e); }
     }
 
     /// ```
@@ -272,9 +263,8 @@ public final class GLFWNative {
     /// ```
     public static long glfwGetX11Adapter(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Adapter)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Adapter");
-        try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Adapter.invoke(Handles.get().PFN_glfwGetX11Adapter, monitor));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Adapter", e); }
+        try { return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Adapter.invoke(Handles.get().PFN_glfwGetX11Adapter, monitor)); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Adapter", e); }
     }
 
     /// ```
@@ -282,9 +272,8 @@ public final class GLFWNative {
     /// ```
     public static long glfwGetX11Monitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Monitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Monitor");
-        try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Monitor.invoke(Handles.get().PFN_glfwGetX11Monitor, monitor));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Monitor", e); }
+        try { return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Monitor.invoke(Handles.get().PFN_glfwGetX11Monitor, monitor)); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Monitor", e); }
     }
 
     /// ```
@@ -292,9 +281,8 @@ public final class GLFWNative {
     /// ```
     public static long glfwGetX11Window(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Window)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Window");
-        try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Window.invoke(Handles.get().PFN_glfwGetX11Window, window));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Window", e); }
+        try { return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetX11Window.invoke(Handles.get().PFN_glfwGetX11Window, window)); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Window", e); }
     }
 
     /// ```
@@ -302,9 +290,8 @@ public final class GLFWNative {
     /// ```
     public static void glfwSetX11SelectionString(MemorySegment string) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwSetX11SelectionString)) throw new SymbolNotFoundError("Symbol not found: glfwSetX11SelectionString");
-        try {
-            Handles.MH_glfwSetX11SelectionString.invokeExact(Handles.get().PFN_glfwSetX11SelectionString, string);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetX11SelectionString", e); }
+        try { Handles.MH_glfwSetX11SelectionString.invokeExact(Handles.get().PFN_glfwSetX11SelectionString, string); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetX11SelectionString", e); }
     }
 
     /// ```
@@ -312,19 +299,17 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetX11SelectionString() {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11SelectionString)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11SelectionString");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetX11SelectionString.invokeExact(Handles.get().PFN_glfwGetX11SelectionString);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11SelectionString", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetX11SelectionString.invokeExact(Handles.get().PFN_glfwGetX11SelectionString); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetX11SelectionString", e); }
     }
 
     /// ```
-    /// GLXContext glfwGetGLXContext(GLFWwindow* window);
+    /// __GLXcontextRec * glfwGetGLXContext(GLFWwindow* window);
     /// ```
-    public static MemorySegment glfwGetGLXContext(SegmentAllocator __allocator, MemorySegment window) {
+    public static MemorySegment glfwGetGLXContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXContext");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetGLXContext.invokeExact(Handles.get().PFN_glfwGetGLXContext, __allocator, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetGLXContext.invokeExact(Handles.get().PFN_glfwGetGLXContext, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXContext", e); }
     }
 
     /// ```
@@ -332,9 +317,8 @@ public final class GLFWNative {
     /// ```
     public static long glfwGetGLXWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXWindow");
-        try {
-            return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetGLXWindow.invoke(Handles.get().PFN_glfwGetGLXWindow, window));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
+        try { return MemoryUtil.wideningToLong(CanonicalTypes.C_LONG, Handles.MH_glfwGetGLXWindow.invoke(Handles.get().PFN_glfwGetGLXWindow, window)); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
     }
 
     /// ```
@@ -342,9 +326,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWaylandDisplay() {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWaylandDisplay)) throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandDisplay");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWaylandDisplay.invokeExact(Handles.get().PFN_glfwGetWaylandDisplay);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandDisplay", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWaylandDisplay.invokeExact(Handles.get().PFN_glfwGetWaylandDisplay); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandDisplay", e); }
     }
 
     /// ```
@@ -352,9 +335,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWaylandMonitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWaylandMonitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandMonitor");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWaylandMonitor.invokeExact(Handles.get().PFN_glfwGetWaylandMonitor, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandMonitor", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWaylandMonitor.invokeExact(Handles.get().PFN_glfwGetWaylandMonitor, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandMonitor", e); }
     }
 
     /// ```
@@ -362,9 +344,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetWaylandWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWaylandWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandWindow");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWaylandWindow.invokeExact(Handles.get().PFN_glfwGetWaylandWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandWindow", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWaylandWindow.invokeExact(Handles.get().PFN_glfwGetWaylandWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandWindow", e); }
     }
 
     /// ```
@@ -372,9 +353,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetEGLDisplay() {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLDisplay)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLDisplay");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetEGLDisplay.invokeExact(Handles.get().PFN_glfwGetEGLDisplay);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLDisplay", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetEGLDisplay.invokeExact(Handles.get().PFN_glfwGetEGLDisplay); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLDisplay", e); }
     }
 
     /// ```
@@ -382,9 +362,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetEGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLContext");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetEGLContext.invokeExact(Handles.get().PFN_glfwGetEGLContext, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetEGLContext.invokeExact(Handles.get().PFN_glfwGetEGLContext, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLContext", e); }
     }
 
     /// ```
@@ -392,9 +371,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetEGLSurface(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLSurface)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLSurface");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetEGLSurface.invokeExact(Handles.get().PFN_glfwGetEGLSurface, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLSurface", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetEGLSurface.invokeExact(Handles.get().PFN_glfwGetEGLSurface, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLSurface", e); }
     }
 
     /// ```
@@ -402,9 +380,8 @@ public final class GLFWNative {
     /// ```
     public static int glfwGetOSMesaColorBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment format, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetOSMesaColorBuffer)) throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaColorBuffer");
-        try {
-            return (int) Handles.MH_glfwGetOSMesaColorBuffer.invokeExact(Handles.get().PFN_glfwGetOSMesaColorBuffer, window, width, height, format, buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaColorBuffer", e); }
+        try { return (int) Handles.MH_glfwGetOSMesaColorBuffer.invokeExact(Handles.get().PFN_glfwGetOSMesaColorBuffer, window, width, height, format, buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaColorBuffer", e); }
     }
 
     /// ```
@@ -412,9 +389,8 @@ public final class GLFWNative {
     /// ```
     public static int glfwGetOSMesaDepthBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment bytesPerValue, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetOSMesaDepthBuffer)) throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaDepthBuffer");
-        try {
-            return (int) Handles.MH_glfwGetOSMesaDepthBuffer.invokeExact(Handles.get().PFN_glfwGetOSMesaDepthBuffer, window, width, height, bytesPerValue, buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaDepthBuffer", e); }
+        try { return (int) Handles.MH_glfwGetOSMesaDepthBuffer.invokeExact(Handles.get().PFN_glfwGetOSMesaDepthBuffer, window, width, height, bytesPerValue, buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaDepthBuffer", e); }
     }
 
     /// ```
@@ -422,9 +398,8 @@ public final class GLFWNative {
     /// ```
     public static MemorySegment glfwGetOSMesaContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetOSMesaContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaContext");
-        try {
-            return (MemorySegment) Handles.MH_glfwGetOSMesaContext.invokeExact(Handles.get().PFN_glfwGetOSMesaContext, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetOSMesaContext.invokeExact(Handles.get().PFN_glfwGetOSMesaContext, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaContext", e); }
     }
 
     //@formatter:on

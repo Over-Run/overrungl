@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,16 +41,22 @@ public final class GLNVScissorExclusive {
         this.handles = new Handles(func);
     }
 
-    public void ScissorExclusiveNV(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
+    /// ```
+    /// void glScissorExclusiveNV(int x, int y, int width, int height);
+    /// ```
+    public void ScissorExclusiveNV(int x, int y, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
         try { Handles.MH_glScissorExclusiveNV.invokeExact(handles.PFN_glScissorExclusiveNV, x, y, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ScissorExclusiveNV", e); }
     }
 
-    public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
+    /// ```
+    /// void glScissorExclusiveArrayvNV(unsigned int first, int count, const GLint* v);
+    /// ```
+    public void ScissorExclusiveArrayvNV(int first, int count, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
         try { Handles.MH_glScissorExclusiveArrayvNV.invokeExact(handles.PFN_glScissorExclusiveArrayvNV, first, count, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ScissorExclusiveArrayvNV", e); }
     }
 
 }

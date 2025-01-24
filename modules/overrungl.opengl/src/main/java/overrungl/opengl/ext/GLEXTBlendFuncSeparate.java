@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLEXTBlendFuncSeparate {
         this.handles = new Handles(func);
     }
 
-    public void BlendFuncSeparateEXT(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT");
+    /// ```
+    /// void glBlendFuncSeparateEXT(unsigned int sfactorRGB, unsigned int dfactorRGB, unsigned int sfactorAlpha, unsigned int dfactorAlpha);
+    /// ```
+    public void BlendFuncSeparateEXT(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT");
         try { Handles.MH_glBlendFuncSeparateEXT.invokeExact(handles.PFN_glBlendFuncSeparateEXT, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateEXT", e); }
     }
 
 }

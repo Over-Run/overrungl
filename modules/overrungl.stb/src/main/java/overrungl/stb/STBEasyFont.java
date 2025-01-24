@@ -77,45 +77,40 @@ public final class STBEasyFont {
     /// float stb_easy_font_get_spacing();
     /// ```
     public static float stb_easy_font_get_spacing() {
-        try {
-            return (float) Handles.MH_stb_easy_font_get_spacing.invokeExact(Handles.get().PFN_stb_easy_font_get_spacing);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
+        try { return (float) Handles.MH_stb_easy_font_get_spacing.invokeExact(Handles.get().PFN_stb_easy_font_get_spacing); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
     }
 
     /// ```
     /// void stb_easy_font_spacing(float spacing);
     /// ```
     public static void stb_easy_font_spacing(float spacing) {
-        try {
-            Handles.MH_stb_easy_font_spacing.invokeExact(Handles.get().PFN_stb_easy_font_spacing, spacing);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
+        try { Handles.MH_stb_easy_font_spacing.invokeExact(Handles.get().PFN_stb_easy_font_spacing, spacing); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
     }
 
     /// ```
     /// int stb_easy_font_print(float x, float y, char* text, unsigned char color[4], void* vertex_buffer, int vbuf_size);
     /// ```
     public static int stb_easy_font_print(float x, float y, MemorySegment text, MemorySegment color, MemorySegment vertex_buffer, int vbuf_size) {
-        try {
-            return (int) Handles.MH_stb_easy_font_print.invokeExact(Handles.get().PFN_stb_easy_font_print, x, y, text, color, vertex_buffer, vbuf_size);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
+        try { return (int) Handles.MH_stb_easy_font_print.invokeExact(Handles.get().PFN_stb_easy_font_print, x, y, text, color, vertex_buffer, vbuf_size); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
     }
 
     /// ```
     /// int stb_easy_font_width(char* text);
     /// ```
     public static int stb_easy_font_width(MemorySegment text) {
-        try {
-            return (int) Handles.MH_stb_easy_font_width.invokeExact(Handles.get().PFN_stb_easy_font_width, text);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
+        try { return (int) Handles.MH_stb_easy_font_width.invokeExact(Handles.get().PFN_stb_easy_font_width, text); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
 
     /// ```
     /// int stb_easy_font_height(char* text);
     /// ```
     public static int stb_easy_font_height(MemorySegment text) {
-        try {
-            return (int) Handles.MH_stb_easy_font_height.invokeExact(Handles.get().PFN_stb_easy_font_height, text);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
+        try { return (int) Handles.MH_stb_easy_font_height.invokeExact(Handles.get().PFN_stb_easy_font_height, text); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
 
     //@formatter:on

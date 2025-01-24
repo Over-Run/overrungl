@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLARBMultiDrawIndirect {
         this.handles = new Handles(func);
     }
 
-    public void MultiDrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirect");
+    /// ```
+    /// void glMultiDrawArraysIndirect(unsigned int mode, const void* indirect, int drawcount, int stride);
+    /// ```
+    public void MultiDrawArraysIndirect(int mode, MemorySegment indirect, int drawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirect");
         try { Handles.MH_glMultiDrawArraysIndirect.invokeExact(handles.PFN_glMultiDrawArraysIndirect, mode, indirect, drawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirect", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirect", e); }
     }
 
-    public void MultiDrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirect");
+    /// ```
+    /// void glMultiDrawElementsIndirect(unsigned int mode, unsigned int type, const void* indirect, int drawcount, int stride);
+    /// ```
+    public void MultiDrawElementsIndirect(int mode, int type, MemorySegment indirect, int drawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirect");
         try { Handles.MH_glMultiDrawElementsIndirect.invokeExact(handles.PFN_glMultiDrawElementsIndirect, mode, type, indirect, drawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirect", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirect", e); }
     }
 
 }

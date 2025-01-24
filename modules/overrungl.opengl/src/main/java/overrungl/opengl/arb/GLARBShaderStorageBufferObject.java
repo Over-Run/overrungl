@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -54,10 +53,13 @@ public final class GLARBShaderStorageBufferObject {
         this.handles = new Handles(func);
     }
 
-    public void ShaderStorageBlockBinding(@CType("GLuint") int program, @CType("GLuint") int storageBlockIndex, @CType("GLuint") int storageBlockBinding) {
-        if (Unmarshal.isNullPointer(handles.PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");
+    /// ```
+    /// void glShaderStorageBlockBinding(unsigned int program, unsigned int storageBlockIndex, unsigned int storageBlockBinding);
+    /// ```
+    public void ShaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");
         try { Handles.MH_glShaderStorageBlockBinding.invokeExact(handles.PFN_glShaderStorageBlockBinding, program, storageBlockIndex, storageBlockBinding); }
-        catch (Throwable e) { throw new RuntimeException("error in glShaderStorageBlockBinding", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ShaderStorageBlockBinding", e); }
     }
 
 }

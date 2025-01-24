@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -48,28 +47,40 @@ public final class GLARBTransformFeedback3 {
         this.handles = new Handles(func);
     }
 
-    public void DrawTransformFeedbackStream(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawTransformFeedbackStream)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStream");
+    /// ```
+    /// void glDrawTransformFeedbackStream(unsigned int mode, unsigned int id, unsigned int stream);
+    /// ```
+    public void DrawTransformFeedbackStream(int mode, int id, int stream) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackStream)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStream");
         try { Handles.MH_glDrawTransformFeedbackStream.invokeExact(handles.PFN_glDrawTransformFeedbackStream, mode, id, stream); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStream", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawTransformFeedbackStream", e); }
     }
 
-    public void BeginQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int id) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBeginQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glBeginQueryIndexed");
+    /// ```
+    /// void glBeginQueryIndexed(unsigned int target, unsigned int index, unsigned int id);
+    /// ```
+    public void BeginQueryIndexed(int target, int index, int id) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glBeginQueryIndexed");
         try { Handles.MH_glBeginQueryIndexed.invokeExact(handles.PFN_glBeginQueryIndexed, target, index, id); }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginQueryIndexed", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BeginQueryIndexed", e); }
     }
 
-    public void EndQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEndQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glEndQueryIndexed");
+    /// ```
+    /// void glEndQueryIndexed(unsigned int target, unsigned int index);
+    /// ```
+    public void EndQueryIndexed(int target, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndQueryIndexed)) throw new SymbolNotFoundError("Symbol not found: glEndQueryIndexed");
         try { Handles.MH_glEndQueryIndexed.invokeExact(handles.PFN_glEndQueryIndexed, target, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glEndQueryIndexed", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EndQueryIndexed", e); }
     }
 
-    public void GetQueryIndexediv(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
+    /// ```
+    /// void glGetQueryIndexediv(unsigned int target, unsigned int index, unsigned int pname, GLint* params);
+    /// ```
+    public void GetQueryIndexediv(int target, int index, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryIndexediv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv");
         try { Handles.MH_glGetQueryIndexediv.invokeExact(handles.PFN_glGetQueryIndexediv, target, index, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryIndexediv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryIndexediv", e); }
     }
 
 }

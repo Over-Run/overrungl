@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,16 +41,22 @@ public final class GLEXTCompiledVertexArray {
         this.handles = new Handles(func);
     }
 
-    public void LockArraysEXT(@CType("GLint") int first, @CType("GLsizei") int count) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");
+    /// ```
+    /// void glLockArraysEXT(int first, int count);
+    /// ```
+    public void LockArraysEXT(int first, int count) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");
         try { Handles.MH_glLockArraysEXT.invokeExact(handles.PFN_glLockArraysEXT, first, count); }
-        catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LockArraysEXT", e); }
     }
 
+    /// ```
+    /// void glUnlockArraysEXT();
+    /// ```
     public void UnlockArraysEXT() {
-        if (Unmarshal.isNullPointer(handles.PFN_glUnlockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glUnlockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
         try { Handles.MH_glUnlockArraysEXT.invokeExact(handles.PFN_glUnlockArraysEXT); }
-        catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in UnlockArraysEXT", e); }
     }
 
 }

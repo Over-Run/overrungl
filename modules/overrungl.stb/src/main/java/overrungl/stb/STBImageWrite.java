@@ -104,99 +104,88 @@ public final class STBImageWrite {
     /// int stbi_write_png(char const * filename, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
     public static int stbi_write_png(MemorySegment filename, int w, int h, int comp, MemorySegment data, int stride_in_bytes) {
-        try {
-            return (int) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, filename, w, h, comp, data, stride_in_bytes);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
+        try { return (int) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, filename, w, h, comp, data, stride_in_bytes); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
     }
 
     /// ```
     /// int stbi_write_bmp(char const * filename, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_bmp(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, filename, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
+        try { return (int) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, filename, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
     }
 
     /// ```
     /// int stbi_write_tga(char const * filename, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_tga(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, filename, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
+        try { return (int) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, filename, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
     }
 
     /// ```
     /// int stbi_write_hdr(char const * filename, int w, int h, int comp, const float* data);
     /// ```
     public static int stbi_write_hdr(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, filename, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
+        try { return (int) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, filename, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
     }
 
     /// ```
     /// int stbi_write_jpg(char const * filename, int x, int y, int comp, const void* data, int quality);
     /// ```
     public static int stbi_write_jpg(MemorySegment filename, int x, int y, int comp, MemorySegment data, int quality) {
-        try {
-            return (int) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, filename, x, y, comp, data, quality);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
+        try { return (int) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, filename, x, y, comp, data, quality); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
     }
 
     /// ```
     /// int stbi_write_png_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
     public static int stbi_write_png_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int stride_in_bytes) {
-        try {
-            return (int) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, func, context, w, h, comp, data, stride_in_bytes);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
+        try { return (int) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, func, context, w, h, comp, data, stride_in_bytes); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
     }
 
     /// ```
     /// int stbi_write_bmp_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_bmp_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, func, context, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
+        try { return (int) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, func, context, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
     }
 
     /// ```
     /// int stbi_write_tga_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_tga_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, func, context, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
+        try { return (int) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, func, context, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
     }
 
     /// ```
     /// int stbi_write_hdr_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const float* data);
     /// ```
     public static int stbi_write_hdr_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, func, context, w, h, comp, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
+        try { return (int) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, func, context, w, h, comp, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
     }
 
     /// ```
     /// int stbi_write_jpg_to_func(stbi_write_func* func, void* context, int x, int y, int comp, const void* data, int quality);
     /// ```
     public static int stbi_write_jpg_to_func(MemorySegment func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
-        try {
-            return (int) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, func, context, x, y, comp, data, quality);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }
+        try { return (int) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, func, context, x, y, comp, data, quality); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }
     }
 
     /// ```
     /// void stbi_flip_vertically_on_write(int flip_boolean);
     /// ```
     public static void stbi_flip_vertically_on_write(int flip_boolean) {
-        try {
-            Handles.MH_stbi_flip_vertically_on_write.invokeExact(Handles.get().PFN_stbi_flip_vertically_on_write, flip_boolean);
-        } catch (Throwable e) { throw new RuntimeException("error in stbi_flip_vertically_on_write", e); }
+        try { Handles.MH_stbi_flip_vertically_on_write.invokeExact(Handles.get().PFN_stbi_flip_vertically_on_write, flip_boolean); }
+        catch (Throwable e) { throw new RuntimeException("error in stbi_flip_vertically_on_write", e); }
     }
 
     //@formatter:on

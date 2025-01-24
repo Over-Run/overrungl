@@ -19,7 +19,6 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,16 +40,22 @@ public final class GLMESAFramebufferFlipY {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferParameteriMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
+    /// ```
+    /// void glFramebufferParameteriMESA(unsigned int target, unsigned int pname, int param);
+    /// ```
+    public void FramebufferParameteriMESA(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
         try { Handles.MH_glFramebufferParameteriMESA.invokeExact(handles.PFN_glFramebufferParameteriMESA, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteriMESA", e); }
     }
 
-    public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
+    /// ```
+    /// void glGetFramebufferParameterivMESA(unsigned int target, unsigned int pname, GLint* params);
+    /// ```
+    public void GetFramebufferParameterivMESA(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
         try { Handles.MH_glGetFramebufferParameterivMESA.invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivMESA", e); }
     }
 
 }

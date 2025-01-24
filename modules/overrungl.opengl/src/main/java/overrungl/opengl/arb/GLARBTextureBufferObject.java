@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,10 +41,13 @@ public final class GLARBTextureBufferObject {
         this.handles = new Handles(func);
     }
 
-    public void TexBufferARB(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexBufferARB)) throw new SymbolNotFoundError("Symbol not found: glTexBufferARB");
+    /// ```
+    /// void glTexBufferARB(unsigned int target, unsigned int internalformat, unsigned int buffer);
+    /// ```
+    public void TexBufferARB(int target, int internalformat, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferARB)) throw new SymbolNotFoundError("Symbol not found: glTexBufferARB");
         try { Handles.MH_glTexBufferARB.invokeExact(handles.PFN_glTexBufferARB, target, internalformat, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexBufferARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexBufferARB", e); }
     }
 
 }

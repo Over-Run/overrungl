@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLARBClearBufferObject {
         this.handles = new Handles(func);
     }
 
-    public void ClearBufferData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
+    /// ```
+    /// void glClearBufferData(unsigned int target, unsigned int internalformat, unsigned int format, unsigned int type, const void* data);
+    /// ```
+    public void ClearBufferData(int target, int internalformat, int format, int type, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
         try { Handles.MH_glClearBufferData.invokeExact(handles.PFN_glClearBufferData, target, internalformat, format, type, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearBufferData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearBufferData", e); }
     }
 
-    public void ClearBufferSubData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");
+    /// ```
+    /// void glClearBufferSubData(unsigned int target, unsigned int internalformat, signed long long offset, signed long long size, unsigned int format, unsigned int type, const void* data);
+    /// ```
+    public void ClearBufferSubData(int target, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");
         try { Handles.MH_glClearBufferSubData.invokeExact(handles.PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearBufferSubData", e); }
     }
 
 }

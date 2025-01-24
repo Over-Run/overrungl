@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -77,64 +76,94 @@ public final class GLARBVertexAttrib64bit {
         this.handles = new Handles(func);
     }
 
-    public void VertexAttribL1d(@CType("GLuint") int index, @CType("GLdouble") double x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1d");
+    /// ```
+    /// void glVertexAttribL1d(unsigned int index, double x);
+    /// ```
+    public void VertexAttribL1d(int index, double x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1d");
         try { Handles.MH_glVertexAttribL1d.invokeExact(handles.PFN_glVertexAttribL1d, index, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1d", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1d", e); }
     }
 
-    public void VertexAttribL2d(@CType("GLuint") int index, @CType("GLdouble") double x, @CType("GLdouble") double y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL2d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2d");
+    /// ```
+    /// void glVertexAttribL2d(unsigned int index, double x, double y);
+    /// ```
+    public void VertexAttribL2d(int index, double x, double y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2d");
         try { Handles.MH_glVertexAttribL2d.invokeExact(handles.PFN_glVertexAttribL2d, index, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL2d", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2d", e); }
     }
 
-    public void VertexAttribL3d(@CType("GLuint") int index, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL3d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3d");
+    /// ```
+    /// void glVertexAttribL3d(unsigned int index, double x, double y, double z);
+    /// ```
+    public void VertexAttribL3d(int index, double x, double y, double z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3d");
         try { Handles.MH_glVertexAttribL3d.invokeExact(handles.PFN_glVertexAttribL3d, index, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL3d", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3d", e); }
     }
 
-    public void VertexAttribL4d(@CType("GLuint") int index, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z, @CType("GLdouble") double w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL4d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4d");
+    /// ```
+    /// void glVertexAttribL4d(unsigned int index, double x, double y, double z, double w);
+    /// ```
+    public void VertexAttribL4d(int index, double x, double y, double z, double w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4d)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4d");
         try { Handles.MH_glVertexAttribL4d.invokeExact(handles.PFN_glVertexAttribL4d, index, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4d", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4d", e); }
     }
 
-    public void VertexAttribL1dv(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL1dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1dv");
+    /// ```
+    /// void glVertexAttribL1dv(unsigned int index, const GLdouble* v);
+    /// ```
+    public void VertexAttribL1dv(int index, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1dv");
         try { Handles.MH_glVertexAttribL1dv.invokeExact(handles.PFN_glVertexAttribL1dv, index, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1dv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1dv", e); }
     }
 
-    public void VertexAttribL2dv(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL2dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2dv");
+    /// ```
+    /// void glVertexAttribL2dv(unsigned int index, const GLdouble* v);
+    /// ```
+    public void VertexAttribL2dv(int index, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL2dv");
         try { Handles.MH_glVertexAttribL2dv.invokeExact(handles.PFN_glVertexAttribL2dv, index, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL2dv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2dv", e); }
     }
 
-    public void VertexAttribL3dv(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL3dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3dv");
+    /// ```
+    /// void glVertexAttribL3dv(unsigned int index, const GLdouble* v);
+    /// ```
+    public void VertexAttribL3dv(int index, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL3dv");
         try { Handles.MH_glVertexAttribL3dv.invokeExact(handles.PFN_glVertexAttribL3dv, index, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL3dv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3dv", e); }
     }
 
-    public void VertexAttribL4dv(@CType("GLuint") int index, @CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribL4dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4dv");
+    /// ```
+    /// void glVertexAttribL4dv(unsigned int index, const GLdouble* v);
+    /// ```
+    public void VertexAttribL4dv(int index, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4dv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL4dv");
         try { Handles.MH_glVertexAttribL4dv.invokeExact(handles.PFN_glVertexAttribL4dv, index, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL4dv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4dv", e); }
     }
 
-    public void VertexAttribLPointer(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribLPointer)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribLPointer");
+    /// ```
+    /// void glVertexAttribLPointer(unsigned int index, int size, unsigned int type, int stride, const void* pointer);
+    /// ```
+    public void VertexAttribLPointer(int index, int size, int type, int stride, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLPointer)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribLPointer");
         try { Handles.MH_glVertexAttribLPointer.invokeExact(handles.PFN_glVertexAttribLPointer, index, size, type, stride, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribLPointer", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribLPointer", e); }
     }
 
-    public void GetVertexAttribLdv(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVertexAttribLdv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLdv");
+    /// ```
+    /// void glGetVertexAttribLdv(unsigned int index, unsigned int pname, GLdouble* params);
+    /// ```
+    public void GetVertexAttribLdv(int index, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLdv)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLdv");
         try { Handles.MH_glGetVertexAttribLdv.invokeExact(handles.PFN_glGetVertexAttribLdv, index, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLdv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribLdv", e); }
     }
 
 }

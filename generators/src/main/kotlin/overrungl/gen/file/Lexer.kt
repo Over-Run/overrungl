@@ -25,11 +25,11 @@ private val keywords = mapOf(
     "import" to IMPORT,
     "java" to JAVA,
     "opt" to OPTIONAL,
+    "package" to PACKAGE,
     "return" to RETURN,
     "struct" to STRUCT,
     "upcall" to UPCALL,
     "using" to USING,
-    "val" to VAL,
 )
 
 internal class Lexer(private val source: String) {
@@ -223,11 +223,11 @@ internal enum class TokenType {
     IMPORT,
     JAVA,
     OPTIONAL,
+    PACKAGE,
     RETURN,
     STRUCT,
     UPCALL,
     USING,
-    VAL,
 
     // other
     IDENTIFIER,

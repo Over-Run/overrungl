@@ -19,7 +19,6 @@ package overrungl.opengl.ibm;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLIBMMultimodeDrawArrays {
         this.handles = new Handles(func);
     }
 
-    public void MultiModeDrawArraysIBM(@CType("const GLenum *") MemorySegment mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
+    /// ```
+    /// void glMultiModeDrawArraysIBM(const GLenum* mode, const GLint* first, const GLsizei* count, int primcount, int modestride);
+    /// ```
+    public void MultiModeDrawArraysIBM(MemorySegment mode, MemorySegment first, MemorySegment count, int primcount, int modestride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
         try { Handles.MH_glMultiModeDrawArraysIBM.invokeExact(handles.PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiModeDrawArraysIBM", e); }
     }
 
-    public void MultiModeDrawElementsIBM(@CType("const GLenum *") MemorySegment mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
+    /// ```
+    /// void glMultiModeDrawElementsIBM(const GLenum* mode, const GLsizei* count, unsigned int type, const void* const * indices, int primcount, int modestride);
+    /// ```
+    public void MultiModeDrawElementsIBM(MemorySegment mode, MemorySegment count, int type, MemorySegment indices, int primcount, int modestride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
         try { Handles.MH_glMultiModeDrawElementsIBM.invokeExact(handles.PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiModeDrawElementsIBM", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,10 +41,13 @@ public final class GLEXTTextureBufferObject {
         this.handles = new Handles(func);
     }
 
-    public void TexBufferEXT(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT");
+    /// ```
+    /// void glTexBufferEXT(unsigned int target, unsigned int internalformat, unsigned int buffer);
+    /// ```
+    public void TexBufferEXT(int target, int internalformat, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT");
         try { Handles.MH_glTexBufferEXT.invokeExact(handles.PFN_glTexBufferEXT, target, internalformat, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexBufferEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexBufferEXT", e); }
     }
 
 }

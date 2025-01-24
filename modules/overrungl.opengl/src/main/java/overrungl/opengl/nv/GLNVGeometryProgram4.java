@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -62,28 +61,40 @@ public final class GLNVGeometryProgram4 {
         this.handles = new Handles(func);
     }
 
-    public void ProgramVertexLimitNV(@CType("GLenum") int target, @CType("GLint") int limit) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new SymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
+    /// ```
+    /// void glProgramVertexLimitNV(unsigned int target, int limit);
+    /// ```
+    public void ProgramVertexLimitNV(int target, int limit) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new SymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
         try { Handles.MH_glProgramVertexLimitNV.invokeExact(handles.PFN_glProgramVertexLimitNV, target, limit); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramVertexLimitNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramVertexLimitNV", e); }
     }
 
-    public void FramebufferTextureEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
+    /// ```
+    /// void glFramebufferTextureEXT(unsigned int target, unsigned int attachment, unsigned int texture, int level);
+    /// ```
+    public void FramebufferTextureEXT(int target, int attachment, int texture, int level) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
         try { Handles.MH_glFramebufferTextureEXT.invokeExact(handles.PFN_glFramebufferTextureEXT, target, attachment, texture, level); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureEXT", e); }
     }
 
-    public void FramebufferTextureLayerEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int layer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
+    /// ```
+    /// void glFramebufferTextureLayerEXT(unsigned int target, unsigned int attachment, unsigned int texture, int level, int layer);
+    /// ```
+    public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
         try { Handles.MH_glFramebufferTextureLayerEXT.invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerEXT", e); }
     }
 
-    public void FramebufferTextureFaceEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int face) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");
+    /// ```
+    /// void glFramebufferTextureFaceEXT(unsigned int target, unsigned int attachment, unsigned int texture, int level, unsigned int face);
+    /// ```
+    public void FramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");
         try { Handles.MH_glFramebufferTextureFaceEXT.invokeExact(handles.PFN_glFramebufferTextureFaceEXT, target, attachment, texture, level, face); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureFaceEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureFaceEXT", e); }
     }
 
 }

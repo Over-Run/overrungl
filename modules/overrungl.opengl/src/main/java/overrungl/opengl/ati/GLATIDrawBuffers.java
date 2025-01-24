@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -54,10 +53,13 @@ public final class GLATIDrawBuffers {
         this.handles = new Handles(func);
     }
 
-    public void DrawBuffersATI(@CType("GLsizei") int n, @CType("const GLenum *") MemorySegment bufs) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");
+    /// ```
+    /// void glDrawBuffersATI(int n, const GLenum* bufs);
+    /// ```
+    public void DrawBuffersATI(int n, MemorySegment bufs) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");
         try { Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawBuffersATI", e); }
     }
 
 }

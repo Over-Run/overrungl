@@ -19,17 +19,6 @@ package overrungl.gen
 import java.nio.file.Files
 import kotlin.io.path.Path
 
-fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
-    val typeName = "$packageName.$name"
-    return CustomTypeSpec(
-        carrier = MemorySegment_,
-        javaType = typeName,
-        processor = UpcallProcessor(typeName),
-        layout = address.layout,
-        allocatorRequirement = AllocatorRequirement.ARENA
-    )
-}
-
 class Upcall(
     val packageName: String,
     val name: String,
@@ -37,9 +26,6 @@ class Upcall(
 ) {
     var targetMethod: UpcallMethod? = null
     var interfaceMethod: UpcallMethod? = null
-    val pointerType: CustomTypeSpec by lazy {
-        generateUpcallType(packageName, name)
-    }
     var wrapperCode: String? = null
 
     init {

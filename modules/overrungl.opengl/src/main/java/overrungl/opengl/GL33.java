@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,7 +45,7 @@ public class GL33 extends GL32 {
         public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGenSamplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glDeleteSamplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsSampler = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsSampler = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glBindSampler = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glSamplerParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glSamplerParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -62,14 +61,14 @@ public class GL33 extends GL32 {
         public static final MethodHandle MH_glGetQueryObjecti64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGetQueryObjectui64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glVertexAttribDivisor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindFragDataLocationIndexed;
         public final MemorySegment PFN_glGetFragDataIndex;
         public final MemorySegment PFN_glGenSamplers;
@@ -135,172 +134,256 @@ public class GL33 extends GL32 {
         this.handles = new Handles(func);
     }
 
-    public void BindFragDataLocationIndexed(@CType("GLuint") int program, @CType("GLuint") int colorNumber, @CType("GLuint") int index, @CType("const GLchar *") MemorySegment name) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
+    /// ```
+    /// void glBindFragDataLocationIndexed(unsigned int program, unsigned int colorNumber, unsigned int index, const GLchar* name);
+    /// ```
+    public void BindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
         try { Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindFragDataLocationIndexed", e); }
     }
 
-    public @CType("GLint") int GetFragDataIndex(@CType("GLuint") int program, @CType("const GLchar *") MemorySegment name) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
+    /// ```
+    /// int glGetFragDataIndex(unsigned int program, const GLchar* name);
+    /// ```
+    public int GetFragDataIndex(int program, MemorySegment name) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
         try { return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFragDataIndex", e); }
     }
 
-    public void GenSamplers(@CType("GLsizei") int count, @CType("GLuint *") MemorySegment samplers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGenSamplers)) throw new SymbolNotFoundError("Symbol not found: glGenSamplers");
+    /// ```
+    /// void glGenSamplers(int count, GLuint* samplers);
+    /// ```
+    public void GenSamplers(int count, MemorySegment samplers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenSamplers)) throw new SymbolNotFoundError("Symbol not found: glGenSamplers");
         try { Handles.MH_glGenSamplers.invokeExact(handles.PFN_glGenSamplers, count, samplers); }
-        catch (Throwable e) { throw new RuntimeException("error in glGenSamplers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GenSamplers", e); }
     }
 
-    public void DeleteSamplers(@CType("GLsizei") int count, @CType("const GLuint *") MemorySegment samplers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeleteSamplers)) throw new SymbolNotFoundError("Symbol not found: glDeleteSamplers");
+    /// ```
+    /// void glDeleteSamplers(int count, const GLuint* samplers);
+    /// ```
+    public void DeleteSamplers(int count, MemorySegment samplers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSamplers)) throw new SymbolNotFoundError("Symbol not found: glDeleteSamplers");
         try { Handles.MH_glDeleteSamplers.invokeExact(handles.PFN_glDeleteSamplers, count, samplers); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteSamplers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeleteSamplers", e); }
     }
 
-    public @CType("GLboolean") boolean IsSampler(@CType("GLuint") int sampler) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsSampler)) throw new SymbolNotFoundError("Symbol not found: glIsSampler");
-        try { return (boolean) Handles.MH_glIsSampler.invokeExact(handles.PFN_glIsSampler, sampler); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsSampler", e); }
+    /// ```
+    /// GLboolean glIsSampler(unsigned int sampler);
+    /// ```
+    public boolean IsSampler(int sampler) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsSampler)) throw new SymbolNotFoundError("Symbol not found: glIsSampler");
+        try { return (((byte) Handles.MH_glIsSampler.invokeExact(handles.PFN_glIsSampler, sampler)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsSampler", e); }
     }
 
-    public void BindSampler(@CType("GLuint") int unit, @CType("GLuint") int sampler) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindSampler)) throw new SymbolNotFoundError("Symbol not found: glBindSampler");
+    /// ```
+    /// void glBindSampler(unsigned int unit, unsigned int sampler);
+    /// ```
+    public void BindSampler(int unit, int sampler) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindSampler)) throw new SymbolNotFoundError("Symbol not found: glBindSampler");
         try { Handles.MH_glBindSampler.invokeExact(handles.PFN_glBindSampler, unit, sampler); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindSampler", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindSampler", e); }
     }
 
-    public void SamplerParameteri(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameteri)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteri");
+    /// ```
+    /// void glSamplerParameteri(unsigned int sampler, unsigned int pname, int param);
+    /// ```
+    public void SamplerParameteri(int sampler, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteri)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteri");
         try { Handles.MH_glSamplerParameteri.invokeExact(handles.PFN_glSamplerParameteri, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameteri", e); }
     }
 
-    public void SamplerParameteriv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteriv");
+    /// ```
+    /// void glSamplerParameteriv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// ```
+    public void SamplerParameteriv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteriv");
         try { Handles.MH_glSamplerParameteriv.invokeExact(handles.PFN_glSamplerParameteriv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameteriv", e); }
     }
 
-    public void SamplerParameterf(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterf)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterf");
+    /// ```
+    /// void glSamplerParameterf(unsigned int sampler, unsigned int pname, float param);
+    /// ```
+    public void SamplerParameterf(int sampler, int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterf)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterf");
         try { Handles.MH_glSamplerParameterf.invokeExact(handles.PFN_glSamplerParameterf, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterf", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterf", e); }
     }
 
-    public void SamplerParameterfv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterfv");
+    /// ```
+    /// void glSamplerParameterfv(unsigned int sampler, unsigned int pname, const GLfloat* param);
+    /// ```
+    public void SamplerParameterfv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterfv");
         try { Handles.MH_glSamplerParameterfv.invokeExact(handles.PFN_glSamplerParameterfv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterfv", e); }
     }
 
-    public void SamplerParameterIiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIiv");
+    /// ```
+    /// void glSamplerParameterIiv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// ```
+    public void SamplerParameterIiv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIiv");
         try { Handles.MH_glSamplerParameterIiv.invokeExact(handles.PFN_glSamplerParameterIiv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterIiv", e); }
     }
 
-    public void SamplerParameterIuiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLuint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIuiv");
+    /// ```
+    /// void glSamplerParameterIuiv(unsigned int sampler, unsigned int pname, const GLuint* param);
+    /// ```
+    public void SamplerParameterIuiv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIuiv");
         try { Handles.MH_glSamplerParameterIuiv.invokeExact(handles.PFN_glSamplerParameterIuiv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterIuiv", e); }
     }
 
-    public void GetSamplerParameteriv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameteriv");
+    /// ```
+    /// void glGetSamplerParameteriv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// ```
+    public void GetSamplerParameteriv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameteriv");
         try { Handles.MH_glGetSamplerParameteriv.invokeExact(handles.PFN_glGetSamplerParameteriv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameteriv", e); }
     }
 
-    public void GetSamplerParameterIiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIiv");
+    /// ```
+    /// void glGetSamplerParameterIiv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// ```
+    public void GetSamplerParameterIiv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIiv");
         try { Handles.MH_glGetSamplerParameterIiv.invokeExact(handles.PFN_glGetSamplerParameterIiv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterIiv", e); }
     }
 
-    public void GetSamplerParameterfv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterfv");
+    /// ```
+    /// void glGetSamplerParameterfv(unsigned int sampler, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetSamplerParameterfv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterfv");
         try { Handles.MH_glGetSamplerParameterfv.invokeExact(handles.PFN_glGetSamplerParameterfv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterfv", e); }
     }
 
-    public void GetSamplerParameterIuiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIuiv");
+    /// ```
+    /// void glGetSamplerParameterIuiv(unsigned int sampler, unsigned int pname, GLuint* params);
+    /// ```
+    public void GetSamplerParameterIuiv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIuiv");
         try { Handles.MH_glGetSamplerParameterIuiv.invokeExact(handles.PFN_glGetSamplerParameterIuiv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterIuiv", e); }
     }
 
-    public void QueryCounter(@CType("GLuint") int id, @CType("GLenum") int target) {
-        if (Unmarshal.isNullPointer(handles.PFN_glQueryCounter)) throw new SymbolNotFoundError("Symbol not found: glQueryCounter");
+    /// ```
+    /// void glQueryCounter(unsigned int id, unsigned int target);
+    /// ```
+    public void QueryCounter(int id, int target) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryCounter)) throw new SymbolNotFoundError("Symbol not found: glQueryCounter");
         try { Handles.MH_glQueryCounter.invokeExact(handles.PFN_glQueryCounter, id, target); }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryCounter", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueryCounter", e); }
     }
 
-    public void GetQueryObjecti64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64v");
+    /// ```
+    /// void glGetQueryObjecti64v(unsigned int id, unsigned int pname, GLint64* params);
+    /// ```
+    public void GetQueryObjecti64v(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64v");
         try { Handles.MH_glGetQueryObjecti64v.invokeExact(handles.PFN_glGetQueryObjecti64v, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64v", e); }
     }
 
-    public void GetQueryObjectui64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64v");
+    /// ```
+    /// void glGetQueryObjectui64v(unsigned int id, unsigned int pname, GLuint64* params);
+    /// ```
+    public void GetQueryObjectui64v(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64v");
         try { Handles.MH_glGetQueryObjectui64v.invokeExact(handles.PFN_glGetQueryObjectui64v, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64v", e); }
     }
 
-    public void VertexAttribDivisor(@CType("GLuint") int index, @CType("GLuint") int divisor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisor");
+    /// ```
+    /// void glVertexAttribDivisor(unsigned int index, unsigned int divisor);
+    /// ```
+    public void VertexAttribDivisor(int index, int divisor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisor");
         try { Handles.MH_glVertexAttribDivisor.invokeExact(handles.PFN_glVertexAttribDivisor, index, divisor); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribDivisor", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribDivisor", e); }
     }
 
-    public void VertexAttribP1ui(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP1ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1ui");
-        try { Handles.MH_glVertexAttribP1ui.invokeExact(handles.PFN_glVertexAttribP1ui, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1ui", e); }
+    /// ```
+    /// void glVertexAttribP1ui(unsigned int index, unsigned int type, GLboolean normalized, unsigned int value);
+    /// ```
+    public void VertexAttribP1ui(int index, int type, boolean normalized, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1ui");
+        try { Handles.MH_glVertexAttribP1ui.invokeExact(handles.PFN_glVertexAttribP1ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP1ui", e); }
     }
 
-    public void VertexAttribP1uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
-        try { Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP1uiv", e); }
+    /// ```
+    /// void glVertexAttribP1uiv(unsigned int index, unsigned int type, GLboolean normalized, const GLuint* value);
+    /// ```
+    public void VertexAttribP1uiv(int index, int type, boolean normalized, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
+        try { Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP1uiv", e); }
     }
 
-    public void VertexAttribP2ui(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP2ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2ui");
-        try { Handles.MH_glVertexAttribP2ui.invokeExact(handles.PFN_glVertexAttribP2ui, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2ui", e); }
+    /// ```
+    /// void glVertexAttribP2ui(unsigned int index, unsigned int type, GLboolean normalized, unsigned int value);
+    /// ```
+    public void VertexAttribP2ui(int index, int type, boolean normalized, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2ui");
+        try { Handles.MH_glVertexAttribP2ui.invokeExact(handles.PFN_glVertexAttribP2ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP2ui", e); }
     }
 
-    public void VertexAttribP2uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
-        try { Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP2uiv", e); }
+    /// ```
+    /// void glVertexAttribP2uiv(unsigned int index, unsigned int type, GLboolean normalized, const GLuint* value);
+    /// ```
+    public void VertexAttribP2uiv(int index, int type, boolean normalized, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
+        try { Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP2uiv", e); }
     }
 
-    public void VertexAttribP3ui(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP3ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3ui");
-        try { Handles.MH_glVertexAttribP3ui.invokeExact(handles.PFN_glVertexAttribP3ui, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3ui", e); }
+    /// ```
+    /// void glVertexAttribP3ui(unsigned int index, unsigned int type, GLboolean normalized, unsigned int value);
+    /// ```
+    public void VertexAttribP3ui(int index, int type, boolean normalized, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3ui");
+        try { Handles.MH_glVertexAttribP3ui.invokeExact(handles.PFN_glVertexAttribP3ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP3ui", e); }
     }
 
-    public void VertexAttribP3uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
-        try { Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP3uiv", e); }
+    /// ```
+    /// void glVertexAttribP3uiv(unsigned int index, unsigned int type, GLboolean normalized, const GLuint* value);
+    /// ```
+    public void VertexAttribP3uiv(int index, int type, boolean normalized, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
+        try { Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP3uiv", e); }
     }
 
-    public void VertexAttribP4ui(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP4ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4ui");
-        try { Handles.MH_glVertexAttribP4ui.invokeExact(handles.PFN_glVertexAttribP4ui, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4ui", e); }
+    /// ```
+    /// void glVertexAttribP4ui(unsigned int index, unsigned int type, GLboolean normalized, unsigned int value);
+    /// ```
+    public void VertexAttribP4ui(int index, int type, boolean normalized, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4ui");
+        try { Handles.MH_glVertexAttribP4ui.invokeExact(handles.PFN_glVertexAttribP4ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP4ui", e); }
     }
 
-    public void VertexAttribP4uiv(@CType("GLuint") int index, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("const GLuint *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
-        try { Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, normalized, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribP4uiv", e); }
+    /// ```
+    /// void glVertexAttribP4uiv(unsigned int index, unsigned int type, GLboolean normalized, const GLuint* value);
+    /// ```
+    public void VertexAttribP4uiv(int index, int type, boolean normalized, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
+        try { Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribP4uiv", e); }
     }
 
     // --- OverrunGL custom code ---

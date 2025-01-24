@@ -19,7 +19,6 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -52,10 +51,13 @@ public final class GLKHRBlendEquationAdvanced {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glBlendBarrierKHR();
+    /// ```
     public void BlendBarrierKHR() {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendBarrierKHR)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendBarrierKHR)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierKHR");
         try { Handles.MH_glBlendBarrierKHR.invokeExact(handles.PFN_glBlendBarrierKHR); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendBarrierKHR", e); }
     }
 
 }

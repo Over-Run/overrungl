@@ -1001,1107 +1001,984 @@ public final class GLFW {
     /// int glfwInit();
     /// ```
     public static boolean glfwInit() {
-        try {
-            return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwInit", e); }
+        try { return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwInit", e); }
     }
 
     /// ```
     /// void glfwTerminate();
     /// ```
     public static void glfwTerminate() {
-        try {
-            Handles.MH_glfwTerminate.invokeExact(Handles.get().PFN_glfwTerminate);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwTerminate", e); }
+        try { Handles.MH_glfwTerminate.invokeExact(Handles.get().PFN_glfwTerminate); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwTerminate", e); }
     }
 
     /// ```
     /// void glfwInitHint(int hint, int value);
     /// ```
     public static void glfwInitHint(int hint, int value) {
-        try {
-            Handles.MH_glfwInitHint.invokeExact(Handles.get().PFN_glfwInitHint, hint, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwInitHint", e); }
+        try { Handles.MH_glfwInitHint.invokeExact(Handles.get().PFN_glfwInitHint, hint, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwInitHint", e); }
     }
 
     /// ```
     /// void glfwInitAllocator(const GLFWallocator* allocator);
     /// ```
     public static void glfwInitAllocator(MemorySegment allocator) {
-        try {
-            Handles.MH_glfwInitAllocator.invokeExact(Handles.get().PFN_glfwInitAllocator, allocator);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwInitAllocator", e); }
+        try { Handles.MH_glfwInitAllocator.invokeExact(Handles.get().PFN_glfwInitAllocator, allocator); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwInitAllocator", e); }
     }
 
     /// ```
     /// void glfwInitVulkanLoader(void* loader);
     /// ```
     public static void glfwInitVulkanLoader(MemorySegment loader) {
-        try {
-            Handles.MH_glfwInitVulkanLoader.invokeExact(Handles.get().PFN_glfwInitVulkanLoader, loader);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwInitVulkanLoader", e); }
+        try { Handles.MH_glfwInitVulkanLoader.invokeExact(Handles.get().PFN_glfwInitVulkanLoader, loader); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwInitVulkanLoader", e); }
     }
 
     /// ```
     /// void glfwGetVersion(int* major, int* minor, int* rev);
     /// ```
     public static void glfwGetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
-        try {
-            Handles.MH_glfwGetVersion.invokeExact(Handles.get().PFN_glfwGetVersion, major, minor, rev);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersion", e); }
+        try { Handles.MH_glfwGetVersion.invokeExact(Handles.get().PFN_glfwGetVersion, major, minor, rev); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetVersion", e); }
     }
 
     /// ```
     /// const char* glfwGetVersionString();
     /// ```
     public static MemorySegment glfwGetVersionString() {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetVersionString.invokeExact(Handles.get().PFN_glfwGetVersionString);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersionString", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetVersionString.invokeExact(Handles.get().PFN_glfwGetVersionString); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetVersionString", e); }
     }
 
     /// ```
     /// int glfwGetError(const char** description);
     /// ```
     public static int glfwGetError(MemorySegment description) {
-        try {
-            return (int) Handles.MH_glfwGetError.invokeExact(Handles.get().PFN_glfwGetError, description);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetError", e); }
+        try { return (int) Handles.MH_glfwGetError.invokeExact(Handles.get().PFN_glfwGetError, description); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetError", e); }
     }
 
     /// ```
     /// void (*GLFWErrorFun)(int error_code, const char* description) glfwSetErrorCallback(void (*GLFWErrorFun)(int error_code, const char* description) callback);
     /// ```
     public static MemorySegment glfwSetErrorCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetErrorCallback.invokeExact(Handles.get().PFN_glfwSetErrorCallback, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetErrorCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetErrorCallback.invokeExact(Handles.get().PFN_glfwSetErrorCallback, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetErrorCallback", e); }
     }
 
     /// ```
     /// int glfwGetPlatform();
     /// ```
     public static int glfwGetPlatform() {
-        try {
-            return (int) Handles.MH_glfwGetPlatform.invokeExact(Handles.get().PFN_glfwGetPlatform);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetPlatform", e); }
+        try { return (int) Handles.MH_glfwGetPlatform.invokeExact(Handles.get().PFN_glfwGetPlatform); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetPlatform", e); }
     }
 
     /// ```
     /// int glfwPlatformSupported(int platform);
     /// ```
     public static boolean glfwPlatformSupported(int platform) {
-        try {
-            return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwPlatformSupported", e); }
+        try { return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwPlatformSupported", e); }
     }
 
     /// ```
     /// GLFWmonitor** glfwGetMonitors(int* count);
     /// ```
     public static MemorySegment glfwGetMonitors(MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetMonitors.invokeExact(Handles.get().PFN_glfwGetMonitors, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitors", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetMonitors.invokeExact(Handles.get().PFN_glfwGetMonitors, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitors", e); }
     }
 
     /// ```
     /// GLFWmonitor* glfwGetPrimaryMonitor();
     /// ```
     public static MemorySegment glfwGetPrimaryMonitor() {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetPrimaryMonitor.invokeExact(Handles.get().PFN_glfwGetPrimaryMonitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetPrimaryMonitor", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetPrimaryMonitor.invokeExact(Handles.get().PFN_glfwGetPrimaryMonitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetPrimaryMonitor", e); }
     }
 
     /// ```
     /// void glfwGetMonitorPos(GLFWmonitor* monitor, int* xpos, int* ypos);
     /// ```
     public static void glfwGetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            Handles.MH_glfwGetMonitorPos.invokeExact(Handles.get().PFN_glfwGetMonitorPos, monitor, xpos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPos", e); }
+        try { Handles.MH_glfwGetMonitorPos.invokeExact(Handles.get().PFN_glfwGetMonitorPos, monitor, xpos, ypos); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPos", e); }
     }
 
     /// ```
     /// void glfwGetMonitorWorkarea(GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height);
     /// ```
     public static void glfwGetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
-        try {
-            Handles.MH_glfwGetMonitorWorkarea.invokeExact(Handles.get().PFN_glfwGetMonitorWorkarea, monitor, xpos, ypos, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorWorkarea", e); }
+        try { Handles.MH_glfwGetMonitorWorkarea.invokeExact(Handles.get().PFN_glfwGetMonitorWorkarea, monitor, xpos, ypos, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorWorkarea", e); }
     }
 
     /// ```
     /// void glfwGetMonitorPhysicalSize(GLFWmonitor* monitor, int* widthMM, int* heightMM);
     /// ```
     public static void glfwGetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
-        try {
-            Handles.MH_glfwGetMonitorPhysicalSize.invokeExact(Handles.get().PFN_glfwGetMonitorPhysicalSize, monitor, widthMM, heightMM);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPhysicalSize", e); }
+        try { Handles.MH_glfwGetMonitorPhysicalSize.invokeExact(Handles.get().PFN_glfwGetMonitorPhysicalSize, monitor, widthMM, heightMM); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPhysicalSize", e); }
     }
 
     /// ```
     /// void glfwGetMonitorContentScale(GLFWmonitor* monitor, float* xscale, float* yscale);
     /// ```
     public static void glfwGetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
-        try {
-            Handles.MH_glfwGetMonitorContentScale.invokeExact(Handles.get().PFN_glfwGetMonitorContentScale, monitor, xscale, yscale);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorContentScale", e); }
+        try { Handles.MH_glfwGetMonitorContentScale.invokeExact(Handles.get().PFN_glfwGetMonitorContentScale, monitor, xscale, yscale); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorContentScale", e); }
     }
 
     /// ```
     /// const char* glfwGetMonitorName(GLFWmonitor* monitor);
     /// ```
     public static MemorySegment glfwGetMonitorName(MemorySegment monitor) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetMonitorName.invokeExact(Handles.get().PFN_glfwGetMonitorName, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorName", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetMonitorName.invokeExact(Handles.get().PFN_glfwGetMonitorName, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorName", e); }
     }
 
     /// ```
     /// void glfwSetMonitorUserPointer(GLFWmonitor* monitor, void* pointer);
     /// ```
     public static void glfwSetMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
-        try {
-            Handles.MH_glfwSetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwSetMonitorUserPointer, monitor, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorUserPointer", e); }
+        try { Handles.MH_glfwSetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwSetMonitorUserPointer, monitor, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorUserPointer", e); }
     }
 
     /// ```
     /// void* glfwGetMonitorUserPointer(GLFWmonitor* monitor);
     /// ```
     public static MemorySegment glfwGetMonitorUserPointer(MemorySegment monitor) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwGetMonitorUserPointer, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorUserPointer", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetMonitorUserPointer.invokeExact(Handles.get().PFN_glfwGetMonitorUserPointer, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorUserPointer", e); }
     }
 
     /// ```
     /// void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) glfwSetMonitorCallback(void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) callback);
     /// ```
     public static MemorySegment glfwSetMonitorCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetMonitorCallback.invokeExact(Handles.get().PFN_glfwSetMonitorCallback, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetMonitorCallback.invokeExact(Handles.get().PFN_glfwSetMonitorCallback, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorCallback", e); }
     }
 
     /// ```
     /// const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* monitor, int* count);
     /// ```
     public static MemorySegment glfwGetVideoModes(MemorySegment monitor, MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetVideoModes.invokeExact(Handles.get().PFN_glfwGetVideoModes, monitor, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoModes", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetVideoModes.invokeExact(Handles.get().PFN_glfwGetVideoModes, monitor, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoModes", e); }
     }
 
     /// ```
     /// const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* monitor);
     /// ```
     public static MemorySegment glfwGetVideoMode(MemorySegment monitor) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetVideoMode.invokeExact(Handles.get().PFN_glfwGetVideoMode, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoMode", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetVideoMode.invokeExact(Handles.get().PFN_glfwGetVideoMode, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoMode", e); }
     }
 
     /// ```
     /// void glfwSetGamma(GLFWmonitor* monitor, float gamma);
     /// ```
     public static void glfwSetGamma(MemorySegment monitor, float gamma) {
-        try {
-            Handles.MH_glfwSetGamma.invokeExact(Handles.get().PFN_glfwSetGamma, monitor, gamma);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetGamma", e); }
+        try { Handles.MH_glfwSetGamma.invokeExact(Handles.get().PFN_glfwSetGamma, monitor, gamma); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetGamma", e); }
     }
 
     /// ```
     /// const GLFWgammaramp* glfwGetGammaRamp(GLFWmonitor* monitor);
     /// ```
     public static MemorySegment glfwGetGammaRamp(MemorySegment monitor) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetGammaRamp.invokeExact(Handles.get().PFN_glfwGetGammaRamp, monitor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGammaRamp", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetGammaRamp.invokeExact(Handles.get().PFN_glfwGetGammaRamp, monitor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGammaRamp", e); }
     }
 
     /// ```
     /// void glfwSetGammaRamp(GLFWmonitor* monitor, const GLFWgammaramp* ramp);
     /// ```
     public static void glfwSetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
-        try {
-            Handles.MH_glfwSetGammaRamp.invokeExact(Handles.get().PFN_glfwSetGammaRamp, monitor, ramp);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetGammaRamp", e); }
+        try { Handles.MH_glfwSetGammaRamp.invokeExact(Handles.get().PFN_glfwSetGammaRamp, monitor, ramp); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetGammaRamp", e); }
     }
 
     /// ```
     /// void glfwDefaultWindowHints();
     /// ```
     public static void glfwDefaultWindowHints() {
-        try {
-            Handles.MH_glfwDefaultWindowHints.invokeExact(Handles.get().PFN_glfwDefaultWindowHints);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwDefaultWindowHints", e); }
+        try { Handles.MH_glfwDefaultWindowHints.invokeExact(Handles.get().PFN_glfwDefaultWindowHints); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwDefaultWindowHints", e); }
     }
 
     /// ```
     /// void glfwWindowHint(int hint, int value);
     /// ```
     public static void glfwWindowHint(int hint, int value) {
-        try {
-            Handles.MH_glfwWindowHint.invokeExact(Handles.get().PFN_glfwWindowHint, hint, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHint", e); }
+        try { Handles.MH_glfwWindowHint.invokeExact(Handles.get().PFN_glfwWindowHint, hint, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwWindowHint", e); }
     }
 
     /// ```
     /// void glfwWindowHintString(int hint, const char* value);
     /// ```
     public static void glfwWindowHintString(int hint, MemorySegment value) {
-        try {
-            Handles.MH_glfwWindowHintString.invokeExact(Handles.get().PFN_glfwWindowHintString, hint, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHintString", e); }
+        try { Handles.MH_glfwWindowHintString.invokeExact(Handles.get().PFN_glfwWindowHintString, hint, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwWindowHintString", e); }
     }
 
     /// ```
     /// GLFWwindow* glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
     /// ```
     public static MemorySegment glfwCreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
-        try {
-            return (MemorySegment) Handles.MH_glfwCreateWindow.invokeExact(Handles.get().PFN_glfwCreateWindow, width, height, title, monitor, share);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindow", e); }
+        try { return (MemorySegment) Handles.MH_glfwCreateWindow.invokeExact(Handles.get().PFN_glfwCreateWindow, width, height, title, monitor, share); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindow", e); }
     }
 
     /// ```
     /// void glfwDestroyWindow(GLFWwindow* window);
     /// ```
     public static void glfwDestroyWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwDestroyWindow.invokeExact(Handles.get().PFN_glfwDestroyWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyWindow", e); }
+        try { Handles.MH_glfwDestroyWindow.invokeExact(Handles.get().PFN_glfwDestroyWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwDestroyWindow", e); }
     }
 
     /// ```
     /// int glfwWindowShouldClose(GLFWwindow* window);
     /// ```
     public static boolean glfwWindowShouldClose(MemorySegment window) {
-        try {
-            return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWindowShouldClose", e); }
+        try { return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwWindowShouldClose", e); }
     }
 
     /// ```
     /// void glfwSetWindowShouldClose(GLFWwindow* window, int value);
     /// ```
     public static void glfwSetWindowShouldClose(MemorySegment window, boolean value) {
-        try {
-            Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? 1 : 0));
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowShouldClose", e); }
+        try { Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? 1 : 0)); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowShouldClose", e); }
     }
 
     /// ```
     /// const char* glfwGetWindowTitle(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetWindowTitle(MemorySegment window) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWindowTitle.invokeExact(Handles.get().PFN_glfwGetWindowTitle, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowTitle", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWindowTitle.invokeExact(Handles.get().PFN_glfwGetWindowTitle, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowTitle", e); }
     }
 
     /// ```
     /// void glfwSetWindowTitle(GLFWwindow* window, const char* title);
     /// ```
     public static void glfwSetWindowTitle(MemorySegment window, MemorySegment title) {
-        try {
-            Handles.MH_glfwSetWindowTitle.invokeExact(Handles.get().PFN_glfwSetWindowTitle, window, title);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowTitle", e); }
+        try { Handles.MH_glfwSetWindowTitle.invokeExact(Handles.get().PFN_glfwSetWindowTitle, window, title); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowTitle", e); }
     }
 
     /// ```
     /// void glfwSetWindowIcon(GLFWwindow* window, int count, const GLFWimage* images);
     /// ```
     public static void glfwSetWindowIcon(MemorySegment window, int count, MemorySegment images) {
-        try {
-            Handles.MH_glfwSetWindowIcon.invokeExact(Handles.get().PFN_glfwSetWindowIcon, window, count, images);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIcon", e); }
+        try { Handles.MH_glfwSetWindowIcon.invokeExact(Handles.get().PFN_glfwSetWindowIcon, window, count, images); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIcon", e); }
     }
 
     /// ```
     /// void glfwGetWindowPos(GLFWwindow* window, int* xpos, int* ypos);
     /// ```
     public static void glfwGetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            Handles.MH_glfwGetWindowPos.invokeExact(Handles.get().PFN_glfwGetWindowPos, window, xpos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowPos", e); }
+        try { Handles.MH_glfwGetWindowPos.invokeExact(Handles.get().PFN_glfwGetWindowPos, window, xpos, ypos); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowPos", e); }
     }
 
     /// ```
     /// void glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos);
     /// ```
     public static void glfwSetWindowPos(MemorySegment window, int xpos, int ypos) {
-        try {
-            Handles.MH_glfwSetWindowPos.invokeExact(Handles.get().PFN_glfwSetWindowPos, window, xpos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPos", e); }
+        try { Handles.MH_glfwSetWindowPos.invokeExact(Handles.get().PFN_glfwSetWindowPos, window, xpos, ypos); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPos", e); }
     }
 
     /// ```
     /// void glfwGetWindowSize(GLFWwindow* window, int* width, int* height);
     /// ```
     public static void glfwGetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
-        try {
-            Handles.MH_glfwGetWindowSize.invokeExact(Handles.get().PFN_glfwGetWindowSize, window, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowSize", e); }
+        try { Handles.MH_glfwGetWindowSize.invokeExact(Handles.get().PFN_glfwGetWindowSize, window, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowSize", e); }
     }
 
     /// ```
     /// void glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight);
     /// ```
     public static void glfwSetWindowSizeLimits(MemorySegment window, int minwidth, int minheight, int maxwidth, int maxheight) {
-        try {
-            Handles.MH_glfwSetWindowSizeLimits.invokeExact(Handles.get().PFN_glfwSetWindowSizeLimits, window, minwidth, minheight, maxwidth, maxheight);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeLimits", e); }
+        try { Handles.MH_glfwSetWindowSizeLimits.invokeExact(Handles.get().PFN_glfwSetWindowSizeLimits, window, minwidth, minheight, maxwidth, maxheight); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeLimits", e); }
     }
 
     /// ```
     /// void glfwSetWindowAspectRatio(GLFWwindow* window, int numer, int denom);
     /// ```
     public static void glfwSetWindowAspectRatio(MemorySegment window, int numer, int denom) {
-        try {
-            Handles.MH_glfwSetWindowAspectRatio.invokeExact(Handles.get().PFN_glfwSetWindowAspectRatio, window, numer, denom);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAspectRatio", e); }
+        try { Handles.MH_glfwSetWindowAspectRatio.invokeExact(Handles.get().PFN_glfwSetWindowAspectRatio, window, numer, denom); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAspectRatio", e); }
     }
 
     /// ```
     /// void glfwSetWindowSize(GLFWwindow* window, int width, int height);
     /// ```
     public static void glfwSetWindowSize(MemorySegment window, int width, int height) {
-        try {
-            Handles.MH_glfwSetWindowSize.invokeExact(Handles.get().PFN_glfwSetWindowSize, window, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSize", e); }
+        try { Handles.MH_glfwSetWindowSize.invokeExact(Handles.get().PFN_glfwSetWindowSize, window, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSize", e); }
     }
 
     /// ```
     /// void glfwGetFramebufferSize(GLFWwindow* window, int* width, int* height);
     /// ```
     public static void glfwGetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
-        try {
-            Handles.MH_glfwGetFramebufferSize.invokeExact(Handles.get().PFN_glfwGetFramebufferSize, window, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetFramebufferSize", e); }
+        try { Handles.MH_glfwGetFramebufferSize.invokeExact(Handles.get().PFN_glfwGetFramebufferSize, window, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetFramebufferSize", e); }
     }
 
     /// ```
     /// void glfwGetWindowFrameSize(GLFWwindow* window, int* left, int* top, int* right, int* bottom);
     /// ```
     public static void glfwGetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
-        try {
-            Handles.MH_glfwGetWindowFrameSize.invokeExact(Handles.get().PFN_glfwGetWindowFrameSize, window, left, top, right, bottom);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowFrameSize", e); }
+        try { Handles.MH_glfwGetWindowFrameSize.invokeExact(Handles.get().PFN_glfwGetWindowFrameSize, window, left, top, right, bottom); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowFrameSize", e); }
     }
 
     /// ```
     /// void glfwGetWindowContentScale(GLFWwindow* window, float* xscale, float* yscale);
     /// ```
     public static void glfwGetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
-        try {
-            Handles.MH_glfwGetWindowContentScale.invokeExact(Handles.get().PFN_glfwGetWindowContentScale, window, xscale, yscale);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowContentScale", e); }
+        try { Handles.MH_glfwGetWindowContentScale.invokeExact(Handles.get().PFN_glfwGetWindowContentScale, window, xscale, yscale); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowContentScale", e); }
     }
 
     /// ```
     /// float glfwGetWindowOpacity(GLFWwindow* window);
     /// ```
     public static float glfwGetWindowOpacity(MemorySegment window) {
-        try {
-            return (float) Handles.MH_glfwGetWindowOpacity.invokeExact(Handles.get().PFN_glfwGetWindowOpacity, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowOpacity", e); }
+        try { return (float) Handles.MH_glfwGetWindowOpacity.invokeExact(Handles.get().PFN_glfwGetWindowOpacity, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowOpacity", e); }
     }
 
     /// ```
     /// void glfwSetWindowOpacity(GLFWwindow* window, float opacity);
     /// ```
     public static void glfwSetWindowOpacity(MemorySegment window, float opacity) {
-        try {
-            Handles.MH_glfwSetWindowOpacity.invokeExact(Handles.get().PFN_glfwSetWindowOpacity, window, opacity);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowOpacity", e); }
+        try { Handles.MH_glfwSetWindowOpacity.invokeExact(Handles.get().PFN_glfwSetWindowOpacity, window, opacity); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowOpacity", e); }
     }
 
     /// ```
     /// void glfwIconifyWindow(GLFWwindow* window);
     /// ```
     public static void glfwIconifyWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwIconifyWindow.invokeExact(Handles.get().PFN_glfwIconifyWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwIconifyWindow", e); }
+        try { Handles.MH_glfwIconifyWindow.invokeExact(Handles.get().PFN_glfwIconifyWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwIconifyWindow", e); }
     }
 
     /// ```
     /// void glfwRestoreWindow(GLFWwindow* window);
     /// ```
     public static void glfwRestoreWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwRestoreWindow.invokeExact(Handles.get().PFN_glfwRestoreWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwRestoreWindow", e); }
+        try { Handles.MH_glfwRestoreWindow.invokeExact(Handles.get().PFN_glfwRestoreWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwRestoreWindow", e); }
     }
 
     /// ```
     /// void glfwMaximizeWindow(GLFWwindow* window);
     /// ```
     public static void glfwMaximizeWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwMaximizeWindow.invokeExact(Handles.get().PFN_glfwMaximizeWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwMaximizeWindow", e); }
+        try { Handles.MH_glfwMaximizeWindow.invokeExact(Handles.get().PFN_glfwMaximizeWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwMaximizeWindow", e); }
     }
 
     /// ```
     /// void glfwShowWindow(GLFWwindow* window);
     /// ```
     public static void glfwShowWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwShowWindow.invokeExact(Handles.get().PFN_glfwShowWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwShowWindow", e); }
+        try { Handles.MH_glfwShowWindow.invokeExact(Handles.get().PFN_glfwShowWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwShowWindow", e); }
     }
 
     /// ```
     /// void glfwHideWindow(GLFWwindow* window);
     /// ```
     public static void glfwHideWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwHideWindow.invokeExact(Handles.get().PFN_glfwHideWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwHideWindow", e); }
+        try { Handles.MH_glfwHideWindow.invokeExact(Handles.get().PFN_glfwHideWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwHideWindow", e); }
     }
 
     /// ```
     /// void glfwFocusWindow(GLFWwindow* window);
     /// ```
     public static void glfwFocusWindow(MemorySegment window) {
-        try {
-            Handles.MH_glfwFocusWindow.invokeExact(Handles.get().PFN_glfwFocusWindow, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwFocusWindow", e); }
+        try { Handles.MH_glfwFocusWindow.invokeExact(Handles.get().PFN_glfwFocusWindow, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwFocusWindow", e); }
     }
 
     /// ```
     /// void glfwRequestWindowAttention(GLFWwindow* window);
     /// ```
     public static void glfwRequestWindowAttention(MemorySegment window) {
-        try {
-            Handles.MH_glfwRequestWindowAttention.invokeExact(Handles.get().PFN_glfwRequestWindowAttention, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwRequestWindowAttention", e); }
+        try { Handles.MH_glfwRequestWindowAttention.invokeExact(Handles.get().PFN_glfwRequestWindowAttention, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwRequestWindowAttention", e); }
     }
 
     /// ```
     /// GLFWmonitor* glfwGetWindowMonitor(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetWindowMonitor(MemorySegment window) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWindowMonitor.invokeExact(Handles.get().PFN_glfwGetWindowMonitor, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowMonitor", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWindowMonitor.invokeExact(Handles.get().PFN_glfwGetWindowMonitor, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowMonitor", e); }
     }
 
     /// ```
     /// void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate);
     /// ```
     public static void glfwSetWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
-        try {
-            Handles.MH_glfwSetWindowMonitor.invokeExact(Handles.get().PFN_glfwSetWindowMonitor, window, monitor, xpos, ypos, width, height, refreshRate);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMonitor", e); }
+        try { Handles.MH_glfwSetWindowMonitor.invokeExact(Handles.get().PFN_glfwSetWindowMonitor, window, monitor, xpos, ypos, width, height, refreshRate); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMonitor", e); }
     }
 
     /// ```
     /// int glfwGetWindowAttrib(GLFWwindow* window, int attrib);
     /// ```
     public static int glfwGetWindowAttrib(MemorySegment window, int attrib) {
-        try {
-            return (int) Handles.MH_glfwGetWindowAttrib.invokeExact(Handles.get().PFN_glfwGetWindowAttrib, window, attrib);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowAttrib", e); }
+        try { return (int) Handles.MH_glfwGetWindowAttrib.invokeExact(Handles.get().PFN_glfwGetWindowAttrib, window, attrib); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowAttrib", e); }
     }
 
     /// ```
     /// void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value);
     /// ```
     public static void glfwSetWindowAttrib(MemorySegment window, int attrib, int value) {
-        try {
-            Handles.MH_glfwSetWindowAttrib.invokeExact(Handles.get().PFN_glfwSetWindowAttrib, window, attrib, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAttrib", e); }
+        try { Handles.MH_glfwSetWindowAttrib.invokeExact(Handles.get().PFN_glfwSetWindowAttrib, window, attrib, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAttrib", e); }
     }
 
     /// ```
     /// void glfwSetWindowUserPointer(GLFWwindow* window, void* pointer);
     /// ```
     public static void glfwSetWindowUserPointer(MemorySegment window, MemorySegment pointer) {
-        try {
-            Handles.MH_glfwSetWindowUserPointer.invokeExact(Handles.get().PFN_glfwSetWindowUserPointer, window, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowUserPointer", e); }
+        try { Handles.MH_glfwSetWindowUserPointer.invokeExact(Handles.get().PFN_glfwSetWindowUserPointer, window, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowUserPointer", e); }
     }
 
     /// ```
     /// void* glfwGetWindowUserPointer(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetWindowUserPointer(MemorySegment window) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetWindowUserPointer.invokeExact(Handles.get().PFN_glfwGetWindowUserPointer, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowUserPointer", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetWindowUserPointer.invokeExact(Handles.get().PFN_glfwGetWindowUserPointer, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowUserPointer", e); }
     }
 
     /// ```
     /// void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) glfwSetWindowPosCallback(GLFWwindow* window, void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) callback);
     /// ```
     public static MemorySegment glfwSetWindowPosCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowPosCallback.invokeExact(Handles.get().PFN_glfwSetWindowPosCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPosCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowPosCallback.invokeExact(Handles.get().PFN_glfwSetWindowPosCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPosCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) glfwSetWindowSizeCallback(GLFWwindow* window, void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) callback);
     /// ```
     public static MemorySegment glfwSetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowSizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowSizeCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowSizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowSizeCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowCloseFun)(GLFWwindow* window) glfwSetWindowCloseCallback(GLFWwindow* window, void (*GLFWWindowCloseFun)(GLFWwindow* window) callback);
     /// ```
     public static MemorySegment glfwSetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowCloseCallback.invokeExact(Handles.get().PFN_glfwSetWindowCloseCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowCloseCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowCloseCallback.invokeExact(Handles.get().PFN_glfwSetWindowCloseCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowCloseCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowRefreshFun)(GLFWwindow* window) glfwSetWindowRefreshCallback(GLFWwindow* window, void (*GLFWWindowRefreshFun)(GLFWwindow* window) callback);
     /// ```
     public static MemorySegment glfwSetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowRefreshCallback.invokeExact(Handles.get().PFN_glfwSetWindowRefreshCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowRefreshCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowRefreshCallback.invokeExact(Handles.get().PFN_glfwSetWindowRefreshCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowRefreshCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) glfwSetWindowFocusCallback(GLFWwindow* window, void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) callback);
     /// ```
     public static MemorySegment glfwSetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowFocusCallback.invokeExact(Handles.get().PFN_glfwSetWindowFocusCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowFocusCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowFocusCallback.invokeExact(Handles.get().PFN_glfwSetWindowFocusCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowFocusCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) glfwSetWindowIconifyCallback(GLFWwindow* window, void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) callback);
     /// ```
     public static MemorySegment glfwSetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowIconifyCallback.invokeExact(Handles.get().PFN_glfwSetWindowIconifyCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIconifyCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowIconifyCallback.invokeExact(Handles.get().PFN_glfwSetWindowIconifyCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIconifyCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) glfwSetWindowMaximizeCallback(GLFWwindow* window, void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) callback);
     /// ```
     public static MemorySegment glfwSetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowMaximizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowMaximizeCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMaximizeCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowMaximizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowMaximizeCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMaximizeCallback", e); }
     }
 
     /// ```
     /// void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) glfwSetFramebufferSizeCallback(GLFWwindow* window, void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) callback);
     /// ```
     public static MemorySegment glfwSetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetFramebufferSizeCallback.invokeExact(Handles.get().PFN_glfwSetFramebufferSizeCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetFramebufferSizeCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetFramebufferSizeCallback.invokeExact(Handles.get().PFN_glfwSetFramebufferSizeCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetFramebufferSizeCallback", e); }
     }
 
     /// ```
     /// void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) glfwSetWindowContentScaleCallback(GLFWwindow* window, void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) callback);
     /// ```
     public static MemorySegment glfwSetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetWindowContentScaleCallback.invokeExact(Handles.get().PFN_glfwSetWindowContentScaleCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowContentScaleCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetWindowContentScaleCallback.invokeExact(Handles.get().PFN_glfwSetWindowContentScaleCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowContentScaleCallback", e); }
     }
 
     /// ```
     /// void glfwPollEvents();
     /// ```
     public static void glfwPollEvents() {
-        try {
-            Handles.MH_glfwPollEvents.invokeExact(Handles.get().PFN_glfwPollEvents);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwPollEvents", e); }
+        try { Handles.MH_glfwPollEvents.invokeExact(Handles.get().PFN_glfwPollEvents); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwPollEvents", e); }
     }
 
     /// ```
     /// void glfwWaitEvents();
     /// ```
     public static void glfwWaitEvents() {
-        try {
-            Handles.MH_glfwWaitEvents.invokeExact(Handles.get().PFN_glfwWaitEvents);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEvents", e); }
+        try { Handles.MH_glfwWaitEvents.invokeExact(Handles.get().PFN_glfwWaitEvents); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwWaitEvents", e); }
     }
 
     /// ```
     /// void glfwWaitEventsTimeout(double timeout);
     /// ```
     public static void glfwWaitEventsTimeout(double timeout) {
-        try {
-            Handles.MH_glfwWaitEventsTimeout.invokeExact(Handles.get().PFN_glfwWaitEventsTimeout, timeout);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEventsTimeout", e); }
+        try { Handles.MH_glfwWaitEventsTimeout.invokeExact(Handles.get().PFN_glfwWaitEventsTimeout, timeout); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwWaitEventsTimeout", e); }
     }
 
     /// ```
     /// void glfwPostEmptyEvent();
     /// ```
     public static void glfwPostEmptyEvent() {
-        try {
-            Handles.MH_glfwPostEmptyEvent.invokeExact(Handles.get().PFN_glfwPostEmptyEvent);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwPostEmptyEvent", e); }
+        try { Handles.MH_glfwPostEmptyEvent.invokeExact(Handles.get().PFN_glfwPostEmptyEvent); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwPostEmptyEvent", e); }
     }
 
     /// ```
     /// int glfwGetInputMode(GLFWwindow* window, int mode);
     /// ```
     public static int glfwGetInputMode(MemorySegment window, int mode) {
-        try {
-            return (int) Handles.MH_glfwGetInputMode.invokeExact(Handles.get().PFN_glfwGetInputMode, window, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetInputMode", e); }
+        try { return (int) Handles.MH_glfwGetInputMode.invokeExact(Handles.get().PFN_glfwGetInputMode, window, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetInputMode", e); }
     }
 
     /// ```
     /// void glfwSetInputMode(GLFWwindow* window, int mode, int value);
     /// ```
     public static void glfwSetInputMode(MemorySegment window, int mode, int value) {
-        try {
-            Handles.MH_glfwSetInputMode.invokeExact(Handles.get().PFN_glfwSetInputMode, window, mode, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetInputMode", e); }
+        try { Handles.MH_glfwSetInputMode.invokeExact(Handles.get().PFN_glfwSetInputMode, window, mode, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetInputMode", e); }
     }
 
     /// ```
     /// int glfwRawMouseMotionSupported();
     /// ```
     public static boolean glfwRawMouseMotionSupported() {
-        try {
-            return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwRawMouseMotionSupported", e); }
+        try { return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwRawMouseMotionSupported", e); }
     }
 
     /// ```
     /// const char* glfwGetKeyName(int key, int scancode);
     /// ```
     public static MemorySegment glfwGetKeyName(int key, int scancode) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetKeyName.invokeExact(Handles.get().PFN_glfwGetKeyName, key, scancode);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyName", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetKeyName.invokeExact(Handles.get().PFN_glfwGetKeyName, key, scancode); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyName", e); }
     }
 
     /// ```
     /// int glfwGetKeyScancode(int key);
     /// ```
     public static int glfwGetKeyScancode(int key) {
-        try {
-            return (int) Handles.MH_glfwGetKeyScancode.invokeExact(Handles.get().PFN_glfwGetKeyScancode, key);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyScancode", e); }
+        try { return (int) Handles.MH_glfwGetKeyScancode.invokeExact(Handles.get().PFN_glfwGetKeyScancode, key); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyScancode", e); }
     }
 
     /// ```
     /// int glfwGetKey(GLFWwindow* window, int key);
     /// ```
     public static int glfwGetKey(MemorySegment window, int key) {
-        try {
-            return (int) Handles.MH_glfwGetKey.invokeExact(Handles.get().PFN_glfwGetKey, window, key);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetKey", e); }
+        try { return (int) Handles.MH_glfwGetKey.invokeExact(Handles.get().PFN_glfwGetKey, window, key); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetKey", e); }
     }
 
     /// ```
     /// int glfwGetMouseButton(GLFWwindow* window, int button);
     /// ```
     public static int glfwGetMouseButton(MemorySegment window, int button) {
-        try {
-            return (int) Handles.MH_glfwGetMouseButton.invokeExact(Handles.get().PFN_glfwGetMouseButton, window, button);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetMouseButton", e); }
+        try { return (int) Handles.MH_glfwGetMouseButton.invokeExact(Handles.get().PFN_glfwGetMouseButton, window, button); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetMouseButton", e); }
     }
 
     /// ```
     /// void glfwGetCursorPos(GLFWwindow* window, double* xpos, double* ypos);
     /// ```
     public static void glfwGetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            Handles.MH_glfwGetCursorPos.invokeExact(Handles.get().PFN_glfwGetCursorPos, window, xpos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCursorPos", e); }
+        try { Handles.MH_glfwGetCursorPos.invokeExact(Handles.get().PFN_glfwGetCursorPos, window, xpos, ypos); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetCursorPos", e); }
     }
 
     /// ```
     /// void glfwSetCursorPos(GLFWwindow* window, double xpos, double ypos);
     /// ```
     public static void glfwSetCursorPos(MemorySegment window, double xpos, double ypos) {
-        try {
-            Handles.MH_glfwSetCursorPos.invokeExact(Handles.get().PFN_glfwSetCursorPos, window, xpos, ypos);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPos", e); }
+        try { Handles.MH_glfwSetCursorPos.invokeExact(Handles.get().PFN_glfwSetCursorPos, window, xpos, ypos); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPos", e); }
     }
 
     /// ```
     /// GLFWcursor* glfwCreateCursor(const GLFWimage* image, int xhot, int yhot);
     /// ```
     public static MemorySegment glfwCreateCursor(MemorySegment image, int xhot, int yhot) {
-        try {
-            return (MemorySegment) Handles.MH_glfwCreateCursor.invokeExact(Handles.get().PFN_glfwCreateCursor, image, xhot, yhot);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwCreateCursor", e); }
+        try { return (MemorySegment) Handles.MH_glfwCreateCursor.invokeExact(Handles.get().PFN_glfwCreateCursor, image, xhot, yhot); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwCreateCursor", e); }
     }
 
     /// ```
     /// GLFWcursor* glfwCreateStandardCursor(int shape);
     /// ```
     public static MemorySegment glfwCreateStandardCursor(int shape) {
-        try {
-            return (MemorySegment) Handles.MH_glfwCreateStandardCursor.invokeExact(Handles.get().PFN_glfwCreateStandardCursor, shape);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwCreateStandardCursor", e); }
+        try { return (MemorySegment) Handles.MH_glfwCreateStandardCursor.invokeExact(Handles.get().PFN_glfwCreateStandardCursor, shape); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwCreateStandardCursor", e); }
     }
 
     /// ```
     /// void glfwDestroyCursor(GLFWcursor* cursor);
     /// ```
     public static void glfwDestroyCursor(MemorySegment cursor) {
-        try {
-            Handles.MH_glfwDestroyCursor.invokeExact(Handles.get().PFN_glfwDestroyCursor, cursor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyCursor", e); }
+        try { Handles.MH_glfwDestroyCursor.invokeExact(Handles.get().PFN_glfwDestroyCursor, cursor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwDestroyCursor", e); }
     }
 
     /// ```
     /// void glfwSetCursor(GLFWwindow* window, GLFWcursor* cursor);
     /// ```
     public static void glfwSetCursor(MemorySegment window, MemorySegment cursor) {
-        try {
-            Handles.MH_glfwSetCursor.invokeExact(Handles.get().PFN_glfwSetCursor, window, cursor);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursor", e); }
+        try { Handles.MH_glfwSetCursor.invokeExact(Handles.get().PFN_glfwSetCursor, window, cursor); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetCursor", e); }
     }
 
     /// ```
     /// void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) glfwSetKeyCallback(GLFWwindow* window, void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) callback);
     /// ```
     public static MemorySegment glfwSetKeyCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetKeyCallback.invokeExact(Handles.get().PFN_glfwSetKeyCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetKeyCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetKeyCallback.invokeExact(Handles.get().PFN_glfwSetKeyCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetKeyCallback", e); }
     }
 
     /// ```
     /// void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) glfwSetCharCallback(GLFWwindow* window, void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) callback);
     /// ```
     public static MemorySegment glfwSetCharCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetCharCallback.invokeExact(Handles.get().PFN_glfwSetCharCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetCharCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetCharCallback.invokeExact(Handles.get().PFN_glfwSetCharCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetCharCallback", e); }
     }
 
     /// ```
     /// void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) glfwSetMouseButtonCallback(GLFWwindow* window, void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) callback);
     /// ```
     public static MemorySegment glfwSetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetMouseButtonCallback.invokeExact(Handles.get().PFN_glfwSetMouseButtonCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetMouseButtonCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetMouseButtonCallback.invokeExact(Handles.get().PFN_glfwSetMouseButtonCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetMouseButtonCallback", e); }
     }
 
     /// ```
     /// void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) glfwSetCursorPosCallback(GLFWwindow* window, void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) callback);
     /// ```
     public static MemorySegment glfwSetCursorPosCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetCursorPosCallback.invokeExact(Handles.get().PFN_glfwSetCursorPosCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPosCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetCursorPosCallback.invokeExact(Handles.get().PFN_glfwSetCursorPosCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPosCallback", e); }
     }
 
     /// ```
     /// void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) glfwSetCursorEnterCallback(GLFWwindow* window, void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) callback);
     /// ```
     public static MemorySegment glfwSetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetCursorEnterCallback.invokeExact(Handles.get().PFN_glfwSetCursorEnterCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorEnterCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetCursorEnterCallback.invokeExact(Handles.get().PFN_glfwSetCursorEnterCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorEnterCallback", e); }
     }
 
     /// ```
     /// void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) glfwSetScrollCallback(GLFWwindow* window, void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) callback);
     /// ```
     public static MemorySegment glfwSetScrollCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetScrollCallback.invokeExact(Handles.get().PFN_glfwSetScrollCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetScrollCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetScrollCallback.invokeExact(Handles.get().PFN_glfwSetScrollCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetScrollCallback", e); }
     }
 
     /// ```
     /// void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) glfwSetDropCallback(GLFWwindow* window, void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) callback);
     /// ```
     public static MemorySegment glfwSetDropCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetDropCallback.invokeExact(Handles.get().PFN_glfwSetDropCallback, window, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetDropCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetDropCallback.invokeExact(Handles.get().PFN_glfwSetDropCallback, window, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetDropCallback", e); }
     }
 
     /// ```
     /// int glfwJoystickPresent(int jid);
     /// ```
     public static boolean glfwJoystickPresent(int jid) {
-        try {
-            return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickPresent", e); }
+        try { return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwJoystickPresent", e); }
     }
 
     /// ```
     /// const float* glfwGetJoystickAxes(int jid, int* count);
     /// ```
     public static MemorySegment glfwGetJoystickAxes(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickAxes.invokeExact(Handles.get().PFN_glfwGetJoystickAxes, jid, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickAxes", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickAxes.invokeExact(Handles.get().PFN_glfwGetJoystickAxes, jid, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickAxes", e); }
     }
 
     /// ```
     /// const unsigned char* glfwGetJoystickButtons(int jid, int* count);
     /// ```
     public static MemorySegment glfwGetJoystickButtons(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickButtons.invokeExact(Handles.get().PFN_glfwGetJoystickButtons, jid, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickButtons", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickButtons.invokeExact(Handles.get().PFN_glfwGetJoystickButtons, jid, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickButtons", e); }
     }
 
     /// ```
     /// const unsigned char* glfwGetJoystickHats(int jid, int* count);
     /// ```
     public static MemorySegment glfwGetJoystickHats(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickHats.invokeExact(Handles.get().PFN_glfwGetJoystickHats, jid, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickHats", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickHats.invokeExact(Handles.get().PFN_glfwGetJoystickHats, jid, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickHats", e); }
     }
 
     /// ```
     /// const char* glfwGetJoystickName(int jid);
     /// ```
     public static MemorySegment glfwGetJoystickName(int jid) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickName.invokeExact(Handles.get().PFN_glfwGetJoystickName, jid);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickName", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickName.invokeExact(Handles.get().PFN_glfwGetJoystickName, jid); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickName", e); }
     }
 
     /// ```
     /// const char* glfwGetJoystickGUID(int jid);
     /// ```
     public static MemorySegment glfwGetJoystickGUID(int jid) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickGUID.invokeExact(Handles.get().PFN_glfwGetJoystickGUID, jid);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickGUID", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickGUID.invokeExact(Handles.get().PFN_glfwGetJoystickGUID, jid); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickGUID", e); }
     }
 
     /// ```
     /// void glfwSetJoystickUserPointer(int jid, void* pointer);
     /// ```
     public static void glfwSetJoystickUserPointer(int jid, MemorySegment pointer) {
-        try {
-            Handles.MH_glfwSetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwSetJoystickUserPointer, jid, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickUserPointer", e); }
+        try { Handles.MH_glfwSetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwSetJoystickUserPointer, jid, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickUserPointer", e); }
     }
 
     /// ```
     /// void* glfwGetJoystickUserPointer(int jid);
     /// ```
     public static MemorySegment glfwGetJoystickUserPointer(int jid) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwGetJoystickUserPointer, jid);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickUserPointer", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetJoystickUserPointer.invokeExact(Handles.get().PFN_glfwGetJoystickUserPointer, jid); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickUserPointer", e); }
     }
 
     /// ```
     /// int glfwJoystickIsGamepad(int jid);
     /// ```
     public static boolean glfwJoystickIsGamepad(int jid) {
-        try {
-            return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickIsGamepad", e); }
+        try { return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwJoystickIsGamepad", e); }
     }
 
     /// ```
     /// void (*GLFWJoystickFun)(int jid, int event) glfwSetJoystickCallback(void (*GLFWJoystickFun)(int jid, int event) callback);
     /// ```
     public static MemorySegment glfwSetJoystickCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) Handles.MH_glfwSetJoystickCallback.invokeExact(Handles.get().PFN_glfwSetJoystickCallback, callback);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickCallback", e); }
+        try { return (MemorySegment) Handles.MH_glfwSetJoystickCallback.invokeExact(Handles.get().PFN_glfwSetJoystickCallback, callback); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickCallback", e); }
     }
 
     /// ```
     /// int glfwUpdateGamepadMappings(const char* string);
     /// ```
     public static boolean glfwUpdateGamepadMappings(MemorySegment string) {
-        try {
-            return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
+        try { return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
     }
 
     /// ```
     /// const char* glfwGetGamepadName(int jid);
     /// ```
     public static MemorySegment glfwGetGamepadName(int jid) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetGamepadName.invokeExact(Handles.get().PFN_glfwGetGamepadName, jid);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadName", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetGamepadName.invokeExact(Handles.get().PFN_glfwGetGamepadName, jid); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadName", e); }
     }
 
     /// ```
     /// int glfwGetGamepadState(int jid, GLFWgamepadstate* state);
     /// ```
     public static boolean glfwGetGamepadState(int jid, MemorySegment state) {
-        try {
-            return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
+        try { return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
     }
 
     /// ```
     /// void glfwSetClipboardString(GLFWwindow* window, const char* string);
     /// ```
     public static void glfwSetClipboardString(MemorySegment window, MemorySegment string) {
-        try {
-            Handles.MH_glfwSetClipboardString.invokeExact(Handles.get().PFN_glfwSetClipboardString, window, string);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetClipboardString", e); }
+        try { Handles.MH_glfwSetClipboardString.invokeExact(Handles.get().PFN_glfwSetClipboardString, window, string); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetClipboardString", e); }
     }
 
     /// ```
     /// const char* glfwGetClipboardString(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetClipboardString(MemorySegment window) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetClipboardString.invokeExact(Handles.get().PFN_glfwGetClipboardString, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetClipboardString", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetClipboardString.invokeExact(Handles.get().PFN_glfwGetClipboardString, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetClipboardString", e); }
     }
 
     /// ```
     /// double glfwGetTime();
     /// ```
     public static double glfwGetTime() {
-        try {
-            return (double) Handles.MH_glfwGetTime.invokeExact(Handles.get().PFN_glfwGetTime);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetTime", e); }
+        try { return (double) Handles.MH_glfwGetTime.invokeExact(Handles.get().PFN_glfwGetTime); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetTime", e); }
     }
 
     /// ```
     /// void glfwSetTime(double time);
     /// ```
     public static void glfwSetTime(double time) {
-        try {
-            Handles.MH_glfwSetTime.invokeExact(Handles.get().PFN_glfwSetTime, time);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSetTime", e); }
+        try { Handles.MH_glfwSetTime.invokeExact(Handles.get().PFN_glfwSetTime, time); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSetTime", e); }
     }
 
     /// ```
     /// uint64_t glfwGetTimerValue();
     /// ```
     public static long glfwGetTimerValue() {
-        try {
-            return (long) Handles.MH_glfwGetTimerValue.invokeExact(Handles.get().PFN_glfwGetTimerValue);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerValue", e); }
+        try { return (long) Handles.MH_glfwGetTimerValue.invokeExact(Handles.get().PFN_glfwGetTimerValue); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerValue", e); }
     }
 
     /// ```
     /// uint64_t glfwGetTimerFrequency();
     /// ```
     public static long glfwGetTimerFrequency() {
-        try {
-            return (long) Handles.MH_glfwGetTimerFrequency.invokeExact(Handles.get().PFN_glfwGetTimerFrequency);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerFrequency", e); }
+        try { return (long) Handles.MH_glfwGetTimerFrequency.invokeExact(Handles.get().PFN_glfwGetTimerFrequency); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerFrequency", e); }
     }
 
     /// ```
     /// void glfwMakeContextCurrent(GLFWwindow* window);
     /// ```
     public static void glfwMakeContextCurrent(MemorySegment window) {
-        try {
-            Handles.MH_glfwMakeContextCurrent.invokeExact(Handles.get().PFN_glfwMakeContextCurrent, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwMakeContextCurrent", e); }
+        try { Handles.MH_glfwMakeContextCurrent.invokeExact(Handles.get().PFN_glfwMakeContextCurrent, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwMakeContextCurrent", e); }
     }
 
     /// ```
     /// GLFWwindow* glfwGetCurrentContext();
     /// ```
     public static MemorySegment glfwGetCurrentContext() {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetCurrentContext.invokeExact(Handles.get().PFN_glfwGetCurrentContext);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetCurrentContext", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetCurrentContext.invokeExact(Handles.get().PFN_glfwGetCurrentContext); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetCurrentContext", e); }
     }
 
     /// ```
     /// void glfwSwapBuffers(GLFWwindow* window);
     /// ```
     public static void glfwSwapBuffers(MemorySegment window) {
-        try {
-            Handles.MH_glfwSwapBuffers.invokeExact(Handles.get().PFN_glfwSwapBuffers, window);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSwapBuffers", e); }
+        try { Handles.MH_glfwSwapBuffers.invokeExact(Handles.get().PFN_glfwSwapBuffers, window); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSwapBuffers", e); }
     }
 
     /// ```
     /// void glfwSwapInterval(int interval);
     /// ```
     public static void glfwSwapInterval(int interval) {
-        try {
-            Handles.MH_glfwSwapInterval.invokeExact(Handles.get().PFN_glfwSwapInterval, interval);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwSwapInterval", e); }
+        try { Handles.MH_glfwSwapInterval.invokeExact(Handles.get().PFN_glfwSwapInterval, interval); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwSwapInterval", e); }
     }
 
     /// ```
     /// int glfwExtensionSupported(const char* extension);
     /// ```
     public static boolean glfwExtensionSupported(MemorySegment extension) {
-        try {
-            return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
+        try { return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
     }
 
     /// ```
     /// void* glfwGetProcAddress(const char* procname);
     /// ```
     public static MemorySegment glfwGetProcAddress(MemorySegment procname) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetProcAddress.invokeExact(Handles.get().PFN_glfwGetProcAddress, procname);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetProcAddress", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetProcAddress.invokeExact(Handles.get().PFN_glfwGetProcAddress, procname); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetProcAddress", e); }
     }
 
     /// ```
     /// int glfwVulkanSupported();
     /// ```
     public static boolean glfwVulkanSupported() {
-        try {
-            return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwVulkanSupported", e); }
+        try { return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwVulkanSupported", e); }
     }
 
     /// ```
     /// const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
     /// ```
     public static MemorySegment glfwGetRequiredInstanceExtensions(MemorySegment count) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetRequiredInstanceExtensions.invokeExact(Handles.get().PFN_glfwGetRequiredInstanceExtensions, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetRequiredInstanceExtensions", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetRequiredInstanceExtensions.invokeExact(Handles.get().PFN_glfwGetRequiredInstanceExtensions, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetRequiredInstanceExtensions", e); }
     }
 
     /// ```
     /// void* glfwGetInstanceProcAddress(void* instance, const char* procname);
     /// ```
     public static MemorySegment glfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procname) {
-        try {
-            return (MemorySegment) Handles.MH_glfwGetInstanceProcAddress.invokeExact(Handles.get().PFN_glfwGetInstanceProcAddress, instance, procname);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetInstanceProcAddress", e); }
+        try { return (MemorySegment) Handles.MH_glfwGetInstanceProcAddress.invokeExact(Handles.get().PFN_glfwGetInstanceProcAddress, instance, procname); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetInstanceProcAddress", e); }
     }
 
     /// ```
     /// int glfwGetPhysicalDevicePresentationSupport(void* instance, void* device, uint32_t queuefamily);
     /// ```
     public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queuefamily) {
-        try {
-            return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwGetPhysicalDevicePresentationSupport", e); }
+        try { return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwGetPhysicalDevicePresentationSupport", e); }
     }
 
     /// ```
     /// int glfwCreateWindowSurface(void* instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
     /// ```
     public static int glfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
-        try {
-            return (int) Handles.MH_glfwCreateWindowSurface.invokeExact(Handles.get().PFN_glfwCreateWindowSurface, instance, window, allocator, surface);
-        } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindowSurface", e); }
+        try { return (int) Handles.MH_glfwCreateWindowSurface.invokeExact(Handles.get().PFN_glfwCreateWindowSurface, instance, window, allocator, surface); }
+        catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindowSurface", e); }
     }
 
     //@formatter:on

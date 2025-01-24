@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -44,16 +43,22 @@ public final class GLEXTPointParameters {
         this.handles = new Handles(func);
     }
 
-    public void PointParameterfEXT(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT");
+    /// ```
+    /// void glPointParameterfEXT(unsigned int pname, float param);
+    /// ```
+    public void PointParameterfEXT(int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT");
         try { Handles.MH_glPointParameterfEXT.invokeExact(handles.PFN_glPointParameterfEXT, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterfEXT", e); }
     }
 
-    public void PointParameterfvEXT(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
+    /// ```
+    /// void glPointParameterfvEXT(unsigned int pname, const GLfloat* params);
+    /// ```
+    public void PointParameterfvEXT(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
         try { Handles.MH_glPointParameterfvEXT.invokeExact(handles.PFN_glPointParameterfvEXT, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterfvEXT", e); }
     }
 
 }

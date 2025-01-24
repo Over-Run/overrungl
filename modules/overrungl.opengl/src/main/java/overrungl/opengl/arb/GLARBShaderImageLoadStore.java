@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -90,7 +89,7 @@ public final class GLARBShaderImageLoadStore {
     public static final int GL_MAX_COMBINED_IMAGE_UNIFORMS = 0x90CF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindImageTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindImageTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glMemoryBarrier = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTexture;
         public final MemorySegment PFN_glMemoryBarrier;
@@ -104,16 +103,22 @@ public final class GLARBShaderImageLoadStore {
         this.handles = new Handles(func);
     }
 
-    public void BindImageTexture(@CType("GLuint") int unit, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLenum") int format) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindImageTexture)) throw new SymbolNotFoundError("Symbol not found: glBindImageTexture");
-        try { Handles.MH_glBindImageTexture.invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, layered, layer, access, format); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindImageTexture", e); }
+    /// ```
+    /// void glBindImageTexture(unsigned int unit, unsigned int texture, int level, GLboolean layered, int layer, unsigned int access, unsigned int format);
+    /// ```
+    public void BindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTexture)) throw new SymbolNotFoundError("Symbol not found: glBindImageTexture");
+        try { Handles.MH_glBindImageTexture.invokeExact(handles.PFN_glBindImageTexture, unit, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
+        catch (Throwable e) { throw new RuntimeException("error in BindImageTexture", e); }
     }
 
-    public void MemoryBarrier(@CType("GLbitfield") int barriers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMemoryBarrier)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier");
+    /// ```
+    /// void glMemoryBarrier(unsigned int barriers);
+    /// ```
+    public void MemoryBarrier(int barriers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrier)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier");
         try { Handles.MH_glMemoryBarrier.invokeExact(handles.PFN_glMemoryBarrier, barriers); }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrier", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MemoryBarrier", e); }
     }
 
 }

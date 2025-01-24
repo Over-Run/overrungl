@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -38,10 +37,13 @@ public final class GLEXTX11SyncObject {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLsync") MemorySegment ImportSyncEXT(@CType("GLenum") int external_sync_type, @CType("GLintptr") long external_sync, @CType("GLbitfield") int flags) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportSyncEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSyncEXT");
+    /// ```
+    /// __GLsync * glImportSyncEXT(unsigned int external_sync_type, signed long long external_sync, unsigned int flags);
+    /// ```
+    public MemorySegment ImportSyncEXT(int external_sync_type, long external_sync, int flags) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportSyncEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSyncEXT");
         try { return (MemorySegment) Handles.MH_glImportSyncEXT.invokeExact(handles.PFN_glImportSyncEXT, external_sync_type, external_sync, flags); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSyncEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportSyncEXT", e); }
     }
 
 }

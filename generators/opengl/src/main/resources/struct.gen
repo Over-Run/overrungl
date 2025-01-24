@@ -1,0 +1,14 @@
+using DrawArraysIndirectCommand = struct DrawArraysIndirectCommand {
+    unsigned int  count;
+    unsigned int  instanceCount;
+    unsigned int  first;
+    unsigned int  baseInstance;
+};
+
+using DrawElementsIndirectCommand = struct DrawElementsIndirectCommand {
+    unsigned int  count;
+    unsigned int  instanceCount;
+    unsigned int  firstIndex;
+    int  baseVertex;
+    unsigned int  baseInstance;
+};

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -37,10 +36,13 @@ public final class GLNVCopyImage {
         this.handles = new Handles(func);
     }
 
-    public void CopyImageSubDataNV(@CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srcY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyImageSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glCopyImageSubDataNV");
+    /// ```
+    /// void glCopyImageSubDataNV(unsigned int srcName, unsigned int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, unsigned int dstName, unsigned int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth);
+    /// ```
+    public void CopyImageSubDataNV(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyImageSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glCopyImageSubDataNV");
         try { Handles.MH_glCopyImageSubDataNV.invokeExact(handles.PFN_glCopyImageSubDataNV, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyImageSubDataNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyImageSubDataNV", e); }
     }
 
 }

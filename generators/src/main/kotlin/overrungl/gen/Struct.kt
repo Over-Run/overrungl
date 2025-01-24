@@ -29,16 +29,6 @@ class Struct(
 ) {
     private val kindString = if (union) "union" else "struct"
     private val members = mutableListOf<StructMember>()
-    val pointerType: CustomTypeSpec by lazy {
-        val className = "$packageName.$name"
-        CustomTypeSpec(
-            MemorySegment_,
-            className,
-            processor = StructProcessor(className),
-            layout = "ValueLayout.ADDRESS.withTargetLayout($className.LAYOUT)",
-            cType = cType
-        )
-    }
     val byValueType: CustomTypeSpec by lazy {
         val className = "$packageName.$name"
         CustomTypeSpec(
@@ -60,10 +50,6 @@ class Struct(
     init {
         action(this)
         write()
-    }
-
-    fun doLast(action: (StringBuilder) -> Unit) {
-        doLast = action
     }
 
     operator fun CustomTypeSpec.invoke(name: String) {

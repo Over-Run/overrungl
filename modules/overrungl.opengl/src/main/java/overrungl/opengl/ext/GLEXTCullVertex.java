@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,16 +42,22 @@ public final class GLEXTCullVertex {
         this.handles = new Handles(func);
     }
 
-    public void CullParameterdvEXT(@CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
+    /// ```
+    /// void glCullParameterdvEXT(unsigned int pname, GLdouble* params);
+    /// ```
+    public void CullParameterdvEXT(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
         try { Handles.MH_glCullParameterdvEXT.invokeExact(handles.PFN_glCullParameterdvEXT, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CullParameterdvEXT", e); }
     }
 
-    public void CullParameterfvEXT(@CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
+    /// ```
+    /// void glCullParameterfvEXT(unsigned int pname, GLfloat* params);
+    /// ```
+    public void CullParameterfvEXT(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
         try { Handles.MH_glCullParameterfvEXT.invokeExact(handles.PFN_glCullParameterfvEXT, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CullParameterfvEXT", e); }
     }
 
 }

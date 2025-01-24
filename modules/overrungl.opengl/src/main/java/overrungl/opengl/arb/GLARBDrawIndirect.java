@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,16 +41,22 @@ public final class GLARBDrawIndirect {
         this.handles = new Handles(func);
     }
 
-    public void DrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") MemorySegment indirect) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect");
+    /// ```
+    /// void glDrawArraysIndirect(unsigned int mode, const void* indirect);
+    /// ```
+    public void DrawArraysIndirect(int mode, MemorySegment indirect) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect");
         try { Handles.MH_glDrawArraysIndirect.invokeExact(handles.PFN_glDrawArraysIndirect, mode, indirect); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysIndirect", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawArraysIndirect", e); }
     }
 
-    public void DrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") MemorySegment indirect) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect");
+    /// ```
+    /// void glDrawElementsIndirect(unsigned int mode, unsigned int type, const void* indirect);
+    /// ```
+    public void DrawElementsIndirect(int mode, int type, MemorySegment indirect) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect");
         try { Handles.MH_glDrawElementsIndirect.invokeExact(handles.PFN_glDrawElementsIndirect, mode, type, indirect); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsIndirect", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementsIndirect", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,7 +39,7 @@ public final class GLAMDDebugOutput {
     public static final int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BYTE));
         public static final MethodHandle MH_glDebugMessageInsertAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glDebugMessageCallbackAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGetDebugMessageLogAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -60,28 +59,40 @@ public final class GLAMDDebugOutput {
         this.handles = new Handles(func);
     }
 
-    public void DebugMessageEnableAMD(@CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDebugMessageEnableAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
-        try { Handles.MH_glDebugMessageEnableAMD.invokeExact(handles.PFN_glDebugMessageEnableAMD, category, severity, count, ids, enabled); }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageEnableAMD", e); }
+    /// ```
+    /// void glDebugMessageEnableAMD(unsigned int category, unsigned int severity, int count, const GLuint* ids, GLboolean enabled);
+    /// ```
+    public void DebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageEnableAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
+        try { Handles.MH_glDebugMessageEnableAMD.invokeExact(handles.PFN_glDebugMessageEnableAMD, category, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in DebugMessageEnableAMD", e); }
     }
 
-    public void DebugMessageInsertAMD(@CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment buf) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDebugMessageInsertAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
+    /// ```
+    /// void glDebugMessageInsertAMD(unsigned int category, unsigned int severity, unsigned int id, int length, const GLchar* buf);
+    /// ```
+    public void DebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
         try { Handles.MH_glDebugMessageInsertAMD.invokeExact(handles.PFN_glDebugMessageInsertAMD, category, severity, id, length, buf); }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DebugMessageInsertAMD", e); }
     }
 
-    public void DebugMessageCallbackAMD(@CType("GLDEBUGPROCAMD") MemorySegment callback, @CType("void*") MemorySegment userParam) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDebugMessageCallbackAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
+    /// ```
+    /// void glDebugMessageCallbackAMD(void (*GLDebugProcAMD)(unsigned int id, unsigned int category, unsigned int severity, int length, const GLchar* message, void* userParam) callback, void* userParam);
+    /// ```
+    public void DebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
         try { Handles.MH_glDebugMessageCallbackAMD.invokeExact(handles.PFN_glDebugMessageCallbackAMD, callback, userParam); }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DebugMessageCallbackAMD", e); }
     }
 
-    public @CType("GLuint") int GetDebugMessageLogAMD(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") MemorySegment categories, @CType("GLenum *") MemorySegment severities, @CType("GLuint *") MemorySegment ids, @CType("GLsizei *") MemorySegment lengths, @CType("GLchar *") MemorySegment message) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetDebugMessageLogAMD)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");
+    /// ```
+    /// unsigned int glGetDebugMessageLogAMD(unsigned int count, int bufSize, GLenum* categories, GLenum* severities, GLuint* ids, GLsizei* lengths, GLchar* message);
+    /// ```
+    public int GetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogAMD)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");
         try { return (int) Handles.MH_glGetDebugMessageLogAMD.invokeExact(handles.PFN_glGetDebugMessageLogAMD, count, bufSize, categories, severities, ids, lengths, message); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDebugMessageLogAMD", e); }
     }
 
 }

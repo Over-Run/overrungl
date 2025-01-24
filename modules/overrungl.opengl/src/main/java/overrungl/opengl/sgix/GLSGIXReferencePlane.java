@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLSGIXReferencePlane {
         this.handles = new Handles(func);
     }
 
-    public void ReferencePlaneSGIX(@CType("const GLdouble *") MemorySegment equation) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReferencePlaneSGIX)) throw new SymbolNotFoundError("Symbol not found: glReferencePlaneSGIX");
+    /// ```
+    /// void glReferencePlaneSGIX(const GLdouble* equation);
+    /// ```
+    public void ReferencePlaneSGIX(MemorySegment equation) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReferencePlaneSGIX)) throw new SymbolNotFoundError("Symbol not found: glReferencePlaneSGIX");
         try { Handles.MH_glReferencePlaneSGIX.invokeExact(handles.PFN_glReferencePlaneSGIX, equation); }
-        catch (Throwable e) { throw new RuntimeException("error in glReferencePlaneSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReferencePlaneSGIX", e); }
     }
 
 }

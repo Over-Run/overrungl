@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLNVAlphaToCoverageDitherControl {
         this.handles = new Handles(func);
     }
 
-    public void AlphaToCoverageDitherControlNV(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
+    /// ```
+    /// void glAlphaToCoverageDitherControlNV(unsigned int mode);
+    /// ```
+    public void AlphaToCoverageDitherControlNV(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
         try { Handles.MH_glAlphaToCoverageDitherControlNV.invokeExact(handles.PFN_glAlphaToCoverageDitherControlNV, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaToCoverageDitherControlNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AlphaToCoverageDitherControlNV", e); }
     }
 
 }

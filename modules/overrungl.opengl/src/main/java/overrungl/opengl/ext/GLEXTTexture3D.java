@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -49,16 +48,22 @@ public final class GLEXTTexture3D {
         this.handles = new Handles(func);
     }
 
-    public void TexImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT");
+    /// ```
+    /// void glTexImage3DEXT(unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexImage3DEXT(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT");
         try { Handles.MH_glTexImage3DEXT.invokeExact(handles.PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexImage3DEXT", e); }
     }
 
-    public void TexSubImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");
+    /// ```
+    /// void glTexSubImage3DEXT(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");
         try { Handles.MH_glTexSubImage3DEXT.invokeExact(handles.PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexSubImage3DEXT", e); }
     }
 
 }

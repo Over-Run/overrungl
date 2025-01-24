@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,16 +45,22 @@ public final class GLARBMapBufferRange {
         this.handles = new Handles(func);
     }
 
-    public @CType("void*") MemorySegment MapBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length, @CType("GLbitfield") int access) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapBufferRange");
+    /// ```
+    /// void* glMapBufferRange(unsigned int target, signed long long offset, signed long long length, unsigned int access);
+    /// ```
+    public MemorySegment MapBufferRange(int target, long offset, long length, int access) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapBufferRange");
         try { return (MemorySegment) Handles.MH_glMapBufferRange.invokeExact(handles.PFN_glMapBufferRange, target, offset, length, access); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapBufferRange", e); }
     }
 
-    public void FlushMappedBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFlushMappedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange");
+    /// ```
+    /// void glFlushMappedBufferRange(unsigned int target, signed long long offset, signed long long length);
+    /// ```
+    public void FlushMappedBufferRange(int target, long offset, long length) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange");
         try { Handles.MH_glFlushMappedBufferRange.invokeExact(handles.PFN_glFlushMappedBufferRange, target, offset, length); }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRange", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FlushMappedBufferRange", e); }
     }
 
 }

@@ -15,46 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*GLDebugProc)(unsigned int source, unsigned int type, unsigned int id, unsigned int severity, int length, const GLchar* message, const void* userParam);
+/// ```
 @FunctionalInterface
 public interface GLDebugProc extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLDebugProc.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLDebugProc.class, "invoke_", DESCRIPTOR);
 
-    /// The interface target method of the upcall.
-    void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("const GLchar *") String message, @CType("const void *") MemorySegment userParam);
+    /// Allocates `GLDebugProc`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLDebugProc func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("const void *") MemorySegment userParam) {
-        invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message), userParam);
+    void invoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam);
+
+    /// The target method of the upcall.
+    default void invoke_(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
+        invoke(source, type, id, severity, length, message, userParam);
     }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") MemorySegment message, @CType("const void *") MemorySegment userParam) {
-        try { HANDLE.invokeExact(stub, source, type, id, severity, length, message, userParam); }
-        catch (Throwable e) { throw new RuntimeException("error in GLDebugProc::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLDebugProc wrap(MemorySegment stub) {
-        return (source, type, id, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
-            var seg = Marshal.marshal(stack, message);
-            invoke(stub, source, type, id, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
-        } };
-    }
 }

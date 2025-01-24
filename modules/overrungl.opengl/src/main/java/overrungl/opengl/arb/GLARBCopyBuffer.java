@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLARBCopyBuffer {
         this.handles = new Handles(func);
     }
 
-    public void CopyBufferSubData(@CType("GLenum") int readTarget, @CType("GLenum") int writeTarget, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");
+    /// ```
+    /// void glCopyBufferSubData(unsigned int readTarget, unsigned int writeTarget, signed long long readOffset, signed long long writeOffset, signed long long size);
+    /// ```
+    public void CopyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");
         try { Handles.MH_glCopyBufferSubData.invokeExact(handles.PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyBufferSubData", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyBufferSubData", e); }
     }
 
 }

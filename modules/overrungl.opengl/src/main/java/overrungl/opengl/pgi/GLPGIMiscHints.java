@@ -19,7 +19,6 @@ package overrungl.opengl.pgi;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -57,10 +56,13 @@ public final class GLPGIMiscHints {
         this.handles = new Handles(func);
     }
 
-    public void HintPGI(@CType("GLenum") int target, @CType("GLint") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
+    /// ```
+    /// void glHintPGI(unsigned int target, int mode);
+    /// ```
+    public void HintPGI(int target, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
         try { Handles.MH_glHintPGI.invokeExact(handles.PFN_glHintPGI, target, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glHintPGI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in HintPGI", e); }
     }
 
 }

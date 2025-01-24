@@ -19,7 +19,6 @@ package overrungl.opengl.intel;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -37,10 +36,13 @@ public final class GLINTELFramebufferCMAA {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glApplyFramebufferAttachmentCMAAINTEL();
+    /// ```
     public void ApplyFramebufferAttachmentCMAAINTEL() {
-        if (Unmarshal.isNullPointer(handles.PFN_glApplyFramebufferAttachmentCMAAINTEL)) throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glApplyFramebufferAttachmentCMAAINTEL)) throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL");
         try { Handles.MH_glApplyFramebufferAttachmentCMAAINTEL.invokeExact(handles.PFN_glApplyFramebufferAttachmentCMAAINTEL); }
-        catch (Throwable e) { throw new RuntimeException("error in glApplyFramebufferAttachmentCMAAINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ApplyFramebufferAttachmentCMAAINTEL", e); }
     }
 
 }

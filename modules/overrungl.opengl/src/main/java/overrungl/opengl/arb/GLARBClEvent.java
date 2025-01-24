@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLARBClEvent {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLsync") MemorySegment CreateSyncFromCLeventARB(@CType("struct _cl_context *") MemorySegment context, @CType("struct _cl_event *") MemorySegment event, @CType("GLbitfield") int flags) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
+    /// ```
+    /// __GLsync * glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, unsigned int flags);
+    /// ```
+    public MemorySegment CreateSyncFromCLeventARB(MemorySegment context, MemorySegment event, int flags) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
         try { return (MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateSyncFromCLeventARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateSyncFromCLeventARB", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLEXTFramebufferBlit {
         this.handles = new Handles(func);
     }
 
-    public void BlitFramebufferEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlitFramebufferEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferEXT");
+    /// ```
+    /// void glBlitFramebufferEXT(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, unsigned int mask, unsigned int filter);
+    /// ```
+    public void BlitFramebufferEXT(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebufferEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferEXT");
         try { Handles.MH_glBlitFramebufferEXT.invokeExact(handles.PFN_glBlitFramebufferEXT, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlitFramebufferEXT", e); }
     }
 
 }

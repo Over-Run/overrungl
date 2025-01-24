@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -53,40 +52,58 @@ public final class GLSGIXListPriority {
         this.handles = new Handles(func);
     }
 
-    public void GetListParameterfvSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterfvSGIX");
+    /// ```
+    /// void glGetListParameterfvSGIX(unsigned int list, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetListParameterfvSGIX(int list, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterfvSGIX");
         try { Handles.MH_glGetListParameterfvSGIX.invokeExact(handles.PFN_glGetListParameterfvSGIX, list, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetListParameterfvSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetListParameterfvSGIX", e); }
     }
 
-    public void GetListParameterivSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterivSGIX");
+    /// ```
+    /// void glGetListParameterivSGIX(unsigned int list, unsigned int pname, GLint* params);
+    /// ```
+    public void GetListParameterivSGIX(int list, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterivSGIX");
         try { Handles.MH_glGetListParameterivSGIX.invokeExact(handles.PFN_glGetListParameterivSGIX, list, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetListParameterivSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetListParameterivSGIX", e); }
     }
 
-    public void ListParameterfSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glListParameterfSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfSGIX");
+    /// ```
+    /// void glListParameterfSGIX(unsigned int list, unsigned int pname, float param);
+    /// ```
+    public void ListParameterfSGIX(int list, int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfSGIX");
         try { Handles.MH_glListParameterfSGIX.invokeExact(handles.PFN_glListParameterfSGIX, list, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glListParameterfSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ListParameterfSGIX", e); }
     }
 
-    public void ListParameterfvSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfvSGIX");
+    /// ```
+    /// void glListParameterfvSGIX(unsigned int list, unsigned int pname, const GLfloat* params);
+    /// ```
+    public void ListParameterfvSGIX(int list, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfvSGIX");
         try { Handles.MH_glListParameterfvSGIX.invokeExact(handles.PFN_glListParameterfvSGIX, list, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glListParameterfvSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ListParameterfvSGIX", e); }
     }
 
-    public void ListParameteriSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glListParameteriSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameteriSGIX");
+    /// ```
+    /// void glListParameteriSGIX(unsigned int list, unsigned int pname, int param);
+    /// ```
+    public void ListParameteriSGIX(int list, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glListParameteriSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameteriSGIX");
         try { Handles.MH_glListParameteriSGIX.invokeExact(handles.PFN_glListParameteriSGIX, list, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glListParameteriSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ListParameteriSGIX", e); }
     }
 
-    public void ListParameterivSGIX(@CType("GLuint") int list, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterivSGIX");
+    /// ```
+    /// void glListParameterivSGIX(unsigned int list, unsigned int pname, const GLint* params);
+    /// ```
+    public void ListParameterivSGIX(int list, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterivSGIX");
         try { Handles.MH_glListParameterivSGIX.invokeExact(handles.PFN_glListParameterivSGIX, list, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glListParameterivSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ListParameterivSGIX", e); }
     }
 
 }

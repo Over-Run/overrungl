@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLEXTProvokingVertex {
         this.handles = new Handles(func);
     }
 
-    public void ProvokingVertexEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
+    /// ```
+    /// void glProvokingVertexEXT(unsigned int mode);
+    /// ```
+    public void ProvokingVertexEXT(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
         try { Handles.MH_glProvokingVertexEXT.invokeExact(handles.PFN_glProvokingVertexEXT, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glProvokingVertexEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProvokingVertexEXT", e); }
     }
 
 }

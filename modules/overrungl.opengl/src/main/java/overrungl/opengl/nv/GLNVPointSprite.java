@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,16 +42,22 @@ public final class GLNVPointSprite {
         this.handles = new Handles(func);
     }
 
-    public void PointParameteriNV(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriNV");
+    /// ```
+    /// void glPointParameteriNV(unsigned int pname, int param);
+    /// ```
+    public void PointParameteriNV(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriNV");
         try { Handles.MH_glPointParameteriNV.invokeExact(handles.PFN_glPointParameteriNV, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameteriNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameteriNV", e); }
     }
 
-    public void PointParameterivNV(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameterivNV");
+    /// ```
+    /// void glPointParameterivNV(unsigned int pname, const GLint* params);
+    /// ```
+    public void PointParameterivNV(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameterivNV");
         try { Handles.MH_glPointParameterivNV.invokeExact(handles.PFN_glPointParameterivNV, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterivNV", e); }
     }
 
 }

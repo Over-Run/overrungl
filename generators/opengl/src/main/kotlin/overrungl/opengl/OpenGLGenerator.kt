@@ -17,9 +17,14 @@
 package overrungl.opengl
 
 import org.w3c.dom.Element
-import org.w3c.dom.Node
-import org.w3c.dom.Text
-import overrungl.gen.*
+import overrungl.gen.GENERATOR_NOTICE
+import overrungl.gen.commentedFileHeader
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.file.functionDescriptor
+import overrungl.gen.file.registerDefType
+import overrungl.gen.file.unsigned_char_boolean
+import overrungl.gen.writeNativeImageRegistration
+import overrungl.gen.writeString
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
@@ -303,182 +308,9 @@ fun isAOlder(a: String, b: String): Boolean {
     return minorA < minorB
 }
 
-fun readTypeFromNode(root: Node, dst: MutableList<GLTypeRef>): String? {
-    var name: String? = null
-    for (i in 0 until root.childNodes.length) {
-        when (val node = root.childNodes.item(i)) {
-            is Text -> {
-                if (node.wholeText.isNotBlank()) {
-                    dst.add(GLTypeRefLiteral(node.wholeText.trim()))
-                }
-            }
-
-            is Element -> {
-                when (node.tagName) {
-                    "ptype" -> dst.add(GLTypeRefPType(node.textContent.trim()))
-                    "name" -> name = node.textContent.trim()
-                }
-            }
-        }
-    }
-    return name
-}
-
-val typeMap = mutableMapOf<String, CustomTypeSpec>().also {
-    it["void"] = void
-    it["void *"] = void_ptr
-    it["void **"] = address c "void **"
-    it["const void **"] = address c "const void **"
-    it["const void *const*"] = address c "const void *const*"
-
-    it["GLhandleARB *"] = address c "GLhandleARB *"
-    it["GLenum *"] = jint_array c "GLenum *"
-    it["GLfixed *"] = jint_array c "GLfixed *"
-    it["GLsizei *"] = jint_array c "GLsizei *"
-    it["GLboolean *"] = address c "GLboolean *"
-    it["GLchar *"] = address c "GLchar *"
-    it["GLcharARB *"] = address c "GLcharARB *"
-    it["GLubyte *"] = jbyte_array c "GLubyte *"
-    it["GLushort *"] = jshort_array c "GLushort *"
-    it["GLint *"] = jint_array c "GLint *"
-    it["GLuint *"] = jint_array c "GLuint *"
-    it["GLint64 *"] = jlong_array c "GLint64 *"
-    it["GLuint64 *"] = jlong_array c "GLuint64 *"
-    it["GLint64EXT *"] = jlong_array c "GLint64EXT *"
-    it["GLuint64EXT *"] = jlong_array c "GLuint64EXT *"
-    it["GLfloat *"] = jfloat_array c "GLfloat *"
-    it["GLdouble *"] = jdouble_array c "GLdouble *"
-
-    it["const GLenum *"] = jint_array c "const GLenum *"
-    it["const GLfixed *"] = jint_array c "const GLfixed *"
-    it["const GLsizei *"] = jint_array c "const GLsizei *"
-    it["const GLchar *const*"] = address c "const GLchar *const*"
-    it["const GLcharARB *"] = address c "const GLcharARB *"
-    it["const GLcharARB **"] = address c "const GLcharARB **"
-    it["const GLboolean *"] = address c "const GLboolean *"
-    it["const GLboolean **"] = address c "const GLboolean **"
-    it["const GLbyte *"] = jbyte_array c "const GLbyte *"
-    it["const GLubyte *"] = jbyte_array c "const GLubyte *"
-    it["const GLshort *"] = jshort_array c "const GLshort *"
-    it["const GLushort *"] = jshort_array c "const GLushort *"
-    it["const GLhalfNV *"] = jshort_array c "const GLhalfNV *"
-    it["const GLint *"] = jint_array c "const GLint *"
-    it["const GLuint *"] = jint_array c "const GLuint *"
-    it["const GLint64 *"] = jlong_array c "const GLint64 *"
-    it["const GLuint64 *"] = jlong_array c "const GLuint64 *"
-    it["const GLint64EXT *"] = jlong_array c "const GLint64EXT *"
-    it["const GLuint64EXT *"] = jlong_array c "const GLuint64EXT *"
-    it["const GLintptr *"] = jlong_array c "const GLintptr *"
-    it["const GLsizeiptr *"] = jlong_array c "const GLsizeiptr *"
-    it["const GLvdpauSurfaceNV *"] = jlong_array c "const GLvdpauSurfaceNV *"
-    it["const GLfloat *"] = jfloat_array c "const GLfloat *"
-    it["const GLdouble *"] = jdouble_array c "const GLdouble *"
-    it["const GLclampf *"] = jfloat_array c "const GLclampf *"
-
-    it["struct _cl_context *"] = address c "struct _cl_context *"
-    it["struct _cl_event *"] = address c "struct _cl_event *"
-}
-
-fun ptype(type: CustomTypeSpec, name: String): CustomTypeSpec {
-    val spec = type c name
-    typeMap[name] = spec
-    return spec
-}
-
-fun computeRawType(type: GLType): String = type.tokens.joinToString(" ")
-fun computePType(type: GLType): CustomTypeSpec {
-    val rawType = computeRawType(type)
-    val res = typeMap[rawType]
-    if (res == null) {
-        recordingErrorType.add(rawType)
-        return int
-    } else {
-        return res
-    }
-}
-
-fun computeFunctionDescriptor(command: GLCommand): String {
-    val returnTypeSpec = computePType(command.type)
-    val paramTypeSpecs = command.params.map { computePType(it.type) }
-    return buildString {
-        append("FunctionDescriptor.of")
-        if (returnTypeSpec.carrier == "void") {
-            append("Void(")
-        } else {
-            append("(")
-            append(returnTypeSpec.layout!!)
-            if (paramTypeSpecs.isNotEmpty()) {
-                append(", ")
-            }
-        }
-        append(paramTypeSpecs.joinToString(", ") { it.layout!! })
-        append(")")
-    }
-}
-
-val khronos_int8_t = ptype(jbyte, "khronos_int8_t")
-val khronos_uint8_t = ptype(jbyte, "khronos_uint8_t")
-val khronos_int16_t = ptype(jshort, "khronos_int16_t")
-val khronos_uint16_t = ptype(jshort, "khronos_uint16_t")
-val khronos_int32_t = ptype(jint, "khronos_int32_t")
-val khronos_uint32_t = ptype(jint, "khronos_uint32_t")
-val khronos_int64_t = ptype(jlong, "khronos_int64_t")
-val khronos_uint64_t = ptype(jlong, "khronos_uint64_t")
-val khronos_intptr_t = ptype(jlong, "khronos_intptr_t")
-val khronos_uintptr_t = ptype(jlong, "khronos_uintptr_t")
-val khronos_ssize_t = ptype(jlong, "khronos_ssize_t")
-val khronos_usize_t = ptype(jlong, "khronos_usize_t")
-val khronos_float_t = ptype(jfloat, "khronos_float_t")
-
-val GLenum = ptype(uint, "GLenum")
-val GLboolean = ptype(/*uchar*/jboolean, "GLboolean")
-val GLbitfield = ptype(uint, "GLbitfield")
-val GLbyte = ptype(khronos_int8_t, "GLbyte")
-val GLubyte = ptype(khronos_uint8_t, "GLubyte")
-val GLshort = ptype(khronos_int16_t, "GLshort")
-val GLushort = ptype(khronos_uint16_t, "GLushort")
-val GLint = ptype(int, "GLint")
-val GLuint = ptype(uint, "GLuint")
-val GLclampx = ptype(khronos_int32_t, "GLclampx")
-val GLsizei = ptype(int, "GLsizei")
-val GLfloat = ptype(khronos_float_t, "GLfloat")
-val GLclampf = ptype(khronos_float_t, "GLclampf")
-val GLdouble = ptype(double, "GLdouble")
-val GLclampd = ptype(double, "GLclampd")
-val GLeglClientBufferEXT = ptype(address, "GLeglClientBufferEXT")
-val GLeglImageOES = ptype(address, "GLeglImageOES")
-val GLchar = ptype(char, "GLchar")
-val GLcharARB = ptype(char, "GLcharARB")
-
-/*
-   Note: this is defined as void* on __APPLE__
- */
-val GLhandleARB = ptype(uint, "GLhandleARB")
-
-val GLhalf = ptype(khronos_uint16_t, "GLhalf")
-val GLhalfARB = ptype(khronos_uint16_t, "GLhalfARB")
-val GLfixed = ptype(khronos_int32_t, "GLfixed")
-val GLintptr = ptype(khronos_intptr_t, "GLintptr")
-val GLintptrARB = ptype(khronos_intptr_t, "GLintptrARB")
-val GLsizeiptr = ptype(khronos_ssize_t, "GLsizeiptr")
-val GLsizeiptrARB = ptype(khronos_ssize_t, "GLsizeiptrARB")
-val GLint64 = ptype(khronos_int64_t, "GLint64")
-val GLint64EXT = ptype(khronos_int64_t, "GLint64EXT")
-val GLuint64 = ptype(khronos_uint64_t, "GLuint64")
-val GLuint64EXT = ptype(khronos_uint64_t, "GLuint64EXT")
-val GLsync = ptype(address, "GLsync")
-val GLDEBUGPROC = ptype(generateUpcallType(openglPackage, "GLDebugProc"), "GLDEBUGPROC")
-val GLDEBUGPROCARB = ptype(GLDEBUGPROC, "GLDEBUGPROCARB")
-val GLDEBUGPROCKHR = ptype(GLDEBUGPROC, "GLDEBUGPROCKHR")
-val GLDEBUGPROCAMD = ptype(generateUpcallType(extPackage("AMD"), "GLDebugProcAMD"), "GLDEBUGPROCAMD")
-val GLhalfNV = ptype(ushort, "GLhalfNV")
-val GLvdpauSurfaceNV = ptype(GLintptr, "GLvdpauSurfaceNV")
-val GLVULKANPROCNV = ptype(generateUpcallType(extPackage("NV"), "GLVulkanProcNV"), "GLVULKANPROCNV")
-
-val const_GLchar_ptr = ptype(address, "const GLchar *")
-val const_void_ptr = ptype(address, "const void *")
-
 fun main() {
+    registerDefType("GLboolean", unsigned_char_boolean.copy(originalName = "GLboolean"))
+
     val xmlFactory = DocumentBuilderFactory.newInstance()
     val xmlBuilder = xmlFactory.newDocumentBuilder()
     val document = ClassLoader.getSystemResourceAsStream("gl.xml")!!.use { xmlBuilder.parse(it) }
@@ -504,7 +336,9 @@ fun main() {
     }
 
     // commands
-    val commandMap = mutableMapOf<String, GLCommand>()
+    val commandsFileBuilder = StringBuilder()
+    commandsFileBuilder.appendLine(GENERATOR_NOTICE)
+    commandsFileBuilder.appendLine("""import "upcall.gen";""")
     val aliasMap = mutableMapOf<String, MutableList<String>>()
     root.getElementsByTagName("commands").also {
         for (i in 0 until it.length) {
@@ -514,18 +348,19 @@ fun main() {
                         if (command is Element && command.tagName == "command") {
                             // type and name
                             val proto = command.getElementsByTagName("proto").item(0) as Element
-                            val type = mutableListOf<GLTypeRef>()
-                            val name = readTypeFromNode(proto, type)
+                            val name = (proto.getElementsByTagName("name").item(0) as Element).textContent
+                            commandsFileBuilder.append("fn opt ${proto.textContent.replace(name, name.substring(2))}(")
 
                             // parameters
-                            val paramsList = mutableListOf<GLCommandParam>()
                             val params = command.getElementsByTagName("param")
                             for (i1 in 0 until params.length) {
                                 val param = params.item(i1) as Element
-                                val paramType = mutableListOf<GLTypeRef>()
-                                val paramName = readTypeFromNode(param, paramType)
-                                paramsList.add(GLCommandParam(GLType(paramType), paramName!!))
+                                if (i1 > 0) {
+                                    commandsFileBuilder.append(", ")
+                                }
+                                commandsFileBuilder.append(param.textContent)
                             }
+                            commandsFileBuilder.appendLine(") @$name;")
 
                             // alias
                             val aliases = command.getElementsByTagName("alias")
@@ -534,13 +369,18 @@ fun main() {
                                 aliasMap.computeIfAbsent(alias.getAttribute("name")) { mutableListOf() }
                                     .add(name!!)
                             }
-
-                            commandMap[name!!] = GLCommand(GLType(type), name, paramsList)
                         }
                     }
                 }
             }
         }
+    }
+    val commandsFile: DefinitionFile
+    try {
+        commandsFile = DefinitionFile(rawSourceString = commandsFileBuilder.toString())
+    } catch (e: Exception) {
+        println(commandsFileBuilder)
+        throw e
     }
 
     // features
@@ -616,10 +456,8 @@ fun main() {
     }
 
     fun InstanceDowncall.addCommand(command: GLRequireCommand) {
-        val get = commandMap[command.name]!!
-
         // descriptor
-        val descriptor = computeFunctionDescriptor(get)
+        val descriptor = functionDescriptor(commandsFile.interpreter.functions()[command.name] ?: error(command.name))
         downcallDescriptors.add(descriptor)
 
         // handle
@@ -627,7 +465,7 @@ fun main() {
             InstanceDowncallField(
                 modifier = "public static final",
                 type = "MethodHandle",
-                name = "MH_${get.name}",
+                name = "MH_${command.name}",
                 value = "RuntimeHelper.downcall($descriptor)"
             )
         )
@@ -637,18 +475,11 @@ fun main() {
             InstanceDowncallField(
                 modifier = "public final",
                 type = "MemorySegment",
-                name = "PFN_${get.name}"
+                name = "PFN_${command.name}"
             )
         )
 
-        method(
-            InstanceDowncallMethod(
-                returnType = computePType(get.type),
-                name = get.name.substring(2),
-                params = get.params.map { InstanceDowncallParameter(computePType(it.type), it.name) },
-                entrypoint = get.name
-            )
-        )
+        method(commandsFile.interpreter.functions()[command.name] ?: error(command.name))
     }
 
     // core
@@ -668,9 +499,8 @@ fun main() {
                         if (i > 0) {
                             appendLine()
                         }
-                        val get = commandMap[command.name]!!
-                        append("""PFN_${get.name} = func.invoke("${get.name}"""")
-                        aliasMap[get.name]?.forEach { append(""", "$it"""") }
+                        append("""PFN_${command.name} = func.invoke("${command.name}"""")
+                        aliasMap[command.name]?.forEach { append(""", "$it"""") }
                         append(""");""")
                         i++
                         thisFeatureAddedCommand.add(command.name)
@@ -767,9 +597,8 @@ fun main() {
                                     if (index > 0) {
                                         appendLine()
                                     }
-                                    val get = commandMap[command.name]!!
-                                    append("""PFN_${get.name} = func.invoke("${get.name}"""")
-                                    aliasMap.entries.find { it.value.contains(get.name) }?.key?.also { append(""", "$it"""") }
+                                    append("""PFN_${command.name} = func.invoke("${command.name}"""")
+                                    aliasMap.entries.find { it.value.contains(command.name) }?.key?.also { append(""", "$it"""") }
                                     append(");")
                                 }
                             }
@@ -865,7 +694,8 @@ fun main() {
         appendLine("}")
     })
 
-    upcall()
+    DefinitionFile("struct.gen").compileStructs(openglPackage)
+    DefinitionFile("upcall.gen").compileUpcalls(openglPackage)
 
     if (recordingErrorType.isNotEmpty()) {
         System.err.println("Recorded error types")
@@ -877,88 +707,7 @@ fun main() {
     writeNativeImageRegistration(openglPackage, downcall = downcallDescriptors)
 }
 
-// Define special upcall
-fun upcall() {
-    Upcall(openglPackage, "GLDebugProc") {
-        interfaceMethod = "invoke"(
-            void,
-            GLenum("source"),
-            GLenum("type"),
-            GLuint("id"),
-            GLenum("severity"),
-            (string_u8 c const_GLchar_ptr.cType)("message"),
-            const_void_ptr("userParam")
-        )
-        targetMethod = "invoke"(
-            void,
-            GLenum("source"),
-            GLenum("type"),
-            GLuint("id"),
-            GLenum("severity"),
-            GLsizei("length"),
-            const_GLchar_ptr("message"),
-            const_void_ptr("userParam"),
-            code = "invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message), userParam);"
-        )
-        wrapperCode = """
-            return (source, type, id, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
-                var seg = Marshal.marshal(stack, message);
-                invoke(stub, source, type, id, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
-            } };
-        """.trimIndent()
-    }
-
-    Upcall(extPackage("AMD"), "GLDebugProcAMD") {
-        interfaceMethod = "invoke"(
-            void,
-            GLuint("id"),
-            GLenum("category"),
-            GLenum("severity"),
-            (string_u8 c const_GLchar_ptr.cType)("message"),
-            void_ptr("userParam")
-        )
-        targetMethod = "invoke"(
-            void,
-            GLuint("id"),
-            GLenum("category"),
-            GLenum("severity"),
-            GLsizei("length"),
-            const_GLchar_ptr("message"),
-            void_ptr("userParam"),
-            code = "invoke(id, category, severity, Unmarshal.unmarshalAsString(message), userParam);"
-        )
-        wrapperCode = """
-            return (id, category, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
-                var seg = Marshal.marshal(stack, message);
-                invoke(stub, id, category, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
-            } };
-        """.trimIndent()
-    }
-
-    Upcall(extPackage("NV"), "GLVulkanProcNV") {
-        targetMethod = "invoke"(void)
-    }
-}
-
 data class GLEnum(val name: String, val value: String, val type: String?)
-
-sealed interface GLTypeRef
-data class GLType(val tokens: List<GLTypeRef>)
-
-data class GLTypeRefLiteral(val text: String) : GLTypeRef {
-    override fun toString(): String {
-        return text
-    }
-}
-
-data class GLTypeRefPType(val name: String) : GLTypeRef {
-    override fun toString(): String {
-        return name
-    }
-}
-
-data class GLCommandParam(val type: GLType, val name: String)
-data class GLCommand(val type: GLType, val name: String, val params: List<GLCommandParam>)
 
 interface GLRequireEntry {
     val name: String

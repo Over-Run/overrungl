@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -48,16 +47,22 @@ public final class GLNVGpuProgram5 {
         this.handles = new Handles(func);
     }
 
-    public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
+    /// ```
+    /// void glProgramSubroutineParametersuivNV(unsigned int target, int count, const GLuint* params);
+    /// ```
+    public void ProgramSubroutineParametersuivNV(int target, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
         try { Handles.MH_glProgramSubroutineParametersuivNV.invokeExact(handles.PFN_glProgramSubroutineParametersuivNV, target, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramSubroutineParametersuivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramSubroutineParametersuivNV", e); }
     }
 
-    public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
+    /// ```
+    /// void glGetProgramSubroutineParameteruivNV(unsigned int target, unsigned int index, GLuint* param);
+    /// ```
+    public void GetProgramSubroutineParameteruivNV(int target, int index, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
         try { Handles.MH_glGetProgramSubroutineParameteruivNV.invokeExact(handles.PFN_glGetProgramSubroutineParameteruivNV, target, index, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramSubroutineParameteruivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramSubroutineParameteruivNV", e); }
     }
 
 }

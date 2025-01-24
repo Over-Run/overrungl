@@ -19,7 +19,6 @@ package overrungl.opengl.sunx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLSUNXConstantData {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glFinishTextureSUNX();
+    /// ```
     public void FinishTextureSUNX() {
-        if (Unmarshal.isNullPointer(handles.PFN_glFinishTextureSUNX)) throw new SymbolNotFoundError("Symbol not found: glFinishTextureSUNX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFinishTextureSUNX)) throw new SymbolNotFoundError("Symbol not found: glFinishTextureSUNX");
         try { Handles.MH_glFinishTextureSUNX.invokeExact(handles.PFN_glFinishTextureSUNX); }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishTextureSUNX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FinishTextureSUNX", e); }
     }
 
 }

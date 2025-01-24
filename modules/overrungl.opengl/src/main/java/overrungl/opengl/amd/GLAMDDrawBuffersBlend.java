@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,28 +45,40 @@ public final class GLAMDDrawBuffersBlend {
         this.handles = new Handles(func);
     }
 
-    public void BlendFuncIndexedAMD(@CType("GLuint") int buf, @CType("GLenum") int src, @CType("GLenum") int dst) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncIndexedAMD");
+    /// ```
+    /// void glBlendFuncIndexedAMD(unsigned int buf, unsigned int src, unsigned int dst);
+    /// ```
+    public void BlendFuncIndexedAMD(int buf, int src, int dst) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncIndexedAMD");
         try { Handles.MH_glBlendFuncIndexedAMD.invokeExact(handles.PFN_glBlendFuncIndexedAMD, buf, src, dst); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncIndexedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncIndexedAMD", e); }
     }
 
-    public void BlendFuncSeparateIndexedAMD(@CType("GLuint") int buf, @CType("GLenum") int srcRGB, @CType("GLenum") int dstRGB, @CType("GLenum") int srcAlpha, @CType("GLenum") int dstAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateIndexedAMD");
+    /// ```
+    /// void glBlendFuncSeparateIndexedAMD(unsigned int buf, unsigned int srcRGB, unsigned int dstRGB, unsigned int srcAlpha, unsigned int dstAlpha);
+    /// ```
+    public void BlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateIndexedAMD");
         try { Handles.MH_glBlendFuncSeparateIndexedAMD.invokeExact(handles.PFN_glBlendFuncSeparateIndexedAMD, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateIndexedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateIndexedAMD", e); }
     }
 
-    public void BlendEquationIndexedAMD(@CType("GLuint") int buf, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationIndexedAMD");
+    /// ```
+    /// void glBlendEquationIndexedAMD(unsigned int buf, unsigned int mode);
+    /// ```
+    public void BlendEquationIndexedAMD(int buf, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationIndexedAMD");
         try { Handles.MH_glBlendEquationIndexedAMD.invokeExact(handles.PFN_glBlendEquationIndexedAMD, buf, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationIndexedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationIndexedAMD", e); }
     }
 
-    public void BlendEquationSeparateIndexedAMD(@CType("GLuint") int buf, @CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateIndexedAMD");
+    /// ```
+    /// void glBlendEquationSeparateIndexedAMD(unsigned int buf, unsigned int modeRGB, unsigned int modeAlpha);
+    /// ```
+    public void BlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateIndexedAMD");
         try { Handles.MH_glBlendEquationSeparateIndexedAMD.invokeExact(handles.PFN_glBlendEquationSeparateIndexedAMD, buf, modeRGB, modeAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateIndexedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateIndexedAMD", e); }
     }
 
 }

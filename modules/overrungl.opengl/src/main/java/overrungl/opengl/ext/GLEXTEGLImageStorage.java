@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,16 +38,22 @@ public final class GLEXTEGLImageStorage {
         this.handles = new Handles(func);
     }
 
-    public void EGLImageTargetTexStorageEXT(@CType("GLenum") int target, @CType("GLeglImageOES") MemorySegment image, @CType("const GLint *") MemorySegment attrib_list) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
+    /// ```
+    /// void glEGLImageTargetTexStorageEXT(unsigned int target, void* image, const GLint* attrib_list);
+    /// ```
+    public void EGLImageTargetTexStorageEXT(int target, MemorySegment image, MemorySegment attrib_list) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
         try { Handles.MH_glEGLImageTargetTexStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTexStorageEXT, target, image, attrib_list); }
-        catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTexStorageEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTexStorageEXT", e); }
     }
 
-    public void EGLImageTargetTextureStorageEXT(@CType("GLuint") int texture, @CType("GLeglImageOES") MemorySegment image, @CType("const GLint *") MemorySegment attrib_list) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
+    /// ```
+    /// void glEGLImageTargetTextureStorageEXT(unsigned int texture, void* image, const GLint* attrib_list);
+    /// ```
+    public void EGLImageTargetTextureStorageEXT(int texture, MemorySegment image, MemorySegment attrib_list) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
         try { Handles.MH_glEGLImageTargetTextureStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTextureStorageEXT, texture, image, attrib_list); }
-        catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTextureStorageEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTextureStorageEXT", e); }
     }
 
 }

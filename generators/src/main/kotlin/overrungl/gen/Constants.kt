@@ -16,6 +16,7 @@
 
 package overrungl.gen
 
+const val GENERATOR_NOTICE = "// This file is auto-generated. DO NOT EDIT!"
 val commentedFileHeader = """
 /*
  * MIT License
@@ -33,7 +34,7 @@ val commentedFileHeader = """
  * copies or substantial portions of the Software.
  */
 
-// This file is auto-generated. DO NOT EDIT!
+$GENERATOR_NOTICE
 """.trimIndent()
 
 const val GENERATOR_BEGIN = "//region ---[BEGIN GENERATOR BEGIN]---"

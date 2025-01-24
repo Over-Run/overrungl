@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,10 +39,13 @@ public final class GLSGIXFramezoom {
         this.handles = new Handles(func);
     }
 
-    public void FrameZoomSGIX(@CType("GLint") int factor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
+    /// ```
+    /// void glFrameZoomSGIX(int factor);
+    /// ```
+    public void FrameZoomSGIX(int factor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
         try { Handles.MH_glFrameZoomSGIX.invokeExact(handles.PFN_glFrameZoomSGIX, factor); }
-        catch (Throwable e) { throw new RuntimeException("error in glFrameZoomSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FrameZoomSGIX", e); }
     }
 
 }

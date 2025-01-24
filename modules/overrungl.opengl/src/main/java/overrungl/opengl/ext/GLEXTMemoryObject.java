@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,19 +39,19 @@ public final class GLEXTMemoryObject {
         public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGetUnsignedBytei_vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glDeleteMemoryObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsMemoryObjectEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsMemoryObjectEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glCreateMemoryObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glMemoryObjectParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGetMemoryObjectParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glTexStorageMem2DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTexStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glTexStorageMem3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTexStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTexStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glBufferStorageMemEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glTextureStorageMem2DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTextureStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem2DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glTextureStorageMem3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTextureStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureStorageMem3DMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glNamedBufferStorageMemEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glTexStorageMem1DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_glTextureStorageMem1DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
@@ -99,118 +98,175 @@ public final class GLEXTMemoryObject {
         this.handles = new Handles(func);
     }
 
-    public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
+    /// ```
+    /// void glGetUnsignedBytevEXT(unsigned int pname, GLubyte* data);
+    /// ```
+    public void GetUnsignedBytevEXT(int pname, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
         try { Handles.MH_glGetUnsignedBytevEXT.invokeExact(handles.PFN_glGetUnsignedBytevEXT, pname, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytevEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetUnsignedBytevEXT", e); }
     }
 
-    public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
+    /// ```
+    /// void glGetUnsignedBytei_vEXT(unsigned int target, unsigned int index, GLubyte* data);
+    /// ```
+    public void GetUnsignedBytei_vEXT(int target, int index, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
         try { Handles.MH_glGetUnsignedBytei_vEXT.invokeExact(handles.PFN_glGetUnsignedBytei_vEXT, target, index, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytei_vEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetUnsignedBytei_vEXT", e); }
     }
 
-    public void DeleteMemoryObjectsEXT(@CType("GLsizei") int n, @CType("const GLuint *") MemorySegment memoryObjects) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeleteMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteMemoryObjectsEXT");
+    /// ```
+    /// void glDeleteMemoryObjectsEXT(int n, const GLuint* memoryObjects);
+    /// ```
+    public void DeleteMemoryObjectsEXT(int n, MemorySegment memoryObjects) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteMemoryObjectsEXT");
         try { Handles.MH_glDeleteMemoryObjectsEXT.invokeExact(handles.PFN_glDeleteMemoryObjectsEXT, n, memoryObjects); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteMemoryObjectsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeleteMemoryObjectsEXT", e); }
     }
 
-    public @CType("GLboolean") boolean IsMemoryObjectEXT(@CType("GLuint") int memoryObject) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsMemoryObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glIsMemoryObjectEXT");
-        try { return (boolean) Handles.MH_glIsMemoryObjectEXT.invokeExact(handles.PFN_glIsMemoryObjectEXT, memoryObject); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsMemoryObjectEXT", e); }
+    /// ```
+    /// GLboolean glIsMemoryObjectEXT(unsigned int memoryObject);
+    /// ```
+    public boolean IsMemoryObjectEXT(int memoryObject) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsMemoryObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glIsMemoryObjectEXT");
+        try { return (((byte) Handles.MH_glIsMemoryObjectEXT.invokeExact(handles.PFN_glIsMemoryObjectEXT, memoryObject)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsMemoryObjectEXT", e); }
     }
 
-    public void CreateMemoryObjectsEXT(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment memoryObjects) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateMemoryObjectsEXT");
+    /// ```
+    /// void glCreateMemoryObjectsEXT(int n, GLuint* memoryObjects);
+    /// ```
+    public void CreateMemoryObjectsEXT(int n, MemorySegment memoryObjects) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateMemoryObjectsEXT");
         try { Handles.MH_glCreateMemoryObjectsEXT.invokeExact(handles.PFN_glCreateMemoryObjectsEXT, n, memoryObjects); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateMemoryObjectsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateMemoryObjectsEXT", e); }
     }
 
-    public void MemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryObjectParameterivEXT");
+    /// ```
+    /// void glMemoryObjectParameterivEXT(unsigned int memoryObject, unsigned int pname, const GLint* params);
+    /// ```
+    public void MemoryObjectParameterivEXT(int memoryObject, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryObjectParameterivEXT");
         try { Handles.MH_glMemoryObjectParameterivEXT.invokeExact(handles.PFN_glMemoryObjectParameterivEXT, memoryObject, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryObjectParameterivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MemoryObjectParameterivEXT", e); }
     }
 
-    public void GetMemoryObjectParameterivEXT(@CType("GLuint") int memoryObject, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectParameterivEXT");
+    /// ```
+    /// void glGetMemoryObjectParameterivEXT(unsigned int memoryObject, unsigned int pname, GLint* params);
+    /// ```
+    public void GetMemoryObjectParameterivEXT(int memoryObject, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectParameterivEXT");
         try { Handles.MH_glGetMemoryObjectParameterivEXT.invokeExact(handles.PFN_glGetMemoryObjectParameterivEXT, memoryObject, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectParameterivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryObjectParameterivEXT", e); }
     }
 
-    public void TexStorageMem2DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DEXT");
+    /// ```
+    /// void glTexStorageMem2DEXT(unsigned int target, int levels, unsigned int internalFormat, int width, int height, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TexStorageMem2DEXT(int target, int levels, int internalFormat, int width, int height, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DEXT");
         try { Handles.MH_glTexStorageMem2DEXT.invokeExact(handles.PFN_glTexStorageMem2DEXT, target, levels, internalFormat, width, height, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorageMem2DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorageMem2DEXT", e); }
     }
 
-    public void TexStorageMem2DMultisampleEXT(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedSampleLocations, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DMultisampleEXT");
-        try { Handles.MH_glTexStorageMem2DMultisampleEXT.invokeExact(handles.PFN_glTexStorageMem2DMultisampleEXT, target, samples, internalFormat, width, height, fixedSampleLocations, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorageMem2DMultisampleEXT", e); }
+    /// ```
+    /// void glTexStorageMem2DMultisampleEXT(unsigned int target, int samples, unsigned int internalFormat, int width, int height, GLboolean fixedSampleLocations, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TexStorageMem2DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DMultisampleEXT");
+        try { Handles.MH_glTexStorageMem2DMultisampleEXT.invokeExact(handles.PFN_glTexStorageMem2DMultisampleEXT, target, samples, internalFormat, width, height, ((fixedSampleLocations) ? (byte)1 : (byte)0), memory, offset); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorageMem2DMultisampleEXT", e); }
     }
 
-    public void TexStorageMem3DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DEXT");
+    /// ```
+    /// void glTexStorageMem3DEXT(unsigned int target, int levels, unsigned int internalFormat, int width, int height, int depth, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TexStorageMem3DEXT(int target, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DEXT");
         try { Handles.MH_glTexStorageMem3DEXT.invokeExact(handles.PFN_glTexStorageMem3DEXT, target, levels, internalFormat, width, height, depth, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorageMem3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorageMem3DEXT", e); }
     }
 
-    public void TexStorageMem3DMultisampleEXT(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedSampleLocations, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DMultisampleEXT");
-        try { Handles.MH_glTexStorageMem3DMultisampleEXT.invokeExact(handles.PFN_glTexStorageMem3DMultisampleEXT, target, samples, internalFormat, width, height, depth, fixedSampleLocations, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorageMem3DMultisampleEXT", e); }
+    /// ```
+    /// void glTexStorageMem3DMultisampleEXT(unsigned int target, int samples, unsigned int internalFormat, int width, int height, int depth, GLboolean fixedSampleLocations, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TexStorageMem3DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DMultisampleEXT");
+        try { Handles.MH_glTexStorageMem3DMultisampleEXT.invokeExact(handles.PFN_glTexStorageMem3DMultisampleEXT, target, samples, internalFormat, width, height, depth, ((fixedSampleLocations) ? (byte)1 : (byte)0), memory, offset); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorageMem3DMultisampleEXT", e); }
     }
 
-    public void BufferStorageMemEXT(@CType("GLenum") int target, @CType("GLsizeiptr") long size, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glBufferStorageMemEXT");
+    /// ```
+    /// void glBufferStorageMemEXT(unsigned int target, signed long long size, unsigned int memory, uint64_t offset);
+    /// ```
+    public void BufferStorageMemEXT(int target, long size, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glBufferStorageMemEXT");
         try { Handles.MH_glBufferStorageMemEXT.invokeExact(handles.PFN_glBufferStorageMemEXT, target, size, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferStorageMemEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BufferStorageMemEXT", e); }
     }
 
-    public void TextureStorageMem2DEXT(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DEXT");
+    /// ```
+    /// void glTextureStorageMem2DEXT(unsigned int texture, int levels, unsigned int internalFormat, int width, int height, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TextureStorageMem2DEXT(int texture, int levels, int internalFormat, int width, int height, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DEXT");
         try { Handles.MH_glTextureStorageMem2DEXT.invokeExact(handles.PFN_glTextureStorageMem2DEXT, texture, levels, internalFormat, width, height, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageMem2DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorageMem2DEXT", e); }
     }
 
-    public void TextureStorageMem2DMultisampleEXT(@CType("GLuint") int texture, @CType("GLsizei") int samples, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedSampleLocations, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DMultisampleEXT");
-        try { Handles.MH_glTextureStorageMem2DMultisampleEXT.invokeExact(handles.PFN_glTextureStorageMem2DMultisampleEXT, texture, samples, internalFormat, width, height, fixedSampleLocations, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageMem2DMultisampleEXT", e); }
+    /// ```
+    /// void glTextureStorageMem2DMultisampleEXT(unsigned int texture, int samples, unsigned int internalFormat, int width, int height, GLboolean fixedSampleLocations, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TextureStorageMem2DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DMultisampleEXT");
+        try { Handles.MH_glTextureStorageMem2DMultisampleEXT.invokeExact(handles.PFN_glTextureStorageMem2DMultisampleEXT, texture, samples, internalFormat, width, height, ((fixedSampleLocations) ? (byte)1 : (byte)0), memory, offset); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorageMem2DMultisampleEXT", e); }
     }
 
-    public void TextureStorageMem3DEXT(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DEXT");
+    /// ```
+    /// void glTextureStorageMem3DEXT(unsigned int texture, int levels, unsigned int internalFormat, int width, int height, int depth, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TextureStorageMem3DEXT(int texture, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DEXT");
         try { Handles.MH_glTextureStorageMem3DEXT.invokeExact(handles.PFN_glTextureStorageMem3DEXT, texture, levels, internalFormat, width, height, depth, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageMem3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorageMem3DEXT", e); }
     }
 
-    public void TextureStorageMem3DMultisampleEXT(@CType("GLuint") int texture, @CType("GLsizei") int samples, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedSampleLocations, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DMultisampleEXT");
-        try { Handles.MH_glTextureStorageMem3DMultisampleEXT.invokeExact(handles.PFN_glTextureStorageMem3DMultisampleEXT, texture, samples, internalFormat, width, height, depth, fixedSampleLocations, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageMem3DMultisampleEXT", e); }
+    /// ```
+    /// void glTextureStorageMem3DMultisampleEXT(unsigned int texture, int samples, unsigned int internalFormat, int width, int height, int depth, GLboolean fixedSampleLocations, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TextureStorageMem3DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DMultisampleEXT");
+        try { Handles.MH_glTextureStorageMem3DMultisampleEXT.invokeExact(handles.PFN_glTextureStorageMem3DMultisampleEXT, texture, samples, internalFormat, width, height, depth, ((fixedSampleLocations) ? (byte)1 : (byte)0), memory, offset); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorageMem3DMultisampleEXT", e); }
     }
 
-    public void NamedBufferStorageMemEXT(@CType("GLuint") int buffer, @CType("GLsizeiptr") long size, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageMemEXT");
+    /// ```
+    /// void glNamedBufferStorageMemEXT(unsigned int buffer, signed long long size, unsigned int memory, uint64_t offset);
+    /// ```
+    public void NamedBufferStorageMemEXT(int buffer, long size, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageMemEXT");
         try { Handles.MH_glNamedBufferStorageMemEXT.invokeExact(handles.PFN_glNamedBufferStorageMemEXT, buffer, size, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferStorageMemEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedBufferStorageMemEXT", e); }
     }
 
-    public void TexStorageMem1DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem1DEXT");
+    /// ```
+    /// void glTexStorageMem1DEXT(unsigned int target, int levels, unsigned int internalFormat, int width, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TexStorageMem1DEXT(int target, int levels, int internalFormat, int width, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem1DEXT");
         try { Handles.MH_glTexStorageMem1DEXT.invokeExact(handles.PFN_glTexStorageMem1DEXT, target, levels, internalFormat, width, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorageMem1DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorageMem1DEXT", e); }
     }
 
-    public void TextureStorageMem1DEXT(@CType("GLuint") int texture, @CType("GLsizei") int levels, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem1DEXT");
+    /// ```
+    /// void glTextureStorageMem1DEXT(unsigned int texture, int levels, unsigned int internalFormat, int width, unsigned int memory, uint64_t offset);
+    /// ```
+    public void TextureStorageMem1DEXT(int texture, int levels, int internalFormat, int width, int memory, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem1DEXT");
         try { Handles.MH_glTextureStorageMem1DEXT.invokeExact(handles.PFN_glTextureStorageMem1DEXT, texture, levels, internalFormat, width, memory, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageMem1DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorageMem1DEXT", e); }
     }
 
 }

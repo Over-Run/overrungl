@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,10 +42,13 @@ public final class GLARBClipControl {
         this.handles = new Handles(func);
     }
 
-    public void ClipControl(@CType("GLenum") int origin, @CType("GLenum") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
+    /// ```
+    /// void glClipControl(unsigned int origin, unsigned int depth);
+    /// ```
+    public void ClipControl(int origin, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
         try { Handles.MH_glClipControl.invokeExact(handles.PFN_glClipControl, origin, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glClipControl", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClipControl", e); }
     }
 
 }

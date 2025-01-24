@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -58,16 +57,22 @@ public final class GLARBComputeShader {
         this.handles = new Handles(func);
     }
 
-    public void DispatchCompute(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
+    /// ```
+    /// void glDispatchCompute(unsigned int num_groups_x, unsigned int num_groups_y, unsigned int num_groups_z);
+    /// ```
+    public void DispatchCompute(int num_groups_x, int num_groups_y, int num_groups_z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
         try { Handles.MH_glDispatchCompute.invokeExact(handles.PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
-        catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DispatchCompute", e); }
     }
 
-    public void DispatchComputeIndirect(@CType("GLintptr") long indirect) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
+    /// ```
+    /// void glDispatchComputeIndirect(signed long long indirect);
+    /// ```
+    public void DispatchComputeIndirect(long indirect) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
         try { Handles.MH_glDispatchComputeIndirect.invokeExact(handles.PFN_glDispatchComputeIndirect, indirect); }
-        catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DispatchComputeIndirect", e); }
     }
 
 }

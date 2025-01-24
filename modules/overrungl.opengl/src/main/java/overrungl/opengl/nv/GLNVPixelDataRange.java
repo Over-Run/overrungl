@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,16 +45,22 @@ public final class GLNVPixelDataRange {
         this.handles = new Handles(func);
     }
 
-    public void PixelDataRangeNV(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPixelDataRangeNV");
+    /// ```
+    /// void glPixelDataRangeNV(unsigned int target, int length, const void* pointer);
+    /// ```
+    public void PixelDataRangeNV(int target, int length, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPixelDataRangeNV");
         try { Handles.MH_glPixelDataRangeNV.invokeExact(handles.PFN_glPixelDataRangeNV, target, length, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelDataRangeNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelDataRangeNV", e); }
     }
 
-    public void FlushPixelDataRangeNV(@CType("GLenum") int target) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFlushPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glFlushPixelDataRangeNV");
+    /// ```
+    /// void glFlushPixelDataRangeNV(unsigned int target);
+    /// ```
+    public void FlushPixelDataRangeNV(int target) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glFlushPixelDataRangeNV");
         try { Handles.MH_glFlushPixelDataRangeNV.invokeExact(handles.PFN_glFlushPixelDataRangeNV, target); }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushPixelDataRangeNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FlushPixelDataRangeNV", e); }
     }
 
 }

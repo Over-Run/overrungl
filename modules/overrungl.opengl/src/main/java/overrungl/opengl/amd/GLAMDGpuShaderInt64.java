@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -163,208 +162,310 @@ public final class GLAMDGpuShaderInt64 {
         this.handles = new Handles(func);
     }
 
-    public void Uniform1i64NV(@CType("GLint") int location, @CType("GLint64EXT") long x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform1i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64NV");
+    /// ```
+    /// void glUniform1i64NV(int location, int64_t x);
+    /// ```
+    public void Uniform1i64NV(int location, long x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform1i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64NV");
         try { Handles.MH_glUniform1i64NV.invokeExact(handles.PFN_glUniform1i64NV, location, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform1i64NV", e); }
     }
 
-    public void Uniform2i64NV(@CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform2i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64NV");
+    /// ```
+    /// void glUniform2i64NV(int location, int64_t x, int64_t y);
+    /// ```
+    public void Uniform2i64NV(int location, long x, long y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform2i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64NV");
         try { Handles.MH_glUniform2i64NV.invokeExact(handles.PFN_glUniform2i64NV, location, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform2i64NV", e); }
     }
 
-    public void Uniform3i64NV(@CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y, @CType("GLint64EXT") long z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform3i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64NV");
+    /// ```
+    /// void glUniform3i64NV(int location, int64_t x, int64_t y, int64_t z);
+    /// ```
+    public void Uniform3i64NV(int location, long x, long y, long z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform3i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64NV");
         try { Handles.MH_glUniform3i64NV.invokeExact(handles.PFN_glUniform3i64NV, location, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform3i64NV", e); }
     }
 
-    public void Uniform4i64NV(@CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y, @CType("GLint64EXT") long z, @CType("GLint64EXT") long w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform4i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64NV");
+    /// ```
+    /// void glUniform4i64NV(int location, int64_t x, int64_t y, int64_t z, int64_t w);
+    /// ```
+    public void Uniform4i64NV(int location, long x, long y, long z, long w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform4i64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64NV");
         try { Handles.MH_glUniform4i64NV.invokeExact(handles.PFN_glUniform4i64NV, location, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform4i64NV", e); }
     }
 
-    public void Uniform1i64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform1i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64vNV");
+    /// ```
+    /// void glUniform1i64vNV(int location, int count, const GLint64EXT* value);
+    /// ```
+    public void Uniform1i64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform1i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64vNV");
         try { Handles.MH_glUniform1i64vNV.invokeExact(handles.PFN_glUniform1i64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform1i64vNV", e); }
     }
 
-    public void Uniform2i64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform2i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64vNV");
+    /// ```
+    /// void glUniform2i64vNV(int location, int count, const GLint64EXT* value);
+    /// ```
+    public void Uniform2i64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform2i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64vNV");
         try { Handles.MH_glUniform2i64vNV.invokeExact(handles.PFN_glUniform2i64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform2i64vNV", e); }
     }
 
-    public void Uniform3i64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform3i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64vNV");
+    /// ```
+    /// void glUniform3i64vNV(int location, int count, const GLint64EXT* value);
+    /// ```
+    public void Uniform3i64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform3i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64vNV");
         try { Handles.MH_glUniform3i64vNV.invokeExact(handles.PFN_glUniform3i64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform3i64vNV", e); }
     }
 
-    public void Uniform4i64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform4i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64vNV");
+    /// ```
+    /// void glUniform4i64vNV(int location, int count, const GLint64EXT* value);
+    /// ```
+    public void Uniform4i64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform4i64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64vNV");
         try { Handles.MH_glUniform4i64vNV.invokeExact(handles.PFN_glUniform4i64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform4i64vNV", e); }
     }
 
-    public void Uniform1ui64NV(@CType("GLint") int location, @CType("GLuint64EXT") long x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform1ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64NV");
+    /// ```
+    /// void glUniform1ui64NV(int location, uint64_t x);
+    /// ```
+    public void Uniform1ui64NV(int location, long x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64NV");
         try { Handles.MH_glUniform1ui64NV.invokeExact(handles.PFN_glUniform1ui64NV, location, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform1ui64NV", e); }
     }
 
-    public void Uniform2ui64NV(@CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform2ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64NV");
+    /// ```
+    /// void glUniform2ui64NV(int location, uint64_t x, uint64_t y);
+    /// ```
+    public void Uniform2ui64NV(int location, long x, long y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64NV");
         try { Handles.MH_glUniform2ui64NV.invokeExact(handles.PFN_glUniform2ui64NV, location, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform2ui64NV", e); }
     }
 
-    public void Uniform3ui64NV(@CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y, @CType("GLuint64EXT") long z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform3ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64NV");
+    /// ```
+    /// void glUniform3ui64NV(int location, uint64_t x, uint64_t y, uint64_t z);
+    /// ```
+    public void Uniform3ui64NV(int location, long x, long y, long z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64NV");
         try { Handles.MH_glUniform3ui64NV.invokeExact(handles.PFN_glUniform3ui64NV, location, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform3ui64NV", e); }
     }
 
-    public void Uniform4ui64NV(@CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y, @CType("GLuint64EXT") long z, @CType("GLuint64EXT") long w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform4ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64NV");
+    /// ```
+    /// void glUniform4ui64NV(int location, uint64_t x, uint64_t y, uint64_t z, uint64_t w);
+    /// ```
+    public void Uniform4ui64NV(int location, long x, long y, long z, long w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64NV");
         try { Handles.MH_glUniform4ui64NV.invokeExact(handles.PFN_glUniform4ui64NV, location, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform4ui64NV", e); }
     }
 
-    public void Uniform1ui64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform1ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64vNV");
+    /// ```
+    /// void glUniform1ui64vNV(int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void Uniform1ui64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64vNV");
         try { Handles.MH_glUniform1ui64vNV.invokeExact(handles.PFN_glUniform1ui64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform1ui64vNV", e); }
     }
 
-    public void Uniform2ui64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform2ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64vNV");
+    /// ```
+    /// void glUniform2ui64vNV(int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void Uniform2ui64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64vNV");
         try { Handles.MH_glUniform2ui64vNV.invokeExact(handles.PFN_glUniform2ui64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform2ui64vNV", e); }
     }
 
-    public void Uniform3ui64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform3ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64vNV");
+    /// ```
+    /// void glUniform3ui64vNV(int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void Uniform3ui64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64vNV");
         try { Handles.MH_glUniform3ui64vNV.invokeExact(handles.PFN_glUniform3ui64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform3ui64vNV", e); }
     }
 
-    public void Uniform4ui64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUniform4ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64vNV");
+    /// ```
+    /// void glUniform4ui64vNV(int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void Uniform4ui64vNV(int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64vNV");
         try { Handles.MH_glUniform4ui64vNV.invokeExact(handles.PFN_glUniform4ui64vNV, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Uniform4ui64vNV", e); }
     }
 
-    public void GetUniformi64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLint64EXT *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetUniformi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetUniformi64vNV");
+    /// ```
+    /// void glGetUniformi64vNV(unsigned int program, int location, GLint64EXT* params);
+    /// ```
+    public void GetUniformi64vNV(int program, int location, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetUniformi64vNV");
         try { Handles.MH_glGetUniformi64vNV.invokeExact(handles.PFN_glGetUniformi64vNV, program, location, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformi64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetUniformi64vNV", e); }
     }
 
-    public void GetUniformui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetUniformui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetUniformui64vNV");
+    /// ```
+    /// void glGetUniformui64vNV(unsigned int program, int location, GLuint64EXT* params);
+    /// ```
+    public void GetUniformui64vNV(int program, int location, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetUniformui64vNV");
         try { Handles.MH_glGetUniformui64vNV.invokeExact(handles.PFN_glGetUniformui64vNV, program, location, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetUniformui64vNV", e); }
     }
 
-    public void ProgramUniform1i64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLint64EXT") long x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64NV");
+    /// ```
+    /// void glProgramUniform1i64NV(unsigned int program, int location, int64_t x);
+    /// ```
+    public void ProgramUniform1i64NV(int program, int location, long x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64NV");
         try { Handles.MH_glProgramUniform1i64NV.invokeExact(handles.PFN_glProgramUniform1i64NV, program, location, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1i64NV", e); }
     }
 
-    public void ProgramUniform2i64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64NV");
+    /// ```
+    /// void glProgramUniform2i64NV(unsigned int program, int location, int64_t x, int64_t y);
+    /// ```
+    public void ProgramUniform2i64NV(int program, int location, long x, long y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64NV");
         try { Handles.MH_glProgramUniform2i64NV.invokeExact(handles.PFN_glProgramUniform2i64NV, program, location, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2i64NV", e); }
     }
 
-    public void ProgramUniform3i64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y, @CType("GLint64EXT") long z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64NV");
+    /// ```
+    /// void glProgramUniform3i64NV(unsigned int program, int location, int64_t x, int64_t y, int64_t z);
+    /// ```
+    public void ProgramUniform3i64NV(int program, int location, long x, long y, long z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64NV");
         try { Handles.MH_glProgramUniform3i64NV.invokeExact(handles.PFN_glProgramUniform3i64NV, program, location, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3i64NV", e); }
     }
 
-    public void ProgramUniform4i64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLint64EXT") long x, @CType("GLint64EXT") long y, @CType("GLint64EXT") long z, @CType("GLint64EXT") long w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64NV");
+    /// ```
+    /// void glProgramUniform4i64NV(unsigned int program, int location, int64_t x, int64_t y, int64_t z, int64_t w);
+    /// ```
+    public void ProgramUniform4i64NV(int program, int location, long x, long y, long z, long w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4i64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64NV");
         try { Handles.MH_glProgramUniform4i64NV.invokeExact(handles.PFN_glProgramUniform4i64NV, program, location, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4i64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4i64NV", e); }
     }
 
-    public void ProgramUniform1i64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64vNV");
+    /// ```
+    /// void glProgramUniform1i64vNV(unsigned int program, int location, int count, const GLint64EXT* value);
+    /// ```
+    public void ProgramUniform1i64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64vNV");
         try { Handles.MH_glProgramUniform1i64vNV.invokeExact(handles.PFN_glProgramUniform1i64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1i64vNV", e); }
     }
 
-    public void ProgramUniform2i64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64vNV");
+    /// ```
+    /// void glProgramUniform2i64vNV(unsigned int program, int location, int count, const GLint64EXT* value);
+    /// ```
+    public void ProgramUniform2i64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64vNV");
         try { Handles.MH_glProgramUniform2i64vNV.invokeExact(handles.PFN_glProgramUniform2i64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2i64vNV", e); }
     }
 
-    public void ProgramUniform3i64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64vNV");
+    /// ```
+    /// void glProgramUniform3i64vNV(unsigned int program, int location, int count, const GLint64EXT* value);
+    /// ```
+    public void ProgramUniform3i64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64vNV");
         try { Handles.MH_glProgramUniform3i64vNV.invokeExact(handles.PFN_glProgramUniform3i64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3i64vNV", e); }
     }
 
-    public void ProgramUniform4i64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64vNV");
+    /// ```
+    /// void glProgramUniform4i64vNV(unsigned int program, int location, int count, const GLint64EXT* value);
+    /// ```
+    public void ProgramUniform4i64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4i64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64vNV");
         try { Handles.MH_glProgramUniform4i64vNV.invokeExact(handles.PFN_glProgramUniform4i64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4i64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4i64vNV", e); }
     }
 
-    public void ProgramUniform1ui64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT") long x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64NV");
+    /// ```
+    /// void glProgramUniform1ui64NV(unsigned int program, int location, uint64_t x);
+    /// ```
+    public void ProgramUniform1ui64NV(int program, int location, long x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64NV");
         try { Handles.MH_glProgramUniform1ui64NV.invokeExact(handles.PFN_glProgramUniform1ui64NV, program, location, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1ui64NV", e); }
     }
 
-    public void ProgramUniform2ui64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64NV");
+    /// ```
+    /// void glProgramUniform2ui64NV(unsigned int program, int location, uint64_t x, uint64_t y);
+    /// ```
+    public void ProgramUniform2ui64NV(int program, int location, long x, long y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64NV");
         try { Handles.MH_glProgramUniform2ui64NV.invokeExact(handles.PFN_glProgramUniform2ui64NV, program, location, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2ui64NV", e); }
     }
 
-    public void ProgramUniform3ui64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y, @CType("GLuint64EXT") long z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64NV");
+    /// ```
+    /// void glProgramUniform3ui64NV(unsigned int program, int location, uint64_t x, uint64_t y, uint64_t z);
+    /// ```
+    public void ProgramUniform3ui64NV(int program, int location, long x, long y, long z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64NV");
         try { Handles.MH_glProgramUniform3ui64NV.invokeExact(handles.PFN_glProgramUniform3ui64NV, program, location, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3ui64NV", e); }
     }
 
-    public void ProgramUniform4ui64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT") long x, @CType("GLuint64EXT") long y, @CType("GLuint64EXT") long z, @CType("GLuint64EXT") long w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64NV");
+    /// ```
+    /// void glProgramUniform4ui64NV(unsigned int program, int location, uint64_t x, uint64_t y, uint64_t z, uint64_t w);
+    /// ```
+    public void ProgramUniform4ui64NV(int program, int location, long x, long y, long z, long w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64NV");
         try { Handles.MH_glProgramUniform4ui64NV.invokeExact(handles.PFN_glProgramUniform4ui64NV, program, location, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4ui64NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4ui64NV", e); }
     }
 
-    public void ProgramUniform1ui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform1ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64vNV");
+    /// ```
+    /// void glProgramUniform1ui64vNV(unsigned int program, int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void ProgramUniform1ui64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64vNV");
         try { Handles.MH_glProgramUniform1ui64vNV.invokeExact(handles.PFN_glProgramUniform1ui64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform1ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform1ui64vNV", e); }
     }
 
-    public void ProgramUniform2ui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform2ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64vNV");
+    /// ```
+    /// void glProgramUniform2ui64vNV(unsigned int program, int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void ProgramUniform2ui64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64vNV");
         try { Handles.MH_glProgramUniform2ui64vNV.invokeExact(handles.PFN_glProgramUniform2ui64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform2ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform2ui64vNV", e); }
     }
 
-    public void ProgramUniform3ui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform3ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64vNV");
+    /// ```
+    /// void glProgramUniform3ui64vNV(unsigned int program, int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void ProgramUniform3ui64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64vNV");
         try { Handles.MH_glProgramUniform3ui64vNV.invokeExact(handles.PFN_glProgramUniform3ui64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform3ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform3ui64vNV", e); }
     }
 
-    public void ProgramUniform4ui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") MemorySegment value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramUniform4ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64vNV");
+    /// ```
+    /// void glProgramUniform4ui64vNV(unsigned int program, int location, int count, const GLuint64EXT* value);
+    /// ```
+    public void ProgramUniform4ui64vNV(int program, int location, int count, MemorySegment value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64vNV");
         try { Handles.MH_glProgramUniform4ui64vNV.invokeExact(handles.PFN_glProgramUniform4ui64vNV, program, location, count, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniform4ui64vNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramUniform4ui64vNV", e); }
     }
 
 }

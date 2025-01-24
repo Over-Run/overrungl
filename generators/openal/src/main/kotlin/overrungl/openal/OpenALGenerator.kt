@@ -25,8 +25,8 @@ const val alPackage = "overrungl.openal"
 const val alLookup = "ALInternal.lookup()"
 
 fun main() {
-    registerDefType("ALboolean", char_boolean)
-    registerDefType("ALCboolean", char_boolean)
+    registerDefType("ALboolean", char_boolean.copy(originalName = "ALboolean"))
+    registerDefType("ALCboolean", char_boolean.copy(originalName = "ALCboolean"))
 
     val al = DefinitionFile("al.gen")
     val alc = DefinitionFile("alc.gen")

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -91,16 +90,22 @@ public final class GLNVBlendEquationAdvanced {
         this.handles = new Handles(func);
     }
 
-    public void BlendParameteriNV(@CType("GLenum") int pname, @CType("GLint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV");
+    /// ```
+    /// void glBlendParameteriNV(unsigned int pname, int value);
+    /// ```
+    public void BlendParameteriNV(int pname, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV");
         try { Handles.MH_glBlendParameteriNV.invokeExact(handles.PFN_glBlendParameteriNV, pname, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendParameteriNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendParameteriNV", e); }
     }
 
+    /// ```
+    /// void glBlendBarrierNV();
+    /// ```
     public void BlendBarrierNV() {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierNV");
         try { Handles.MH_glBlendBarrierNV.invokeExact(handles.PFN_glBlendBarrierNV); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendBarrierNV", e); }
     }
 
 }

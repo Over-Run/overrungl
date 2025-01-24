@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,10 +39,13 @@ public final class GLNVConservativeRasterPreSnapTriangles {
         this.handles = new Handles(func);
     }
 
-    public void ConservativeRasterParameteriNV(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");
+    /// ```
+    /// void glConservativeRasterParameteriNV(unsigned int pname, int param);
+    /// ```
+    public void ConservativeRasterParameteriNV(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");
         try { Handles.MH_glConservativeRasterParameteriNV.invokeExact(handles.PFN_glConservativeRasterParameteriNV, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameteriNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ConservativeRasterParameteriNV", e); }
     }
 
 }

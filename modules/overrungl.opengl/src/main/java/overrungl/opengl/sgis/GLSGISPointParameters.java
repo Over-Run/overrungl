@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -44,16 +43,22 @@ public final class GLSGISPointParameters {
         this.handles = new Handles(func);
     }
 
-    public void PointParameterfSGIS(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
+    /// ```
+    /// void glPointParameterfSGIS(unsigned int pname, float param);
+    /// ```
+    public void PointParameterfSGIS(int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
         try { Handles.MH_glPointParameterfSGIS.invokeExact(handles.PFN_glPointParameterfSGIS, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterfSGIS", e); }
     }
 
-    public void PointParameterfvSGIS(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
+    /// ```
+    /// void glPointParameterfvSGIS(unsigned int pname, const GLfloat* params);
+    /// ```
+    public void PointParameterfvSGIS(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
         try { Handles.MH_glPointParameterfvSGIS.invokeExact(handles.PFN_glPointParameterfvSGIS, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterfvSGIS", e); }
     }
 
 }

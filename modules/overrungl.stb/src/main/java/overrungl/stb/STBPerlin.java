@@ -81,54 +81,48 @@ public final class STBPerlin {
     /// float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap);
     /// ```
     public static float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap) {
-        try {
-            return (float) Handles.MH_stb_perlin_noise3.invokeExact(Handles.get().PFN_stb_perlin_noise3, x, y, z, x_wrap, y_wrap, z_wrap);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
+        try { return (float) Handles.MH_stb_perlin_noise3.invokeExact(Handles.get().PFN_stb_perlin_noise3, x, y, z, x_wrap, y_wrap, z_wrap); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
     }
 
     /// ```
     /// float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed);
     /// ```
     public static float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed) {
-        try {
-            return (float) Handles.MH_stb_perlin_noise3_seed.invokeExact(Handles.get().PFN_stb_perlin_noise3_seed, x, y, z, x_wrap, y_wrap, z_wrap, seed);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
+        try { return (float) Handles.MH_stb_perlin_noise3_seed.invokeExact(Handles.get().PFN_stb_perlin_noise3_seed, x, y, z, x_wrap, y_wrap, z_wrap, seed); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
     }
 
     /// ```
     /// float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
     /// ```
     public static float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves) {
-        try {
-            return (float) Handles.MH_stb_perlin_ridge_noise3.invokeExact(Handles.get().PFN_stb_perlin_ridge_noise3, x, y, z, lacunarity, gain, offset, octaves);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
+        try { return (float) Handles.MH_stb_perlin_ridge_noise3.invokeExact(Handles.get().PFN_stb_perlin_ridge_noise3, x, y, z, lacunarity, gain, offset, octaves); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
     }
 
     /// ```
     /// float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
     public static float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
-        try {
-            return (float) Handles.MH_stb_perlin_fbm_noise3.invokeExact(Handles.get().PFN_stb_perlin_fbm_noise3, x, y, z, lacunarity, gain, octaves);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
+        try { return (float) Handles.MH_stb_perlin_fbm_noise3.invokeExact(Handles.get().PFN_stb_perlin_fbm_noise3, x, y, z, lacunarity, gain, octaves); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
     }
 
     /// ```
     /// float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
     public static float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
-        try {
-            return (float) Handles.MH_stb_perlin_turbulence_noise3.invokeExact(Handles.get().PFN_stb_perlin_turbulence_noise3, x, y, z, lacunarity, gain, octaves);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
+        try { return (float) Handles.MH_stb_perlin_turbulence_noise3.invokeExact(Handles.get().PFN_stb_perlin_turbulence_noise3, x, y, z, lacunarity, gain, octaves); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
     }
 
     /// ```
     /// float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, unsigned char seed);
     /// ```
     public static float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, byte seed) {
-        try {
-            return (float) Handles.MH_stb_perlin_noise3_wrap_nonpow2.invokeExact(Handles.get().PFN_stb_perlin_noise3_wrap_nonpow2, x, y, z, x_wrap, y_wrap, z_wrap, seed);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_wrap_nonpow2", e); }
+        try { return (float) Handles.MH_stb_perlin_noise3_wrap_nonpow2.invokeExact(Handles.get().PFN_stb_perlin_noise3_wrap_nonpow2, x, y, z, x_wrap, y_wrap, z_wrap, seed); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_wrap_nonpow2", e); }
     }
 
     //@formatter:on

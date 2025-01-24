@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,16 +40,22 @@ public final class GLNVRegisterCombiners2 {
         this.handles = new Handles(func);
     }
 
-    public void CombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
+    /// ```
+    /// void glCombinerStageParameterfvNV(unsigned int stage, unsigned int pname, const GLfloat* params);
+    /// ```
+    public void CombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
         try { Handles.MH_glCombinerStageParameterfvNV.invokeExact(handles.PFN_glCombinerStageParameterfvNV, stage, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glCombinerStageParameterfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CombinerStageParameterfvNV", e); }
     }
 
-    public void GetCombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
+    /// ```
+    /// void glGetCombinerStageParameterfvNV(unsigned int stage, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetCombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
         try { Handles.MH_glGetCombinerStageParameterfvNV.invokeExact(handles.PFN_glGetCombinerStageParameterfvNV, stage, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCombinerStageParameterfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetCombinerStageParameterfvNV", e); }
     }
 
 }

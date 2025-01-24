@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -51,22 +50,31 @@ public final class GLNVSampleLocations {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferSampleLocationsfvNV(@CType("GLenum") int target, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
+    /// ```
+    /// void glFramebufferSampleLocationsfvNV(unsigned int target, unsigned int start, int count, const GLfloat* v);
+    /// ```
+    public void FramebufferSampleLocationsfvNV(int target, int start, int count, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
         try { Handles.MH_glFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glFramebufferSampleLocationsfvNV, target, start, count, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferSampleLocationsfvNV", e); }
     }
 
-    public void NamedFramebufferSampleLocationsfvNV(@CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
+    /// ```
+    /// void glNamedFramebufferSampleLocationsfvNV(unsigned int framebuffer, unsigned int start, int count, const GLfloat* v);
+    /// ```
+    public void NamedFramebufferSampleLocationsfvNV(int framebuffer, int start, int count, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
         try { Handles.MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSampleLocationsfvNV", e); }
     }
 
+    /// ```
+    /// void glResolveDepthValuesNV();
+    /// ```
     public void ResolveDepthValuesNV() {
-        if (Unmarshal.isNullPointer(handles.PFN_glResolveDepthValuesNV)) throw new SymbolNotFoundError("Symbol not found: glResolveDepthValuesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glResolveDepthValuesNV)) throw new SymbolNotFoundError("Symbol not found: glResolveDepthValuesNV");
         try { Handles.MH_glResolveDepthValuesNV.invokeExact(handles.PFN_glResolveDepthValuesNV); }
-        catch (Throwable e) { throw new RuntimeException("error in glResolveDepthValuesNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ResolveDepthValuesNV", e); }
     }
 
 }

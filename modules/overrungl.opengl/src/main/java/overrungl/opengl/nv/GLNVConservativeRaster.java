@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLNVConservativeRaster {
         this.handles = new Handles(func);
     }
 
-    public void SubpixelPrecisionBiasNV(@CType("GLuint") int xbits, @CType("GLuint") int ybits) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new SymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");
+    /// ```
+    /// void glSubpixelPrecisionBiasNV(unsigned int xbits, unsigned int ybits);
+    /// ```
+    public void SubpixelPrecisionBiasNV(int xbits, int ybits) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new SymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");
         try { Handles.MH_glSubpixelPrecisionBiasNV.invokeExact(handles.PFN_glSubpixelPrecisionBiasNV, xbits, ybits); }
-        catch (Throwable e) { throw new RuntimeException("error in glSubpixelPrecisionBiasNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SubpixelPrecisionBiasNV", e); }
     }
 
 }

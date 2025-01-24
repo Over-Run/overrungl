@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -37,10 +36,13 @@ public final class GLNVDrawTexture {
         this.handles = new Handles(func);
     }
 
-    public void DrawTextureNV(@CType("GLuint") int texture, @CType("GLuint") int sampler, @CType("GLfloat") float x0, @CType("GLfloat") float y0, @CType("GLfloat") float x1, @CType("GLfloat") float y1, @CType("GLfloat") float z, @CType("GLfloat") float s0, @CType("GLfloat") float t0, @CType("GLfloat") float s1, @CType("GLfloat") float t1) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawTextureNV)) throw new SymbolNotFoundError("Symbol not found: glDrawTextureNV");
+    /// ```
+    /// void glDrawTextureNV(unsigned int texture, unsigned int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1);
+    /// ```
+    public void DrawTextureNV(int texture, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawTextureNV)) throw new SymbolNotFoundError("Symbol not found: glDrawTextureNV");
         try { Handles.MH_glDrawTextureNV.invokeExact(handles.PFN_glDrawTextureNV, texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTextureNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawTextureNV", e); }
     }
 
 }

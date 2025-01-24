@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -94,28 +93,40 @@ public final class GLNVMeshShader {
         this.handles = new Handles(func);
     }
 
-    public void DrawMeshTasksNV(@CType("GLuint") int first, @CType("GLuint") int count) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
+    /// ```
+    /// void glDrawMeshTasksNV(unsigned int first, unsigned int count);
+    /// ```
+    public void DrawMeshTasksNV(int first, int count) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
         try { Handles.MH_glDrawMeshTasksNV.invokeExact(handles.PFN_glDrawMeshTasksNV, first, count); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksNV", e); }
     }
 
-    public void DrawMeshTasksIndirectNV(@CType("GLintptr") long indirect) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
+    /// ```
+    /// void glDrawMeshTasksIndirectNV(signed long long indirect);
+    /// ```
+    public void DrawMeshTasksIndirectNV(long indirect) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
         try { Handles.MH_glDrawMeshTasksIndirectNV.invokeExact(handles.PFN_glDrawMeshTasksIndirectNV, indirect); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksIndirectNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksIndirectNV", e); }
     }
 
-    public void MultiDrawMeshTasksIndirectNV(@CType("GLintptr") long indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
+    /// ```
+    /// void glMultiDrawMeshTasksIndirectNV(signed long long indirect, int drawcount, int stride);
+    /// ```
+    public void MultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
         try { Handles.MH_glMultiDrawMeshTasksIndirectNV.invokeExact(handles.PFN_glMultiDrawMeshTasksIndirectNV, indirect, drawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawMeshTasksIndirectNV", e); }
     }
 
-    public void MultiDrawMeshTasksIndirectCountNV(@CType("GLintptr") long indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");
+    /// ```
+    /// void glMultiDrawMeshTasksIndirectCountNV(signed long long indirect, signed long long drawcount, int maxdrawcount, int stride);
+    /// ```
+    public void MultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");
         try { Handles.MH_glMultiDrawMeshTasksIndirectCountNV.invokeExact(handles.PFN_glMultiDrawMeshTasksIndirectCountNV, indirect, drawcount, maxdrawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectCountNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawMeshTasksIndirectCountNV", e); }
     }
 
 }

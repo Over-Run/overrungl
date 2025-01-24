@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -99,76 +98,112 @@ public final class GLNVVideoCapture {
         this.handles = new Handles(func);
     }
 
-    public void BeginVideoCaptureNV(@CType("GLuint") int video_capture_slot) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBeginVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glBeginVideoCaptureNV");
+    /// ```
+    /// void glBeginVideoCaptureNV(unsigned int video_capture_slot);
+    /// ```
+    public void BeginVideoCaptureNV(int video_capture_slot) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glBeginVideoCaptureNV");
         try { Handles.MH_glBeginVideoCaptureNV.invokeExact(handles.PFN_glBeginVideoCaptureNV, video_capture_slot); }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginVideoCaptureNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BeginVideoCaptureNV", e); }
     }
 
-    public void BindVideoCaptureStreamBufferNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int frame_region, @CType("GLintptrARB") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindVideoCaptureStreamBufferNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamBufferNV");
+    /// ```
+    /// void glBindVideoCaptureStreamBufferNV(unsigned int video_capture_slot, unsigned int stream, unsigned int frame_region, signed long long offset);
+    /// ```
+    public void BindVideoCaptureStreamBufferNV(int video_capture_slot, int stream, int frame_region, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindVideoCaptureStreamBufferNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamBufferNV");
         try { Handles.MH_glBindVideoCaptureStreamBufferNV.invokeExact(handles.PFN_glBindVideoCaptureStreamBufferNV, video_capture_slot, stream, frame_region, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindVideoCaptureStreamBufferNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindVideoCaptureStreamBufferNV", e); }
     }
 
-    public void BindVideoCaptureStreamTextureNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int frame_region, @CType("GLenum") int target, @CType("GLuint") int texture) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindVideoCaptureStreamTextureNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamTextureNV");
+    /// ```
+    /// void glBindVideoCaptureStreamTextureNV(unsigned int video_capture_slot, unsigned int stream, unsigned int frame_region, unsigned int target, unsigned int texture);
+    /// ```
+    public void BindVideoCaptureStreamTextureNV(int video_capture_slot, int stream, int frame_region, int target, int texture) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindVideoCaptureStreamTextureNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamTextureNV");
         try { Handles.MH_glBindVideoCaptureStreamTextureNV.invokeExact(handles.PFN_glBindVideoCaptureStreamTextureNV, video_capture_slot, stream, frame_region, target, texture); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindVideoCaptureStreamTextureNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindVideoCaptureStreamTextureNV", e); }
     }
 
-    public void EndVideoCaptureNV(@CType("GLuint") int video_capture_slot) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEndVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glEndVideoCaptureNV");
+    /// ```
+    /// void glEndVideoCaptureNV(unsigned int video_capture_slot);
+    /// ```
+    public void EndVideoCaptureNV(int video_capture_slot) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glEndVideoCaptureNV");
         try { Handles.MH_glEndVideoCaptureNV.invokeExact(handles.PFN_glEndVideoCaptureNV, video_capture_slot); }
-        catch (Throwable e) { throw new RuntimeException("error in glEndVideoCaptureNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EndVideoCaptureNV", e); }
     }
 
-    public void GetVideoCaptureivNV(@CType("GLuint") int video_capture_slot, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureivNV");
+    /// ```
+    /// void glGetVideoCaptureivNV(unsigned int video_capture_slot, unsigned int pname, GLint* params);
+    /// ```
+    public void GetVideoCaptureivNV(int video_capture_slot, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureivNV");
         try { Handles.MH_glGetVideoCaptureivNV.invokeExact(handles.PFN_glGetVideoCaptureivNV, video_capture_slot, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVideoCaptureivNV", e); }
     }
 
-    public void GetVideoCaptureStreamivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamivNV");
+    /// ```
+    /// void glGetVideoCaptureStreamivNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLint* params);
+    /// ```
+    public void GetVideoCaptureStreamivNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamivNV");
         try { Handles.MH_glGetVideoCaptureStreamivNV.invokeExact(handles.PFN_glGetVideoCaptureStreamivNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVideoCaptureStreamivNV", e); }
     }
 
-    public void GetVideoCaptureStreamfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamfvNV");
+    /// ```
+    /// void glGetVideoCaptureStreamfvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetVideoCaptureStreamfvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamfvNV");
         try { Handles.MH_glGetVideoCaptureStreamfvNV.invokeExact(handles.PFN_glGetVideoCaptureStreamfvNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVideoCaptureStreamfvNV", e); }
     }
 
-    public void GetVideoCaptureStreamdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("GLdouble *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVideoCaptureStreamdvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamdvNV");
+    /// ```
+    /// void glGetVideoCaptureStreamdvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLdouble* params);
+    /// ```
+    public void GetVideoCaptureStreamdvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamdvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamdvNV");
         try { Handles.MH_glGetVideoCaptureStreamdvNV.invokeExact(handles.PFN_glGetVideoCaptureStreamdvNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVideoCaptureStreamdvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVideoCaptureStreamdvNV", e); }
     }
 
-    public @CType("GLenum") int VideoCaptureNV(@CType("GLuint") int video_capture_slot, @CType("GLuint *") MemorySegment sequence_num, @CType("GLuint64EXT *") MemorySegment capture_time) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureNV");
+    /// ```
+    /// unsigned int glVideoCaptureNV(unsigned int video_capture_slot, GLuint* sequence_num, GLuint64EXT* capture_time);
+    /// ```
+    public int VideoCaptureNV(int video_capture_slot, MemorySegment sequence_num, MemorySegment capture_time) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureNV");
         try { return (int) Handles.MH_glVideoCaptureNV.invokeExact(handles.PFN_glVideoCaptureNV, video_capture_slot, sequence_num, capture_time); }
-        catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VideoCaptureNV", e); }
     }
 
-    public void VideoCaptureStreamParameterivNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterivNV");
+    /// ```
+    /// void glVideoCaptureStreamParameterivNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLint* params);
+    /// ```
+    public void VideoCaptureStreamParameterivNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterivNV");
         try { Handles.MH_glVideoCaptureStreamParameterivNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterivNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VideoCaptureStreamParameterivNV", e); }
     }
 
-    public void VideoCaptureStreamParameterfvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterfvNV");
+    /// ```
+    /// void glVideoCaptureStreamParameterfvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLfloat* params);
+    /// ```
+    public void VideoCaptureStreamParameterfvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterfvNV");
         try { Handles.MH_glVideoCaptureStreamParameterfvNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterfvNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VideoCaptureStreamParameterfvNV", e); }
     }
 
-    public void VideoCaptureStreamParameterdvNV(@CType("GLuint") int video_capture_slot, @CType("GLuint") int stream, @CType("GLenum") int pname, @CType("const GLdouble *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVideoCaptureStreamParameterdvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterdvNV");
+    /// ```
+    /// void glVideoCaptureStreamParameterdvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLdouble* params);
+    /// ```
+    public void VideoCaptureStreamParameterdvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterdvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterdvNV");
         try { Handles.MH_glVideoCaptureStreamParameterdvNV.invokeExact(handles.PFN_glVideoCaptureStreamParameterdvNV, video_capture_slot, stream, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glVideoCaptureStreamParameterdvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VideoCaptureStreamParameterdvNV", e); }
     }
 
 }

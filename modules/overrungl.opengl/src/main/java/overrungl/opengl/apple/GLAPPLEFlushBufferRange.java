@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,16 +41,22 @@ public final class GLAPPLEFlushBufferRange {
         this.handles = new Handles(func);
     }
 
-    public void BufferParameteriAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
+    /// ```
+    /// void glBufferParameteriAPPLE(unsigned int target, unsigned int pname, int param);
+    /// ```
+    public void BufferParameteriAPPLE(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
         try { Handles.MH_glBufferParameteriAPPLE.invokeExact(handles.PFN_glBufferParameteriAPPLE, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferParameteriAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BufferParameteriAPPLE", e); }
     }
 
-    public void FlushMappedBufferRangeAPPLE(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
+    /// ```
+    /// void glFlushMappedBufferRangeAPPLE(unsigned int target, signed long long offset, signed long long size);
+    /// ```
+    public void FlushMappedBufferRangeAPPLE(int target, long offset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
         try { Handles.MH_glFlushMappedBufferRangeAPPLE.invokeExact(handles.PFN_glFlushMappedBufferRangeAPPLE, target, offset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRangeAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FlushMappedBufferRangeAPPLE", e); }
     }
 
 }

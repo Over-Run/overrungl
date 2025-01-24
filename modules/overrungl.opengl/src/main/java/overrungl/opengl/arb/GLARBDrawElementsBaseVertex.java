@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,28 +45,40 @@ public final class GLARBDrawElementsBaseVertex {
         this.handles = new Handles(func);
     }
 
-    public void DrawElementsBaseVertex(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLint") int basevertex) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsBaseVertex");
+    /// ```
+    /// void glDrawElementsBaseVertex(unsigned int mode, int count, unsigned int type, const void* indices, int basevertex);
+    /// ```
+    public void DrawElementsBaseVertex(int mode, int count, int type, MemorySegment indices, int basevertex) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsBaseVertex");
         try { Handles.MH_glDrawElementsBaseVertex.invokeExact(handles.PFN_glDrawElementsBaseVertex, mode, count, type, indices, basevertex); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsBaseVertex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementsBaseVertex", e); }
     }
 
-    public void DrawRangeElementsBaseVertex(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLint") int basevertex) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsBaseVertex");
+    /// ```
+    /// void glDrawRangeElementsBaseVertex(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices, int basevertex);
+    /// ```
+    public void DrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int basevertex) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsBaseVertex");
         try { Handles.MH_glDrawRangeElementsBaseVertex.invokeExact(handles.PFN_glDrawRangeElementsBaseVertex, mode, start, end, count, type, indices, basevertex); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementsBaseVertex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementsBaseVertex", e); }
     }
 
-    public void DrawElementsInstancedBaseVertex(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLint") int basevertex) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertex");
+    /// ```
+    /// void glDrawElementsInstancedBaseVertex(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, int basevertex);
+    /// ```
+    public void DrawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertex");
         try { Handles.MH_glDrawElementsInstancedBaseVertex.invokeExact(handles.PFN_glDrawElementsInstancedBaseVertex, mode, count, type, indices, instancecount, basevertex); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedBaseVertex", e); }
     }
 
-    public void MultiDrawElementsBaseVertex(@CType("GLenum") int mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int drawcount, @CType("const GLint *") MemorySegment basevertex) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsBaseVertex");
+    /// ```
+    /// void glMultiDrawElementsBaseVertex(unsigned int mode, const GLsizei* count, unsigned int type, const void* const * indices, int drawcount, const GLint* basevertex);
+    /// ```
+    public void MultiDrawElementsBaseVertex(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount, MemorySegment basevertex) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsBaseVertex");
         try { Handles.MH_glMultiDrawElementsBaseVertex.invokeExact(handles.PFN_glMultiDrawElementsBaseVertex, mode, count, type, indices, drawcount, basevertex); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsBaseVertex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsBaseVertex", e); }
     }
 
 }

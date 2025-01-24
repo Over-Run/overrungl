@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,10 +42,13 @@ public final class GLNVQueryResource {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLint") int QueryResourceNV(@CType("GLenum") int queryType, @CType("GLint") int tagId, @CType("GLuint") int count, @CType("GLint *") MemorySegment buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
+    /// ```
+    /// int glQueryResourceNV(unsigned int queryType, int tagId, unsigned int count, GLint* buffer);
+    /// ```
+    public int QueryResourceNV(int queryType, int tagId, int count, MemorySegment buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
         try { return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryResourceNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueryResourceNV", e); }
     }
 
 }

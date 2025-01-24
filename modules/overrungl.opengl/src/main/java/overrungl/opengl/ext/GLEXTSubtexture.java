@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLEXTSubtexture {
         this.handles = new Handles(func);
     }
 
-    public void TexSubImage1DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
+    /// ```
+    /// void glTexSubImage1DEXT(unsigned int target, int level, int xoffset, int width, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
         try { Handles.MH_glTexSubImage1DEXT.invokeExact(handles.PFN_glTexSubImage1DEXT, target, level, xoffset, width, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexSubImage1DEXT", e); }
     }
 
-    public void TexSubImage2DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");
+    /// ```
+    /// void glTexSubImage2DEXT(unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");
         try { Handles.MH_glTexSubImage2DEXT.invokeExact(handles.PFN_glTexSubImage2DEXT, target, level, xoffset, yoffset, width, height, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexSubImage2DEXT", e); }
     }
 
 }

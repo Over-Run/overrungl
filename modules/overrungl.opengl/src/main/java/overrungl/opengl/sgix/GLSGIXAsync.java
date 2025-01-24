@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -32,7 +31,7 @@ public final class GLSGIXAsync {
         public static final MethodHandle MH_glPollAsyncSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glGenAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glDeleteAsyncMarkersSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsAsyncMarkerSGIX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAsyncMarkerSGIX;
         public final MemorySegment PFN_glFinishAsyncSGIX;
         public final MemorySegment PFN_glPollAsyncSGIX;
@@ -53,40 +52,58 @@ public final class GLSGIXAsync {
         this.handles = new Handles(func);
     }
 
-    public void AsyncMarkerSGIX(@CType("GLuint") int marker) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glAsyncMarkerSGIX");
+    /// ```
+    /// void glAsyncMarkerSGIX(unsigned int marker);
+    /// ```
+    public void AsyncMarkerSGIX(int marker) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glAsyncMarkerSGIX");
         try { Handles.MH_glAsyncMarkerSGIX.invokeExact(handles.PFN_glAsyncMarkerSGIX, marker); }
-        catch (Throwable e) { throw new RuntimeException("error in glAsyncMarkerSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AsyncMarkerSGIX", e); }
     }
 
-    public @CType("GLint") int FinishAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFinishAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glFinishAsyncSGIX");
+    /// ```
+    /// int glFinishAsyncSGIX(GLuint* markerp);
+    /// ```
+    public int FinishAsyncSGIX(MemorySegment markerp) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFinishAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glFinishAsyncSGIX");
         try { return (int) Handles.MH_glFinishAsyncSGIX.invokeExact(handles.PFN_glFinishAsyncSGIX, markerp); }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishAsyncSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FinishAsyncSGIX", e); }
     }
 
-    public @CType("GLint") int PollAsyncSGIX(@CType("GLuint *") MemorySegment markerp) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPollAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollAsyncSGIX");
+    /// ```
+    /// int glPollAsyncSGIX(GLuint* markerp);
+    /// ```
+    public int PollAsyncSGIX(MemorySegment markerp) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPollAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollAsyncSGIX");
         try { return (int) Handles.MH_glPollAsyncSGIX.invokeExact(handles.PFN_glPollAsyncSGIX, markerp); }
-        catch (Throwable e) { throw new RuntimeException("error in glPollAsyncSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PollAsyncSGIX", e); }
     }
 
-    public @CType("GLuint") int GenAsyncMarkersSGIX(@CType("GLsizei") int range) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGenAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glGenAsyncMarkersSGIX");
+    /// ```
+    /// unsigned int glGenAsyncMarkersSGIX(int range);
+    /// ```
+    public int GenAsyncMarkersSGIX(int range) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glGenAsyncMarkersSGIX");
         try { return (int) Handles.MH_glGenAsyncMarkersSGIX.invokeExact(handles.PFN_glGenAsyncMarkersSGIX, range); }
-        catch (Throwable e) { throw new RuntimeException("error in glGenAsyncMarkersSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GenAsyncMarkersSGIX", e); }
     }
 
-    public void DeleteAsyncMarkersSGIX(@CType("GLuint") int marker, @CType("GLsizei") int range) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeleteAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeleteAsyncMarkersSGIX");
+    /// ```
+    /// void glDeleteAsyncMarkersSGIX(unsigned int marker, int range);
+    /// ```
+    public void DeleteAsyncMarkersSGIX(int marker, int range) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeleteAsyncMarkersSGIX");
         try { Handles.MH_glDeleteAsyncMarkersSGIX.invokeExact(handles.PFN_glDeleteAsyncMarkersSGIX, marker, range); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteAsyncMarkersSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeleteAsyncMarkersSGIX", e); }
     }
 
-    public @CType("GLboolean") boolean IsAsyncMarkerSGIX(@CType("GLuint") int marker) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glIsAsyncMarkerSGIX");
-        try { return (boolean) Handles.MH_glIsAsyncMarkerSGIX.invokeExact(handles.PFN_glIsAsyncMarkerSGIX, marker); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsAsyncMarkerSGIX", e); }
+    /// ```
+    /// GLboolean glIsAsyncMarkerSGIX(unsigned int marker);
+    /// ```
+    public boolean IsAsyncMarkerSGIX(int marker) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glIsAsyncMarkerSGIX");
+        try { return (((byte) Handles.MH_glIsAsyncMarkerSGIX.invokeExact(handles.PFN_glIsAsyncMarkerSGIX, marker)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsAsyncMarkerSGIX", e); }
     }
 
 }

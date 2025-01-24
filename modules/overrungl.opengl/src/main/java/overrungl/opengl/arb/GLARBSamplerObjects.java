@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -29,7 +28,7 @@ public final class GLARBSamplerObjects {
     public static final class Handles {
         public static final MethodHandle MH_glGenSamplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_glDeleteSamplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsSampler = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsSampler = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glBindSampler = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glSamplerParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_glSamplerParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -77,88 +76,130 @@ public final class GLARBSamplerObjects {
         this.handles = new Handles(func);
     }
 
-    public void GenSamplers(@CType("GLsizei") int count, @CType("GLuint *") MemorySegment samplers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGenSamplers)) throw new SymbolNotFoundError("Symbol not found: glGenSamplers");
+    /// ```
+    /// void glGenSamplers(int count, GLuint* samplers);
+    /// ```
+    public void GenSamplers(int count, MemorySegment samplers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenSamplers)) throw new SymbolNotFoundError("Symbol not found: glGenSamplers");
         try { Handles.MH_glGenSamplers.invokeExact(handles.PFN_glGenSamplers, count, samplers); }
-        catch (Throwable e) { throw new RuntimeException("error in glGenSamplers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GenSamplers", e); }
     }
 
-    public void DeleteSamplers(@CType("GLsizei") int count, @CType("const GLuint *") MemorySegment samplers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDeleteSamplers)) throw new SymbolNotFoundError("Symbol not found: glDeleteSamplers");
+    /// ```
+    /// void glDeleteSamplers(int count, const GLuint* samplers);
+    /// ```
+    public void DeleteSamplers(int count, MemorySegment samplers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSamplers)) throw new SymbolNotFoundError("Symbol not found: glDeleteSamplers");
         try { Handles.MH_glDeleteSamplers.invokeExact(handles.PFN_glDeleteSamplers, count, samplers); }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteSamplers", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DeleteSamplers", e); }
     }
 
-    public @CType("GLboolean") boolean IsSampler(@CType("GLuint") int sampler) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsSampler)) throw new SymbolNotFoundError("Symbol not found: glIsSampler");
-        try { return (boolean) Handles.MH_glIsSampler.invokeExact(handles.PFN_glIsSampler, sampler); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsSampler", e); }
+    /// ```
+    /// GLboolean glIsSampler(unsigned int sampler);
+    /// ```
+    public boolean IsSampler(int sampler) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsSampler)) throw new SymbolNotFoundError("Symbol not found: glIsSampler");
+        try { return (((byte) Handles.MH_glIsSampler.invokeExact(handles.PFN_glIsSampler, sampler)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsSampler", e); }
     }
 
-    public void BindSampler(@CType("GLuint") int unit, @CType("GLuint") int sampler) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindSampler)) throw new SymbolNotFoundError("Symbol not found: glBindSampler");
+    /// ```
+    /// void glBindSampler(unsigned int unit, unsigned int sampler);
+    /// ```
+    public void BindSampler(int unit, int sampler) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindSampler)) throw new SymbolNotFoundError("Symbol not found: glBindSampler");
         try { Handles.MH_glBindSampler.invokeExact(handles.PFN_glBindSampler, unit, sampler); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindSampler", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindSampler", e); }
     }
 
-    public void SamplerParameteri(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameteri)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteri");
+    /// ```
+    /// void glSamplerParameteri(unsigned int sampler, unsigned int pname, int param);
+    /// ```
+    public void SamplerParameteri(int sampler, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteri)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteri");
         try { Handles.MH_glSamplerParameteri.invokeExact(handles.PFN_glSamplerParameteri, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameteri", e); }
     }
 
-    public void SamplerParameteriv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteriv");
+    /// ```
+    /// void glSamplerParameteriv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// ```
+    public void SamplerParameteriv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteriv");
         try { Handles.MH_glSamplerParameteriv.invokeExact(handles.PFN_glSamplerParameteriv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameteriv", e); }
     }
 
-    public void SamplerParameterf(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterf)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterf");
+    /// ```
+    /// void glSamplerParameterf(unsigned int sampler, unsigned int pname, float param);
+    /// ```
+    public void SamplerParameterf(int sampler, int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterf)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterf");
         try { Handles.MH_glSamplerParameterf.invokeExact(handles.PFN_glSamplerParameterf, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterf", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterf", e); }
     }
 
-    public void SamplerParameterfv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterfv");
+    /// ```
+    /// void glSamplerParameterfv(unsigned int sampler, unsigned int pname, const GLfloat* param);
+    /// ```
+    public void SamplerParameterfv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterfv");
         try { Handles.MH_glSamplerParameterfv.invokeExact(handles.PFN_glSamplerParameterfv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterfv", e); }
     }
 
-    public void SamplerParameterIiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIiv");
+    /// ```
+    /// void glSamplerParameterIiv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// ```
+    public void SamplerParameterIiv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIiv");
         try { Handles.MH_glSamplerParameterIiv.invokeExact(handles.PFN_glSamplerParameterIiv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterIiv", e); }
     }
 
-    public void SamplerParameterIuiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("const GLuint *") MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIuiv");
+    /// ```
+    /// void glSamplerParameterIuiv(unsigned int sampler, unsigned int pname, const GLuint* param);
+    /// ```
+    public void SamplerParameterIuiv(int sampler, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIuiv");
         try { Handles.MH_glSamplerParameterIuiv.invokeExact(handles.PFN_glSamplerParameterIuiv, sampler, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplerParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplerParameterIuiv", e); }
     }
 
-    public void GetSamplerParameteriv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameteriv");
+    /// ```
+    /// void glGetSamplerParameteriv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// ```
+    public void GetSamplerParameteriv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameteriv");
         try { Handles.MH_glGetSamplerParameteriv.invokeExact(handles.PFN_glGetSamplerParameteriv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameteriv", e); }
     }
 
-    public void GetSamplerParameterIiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIiv");
+    /// ```
+    /// void glGetSamplerParameterIiv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// ```
+    public void GetSamplerParameterIiv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIiv");
         try { Handles.MH_glGetSamplerParameterIiv.invokeExact(handles.PFN_glGetSamplerParameterIiv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterIiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterIiv", e); }
     }
 
-    public void GetSamplerParameterfv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterfv");
+    /// ```
+    /// void glGetSamplerParameterfv(unsigned int sampler, unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetSamplerParameterfv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterfv");
         try { Handles.MH_glGetSamplerParameterfv.invokeExact(handles.PFN_glGetSamplerParameterfv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterfv", e); }
     }
 
-    public void GetSamplerParameterIuiv(@CType("GLuint") int sampler, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIuiv");
+    /// ```
+    /// void glGetSamplerParameterIuiv(unsigned int sampler, unsigned int pname, GLuint* params);
+    /// ```
+    public void GetSamplerParameterIuiv(int sampler, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIuiv");
         try { Handles.MH_glGetSamplerParameterIuiv.invokeExact(handles.PFN_glGetSamplerParameterIuiv, sampler, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSamplerParameterIuiv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSamplerParameterIuiv", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -38,10 +37,13 @@ public final class GLEXTMemoryObjectFd {
         this.handles = new Handles(func);
     }
 
-    public void ImportMemoryFdEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("GLint") int fd) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
+    /// ```
+    /// void glImportMemoryFdEXT(unsigned int memory, uint64_t size, unsigned int handleType, int fd);
+    /// ```
+    public void ImportMemoryFdEXT(int memory, long size, int handleType, int fd) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
         try { Handles.MH_glImportMemoryFdEXT.invokeExact(handles.PFN_glImportMemoryFdEXT, memory, size, handleType, fd); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryFdEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportMemoryFdEXT", e); }
     }
 
 }

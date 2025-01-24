@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -54,10 +53,13 @@ public final class GLARBDrawBuffers {
         this.handles = new Handles(func);
     }
 
-    public void DrawBuffersARB(@CType("GLsizei") int n, @CType("const GLenum *") MemorySegment bufs) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
+    /// ```
+    /// void glDrawBuffersARB(int n, const GLenum* bufs);
+    /// ```
+    public void DrawBuffersARB(int n, MemorySegment bufs) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
         try { Handles.MH_glDrawBuffersARB.invokeExact(handles.PFN_glDrawBuffersARB, n, bufs); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawBuffersARB", e); }
     }
 
 }

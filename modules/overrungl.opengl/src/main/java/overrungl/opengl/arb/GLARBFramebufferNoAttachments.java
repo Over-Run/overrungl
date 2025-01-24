@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -49,16 +48,22 @@ public final class GLARBFramebufferNoAttachments {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferParameteri(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri");
+    /// ```
+    /// void glFramebufferParameteri(unsigned int target, unsigned int pname, int param);
+    /// ```
+    public void FramebufferParameteri(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri");
         try { Handles.MH_glFramebufferParameteri.invokeExact(handles.PFN_glFramebufferParameteri, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteri", e); }
     }
 
-    public void GetFramebufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
+    /// ```
+    /// void glGetFramebufferParameteriv(unsigned int target, unsigned int pname, GLint* params);
+    /// ```
+    public void GetFramebufferParameteriv(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
         try { Handles.MH_glGetFramebufferParameteriv.invokeExact(handles.PFN_glGetFramebufferParameteriv, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameteriv", e); }
     }
 
 }

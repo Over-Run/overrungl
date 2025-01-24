@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,7 +41,7 @@ public final class GLSGISMultisample {
     public static final int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
         public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSampleMaskSGIS;
         public final MemorySegment PFN_glSamplePatternSGIS;
@@ -56,16 +55,22 @@ public final class GLSGISMultisample {
         this.handles = new Handles(func);
     }
 
-    public void SampleMaskSGIS(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
-        try { Handles.MH_glSampleMaskSGIS.invokeExact(handles.PFN_glSampleMaskSGIS, value, invert); }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
+    /// ```
+    /// void glSampleMaskSGIS(float value, GLboolean invert);
+    /// ```
+    public void SampleMaskSGIS(float value, boolean invert) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
+        try { Handles.MH_glSampleMaskSGIS.invokeExact(handles.PFN_glSampleMaskSGIS, value, ((invert) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in SampleMaskSGIS", e); }
     }
 
-    public void SamplePatternSGIS(@CType("GLenum") int pattern) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
+    /// ```
+    /// void glSamplePatternSGIS(unsigned int pattern);
+    /// ```
+    public void SamplePatternSGIS(int pattern) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
         try { Handles.MH_glSamplePatternSGIS.invokeExact(handles.PFN_glSamplePatternSGIS, pattern); }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SamplePatternSGIS", e); }
     }
 
 }

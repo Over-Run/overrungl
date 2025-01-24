@@ -208,243 +208,216 @@ public final class STBVorbis {
     /// STBVorbisInfo stb_vorbis_get_info(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_info(SegmentAllocator __allocator, MemorySegment f) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
     /// ```
     /// STBVorbisComment stb_vorbis_get_comment(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_comment(SegmentAllocator __allocator, MemorySegment f) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_error(stb_vorbis* f);
     /// ```
     public static int stb_vorbis_get_error(MemorySegment f) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_error.invokeExact(Handles.get().PFN_stb_vorbis_get_error, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_error.invokeExact(Handles.get().PFN_stb_vorbis_get_error, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
     }
 
     /// ```
     /// void stb_vorbis_close(stb_vorbis* f);
     /// ```
     public static void stb_vorbis_close(MemorySegment f) {
-        try {
-            Handles.MH_stb_vorbis_close.invokeExact(Handles.get().PFN_stb_vorbis_close, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
+        try { Handles.MH_stb_vorbis_close.invokeExact(Handles.get().PFN_stb_vorbis_close, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_sample_offset(stb_vorbis* f);
     /// ```
     public static int stb_vorbis_get_sample_offset(MemorySegment f) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_sample_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_sample_offset, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_sample_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_sample_offset, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
     }
 
     /// ```
     /// unsigned int stb_vorbis_get_file_offset(stb_vorbis* f);
     /// ```
     public static int stb_vorbis_get_file_offset(MemorySegment f) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_file_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_file_offset, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_file_offset.invokeExact(Handles.get().PFN_stb_vorbis_get_file_offset, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
     }
 
     /// ```
     /// stb_vorbis* stb_vorbis_open_pushdata(const unsigned char* datablock, int datablock_length_in_bytes, int* datablock_memory_consumed_in_bytes, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
     public static MemorySegment stb_vorbis_open_pushdata(MemorySegment datablock, int datablock_length_in_bytes, MemorySegment datablock_memory_consumed_in_bytes, MemorySegment error, MemorySegment alloc_buffer) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_open_pushdata, datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
     /// ```
     /// int stb_vorbis_decode_frame_pushdata(stb_vorbis* f, const unsigned char* datablock, int datablock_length_in_bytes, int* channels, float*** output, int* samples);
     /// ```
     public static int stb_vorbis_decode_frame_pushdata(MemorySegment f, MemorySegment datablock, int datablock_length_in_bytes, MemorySegment channels, MemorySegment output, MemorySegment samples) {
-        try {
-            return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_decode_frame_pushdata, f, datablock, datablock_length_in_bytes, channels, output, samples);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
+        try { return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_decode_frame_pushdata, f, datablock, datablock_length_in_bytes, channels, output, samples); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
     }
 
     /// ```
     /// void stb_vorbis_flush_pushdata(stb_vorbis* f);
     /// ```
     public static void stb_vorbis_flush_pushdata(MemorySegment f) {
-        try {
-            Handles.MH_stb_vorbis_flush_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_flush_pushdata, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
+        try { Handles.MH_stb_vorbis_flush_pushdata.invokeExact(Handles.get().PFN_stb_vorbis_flush_pushdata, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
     }
 
     /// ```
     /// int stb_vorbis_decode_filename(const char* filename, int* channels, int* sample_rate, short** output);
     /// ```
     public static int stb_vorbis_decode_filename(MemorySegment filename, MemorySegment channels, MemorySegment sample_rate, MemorySegment output) {
-        try {
-            return (int) Handles.MH_stb_vorbis_decode_filename.invokeExact(Handles.get().PFN_stb_vorbis_decode_filename, filename, channels, sample_rate, output);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
+        try { return (int) Handles.MH_stb_vorbis_decode_filename.invokeExact(Handles.get().PFN_stb_vorbis_decode_filename, filename, channels, sample_rate, output); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
     }
 
     /// ```
     /// int stb_vorbis_decode_memory(const unsigned char* mem, int len, int* channels, int* sample_rate, short** output);
     /// ```
     public static int stb_vorbis_decode_memory(MemorySegment mem, int len, MemorySegment channels, MemorySegment sample_rate, MemorySegment output) {
-        try {
-            return (int) Handles.MH_stb_vorbis_decode_memory.invokeExact(Handles.get().PFN_stb_vorbis_decode_memory, mem, len, channels, sample_rate, output);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
+        try { return (int) Handles.MH_stb_vorbis_decode_memory.invokeExact(Handles.get().PFN_stb_vorbis_decode_memory, mem, len, channels, sample_rate, output); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
     }
 
     /// ```
     /// stb_vorbis* stb_vorbis_open_memory(const unsigned char* data, int len, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
     public static MemorySegment stb_vorbis_open_memory(MemorySegment data, int len, MemorySegment error, MemorySegment alloc_buffer) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(Handles.get().PFN_stb_vorbis_open_memory, data, len, error, alloc_buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
     /// ```
     /// stb_vorbis* stb_vorbis_open_filename(const char* filename, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
     public static MemorySegment stb_vorbis_open_filename(MemorySegment filename, MemorySegment error, MemorySegment alloc_buffer) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Handles.get().PFN_stb_vorbis_open_filename, filename, error, alloc_buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
     /// ```
     /// stb_vorbis* stb_vorbis_open_file(FILE* f, int close_handle_on_close, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
     public static MemorySegment stb_vorbis_open_file(MemorySegment f, int close_handle_on_close, MemorySegment error, MemorySegment alloc_buffer) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_open_file.invokeExact(Handles.get().PFN_stb_vorbis_open_file, f, close_handle_on_close, error, alloc_buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_open_file.invokeExact(Handles.get().PFN_stb_vorbis_open_file, f, close_handle_on_close, error, alloc_buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file", e); }
     }
 
     /// ```
     /// stb_vorbis* stb_vorbis_open_file_section(FILE* f, int close_handle_on_close, int* error, const stb_vorbis_alloc* alloc_buffer, unsigned int len);
     /// ```
     public static MemorySegment stb_vorbis_open_file_section(MemorySegment f, int close_handle_on_close, MemorySegment error, MemorySegment alloc_buffer, int len) {
-        try {
-            return (MemorySegment) Handles.MH_stb_vorbis_open_file_section.invokeExact(Handles.get().PFN_stb_vorbis_open_file_section, f, close_handle_on_close, error, alloc_buffer, len);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file_section", e); }
+        try { return (MemorySegment) Handles.MH_stb_vorbis_open_file_section.invokeExact(Handles.get().PFN_stb_vorbis_open_file_section, f, close_handle_on_close, error, alloc_buffer, len); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file_section", e); }
     }
 
     /// ```
     /// int stb_vorbis_seek_frame(stb_vorbis* f, unsigned int sample_number);
     /// ```
     public static int stb_vorbis_seek_frame(MemorySegment f, int sample_number) {
-        try {
-            return (int) Handles.MH_stb_vorbis_seek_frame.invokeExact(Handles.get().PFN_stb_vorbis_seek_frame, f, sample_number);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
+        try { return (int) Handles.MH_stb_vorbis_seek_frame.invokeExact(Handles.get().PFN_stb_vorbis_seek_frame, f, sample_number); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
     }
 
     /// ```
     /// int stb_vorbis_seek(stb_vorbis* f, unsigned int sample_number);
     /// ```
     public static int stb_vorbis_seek(MemorySegment f, int sample_number) {
-        try {
-            return (int) Handles.MH_stb_vorbis_seek.invokeExact(Handles.get().PFN_stb_vorbis_seek, f, sample_number);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
+        try { return (int) Handles.MH_stb_vorbis_seek.invokeExact(Handles.get().PFN_stb_vorbis_seek, f, sample_number); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
     }
 
     /// ```
     /// int stb_vorbis_seek_start(stb_vorbis* f);
     /// ```
     public static int stb_vorbis_seek_start(MemorySegment f) {
-        try {
-            return (int) Handles.MH_stb_vorbis_seek_start.invokeExact(Handles.get().PFN_stb_vorbis_seek_start, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
+        try { return (int) Handles.MH_stb_vorbis_seek_start.invokeExact(Handles.get().PFN_stb_vorbis_seek_start, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
     }
 
     /// ```
     /// unsigned int stb_vorbis_stream_length_in_samples(stb_vorbis* f);
     /// ```
     public static int stb_vorbis_stream_length_in_samples(MemorySegment f) {
-        try {
-            return (int) Handles.MH_stb_vorbis_stream_length_in_samples.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_samples, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
+        try { return (int) Handles.MH_stb_vorbis_stream_length_in_samples.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_samples, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
     }
 
     /// ```
     /// float stb_vorbis_stream_length_in_seconds(stb_vorbis* f);
     /// ```
     public static float stb_vorbis_stream_length_in_seconds(MemorySegment f) {
-        try {
-            return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_seconds, f);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
+        try { return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.invokeExact(Handles.get().PFN_stb_vorbis_stream_length_in_seconds, f); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_frame_float(stb_vorbis* f, int* channels, float*** output);
     /// ```
     public static int stb_vorbis_get_frame_float(MemorySegment f, MemorySegment channels, MemorySegment output) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_frame_float.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_float, f, channels, output);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_frame_float.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_float, f, channels, output); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_frame_short_interleaved(stb_vorbis* f, int num_c, short* buffer, int num_shorts);
     /// ```
     public static int stb_vorbis_get_frame_short_interleaved(MemorySegment f, int num_c, MemorySegment buffer, int num_shorts) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short_interleaved, f, num_c, buffer, num_shorts);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short_interleaved, f, num_c, buffer, num_shorts); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_frame_short(stb_vorbis* f, int num_c, short** buffer, int num_samples);
     /// ```
     public static int stb_vorbis_get_frame_short(MemorySegment f, int num_c, MemorySegment buffer, int num_samples) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_frame_short.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short, f, num_c, buffer, num_samples);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_frame_short.invokeExact(Handles.get().PFN_stb_vorbis_get_frame_short, f, num_c, buffer, num_samples); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_samples_float_interleaved(stb_vorbis* f, int channels, float* buffer, int num_floats);
     /// ```
     public static int stb_vorbis_get_samples_float_interleaved(MemorySegment f, int channels, MemorySegment buffer, int num_floats) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float_interleaved, f, channels, buffer, num_floats);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float_interleaved, f, channels, buffer, num_floats); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_samples_float(stb_vorbis* f, int channels, float** buffer, int num_samples);
     /// ```
     public static int stb_vorbis_get_samples_float(MemorySegment f, int channels, MemorySegment buffer, int num_samples) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_samples_float.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float, f, channels, buffer, num_samples);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_samples_float.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_float, f, channels, buffer, num_samples); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_samples_short_interleaved(stb_vorbis* f, int channels, short* buffer, int num_shorts);
     /// ```
     public static int stb_vorbis_get_samples_short_interleaved(MemorySegment f, int channels, MemorySegment buffer, int num_shorts) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short_interleaved, f, channels, buffer, num_shorts);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short_interleaved, f, channels, buffer, num_shorts); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
     }
 
     /// ```
     /// int stb_vorbis_get_samples_short(stb_vorbis* f, int channels, short** buffer, int num_samples);
     /// ```
     public static int stb_vorbis_get_samples_short(MemorySegment f, int channels, MemorySegment buffer, int num_samples) {
-        try {
-            return (int) Handles.MH_stb_vorbis_get_samples_short.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short, f, channels, buffer, num_samples);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short", e); }
+        try { return (int) Handles.MH_stb_vorbis_get_samples_short.invokeExact(Handles.get().PFN_stb_vorbis_get_samples_short, f, channels, buffer, num_samples); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short", e); }
     }
 
     //@formatter:on

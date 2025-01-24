@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,10 +39,13 @@ public final class GLEXTFramebufferMultisample {
         this.handles = new Handles(func);
     }
 
-    public void RenderbufferStorageMultisampleEXT(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleEXT");
+    /// ```
+    /// void glRenderbufferStorageMultisampleEXT(unsigned int target, int samples, unsigned int internalformat, int width, int height);
+    /// ```
+    public void RenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleEXT");
         try { Handles.MH_glRenderbufferStorageMultisampleEXT.invokeExact(handles.PFN_glRenderbufferStorageMultisampleEXT, target, samples, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleEXT", e); }
     }
 
 }

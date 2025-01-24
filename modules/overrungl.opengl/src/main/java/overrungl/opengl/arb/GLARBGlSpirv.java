@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLARBGlSpirv {
         this.handles = new Handles(func);
     }
 
-    public void SpecializeShaderARB(@CType("GLuint") int shader, @CType("const GLchar *") MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") MemorySegment pConstantIndex, @CType("const GLuint *") MemorySegment pConstantValue) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShaderARB");
+    /// ```
+    /// void glSpecializeShaderARB(unsigned int shader, const GLchar* pEntryPoint, unsigned int numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
+    /// ```
+    public void SpecializeShaderARB(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShaderARB");
         try { Handles.MH_glSpecializeShaderARB.invokeExact(handles.PFN_glSpecializeShaderARB, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
-        catch (Throwable e) { throw new RuntimeException("error in glSpecializeShaderARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SpecializeShaderARB", e); }
     }
 
 }

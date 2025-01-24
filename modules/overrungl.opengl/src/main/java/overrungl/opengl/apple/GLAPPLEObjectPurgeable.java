@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -49,22 +48,31 @@ public final class GLAPPLEObjectPurgeable {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLenum") int ObjectPurgeableAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int option) {
-        if (Unmarshal.isNullPointer(handles.PFN_glObjectPurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectPurgeableAPPLE");
+    /// ```
+    /// unsigned int glObjectPurgeableAPPLE(unsigned int objectType, unsigned int name, unsigned int option);
+    /// ```
+    public int ObjectPurgeableAPPLE(int objectType, int name, int option) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glObjectPurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectPurgeableAPPLE");
         try { return (int) Handles.MH_glObjectPurgeableAPPLE.invokeExact(handles.PFN_glObjectPurgeableAPPLE, objectType, name, option); }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectPurgeableAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ObjectPurgeableAPPLE", e); }
     }
 
-    public @CType("GLenum") int ObjectUnpurgeableAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int option) {
-        if (Unmarshal.isNullPointer(handles.PFN_glObjectUnpurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectUnpurgeableAPPLE");
+    /// ```
+    /// unsigned int glObjectUnpurgeableAPPLE(unsigned int objectType, unsigned int name, unsigned int option);
+    /// ```
+    public int ObjectUnpurgeableAPPLE(int objectType, int name, int option) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glObjectUnpurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectUnpurgeableAPPLE");
         try { return (int) Handles.MH_glObjectUnpurgeableAPPLE.invokeExact(handles.PFN_glObjectUnpurgeableAPPLE, objectType, name, option); }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectUnpurgeableAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ObjectUnpurgeableAPPLE", e); }
     }
 
-    public void GetObjectParameterivAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetObjectParameterivAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE");
+    /// ```
+    /// void glGetObjectParameterivAPPLE(unsigned int objectType, unsigned int name, unsigned int pname, GLint* params);
+    /// ```
+    public void GetObjectParameterivAPPLE(int objectType, int name, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterivAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE");
         try { Handles.MH_glGetObjectParameterivAPPLE.invokeExact(handles.PFN_glGetObjectParameterivAPPLE, objectType, name, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetObjectParameterivAPPLE", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLEXTStencilTwoSide {
         this.handles = new Handles(func);
     }
 
-    public void ActiveStencilFaceEXT(@CType("GLenum") int face) {
-        if (Unmarshal.isNullPointer(handles.PFN_glActiveStencilFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");
+    /// ```
+    /// void glActiveStencilFaceEXT(unsigned int face);
+    /// ```
+    public void ActiveStencilFaceEXT(int face) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glActiveStencilFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");
         try { Handles.MH_glActiveStencilFaceEXT.invokeExact(handles.PFN_glActiveStencilFaceEXT, face); }
-        catch (Throwable e) { throw new RuntimeException("error in glActiveStencilFaceEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ActiveStencilFaceEXT", e); }
     }
 
 }

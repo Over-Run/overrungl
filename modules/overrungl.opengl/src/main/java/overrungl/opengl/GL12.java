@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -83,28 +82,40 @@ public class GL12 extends GL11 {
         this.handles = new Handles(func);
     }
 
-    public void DrawRangeElements(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElements)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElements");
+    /// ```
+    /// void glDrawRangeElements(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices);
+    /// ```
+    public void DrawRangeElements(int mode, int start, int end, int count, int type, MemorySegment indices) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElements)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElements");
         try { Handles.MH_glDrawRangeElements.invokeExact(handles.PFN_glDrawRangeElements, mode, start, end, count, type, indices); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElements", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawRangeElements", e); }
     }
 
-    public void TexImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexImage3D");
+    /// ```
+    /// void glTexImage3D(unsigned int target, int level, int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexImage3D");
         try { Handles.MH_glTexImage3D.invokeExact(handles.PFN_glTexImage3D, target, level, internalformat, width, height, depth, border, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexImage3D", e); }
     }
 
-    public void TexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3D");
+    /// ```
+    /// void glTexSubImage3D(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3D");
         try { Handles.MH_glTexSubImage3D.invokeExact(handles.PFN_glTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexSubImage3D", e); }
     }
 
-    public void CopyTexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");
+    /// ```
+    /// void glCopyTexSubImage3D(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    /// ```
+    public void CopyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");
         try { Handles.MH_glCopyTexSubImage3D.invokeExact(handles.PFN_glCopyTexSubImage3D, target, level, xoffset, yoffset, zoffset, x, y, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage3D", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyTexSubImage3D", e); }
     }
 
 }

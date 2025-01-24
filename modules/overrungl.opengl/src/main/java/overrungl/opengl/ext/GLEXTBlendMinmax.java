@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,10 +40,13 @@ public final class GLEXTBlendMinmax {
         this.handles = new Handles(func);
     }
 
-    public void BlendEquationEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");
+    /// ```
+    /// void glBlendEquationEXT(unsigned int mode);
+    /// ```
+    public void BlendEquationEXT(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");
         try { Handles.MH_glBlendEquationEXT.invokeExact(handles.PFN_glBlendEquationEXT, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationEXT", e); }
     }
 
 }

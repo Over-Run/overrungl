@@ -19,14 +19,13 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVVdpauInterop2 {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV = func.invoke("glVDPAURegisterVideoSurfaceWithPictureStructureNV");
@@ -37,10 +36,13 @@ public final class GLNVVdpauInterop2 {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLvdpauSurfaceNV") long VDPAURegisterVideoSurfaceWithPictureStructureNV(@CType("const void *") MemorySegment vdpSurface, @CType("GLenum") int target, @CType("GLsizei") int numTextureNames, @CType("const GLuint *") MemorySegment textureNames, @CType("GLboolean") boolean isFrameStructure) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceWithPictureStructureNV");
-        try { return (long) Handles.MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV.invokeExact(handles.PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV, vdpSurface, target, numTextureNames, textureNames, isFrameStructure); }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterVideoSurfaceWithPictureStructureNV", e); }
+    /// ```
+    /// signed long long glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void* vdpSurface, unsigned int target, int numTextureNames, const GLuint* textureNames, GLboolean isFrameStructure);
+    /// ```
+    public long VDPAURegisterVideoSurfaceWithPictureStructureNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames, boolean isFrameStructure) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceWithPictureStructureNV");
+        try { return (long) Handles.MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV.invokeExact(handles.PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV, vdpSurface, target, numTextureNames, textureNames, ((isFrameStructure) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in VDPAURegisterVideoSurfaceWithPictureStructureNV", e); }
     }
 
 }

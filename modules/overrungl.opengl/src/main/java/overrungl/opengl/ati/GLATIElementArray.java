@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,22 +45,31 @@ public final class GLATIElementArray {
         this.handles = new Handles(func);
     }
 
-    public void ElementPointerATI(@CType("GLenum") int type, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glElementPointerATI)) throw new SymbolNotFoundError("Symbol not found: glElementPointerATI");
+    /// ```
+    /// void glElementPointerATI(unsigned int type, const void* pointer);
+    /// ```
+    public void ElementPointerATI(int type, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glElementPointerATI)) throw new SymbolNotFoundError("Symbol not found: glElementPointerATI");
         try { Handles.MH_glElementPointerATI.invokeExact(handles.PFN_glElementPointerATI, type, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glElementPointerATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ElementPointerATI", e); }
     }
 
-    public void DrawElementArrayATI(@CType("GLenum") int mode, @CType("GLsizei") int count) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawElementArrayATI");
+    /// ```
+    /// void glDrawElementArrayATI(unsigned int mode, int count);
+    /// ```
+    public void DrawElementArrayATI(int mode, int count) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawElementArrayATI");
         try { Handles.MH_glDrawElementArrayATI.invokeExact(handles.PFN_glDrawElementArrayATI, mode, count); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementArrayATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawElementArrayATI", e); }
     }
 
-    public void DrawRangeElementArrayATI(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementArrayATI");
+    /// ```
+    /// void glDrawRangeElementArrayATI(unsigned int mode, unsigned int start, unsigned int end, int count);
+    /// ```
+    public void DrawRangeElementArrayATI(int mode, int start, int end, int count) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementArrayATI");
         try { Handles.MH_glDrawRangeElementArrayATI.invokeExact(handles.PFN_glDrawRangeElementArrayATI, mode, start, end, count); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementArrayATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementArrayATI", e); }
     }
 
 }

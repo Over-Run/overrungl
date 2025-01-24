@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,10 +41,13 @@ public final class GLARBTextureView {
         this.handles = new Handles(func);
     }
 
-    public void TextureView(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLuint") int origtexture, @CType("GLenum") int internalformat, @CType("GLuint") int minlevel, @CType("GLuint") int numlevels, @CType("GLuint") int minlayer, @CType("GLuint") int numlayers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureView)) throw new SymbolNotFoundError("Symbol not found: glTextureView");
+    /// ```
+    /// void glTextureView(unsigned int texture, unsigned int target, unsigned int origtexture, unsigned int internalformat, unsigned int minlevel, unsigned int numlevels, unsigned int minlayer, unsigned int numlayers);
+    /// ```
+    public void TextureView(int texture, int target, int origtexture, int internalformat, int minlevel, int numlevels, int minlayer, int numlayers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureView)) throw new SymbolNotFoundError("Symbol not found: glTextureView");
         try { Handles.MH_glTextureView.invokeExact(handles.PFN_glTextureView, texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureView", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureView", e); }
     }
 
 }

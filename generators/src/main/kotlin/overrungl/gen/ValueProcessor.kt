@@ -34,47 +34,6 @@ object IdentityValueProcessor : ValueProcessor {
     override fun copy(context: ProcessorContext) = context.action(context.builder)
 }
 
-object StringU8ValueProcessor : ValueProcessor {
-    override fun marshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Marshal.marshal(${context.allocatorName}, ")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun unmarshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Unmarshal.unmarshalAsString(")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun copy(context: ProcessorContext) = IdentityValueProcessor.copy(context)
-}
-
-class ArrayValueProcessor(private val asType: String) : ValueProcessor {
-    override fun marshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Marshal.marshal(${context.allocatorName}, ")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun unmarshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Unmarshal.unmarshalAs${asType}Array(")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun copy(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Unmarshal.copy(")
-        context.action(builder)
-        builder.append(")")
-    }
-}
-
 class StructProcessor(private val typeName: String) : ValueProcessor {
     override fun marshal(context: ProcessorContext) {
         val builder = context.builder
@@ -86,26 +45,6 @@ class StructProcessor(private val typeName: String) : ValueProcessor {
     override fun unmarshal(context: ProcessorContext) {
         val builder = context.builder
         builder.append("$typeName.of(")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun copy(context: ProcessorContext) {
-        TODO("Not yet implemented: copy $typeName")
-    }
-}
-
-class UpcallProcessor(private val typeName: String) : ValueProcessor {
-    override fun marshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("Marshal.marshal(${context.allocatorName}, ")
-        context.action(builder)
-        builder.append(")")
-    }
-
-    override fun unmarshal(context: ProcessorContext) {
-        val builder = context.builder
-        builder.append("$typeName.wrap(")
         context.action(builder)
         builder.append(")")
     }

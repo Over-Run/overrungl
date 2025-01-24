@@ -26,6 +26,8 @@ class Interpreter {
     internal val enums = LinkedHashMap<String, Int>()
     internal val functions = mutableMapOf<String, DefinitionFunction>()
 
+    fun functions(): Map<String, DefinitionFunction> = functions
+
     internal fun interpret(statements: List<Statement>) {
         statements.forEach { execute(it) }
     }
@@ -240,7 +242,8 @@ class Interpreter {
                         stringify,
                         expression.name.lexeme,
                         evaluate(expression.type) as DefinitionType,
-                        expression.parameters.map(::convertTypeNamePair)
+                        expression.parameters.map(::convertTypeNamePair),
+                        expression.packageName?.literal as String?
                     )
                     type = upcallType
                     upcalls[stringify] = upcallType

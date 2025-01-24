@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -50,16 +49,22 @@ public final class GLSGISTexture4D {
         this.handles = new Handles(func);
     }
 
-    public void TexImage4DSGIS(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int size4d, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexImage4DSGIS");
+    /// ```
+    /// void glTexImage4DSGIS(unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int size4d, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexImage4DSGIS(int target, int level, int internalformat, int width, int height, int depth, int size4d, int border, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexImage4DSGIS");
         try { Handles.MH_glTexImage4DSGIS.invokeExact(handles.PFN_glTexImage4DSGIS, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage4DSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexImage4DSGIS", e); }
     }
 
-    public void TexSubImage4DSGIS(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLint") int woffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int size4d, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") MemorySegment pixels) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexSubImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage4DSGIS");
+    /// ```
+    /// void glTexSubImage4DSGIS(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, unsigned int format, unsigned int type, const void* pixels);
+    /// ```
+    public void TexSubImage4DSGIS(int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, int format, int type, MemorySegment pixels) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage4DSGIS");
         try { Handles.MH_glTexSubImage4DSGIS.invokeExact(handles.PFN_glTexSubImage4DSGIS, target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage4DSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexSubImage4DSGIS", e); }
     }
 
 }

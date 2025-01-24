@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLEXTDrawRangeElements {
         this.handles = new Handles(func);
     }
 
-    public void DrawRangeElementsEXT(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") MemorySegment indices) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");
+    /// ```
+    /// void glDrawRangeElementsEXT(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices);
+    /// ```
+    public void DrawRangeElementsEXT(int mode, int start, int end, int count, int type, MemorySegment indices) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");
         try { Handles.MH_glDrawRangeElementsEXT.invokeExact(handles.PFN_glDrawRangeElementsEXT, mode, start, end, count, type, indices); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementsEXT", e); }
     }
 
 }

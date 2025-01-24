@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,10 +45,13 @@ public final class GLAMDInterleavedElements {
         this.handles = new Handles(func);
     }
 
-    public void VertexAttribParameteriAMD(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
+    /// ```
+    /// void glVertexAttribParameteriAMD(unsigned int index, unsigned int pname, int param);
+    /// ```
+    public void VertexAttribParameteriAMD(int index, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
         try { Handles.MH_glVertexAttribParameteriAMD.invokeExact(handles.PFN_glVertexAttribParameteriAMD, index, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribParameteriAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribParameteriAMD", e); }
     }
 
 }

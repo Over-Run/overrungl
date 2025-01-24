@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,16 +40,22 @@ public final class GLEXTTimerQuery {
         this.handles = new Handles(func);
     }
 
-    public void GetQueryObjecti64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
+    /// ```
+    /// void glGetQueryObjecti64vEXT(unsigned int id, unsigned int pname, GLint64* params);
+    /// ```
+    public void GetQueryObjecti64vEXT(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
         try { Handles.MH_glGetQueryObjecti64vEXT.invokeExact(handles.PFN_glGetQueryObjecti64vEXT, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64vEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64vEXT", e); }
     }
 
-    public void GetQueryObjectui64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
+    /// ```
+    /// void glGetQueryObjectui64vEXT(unsigned int id, unsigned int pname, GLuint64* params);
+    /// ```
+    public void GetQueryObjectui64vEXT(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
         try { Handles.MH_glGetQueryObjectui64vEXT.invokeExact(handles.PFN_glGetQueryObjectui64vEXT, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64vEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64vEXT", e); }
     }
 
 }

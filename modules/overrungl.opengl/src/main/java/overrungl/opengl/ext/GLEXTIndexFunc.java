@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,10 +39,13 @@ public final class GLEXTIndexFunc {
         this.handles = new Handles(func);
     }
 
-    public void IndexFuncEXT(@CType("GLenum") int func, @CType("GLclampf") float ref) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
+    /// ```
+    /// void glIndexFuncEXT(unsigned int func, float ref);
+    /// ```
+    public void IndexFuncEXT(int func, float ref) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
         try { Handles.MH_glIndexFuncEXT.invokeExact(handles.PFN_glIndexFuncEXT, func, ref); }
-        catch (Throwable e) { throw new RuntimeException("error in glIndexFuncEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in IndexFuncEXT", e); }
     }
 
 }

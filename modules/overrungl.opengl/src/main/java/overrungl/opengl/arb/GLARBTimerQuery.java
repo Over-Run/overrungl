@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -45,22 +44,31 @@ public final class GLARBTimerQuery {
         this.handles = new Handles(func);
     }
 
-    public void QueryCounter(@CType("GLuint") int id, @CType("GLenum") int target) {
-        if (Unmarshal.isNullPointer(handles.PFN_glQueryCounter)) throw new SymbolNotFoundError("Symbol not found: glQueryCounter");
+    /// ```
+    /// void glQueryCounter(unsigned int id, unsigned int target);
+    /// ```
+    public void QueryCounter(int id, int target) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryCounter)) throw new SymbolNotFoundError("Symbol not found: glQueryCounter");
         try { Handles.MH_glQueryCounter.invokeExact(handles.PFN_glQueryCounter, id, target); }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryCounter", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueryCounter", e); }
     }
 
-    public void GetQueryObjecti64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64v");
+    /// ```
+    /// void glGetQueryObjecti64v(unsigned int id, unsigned int pname, GLint64* params);
+    /// ```
+    public void GetQueryObjecti64v(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64v");
         try { Handles.MH_glGetQueryObjecti64v.invokeExact(handles.PFN_glGetQueryObjecti64v, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64v", e); }
     }
 
-    public void GetQueryObjectui64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64v");
+    /// ```
+    /// void glGetQueryObjectui64v(unsigned int id, unsigned int pname, GLuint64* params);
+    /// ```
+    public void GetQueryObjectui64v(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64v)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64v");
         try { Handles.MH_glGetQueryObjectui64v.invokeExact(handles.PFN_glGetQueryObjectui64v, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64v", e); }
     }
 
 }

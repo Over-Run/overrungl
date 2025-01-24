@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,16 +39,22 @@ public final class GLEXTMultiDrawArrays {
         this.handles = new Handles(func);
     }
 
-    public void MultiDrawArraysEXT(@CType("GLenum") int mode, @CType("const GLint *") MemorySegment first, @CType("const GLsizei *") MemorySegment count, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
+    /// ```
+    /// void glMultiDrawArraysEXT(unsigned int mode, const GLint* first, const GLsizei* count, int primcount);
+    /// ```
+    public void MultiDrawArraysEXT(int mode, MemorySegment first, MemorySegment count, int primcount) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
         try { Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysEXT", e); }
     }
 
-    public void MultiDrawElementsEXT(@CType("GLenum") int mode, @CType("const GLsizei *") MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") MemorySegment indices, @CType("GLsizei") int primcount) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
+    /// ```
+    /// void glMultiDrawElementsEXT(unsigned int mode, const GLsizei* count, unsigned int type, const void* const * indices, int primcount);
+    /// ```
+    public void MultiDrawElementsEXT(int mode, MemorySegment count, int type, MemorySegment indices, int primcount) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
         try { Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsEXT", e); }
     }
 
 }

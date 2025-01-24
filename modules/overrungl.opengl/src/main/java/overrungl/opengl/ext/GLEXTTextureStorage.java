@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -74,40 +73,58 @@ public final class GLEXTTextureStorage {
         this.handles = new Handles(func);
     }
 
-    public void TexStorage1DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage1DEXT");
+    /// ```
+    /// void glTexStorage1DEXT(unsigned int target, int levels, unsigned int internalformat, int width);
+    /// ```
+    public void TexStorage1DEXT(int target, int levels, int internalformat, int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage1DEXT");
         try { Handles.MH_glTexStorage1DEXT.invokeExact(handles.PFN_glTexStorage1DEXT, target, levels, internalformat, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage1DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorage1DEXT", e); }
     }
 
-    public void TexStorage2DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2DEXT");
+    /// ```
+    /// void glTexStorage2DEXT(unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// ```
+    public void TexStorage2DEXT(int target, int levels, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2DEXT");
         try { Handles.MH_glTexStorage2DEXT.invokeExact(handles.PFN_glTexStorage2DEXT, target, levels, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage2DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorage2DEXT", e); }
     }
 
-    public void TexStorage3DEXT(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3DEXT");
+    /// ```
+    /// void glTexStorage3DEXT(unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// ```
+    public void TexStorage3DEXT(int target, int levels, int internalformat, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3DEXT");
         try { Handles.MH_glTexStorage3DEXT.invokeExact(handles.PFN_glTexStorage3DEXT, target, levels, internalformat, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexStorage3DEXT", e); }
     }
 
-    public void TextureStorage1DEXT(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1DEXT");
+    /// ```
+    /// void glTextureStorage1DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width);
+    /// ```
+    public void TextureStorage1DEXT(int texture, int target, int levels, int internalformat, int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1DEXT");
         try { Handles.MH_glTextureStorage1DEXT.invokeExact(handles.PFN_glTextureStorage1DEXT, texture, target, levels, internalformat, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage1DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage1DEXT", e); }
     }
 
-    public void TextureStorage2DEXT(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DEXT");
+    /// ```
+    /// void glTextureStorage2DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// ```
+    public void TextureStorage2DEXT(int texture, int target, int levels, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DEXT");
         try { Handles.MH_glTextureStorage2DEXT.invokeExact(handles.PFN_glTextureStorage2DEXT, texture, target, levels, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage2DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage2DEXT", e); }
     }
 
-    public void TextureStorage3DEXT(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DEXT");
+    /// ```
+    /// void glTextureStorage3DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// ```
+    public void TextureStorage3DEXT(int texture, int target, int levels, int internalformat, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DEXT");
         try { Handles.MH_glTextureStorage3DEXT.invokeExact(handles.PFN_glTextureStorage3DEXT, texture, target, levels, internalformat, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureStorage3DEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureStorage3DEXT", e); }
     }
 
 }

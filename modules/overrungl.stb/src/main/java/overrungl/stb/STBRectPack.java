@@ -75,36 +75,32 @@ public final class STBRectPack {
     /// int stbrp_pack_rects(stbrp_context* context, stbrp_rect* rects, int num_rects);
     /// ```
     public static boolean stbrp_pack_rects(MemorySegment context, MemorySegment rects, int num_rects) {
-        try {
-            return (((int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, context, rects, num_rects)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
+        try { return (((int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, context, rects, num_rects)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
 
     /// ```
     /// void stbrp_init_target(stbrp_context* context, int width, int height, stbrp_node* nodes, int num_nodes);
     /// ```
     public static void stbrp_init_target(MemorySegment context, int width, int height, MemorySegment nodes, int num_nodes) {
-        try {
-            Handles.MH_stbrp_init_target.invokeExact(Handles.get().PFN_stbrp_init_target, context, width, height, nodes, num_nodes);
-        } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
+        try { Handles.MH_stbrp_init_target.invokeExact(Handles.get().PFN_stbrp_init_target, context, width, height, nodes, num_nodes); }
+        catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
 
     /// ```
     /// void stbrp_setup_allow_out_of_mem(stbrp_context* context, int allow_out_of_mem);
     /// ```
     public static void stbrp_setup_allow_out_of_mem(MemorySegment context, int allow_out_of_mem) {
-        try {
-            Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Handles.get().PFN_stbrp_setup_allow_out_of_mem, context, allow_out_of_mem);
-        } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
+        try { Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Handles.get().PFN_stbrp_setup_allow_out_of_mem, context, allow_out_of_mem); }
+        catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
 
     /// ```
     /// void stbrp_setup_heuristic(stbrp_context* context, int heuristic);
     /// ```
     public static void stbrp_setup_heuristic(MemorySegment context, int heuristic) {
-        try {
-            Handles.MH_stbrp_setup_heuristic.invokeExact(Handles.get().PFN_stbrp_setup_heuristic, context, heuristic);
-        } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
+        try { Handles.MH_stbrp_setup_heuristic.invokeExact(Handles.get().PFN_stbrp_setup_heuristic, context, heuristic); }
+        catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
     }
 
     //@formatter:on

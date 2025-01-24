@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -40,10 +39,13 @@ public final class GLARBES32Compatibility {
         this.handles = new Handles(func);
     }
 
-    public void PrimitiveBoundingBoxARB(@CType("GLfloat") float minX, @CType("GLfloat") float minY, @CType("GLfloat") float minZ, @CType("GLfloat") float minW, @CType("GLfloat") float maxX, @CType("GLfloat") float maxY, @CType("GLfloat") float maxZ, @CType("GLfloat") float maxW) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");
+    /// ```
+    /// void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW);
+    /// ```
+    public void PrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");
         try { Handles.MH_glPrimitiveBoundingBoxARB.invokeExact(handles.PFN_glPrimitiveBoundingBoxARB, minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
-        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveBoundingBoxARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PrimitiveBoundingBoxARB", e); }
     }
 
 }

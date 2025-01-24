@@ -29,20 +29,28 @@ import kotlin.io.path.createParentDirectories
  * @author squid233
  * @since 0.1.0
  */
-class DefinitionFile(filename: String) {
-    val interpreter: Interpreter
+class DefinitionFile(filename: String? = null, rawSourceString: String? = null) {
+    val interpreter: Interpreter = Interpreter()
 
     init {
-        (ClassLoader.getSystemResourceAsStream(filename) ?: error("can't load file $filename")).bufferedReader().use {
-            val tokens = Lexer(it.readText()).tokenize()
+        if (filename == null && rawSourceString == null) error("filename or source can't be null")
+        if (filename != null && rawSourceString != null) error("filename and source can't be both nonnull")
+        if (filename != null) {
+            (ClassLoader.getSystemResourceAsStream(filename) ?: error("can't load file $filename")).bufferedReader()
+                .use {
+                    val tokens = Lexer(it.readText()).tokenize()
+                    val parse = Parser(tokens).parse()
+                    interpreter.interpret(parse)
+                }
+        } else if (rawSourceString != null) {
+            val tokens = Lexer(rawSourceString).tokenize()
             val parse = Parser(tokens).parse()
-            interpreter = Interpreter()
             interpreter.interpret(parse)
         }
     }
 
     private fun compileUpcall(packageName: String, className: String, upcallType: UpcallType) {
-        val path = Path(packageName.replace('.', '/'), "$className.java")
+        val path = Path((upcallType.packageName ?: packageName).replace('.', '/'), "$className.java")
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -657,20 +665,7 @@ class DefinitionFile(filename: String) {
         interpreter.functions.forEach { (entrypoint, func) ->
             if (func.body == null) {
                 sb.appendLine("        /// The method handle of `$entrypoint`.")
-                val functionDescriptor = buildString {
-                    append("FunctionDescriptor.of")
-                    if (func.returnType is VoidType) {
-                        append("Void(${func.parameters.joinToString { it.memoryLayoutWithDimensions.memoryLayout!! }}")
-                    } else {
-                        append("(")
-                        append(func.returnType.memoryLayout.memoryLayout)
-                        func.parameters.forEach {
-                            append(", ")
-                            append(it.memoryLayoutWithDimensions.memoryLayout)
-                        }
-                    }
-                    append(")")
-                }
+                val functionDescriptor = functionDescriptor(func)
                 sb.appendLine("        public static final MethodHandle MH_$entrypoint = RuntimeHelper.downcall($functionDescriptor);")
                 nativeImageDowncallDescriptors.add(functionDescriptor)
             }
@@ -711,64 +706,8 @@ class DefinitionFile(filename: String) {
         sb.appendLine()
 
         // functions
-        interpreter.functions.forEach { (entrypoint, func) ->
-            val hasDynamicType = func.returnType is DynamicValueType ||
-                func.parameters.any { it.memoryLayoutWithDimensions is DefTypeDynamicValueLayout }
-
-            sb.appendLine(
-                """
-                    |    /// ```
-                    |    /// ${func.returnType.originalName} ${func.entrypoint}(${
-                    func.parameters.joinToString { p ->
-                        "${p.type.originalName} ${p.name}${
-                            if (p.dimensions.isNotEmpty()) p.dimensions.joinToString("") { "[$it]" }
-                            else ""
-                        }"
-                    }
-                });
-                    |    /// ```
-                """.trimMargin()
-            )
-            sb.appendLine(
-                "    public static ${func.returnType.javaType} ${func.name}(${
-                    if (func.requireAllocator) "SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
-                    else ""
-                }${
-                    func.parameters.joinToString { p -> "${if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType} ${p.name}" }
-                }) {")
-            if (func.body != null) {
-                sb.appendLine(func.body.prependIndent("        "))
-            } else {
-                if (func.optional) {
-                    sb.appendLine("""        if (MemoryUtil.isNullPointer(Handles.get().PFN_$entrypoint)) throw new SymbolNotFoundError("Symbol not found: $entrypoint");""")
-                }
-                sb.appendLine("        try {")
-                sb.append("            ")
-                if (func.returnType !is VoidType) {
-                    sb.append("return ")
-                }
-                sb.append(func.returnType.processor.processUpcall(buildString {
-                    if (func.returnType !is VoidType) {
-                        if (func.returnType !is DynamicValueType) {
-                            // the actual type doesn't matter
-                            append("(${func.returnType.memoryLayout.carrier(null)}) ")
-                        }
-                    }
-                    append("Handles.MH_$entrypoint.${if (hasDynamicType) "invoke" else "invokeExact"}(Handles.get().PFN_$entrypoint")
-                    if (func.requireAllocator) {
-                        append(", __allocator")
-                    }
-                    func.parameters.forEach { p ->
-                        append(", ")
-                        append(p.type.processor.processDowncall(p.name))
-                    }
-                    append(")")
-                }))
-                sb.appendLine(";")
-                sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${func.name}", e); }""")
-            }
-            sb.appendLine("    }")
-            sb.appendLine()
+        interpreter.functions.forEach { (_, func) ->
+            writeFunction(sb, func)
         }
 
         if (!writeWholeFile) {
@@ -784,6 +723,20 @@ class DefinitionFile(filename: String) {
         writeString(path, finalString)
     }
 
+    fun compileUpcalls(upcallPackageName: String) {
+        interpreter.upcalls.values.forEach {
+            compileUpcall(upcallPackageName, it.name, it)
+        }
+    }
+
+    fun compileStructs(structPackageName: String) {
+        interpreter.structs.values.forEach {
+            if (!it.opaque) {
+                compileGroupClass(structPackageName, it.originalName, it)
+            }
+        }
+    }
+
     fun compile(
         packageName: String,
         className: String,
@@ -792,14 +745,91 @@ class DefinitionFile(filename: String) {
         structPackageName: String = packageName,
         upcallPackageName: String = packageName
     ) {
-        interpreter.upcalls.values.forEach {
-            compileUpcall(upcallPackageName, it.name, it)
-        }
-        interpreter.structs.values.forEach {
-            if (!it.opaque) {
-                compileGroupClass(structPackageName, it.originalName, it)
-            }
-        }
+        compileUpcalls(upcallPackageName)
+        compileStructs(structPackageName)
         compileDowncall(packageName, className, symbolLookup, writeWholeFile)
     }
+}
+
+fun functionDescriptor(func: DefinitionFunction) = buildString {
+    append("FunctionDescriptor.of")
+    if (func.returnType is VoidType) {
+        append("Void(${func.parameters.joinToString { it.memoryLayoutWithDimensions.memoryLayout!! }}")
+    } else {
+        append("(")
+        append(func.returnType.memoryLayout.memoryLayout)
+        func.parameters.forEach {
+            append(", ")
+            append(it.memoryLayoutWithDimensions.memoryLayout)
+        }
+    }
+    append(")")
+}
+
+fun writeFunction(
+    sb: StringBuilder,
+    func: DefinitionFunction,
+    handlesInstance: String = "Handles.get()",
+    staticMethod: Boolean = true
+) {
+    val hasDynamicType = func.returnType is DynamicValueType ||
+        func.parameters.any { it.memoryLayoutWithDimensions is DefTypeDynamicValueLayout }
+
+    sb.appendLine(
+        """
+            |    /// ```
+            |    /// ${func.returnType.originalName} ${func.entrypoint}(${
+            func.parameters.joinToString { p ->
+                "${p.type.originalName} ${p.name}${
+                    if (p.dimensions.isNotEmpty()) p.dimensions.joinToString("") { "[$it]" }
+                    else ""
+                }"
+            }
+        });
+            |    /// ```
+        """.trimMargin()
+    )
+    sb.append("    public ")
+    if (staticMethod) {
+        sb.append("static ")
+    }
+    sb.appendLine(
+        "${func.returnType.javaType} ${func.name}(${
+            if (func.requireAllocator) "SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
+            else ""
+        }${
+            func.parameters.joinToString { p -> "${if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType} ${p.name}" }
+        }) {")
+    if (func.body != null) {
+        sb.appendLine(func.body.prependIndent("        "))
+    } else {
+        if (func.optional) {
+            sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${func.entrypoint}");""")
+        }
+        sb.append("        try { ")
+        if (func.returnType !is VoidType) {
+            sb.append("return ")
+        }
+        sb.append(func.returnType.processor.processUpcall(buildString {
+            if (func.returnType !is VoidType) {
+                if (func.returnType !is DynamicValueType) {
+                    // the actual type doesn't matter
+                    append("(${func.returnType.memoryLayout.carrier(null)}) ")
+                }
+            }
+            append("Handles.MH_${func.entrypoint}.${if (hasDynamicType) "invoke" else "invokeExact"}($handlesInstance.PFN_${func.entrypoint}")
+            if (func.requireAllocator) {
+                append(", __allocator")
+            }
+            func.parameters.forEach { p ->
+                append(", ")
+                append(p.type.processor.processDowncall(p.name))
+            }
+            append(")")
+        }))
+        sb.appendLine("; }")
+        sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${func.name}", e); }""")
+    }
+    sb.appendLine("    }")
+    sb.appendLine()
 }

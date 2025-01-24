@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -48,16 +47,22 @@ public final class GLSGISDetailTexture {
         this.handles = new Handles(func);
     }
 
-    public void DetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
+    /// ```
+    /// void glDetailTexFuncSGIS(unsigned int target, int n, const GLfloat* points);
+    /// ```
+    public void DetailTexFuncSGIS(int target, int n, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
         try { Handles.MH_glDetailTexFuncSGIS.invokeExact(handles.PFN_glDetailTexFuncSGIS, target, n, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DetailTexFuncSGIS", e); }
     }
 
-    public void GetDetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
+    /// ```
+    /// void glGetDetailTexFuncSGIS(unsigned int target, GLfloat* points);
+    /// ```
+    public void GetDetailTexFuncSGIS(int target, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
         try { Handles.MH_glGetDetailTexFuncSGIS.invokeExact(handles.PFN_glGetDetailTexFuncSGIS, target, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDetailTexFuncSGIS", e); }
     }
 
 }

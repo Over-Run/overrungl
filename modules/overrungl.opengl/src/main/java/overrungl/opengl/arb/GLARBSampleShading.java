@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLARBSampleShading {
         this.handles = new Handles(func);
     }
 
-    public void MinSampleShadingARB(@CType("GLfloat") float value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
+    /// ```
+    /// void glMinSampleShadingARB(float value);
+    /// ```
+    public void MinSampleShadingARB(float value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
         try { Handles.MH_glMinSampleShadingARB.invokeExact(handles.PFN_glMinSampleShadingARB, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glMinSampleShadingARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MinSampleShadingARB", e); }
     }
 
 }

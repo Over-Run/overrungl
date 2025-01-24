@@ -138,7 +138,8 @@ data class UpcallType(
     override val originalName: String,
     val name: String,
     val returnType: DefinitionType,
-    val parameters: List<DefTypeNamePair>
+    val parameters: List<DefTypeNamePair>,
+    val packageName: String?
 ) : DefinitionType {
     override val javaType: String = "MemorySegment"
     override val memoryLayout: DefTypeMemoryLayout =
@@ -236,9 +237,11 @@ val c_float = value("float", "float", FLOAT_LAYOUT, 'F')
 val c_double = value("double", "double", DOUBLE_LAYOUT, 'D')
 val c_signed_char = value("signed char", "byte", BYTE_LAYOUT, 'B')
 val c_unsigned_char = value("unsigned char", "byte", BYTE_LAYOUT, 'B')
+val c_signed_short = value("signed short", "short", SHORT_LAYOUT, 'S')
 val c_unsigned_short = value("unsigned short", "short", SHORT_LAYOUT, 'S')
 val c_unsigned_int = value("unsigned int", "int", INT_LAYOUT, 'I')
 val c_unsigned_long = dynamic("unsigned long", "long", c_long.memoryLayout, c_long.processor)
+val c_signed_long_long = value("signed long long", "long", LONG_LAYOUT, 'J')
 val c_unsigned_long_long = value("unsigned long long", "long", LONG_LAYOUT, 'J')
 val int8_t = value("int8_t", "byte", BYTE_LAYOUT, 'B')
 val int16_t = value("int16_t", "short", SHORT_LAYOUT, 'S')
@@ -282,6 +285,18 @@ val wchar_t = dynamic(
             "MemoryUtil.wideningToInt($WCHAR_T_LAYOUT, $originalValue)"
     }
 )
+val intptr_t = dynamic(
+    "intptr_t",
+    "long",
+    memoryLayout = size_t.memoryLayout,
+    processor = size_t.processor
+)
+val uintptr_t = dynamic(
+    "uintptr_t",
+    "long",
+    memoryLayout = size_t.memoryLayout,
+    processor = size_t.processor
+)
 
 fun findBuiltinType(name: String): DefinitionType? {
     return builtinType[name]
@@ -313,3 +328,4 @@ val char_boolean = CustomDefType(
         }
     }
 )
+val unsigned_char_boolean = char_boolean.copy(originalName = "unsigned char")

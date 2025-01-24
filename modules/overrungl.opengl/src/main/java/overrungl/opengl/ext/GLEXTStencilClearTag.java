@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -39,10 +38,13 @@ public final class GLEXTStencilClearTag {
         this.handles = new Handles(func);
     }
 
-    public void StencilClearTagEXT(@CType("GLsizei") int stencilTagBits, @CType("GLuint") int stencilClearTag) {
-        if (Unmarshal.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new SymbolNotFoundError("Symbol not found: glStencilClearTagEXT");
+    /// ```
+    /// void glStencilClearTagEXT(int stencilTagBits, unsigned int stencilClearTag);
+    /// ```
+    public void StencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new SymbolNotFoundError("Symbol not found: glStencilClearTagEXT");
         try { Handles.MH_glStencilClearTagEXT.invokeExact(handles.PFN_glStencilClearTagEXT, stencilTagBits, stencilClearTag); }
-        catch (Throwable e) { throw new RuntimeException("error in glStencilClearTagEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in StencilClearTagEXT", e); }
     }
 
 }

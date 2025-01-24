@@ -19,7 +19,6 @@ package overrungl.opengl.threedfx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -37,10 +36,13 @@ public final class GL3DFXTbuffer {
         this.handles = new Handles(func);
     }
 
-    public void TbufferMask3DFX(@CType("GLuint") int mask) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTbufferMask3DFX)) throw new SymbolNotFoundError("Symbol not found: glTbufferMask3DFX");
+    /// ```
+    /// void glTbufferMask3DFX(unsigned int mask);
+    /// ```
+    public void TbufferMask3DFX(int mask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTbufferMask3DFX)) throw new SymbolNotFoundError("Symbol not found: glTbufferMask3DFX");
         try { Handles.MH_glTbufferMask3DFX.invokeExact(handles.PFN_glTbufferMask3DFX, mask); }
-        catch (Throwable e) { throw new RuntimeException("error in glTbufferMask3DFX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TbufferMask3DFX", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,10 +45,13 @@ public final class GLARBBufferStorage {
         this.handles = new Handles(func);
     }
 
-    public void BufferStorage(@CType("GLenum") int target, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data, @CType("GLbitfield") int flags) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
+    /// ```
+    /// void glBufferStorage(unsigned int target, signed long long size, const void* data, unsigned int flags);
+    /// ```
+    public void BufferStorage(int target, long size, MemorySegment data, int flags) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
         try { Handles.MH_glBufferStorage.invokeExact(handles.PFN_glBufferStorage, target, size, data, flags); }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferStorage", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BufferStorage", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -56,40 +55,58 @@ public final class GLSGISPixelTexture {
         this.handles = new Handles(func);
     }
 
-    public void PixelTexGenParameteriSGIS(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelTexGenParameteriSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameteriSGIS");
+    /// ```
+    /// void glPixelTexGenParameteriSGIS(unsigned int pname, int param);
+    /// ```
+    public void PixelTexGenParameteriSGIS(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameteriSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameteriSGIS");
         try { Handles.MH_glPixelTexGenParameteriSGIS.invokeExact(handles.PFN_glPixelTexGenParameteriSGIS, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameteriSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameteriSGIS", e); }
     }
 
-    public void PixelTexGenParameterivSGIS(@CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterivSGIS");
+    /// ```
+    /// void glPixelTexGenParameterivSGIS(unsigned int pname, const GLint* params);
+    /// ```
+    public void PixelTexGenParameterivSGIS(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterivSGIS");
         try { Handles.MH_glPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glPixelTexGenParameterivSGIS, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterivSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterivSGIS", e); }
     }
 
-    public void PixelTexGenParameterfSGIS(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelTexGenParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfSGIS");
+    /// ```
+    /// void glPixelTexGenParameterfSGIS(unsigned int pname, float param);
+    /// ```
+    public void PixelTexGenParameterfSGIS(int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfSGIS");
         try { Handles.MH_glPixelTexGenParameterfSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfSGIS, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterfSGIS", e); }
     }
 
-    public void PixelTexGenParameterfvSGIS(@CType("GLenum") int pname, @CType("const GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfvSGIS");
+    /// ```
+    /// void glPixelTexGenParameterfvSGIS(unsigned int pname, const GLfloat* params);
+    /// ```
+    public void PixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfvSGIS");
         try { Handles.MH_glPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfvSGIS, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfvSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterfvSGIS", e); }
     }
 
-    public void GetPixelTexGenParameterivSGIS(@CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterivSGIS");
+    /// ```
+    /// void glGetPixelTexGenParameterivSGIS(unsigned int pname, GLint* params);
+    /// ```
+    public void GetPixelTexGenParameterivSGIS(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterivSGIS");
         try { Handles.MH_glGetPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterivSGIS, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterivSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPixelTexGenParameterivSGIS", e); }
     }
 
-    public void GetPixelTexGenParameterfvSGIS(@CType("GLenum") int pname, @CType("GLfloat *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterfvSGIS");
+    /// ```
+    /// void glGetPixelTexGenParameterfvSGIS(unsigned int pname, GLfloat* params);
+    /// ```
+    public void GetPixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterfvSGIS");
         try { Handles.MH_glGetPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterfvSGIS, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterfvSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPixelTexGenParameterfvSGIS", e); }
     }
 
 }

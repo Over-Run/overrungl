@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,16 +45,22 @@ public final class GLAMDFramebufferMultisampleAdvanced {
         this.handles = new Handles(func);
     }
 
-    public void RenderbufferStorageMultisampleAdvancedAMD(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLsizei") int storageSamples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleAdvancedAMD");
+    /// ```
+    /// void glRenderbufferStorageMultisampleAdvancedAMD(unsigned int target, int samples, int storageSamples, unsigned int internalformat, int width, int height);
+    /// ```
+    public void RenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleAdvancedAMD");
         try { Handles.MH_glRenderbufferStorageMultisampleAdvancedAMD.invokeExact(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD, target, samples, storageSamples, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleAdvancedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleAdvancedAMD", e); }
     }
 
-    public void NamedRenderbufferStorageMultisampleAdvancedAMD(@CType("GLuint") int renderbuffer, @CType("GLsizei") int samples, @CType("GLsizei") int storageSamples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleAdvancedAMD");
+    /// ```
+    /// void glNamedRenderbufferStorageMultisampleAdvancedAMD(unsigned int renderbuffer, int samples, int storageSamples, unsigned int internalformat, int width, int height);
+    /// ```
+    public void NamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalformat, int width, int height) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleAdvancedAMD");
         try { Handles.MH_glNamedRenderbufferStorageMultisampleAdvancedAMD.invokeExact(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD, renderbuffer, samples, storageSamples, internalformat, width, height); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedRenderbufferStorageMultisampleAdvancedAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedRenderbufferStorageMultisampleAdvancedAMD", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -72,46 +71,67 @@ public final class GLSUNTriangleList {
         this.handles = new Handles(func);
     }
 
-    public void ReplacementCodeuiSUN(@CType("GLuint") int code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuiSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiSUN");
+    /// ```
+    /// void glReplacementCodeuiSUN(unsigned int code);
+    /// ```
+    public void ReplacementCodeuiSUN(int code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiSUN");
         try { Handles.MH_glReplacementCodeuiSUN.invokeExact(handles.PFN_glReplacementCodeuiSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeuiSUN", e); }
     }
 
-    public void ReplacementCodeusSUN(@CType("GLushort") short code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeusSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusSUN");
+    /// ```
+    /// void glReplacementCodeusSUN(unsigned short code);
+    /// ```
+    public void ReplacementCodeusSUN(short code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeusSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusSUN");
         try { Handles.MH_glReplacementCodeusSUN.invokeExact(handles.PFN_glReplacementCodeusSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeusSUN", e); }
     }
 
-    public void ReplacementCodeubSUN(@CType("GLubyte") byte code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeubSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubSUN");
+    /// ```
+    /// void glReplacementCodeubSUN(unsigned char code);
+    /// ```
+    public void ReplacementCodeubSUN(byte code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeubSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubSUN");
         try { Handles.MH_glReplacementCodeubSUN.invokeExact(handles.PFN_glReplacementCodeubSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeubSUN", e); }
     }
 
-    public void ReplacementCodeuivSUN(@CType("const GLuint *") MemorySegment code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeuivSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuivSUN");
+    /// ```
+    /// void glReplacementCodeuivSUN(const GLuint* code);
+    /// ```
+    public void ReplacementCodeuivSUN(MemorySegment code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuivSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuivSUN");
         try { Handles.MH_glReplacementCodeuivSUN.invokeExact(handles.PFN_glReplacementCodeuivSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuivSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeuivSUN", e); }
     }
 
-    public void ReplacementCodeusvSUN(@CType("const GLushort *") MemorySegment code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeusvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusvSUN");
+    /// ```
+    /// void glReplacementCodeusvSUN(const GLushort* code);
+    /// ```
+    public void ReplacementCodeusvSUN(MemorySegment code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeusvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusvSUN");
         try { Handles.MH_glReplacementCodeusvSUN.invokeExact(handles.PFN_glReplacementCodeusvSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusvSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeusvSUN", e); }
     }
 
-    public void ReplacementCodeubvSUN(@CType("const GLubyte *") MemorySegment code) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodeubvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubvSUN");
+    /// ```
+    /// void glReplacementCodeubvSUN(const GLubyte* code);
+    /// ```
+    public void ReplacementCodeubvSUN(MemorySegment code) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeubvSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubvSUN");
         try { Handles.MH_glReplacementCodeubvSUN.invokeExact(handles.PFN_glReplacementCodeubvSUN, code); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubvSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodeubvSUN", e); }
     }
 
-    public void ReplacementCodePointerSUN(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void **") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glReplacementCodePointerSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodePointerSUN");
+    /// ```
+    /// void glReplacementCodePointerSUN(unsigned int type, int stride, const void** pointer);
+    /// ```
+    public void ReplacementCodePointerSUN(int type, int stride, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodePointerSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodePointerSUN");
         try { Handles.MH_glReplacementCodePointerSUN.invokeExact(handles.PFN_glReplacementCodePointerSUN, type, stride, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodePointerSUN", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReplacementCodePointerSUN", e); }
     }
 
 }

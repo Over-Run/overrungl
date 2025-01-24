@@ -19,7 +19,6 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -45,22 +44,31 @@ public final class GLNVXLinkedGpuMulticast {
         this.handles = new Handles(func);
     }
 
-    public void LGPUNamedBufferSubDataNVX(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLGPUNamedBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
+    /// ```
+    /// void glLGPUNamedBufferSubDataNVX(unsigned int gpuMask, unsigned int buffer, signed long long offset, signed long long size, const void* data);
+    /// ```
+    public void LGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLGPUNamedBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
         try { Handles.MH_glLGPUNamedBufferSubDataNVX.invokeExact(handles.PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glLGPUNamedBufferSubDataNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LGPUNamedBufferSubDataNVX", e); }
     }
 
-    public void LGPUCopyImageSubDataNVX(@CType("GLuint") int sourceGpu, @CType("GLbitfield") int destinationGpuMask, @CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srxY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLGPUCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX");
+    /// ```
+    /// void glLGPUCopyImageSubDataNVX(unsigned int sourceGpu, unsigned int destinationGpuMask, unsigned int srcName, unsigned int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, unsigned int dstName, unsigned int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth);
+    /// ```
+    public void LGPUCopyImageSubDataNVX(int sourceGpu, int destinationGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLGPUCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX");
         try { Handles.MH_glLGPUCopyImageSubDataNVX.invokeExact(handles.PFN_glLGPUCopyImageSubDataNVX, sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glLGPUCopyImageSubDataNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LGPUCopyImageSubDataNVX", e); }
     }
 
+    /// ```
+    /// void glLGPUInterlockNVX();
+    /// ```
     public void LGPUInterlockNVX() {
-        if (Unmarshal.isNullPointer(handles.PFN_glLGPUInterlockNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUInterlockNVX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glLGPUInterlockNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUInterlockNVX");
         try { Handles.MH_glLGPUInterlockNVX.invokeExact(handles.PFN_glLGPUInterlockNVX); }
-        catch (Throwable e) { throw new RuntimeException("error in glLGPUInterlockNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LGPUInterlockNVX", e); }
     }
 
 }

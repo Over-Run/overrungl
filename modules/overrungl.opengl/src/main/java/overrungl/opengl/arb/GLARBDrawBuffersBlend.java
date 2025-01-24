@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,28 +45,40 @@ public final class GLARBDrawBuffersBlend {
         this.handles = new Handles(func);
     }
 
-    public void BlendEquationiARB(@CType("GLuint") int buf, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationiARB");
+    /// ```
+    /// void glBlendEquationiARB(unsigned int buf, unsigned int mode);
+    /// ```
+    public void BlendEquationiARB(int buf, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationiARB");
         try { Handles.MH_glBlendEquationiARB.invokeExact(handles.PFN_glBlendEquationiARB, buf, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationiARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationiARB", e); }
     }
 
-    public void BlendEquationSeparateiARB(@CType("GLuint") int buf, @CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB");
+    /// ```
+    /// void glBlendEquationSeparateiARB(unsigned int buf, unsigned int modeRGB, unsigned int modeAlpha);
+    /// ```
+    public void BlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB");
         try { Handles.MH_glBlendEquationSeparateiARB.invokeExact(handles.PFN_glBlendEquationSeparateiARB, buf, modeRGB, modeAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateiARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateiARB", e); }
     }
 
-    public void BlendFunciARB(@CType("GLuint") int buf, @CType("GLenum") int src, @CType("GLenum") int dst) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFunciARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFunciARB");
+    /// ```
+    /// void glBlendFunciARB(unsigned int buf, unsigned int src, unsigned int dst);
+    /// ```
+    public void BlendFunciARB(int buf, int src, int dst) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFunciARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFunciARB");
         try { Handles.MH_glBlendFunciARB.invokeExact(handles.PFN_glBlendFunciARB, buf, src, dst); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFunciARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFunciARB", e); }
     }
 
-    public void BlendFuncSeparateiARB(@CType("GLuint") int buf, @CType("GLenum") int srcRGB, @CType("GLenum") int dstRGB, @CType("GLenum") int srcAlpha, @CType("GLenum") int dstAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB");
+    /// ```
+    /// void glBlendFuncSeparateiARB(unsigned int buf, unsigned int srcRGB, unsigned int dstRGB, unsigned int srcAlpha, unsigned int dstAlpha);
+    /// ```
+    public void BlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB");
         try { Handles.MH_glBlendFuncSeparateiARB.invokeExact(handles.PFN_glBlendFuncSeparateiARB, buf, srcRGB, dstRGB, srcAlpha, dstAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateiARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateiARB", e); }
     }
 
 }

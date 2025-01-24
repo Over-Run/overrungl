@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -44,16 +43,22 @@ public final class GLSGISSharpenTexture {
         this.handles = new Handles(func);
     }
 
-    public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
+    /// ```
+    /// void glSharpenTexFuncSGIS(unsigned int target, int n, const GLfloat* points);
+    /// ```
+    public void SharpenTexFuncSGIS(int target, int n, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
         try { Handles.MH_glSharpenTexFuncSGIS.invokeExact(handles.PFN_glSharpenTexFuncSGIS, target, n, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SharpenTexFuncSGIS", e); }
     }
 
-    public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
+    /// ```
+    /// void glGetSharpenTexFuncSGIS(unsigned int target, GLfloat* points);
+    /// ```
+    public void GetSharpenTexFuncSGIS(int target, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
         try { Handles.MH_glGetSharpenTexFuncSGIS.invokeExact(handles.PFN_glGetSharpenTexFuncSGIS, target, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSharpenTexFuncSGIS", e); }
     }
 
 }

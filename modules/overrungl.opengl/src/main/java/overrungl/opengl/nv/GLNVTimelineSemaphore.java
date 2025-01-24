@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -48,22 +47,31 @@ public final class GLNVTimelineSemaphore {
         this.handles = new Handles(func);
     }
 
-    public void CreateSemaphoresNV(@CType("GLsizei") int n, @CType("GLuint *") MemorySegment semaphores) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCreateSemaphoresNV)) throw new SymbolNotFoundError("Symbol not found: glCreateSemaphoresNV");
+    /// ```
+    /// void glCreateSemaphoresNV(int n, GLuint* semaphores);
+    /// ```
+    public void CreateSemaphoresNV(int n, MemorySegment semaphores) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateSemaphoresNV)) throw new SymbolNotFoundError("Symbol not found: glCreateSemaphoresNV");
         try { Handles.MH_glCreateSemaphoresNV.invokeExact(handles.PFN_glCreateSemaphoresNV, n, semaphores); }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateSemaphoresNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateSemaphoresNV", e); }
     }
 
-    public void SemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterivNV");
+    /// ```
+    /// void glSemaphoreParameterivNV(unsigned int semaphore, unsigned int pname, const GLint* params);
+    /// ```
+    public void SemaphoreParameterivNV(int semaphore, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterivNV");
         try { Handles.MH_glSemaphoreParameterivNV.invokeExact(handles.PFN_glSemaphoreParameterivNV, semaphore, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SemaphoreParameterivNV", e); }
     }
 
-    public void GetSemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterivNV");
+    /// ```
+    /// void glGetSemaphoreParameterivNV(unsigned int semaphore, unsigned int pname, GLint* params);
+    /// ```
+    public void GetSemaphoreParameterivNV(int semaphore, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterivNV");
         try { Handles.MH_glGetSemaphoreParameterivNV.invokeExact(handles.PFN_glGetSemaphoreParameterivNV, semaphore, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSemaphoreParameterivNV", e); }
     }
 
 }

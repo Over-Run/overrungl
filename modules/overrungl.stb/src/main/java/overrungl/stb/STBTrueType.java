@@ -411,531 +411,472 @@ public final class STBTrueType {
     /// int stbtt_BakeFontBitmap(const unsigned char* data, int offset, float pixel_height, unsigned char* pixels, int pw, int ph, int first_char, int num_chars, stbtt_bakedchar* chardata);
     /// ```
     public static int stbtt_BakeFontBitmap(MemorySegment data, int offset, float pixel_height, MemorySegment pixels, int pw, int ph, int first_char, int num_chars, MemorySegment chardata) {
-        try {
-            return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(Handles.get().PFN_stbtt_BakeFontBitmap, data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, chardata);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
+        try { return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(Handles.get().PFN_stbtt_BakeFontBitmap, data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, chardata); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
     }
 
     /// ```
     /// void stbtt_GetBakedQuad(const stbtt_bakedchar* chardata, int pw, int ph, int char_index, float* xpos, float* ypos, stbtt_aligned_quad* q, int opengl_fillrule);
     /// ```
     public static void stbtt_GetBakedQuad(MemorySegment chardata, int pw, int ph, int char_index, MemorySegment xpos, MemorySegment ypos, MemorySegment q, int opengl_fillrule) {
-        try {
-            Handles.MH_stbtt_GetBakedQuad.invokeExact(Handles.get().PFN_stbtt_GetBakedQuad, chardata, pw, ph, char_index, xpos, ypos, q, opengl_fillrule);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
+        try { Handles.MH_stbtt_GetBakedQuad.invokeExact(Handles.get().PFN_stbtt_GetBakedQuad, chardata, pw, ph, char_index, xpos, ypos, q, opengl_fillrule); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
     }
 
     /// ```
     /// void stbtt_GetScaledFontVMetrics(const unsigned char* fontdata, int index, float size, float* ascent, float* descent, float* lineGap);
     /// ```
     public static void stbtt_GetScaledFontVMetrics(MemorySegment fontdata, int index, float size, MemorySegment ascent, MemorySegment descent, MemorySegment lineGap) {
-        try {
-            Handles.MH_stbtt_GetScaledFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetScaledFontVMetrics, fontdata, index, size, ascent, descent, lineGap);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
+        try { Handles.MH_stbtt_GetScaledFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetScaledFontVMetrics, fontdata, index, size, ascent, descent, lineGap); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
     }
 
     /// ```
     /// int stbtt_PackBegin(stbtt_pack_context* spc, unsigned char* pixels, int width, int height, int stride_in_bytes, int padding, void* alloc_context);
     /// ```
     public static boolean stbtt_PackBegin(MemorySegment spc, MemorySegment pixels, int width, int height, int stride_in_bytes, int padding, MemorySegment alloc_context) {
-        try {
-            return (((int) Handles.MH_stbtt_PackBegin.invokeExact(Handles.get().PFN_stbtt_PackBegin, spc, pixels, width, height, stride_in_bytes, padding, alloc_context)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackBegin", e); }
+        try { return (((int) Handles.MH_stbtt_PackBegin.invokeExact(Handles.get().PFN_stbtt_PackBegin, spc, pixels, width, height, stride_in_bytes, padding, alloc_context)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackBegin", e); }
     }
 
     /// ```
     /// void stbtt_PackEnd(stbtt_pack_context* spc);
     /// ```
     public static void stbtt_PackEnd(MemorySegment spc) {
-        try {
-            Handles.MH_stbtt_PackEnd.invokeExact(Handles.get().PFN_stbtt_PackEnd, spc);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackEnd", e); }
+        try { Handles.MH_stbtt_PackEnd.invokeExact(Handles.get().PFN_stbtt_PackEnd, spc); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackEnd", e); }
     }
 
     /// ```
     /// int stbtt_PackFontRange(stbtt_pack_context* spc, const unsigned char* fontdata, int font_index, float font_size, int first_unicode_char_in_range, int num_chars_in_range, stbtt_packedchar* chardata_for_range);
     /// ```
     public static boolean stbtt_PackFontRange(MemorySegment spc, MemorySegment fontdata, int font_index, float font_size, int first_unicode_char_in_range, int num_chars_in_range, MemorySegment chardata_for_range) {
-        try {
-            return (((int) Handles.MH_stbtt_PackFontRange.invokeExact(Handles.get().PFN_stbtt_PackFontRange, spc, fontdata, font_index, font_size, first_unicode_char_in_range, num_chars_in_range, chardata_for_range)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRange", e); }
+        try { return (((int) Handles.MH_stbtt_PackFontRange.invokeExact(Handles.get().PFN_stbtt_PackFontRange, spc, fontdata, font_index, font_size, first_unicode_char_in_range, num_chars_in_range, chardata_for_range)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRange", e); }
     }
 
     /// ```
     /// int stbtt_PackFontRanges(stbtt_pack_context* spc, const unsigned char* fontdata, int font_index, stbtt_pack_range* ranges, int num_ranges);
     /// ```
     public static int stbtt_PackFontRanges(MemorySegment spc, MemorySegment fontdata, int font_index, MemorySegment ranges, int num_ranges) {
-        try {
-            return (int) Handles.MH_stbtt_PackFontRanges.invokeExact(Handles.get().PFN_stbtt_PackFontRanges, spc, fontdata, font_index, ranges, num_ranges);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
+        try { return (int) Handles.MH_stbtt_PackFontRanges.invokeExact(Handles.get().PFN_stbtt_PackFontRanges, spc, fontdata, font_index, ranges, num_ranges); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
     }
 
     /// ```
     /// void stbtt_PackSetOversampling(stbtt_pack_context* spc, unsigned int h_oversample, unsigned int v_oversample);
     /// ```
     public static void stbtt_PackSetOversampling(MemorySegment spc, int h_oversample, int v_oversample) {
-        try {
-            Handles.MH_stbtt_PackSetOversampling.invokeExact(Handles.get().PFN_stbtt_PackSetOversampling, spc, h_oversample, v_oversample);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetOversampling", e); }
+        try { Handles.MH_stbtt_PackSetOversampling.invokeExact(Handles.get().PFN_stbtt_PackSetOversampling, spc, h_oversample, v_oversample); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetOversampling", e); }
     }
 
     /// ```
     /// void stbtt_PackSetSkipMissingCodepoints(stbtt_pack_context* spc, int skip);
     /// ```
     public static void stbtt_PackSetSkipMissingCodepoints(MemorySegment spc, int skip) {
-        try {
-            Handles.MH_stbtt_PackSetSkipMissingCodepoints.invokeExact(Handles.get().PFN_stbtt_PackSetSkipMissingCodepoints, spc, skip);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetSkipMissingCodepoints", e); }
+        try { Handles.MH_stbtt_PackSetSkipMissingCodepoints.invokeExact(Handles.get().PFN_stbtt_PackSetSkipMissingCodepoints, spc, skip); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetSkipMissingCodepoints", e); }
     }
 
     /// ```
     /// void stbtt_GetPackedQuad(const stbtt_packedchar* chardata, int pw, int ph, int char_index, float* xpos, float* ypos, stbtt_aligned_quad* q, int align_to_integer);
     /// ```
     public static void stbtt_GetPackedQuad(MemorySegment chardata, int pw, int ph, int char_index, MemorySegment xpos, MemorySegment ypos, MemorySegment q, int align_to_integer) {
-        try {
-            Handles.MH_stbtt_GetPackedQuad.invokeExact(Handles.get().PFN_stbtt_GetPackedQuad, chardata, pw, ph, char_index, xpos, ypos, q, align_to_integer);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
+        try { Handles.MH_stbtt_GetPackedQuad.invokeExact(Handles.get().PFN_stbtt_GetPackedQuad, chardata, pw, ph, char_index, xpos, ypos, q, align_to_integer); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
     }
 
     /// ```
     /// int stbtt_PackFontRangesGatherRects(stbtt_pack_context* spc, const stbtt_fontinfo* info, stbtt_pack_range* ranges, int num_ranges, stbrp_rect* rects);
     /// ```
     public static int stbtt_PackFontRangesGatherRects(MemorySegment spc, MemorySegment info, MemorySegment ranges, int num_ranges, MemorySegment rects) {
-        try {
-            return (int) Handles.MH_stbtt_PackFontRangesGatherRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesGatherRects, spc, info, ranges, num_ranges, rects);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesGatherRects", e); }
+        try { return (int) Handles.MH_stbtt_PackFontRangesGatherRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesGatherRects, spc, info, ranges, num_ranges, rects); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesGatherRects", e); }
     }
 
     /// ```
     /// void stbtt_PackFontRangesPackRects(stbtt_pack_context* spc, stbrp_rect* rects, int num_rects);
     /// ```
     public static void stbtt_PackFontRangesPackRects(MemorySegment spc, MemorySegment rects, int num_rects) {
-        try {
-            Handles.MH_stbtt_PackFontRangesPackRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesPackRects, spc, rects, num_rects);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesPackRects", e); }
+        try { Handles.MH_stbtt_PackFontRangesPackRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesPackRects, spc, rects, num_rects); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesPackRects", e); }
     }
 
     /// ```
     /// int stbtt_PackFontRangesRenderIntoRects(stbtt_pack_context* spc, const stbtt_fontinfo* info, stbtt_pack_range* ranges, int num_ranges, stbrp_rect* rects);
     /// ```
     public static int stbtt_PackFontRangesRenderIntoRects(MemorySegment spc, MemorySegment info, MemorySegment ranges, int num_ranges, MemorySegment rects) {
-        try {
-            return (int) Handles.MH_stbtt_PackFontRangesRenderIntoRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesRenderIntoRects, spc, info, ranges, num_ranges, rects);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesRenderIntoRects", e); }
+        try { return (int) Handles.MH_stbtt_PackFontRangesRenderIntoRects.invokeExact(Handles.get().PFN_stbtt_PackFontRangesRenderIntoRects, spc, info, ranges, num_ranges, rects); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesRenderIntoRects", e); }
     }
 
     /// ```
     /// int stbtt_GetNumberOfFonts(const unsigned char* data);
     /// ```
     public static int stbtt_GetNumberOfFonts(MemorySegment data) {
-        try {
-            return (int) Handles.MH_stbtt_GetNumberOfFonts.invokeExact(Handles.get().PFN_stbtt_GetNumberOfFonts, data);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetNumberOfFonts", e); }
+        try { return (int) Handles.MH_stbtt_GetNumberOfFonts.invokeExact(Handles.get().PFN_stbtt_GetNumberOfFonts, data); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetNumberOfFonts", e); }
     }
 
     /// ```
     /// int stbtt_GetFontOffsetForIndex(const unsigned char* data, int index);
     /// ```
     public static int stbtt_GetFontOffsetForIndex(MemorySegment data, int index) {
-        try {
-            return (int) Handles.MH_stbtt_GetFontOffsetForIndex.invokeExact(Handles.get().PFN_stbtt_GetFontOffsetForIndex, data, index);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontOffsetForIndex", e); }
+        try { return (int) Handles.MH_stbtt_GetFontOffsetForIndex.invokeExact(Handles.get().PFN_stbtt_GetFontOffsetForIndex, data, index); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontOffsetForIndex", e); }
     }
 
     /// ```
     /// int stbtt_InitFont(stbtt_fontinfo* info, const unsigned char* data, int offset);
     /// ```
     public static boolean stbtt_InitFont(MemorySegment info, MemorySegment data, int offset) {
-        try {
-            return (((int) Handles.MH_stbtt_InitFont.invokeExact(Handles.get().PFN_stbtt_InitFont, info, data, offset)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_InitFont", e); }
+        try { return (((int) Handles.MH_stbtt_InitFont.invokeExact(Handles.get().PFN_stbtt_InitFont, info, data, offset)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_InitFont", e); }
     }
 
     /// ```
     /// int stbtt_FindGlyphIndex(const stbtt_fontinfo* info, int unicode_codepoint);
     /// ```
     public static int stbtt_FindGlyphIndex(MemorySegment info, int unicode_codepoint) {
-        try {
-            return (int) Handles.MH_stbtt_FindGlyphIndex.invokeExact(Handles.get().PFN_stbtt_FindGlyphIndex, info, unicode_codepoint);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindGlyphIndex", e); }
+        try { return (int) Handles.MH_stbtt_FindGlyphIndex.invokeExact(Handles.get().PFN_stbtt_FindGlyphIndex, info, unicode_codepoint); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FindGlyphIndex", e); }
     }
 
     /// ```
     /// float stbtt_ScaleForPixelHeight(const stbtt_fontinfo* info, float pixels);
     /// ```
     public static float stbtt_ScaleForPixelHeight(MemorySegment info, float pixels) {
-        try {
-            return (float) Handles.MH_stbtt_ScaleForPixelHeight.invokeExact(Handles.get().PFN_stbtt_ScaleForPixelHeight, info, pixels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForPixelHeight", e); }
+        try { return (float) Handles.MH_stbtt_ScaleForPixelHeight.invokeExact(Handles.get().PFN_stbtt_ScaleForPixelHeight, info, pixels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForPixelHeight", e); }
     }
 
     /// ```
     /// float stbtt_ScaleForMappingEmToPixels(const stbtt_fontinfo* info, float pixels);
     /// ```
     public static float stbtt_ScaleForMappingEmToPixels(MemorySegment info, float pixels) {
-        try {
-            return (float) Handles.MH_stbtt_ScaleForMappingEmToPixels.invokeExact(Handles.get().PFN_stbtt_ScaleForMappingEmToPixels, info, pixels);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForMappingEmToPixels", e); }
+        try { return (float) Handles.MH_stbtt_ScaleForMappingEmToPixels.invokeExact(Handles.get().PFN_stbtt_ScaleForMappingEmToPixels, info, pixels); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForMappingEmToPixels", e); }
     }
 
     /// ```
     /// void stbtt_GetFontVMetrics(const stbtt_fontinfo* info, int* ascent, int* descent, int* lineGap);
     /// ```
     public static void stbtt_GetFontVMetrics(MemorySegment info, MemorySegment ascent, MemorySegment descent, MemorySegment lineGap) {
-        try {
-            Handles.MH_stbtt_GetFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetFontVMetrics, info, ascent, descent, lineGap);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
+        try { Handles.MH_stbtt_GetFontVMetrics.invokeExact(Handles.get().PFN_stbtt_GetFontVMetrics, info, ascent, descent, lineGap); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
     }
 
     /// ```
     /// int stbtt_GetFontVMetricsOS2(const stbtt_fontinfo* info, int* typoAscent, int* typoDescent, int* typoLineGap);
     /// ```
     public static boolean stbtt_GetFontVMetricsOS2(MemorySegment info, MemorySegment typoAscent, MemorySegment typoDescent, MemorySegment typoLineGap) {
-        try {
-            return (((int) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(Handles.get().PFN_stbtt_GetFontVMetricsOS2, info, typoAscent, typoDescent, typoLineGap)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
+        try { return (((int) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(Handles.get().PFN_stbtt_GetFontVMetricsOS2, info, typoAscent, typoDescent, typoLineGap)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
     }
 
     /// ```
     /// void stbtt_GetFontBoundingBox(const stbtt_fontinfo* info, int* x0, int* y0, int* x1, int* y1);
     /// ```
     public static void stbtt_GetFontBoundingBox(MemorySegment info, MemorySegment x0, MemorySegment y0, MemorySegment x1, MemorySegment y1) {
-        try {
-            Handles.MH_stbtt_GetFontBoundingBox.invokeExact(Handles.get().PFN_stbtt_GetFontBoundingBox, info, x0, y0, x1, y1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
+        try { Handles.MH_stbtt_GetFontBoundingBox.invokeExact(Handles.get().PFN_stbtt_GetFontBoundingBox, info, x0, y0, x1, y1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
     }
 
     /// ```
     /// void stbtt_GetCodepointHMetrics(const stbtt_fontinfo* info, int codepoint, int* advanceWidth, int* leftSideBearing);
     /// ```
     public static void stbtt_GetCodepointHMetrics(MemorySegment info, int codepoint, MemorySegment advanceWidth, MemorySegment leftSideBearing) {
-        try {
-            Handles.MH_stbtt_GetCodepointHMetrics.invokeExact(Handles.get().PFN_stbtt_GetCodepointHMetrics, info, codepoint, advanceWidth, leftSideBearing);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
+        try { Handles.MH_stbtt_GetCodepointHMetrics.invokeExact(Handles.get().PFN_stbtt_GetCodepointHMetrics, info, codepoint, advanceWidth, leftSideBearing); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
     }
 
     /// ```
     /// int stbtt_GetCodepointKernAdvance(const stbtt_fontinfo* info, int ch1, int ch2);
     /// ```
     public static int stbtt_GetCodepointKernAdvance(MemorySegment info, int ch1, int ch2) {
-        try {
-            return (int) Handles.MH_stbtt_GetCodepointKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetCodepointKernAdvance, info, ch1, ch2);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointKernAdvance", e); }
+        try { return (int) Handles.MH_stbtt_GetCodepointKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetCodepointKernAdvance, info, ch1, ch2); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointKernAdvance", e); }
     }
 
     /// ```
     /// int stbtt_GetCodepointBox(const stbtt_fontinfo* info, int codepoint, int* x0, int* y0, int* x1, int* y1);
     /// ```
     public static int stbtt_GetCodepointBox(MemorySegment info, int codepoint, MemorySegment x0, MemorySegment y0, MemorySegment x1, MemorySegment y1) {
-        try {
-            return (int) Handles.MH_stbtt_GetCodepointBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBox, info, codepoint, x0, y0, x1, y1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
+        try { return (int) Handles.MH_stbtt_GetCodepointBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBox, info, codepoint, x0, y0, x1, y1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
     }
 
     /// ```
     /// void stbtt_GetGlyphHMetrics(const stbtt_fontinfo* info, int glyph_index, int* advanceWidth, int* leftSideBearing);
     /// ```
     public static void stbtt_GetGlyphHMetrics(MemorySegment info, int glyph_index, MemorySegment advanceWidth, MemorySegment leftSideBearing) {
-        try {
-            Handles.MH_stbtt_GetGlyphHMetrics.invokeExact(Handles.get().PFN_stbtt_GetGlyphHMetrics, info, glyph_index, advanceWidth, leftSideBearing);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
+        try { Handles.MH_stbtt_GetGlyphHMetrics.invokeExact(Handles.get().PFN_stbtt_GetGlyphHMetrics, info, glyph_index, advanceWidth, leftSideBearing); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
     }
 
     /// ```
     /// int stbtt_GetGlyphKernAdvance(const stbtt_fontinfo* info, int glyph1, int glyph2);
     /// ```
     public static int stbtt_GetGlyphKernAdvance(MemorySegment info, int glyph1, int glyph2) {
-        try {
-            return (int) Handles.MH_stbtt_GetGlyphKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetGlyphKernAdvance, info, glyph1, glyph2);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphKernAdvance", e); }
+        try { return (int) Handles.MH_stbtt_GetGlyphKernAdvance.invokeExact(Handles.get().PFN_stbtt_GetGlyphKernAdvance, info, glyph1, glyph2); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphKernAdvance", e); }
     }
 
     /// ```
     /// int stbtt_GetGlyphBox(const stbtt_fontinfo* info, int glyph_index, int* x0, int* y0, int* x1, int* y1);
     /// ```
     public static int stbtt_GetGlyphBox(MemorySegment info, int glyph_index, MemorySegment x0, MemorySegment y0, MemorySegment x1, MemorySegment y1) {
-        try {
-            return (int) Handles.MH_stbtt_GetGlyphBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBox, info, glyph_index, x0, y0, x1, y1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
+        try { return (int) Handles.MH_stbtt_GetGlyphBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBox, info, glyph_index, x0, y0, x1, y1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
     }
 
     /// ```
     /// int stbtt_GetKerningTableLength(const stbtt_fontinfo* info);
     /// ```
     public static int stbtt_GetKerningTableLength(MemorySegment info) {
-        try {
-            return (int) Handles.MH_stbtt_GetKerningTableLength.invokeExact(Handles.get().PFN_stbtt_GetKerningTableLength, info);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTableLength", e); }
+        try { return (int) Handles.MH_stbtt_GetKerningTableLength.invokeExact(Handles.get().PFN_stbtt_GetKerningTableLength, info); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTableLength", e); }
     }
 
     /// ```
     /// int stbtt_GetKerningTable(const stbtt_fontinfo* info, stbtt_kerningentry* table, int table_length);
     /// ```
     public static int stbtt_GetKerningTable(MemorySegment info, MemorySegment table, int table_length) {
-        try {
-            return (int) Handles.MH_stbtt_GetKerningTable.invokeExact(Handles.get().PFN_stbtt_GetKerningTable, info, table, table_length);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTable", e); }
+        try { return (int) Handles.MH_stbtt_GetKerningTable.invokeExact(Handles.get().PFN_stbtt_GetKerningTable, info, table, table_length); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTable", e); }
     }
 
     /// ```
     /// int stbtt_IsGlyphEmpty(const stbtt_fontinfo* info, int glyph_index);
     /// ```
     public static boolean stbtt_IsGlyphEmpty(MemorySegment info, int glyph_index) {
-        try {
-            return (((int) Handles.MH_stbtt_IsGlyphEmpty.invokeExact(Handles.get().PFN_stbtt_IsGlyphEmpty, info, glyph_index)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_IsGlyphEmpty", e); }
+        try { return (((int) Handles.MH_stbtt_IsGlyphEmpty.invokeExact(Handles.get().PFN_stbtt_IsGlyphEmpty, info, glyph_index)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_IsGlyphEmpty", e); }
     }
 
     /// ```
     /// int stbtt_GetCodepointShape(const stbtt_fontinfo* info, int unicode_codepoint, stbtt_vertex** vertices);
     /// ```
     public static int stbtt_GetCodepointShape(MemorySegment info, int unicode_codepoint, MemorySegment vertices) {
-        try {
-            return (int) Handles.MH_stbtt_GetCodepointShape.invokeExact(Handles.get().PFN_stbtt_GetCodepointShape, info, unicode_codepoint, vertices);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointShape", e); }
+        try { return (int) Handles.MH_stbtt_GetCodepointShape.invokeExact(Handles.get().PFN_stbtt_GetCodepointShape, info, unicode_codepoint, vertices); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointShape", e); }
     }
 
     /// ```
     /// int stbtt_GetGlyphShape(const stbtt_fontinfo* info, int glyph_index, stbtt_vertex** vertices);
     /// ```
     public static int stbtt_GetGlyphShape(MemorySegment info, int glyph_index, MemorySegment vertices) {
-        try {
-            return (int) Handles.MH_stbtt_GetGlyphShape.invokeExact(Handles.get().PFN_stbtt_GetGlyphShape, info, glyph_index, vertices);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphShape", e); }
+        try { return (int) Handles.MH_stbtt_GetGlyphShape.invokeExact(Handles.get().PFN_stbtt_GetGlyphShape, info, glyph_index, vertices); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphShape", e); }
     }
 
     /// ```
     /// void stbtt_FreeShape(const stbtt_fontinfo* info, stbtt_vertex* vertices);
     /// ```
     public static void stbtt_FreeShape(MemorySegment info, MemorySegment vertices) {
-        try {
-            Handles.MH_stbtt_FreeShape.invokeExact(Handles.get().PFN_stbtt_FreeShape, info, vertices);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
+        try { Handles.MH_stbtt_FreeShape.invokeExact(Handles.get().PFN_stbtt_FreeShape, info, vertices); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_FindSVGDoc(const stbtt_fontinfo* info, int gl);
     /// ```
     public static MemorySegment stbtt_FindSVGDoc(MemorySegment info, int gl) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_FindSVGDoc.invokeExact(Handles.get().PFN_stbtt_FindSVGDoc, info, gl);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindSVGDoc", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_FindSVGDoc.invokeExact(Handles.get().PFN_stbtt_FindSVGDoc, info, gl); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FindSVGDoc", e); }
     }
 
     /// ```
     /// int stbtt_GetCodepointSVG(const stbtt_fontinfo* info, int unicode_codepoint, const char** svg);
     /// ```
     public static int stbtt_GetCodepointSVG(MemorySegment info, int unicode_codepoint, MemorySegment svg) {
-        try {
-            return (int) Handles.MH_stbtt_GetCodepointSVG.invokeExact(Handles.get().PFN_stbtt_GetCodepointSVG, info, unicode_codepoint, svg);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSVG", e); }
+        try { return (int) Handles.MH_stbtt_GetCodepointSVG.invokeExact(Handles.get().PFN_stbtt_GetCodepointSVG, info, unicode_codepoint, svg); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSVG", e); }
     }
 
     /// ```
     /// int stbtt_GetGlyphSVG(const stbtt_fontinfo* info, int gl, const char** svg);
     /// ```
     public static int stbtt_GetGlyphSVG(MemorySegment info, int gl, MemorySegment svg) {
-        try {
-            return (int) Handles.MH_stbtt_GetGlyphSVG.invokeExact(Handles.get().PFN_stbtt_GetGlyphSVG, info, gl, svg);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSVG", e); }
+        try { return (int) Handles.MH_stbtt_GetGlyphSVG.invokeExact(Handles.get().PFN_stbtt_GetGlyphSVG, info, gl, svg); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSVG", e); }
     }
 
     /// ```
     /// void stbtt_FreeBitmap(unsigned char* bitmap, void* userdata);
     /// ```
     public static void stbtt_FreeBitmap(MemorySegment bitmap, MemorySegment userdata) {
-        try {
-            Handles.MH_stbtt_FreeBitmap.invokeExact(Handles.get().PFN_stbtt_FreeBitmap, bitmap, userdata);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeBitmap", e); }
+        try { Handles.MH_stbtt_FreeBitmap.invokeExact(Handles.get().PFN_stbtt_FreeBitmap, bitmap, userdata); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeBitmap", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetCodepointBitmap(const stbtt_fontinfo* info, float scale_x, float scale_y, int codepoint, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetCodepointBitmap(MemorySegment info, float scale_x, float scale_y, int codepoint, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, info, scale_x, scale_y, codepoint, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmap, info, scale_x, scale_y, codepoint, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetCodepointBitmapSubpixel(const stbtt_fontinfo* info, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetCodepointBitmapSubpixel(MemorySegment info, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, codepoint, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, codepoint, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
     }
 
     /// ```
     /// void stbtt_MakeCodepointBitmap(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int codepoint);
     /// ```
     public static void stbtt_MakeCodepointBitmap(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int codepoint) {
-        try {
-            Handles.MH_stbtt_MakeCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, codepoint);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmap", e); }
+        try { Handles.MH_stbtt_MakeCodepointBitmap.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, codepoint); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmap", e); }
     }
 
     /// ```
     /// void stbtt_MakeCodepointBitmapSubpixel(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint);
     /// ```
     public static void stbtt_MakeCodepointBitmapSubpixel(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint) {
-        try {
-            Handles.MH_stbtt_MakeCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, codepoint);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixel", e); }
+        try { Handles.MH_stbtt_MakeCodepointBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, codepoint); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixel", e); }
     }
 
     /// ```
     /// void stbtt_MakeCodepointBitmapSubpixelPrefilter(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, float* sub_x, float* sub_y, int codepoint);
     /// ```
     public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, MemorySegment sub_x, MemorySegment sub_y, int codepoint) {
-        try {
-            Handles.MH_stbtt_MakeCodepointBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, codepoint);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
+        try { Handles.MH_stbtt_MakeCodepointBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeCodepointBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, codepoint); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
     }
 
     /// ```
     /// void stbtt_GetCodepointBitmapBox(const stbtt_fontinfo* font, int codepoint, float scale_x, float scale_y, int* ix0, int* iy0, int* ix1, int* iy1);
     /// ```
     public static void stbtt_GetCodepointBitmapBox(MemorySegment font, int codepoint, float scale_x, float scale_y, MemorySegment ix0, MemorySegment iy0, MemorySegment ix1, MemorySegment iy1) {
-        try {
-            Handles.MH_stbtt_GetCodepointBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBox, font, codepoint, scale_x, scale_y, ix0, iy0, ix1, iy1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
+        try { Handles.MH_stbtt_GetCodepointBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBox, font, codepoint, scale_x, scale_y, ix0, iy0, ix1, iy1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
     }
 
     /// ```
     /// void stbtt_GetCodepointBitmapBoxSubpixel(const stbtt_fontinfo* font, int codepoint, float scale_x, float scale_y, float shift_x, float shift_y, int* ix0, int* iy0, int* ix1, int* iy1);
     /// ```
     public static void stbtt_GetCodepointBitmapBoxSubpixel(MemorySegment font, int codepoint, float scale_x, float scale_y, float shift_x, float shift_y, MemorySegment ix0, MemorySegment iy0, MemorySegment ix1, MemorySegment iy1) {
-        try {
-            Handles.MH_stbtt_GetCodepointBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBoxSubpixel, font, codepoint, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
+        try { Handles.MH_stbtt_GetCodepointBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetCodepointBitmapBoxSubpixel, font, codepoint, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetGlyphBitmap(const stbtt_fontinfo* info, float scale_x, float scale_y, int glyph, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetGlyphBitmap(MemorySegment info, float scale_x, float scale_y, int glyph, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, info, scale_x, scale_y, glyph, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmap, info, scale_x, scale_y, glyph, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetGlyphBitmapSubpixel(const stbtt_fontinfo* info, float scale_x, float scale_y, float shift_x, float shift_y, int glyph, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetGlyphBitmapSubpixel(MemorySegment info, float scale_x, float scale_y, float shift_x, float shift_y, int glyph, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, glyph, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapSubpixel, info, scale_x, scale_y, shift_x, shift_y, glyph, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
     }
 
     /// ```
     /// void stbtt_MakeGlyphBitmap(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int glyph);
     /// ```
     public static void stbtt_MakeGlyphBitmap(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int glyph) {
-        try {
-            Handles.MH_stbtt_MakeGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, glyph);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmap", e); }
+        try { Handles.MH_stbtt_MakeGlyphBitmap.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmap, info, output, out_w, out_h, out_stride, scale_x, scale_y, glyph); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmap", e); }
     }
 
     /// ```
     /// void stbtt_MakeGlyphBitmapSubpixel(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int glyph);
     /// ```
     public static void stbtt_MakeGlyphBitmapSubpixel(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int glyph) {
-        try {
-            Handles.MH_stbtt_MakeGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, glyph);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixel", e); }
+        try { Handles.MH_stbtt_MakeGlyphBitmapSubpixel.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixel, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, glyph); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixel", e); }
     }
 
     /// ```
     /// void stbtt_MakeGlyphBitmapSubpixelPrefilter(const stbtt_fontinfo* info, unsigned char* output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, float* sub_x, float* sub_y, int glyph);
     /// ```
     public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(MemorySegment info, MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, MemorySegment sub_x, MemorySegment sub_y, int glyph) {
-        try {
-            Handles.MH_stbtt_MakeGlyphBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, glyph);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
+        try { Handles.MH_stbtt_MakeGlyphBitmapSubpixelPrefilter.invokeExact(Handles.get().PFN_stbtt_MakeGlyphBitmapSubpixelPrefilter, info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, glyph); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
     }
 
     /// ```
     /// void stbtt_GetGlyphBitmapBox(const stbtt_fontinfo* font, int glyph, float scale_x, float scale_y, int* ix0, int* iy0, int* ix1, int* iy1);
     /// ```
     public static void stbtt_GetGlyphBitmapBox(MemorySegment font, int glyph, float scale_x, float scale_y, MemorySegment ix0, MemorySegment iy0, MemorySegment ix1, MemorySegment iy1) {
-        try {
-            Handles.MH_stbtt_GetGlyphBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBox, font, glyph, scale_x, scale_y, ix0, iy0, ix1, iy1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
+        try { Handles.MH_stbtt_GetGlyphBitmapBox.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBox, font, glyph, scale_x, scale_y, ix0, iy0, ix1, iy1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
     }
 
     /// ```
     /// void stbtt_GetGlyphBitmapBoxSubpixel(const stbtt_fontinfo* font, int glyph, float scale_x, float scale_y, float shift_x, float shift_y, int* ix0, int* iy0, int* ix1, int* iy1);
     /// ```
     public static void stbtt_GetGlyphBitmapBoxSubpixel(MemorySegment font, int glyph, float scale_x, float scale_y, float shift_x, float shift_y, MemorySegment ix0, MemorySegment iy0, MemorySegment ix1, MemorySegment iy1) {
-        try {
-            Handles.MH_stbtt_GetGlyphBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBoxSubpixel, font, glyph, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
+        try { Handles.MH_stbtt_GetGlyphBitmapBoxSubpixel.invokeExact(Handles.get().PFN_stbtt_GetGlyphBitmapBoxSubpixel, font, glyph, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
     }
 
     /// ```
     /// void stbtt_Rasterize(stbtt__bitmap* result, float flatness_in_pixels, stbtt_vertex* vertices, int num_verts, float scale_x, float scale_y, float shift_x, float shift_y, int x_off, int y_off, int invert, void* userdata);
     /// ```
     public static void stbtt_Rasterize(MemorySegment result, float flatness_in_pixels, MemorySegment vertices, int num_verts, float scale_x, float scale_y, float shift_x, float shift_y, int x_off, int y_off, int invert, MemorySegment userdata) {
-        try {
-            Handles.MH_stbtt_Rasterize.invokeExact(Handles.get().PFN_stbtt_Rasterize, result, flatness_in_pixels, vertices, num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
+        try { Handles.MH_stbtt_Rasterize.invokeExact(Handles.get().PFN_stbtt_Rasterize, result, flatness_in_pixels, vertices, num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
     }
 
     /// ```
     /// void stbtt_FreeSDF(unsigned char* bitmap, void* userdata);
     /// ```
     public static void stbtt_FreeSDF(MemorySegment bitmap, MemorySegment userdata) {
-        try {
-            Handles.MH_stbtt_FreeSDF.invokeExact(Handles.get().PFN_stbtt_FreeSDF, bitmap, userdata);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeSDF", e); }
+        try { Handles.MH_stbtt_FreeSDF.invokeExact(Handles.get().PFN_stbtt_FreeSDF, bitmap, userdata); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeSDF", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetGlyphSDF(const stbtt_fontinfo* info, float scale, int glyph, int padding, unsigned char onedge_value, float pixel_dist_scale, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetGlyphSDF(MemorySegment info, float scale, int glyph, int padding, byte onedge_value, float pixel_dist_scale, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, info, scale, glyph, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Handles.get().PFN_stbtt_GetGlyphSDF, info, scale, glyph, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
     }
 
     /// ```
     /// unsigned char* stbtt_GetCodepointSDF(const stbtt_fontinfo* info, float scale, int codepoint, int padding, unsigned char onedge_value, float pixel_dist_scale, int* width, int* height, int* xoff, int* yoff);
     /// ```
     public static MemorySegment stbtt_GetCodepointSDF(MemorySegment info, float scale, int codepoint, int padding, byte onedge_value, float pixel_dist_scale, MemorySegment width, MemorySegment height, MemorySegment xoff, MemorySegment yoff) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, info, scale, codepoint, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Handles.get().PFN_stbtt_GetCodepointSDF, info, scale, codepoint, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
     }
 
     /// ```
     /// int stbtt_FindMatchingFont(const unsigned char* fontdata, const char* name, int flags);
     /// ```
     public static int stbtt_FindMatchingFont(MemorySegment fontdata, MemorySegment name, int flags) {
-        try {
-            return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(Handles.get().PFN_stbtt_FindMatchingFont, fontdata, name, flags);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
+        try { return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(Handles.get().PFN_stbtt_FindMatchingFont, fontdata, name, flags); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
     }
 
     /// ```
     /// int stbtt_CompareUTF8toUTF16_bigendian(const char* s1, int len1, const char* s2, int len2);
     /// ```
     public static boolean stbtt_CompareUTF8toUTF16_bigendian(MemorySegment s1, int len1, MemorySegment s2, int len2) {
-        try {
-            return (((int) Handles.MH_stbtt_CompareUTF8toUTF16_bigendian.invokeExact(Handles.get().PFN_stbtt_CompareUTF8toUTF16_bigendian, s1, len1, s2, len2)) != 0);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_CompareUTF8toUTF16_bigendian", e); }
+        try { return (((int) Handles.MH_stbtt_CompareUTF8toUTF16_bigendian.invokeExact(Handles.get().PFN_stbtt_CompareUTF8toUTF16_bigendian, s1, len1, s2, len2)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_CompareUTF8toUTF16_bigendian", e); }
     }
 
     /// ```
     /// const char* stbtt_GetFontNameString(const stbtt_fontinfo* font, int* length, int platformID, int encodingID, int languageID, int nameID);
     /// ```
     public static MemorySegment stbtt_GetFontNameString(MemorySegment font, MemorySegment length, int platformID, int encodingID, int languageID, int nameID) {
-        try {
-            return (MemorySegment) Handles.MH_stbtt_GetFontNameString.invokeExact(Handles.get().PFN_stbtt_GetFontNameString, font, length, platformID, encodingID, languageID, nameID);
-        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontNameString", e); }
+        try { return (MemorySegment) Handles.MH_stbtt_GetFontNameString.invokeExact(Handles.get().PFN_stbtt_GetFontNameString, font, length, platformID, encodingID, languageID, nameID); }
+        catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontNameString", e); }
     }
 
     //@formatter:on

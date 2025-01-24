@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -114,136 +113,202 @@ public final class GLEXTCoordinateFrame {
         this.handles = new Handles(func);
     }
 
-    public void Tangent3bEXT(@CType("GLbyte") byte tx, @CType("GLbyte") byte ty, @CType("GLbyte") byte tz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3bEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bEXT");
+    /// ```
+    /// void glTangent3bEXT(signed char tx, signed char ty, signed char tz);
+    /// ```
+    public void Tangent3bEXT(byte tx, byte ty, byte tz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3bEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bEXT");
         try { Handles.MH_glTangent3bEXT.invokeExact(handles.PFN_glTangent3bEXT, tx, ty, tz); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3bEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3bEXT", e); }
     }
 
-    public void Tangent3bvEXT(@CType("const GLbyte *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bvEXT");
+    /// ```
+    /// void glTangent3bvEXT(const GLbyte* v);
+    /// ```
+    public void Tangent3bvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bvEXT");
         try { Handles.MH_glTangent3bvEXT.invokeExact(handles.PFN_glTangent3bvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3bvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3bvEXT", e); }
     }
 
-    public void Tangent3dEXT(@CType("GLdouble") double tx, @CType("GLdouble") double ty, @CType("GLdouble") double tz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3dEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dEXT");
+    /// ```
+    /// void glTangent3dEXT(double tx, double ty, double tz);
+    /// ```
+    public void Tangent3dEXT(double tx, double ty, double tz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3dEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dEXT");
         try { Handles.MH_glTangent3dEXT.invokeExact(handles.PFN_glTangent3dEXT, tx, ty, tz); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3dEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3dEXT", e); }
     }
 
-    public void Tangent3dvEXT(@CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dvEXT");
+    /// ```
+    /// void glTangent3dvEXT(const GLdouble* v);
+    /// ```
+    public void Tangent3dvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dvEXT");
         try { Handles.MH_glTangent3dvEXT.invokeExact(handles.PFN_glTangent3dvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3dvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3dvEXT", e); }
     }
 
-    public void Tangent3fEXT(@CType("GLfloat") float tx, @CType("GLfloat") float ty, @CType("GLfloat") float tz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3fEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fEXT");
+    /// ```
+    /// void glTangent3fEXT(float tx, float ty, float tz);
+    /// ```
+    public void Tangent3fEXT(float tx, float ty, float tz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3fEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fEXT");
         try { Handles.MH_glTangent3fEXT.invokeExact(handles.PFN_glTangent3fEXT, tx, ty, tz); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3fEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3fEXT", e); }
     }
 
-    public void Tangent3fvEXT(@CType("const GLfloat *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fvEXT");
+    /// ```
+    /// void glTangent3fvEXT(const GLfloat* v);
+    /// ```
+    public void Tangent3fvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fvEXT");
         try { Handles.MH_glTangent3fvEXT.invokeExact(handles.PFN_glTangent3fvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3fvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3fvEXT", e); }
     }
 
-    public void Tangent3iEXT(@CType("GLint") int tx, @CType("GLint") int ty, @CType("GLint") int tz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3iEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3iEXT");
+    /// ```
+    /// void glTangent3iEXT(int tx, int ty, int tz);
+    /// ```
+    public void Tangent3iEXT(int tx, int ty, int tz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3iEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3iEXT");
         try { Handles.MH_glTangent3iEXT.invokeExact(handles.PFN_glTangent3iEXT, tx, ty, tz); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3iEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3iEXT", e); }
     }
 
-    public void Tangent3ivEXT(@CType("const GLint *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3ivEXT");
+    /// ```
+    /// void glTangent3ivEXT(const GLint* v);
+    /// ```
+    public void Tangent3ivEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3ivEXT");
         try { Handles.MH_glTangent3ivEXT.invokeExact(handles.PFN_glTangent3ivEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3ivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3ivEXT", e); }
     }
 
-    public void Tangent3sEXT(@CType("GLshort") short tx, @CType("GLshort") short ty, @CType("GLshort") short tz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3sEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3sEXT");
+    /// ```
+    /// void glTangent3sEXT(signed short tx, signed short ty, signed short tz);
+    /// ```
+    public void Tangent3sEXT(short tx, short ty, short tz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3sEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3sEXT");
         try { Handles.MH_glTangent3sEXT.invokeExact(handles.PFN_glTangent3sEXT, tx, ty, tz); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3sEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3sEXT", e); }
     }
 
-    public void Tangent3svEXT(@CType("const GLshort *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangent3svEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3svEXT");
+    /// ```
+    /// void glTangent3svEXT(const GLshort* v);
+    /// ```
+    public void Tangent3svEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangent3svEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3svEXT");
         try { Handles.MH_glTangent3svEXT.invokeExact(handles.PFN_glTangent3svEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangent3svEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Tangent3svEXT", e); }
     }
 
-    public void Binormal3bEXT(@CType("GLbyte") byte bx, @CType("GLbyte") byte by, @CType("GLbyte") byte bz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3bEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bEXT");
+    /// ```
+    /// void glBinormal3bEXT(signed char bx, signed char by, signed char bz);
+    /// ```
+    public void Binormal3bEXT(byte bx, byte by, byte bz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3bEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bEXT");
         try { Handles.MH_glBinormal3bEXT.invokeExact(handles.PFN_glBinormal3bEXT, bx, by, bz); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3bEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3bEXT", e); }
     }
 
-    public void Binormal3bvEXT(@CType("const GLbyte *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bvEXT");
+    /// ```
+    /// void glBinormal3bvEXT(const GLbyte* v);
+    /// ```
+    public void Binormal3bvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bvEXT");
         try { Handles.MH_glBinormal3bvEXT.invokeExact(handles.PFN_glBinormal3bvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3bvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3bvEXT", e); }
     }
 
-    public void Binormal3dEXT(@CType("GLdouble") double bx, @CType("GLdouble") double by, @CType("GLdouble") double bz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3dEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dEXT");
+    /// ```
+    /// void glBinormal3dEXT(double bx, double by, double bz);
+    /// ```
+    public void Binormal3dEXT(double bx, double by, double bz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3dEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dEXT");
         try { Handles.MH_glBinormal3dEXT.invokeExact(handles.PFN_glBinormal3dEXT, bx, by, bz); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3dEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3dEXT", e); }
     }
 
-    public void Binormal3dvEXT(@CType("const GLdouble *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dvEXT");
+    /// ```
+    /// void glBinormal3dvEXT(const GLdouble* v);
+    /// ```
+    public void Binormal3dvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dvEXT");
         try { Handles.MH_glBinormal3dvEXT.invokeExact(handles.PFN_glBinormal3dvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3dvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3dvEXT", e); }
     }
 
-    public void Binormal3fEXT(@CType("GLfloat") float bx, @CType("GLfloat") float by, @CType("GLfloat") float bz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3fEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fEXT");
+    /// ```
+    /// void glBinormal3fEXT(float bx, float by, float bz);
+    /// ```
+    public void Binormal3fEXT(float bx, float by, float bz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3fEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fEXT");
         try { Handles.MH_glBinormal3fEXT.invokeExact(handles.PFN_glBinormal3fEXT, bx, by, bz); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3fEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3fEXT", e); }
     }
 
-    public void Binormal3fvEXT(@CType("const GLfloat *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fvEXT");
+    /// ```
+    /// void glBinormal3fvEXT(const GLfloat* v);
+    /// ```
+    public void Binormal3fvEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fvEXT");
         try { Handles.MH_glBinormal3fvEXT.invokeExact(handles.PFN_glBinormal3fvEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3fvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3fvEXT", e); }
     }
 
-    public void Binormal3iEXT(@CType("GLint") int bx, @CType("GLint") int by, @CType("GLint") int bz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3iEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3iEXT");
+    /// ```
+    /// void glBinormal3iEXT(int bx, int by, int bz);
+    /// ```
+    public void Binormal3iEXT(int bx, int by, int bz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3iEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3iEXT");
         try { Handles.MH_glBinormal3iEXT.invokeExact(handles.PFN_glBinormal3iEXT, bx, by, bz); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3iEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3iEXT", e); }
     }
 
-    public void Binormal3ivEXT(@CType("const GLint *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3ivEXT");
+    /// ```
+    /// void glBinormal3ivEXT(const GLint* v);
+    /// ```
+    public void Binormal3ivEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3ivEXT");
         try { Handles.MH_glBinormal3ivEXT.invokeExact(handles.PFN_glBinormal3ivEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3ivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3ivEXT", e); }
     }
 
-    public void Binormal3sEXT(@CType("GLshort") short bx, @CType("GLshort") short by, @CType("GLshort") short bz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3sEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3sEXT");
+    /// ```
+    /// void glBinormal3sEXT(signed short bx, signed short by, signed short bz);
+    /// ```
+    public void Binormal3sEXT(short bx, short by, short bz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3sEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3sEXT");
         try { Handles.MH_glBinormal3sEXT.invokeExact(handles.PFN_glBinormal3sEXT, bx, by, bz); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3sEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3sEXT", e); }
     }
 
-    public void Binormal3svEXT(@CType("const GLshort *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormal3svEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3svEXT");
+    /// ```
+    /// void glBinormal3svEXT(const GLshort* v);
+    /// ```
+    public void Binormal3svEXT(MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3svEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3svEXT");
         try { Handles.MH_glBinormal3svEXT.invokeExact(handles.PFN_glBinormal3svEXT, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormal3svEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Binormal3svEXT", e); }
     }
 
-    public void TangentPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTangentPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTangentPointerEXT");
+    /// ```
+    /// void glTangentPointerEXT(unsigned int type, int stride, const void* pointer);
+    /// ```
+    public void TangentPointerEXT(int type, int stride, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTangentPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTangentPointerEXT");
         try { Handles.MH_glTangentPointerEXT.invokeExact(handles.PFN_glTangentPointerEXT, type, stride, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTangentPointerEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TangentPointerEXT", e); }
     }
 
-    public void BinormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBinormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormalPointerEXT");
+    /// ```
+    /// void glBinormalPointerEXT(unsigned int type, int stride, const void* pointer);
+    /// ```
+    public void BinormalPointerEXT(int type, int stride, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBinormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormalPointerEXT");
         try { Handles.MH_glBinormalPointerEXT.invokeExact(handles.PFN_glBinormalPointerEXT, type, stride, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glBinormalPointerEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BinormalPointerEXT", e); }
     }
 
 }

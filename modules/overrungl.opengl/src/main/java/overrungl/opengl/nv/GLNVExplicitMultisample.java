@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -53,22 +52,31 @@ public final class GLNVExplicitMultisample {
         this.handles = new Handles(func);
     }
 
-    public void GetMultisamplefvNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") MemorySegment val) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
+    /// ```
+    /// void glGetMultisamplefvNV(unsigned int pname, unsigned int index, GLfloat* val);
+    /// ```
+    public void GetMultisamplefvNV(int pname, int index, MemorySegment val) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
         try { Handles.MH_glGetMultisamplefvNV.invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefvNV", e); }
     }
 
-    public void SampleMaskIndexedNV(@CType("GLuint") int index, @CType("GLbitfield") int mask) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
+    /// ```
+    /// void glSampleMaskIndexedNV(unsigned int index, unsigned int mask);
+    /// ```
+    public void SampleMaskIndexedNV(int index, int mask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
         try { Handles.MH_glSampleMaskIndexedNV.invokeExact(handles.PFN_glSampleMaskIndexedNV, index, mask); }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskIndexedNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SampleMaskIndexedNV", e); }
     }
 
-    public void TexRenderbufferNV(@CType("GLenum") int target, @CType("GLuint") int renderbuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
+    /// ```
+    /// void glTexRenderbufferNV(unsigned int target, unsigned int renderbuffer);
+    /// ```
+    public void TexRenderbufferNV(int target, int renderbuffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
         try { Handles.MH_glTexRenderbufferNV.invokeExact(handles.PFN_glTexRenderbufferNV, target, renderbuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexRenderbufferNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexRenderbufferNV", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -47,22 +46,31 @@ public final class GLARBGetProgramBinary {
         this.handles = new Handles(func);
     }
 
-    public void GetProgramBinary(@CType("GLuint") int program, @CType("GLsizei") int bufSize, @CType("GLsizei *") MemorySegment length, @CType("GLenum *") MemorySegment binaryFormat, @CType("void*") MemorySegment binary) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glGetProgramBinary");
+    /// ```
+    /// void glGetProgramBinary(unsigned int program, int bufSize, GLsizei* length, GLenum* binaryFormat, void* binary);
+    /// ```
+    public void GetProgramBinary(int program, int bufSize, MemorySegment length, MemorySegment binaryFormat, MemorySegment binary) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glGetProgramBinary");
         try { Handles.MH_glGetProgramBinary.invokeExact(handles.PFN_glGetProgramBinary, program, bufSize, length, binaryFormat, binary); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramBinary", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramBinary", e); }
     }
 
-    public void ProgramBinary(@CType("GLuint") int program, @CType("GLenum") int binaryFormat, @CType("const void *") MemorySegment binary, @CType("GLsizei") int length) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glProgramBinary");
+    /// ```
+    /// void glProgramBinary(unsigned int program, unsigned int binaryFormat, const void* binary, int length);
+    /// ```
+    public void ProgramBinary(int program, int binaryFormat, MemorySegment binary, int length) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glProgramBinary");
         try { Handles.MH_glProgramBinary.invokeExact(handles.PFN_glProgramBinary, program, binaryFormat, binary, length); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramBinary", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramBinary", e); }
     }
 
-    public void ProgramParameteri(@CType("GLuint") int program, @CType("GLenum") int pname, @CType("GLint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramParameteri)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteri");
+    /// ```
+    /// void glProgramParameteri(unsigned int program, unsigned int pname, int value);
+    /// ```
+    public void ProgramParameteri(int program, int pname, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteri)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteri");
         try { Handles.MH_glProgramParameteri.invokeExact(handles.PFN_glProgramParameteri, program, pname, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramParameteri", e); }
     }
 
 }

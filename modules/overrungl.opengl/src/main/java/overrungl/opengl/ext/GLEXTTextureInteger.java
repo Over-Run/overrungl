@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -99,40 +98,58 @@ public final class GLEXTTextureInteger {
         this.handles = new Handles(func);
     }
 
-    public void TexParameterIivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glTexParameterIivEXT");
+    /// ```
+    /// void glTexParameterIivEXT(unsigned int target, unsigned int pname, const GLint* params);
+    /// ```
+    public void TexParameterIivEXT(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glTexParameterIivEXT");
         try { Handles.MH_glTexParameterIivEXT.invokeExact(handles.PFN_glTexParameterIivEXT, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterIivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexParameterIivEXT", e); }
     }
 
-    public void TexParameterIuivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glTexParameterIuivEXT");
+    /// ```
+    /// void glTexParameterIuivEXT(unsigned int target, unsigned int pname, const GLuint* params);
+    /// ```
+    public void TexParameterIuivEXT(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glTexParameterIuivEXT");
         try { Handles.MH_glTexParameterIuivEXT.invokeExact(handles.PFN_glTexParameterIuivEXT, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterIuivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexParameterIuivEXT", e); }
     }
 
-    public void GetTexParameterIivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIivEXT");
+    /// ```
+    /// void glGetTexParameterIivEXT(unsigned int target, unsigned int pname, GLint* params);
+    /// ```
+    public void GetTexParameterIivEXT(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIivEXT");
         try { Handles.MH_glGetTexParameterIivEXT.invokeExact(handles.PFN_glGetTexParameterIivEXT, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexParameterIivEXT", e); }
     }
 
-    public void GetTexParameterIuivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLuint *") MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIuivEXT");
+    /// ```
+    /// void glGetTexParameterIuivEXT(unsigned int target, unsigned int pname, GLuint* params);
+    /// ```
+    public void GetTexParameterIuivEXT(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIuivEXT");
         try { Handles.MH_glGetTexParameterIuivEXT.invokeExact(handles.PFN_glGetTexParameterIuivEXT, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIuivEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexParameterIuivEXT", e); }
     }
 
-    public void ClearColorIiEXT(@CType("GLint") int red, @CType("GLint") int green, @CType("GLint") int blue, @CType("GLint") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearColorIiEXT)) throw new SymbolNotFoundError("Symbol not found: glClearColorIiEXT");
+    /// ```
+    /// void glClearColorIiEXT(int red, int green, int blue, int alpha);
+    /// ```
+    public void ClearColorIiEXT(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearColorIiEXT)) throw new SymbolNotFoundError("Symbol not found: glClearColorIiEXT");
         try { Handles.MH_glClearColorIiEXT.invokeExact(handles.PFN_glClearColorIiEXT, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearColorIiEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearColorIiEXT", e); }
     }
 
-    public void ClearColorIuiEXT(@CType("GLuint") int red, @CType("GLuint") int green, @CType("GLuint") int blue, @CType("GLuint") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearColorIuiEXT)) throw new SymbolNotFoundError("Symbol not found: glClearColorIuiEXT");
+    /// ```
+    /// void glClearColorIuiEXT(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha);
+    /// ```
+    public void ClearColorIuiEXT(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearColorIuiEXT)) throw new SymbolNotFoundError("Symbol not found: glClearColorIuiEXT");
         try { Handles.MH_glClearColorIuiEXT.invokeExact(handles.PFN_glClearColorIuiEXT, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearColorIuiEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearColorIuiEXT", e); }
     }
 
 }

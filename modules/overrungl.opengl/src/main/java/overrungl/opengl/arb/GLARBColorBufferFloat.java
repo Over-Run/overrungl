@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -42,10 +41,13 @@ public final class GLARBColorBufferFloat {
         this.handles = new Handles(func);
     }
 
-    public void ClampColorARB(@CType("GLenum") int target, @CType("GLenum") int clamp) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClampColorARB)) throw new SymbolNotFoundError("Symbol not found: glClampColorARB");
+    /// ```
+    /// void glClampColorARB(unsigned int target, unsigned int clamp);
+    /// ```
+    public void ClampColorARB(int target, int clamp) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClampColorARB)) throw new SymbolNotFoundError("Symbol not found: glClampColorARB");
         try { Handles.MH_glClampColorARB.invokeExact(handles.PFN_glClampColorARB, target, clamp); }
-        catch (Throwable e) { throw new RuntimeException("error in glClampColorARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClampColorARB", e); }
     }
 
 }

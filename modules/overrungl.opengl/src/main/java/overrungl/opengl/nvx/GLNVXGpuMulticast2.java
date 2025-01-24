@@ -19,7 +19,6 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -53,40 +52,58 @@ public final class GLNVXGpuMulticast2 {
         this.handles = new Handles(func);
     }
 
-    public void UploadGpuMaskNVX(@CType("GLbitfield") int mask) {
-        if (Unmarshal.isNullPointer(handles.PFN_glUploadGpuMaskNVX)) throw new SymbolNotFoundError("Symbol not found: glUploadGpuMaskNVX");
+    /// ```
+    /// void glUploadGpuMaskNVX(unsigned int mask);
+    /// ```
+    public void UploadGpuMaskNVX(int mask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glUploadGpuMaskNVX)) throw new SymbolNotFoundError("Symbol not found: glUploadGpuMaskNVX");
         try { Handles.MH_glUploadGpuMaskNVX.invokeExact(handles.PFN_glUploadGpuMaskNVX, mask); }
-        catch (Throwable e) { throw new RuntimeException("error in glUploadGpuMaskNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in UploadGpuMaskNVX", e); }
     }
 
-    public void MulticastViewportArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLfloat *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMulticastViewportArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportArrayvNVX");
+    /// ```
+    /// void glMulticastViewportArrayvNVX(unsigned int gpu, unsigned int first, int count, const GLfloat* v);
+    /// ```
+    public void MulticastViewportArrayvNVX(int gpu, int first, int count, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportArrayvNVX");
         try { Handles.MH_glMulticastViewportArrayvNVX.invokeExact(handles.PFN_glMulticastViewportArrayvNVX, gpu, first, count, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glMulticastViewportArrayvNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MulticastViewportArrayvNVX", e); }
     }
 
-    public void MulticastViewportPositionWScaleNVX(@CType("GLuint") int gpu, @CType("GLuint") int index, @CType("GLfloat") float xcoeff, @CType("GLfloat") float ycoeff) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMulticastViewportPositionWScaleNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportPositionWScaleNVX");
+    /// ```
+    /// void glMulticastViewportPositionWScaleNVX(unsigned int gpu, unsigned int index, float xcoeff, float ycoeff);
+    /// ```
+    public void MulticastViewportPositionWScaleNVX(int gpu, int index, float xcoeff, float ycoeff) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportPositionWScaleNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportPositionWScaleNVX");
         try { Handles.MH_glMulticastViewportPositionWScaleNVX.invokeExact(handles.PFN_glMulticastViewportPositionWScaleNVX, gpu, index, xcoeff, ycoeff); }
-        catch (Throwable e) { throw new RuntimeException("error in glMulticastViewportPositionWScaleNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MulticastViewportPositionWScaleNVX", e); }
     }
 
-    public void MulticastScissorArrayvNVX(@CType("GLuint") int gpu, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMulticastScissorArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastScissorArrayvNVX");
+    /// ```
+    /// void glMulticastScissorArrayvNVX(unsigned int gpu, unsigned int first, int count, const GLint* v);
+    /// ```
+    public void MulticastScissorArrayvNVX(int gpu, int first, int count, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMulticastScissorArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastScissorArrayvNVX");
         try { Handles.MH_glMulticastScissorArrayvNVX.invokeExact(handles.PFN_glMulticastScissorArrayvNVX, gpu, first, count, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glMulticastScissorArrayvNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MulticastScissorArrayvNVX", e); }
     }
 
-    public @CType("GLuint") int AsyncCopyBufferSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") MemorySegment fenceValueArray, @CType("GLuint") int readGpu, @CType("GLbitfield") int writeGpuMask, @CType("GLuint") int readBuffer, @CType("GLuint") int writeBuffer, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") MemorySegment signalValueArray) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAsyncCopyBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyBufferSubDataNVX");
+    /// ```
+    /// unsigned int glAsyncCopyBufferSubDataNVX(int waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* fenceValueArray, unsigned int readGpu, unsigned int writeGpuMask, unsigned int readBuffer, unsigned int writeBuffer, signed long long readOffset, signed long long writeOffset, signed long long size, int signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
+    /// ```
+    public int AsyncCopyBufferSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment fenceValueArray, int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyBufferSubDataNVX");
         try { return (int) Handles.MH_glAsyncCopyBufferSubDataNVX.invokeExact(handles.PFN_glAsyncCopyBufferSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, fenceValueArray, readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
-        catch (Throwable e) { throw new RuntimeException("error in glAsyncCopyBufferSubDataNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AsyncCopyBufferSubDataNVX", e); }
     }
 
-    public @CType("GLuint") int AsyncCopyImageSubDataNVX(@CType("GLsizei") int waitSemaphoreCount, @CType("const GLuint *") MemorySegment waitSemaphoreArray, @CType("const GLuint64 *") MemorySegment waitValueArray, @CType("GLuint") int srcGpu, @CType("GLbitfield") int dstGpuMask, @CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srcY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int srcWidth, @CType("GLsizei") int srcHeight, @CType("GLsizei") int srcDepth, @CType("GLsizei") int signalSemaphoreCount, @CType("const GLuint *") MemorySegment signalSemaphoreArray, @CType("const GLuint64 *") MemorySegment signalValueArray) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAsyncCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyImageSubDataNVX");
+    /// ```
+    /// unsigned int glAsyncCopyImageSubDataNVX(int waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* waitValueArray, unsigned int srcGpu, unsigned int dstGpuMask, unsigned int srcName, unsigned int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, unsigned int dstName, unsigned int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
+    /// ```
+    public int AsyncCopyImageSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment waitValueArray, int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyImageSubDataNVX");
         try { return (int) Handles.MH_glAsyncCopyImageSubDataNVX.invokeExact(handles.PFN_glAsyncCopyImageSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, waitValueArray, srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
-        catch (Throwable e) { throw new RuntimeException("error in glAsyncCopyImageSubDataNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AsyncCopyImageSubDataNVX", e); }
     }
 
 }

@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -179,274 +178,409 @@ public final class GLATIVertexStreams {
         this.handles = new Handles(func);
     }
 
-    public void VertexStream1sATI(@CType("GLenum") int stream, @CType("GLshort") short x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1sATI");
+    /// ```
+    /// void glVertexStream1sATI(unsigned int stream, signed short x);
+    /// ```
+    public void VertexStream1sATI(int stream, short x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1sATI");
         try { Handles.MH_glVertexStream1sATI.invokeExact(handles.PFN_glVertexStream1sATI, stream, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1sATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1sATI", e); }
     }
 
-    public void VertexStream1svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1svATI");
+    /// ```
+    /// void glVertexStream1svATI(unsigned int stream, const GLshort* coords);
+    /// ```
+    public void VertexStream1svATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1svATI");
         try { Handles.MH_glVertexStream1svATI.invokeExact(handles.PFN_glVertexStream1svATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1svATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1svATI", e); }
     }
 
-    public void VertexStream1iATI(@CType("GLenum") int stream, @CType("GLint") int x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1iATI");
+    /// ```
+    /// void glVertexStream1iATI(unsigned int stream, int x);
+    /// ```
+    public void VertexStream1iATI(int stream, int x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1iATI");
         try { Handles.MH_glVertexStream1iATI.invokeExact(handles.PFN_glVertexStream1iATI, stream, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1iATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1iATI", e); }
     }
 
-    public void VertexStream1ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1ivATI");
+    /// ```
+    /// void glVertexStream1ivATI(unsigned int stream, const GLint* coords);
+    /// ```
+    public void VertexStream1ivATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1ivATI");
         try { Handles.MH_glVertexStream1ivATI.invokeExact(handles.PFN_glVertexStream1ivATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1ivATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1ivATI", e); }
     }
 
-    public void VertexStream1fATI(@CType("GLenum") int stream, @CType("GLfloat") float x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fATI");
+    /// ```
+    /// void glVertexStream1fATI(unsigned int stream, float x);
+    /// ```
+    public void VertexStream1fATI(int stream, float x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fATI");
         try { Handles.MH_glVertexStream1fATI.invokeExact(handles.PFN_glVertexStream1fATI, stream, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1fATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1fATI", e); }
     }
 
-    public void VertexStream1fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fvATI");
+    /// ```
+    /// void glVertexStream1fvATI(unsigned int stream, const GLfloat* coords);
+    /// ```
+    public void VertexStream1fvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fvATI");
         try { Handles.MH_glVertexStream1fvATI.invokeExact(handles.PFN_glVertexStream1fvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1fvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1fvATI", e); }
     }
 
-    public void VertexStream1dATI(@CType("GLenum") int stream, @CType("GLdouble") double x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dATI");
+    /// ```
+    /// void glVertexStream1dATI(unsigned int stream, double x);
+    /// ```
+    public void VertexStream1dATI(int stream, double x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dATI");
         try { Handles.MH_glVertexStream1dATI.invokeExact(handles.PFN_glVertexStream1dATI, stream, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1dATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1dATI", e); }
     }
 
-    public void VertexStream1dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream1dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dvATI");
+    /// ```
+    /// void glVertexStream1dvATI(unsigned int stream, const GLdouble* coords);
+    /// ```
+    public void VertexStream1dvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dvATI");
         try { Handles.MH_glVertexStream1dvATI.invokeExact(handles.PFN_glVertexStream1dvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream1dvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream1dvATI", e); }
     }
 
-    public void VertexStream2sATI(@CType("GLenum") int stream, @CType("GLshort") short x, @CType("GLshort") short y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2sATI");
+    /// ```
+    /// void glVertexStream2sATI(unsigned int stream, signed short x, signed short y);
+    /// ```
+    public void VertexStream2sATI(int stream, short x, short y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2sATI");
         try { Handles.MH_glVertexStream2sATI.invokeExact(handles.PFN_glVertexStream2sATI, stream, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2sATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2sATI", e); }
     }
 
-    public void VertexStream2svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2svATI");
+    /// ```
+    /// void glVertexStream2svATI(unsigned int stream, const GLshort* coords);
+    /// ```
+    public void VertexStream2svATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2svATI");
         try { Handles.MH_glVertexStream2svATI.invokeExact(handles.PFN_glVertexStream2svATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2svATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2svATI", e); }
     }
 
-    public void VertexStream2iATI(@CType("GLenum") int stream, @CType("GLint") int x, @CType("GLint") int y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2iATI");
+    /// ```
+    /// void glVertexStream2iATI(unsigned int stream, int x, int y);
+    /// ```
+    public void VertexStream2iATI(int stream, int x, int y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2iATI");
         try { Handles.MH_glVertexStream2iATI.invokeExact(handles.PFN_glVertexStream2iATI, stream, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2iATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2iATI", e); }
     }
 
-    public void VertexStream2ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2ivATI");
+    /// ```
+    /// void glVertexStream2ivATI(unsigned int stream, const GLint* coords);
+    /// ```
+    public void VertexStream2ivATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2ivATI");
         try { Handles.MH_glVertexStream2ivATI.invokeExact(handles.PFN_glVertexStream2ivATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2ivATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2ivATI", e); }
     }
 
-    public void VertexStream2fATI(@CType("GLenum") int stream, @CType("GLfloat") float x, @CType("GLfloat") float y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fATI");
+    /// ```
+    /// void glVertexStream2fATI(unsigned int stream, float x, float y);
+    /// ```
+    public void VertexStream2fATI(int stream, float x, float y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fATI");
         try { Handles.MH_glVertexStream2fATI.invokeExact(handles.PFN_glVertexStream2fATI, stream, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2fATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2fATI", e); }
     }
 
-    public void VertexStream2fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fvATI");
+    /// ```
+    /// void glVertexStream2fvATI(unsigned int stream, const GLfloat* coords);
+    /// ```
+    public void VertexStream2fvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fvATI");
         try { Handles.MH_glVertexStream2fvATI.invokeExact(handles.PFN_glVertexStream2fvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2fvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2fvATI", e); }
     }
 
-    public void VertexStream2dATI(@CType("GLenum") int stream, @CType("GLdouble") double x, @CType("GLdouble") double y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dATI");
+    /// ```
+    /// void glVertexStream2dATI(unsigned int stream, double x, double y);
+    /// ```
+    public void VertexStream2dATI(int stream, double x, double y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dATI");
         try { Handles.MH_glVertexStream2dATI.invokeExact(handles.PFN_glVertexStream2dATI, stream, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2dATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2dATI", e); }
     }
 
-    public void VertexStream2dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream2dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dvATI");
+    /// ```
+    /// void glVertexStream2dvATI(unsigned int stream, const GLdouble* coords);
+    /// ```
+    public void VertexStream2dvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dvATI");
         try { Handles.MH_glVertexStream2dvATI.invokeExact(handles.PFN_glVertexStream2dvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream2dvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream2dvATI", e); }
     }
 
-    public void VertexStream3sATI(@CType("GLenum") int stream, @CType("GLshort") short x, @CType("GLshort") short y, @CType("GLshort") short z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3sATI");
+    /// ```
+    /// void glVertexStream3sATI(unsigned int stream, signed short x, signed short y, signed short z);
+    /// ```
+    public void VertexStream3sATI(int stream, short x, short y, short z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3sATI");
         try { Handles.MH_glVertexStream3sATI.invokeExact(handles.PFN_glVertexStream3sATI, stream, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3sATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3sATI", e); }
     }
 
-    public void VertexStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3svATI");
+    /// ```
+    /// void glVertexStream3svATI(unsigned int stream, const GLshort* coords);
+    /// ```
+    public void VertexStream3svATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3svATI");
         try { Handles.MH_glVertexStream3svATI.invokeExact(handles.PFN_glVertexStream3svATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3svATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3svATI", e); }
     }
 
-    public void VertexStream3iATI(@CType("GLenum") int stream, @CType("GLint") int x, @CType("GLint") int y, @CType("GLint") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3iATI");
+    /// ```
+    /// void glVertexStream3iATI(unsigned int stream, int x, int y, int z);
+    /// ```
+    public void VertexStream3iATI(int stream, int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3iATI");
         try { Handles.MH_glVertexStream3iATI.invokeExact(handles.PFN_glVertexStream3iATI, stream, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3iATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3iATI", e); }
     }
 
-    public void VertexStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3ivATI");
+    /// ```
+    /// void glVertexStream3ivATI(unsigned int stream, const GLint* coords);
+    /// ```
+    public void VertexStream3ivATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3ivATI");
         try { Handles.MH_glVertexStream3ivATI.invokeExact(handles.PFN_glVertexStream3ivATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3ivATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3ivATI", e); }
     }
 
-    public void VertexStream3fATI(@CType("GLenum") int stream, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fATI");
+    /// ```
+    /// void glVertexStream3fATI(unsigned int stream, float x, float y, float z);
+    /// ```
+    public void VertexStream3fATI(int stream, float x, float y, float z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fATI");
         try { Handles.MH_glVertexStream3fATI.invokeExact(handles.PFN_glVertexStream3fATI, stream, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3fATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3fATI", e); }
     }
 
-    public void VertexStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fvATI");
+    /// ```
+    /// void glVertexStream3fvATI(unsigned int stream, const GLfloat* coords);
+    /// ```
+    public void VertexStream3fvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fvATI");
         try { Handles.MH_glVertexStream3fvATI.invokeExact(handles.PFN_glVertexStream3fvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3fvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3fvATI", e); }
     }
 
-    public void VertexStream3dATI(@CType("GLenum") int stream, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dATI");
+    /// ```
+    /// void glVertexStream3dATI(unsigned int stream, double x, double y, double z);
+    /// ```
+    public void VertexStream3dATI(int stream, double x, double y, double z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dATI");
         try { Handles.MH_glVertexStream3dATI.invokeExact(handles.PFN_glVertexStream3dATI, stream, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3dATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3dATI", e); }
     }
 
-    public void VertexStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dvATI");
+    /// ```
+    /// void glVertexStream3dvATI(unsigned int stream, const GLdouble* coords);
+    /// ```
+    public void VertexStream3dvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dvATI");
         try { Handles.MH_glVertexStream3dvATI.invokeExact(handles.PFN_glVertexStream3dvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream3dvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream3dvATI", e); }
     }
 
-    public void VertexStream4sATI(@CType("GLenum") int stream, @CType("GLshort") short x, @CType("GLshort") short y, @CType("GLshort") short z, @CType("GLshort") short w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4sATI");
+    /// ```
+    /// void glVertexStream4sATI(unsigned int stream, signed short x, signed short y, signed short z, signed short w);
+    /// ```
+    public void VertexStream4sATI(int stream, short x, short y, short z, short w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4sATI");
         try { Handles.MH_glVertexStream4sATI.invokeExact(handles.PFN_glVertexStream4sATI, stream, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4sATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4sATI", e); }
     }
 
-    public void VertexStream4svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4svATI");
+    /// ```
+    /// void glVertexStream4svATI(unsigned int stream, const GLshort* coords);
+    /// ```
+    public void VertexStream4svATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4svATI");
         try { Handles.MH_glVertexStream4svATI.invokeExact(handles.PFN_glVertexStream4svATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4svATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4svATI", e); }
     }
 
-    public void VertexStream4iATI(@CType("GLenum") int stream, @CType("GLint") int x, @CType("GLint") int y, @CType("GLint") int z, @CType("GLint") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4iATI");
+    /// ```
+    /// void glVertexStream4iATI(unsigned int stream, int x, int y, int z, int w);
+    /// ```
+    public void VertexStream4iATI(int stream, int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4iATI");
         try { Handles.MH_glVertexStream4iATI.invokeExact(handles.PFN_glVertexStream4iATI, stream, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4iATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4iATI", e); }
     }
 
-    public void VertexStream4ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4ivATI");
+    /// ```
+    /// void glVertexStream4ivATI(unsigned int stream, const GLint* coords);
+    /// ```
+    public void VertexStream4ivATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4ivATI");
         try { Handles.MH_glVertexStream4ivATI.invokeExact(handles.PFN_glVertexStream4ivATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4ivATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4ivATI", e); }
     }
 
-    public void VertexStream4fATI(@CType("GLenum") int stream, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z, @CType("GLfloat") float w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fATI");
+    /// ```
+    /// void glVertexStream4fATI(unsigned int stream, float x, float y, float z, float w);
+    /// ```
+    public void VertexStream4fATI(int stream, float x, float y, float z, float w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fATI");
         try { Handles.MH_glVertexStream4fATI.invokeExact(handles.PFN_glVertexStream4fATI, stream, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4fATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4fATI", e); }
     }
 
-    public void VertexStream4fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fvATI");
+    /// ```
+    /// void glVertexStream4fvATI(unsigned int stream, const GLfloat* coords);
+    /// ```
+    public void VertexStream4fvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fvATI");
         try { Handles.MH_glVertexStream4fvATI.invokeExact(handles.PFN_glVertexStream4fvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4fvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4fvATI", e); }
     }
 
-    public void VertexStream4dATI(@CType("GLenum") int stream, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z, @CType("GLdouble") double w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dATI");
+    /// ```
+    /// void glVertexStream4dATI(unsigned int stream, double x, double y, double z, double w);
+    /// ```
+    public void VertexStream4dATI(int stream, double x, double y, double z, double w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dATI");
         try { Handles.MH_glVertexStream4dATI.invokeExact(handles.PFN_glVertexStream4dATI, stream, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4dATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4dATI", e); }
     }
 
-    public void VertexStream4dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexStream4dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dvATI");
+    /// ```
+    /// void glVertexStream4dvATI(unsigned int stream, const GLdouble* coords);
+    /// ```
+    public void VertexStream4dvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dvATI");
         try { Handles.MH_glVertexStream4dvATI.invokeExact(handles.PFN_glVertexStream4dvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexStream4dvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexStream4dvATI", e); }
     }
 
-    public void NormalStream3bATI(@CType("GLenum") int stream, @CType("GLbyte") byte nx, @CType("GLbyte") byte ny, @CType("GLbyte") byte nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3bATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bATI");
+    /// ```
+    /// void glNormalStream3bATI(unsigned int stream, signed char nx, signed char ny, signed char nz);
+    /// ```
+    public void NormalStream3bATI(int stream, byte nx, byte ny, byte nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bATI");
         try { Handles.MH_glNormalStream3bATI.invokeExact(handles.PFN_glNormalStream3bATI, stream, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3bATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3bATI", e); }
     }
 
-    public void NormalStream3bvATI(@CType("GLenum") int stream, @CType("const GLbyte *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3bvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bvATI");
+    /// ```
+    /// void glNormalStream3bvATI(unsigned int stream, const GLbyte* coords);
+    /// ```
+    public void NormalStream3bvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bvATI");
         try { Handles.MH_glNormalStream3bvATI.invokeExact(handles.PFN_glNormalStream3bvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3bvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3bvATI", e); }
     }
 
-    public void NormalStream3sATI(@CType("GLenum") int stream, @CType("GLshort") short nx, @CType("GLshort") short ny, @CType("GLshort") short nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3sATI");
+    /// ```
+    /// void glNormalStream3sATI(unsigned int stream, signed short nx, signed short ny, signed short nz);
+    /// ```
+    public void NormalStream3sATI(int stream, short nx, short ny, short nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3sATI");
         try { Handles.MH_glNormalStream3sATI.invokeExact(handles.PFN_glNormalStream3sATI, stream, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3sATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3sATI", e); }
     }
 
-    public void NormalStream3svATI(@CType("GLenum") int stream, @CType("const GLshort *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3svATI");
+    /// ```
+    /// void glNormalStream3svATI(unsigned int stream, const GLshort* coords);
+    /// ```
+    public void NormalStream3svATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3svATI");
         try { Handles.MH_glNormalStream3svATI.invokeExact(handles.PFN_glNormalStream3svATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3svATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3svATI", e); }
     }
 
-    public void NormalStream3iATI(@CType("GLenum") int stream, @CType("GLint") int nx, @CType("GLint") int ny, @CType("GLint") int nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3iATI");
+    /// ```
+    /// void glNormalStream3iATI(unsigned int stream, int nx, int ny, int nz);
+    /// ```
+    public void NormalStream3iATI(int stream, int nx, int ny, int nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3iATI");
         try { Handles.MH_glNormalStream3iATI.invokeExact(handles.PFN_glNormalStream3iATI, stream, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3iATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3iATI", e); }
     }
 
-    public void NormalStream3ivATI(@CType("GLenum") int stream, @CType("const GLint *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3ivATI");
+    /// ```
+    /// void glNormalStream3ivATI(unsigned int stream, const GLint* coords);
+    /// ```
+    public void NormalStream3ivATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3ivATI");
         try { Handles.MH_glNormalStream3ivATI.invokeExact(handles.PFN_glNormalStream3ivATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3ivATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3ivATI", e); }
     }
 
-    public void NormalStream3fATI(@CType("GLenum") int stream, @CType("GLfloat") float nx, @CType("GLfloat") float ny, @CType("GLfloat") float nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fATI");
+    /// ```
+    /// void glNormalStream3fATI(unsigned int stream, float nx, float ny, float nz);
+    /// ```
+    public void NormalStream3fATI(int stream, float nx, float ny, float nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fATI");
         try { Handles.MH_glNormalStream3fATI.invokeExact(handles.PFN_glNormalStream3fATI, stream, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3fATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3fATI", e); }
     }
 
-    public void NormalStream3fvATI(@CType("GLenum") int stream, @CType("const GLfloat *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fvATI");
+    /// ```
+    /// void glNormalStream3fvATI(unsigned int stream, const GLfloat* coords);
+    /// ```
+    public void NormalStream3fvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fvATI");
         try { Handles.MH_glNormalStream3fvATI.invokeExact(handles.PFN_glNormalStream3fvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3fvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3fvATI", e); }
     }
 
-    public void NormalStream3dATI(@CType("GLenum") int stream, @CType("GLdouble") double nx, @CType("GLdouble") double ny, @CType("GLdouble") double nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dATI");
+    /// ```
+    /// void glNormalStream3dATI(unsigned int stream, double nx, double ny, double nz);
+    /// ```
+    public void NormalStream3dATI(int stream, double nx, double ny, double nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dATI");
         try { Handles.MH_glNormalStream3dATI.invokeExact(handles.PFN_glNormalStream3dATI, stream, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3dATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3dATI", e); }
     }
 
-    public void NormalStream3dvATI(@CType("GLenum") int stream, @CType("const GLdouble *") MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormalStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dvATI");
+    /// ```
+    /// void glNormalStream3dvATI(unsigned int stream, const GLdouble* coords);
+    /// ```
+    public void NormalStream3dvATI(int stream, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dvATI");
         try { Handles.MH_glNormalStream3dvATI.invokeExact(handles.PFN_glNormalStream3dvATI, stream, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormalStream3dvATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NormalStream3dvATI", e); }
     }
 
-    public void ClientActiveVertexStreamATI(@CType("GLenum") int stream) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClientActiveVertexStreamATI)) throw new SymbolNotFoundError("Symbol not found: glClientActiveVertexStreamATI");
+    /// ```
+    /// void glClientActiveVertexStreamATI(unsigned int stream);
+    /// ```
+    public void ClientActiveVertexStreamATI(int stream) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClientActiveVertexStreamATI)) throw new SymbolNotFoundError("Symbol not found: glClientActiveVertexStreamATI");
         try { Handles.MH_glClientActiveVertexStreamATI.invokeExact(handles.PFN_glClientActiveVertexStreamATI, stream); }
-        catch (Throwable e) { throw new RuntimeException("error in glClientActiveVertexStreamATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClientActiveVertexStreamATI", e); }
     }
 
-    public void VertexBlendEnviATI(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexBlendEnviATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnviATI");
+    /// ```
+    /// void glVertexBlendEnviATI(unsigned int pname, int param);
+    /// ```
+    public void VertexBlendEnviATI(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnviATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnviATI");
         try { Handles.MH_glVertexBlendEnviATI.invokeExact(handles.PFN_glVertexBlendEnviATI, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexBlendEnviATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexBlendEnviATI", e); }
     }
 
-    public void VertexBlendEnvfATI(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexBlendEnvfATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnvfATI");
+    /// ```
+    /// void glVertexBlendEnvfATI(unsigned int pname, float param);
+    /// ```
+    public void VertexBlendEnvfATI(int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnvfATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnvfATI");
         try { Handles.MH_glVertexBlendEnvfATI.invokeExact(handles.PFN_glVertexBlendEnvfATI, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexBlendEnvfATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexBlendEnvfATI", e); }
     }
 
 }

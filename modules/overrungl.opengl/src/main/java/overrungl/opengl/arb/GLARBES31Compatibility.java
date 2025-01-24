@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -38,10 +37,13 @@ public final class GLARBES31Compatibility {
         this.handles = new Handles(func);
     }
 
-    public void MemoryBarrierByRegion(@CType("GLbitfield") int barriers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
+    /// ```
+    /// void glMemoryBarrierByRegion(unsigned int barriers);
+    /// ```
+    public void MemoryBarrierByRegion(int barriers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
         try { Handles.MH_glMemoryBarrierByRegion.invokeExact(handles.PFN_glMemoryBarrierByRegion, barriers); }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierByRegion", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MemoryBarrierByRegion", e); }
     }
 
 }
