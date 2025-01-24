@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef void* (*GLFWReallocateFun)(void* block, size_t size, void* user);
 /// ```

@@ -480,7 +480,6 @@ public final class AL {
         }
     }
 
-    /// Signature:
     /// ```
     /// void alEnable(int capability);
     /// ```
@@ -490,7 +489,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alEnable", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDisable(int capability);
     /// ```
@@ -500,17 +498,15 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDisable", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alIsEnabled(int capability);
     /// ```
-    public static byte alIsEnabled(int capability) {
+    public static boolean alIsEnabled(int capability) {
         try {
-            return (byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability);
+            return (((byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alIsEnabled", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDopplerFactor(float value);
     /// ```
@@ -520,7 +516,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDopplerFactor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDopplerVelocity(float value);
     /// ```
@@ -530,7 +525,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDopplerVelocity", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSpeedOfSound(float value);
     /// ```
@@ -540,7 +534,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSpeedOfSound", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDistanceModel(int distanceModel);
     /// ```
@@ -550,7 +543,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDistanceModel", e); }
     }
 
-    /// Signature:
     /// ```
     /// const ALchar* alGetString(int param);
     /// ```
@@ -560,7 +552,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetString", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBooleanv(int param, ALboolean* values);
     /// ```
@@ -570,7 +561,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBooleanv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetIntegerv(int param, ALint* values);
     /// ```
@@ -580,7 +570,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetIntegerv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetFloatv(int param, ALfloat* values);
     /// ```
@@ -590,7 +579,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloatv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetDoublev(int param, ALdouble* values);
     /// ```
@@ -600,17 +588,15 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetDoublev", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alGetBoolean(int param);
     /// ```
-    public static byte alGetBoolean(int param) {
+    public static boolean alGetBoolean(int param) {
         try {
-            return (byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param);
+            return (((byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBoolean", e); }
     }
 
-    /// Signature:
     /// ```
     /// int alGetInteger(int param);
     /// ```
@@ -620,7 +606,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetInteger", e); }
     }
 
-    /// Signature:
     /// ```
     /// float alGetFloat(int param);
     /// ```
@@ -630,7 +615,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetFloat", e); }
     }
 
-    /// Signature:
     /// ```
     /// double alGetDouble(int param);
     /// ```
@@ -640,7 +624,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
     }
 
-    /// Signature:
     /// ```
     /// int alGetError();
     /// ```
@@ -650,17 +633,15 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alIsExtensionPresent(const ALchar* extname);
     /// ```
-    public static byte alIsExtensionPresent(MemorySegment extname) {
+    public static boolean alIsExtensionPresent(MemorySegment extname) {
         try {
-            return (byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname);
+            return (((byte) Handles.MH_alIsExtensionPresent.invokeExact(Handles.get().PFN_alIsExtensionPresent, extname)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* alGetProcAddress(const ALchar* fname);
     /// ```
@@ -670,7 +651,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    /// Signature:
     /// ```
     /// int alGetEnumValue(const ALchar* ename);
     /// ```
@@ -680,7 +660,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListenerf(int param, float value);
     /// ```
@@ -690,7 +669,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListenerf", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListener3f(int param, float value1, float value2, float value3);
     /// ```
@@ -700,7 +678,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListener3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListenerfv(int param, const ALfloat* values);
     /// ```
@@ -710,7 +687,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListenerfv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListeneri(int param, int value);
     /// ```
@@ -720,7 +696,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListeneri", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListener3i(int param, int value1, int value2, int value3);
     /// ```
@@ -730,7 +705,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListener3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alListeneriv(int param, const ALint* values);
     /// ```
@@ -740,7 +714,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alListeneriv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListenerf(int param, ALfloat* value);
     /// ```
@@ -750,7 +723,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerf", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListener3f(int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
@@ -760,7 +732,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListenerfv(int param, ALfloat* values);
     /// ```
@@ -770,7 +741,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListenerfv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListeneri(int param, ALint* value);
     /// ```
@@ -780,7 +750,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneri", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListener3i(int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
@@ -790,7 +759,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListener3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetListeneriv(int param, ALint* values);
     /// ```
@@ -800,7 +768,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGenSources(int n, ALuint* sources);
     /// ```
@@ -810,7 +777,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDeleteSources(int n, const ALuint* sources);
     /// ```
@@ -820,17 +786,15 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alIsSource(unsigned int source);
     /// ```
-    public static byte alIsSource(int source) {
+    public static boolean alIsSource(int source) {
         try {
-            return (byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source);
+            return (((byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alIsSource", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcef(unsigned int source, int param, float value);
     /// ```
@@ -840,7 +804,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcef", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSource3f(unsigned int source, int param, float value1, float value2, float value3);
     /// ```
@@ -850,7 +813,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSource3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcefv(unsigned int source, int param, const ALfloat* values);
     /// ```
@@ -860,7 +822,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcefv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcei(unsigned int source, int param, int value);
     /// ```
@@ -870,7 +831,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSource3i(unsigned int source, int param, int value1, int value2, int value3);
     /// ```
@@ -880,7 +840,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSource3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceiv(unsigned int source, int param, const ALint* values);
     /// ```
@@ -890,7 +849,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceiv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSourcef(unsigned int source, int param, ALfloat* value);
     /// ```
@@ -900,7 +858,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcef", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSource3f(unsigned int source, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
@@ -910,7 +867,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSourcefv(unsigned int source, int param, ALfloat* values);
     /// ```
@@ -920,7 +876,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcefv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSourcei(unsigned int source, int param, ALint* value);
     /// ```
@@ -930,7 +885,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSource3i(unsigned int source, int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
@@ -940,7 +894,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetSourceiv(unsigned int source, int param, ALint* values);
     /// ```
@@ -950,7 +903,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcePlay(unsigned int source);
     /// ```
@@ -960,7 +912,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceStop(unsigned int source);
     /// ```
@@ -970,7 +921,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceRewind(unsigned int source);
     /// ```
@@ -980,7 +930,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcePause(unsigned int source);
     /// ```
@@ -990,7 +939,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcePlayv(int n, const ALuint* sources);
     /// ```
@@ -1000,7 +948,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceStopv(int n, const ALuint* sources);
     /// ```
@@ -1010,7 +957,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceRewindv(int n, const ALuint* sources);
     /// ```
@@ -1020,7 +966,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourcePausev(int n, const ALuint* sources);
     /// ```
@@ -1030,7 +975,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceQueueBuffers(unsigned int source, int nb, const ALuint* buffers);
     /// ```
@@ -1040,7 +984,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alSourceUnqueueBuffers(unsigned int source, int nb, ALuint* buffers);
     /// ```
@@ -1050,7 +993,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGenBuffers(int n, ALuint* buffers);
     /// ```
@@ -1060,7 +1002,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alDeleteBuffers(int n, const ALuint* buffers);
     /// ```
@@ -1070,17 +1011,15 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alIsBuffer(unsigned int buffer);
     /// ```
-    public static byte alIsBuffer(int buffer) {
+    public static boolean alIsBuffer(int buffer) {
         try {
-            return (byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer);
+            return (((byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBufferData(unsigned int buffer, int format, const ALvoid* data, int size, int samplerate);
     /// ```
@@ -1090,7 +1029,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBufferData", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBufferf(unsigned int buffer, int param, float value);
     /// ```
@@ -1100,7 +1038,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBufferf", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBuffer3f(unsigned int buffer, int param, float value1, float value2, float value3);
     /// ```
@@ -1110,7 +1047,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBufferfv(unsigned int buffer, int param, const ALfloat* values);
     /// ```
@@ -1120,7 +1056,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBufferfv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBufferi(unsigned int buffer, int param, int value);
     /// ```
@@ -1130,7 +1065,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBufferi", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBuffer3i(unsigned int buffer, int param, int value1, int value2, int value3);
     /// ```
@@ -1140,7 +1074,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBuffer3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alBufferiv(unsigned int buffer, int param, const ALint* values);
     /// ```
@@ -1150,7 +1083,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alBufferiv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBufferf(unsigned int buffer, int param, ALfloat* value);
     /// ```
@@ -1160,7 +1092,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferf", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBuffer3f(unsigned int buffer, int param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
@@ -1170,7 +1101,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3f", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBufferfv(unsigned int buffer, int param, ALfloat* values);
     /// ```
@@ -1180,7 +1110,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferfv", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBufferi(unsigned int buffer, int param, ALint* value);
     /// ```
@@ -1190,7 +1119,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferi", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBuffer3i(unsigned int buffer, int param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
@@ -1200,7 +1128,6 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetBuffer3i", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alGetBufferiv(unsigned int buffer, int param, ALint* values);
     /// ```

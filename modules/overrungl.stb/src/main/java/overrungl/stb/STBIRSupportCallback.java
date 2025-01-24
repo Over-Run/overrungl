@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef float (*STBIRSupportCallback)(float scale, void* user_data);
 /// ```

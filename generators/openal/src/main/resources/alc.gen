@@ -3,18 +3,18 @@
 using ALCdevice = struct ALCdevice;
 using ALCcontext = struct ALCcontext;
 using ALCboolean = java ALCboolean;
-using ALCchar = java ALCchar;
-using ALCbyte = java ALCbyte;
-using ALCubyte = java ALCubyte;
-using ALCshort = java ALCshort;
-using ALCushort = java ALCushort;
-using ALCint = java ALCint;
-using ALCuint = java ALCuint;
-using ALCsizei = java ALCsizei;
-using ALCenum = java ALCenum;
-using ALCfloat = java ALCfloat;
-using ALCdouble = java ALCdouble;
-using ALCvoid = java ALCvoid;
+using ALCchar = char;
+using ALCbyte = signed char;
+using ALCubyte = unsigned char;
+using ALCshort = short;
+using ALCushort = unsigned short;
+using ALCint = int;
+using ALCuint = unsigned int;
+using ALCsizei = int;
+using ALCenum = int;
+using ALCfloat = float;
+using ALCdouble = double;
+using ALCvoid = void;
 
 #define ALC_FALSE                                0
 #define ALC_TRUE                                 1

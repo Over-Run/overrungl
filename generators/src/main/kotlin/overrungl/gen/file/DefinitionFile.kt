@@ -30,10 +30,10 @@ import kotlin.io.path.createParentDirectories
  * @since 0.1.0
  */
 class DefinitionFile(filename: String) {
-    private val interpreter: Interpreter
+    val interpreter: Interpreter
 
     init {
-        ClassLoader.getSystemResourceAsStream(filename)!!.bufferedReader().use {
+        (ClassLoader.getSystemResourceAsStream(filename) ?: error("can't load file $filename")).bufferedReader().use {
             val tokens = Lexer(it.readText()).tokenize()
             val parse = Parser(tokens).parse()
             interpreter = Interpreter()
@@ -57,7 +57,6 @@ class DefinitionFile(filename: String) {
                 |import overrungl.upcall.*;
                 |import overrungl.util.*;
                 |
-                |/// Signature:
                 |/// ```
                 |/// typedef ${upcallType.originalName};
                 |/// ```
@@ -640,9 +639,9 @@ class DefinitionFile(filename: String) {
 
         // fields
         sb.appendLine("    //region Fields")
-        interpreter.macros.forEach { (name, value) ->
+        interpreter.macros.forEach {
             sb.appendLine(
-                "    public static final ${interpreter.inferenceType(value)} $name = ${interpreter.stringify(value)};"
+                "    public static final ${it.type} ${it.name} = ${it.value};"
             )
         }
         interpreter.enums.forEach { (name, value) ->
@@ -718,7 +717,6 @@ class DefinitionFile(filename: String) {
 
             sb.appendLine(
                 """
-                    |    /// Signature:
                     |    /// ```
                     |    /// ${func.returnType.originalName} ${func.entrypoint}(${
                     func.parameters.joinToString { p ->

@@ -198,7 +198,6 @@ public final class STBImageResize2 {
         }
     }
 
-    /// Signature:
     /// ```
     /// unsigned char* stbir_resize_uint8_srgb(const unsigned char* input_pixels, int input_w, int input_h, int input_stride_in_bytes, unsigned char* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
     /// ```
@@ -208,7 +207,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned char* stbir_resize_uint8_linear(const unsigned char* input_pixels, int input_w, int input_h, int input_stride_in_bytes, unsigned char* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
     /// ```
@@ -218,7 +216,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_linear", e); }
     }
 
-    /// Signature:
     /// ```
     /// float* stbir_resize_float_linear(const float* input_pixels, int input_w, int input_h, int input_stride_in_bytes, float* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_type);
     /// ```
@@ -228,7 +225,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_float_linear", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* stbir_resize(const void* input_pixels, int input_w, int input_h, int input_stride_in_bytes, void* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type, int edge, int filter);
     /// ```
@@ -238,7 +234,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_resize_init(STBIR_RESIZE* resize, const void* input_pixels, int input_w, int input_h, int input_stride_in_bytes, void* output_pixels, int output_w, int output_h, int output_stride_in_bytes, int pixel_layout, int data_type);
     /// ```
@@ -248,7 +243,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_init", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_set_datatypes(STBIR_RESIZE* resize, int input_type, int output_type);
     /// ```
@@ -258,7 +252,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_datatypes", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_set_pixel_callbacks(STBIR_RESIZE* resize, stbir_input_callback* input_cb, stbir_output_callback* output_cb);
     /// ```
@@ -268,7 +261,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_set_user_data(STBIR_RESIZE* resize, void* user_data);
     /// ```
@@ -278,7 +270,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_user_data", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_set_buffer_ptrs(STBIR_RESIZE* resize, const void* input_pixels, int input_stride_in_bytes, void* output_pixels, int output_stride_in_bytes);
     /// ```
@@ -288,7 +279,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_buffer_ptrs", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_pixel_layouts(STBIR_RESIZE* resize, int input_pixel_layout, int output_pixel_layout);
     /// ```
@@ -298,7 +288,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_layouts", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_edgemodes(STBIR_RESIZE* resize, int horizontal_edge, int vertical_edge);
     /// ```
@@ -308,7 +297,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_edgemodes", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_filters(STBIR_RESIZE* resize, int horizontal_filter, int vertical_filter);
     /// ```
@@ -318,7 +306,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filters", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_filter_callbacks(STBIR_RESIZE* resize, stbir__kernel_callback* horizontal_filter, stbir__support_callback* horizontal_support, stbir__kernel_callback* vertical_filter, stbir__support_callback* vertical_support);
     /// ```
@@ -328,7 +315,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filter_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_pixel_subrect(STBIR_RESIZE* resize, int subx, int suby, int subw, int subh);
     /// ```
@@ -338,7 +324,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_subrect", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_input_subrect(STBIR_RESIZE* resize, double s0, double t0, double s1, double t1);
     /// ```
@@ -348,7 +333,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_input_subrect", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_output_pixel_subrect(STBIR_RESIZE* resize, int subx, int suby, int subw, int subh);
     /// ```
@@ -358,7 +342,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_set_non_pm_alpha_speed_over_quality(STBIR_RESIZE* resize, int non_pma_alpha_speed_over_quality);
     /// ```
@@ -368,7 +351,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_build_samplers(STBIR_RESIZE* resize);
     /// ```
@@ -378,7 +360,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbir_free_samplers(STBIR_RESIZE* resize);
     /// ```
@@ -388,7 +369,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_resize_extended(STBIR_RESIZE* resize);
     /// ```
@@ -398,7 +378,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_build_samplers_with_splits(STBIR_RESIZE* resize, int try_splits);
     /// ```
@@ -408,7 +387,6 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbir_resize_extended_split(STBIR_RESIZE* resize, int split_start, int split_count);
     /// ```

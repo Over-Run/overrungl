@@ -77,7 +77,6 @@ public final class STBPerlin {
         }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_noise3(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap);
     /// ```
@@ -87,7 +86,6 @@ public final class STBPerlin {
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_noise3_seed(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, int seed);
     /// ```
@@ -97,7 +95,6 @@ public final class STBPerlin {
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_ridge_noise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
     /// ```
@@ -107,7 +104,6 @@ public final class STBPerlin {
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_fbm_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
@@ -117,7 +113,6 @@ public final class STBPerlin {
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_turbulence_noise3(float x, float y, float z, float lacunarity, float gain, int octaves);
     /// ```
@@ -127,7 +122,6 @@ public final class STBPerlin {
         } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_perlin_noise3_wrap_nonpow2(float x, float y, float z, int x_wrap, int y_wrap, int z_wrap, unsigned char seed);
     /// ```

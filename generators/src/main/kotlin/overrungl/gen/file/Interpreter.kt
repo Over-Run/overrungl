@@ -16,21 +16,36 @@
 
 package overrungl.gen.file
 
-internal class Interpreter {
-    val macros = mutableMapOf<String, Expression>()
-    val using = mutableMapOf<String, DefinitionType>()
-    val structs = mutableMapOf<String, GroupLayoutType>()
-    val upcalls = mutableMapOf<String, UpcallType>()
-    val enums = LinkedHashMap<String, Int>()
-    val functions = mutableMapOf<String, DefinitionFunction>()
+data class DefineMacro(val type: String, val name: String, val value: String)
 
-    fun interpret(statements: List<Statement>) {
+class Interpreter {
+    internal val macros = mutableListOf<DefineMacro>()
+    internal val using = mutableMapOf<String, DefinitionType>()
+    internal val structs = mutableMapOf<String, GroupLayoutType>()
+    internal val upcalls = mutableMapOf<String, UpcallType>()
+    internal val enums = LinkedHashMap<String, Int>()
+    internal val functions = mutableMapOf<String, DefinitionFunction>()
+
+    internal fun interpret(statements: List<Statement>) {
         statements.forEach { execute(it) }
+    }
+
+    private fun import(interpreter: Interpreter) {
+        using.putAll(interpreter.using)
     }
 
     private fun execute(statement: Statement) {
         when (statement) {
-            is DefinePreprocessor -> macros[statement.name.lexeme] = statement.value
+            is DefinePreprocessor -> macros.add(
+                DefineMacro(
+                    inferenceType(statement.value),
+                    statement.name,
+                    statement.value
+                )
+            )
+
+            is DefineAsPreprocessor -> macros.add(DefineMacro(statement.type, statement.name, statement.value))
+
             is UsingStatement -> using[statement.name.lexeme] = evaluate(statement.oldType) as DefinitionType
             is FunctionDeclaration -> functions[statement.entrypoint] = DefinitionFunction(
                 evaluate(statement.returnType) as DefinitionType,
@@ -45,6 +60,7 @@ internal class Interpreter {
 
             is ExpressionStatement -> evaluate(statement.expression)
 
+            is ImportStatement -> import(DefinitionFile(statement.filename).interpreter)
             is ReturnStatement -> {}
         }
     }
@@ -56,10 +72,9 @@ internal class Interpreter {
         }
     }
 
-    fun stringify(expression: Expression): String {
+    private fun stringify(expression: Expression): String {
         return when (expression) {
-            is IntegerExpression -> expression.lexeme
-            is FloatingPointExpression -> expression.lexeme
+            is LiteralExpression -> expression.literal.toString()
             is ParenthesisExpression -> "(${stringify(expression.expression)})"
             is UnaryExpression -> "${expression.operator.lexeme}${stringify(expression.right)}"
             is BinaryExpression -> "${stringify(expression.left)} ${expression.operator.lexeme} ${stringify(expression.right)}"
@@ -86,41 +101,36 @@ internal class Interpreter {
         }
     }
 
-    fun inferenceType(expression: Expression): String {
-        return when (expression) {
-            is IntegerExpression -> "int" // TODO long
-            is FloatingPointExpression -> "double" // TODO float
-            is ParenthesisExpression -> inferenceType(expression.expression)
-            is UnaryExpression -> inferenceType(expression.right)
-            is BinaryExpression -> inferenceType(expression.left)
-            is ReferenceExpression -> {
-                val macro = macros[expression.name]
-                if (macro != null) {
-                    return inferenceType(macro)
-                }
-                if (enums.keys.any { it == expression.name }) {
-                    return "int"
-                }
-                error("symbol not found: ${expression.name}")
-            }
+    private fun inferenceType(value: String): String {
+        val tokenize = Lexer(value).tokenize()
+        var current = 0
+        if (tokenize[current].type == TokenType.LEFT_PARENTHESIS) current++
+        if (tokenize[current].type == TokenType.MINUS) current++
+        return inferenceType(tokenize[current])
+    }
 
-            else -> error(expression)
+    private fun inferenceType(token: Token): String {
+        return when (token.type) {
+            TokenType.INTEGER ->
+                if (token.lexeme.endsWith("L", ignoreCase = true)) "long"
+                else "int"
+
+            TokenType.FLOATING_POINT ->
+                if (token.lexeme.endsWith("F", ignoreCase = true)) "float"
+                else "double"
+
+            TokenType.STRING -> "String"
+
+            else -> "int"
         }
     }
 
     private fun evaluate(expression: Expression): Any {
         return when (expression) {
             is TypeExpression -> definitionType(expression.components)
-            is IntegerExpression -> {
-                if (expression.radix == 16) return expression.lexeme.substring(2).toInt(16)
-                else expression.lexeme.toInt(expression.radix)
-            }
+            is LiteralExpression -> expression.literal
 
             is ReferenceExpression -> {
-                val macro = macros[expression.name]
-                if (macro != null) {
-                    return evaluate(macro)
-                }
                 if (enums.containsKey(expression.name)) {
                     return enums[expression.name]!!
                 }

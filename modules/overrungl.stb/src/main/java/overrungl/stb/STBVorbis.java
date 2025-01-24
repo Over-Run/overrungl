@@ -204,7 +204,6 @@ public final class STBVorbis {
         }
     }
 
-    /// Signature:
     /// ```
     /// STBVorbisInfo stb_vorbis_get_info(stb_vorbis* f);
     /// ```
@@ -214,7 +213,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
-    /// Signature:
     /// ```
     /// STBVorbisComment stb_vorbis_get_comment(stb_vorbis* f);
     /// ```
@@ -224,7 +222,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_error(stb_vorbis* f);
     /// ```
@@ -234,7 +231,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stb_vorbis_close(stb_vorbis* f);
     /// ```
@@ -244,7 +240,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_sample_offset(stb_vorbis* f);
     /// ```
@@ -254,7 +249,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned int stb_vorbis_get_file_offset(stb_vorbis* f);
     /// ```
@@ -264,7 +258,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
     }
 
-    /// Signature:
     /// ```
     /// stb_vorbis* stb_vorbis_open_pushdata(const unsigned char* datablock, int datablock_length_in_bytes, int* datablock_memory_consumed_in_bytes, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
@@ -274,7 +267,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_decode_frame_pushdata(stb_vorbis* f, const unsigned char* datablock, int datablock_length_in_bytes, int* channels, float*** output, int* samples);
     /// ```
@@ -284,7 +276,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stb_vorbis_flush_pushdata(stb_vorbis* f);
     /// ```
@@ -294,7 +285,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_decode_filename(const char* filename, int* channels, int* sample_rate, short** output);
     /// ```
@@ -304,7 +294,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_decode_memory(const unsigned char* mem, int len, int* channels, int* sample_rate, short** output);
     /// ```
@@ -314,7 +303,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// stb_vorbis* stb_vorbis_open_memory(const unsigned char* data, int len, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
@@ -324,7 +312,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// stb_vorbis* stb_vorbis_open_filename(const char* filename, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
@@ -334,7 +321,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
-    /// Signature:
     /// ```
     /// stb_vorbis* stb_vorbis_open_file(FILE* f, int close_handle_on_close, int* error, const stb_vorbis_alloc* alloc_buffer);
     /// ```
@@ -344,7 +330,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// stb_vorbis* stb_vorbis_open_file_section(FILE* f, int close_handle_on_close, int* error, const stb_vorbis_alloc* alloc_buffer, unsigned int len);
     /// ```
@@ -354,7 +339,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_file_section", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_seek_frame(stb_vorbis* f, unsigned int sample_number);
     /// ```
@@ -364,7 +348,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_seek(stb_vorbis* f, unsigned int sample_number);
     /// ```
@@ -374,7 +357,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_seek_start(stb_vorbis* f);
     /// ```
@@ -384,7 +366,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned int stb_vorbis_stream_length_in_samples(stb_vorbis* f);
     /// ```
@@ -394,7 +375,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
     }
 
-    /// Signature:
     /// ```
     /// float stb_vorbis_stream_length_in_seconds(stb_vorbis* f);
     /// ```
@@ -404,7 +384,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_frame_float(stb_vorbis* f, int* channels, float*** output);
     /// ```
@@ -414,7 +393,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_frame_short_interleaved(stb_vorbis* f, int num_c, short* buffer, int num_shorts);
     /// ```
@@ -424,7 +402,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_frame_short(stb_vorbis* f, int num_c, short** buffer, int num_samples);
     /// ```
@@ -434,7 +411,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_samples_float_interleaved(stb_vorbis* f, int channels, float* buffer, int num_floats);
     /// ```
@@ -444,7 +420,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_samples_float(stb_vorbis* f, int channels, float** buffer, int num_samples);
     /// ```
@@ -454,7 +429,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_samples_short_interleaved(stb_vorbis* f, int channels, short* buffer, int num_shorts);
     /// ```
@@ -464,7 +438,6 @@ public final class STBVorbis {
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_vorbis_get_samples_short(stb_vorbis* f, int channels, short** buffer, int num_samples);
     /// ```

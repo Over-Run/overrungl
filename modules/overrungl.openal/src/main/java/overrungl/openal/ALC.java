@@ -169,7 +169,6 @@ public final class ALC {
         }
     }
 
-    /// Signature:
     /// ```
     /// ALCcontext* alcCreateContext(ALCdevice* device, const ALCint* attrlist);
     /// ```
@@ -179,17 +178,15 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcCreateContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alcMakeContextCurrent(ALCcontext* context);
     /// ```
-    public static byte alcMakeContextCurrent(MemorySegment context) {
+    public static boolean alcMakeContextCurrent(MemorySegment context) {
         try {
-            return (byte) Handles.MH_alcMakeContextCurrent.invokeExact(Handles.get().PFN_alcMakeContextCurrent, context);
+            return (((byte) Handles.MH_alcMakeContextCurrent.invokeExact(Handles.get().PFN_alcMakeContextCurrent, context)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alcMakeContextCurrent", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcProcessContext(ALCcontext* context);
     /// ```
@@ -199,7 +196,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcProcessContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcSuspendContext(ALCcontext* context);
     /// ```
@@ -209,7 +205,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcSuspendContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcDestroyContext(ALCcontext* context);
     /// ```
@@ -219,7 +214,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcDestroyContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// ALCdevice* alcGetContextsDevice(ALCcontext* context);
     /// ```
@@ -229,7 +223,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetContextsDevice", e); }
     }
 
-    /// Signature:
     /// ```
     /// ALCdevice* alcOpenDevice(const ALCchar* devicename);
     /// ```
@@ -239,17 +232,15 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcOpenDevice", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alcCloseDevice(ALCdevice* device);
     /// ```
-    public static byte alcCloseDevice(MemorySegment device) {
+    public static boolean alcCloseDevice(MemorySegment device) {
         try {
-            return (byte) Handles.MH_alcCloseDevice.invokeExact(Handles.get().PFN_alcCloseDevice, device);
+            return (((byte) Handles.MH_alcCloseDevice.invokeExact(Handles.get().PFN_alcCloseDevice, device)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alcCloseDevice", e); }
     }
 
-    /// Signature:
     /// ```
     /// int alcGetError(ALCdevice* device);
     /// ```
@@ -259,17 +250,15 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetError", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alcIsExtensionPresent(ALCdevice* device, const ALCchar* extname);
     /// ```
-    public static byte alcIsExtensionPresent(MemorySegment device, MemorySegment extname) {
+    public static boolean alcIsExtensionPresent(MemorySegment device, MemorySegment extname) {
         try {
-            return (byte) Handles.MH_alcIsExtensionPresent.invokeExact(Handles.get().PFN_alcIsExtensionPresent, device, extname);
+            return (((byte) Handles.MH_alcIsExtensionPresent.invokeExact(Handles.get().PFN_alcIsExtensionPresent, device, extname)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alcIsExtensionPresent", e); }
     }
 
-    /// Signature:
     /// ```
     /// ALCvoid* alcGetProcAddress(ALCdevice* device, const ALCchar* funcname);
     /// ```
@@ -279,7 +268,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetProcAddress", e); }
     }
 
-    /// Signature:
     /// ```
     /// int alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
     /// ```
@@ -289,7 +277,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetEnumValue", e); }
     }
 
-    /// Signature:
     /// ```
     /// const ALCchar* alcGetString(ALCdevice* device, int param);
     /// ```
@@ -299,7 +286,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetString", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcGetIntegerv(ALCdevice* device, int param, int size, ALCint* values);
     /// ```
@@ -309,7 +295,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcGetIntegerv", e); }
     }
 
-    /// Signature:
     /// ```
     /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, unsigned int frequency, int format, int buffersize);
     /// ```
@@ -319,17 +304,15 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcCaptureOpenDevice", e); }
     }
 
-    /// Signature:
     /// ```
     /// char alcCaptureCloseDevice(ALCdevice* device);
     /// ```
-    public static byte alcCaptureCloseDevice(MemorySegment device) {
+    public static boolean alcCaptureCloseDevice(MemorySegment device) {
         try {
-            return (byte) Handles.MH_alcCaptureCloseDevice.invokeExact(Handles.get().PFN_alcCaptureCloseDevice, device);
+            return (((byte) Handles.MH_alcCaptureCloseDevice.invokeExact(Handles.get().PFN_alcCaptureCloseDevice, device)) != 0);
         } catch (Throwable e) { throw new RuntimeException("error in alcCaptureCloseDevice", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcCaptureStart(ALCdevice* device);
     /// ```
@@ -339,7 +322,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcCaptureStart", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcCaptureStop(ALCdevice* device);
     /// ```
@@ -349,7 +331,6 @@ public final class ALC {
         } catch (Throwable e) { throw new RuntimeException("error in alcCaptureStop", e); }
     }
 
-    /// Signature:
     /// ```
     /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, int samples);
     /// ```

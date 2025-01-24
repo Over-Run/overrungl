@@ -16,19 +16,20 @@
 
 package overrungl.gen.file
 
-private val preprocessors = mapOf(
-    "#define" to TokenType.DEFINE
-)
+import overrungl.gen.file.TokenType.*
+
 private val keywords = mapOf(
-    "const" to TokenType.CONST,
-    "enum" to TokenType.ENUM,
-    "fn" to TokenType.FN,
-    "java" to TokenType.JAVA,
-    "opt" to TokenType.OPTIONAL,
-    "return" to TokenType.RETURN,
-    "struct" to TokenType.STRUCT,
-    "upcall" to TokenType.UPCALL,
-    "using" to TokenType.USING
+    "const" to CONST,
+    "enum" to ENUM,
+    "fn" to FN,
+    "import" to IMPORT,
+    "java" to JAVA,
+    "opt" to OPTIONAL,
+    "return" to RETURN,
+    "struct" to STRUCT,
+    "upcall" to UPCALL,
+    "using" to USING,
+    "val" to VAL,
 )
 
 internal class Lexer(private val source: String) {
@@ -42,7 +43,7 @@ internal class Lexer(private val source: String) {
             start = current
             scanTokens()
         }
-        tokens.add(Token(TokenType.EOF, line, ""))
+        tokens.add(Token(EOF, line, "", null))
         return tokens
     }
 
@@ -58,8 +59,8 @@ internal class Lexer(private val source: String) {
         return true
     }
 
-    private fun addToken(type: TokenType) {
-        tokens.add(Token(type, line, source.substring(start, current)))
+    private fun addToken(type: TokenType, literal: Any? = null) {
+        tokens.add(Token(type, line, source.substring(start, current), literal))
     }
 
     private fun isDigit(ch: Int): Boolean = ch >= '0'.code && ch <= '9'.code
@@ -74,32 +75,39 @@ internal class Lexer(private val source: String) {
 
     private fun scanTokens() {
         when (val ch = advance()) {
-            '('.code -> addToken(TokenType.LEFT_PARENTHESIS)
-            ')'.code -> addToken(TokenType.RIGHT_PARENTHESIS)
-            '['.code -> addToken(TokenType.LEFT_BRACKET)
-            ']'.code -> addToken(TokenType.RIGHT_BRACKET)
-            '{'.code -> addToken(TokenType.LEFT_BRACE)
-            '}'.code -> addToken(TokenType.RIGHT_BRACE)
-            ':'.code -> addToken(TokenType.COLON)
-            ';'.code -> addToken(TokenType.SEMICOLON)
-            ','.code -> addToken(TokenType.COMMA)
-            '.'.code -> addToken(TokenType.DOT)
-            '@'.code -> addToken(TokenType.AT)
-            '-'.code -> addToken(TokenType.MINUS)
-            '*'.code -> addToken(TokenType.STAR)
+            '('.code -> addToken(LEFT_PARENTHESIS)
+            ')'.code -> addToken(RIGHT_PARENTHESIS)
+            '['.code -> addToken(LEFT_BRACKET)
+            ']'.code -> addToken(RIGHT_BRACKET)
+            '{'.code -> addToken(LEFT_BRACE)
+            '}'.code -> addToken(RIGHT_BRACE)
+            ':'.code -> addToken(COLON)
+            ';'.code -> addToken(SEMICOLON)
+            ','.code -> addToken(COMMA)
+            '.'.code -> addToken(DOT)
+            '@'.code -> addToken(AT)
+            '-'.code -> addToken(MINUS)
+            '*'.code -> addToken(STAR)
             '/'.code -> {
                 if (match('/'.code)) {
                     while (peek() != '\n'.code && !isAtEnd()) {
                         advance()
                     }
                 } else {
-                    addToken(TokenType.SLASH)
+                    addToken(SLASH)
                 }
             }
 
-            '|'.code -> addToken(TokenType.PIPE)
-            '='.code -> addToken(TokenType.EQUAL)
-            '#'.code -> scanPreprocessor()
+            '|'.code -> addToken(PIPE)
+            '='.code -> addToken(EQUAL)
+            '#'.code -> {
+                while (!isAtEnd() && peek() != '\n'.code) {
+                    advance()
+                }
+                addToken(PREPROCESSOR)
+            }
+
+            '"'.code -> scanString()
             '\n'.code -> line++
 
             else -> {
@@ -116,16 +124,20 @@ internal class Lexer(private val source: String) {
         }
     }
 
-    private fun scanPreprocessor() {
-        while (Character.isJavaIdentifierPart(peek())) {
+    private fun scanString() {
+        while (!isAtEnd() && peek() != '"'.code) {
             advance()
         }
-        addToken(preprocessors[source.substring(start, current)]!!)
+        if (!match('"'.code)) {
+            reportError("unterminated string")
+        }
+        addToken(STRING, source.substring(start + 1, current - 1))
     }
 
     private fun scanNumber() {
         var hex = false
         var floatingPoint = false
+        var isFloat = false
         if (previous() == '0'.code && (peek() == 'x'.code || peek() == 'X'.code) && isHexDigit(peekNext())) {
             advance()
             hex = true
@@ -146,24 +158,33 @@ internal class Lexer(private val source: String) {
                 while (isDigit(peek())) {
                     advance()
                 }
+                if (peek() == 'f'.code || peek() == 'F'.code) {
+                    isFloat = true
+                    advance()
+                }
             } else {
                 reportError("can't combine floating point with hex")
             }
         }
         if (floatingPoint) {
-            addToken(TokenType.FLOATING_POINT)
+            addToken(
+                FLOATING_POINT,
+                if (isFloat) source.substring(start, current - 1).toFloat()
+                else source.substring(start, current).toDouble()
+            )
         } else if (hex) {
-            addToken(TokenType.HEX_INTEGER)
+            addToken(INTEGER, source.substring(start + 2, current).toLong(16).toInt())
         } else {
-            addToken(TokenType.DEC_INTEGER)
+            addToken(INTEGER, source.substring(start, current).toLong().toInt())
         }
+        // TODO long
     }
 
     private fun scanIdentifier() {
         while (Character.isJavaIdentifierPart(peek())) {
             advance()
         }
-        addToken(keywords.getOrDefault(source.substring(start, current), TokenType.IDENTIFIER))
+        addToken(keywords.getOrDefault(source.substring(start, current), IDENTIFIER))
     }
 }
 
@@ -190,27 +211,27 @@ internal enum class TokenType {
     PIPE,
     EQUAL,
 
-    // preprocessors
-    DEFINE,
-
     // literals
-    DEC_INTEGER,
-    HEX_INTEGER,
+    INTEGER,
     FLOATING_POINT,
+    STRING,
 
     // keywords
     CONST,
     ENUM,
     FN,
+    IMPORT,
     JAVA,
     OPTIONAL,
     RETURN,
     STRUCT,
     UPCALL,
     USING,
+    VAL,
 
     // other
     IDENTIFIER,
+    PREPROCESSOR,
 }
 
-internal data class Token(val type: TokenType, val line: Int, val lexeme: String)
+internal data class Token(val type: TokenType, val line: Int, val lexeme: String, val literal: Any?)

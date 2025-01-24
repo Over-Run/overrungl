@@ -1,18 +1,18 @@
 // al.h
 
 using ALboolean = java ALboolean;
-using ALchar = java ALchar;
-using ALbyte = java ALbyte;
-using ALubyte = java ALubyte;
-using ALshort = java ALshort;
-using ALushort = java ALushort;
-using ALint = java ALint;
-using ALuint = java ALuint;
-using ALsizei = java ALsizei;
-using ALenum = java ALenum;
-using ALfloat = java ALfloat;
-using ALdouble = java ALdouble;
-using ALvoid = java ALvoid;
+using ALchar = char;
+using ALbyte = signed char;
+using ALubyte = unsigned char;
+using ALshort = short;
+using ALushort = unsigned short;
+using ALint = int;
+using ALuint = unsigned int;
+using ALsizei = int;
+using ALenum = int;
+using ALfloat = float;
+using ALdouble = double;
+using ALvoid = void;
 
 #define AL_NONE                                  0
 #define AL_FALSE                                 0

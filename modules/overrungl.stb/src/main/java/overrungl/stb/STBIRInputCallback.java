@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef void const * (*STBIRInputCallback)(void* optional_output, void const * input_ptr, int num_pixels, int x, int y, void* context);
 /// ```

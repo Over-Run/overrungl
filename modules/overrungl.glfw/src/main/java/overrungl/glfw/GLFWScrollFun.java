@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset);
 /// ```

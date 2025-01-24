@@ -48,8 +48,8 @@ public final class GLFW {
     public static final int GLFW_HAT_LEFT = 8;
     public static final int GLFW_HAT_RIGHT_UP = (GLFW_HAT_RIGHT | GLFW_HAT_UP);
     public static final int GLFW_HAT_RIGHT_DOWN = (GLFW_HAT_RIGHT | GLFW_HAT_DOWN);
-    public static final int GLFW_HAT_LEFT_UP = (GLFW_HAT_LEFT | GLFW_HAT_UP);
-    public static final int GLFW_HAT_LEFT_DOWN = (GLFW_HAT_LEFT | GLFW_HAT_DOWN);
+    public static final int GLFW_HAT_LEFT_UP = (GLFW_HAT_LEFT  | GLFW_HAT_UP);
+    public static final int GLFW_HAT_LEFT_DOWN = (GLFW_HAT_LEFT  | GLFW_HAT_DOWN);
     public static final int GLFW_KEY_UNKNOWN = -1;
     public static final int GLFW_KEY_SPACE = 32;
     public static final int GLFW_KEY_APOSTROPHE = 39;
@@ -997,7 +997,6 @@ public final class GLFW {
         }
     }
 
-    /// Signature:
     /// ```
     /// int glfwInit();
     /// ```
@@ -1007,7 +1006,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwInit", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwTerminate();
     /// ```
@@ -1017,7 +1015,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwTerminate", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwInitHint(int hint, int value);
     /// ```
@@ -1027,7 +1024,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitHint", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwInitAllocator(const GLFWallocator* allocator);
     /// ```
@@ -1037,7 +1033,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitAllocator", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwInitVulkanLoader(void* loader);
     /// ```
@@ -1047,7 +1042,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwInitVulkanLoader", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetVersion(int* major, int* minor, int* rev);
     /// ```
@@ -1057,7 +1051,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersion", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetVersionString();
     /// ```
@@ -1067,7 +1060,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVersionString", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetError(const char** description);
     /// ```
@@ -1077,7 +1069,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetError", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWErrorFun)(int error_code, const char* description) glfwSetErrorCallback(void (*GLFWErrorFun)(int error_code, const char* description) callback);
     /// ```
@@ -1087,7 +1078,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetErrorCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetPlatform();
     /// ```
@@ -1097,7 +1087,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPlatform", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwPlatformSupported(int platform);
     /// ```
@@ -1107,7 +1096,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwPlatformSupported", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWmonitor** glfwGetMonitors(int* count);
     /// ```
@@ -1117,7 +1105,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitors", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWmonitor* glfwGetPrimaryMonitor();
     /// ```
@@ -1127,7 +1114,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPrimaryMonitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetMonitorPos(GLFWmonitor* monitor, int* xpos, int* ypos);
     /// ```
@@ -1137,7 +1123,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPos", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetMonitorWorkarea(GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height);
     /// ```
@@ -1147,7 +1132,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorWorkarea", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetMonitorPhysicalSize(GLFWmonitor* monitor, int* widthMM, int* heightMM);
     /// ```
@@ -1157,7 +1141,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorPhysicalSize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetMonitorContentScale(GLFWmonitor* monitor, float* xscale, float* yscale);
     /// ```
@@ -1167,7 +1150,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorContentScale", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetMonitorName(GLFWmonitor* monitor);
     /// ```
@@ -1177,7 +1159,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorName", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetMonitorUserPointer(GLFWmonitor* monitor, void* pointer);
     /// ```
@@ -1187,7 +1168,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetMonitorUserPointer(GLFWmonitor* monitor);
     /// ```
@@ -1197,7 +1177,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMonitorUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) glfwSetMonitorCallback(void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event) callback);
     /// ```
@@ -1207,7 +1186,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMonitorCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* monitor, int* count);
     /// ```
@@ -1217,7 +1195,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoModes", e); }
     }
 
-    /// Signature:
     /// ```
     /// const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* monitor);
     /// ```
@@ -1227,7 +1204,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetVideoMode", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetGamma(GLFWmonitor* monitor, float gamma);
     /// ```
@@ -1237,7 +1213,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetGamma", e); }
     }
 
-    /// Signature:
     /// ```
     /// const GLFWgammaramp* glfwGetGammaRamp(GLFWmonitor* monitor);
     /// ```
@@ -1247,7 +1222,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGammaRamp", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetGammaRamp(GLFWmonitor* monitor, const GLFWgammaramp* ramp);
     /// ```
@@ -1257,7 +1231,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetGammaRamp", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwDefaultWindowHints();
     /// ```
@@ -1267,7 +1240,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwDefaultWindowHints", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwWindowHint(int hint, int value);
     /// ```
@@ -1277,7 +1249,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHint", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwWindowHintString(int hint, const char* value);
     /// ```
@@ -1287,7 +1258,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowHintString", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWwindow* glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
     /// ```
@@ -1297,7 +1267,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwDestroyWindow(GLFWwindow* window);
     /// ```
@@ -1307,7 +1276,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwWindowShouldClose(GLFWwindow* window);
     /// ```
@@ -1317,7 +1285,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwWindowShouldClose", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowShouldClose(GLFWwindow* window, int value);
     /// ```
@@ -1327,7 +1294,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowShouldClose", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetWindowTitle(GLFWwindow* window);
     /// ```
@@ -1337,7 +1303,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowTitle", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowTitle(GLFWwindow* window, const char* title);
     /// ```
@@ -1347,7 +1312,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowTitle", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowIcon(GLFWwindow* window, int count, const GLFWimage* images);
     /// ```
@@ -1357,7 +1321,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIcon", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetWindowPos(GLFWwindow* window, int* xpos, int* ypos);
     /// ```
@@ -1367,7 +1330,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowPos", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos);
     /// ```
@@ -1377,7 +1339,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPos", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetWindowSize(GLFWwindow* window, int* width, int* height);
     /// ```
@@ -1387,7 +1348,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowSize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight);
     /// ```
@@ -1397,7 +1357,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeLimits", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowAspectRatio(GLFWwindow* window, int numer, int denom);
     /// ```
@@ -1407,7 +1366,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAspectRatio", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowSize(GLFWwindow* window, int width, int height);
     /// ```
@@ -1417,7 +1375,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetFramebufferSize(GLFWwindow* window, int* width, int* height);
     /// ```
@@ -1427,7 +1384,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetFramebufferSize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetWindowFrameSize(GLFWwindow* window, int* left, int* top, int* right, int* bottom);
     /// ```
@@ -1437,7 +1393,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowFrameSize", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetWindowContentScale(GLFWwindow* window, float* xscale, float* yscale);
     /// ```
@@ -1447,7 +1402,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowContentScale", e); }
     }
 
-    /// Signature:
     /// ```
     /// float glfwGetWindowOpacity(GLFWwindow* window);
     /// ```
@@ -1457,7 +1411,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowOpacity", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowOpacity(GLFWwindow* window, float opacity);
     /// ```
@@ -1467,7 +1420,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowOpacity", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwIconifyWindow(GLFWwindow* window);
     /// ```
@@ -1477,7 +1429,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwIconifyWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwRestoreWindow(GLFWwindow* window);
     /// ```
@@ -1487,7 +1438,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwRestoreWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwMaximizeWindow(GLFWwindow* window);
     /// ```
@@ -1497,7 +1447,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwMaximizeWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwShowWindow(GLFWwindow* window);
     /// ```
@@ -1507,7 +1456,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwShowWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwHideWindow(GLFWwindow* window);
     /// ```
@@ -1517,7 +1465,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwHideWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwFocusWindow(GLFWwindow* window);
     /// ```
@@ -1527,7 +1474,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwFocusWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwRequestWindowAttention(GLFWwindow* window);
     /// ```
@@ -1537,7 +1483,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwRequestWindowAttention", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWmonitor* glfwGetWindowMonitor(GLFWwindow* window);
     /// ```
@@ -1547,7 +1492,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowMonitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate);
     /// ```
@@ -1557,7 +1501,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMonitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetWindowAttrib(GLFWwindow* window, int attrib);
     /// ```
@@ -1567,7 +1510,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowAttrib", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value);
     /// ```
@@ -1577,7 +1519,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowAttrib", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetWindowUserPointer(GLFWwindow* window, void* pointer);
     /// ```
@@ -1587,7 +1528,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetWindowUserPointer(GLFWwindow* window);
     /// ```
@@ -1597,7 +1537,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWindowUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) glfwSetWindowPosCallback(GLFWwindow* window, void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos) callback);
     /// ```
@@ -1607,7 +1546,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowPosCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) glfwSetWindowSizeCallback(GLFWwindow* window, void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height) callback);
     /// ```
@@ -1617,7 +1555,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowSizeCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowCloseFun)(GLFWwindow* window) glfwSetWindowCloseCallback(GLFWwindow* window, void (*GLFWWindowCloseFun)(GLFWwindow* window) callback);
     /// ```
@@ -1627,7 +1564,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowCloseCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowRefreshFun)(GLFWwindow* window) glfwSetWindowRefreshCallback(GLFWwindow* window, void (*GLFWWindowRefreshFun)(GLFWwindow* window) callback);
     /// ```
@@ -1637,7 +1573,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowRefreshCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) glfwSetWindowFocusCallback(GLFWwindow* window, void (*GLFWWindowFocusFun)(GLFWwindow* window, int focused) callback);
     /// ```
@@ -1647,7 +1582,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowFocusCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) glfwSetWindowIconifyCallback(GLFWwindow* window, void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified) callback);
     /// ```
@@ -1657,7 +1591,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowIconifyCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) glfwSetWindowMaximizeCallback(GLFWwindow* window, void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized) callback);
     /// ```
@@ -1667,7 +1600,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowMaximizeCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) glfwSetFramebufferSizeCallback(GLFWwindow* window, void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height) callback);
     /// ```
@@ -1677,7 +1609,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetFramebufferSizeCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) glfwSetWindowContentScaleCallback(GLFWwindow* window, void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale) callback);
     /// ```
@@ -1687,7 +1618,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetWindowContentScaleCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwPollEvents();
     /// ```
@@ -1697,7 +1627,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwPollEvents", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwWaitEvents();
     /// ```
@@ -1707,7 +1636,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEvents", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwWaitEventsTimeout(double timeout);
     /// ```
@@ -1717,7 +1645,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwWaitEventsTimeout", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwPostEmptyEvent();
     /// ```
@@ -1727,7 +1654,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwPostEmptyEvent", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetInputMode(GLFWwindow* window, int mode);
     /// ```
@@ -1737,7 +1663,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetInputMode", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetInputMode(GLFWwindow* window, int mode, int value);
     /// ```
@@ -1747,7 +1672,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetInputMode", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwRawMouseMotionSupported();
     /// ```
@@ -1757,7 +1681,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwRawMouseMotionSupported", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetKeyName(int key, int scancode);
     /// ```
@@ -1767,7 +1690,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyName", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetKeyScancode(int key);
     /// ```
@@ -1777,7 +1699,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKeyScancode", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetKey(GLFWwindow* window, int key);
     /// ```
@@ -1787,7 +1708,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetKey", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetMouseButton(GLFWwindow* window, int button);
     /// ```
@@ -1797,7 +1717,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetMouseButton", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwGetCursorPos(GLFWwindow* window, double* xpos, double* ypos);
     /// ```
@@ -1807,7 +1726,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCursorPos", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetCursorPos(GLFWwindow* window, double xpos, double ypos);
     /// ```
@@ -1817,7 +1735,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPos", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWcursor* glfwCreateCursor(const GLFWimage* image, int xhot, int yhot);
     /// ```
@@ -1827,7 +1744,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateCursor", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWcursor* glfwCreateStandardCursor(int shape);
     /// ```
@@ -1837,7 +1753,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwCreateStandardCursor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwDestroyCursor(GLFWcursor* cursor);
     /// ```
@@ -1847,7 +1762,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwDestroyCursor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetCursor(GLFWwindow* window, GLFWcursor* cursor);
     /// ```
@@ -1857,7 +1771,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) glfwSetKeyCallback(GLFWwindow* window, void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods) callback);
     /// ```
@@ -1867,7 +1780,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetKeyCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) glfwSetCharCallback(GLFWwindow* window, void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint) callback);
     /// ```
@@ -1877,7 +1789,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCharCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) glfwSetMouseButtonCallback(GLFWwindow* window, void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods) callback);
     /// ```
@@ -1887,7 +1798,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetMouseButtonCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) glfwSetCursorPosCallback(GLFWwindow* window, void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos) callback);
     /// ```
@@ -1897,7 +1807,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorPosCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) glfwSetCursorEnterCallback(GLFWwindow* window, void (*GLFWCursorEnterFun)(GLFWwindow* window, int entered) callback);
     /// ```
@@ -1907,7 +1816,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetCursorEnterCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) glfwSetScrollCallback(GLFWwindow* window, void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset) callback);
     /// ```
@@ -1917,7 +1825,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetScrollCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) glfwSetDropCallback(GLFWwindow* window, void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths) callback);
     /// ```
@@ -1927,7 +1834,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetDropCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwJoystickPresent(int jid);
     /// ```
@@ -1937,7 +1843,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickPresent", e); }
     }
 
-    /// Signature:
     /// ```
     /// const float* glfwGetJoystickAxes(int jid, int* count);
     /// ```
@@ -1947,7 +1852,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickAxes", e); }
     }
 
-    /// Signature:
     /// ```
     /// const unsigned char* glfwGetJoystickButtons(int jid, int* count);
     /// ```
@@ -1957,7 +1861,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickButtons", e); }
     }
 
-    /// Signature:
     /// ```
     /// const unsigned char* glfwGetJoystickHats(int jid, int* count);
     /// ```
@@ -1967,7 +1870,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickHats", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetJoystickName(int jid);
     /// ```
@@ -1977,7 +1879,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickName", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetJoystickGUID(int jid);
     /// ```
@@ -1987,7 +1888,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickGUID", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetJoystickUserPointer(int jid, void* pointer);
     /// ```
@@ -1997,7 +1897,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetJoystickUserPointer(int jid);
     /// ```
@@ -2007,7 +1906,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetJoystickUserPointer", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwJoystickIsGamepad(int jid);
     /// ```
@@ -2017,7 +1915,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwJoystickIsGamepad", e); }
     }
 
-    /// Signature:
     /// ```
     /// void (*GLFWJoystickFun)(int jid, int event) glfwSetJoystickCallback(void (*GLFWJoystickFun)(int jid, int event) callback);
     /// ```
@@ -2027,7 +1924,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetJoystickCallback", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwUpdateGamepadMappings(const char* string);
     /// ```
@@ -2037,7 +1933,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwUpdateGamepadMappings", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetGamepadName(int jid);
     /// ```
@@ -2047,7 +1942,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadName", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetGamepadState(int jid, GLFWgamepadstate* state);
     /// ```
@@ -2057,7 +1951,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGamepadState", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetClipboardString(GLFWwindow* window, const char* string);
     /// ```
@@ -2067,7 +1960,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetClipboardString", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetClipboardString(GLFWwindow* window);
     /// ```
@@ -2077,7 +1969,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetClipboardString", e); }
     }
 
-    /// Signature:
     /// ```
     /// double glfwGetTime();
     /// ```
@@ -2087,7 +1978,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTime", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetTime(double time);
     /// ```
@@ -2097,7 +1987,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetTime", e); }
     }
 
-    /// Signature:
     /// ```
     /// uint64_t glfwGetTimerValue();
     /// ```
@@ -2107,7 +1996,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerValue", e); }
     }
 
-    /// Signature:
     /// ```
     /// uint64_t glfwGetTimerFrequency();
     /// ```
@@ -2117,7 +2005,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetTimerFrequency", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwMakeContextCurrent(GLFWwindow* window);
     /// ```
@@ -2127,7 +2014,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwMakeContextCurrent", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLFWwindow* glfwGetCurrentContext();
     /// ```
@@ -2137,7 +2023,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCurrentContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSwapBuffers(GLFWwindow* window);
     /// ```
@@ -2147,7 +2032,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSwapBuffers", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSwapInterval(int interval);
     /// ```
@@ -2157,7 +2041,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSwapInterval", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwExtensionSupported(const char* extension);
     /// ```
@@ -2167,7 +2050,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwExtensionSupported", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetProcAddress(const char* procname);
     /// ```
@@ -2177,7 +2059,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetProcAddress", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwVulkanSupported();
     /// ```
@@ -2187,7 +2068,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwVulkanSupported", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
     /// ```
@@ -2197,7 +2077,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetRequiredInstanceExtensions", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetInstanceProcAddress(void* instance, const char* procname);
     /// ```
@@ -2207,7 +2086,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetInstanceProcAddress", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetPhysicalDevicePresentationSupport(void* instance, void* device, uint32_t queuefamily);
     /// ```
@@ -2217,7 +2095,6 @@ public final class GLFW {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetPhysicalDevicePresentationSupport", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwCreateWindowSurface(void* instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
     /// ```

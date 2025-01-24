@@ -71,7 +71,6 @@ public final class STBRectPack {
         }
     }
 
-    /// Signature:
     /// ```
     /// int stbrp_pack_rects(stbrp_context* context, stbrp_rect* rects, int num_rects);
     /// ```
@@ -81,7 +80,6 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbrp_init_target(stbrp_context* context, int width, int height, stbrp_node* nodes, int num_nodes);
     /// ```
@@ -91,7 +89,6 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbrp_setup_allow_out_of_mem(stbrp_context* context, int allow_out_of_mem);
     /// ```
@@ -101,7 +98,6 @@ public final class STBRectPack {
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbrp_setup_heuristic(stbrp_context* context, int heuristic);
     /// ```

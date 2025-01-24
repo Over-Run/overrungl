@@ -267,7 +267,7 @@ fn int stbtt_FindMatchingFont(const unsigned char *fontdata, const char *name, i
 #define STBTT_MACSTYLE_BOLD         1
 #define STBTT_MACSTYLE_ITALIC       2
 #define STBTT_MACSTYLE_UNDERSCORE   4
-#define STBTT_MACSTYLE_NONE         8   // <= not same as 0, this makes us check the bitfield is 0
+#define STBTT_MACSTYLE_NONE         8
 
 fn STBbool stbtt_CompareUTF8toUTF16_bigendian(const char *s1, int len1, const char *s2, int len2);
 

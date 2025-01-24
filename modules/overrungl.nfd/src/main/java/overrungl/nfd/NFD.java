@@ -175,7 +175,6 @@ public final class NFD {
         }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_FreePathN(nfdnchar_t* filePath);
     /// ```
@@ -185,7 +184,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_FreePath", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_Init();
     /// ```
@@ -195,7 +193,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_Init", e); }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_Quit();
     /// ```
@@ -205,7 +202,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_Quit", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
     /// ```
@@ -215,7 +211,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
@@ -225,7 +220,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialog_With_Impl", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
@@ -233,7 +227,6 @@ public final class NFD {
         return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
     /// ```
@@ -243,7 +236,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialogMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
@@ -253,7 +245,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_OpenDialogMultiple_With_Impl", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
@@ -261,7 +252,6 @@ public final class NFD {
         return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    /// Signature:
     /// ```
     /// int NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
     /// ```
@@ -271,7 +261,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_SaveDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
@@ -281,7 +270,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_SaveDialog_With_Impl", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
@@ -289,7 +277,6 @@ public final class NFD {
         return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
     /// ```
@@ -299,7 +286,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolderN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
@@ -309,7 +295,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolder_With_Impl", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
@@ -317,7 +302,6 @@ public final class NFD {
         return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
     /// ```
@@ -327,7 +311,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolderMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
@@ -337,7 +320,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PickFolderMultiple_With_Impl", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
@@ -345,7 +327,6 @@ public final class NFD {
         return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
-    /// Signature:
     /// ```
     /// const char* NFD_GetError();
     /// ```
@@ -355,7 +336,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_ClearError();
     /// ```
@@ -365,7 +345,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_ClearError", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
     /// ```
@@ -375,7 +354,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetCount", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, size_t index, nfdnchar_t** outPath);
     /// ```
@@ -385,7 +363,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPath", e); }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_PathSet_FreePathN(const nfdnchar_t* filePath);
     /// ```
@@ -395,7 +372,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreePath", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
     /// ```
@@ -405,7 +381,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetEnum", e); }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_PathSet_FreeEnum(nfdpathsetenum_t* enumerator);
     /// ```
@@ -415,7 +390,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_FreeEnum", e); }
     }
 
-    /// Signature:
     /// ```
     /// int NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
     /// ```
@@ -425,7 +399,6 @@ public final class NFD {
         } catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_EnumNext", e); }
     }
 
-    /// Signature:
     /// ```
     /// void NFD_PathSet_Free(const nfdpathset_t* pathSet);
     /// ```

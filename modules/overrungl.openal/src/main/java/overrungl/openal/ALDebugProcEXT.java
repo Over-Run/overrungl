@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.openal;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*ALDebugProcEXT)(int source, int type, unsigned int id, int severity, int length, const ALchar* message, void* userParam);
+/// ```
 @FunctionalInterface
 public interface ALDebugProcEXT extends Upcall {
     /// The function descriptor.
-    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(ALDebugProcEXT.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(ALDebugProcEXT.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `ALDebugProcEXT`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, ALDebugProcEXT func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    void invoke(@CType("ALenum") int source, @CType("ALenum") int type, @CType("ALuint") int id, @CType("ALenum") int severity, @CType("ALsizei") int length, @CType("const ALchar*") MemorySegment message, @CType("void*") MemorySegment userParam);
+    void invoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam);
+
+    /// The target method of the upcall.
+    default void invoke_(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
+        invoke(source, type, id, severity, length, message, userParam);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("ALenum") int source, @CType("ALenum") int type, @CType("ALuint") int id, @CType("ALenum") int severity, @CType("ALsizei") int length, @CType("const ALchar*") MemorySegment message, @CType("void*") MemorySegment userParam) {
-        try { HANDLE.invokeExact(stub, source, type, id, severity, length, message, userParam); }
-        catch (Throwable e) { throw new RuntimeException("error in ALDebugProcEXT::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static ALDebugProcEXT wrap(MemorySegment stub) {
-        return (source, type, id, severity, length, message, userParam) ->
-            invoke(stub, source, type, id, severity, length, message, userParam);
-    }
 }

@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods);
 /// ```

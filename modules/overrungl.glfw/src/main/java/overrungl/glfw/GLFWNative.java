@@ -177,7 +177,6 @@ public final class GLFWNative {
         }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetWin32Adapter(GLFWmonitor* monitor);
     /// ```
@@ -188,7 +187,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Adapter", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetWin32Monitor(GLFWmonitor* monitor);
     /// ```
@@ -199,7 +197,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Monitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetWin32Window(GLFWwindow* window);
     /// ```
@@ -210,7 +207,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Window", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetWGLContext(GLFWwindow* window);
     /// ```
@@ -221,7 +217,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWGLContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// uint32_t glfwGetCocoaMonitor(GLFWmonitor* monitor);
     /// ```
@@ -232,7 +227,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaMonitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetCocoaWindow(GLFWwindow* window);
     /// ```
@@ -243,7 +237,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetCocoaView(GLFWwindow* window);
     /// ```
@@ -254,7 +247,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaView", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetNSGLContext(GLFWwindow* window);
     /// ```
@@ -265,7 +257,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetNSGLContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// Display* glfwGetX11Display();
     /// ```
@@ -276,7 +267,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Display", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned long glfwGetX11Adapter(GLFWmonitor* monitor);
     /// ```
@@ -287,7 +277,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Adapter", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned long glfwGetX11Monitor(GLFWmonitor* monitor);
     /// ```
@@ -298,7 +287,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Monitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned long glfwGetX11Window(GLFWwindow* window);
     /// ```
@@ -309,7 +297,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Window", e); }
     }
 
-    /// Signature:
     /// ```
     /// void glfwSetX11SelectionString(const char* string);
     /// ```
@@ -320,7 +307,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetX11SelectionString", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* glfwGetX11SelectionString();
     /// ```
@@ -331,7 +317,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11SelectionString", e); }
     }
 
-    /// Signature:
     /// ```
     /// GLXContext glfwGetGLXContext(GLFWwindow* window);
     /// ```
@@ -342,7 +327,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// unsigned long glfwGetGLXWindow(GLFWwindow* window);
     /// ```
@@ -353,7 +337,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// wl_display * glfwGetWaylandDisplay();
     /// ```
@@ -364,7 +347,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandDisplay", e); }
     }
 
-    /// Signature:
     /// ```
     /// wl_output * glfwGetWaylandMonitor(GLFWmonitor* monitor);
     /// ```
@@ -375,7 +357,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandMonitor", e); }
     }
 
-    /// Signature:
     /// ```
     /// wl_surface * glfwGetWaylandWindow(GLFWwindow* window);
     /// ```
@@ -386,7 +367,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandWindow", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetEGLDisplay();
     /// ```
@@ -397,7 +377,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLDisplay", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetEGLContext(GLFWwindow* window);
     /// ```
@@ -408,7 +387,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLContext", e); }
     }
 
-    /// Signature:
     /// ```
     /// void* glfwGetEGLSurface(GLFWwindow* window);
     /// ```
@@ -419,7 +397,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLSurface", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetOSMesaColorBuffer(GLFWwindow* window, int* width, int* height, int* format, void** buffer);
     /// ```
@@ -430,7 +407,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaColorBuffer", e); }
     }
 
-    /// Signature:
     /// ```
     /// int glfwGetOSMesaDepthBuffer(GLFWwindow* window, int* width, int* height, int* bytesPerValue, void** buffer);
     /// ```
@@ -441,7 +417,6 @@ public final class GLFWNative {
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaDepthBuffer", e); }
     }
 
-    /// Signature:
     /// ```
     /// OSMesaContext * glfwGetOSMesaContext(GLFWwindow* window);
     /// ```

@@ -100,7 +100,6 @@ public final class STBImageWrite {
         }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_png(char const * filename, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
@@ -110,7 +109,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_bmp(char const * filename, int w, int h, int comp, const void* data);
     /// ```
@@ -120,7 +118,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_tga(char const * filename, int w, int h, int comp, const void* data);
     /// ```
@@ -130,7 +127,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_hdr(char const * filename, int w, int h, int comp, const float* data);
     /// ```
@@ -140,7 +136,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_jpg(char const * filename, int x, int y, int comp, const void* data, int quality);
     /// ```
@@ -150,7 +145,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_png_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
@@ -160,7 +154,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_bmp_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
@@ -170,7 +163,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_tga_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
@@ -180,7 +172,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_hdr_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const float* data);
     /// ```
@@ -190,7 +181,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_write_jpg_to_func(stbi_write_func* func, void* context, int x, int y, int comp, const void* data, int quality);
     /// ```
@@ -200,7 +190,6 @@ public final class STBImageWrite {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_flip_vertically_on_write(int flip_boolean);
     /// ```

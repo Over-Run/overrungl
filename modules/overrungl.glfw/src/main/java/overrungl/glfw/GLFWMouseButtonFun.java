@@ -24,7 +24,6 @@ import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// Signature:
 /// ```
 /// typedef void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods);
 /// ```

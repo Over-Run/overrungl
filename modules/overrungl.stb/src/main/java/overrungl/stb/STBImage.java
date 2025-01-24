@@ -265,7 +265,6 @@ public final class STBImage {
         }
     }
 
-    /// Signature:
     /// ```
     /// stbi_uc* stbi_load_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -275,7 +274,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_uc* stbi_load_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -285,7 +283,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_uc* stbi_load(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -295,7 +292,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_uc* stbi_load_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -305,7 +301,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_uc* stbi_load_gif_from_memory(stbi_uc const * buffer, int len, int** delays, int* x, int* y, int* z, int* comp, int req_comp);
     /// ```
@@ -315,7 +310,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_gif_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_us* stbi_load_16_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -325,7 +319,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_us* stbi_load_16_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -335,7 +328,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_us* stbi_load_16(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -345,7 +337,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_16", e); }
     }
 
-    /// Signature:
     /// ```
     /// stbi_us* stbi_load_from_file_16(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -355,7 +346,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_load_from_file_16", e); }
     }
 
-    /// Signature:
     /// ```
     /// float* stbi_loadf_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -365,7 +355,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// float* stbi_loadf_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -375,7 +364,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// float* stbi_loadf(char const * filename, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -385,7 +373,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf", e); }
     }
 
-    /// Signature:
     /// ```
     /// float* stbi_loadf_from_file(FILE* f, int* x, int* y, int* channels_in_file, int desired_channels);
     /// ```
@@ -395,7 +382,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_loadf_from_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_hdr_to_ldr_gamma(float gamma);
     /// ```
@@ -405,7 +391,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_gamma", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_hdr_to_ldr_scale(float scale);
     /// ```
@@ -415,7 +400,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_hdr_to_ldr_scale", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_ldr_to_hdr_gamma(float gamma);
     /// ```
@@ -425,7 +409,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_gamma", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_ldr_to_hdr_scale(float scale);
     /// ```
@@ -435,7 +418,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_ldr_to_hdr_scale", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_hdr_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
@@ -445,7 +427,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_hdr_from_memory(stbi_uc const * buffer, int len);
     /// ```
@@ -455,7 +436,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_hdr(char const * filename);
     /// ```
@@ -465,7 +445,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_hdr_from_file(FILE* f);
     /// ```
@@ -475,7 +454,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr_from_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// const char* stbi_failure_reason();
     /// ```
@@ -485,7 +463,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_image_free(void* retval_from_stbi_load);
     /// ```
@@ -495,7 +472,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_image_free", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_info_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* comp);
     /// ```
@@ -505,7 +481,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_info_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* comp);
     /// ```
@@ -515,7 +490,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_16_bit_from_memory(stbi_uc const * buffer, int len);
     /// ```
@@ -525,7 +499,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_memory", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
@@ -535,7 +508,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_callbacks", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_info(char const * filename, int* x, int* y, int* comp);
     /// ```
@@ -545,7 +517,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_info_from_file(FILE* f, int* x, int* y, int* comp);
     /// ```
@@ -555,7 +526,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_info_from_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_16_bit(char const * filename);
     /// ```
@@ -565,7 +535,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_is_16_bit_from_file(FILE* f);
     /// ```
@@ -575,7 +544,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit_from_file", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_set_unpremultiply_on_load(int flag_true_if_should_unpremultiply);
     /// ```
@@ -585,7 +553,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_convert_iphone_png_to_rgb(int flag_true_if_should_convert);
     /// ```
@@ -595,7 +562,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_set_flip_vertically_on_load(int flag_true_if_should_flip);
     /// ```
@@ -605,7 +571,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_set_unpremultiply_on_load_thread(int flag_true_if_should_unpremultiply);
     /// ```
@@ -615,7 +580,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load_thread", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_convert_iphone_png_to_rgb_thread(int flag_true_if_should_convert);
     /// ```
@@ -625,7 +589,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb_thread", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stbi_set_flip_vertically_on_load_thread(int flag_true_if_should_flip);
     /// ```
@@ -635,7 +598,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load_thread", e); }
     }
 
-    /// Signature:
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize(const char* buffer, int len, int initial_size, int* outlen);
     /// ```
@@ -645,7 +607,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
     }
 
-    /// Signature:
     /// ```
     /// char* stbi_zlib_decode_malloc_guesssize_headerflag(const char* buffer, int len, int initial_size, int* outlen, int parse_header);
     /// ```
@@ -655,7 +616,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
     }
 
-    /// Signature:
     /// ```
     /// char* stbi_zlib_decode_malloc(const char* buffer, int len, int* outlen);
     /// ```
@@ -665,7 +625,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_zlib_decode_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```
@@ -675,7 +634,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
     }
 
-    /// Signature:
     /// ```
     /// char* stbi_zlib_decode_noheader_malloc(const char* buffer, int len, int* outlen);
     /// ```
@@ -685,7 +643,6 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stbi_zlib_decode_noheader_buffer(char* obuffer, int olen, const char* ibuffer, int ilen);
     /// ```

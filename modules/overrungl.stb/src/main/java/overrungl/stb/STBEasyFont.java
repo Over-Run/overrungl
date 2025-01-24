@@ -73,7 +73,6 @@ public final class STBEasyFont {
         }
     }
 
-    /// Signature:
     /// ```
     /// float stb_easy_font_get_spacing();
     /// ```
@@ -83,7 +82,6 @@ public final class STBEasyFont {
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
     }
 
-    /// Signature:
     /// ```
     /// void stb_easy_font_spacing(float spacing);
     /// ```
@@ -93,7 +91,6 @@ public final class STBEasyFont {
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_easy_font_print(float x, float y, char* text, unsigned char color[4], void* vertex_buffer, int vbuf_size);
     /// ```
@@ -103,7 +100,6 @@ public final class STBEasyFont {
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_easy_font_width(char* text);
     /// ```
@@ -113,7 +109,6 @@ public final class STBEasyFont {
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
 
-    /// Signature:
     /// ```
     /// int stb_easy_font_height(char* text);
     /// ```
